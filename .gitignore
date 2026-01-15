@@ -1,0 +1,7 @@
+/.idea
+/.vscode
+**/node_modules/
+cache
+dist
+dist-ssr
+*.local
