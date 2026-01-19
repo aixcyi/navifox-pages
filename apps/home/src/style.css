@@ -1,0 +1,28 @@
+@import "tailwindcss";
+
+:root {
+    --fox-cyan-1: #459199;
+    --fox-cyan-2: #285559;
+
+    color: var(--color-neutral-400);
+}
+
+a.tighnari {
+    transition: color .25s;
+
+    &:not(.dark) {
+        color: var(--fox-cyan-2);
+
+        &:hover {
+            color: blueviolet;
+        }
+    }
+
+    &.dark {
+        color: var(--fox-cyan-1);
+
+        &:hover {
+            color: var(--fox-cyan-2);
+        }
+    }
+}
