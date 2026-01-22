@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+:root {
+    --gradient-milktea: linear-gradient(114.41deg, var(--color-amber-200) 20.74%, var(--color-amber-100) 65.5%);
+
+    --background: #285559;
+    --button-stroke: var(--color-amber-200);
+    --button-color: var(--color-amber-200);
+    --button-hoverColor: var(--background);
+    --ease-in-out-quart: cubic-bezier(.645, .045, .355, 1);
+
+    background: var(--background);
+}
+
+*::selection {
+    background: darkorange;
+}

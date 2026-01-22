@@ -4,9 +4,13 @@
     "version": "0.0.0",
     "scripts": {
         "dev:home": "pnpm --filter @navifox/home run dev",
+        "dev:docs": "pnpm --filter @navifox/docs run dev",
         "build:home": "pnpm --filter @navifox/home run build",
+        "build:docs": "pnpm --filter @navifox/docs run build",
         "preview:home": "pnpm --filter @navifox/home run preview",
+        "preview:docs": "pnpm --filter @navifox/docs run preview",
         "repreview:home": "pnpm --filter @navifox/home run repreview",
+        "repreview:docs": "pnpm --filter @navifox/docs run repreview",
         "clean": "node ./scripts/clean.mjs",
         "reinstall": "pnpm clean --del-lock && pnpm install"
     },
