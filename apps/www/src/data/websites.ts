@@ -11,7 +11,7 @@ export const weblog: Website = {
     link: 'https://blog.navifox.net',
 }
 export const documentation: Website = {
-    name: '雪泥文档',
+    name: '文档月饼盒',
     link: 'https://docs.navifox.net',
 }
 export const travelling: Website = {

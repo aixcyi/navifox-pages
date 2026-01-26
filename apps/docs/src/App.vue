@@ -10,13 +10,13 @@ import { Icon } from '@iconify/vue'
 <template>
     <section class="w-screen min-h-screen flex justify-center items-center">
         <RawCard class="gap-8 text-nowrap">
-            <h1 class="text-5xl text-white"><b>雪泥文档</b></h1>
-            <span class="text-lg text-amber-100 tracking-[.333em]">· 雪泥鸿爪文档收容站点 ·</span>
-            <div class="text-lg font-mono relative">
+            <h1 class="text-5xl text-white"><b>文档月饼盒</b></h1>
+            <span class="text-lg text-amber-100 tracking-[.1em]">· 收纳展示散落在各个项目仓库的文档 ·</span>
+            <div class="text-base font-mono relative">
                 <FlairButton flair-style="--button-stroke: var(--gradient-milktea);"
                              href="#panel"
                              use="a">
-                    ShowMe Docs<br />
+                    &nbsp;开始浏览&nbsp;<br />
                 </FlairButton>
             </div>
         </RawCard>
