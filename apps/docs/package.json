@@ -10,15 +10,20 @@
         "typecheck": "vue-tsc --noEmit --skipLibCheck"
     },
     "dependencies": {
-        "@navifox/types": "workspace:*",
         "@navifox/constants": "workspace:*",
+        "@navifox/types": "workspace:*",
+        "@navifox/utils": "workspace:*",
         "@tailwindcss/vite": "catalog:",
+        "@vueuse/core": "catalog:",
         "gsap": "catalog:",
+        "lodash-es": "catalog:",
         "tailwindcss": "catalog:",
-        "vue": "catalog:"
+        "vue": "catalog:",
+        "vue3-next-qrcode": "catalog:"
     },
     "devDependencies": {
         "@iconify/vue": "catalog:",
+        "@types/lodash-es": "catalog:",
         "@types/node": "catalog:",
         "@vitejs/plugin-vue": "catalog:",
         "@vue/tsconfig": "catalog:",
