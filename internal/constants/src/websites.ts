@@ -11,12 +11,12 @@ export const navifoxGuild: WebsiteInfo = {
     link: 'https://qm.qq.com/q/gPK9D7nBOU',
     desc: '妖灵会馆之一，狐狸们的栖息地，坐落在名为“网络”的无主空间，致力于广罗世间狐妖。',
 }
-export const weblog: WebsiteInfo = {
+export const seraphonogram: WebsiteInfo = {
     name: '羽音 · 博客',
     link: 'https://blog.navifox.net',
     icon: 'https://www.navifox.net/favicon.ico',
 }
-export const documentation: WebsiteInfo = {
+export const mooncakeDocs: WebsiteInfo = {
     name: '文档月饼盒',
     link: 'https://docs.navifox.net',
     icon: 'https://www.navifox.net/favicon.ico',

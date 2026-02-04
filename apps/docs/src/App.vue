@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import FlairButton from '#/components/FlairButton.vue';
 import { Icon } from '@iconify/vue';
-import { copyrightInterval, documentation, navifoxGuild, projects } from '@navifox/constants';
+import { copyrightInterval, mooncakeDocs, navifoxGuild, projects } from '@navifox/constants';
 import { useFavicon, useTitle } from '@vueuse/core';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -9,8 +9,8 @@ import { range } from 'lodash-es';
 import { onMounted, onUnmounted } from 'vue';
 import { Vue3NextQrcode } from 'vue3-next-qrcode';
 
-useTitle().value = documentation.name
-useFavicon().value = documentation.icon
+useTitle().value = mooncakeDocs.name
+useFavicon().value = mooncakeDocs.icon
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -68,8 +68,8 @@ function initializeArrows() {
          class="w-full h-screen flex justify-center items-center"
          style="background-color: var(--background)">
     <div class="p-12 inline-flex flex-col items-center gap-8 text-nowrap">
-        <h1 class="text-5xl text-white"><b>{{ documentation.name }}</b></h1>
-        <span class="text-lg text-amber-100 tracking-[.1em]">· {{ documentation.desc }} ·</span>
+        <h1 class="text-5xl text-white"><b>{{ mooncakeDocs.name }}</b></h1>
+        <span class="text-lg text-amber-100 tracking-[.1em]">· {{ mooncakeDocs.description }} ·</span>
     </div>
     <div class="absolute bottom-16 left-1/2" style="transform: translateX(-50%)">
         <Icon v-for="() in range(3)"
@@ -98,10 +98,10 @@ function initializeArrows() {
             </template>
         </div>
         <span class="max-w-sm indent-8 text-gray-300"
-              v-html="project.desc" />
-        <div v-if="project.docLink"
+              v-html="project.description" />
+        <div v-if="project.documentation"
              class="text-base font-mono relative">
-            <FlairButton :href="project.docLink"
+            <FlairButton :href="project.documentation"
                          flair-style="--button-stroke: var(--gradient-milktea);"
                          use="a">
                 &nbsp;浏览文档&nbsp;<br />

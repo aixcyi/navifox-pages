@@ -1,5 +1,5 @@
 import type { LinkInfo } from '@navifox/types';
-import { documentation, moeTravel, navifox, navifoxGuild, travelling, weblog } from './websites';
+import { moeTravel, mooncakeDocs, navifox, navifoxGuild, seraphonogram, travelling } from './websites';
 
 // const nbsp = (txt: string) => txt.replace(' ', '&nbsp;')
 
@@ -18,7 +18,7 @@ export const socials: LinkInfo[] = [
 ]
 
 export const websites: LinkInfo[] = [
-    // { text: weblog.name, link: weblog.link },
+    // { text: seraphonogram.name, link: seraphonogram.link },
     // { text: '友情链接', link: '/links', icon: 'solar:link-square-line-duotone' },
     // { text: travelling.name, link: travelling.link, icon: 'pepicons-print:train' },
     // { text: moeTravel.name, link: moeTravel.link, icon: 'solar:planet-bold-duotone' },
@@ -26,8 +26,8 @@ export const websites: LinkInfo[] = [
 
 export const sitemap: LinkInfo[] = [
     { text: navifox.name, link: navifox.link },
-    { text: weblog.name, link: weblog.link },
-    { text: documentation.name, link: documentation.link },
+    { text: seraphonogram.name, link: seraphonogram.link },
+    { text: mooncakeDocs.name, link: mooncakeDocs.link },
 ]
 
 export const links: LinkInfo[] = [
