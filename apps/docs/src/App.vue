@@ -3,10 +3,10 @@ import FlairButton from '#/components/FlairButton.vue';
 import { Icon } from '@iconify/vue';
 import { copyrightInterval, mooncakeDocs, navifoxGuild, projects } from '@navifox/constants';
 import { useFavicon, useTitle } from '@vueuse/core';
+import { useQRCode } from '@vueuse/integrations/useQRCode';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { range } from 'lodash-es';
-import { NQrCode } from 'naive-ui';
 import { onMounted, onUnmounted } from 'vue';
 
 useTitle().value = mooncakeDocs.name
@@ -22,6 +22,7 @@ onUnmounted(() => {
     ScrollTrigger.getAll().forEach(trigger => trigger.kill())
 })
 
+const qrcode = useQRCode(navifoxGuild.link, { color: { light: '#FFFFFF00', dark: '#99a1afFF' } })
 const boxStates = {
     '产地': navifoxGuild.name,
     '包装规格': `${projects.length} 个/盒`,
@@ -107,7 +108,7 @@ function initializeArrows() {
         <span class="max-w-sm indent-8 text-gray-300"
               v-html="project.description" />
         <div v-if="project.documentation"
-             class="text-base font-mono relative">
+             class="text-base relative">
             <FlairButton :href="project.documentation"
                          flair-style="--button-stroke: var(--gradient-milktea);"
                          use="a">
@@ -127,7 +128,7 @@ function initializeArrows() {
 <section id="panel"
          class="w-full h-screen flex justify-center items-center text-gray-400"
          style="background-color: var(--background)">
-    <div class="p-1.5 MooncakeRect"
+    <div class="p-1.5 select-none MooncakeRect"
          style="background-color: var(--color-gray-400)">
         <div class="p-12 inline-flex items-center flex-wrap gap-6 max-sm:flex-col MooncakeRect"
              style="background-color: var(--background)">
@@ -139,10 +140,7 @@ function initializeArrows() {
                 </tr>
                 </tbody>
             </table>
-            <n-qr-code :value="navifoxGuild.link"
-                       background-color="transparent"
-                       class="p-0!"
-                       color="#99a1af" />
+            <img :src="qrcode" alt="QR Code" draggable="false" />
         </div>
     </div>
 </section>

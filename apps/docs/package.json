@@ -11,12 +11,15 @@
     },
     "dependencies": {
         "@navifox/constants": "workspace:*",
+        "@navifox/styles": "workspace:*",
         "@navifox/types": "workspace:*",
         "@navifox/utils": "workspace:*",
         "@tailwindcss/vite": "catalog:",
         "@vueuse/core": "catalog:",
+        "@vueuse/integrations": "^14.2.1",
         "gsap": "catalog:",
         "lodash-es": "catalog:",
+        "qrcode": "^1.5.4",
         "tailwindcss": "catalog:",
         "vue": "catalog:"
     },
@@ -26,7 +29,6 @@
         "@types/node": "catalog:",
         "@vitejs/plugin-vue": "catalog:",
         "@vue/tsconfig": "catalog:",
-        "naive-ui": "catalog:",
         "typescript": "catalog:",
         "vite": "catalog:",
         "vite-plugin-zip-file": "catalog:",

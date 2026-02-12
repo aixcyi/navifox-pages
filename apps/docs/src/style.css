@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 :root {
     --gradient-milktea: linear-gradient(114.41deg, var(--color-amber-200) 20.74%, var(--color-amber-100) 65.5%);
