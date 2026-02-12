@@ -1,0 +1,33 @@
+@font-face {
+    font-family: 'JetBrains Mono';
+    src: url('./assets/JetBrainsMono-Regular.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'JetBrains Mono';
+    font-weight: bold;
+    src: url('./assets/JetBrainsMono-Bold.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'JetBrains Mono';
+    font-style: italic;
+    src: url('./assets/JetBrainsMono-Italic.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'JetBrains Mono';
+    font-weight: bold;
+    font-style: italic;
+    src: url('./assets/JetBrainsMono-BoldItalic.woff2') format('woff2');
+}
+
+:root {
+    --font-serif: 'HarmonyOS Sans SC', 'MiSans VF', serif;
+    --font-sans: 'HarmonyOS Sans SC', 'MiSans VF', sans-serif;
+    --font-mono: 'JetBrains Mono', 'Consolas', 'Courier New', monospace;
+}
+
+i, em {
+    font-family: 'Segoe UI', 'HarmonyOS Sans SC', 'MiSans VF', sans-serif;
+}

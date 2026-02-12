@@ -12,6 +12,7 @@
     "dependencies": {
         "@navifox/types": "workspace:*",
         "@navifox/constants": "workspace:*",
+        "@navifox/styles": "workspace:*",
         "@navifox/utils": "workspace:*",
         "@tailwindcss/vite": "catalog:",
         "@vueuse/core": "catalog:",
