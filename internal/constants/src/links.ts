@@ -1,13 +1,5 @@
 import type { LinkInfo } from '@navifox/types';
-import {
-    curriculumVitae,
-    moeTravel,
-    mooncakeDocs,
-    navifox,
-    navifoxGuild,
-    seraphonogram,
-    travelling,
-} from './websites';
+import { curriculumVitae, mooncakeDocs, navifox, navifoxGuild, seraphonogram, } from './websites';
 
 // const nbsp = (txt: string) => txt.replace(' ', '&nbsp;')
 
@@ -41,10 +33,8 @@ export const sitemap: LinkInfo[] = [
 
 export const links: LinkInfo[] = [
     { text: 'Rabbit Mind', link: 'https://rabbitmind.net/' },
-    { text: 'Pinpe 的云端', link: 'https://pinpe.top/' },
     { text: '纸鹿摸鱼处', link: 'https://blog.zhilu.site/' },
-    { text: travelling.name, link: travelling.link },
-    { text: moeTravel.name, link: moeTravel.link },
+    { text: 'Pinpe 的云端', link: 'https://pinpe.top/' },
 ]
 
 export const thanks: LinkInfo[] = [

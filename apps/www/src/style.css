@@ -7,23 +7,3 @@
     color-scheme: only light;
     color: var(--color-neutral-400);
 }
-
-a.tighnari {
-    transition: color .25s;
-
-    &:not(.dark) {
-        color: var(--fox-cyan-2);
-
-        &:hover {
-            color: blueviolet;
-        }
-    }
-
-    &.dark {
-        color: var(--fox-cyan-1);
-
-        &:hover {
-            color: var(--fox-cyan-2);
-        }
-    }
-}

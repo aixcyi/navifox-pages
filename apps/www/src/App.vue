@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import Background from '#/assets/background.jpg';
-import Content from '#/components/Content.vue';
-import Footer from '#/Footer.vue';
+import Footer from '#/components/Footer.vue';
+import Content from '#/layouts/Content.vue';
 import { Icon } from '@iconify/vue';
 import { navifox, signature, socials, tighnari, websites } from '@navifox/constants';
 import { logger } from '@navifox/utils';
@@ -36,12 +36,12 @@ useResizeObserver(bio, (entries) => {
 
         <div ref="bio" class="card">
             <div class="border-b border-b-cyan-800">
-                <div class="inline-flex flex-wrap items-baseline gap-3">
+                <div class="flex flex-wrap items-baseline gap-3">
                     <span class="text-4xl font-semibold">{{ tighnari.name }}</span>
                     <code class="text-xl">@{{ tighnari.uid }}</code>
                 </div>
             </div>
-            <div class="inline-flex flex-col gap-y-4 align-top">
+            <div class="flex flex-col gap-y-4 align-top">
                 <h3 class="font-semibold text-lg/6">{{ tighnari.tags?.join('／') }}</h3>
                 <h3 class="text-lg/6" v-html="tighnari.description" />
             </div>
@@ -56,7 +56,7 @@ useResizeObserver(bio, (entries) => {
                     <div v-if="index !== 0"
                          class="h-6 border-r border-(--fox-cyan-2)" />
                     <a :href="site.link"
-                       class="flex select-none items-center no-underline tighnari button"
+                       class="flex select-none items-center no-underline button"
                        draggable="false"
                        target="_self"
                     >
@@ -77,7 +77,7 @@ useResizeObserver(bio, (entries) => {
                          class="h-5 border-r border-(--fox-cyan-2)" />
                     <a v-else
                        :href="site.link"
-                       class="flex select-none items-center no-underline tighnari button"
+                       class="flex select-none items-center no-underline button"
                        draggable="false"
                        target="_self"
                        @mouseleave="btnTextSocial = ''"
@@ -104,7 +104,16 @@ useResizeObserver(bio, (entries) => {
 </template>
 
 
-<style lang="css" scoped>
+<style scoped>
+a {
+    transition: color .3s;
+    color: var(--fox-cyan-2);
+
+    &:hover {
+        color: blueviolet;
+    }
+}
+
 .card {
     display: flex;
     flex-direction: column;
@@ -127,8 +136,9 @@ useResizeObserver(bio, (entries) => {
 }
 
 .button {
-    &, & * {
-        transition: all .25s;
+    &,
+    & * {
+        transition: all .3s;
     }
 
     &:hover > svg {
