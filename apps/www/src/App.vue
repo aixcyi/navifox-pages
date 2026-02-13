@@ -5,18 +5,29 @@ import Content from '#/layouts/Content.vue';
 import { Icon } from '@iconify/vue';
 import { navifox, signature, socials, tighnari, websites } from '@navifox/constants';
 import { logger } from '@navifox/utils';
-import { useFavicon, useResizeObserver, useTitle } from '@vueuse/core';
+import { useHead } from '@unhead/vue';
+import { useResizeObserver } from '@vueuse/core';
 import { ref, useTemplateRef } from 'vue';
-
-useTitle().value = navifox.name
-useFavicon().value = navifox.icon
-
-logger.draw(signature, '#459199')
 
 const btnTextSocial = ref('')
 const cardWidth = ref(0)
 const bio = useTemplateRef('bio')
 
+logger.draw(signature, '#459199')
+
+useHead({
+    title: navifox.name,
+    meta: [
+        { name: 'description', content: navifox.desc },
+        { name: 'author', content: tighnari.name },
+        { name: 'keywords', content: navifox.tags?.join(',') },
+    ],
+    link: [
+        navifox.icon
+            ? { rel: 'icon', ...navifox.icon }
+            : { rel: 'icon', href: navifox.logo },
+    ],
+})
 useResizeObserver(bio, (entries) => {
     cardWidth.value = entries[0]!.contentRect.width
 })

@@ -45,14 +45,24 @@ export interface WebsiteInfo {
     /** 站点首页链接。 */
     link: Hyperlink
 
+    /**
+     * 包含
+     * [MIME]{@link https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Guides/MIME_types}
+     * 类型的站点图标。
+     */
+    icon?: { href: string, type: string }
+
     /** 站点图标。 */
-    icon?: IconRepresentation
+    logo?: IconRepresentation
 
     /**
      * 站点描述。
      *
      * 列宽不足时每一行单独换行。 */
     desc?: string
+
+    /** 站点关键词。 */
+    tags?: string[]
 
     /** 其它附加信息。 */
     [key: string]: any

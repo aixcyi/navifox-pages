@@ -1,34 +1,13 @@
 <script lang="ts" setup>
 import FlairButton from '#/components/FlairButton.vue';
 import { Icon } from '@iconify/vue';
-import { copyrightInterval, mooncakeDocs, navifoxGuild, projects } from '@navifox/constants';
-import { useFavicon, useTitle } from '@vueuse/core';
+import { copyrightInterval, mooncakeDocs, navifoxGuild, projects, tighnari } from '@navifox/constants';
+import { useHead } from '@unhead/vue';
 import { useQRCode } from '@vueuse/integrations/useQRCode';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { range } from 'lodash-es';
 import { onMounted, onUnmounted } from 'vue';
-
-useTitle().value = mooncakeDocs.name
-useFavicon().value = mooncakeDocs.icon
-
-gsap.registerPlugin(ScrollTrigger)
-
-onMounted(() => {
-    setTimeout(initializePanels, 100)
-    setTimeout(initializeArrows, 100)
-})
-onUnmounted(() => {
-    ScrollTrigger.getAll().forEach(trigger => trigger.kill())
-})
-
-const qrcode = useQRCode(navifoxGuild.link, { color: { light: '#FFFFFF00', dark: '#99a1afFF' } })
-const boxStates = {
-    '产地': navifoxGuild.name,
-    '包装规格': `${projects.length} 个/盒`,
-    '生产日期': `${copyrightInterval.start} 年`,
-    '保质期': `${copyrightInterval.start + 1000} 年`,
-}
 
 function initializePanels() {
     const panels: HTMLDivElement[] = gsap.utils.toArray("#panel")
@@ -68,6 +47,37 @@ function initializeArrows() {
         repeat: -1,
     });
 }
+
+const qrcode = useQRCode(navifoxGuild.link, { color: { light: '#FFFFFF00', dark: '#99a1afFF' } })
+const boxStates = {
+    '产地': navifoxGuild.name,
+    '包装规格': `${projects.length} 个/盒`,
+    '生产日期': `${copyrightInterval.start} 年`,
+    '保质期': `${copyrightInterval.start + 1000} 年`,
+}
+
+gsap.registerPlugin(ScrollTrigger)
+
+useHead({
+    title: mooncakeDocs.name,
+    meta: [
+        { name: 'description', content: mooncakeDocs.desc },
+        { name: 'author', content: tighnari.name },
+        { name: 'keywords', content: mooncakeDocs.tags?.join(',') },
+    ],
+    link: [
+        mooncakeDocs.icon
+            ? { rel: 'icon', ...mooncakeDocs.icon }
+            : { rel: 'icon', href: mooncakeDocs.logo },
+    ],
+})
+onMounted(() => {
+    setTimeout(initializePanels, 100)
+    setTimeout(initializeArrows, 100)
+})
+onUnmounted(() => {
+    ScrollTrigger.getAll().forEach(trigger => trigger.kill())
+})
 </script>
 
 

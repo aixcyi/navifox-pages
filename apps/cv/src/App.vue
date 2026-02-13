@@ -7,7 +7,7 @@ import { BackToTopButton, Button } from '#/ui/button';
 import { Icon } from '@iconify/vue';
 import { curriculumVitae, tighnari } from '@navifox/constants';
 import type { Badge } from '@navifox/types';
-import { useFavicon, useTitle } from '@vueuse/core';
+import { useHead } from '@unhead/vue';
 import { ref, useTemplateRef } from 'vue';
 
 function* getStates(): Generator<Badge> {
@@ -29,8 +29,19 @@ const programmerPanel = useTemplateRef('programmerPanel')
 const skillsPanel = useTemplateRef('skillsPanel')
 const timeline = useTemplateRef('timeline')
 
-useTitle().value = curriculumVitae.name
-useFavicon().value = curriculumVitae.icon
+useHead({
+    title: curriculumVitae.name,
+    meta: [
+        { name: 'description', content: curriculumVitae.desc },
+        { name: 'author', content: tighnari.name },
+        { name: 'keywords', content: curriculumVitae.tags?.join(',') },
+    ],
+    link: [
+        curriculumVitae.icon
+            ? { rel: 'icon', ...curriculumVitae.icon }
+            : { rel: 'icon', href: curriculumVitae.logo },
+    ],
+})
 </script>
 
 

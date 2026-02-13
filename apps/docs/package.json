@@ -15,6 +15,7 @@
         "@navifox/types": "workspace:*",
         "@navifox/utils": "workspace:*",
         "@tailwindcss/vite": "catalog:",
+        "@unhead/vue": "catalog:",
         "@vueuse/core": "catalog:",
         "@vueuse/integrations": "^14.2.1",
         "gsap": "catalog:",

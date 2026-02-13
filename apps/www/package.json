@@ -10,11 +10,12 @@
         "typecheck": "vue-tsc --noEmit --skipLibCheck"
     },
     "dependencies": {
-        "@navifox/types": "workspace:*",
         "@navifox/constants": "workspace:*",
         "@navifox/styles": "workspace:*",
+        "@navifox/types": "workspace:*",
         "@navifox/utils": "workspace:*",
         "@tailwindcss/vite": "catalog:",
+        "@unhead/vue": "catalog:",
         "@vueuse/core": "catalog:",
         "tailwindcss": "catalog:",
         "vue": "catalog:"
