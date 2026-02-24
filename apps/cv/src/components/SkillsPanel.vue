@@ -117,11 +117,11 @@ for (const tree of stacks) {
 <div class="flex flex-col gap-7">
     <section v-for="branch in stacks" class="flex flex-col gap-3">
         <div><b>{{ branch.scope }}</b></div>
-        <div v-if="branch.skills" class="text-sm inline-flex flex-wrap gap-x-6 gap-y-2">
+        <div v-if="branch.skills" class="text-sm flex flex-wrap gap-x-6 gap-y-2">
             <div v-for="skill in branch.skills"
-                 class="Badge inline-flex flex-nowrap gap-2 items-center">
+                 class="Badge flex flex-nowrap gap-2 items-center">
                 <Icon :icon="skill.badge.icon" width="24" />
-                <div class="inline-flex flex-nowrap gap-1 relative">
+                <div class="flex flex-nowrap gap-1 relative">
                     <span v-for="(label, lv) in branch.levels"
                           :class="Number(lv) <= skill.level ? '' : 'text-gray-700'"
                           class="BadgeLevel cursor-default">{{ label }}</span>

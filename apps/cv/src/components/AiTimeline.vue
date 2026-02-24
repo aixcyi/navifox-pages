@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import BannerGI from '#/assets/genshin.jpg';
+import BannerHei from '#/assets/hei.jpg';
 import BannerHoney from '#/assets/honey.jpg';
 import BannerZZZ from '#/assets/zzz.webp';
 import AiTimelineItem from '#/components/AiTimelineItem.vue';
@@ -137,12 +138,22 @@ import { Icon } from '@iconify/vue';
         <Icon height="24" icon="logos:element" />
         精细化手搓(重构)主页，开始深入了解 CSS。<br />
     </AiTimelineItem>
+    <AiTimelineItem :colors="['#FF7F27']" timestamp="2025 年 7 月 19 日 19:15">
+        <div class="relative flex-1 max-w-lg mb-1.5">
+            <pre class="absolute right-4 bottom-3 text-neutral-200 z-1 text-nowrap">0:11:42</pre>
+            <img :src="BannerHei"
+                 alt="《罗小黑战记2》"
+                 class="select-none rounded-2xl opacity-25 transition-opacity duration-500 size-full -z-1 hover:opacity-100"
+                 draggable="false" />
+        </div>
+        <span>《罗小黑战记2》首映次日线下观影，品味妖灵会馆之于国人的浪漫。</span>
+    </AiTimelineItem>
     <AiTimelineItem :colors="['#FF7F27']" timestamp="2025 年 8 月 16 日 11 点">
-        <div class="relative flex-1 max-w-lg">
+        <div class="relative flex-1 max-w-lg mb-1.5">
             <pre class="absolute right-4 bottom-3 text-neutral-200 z-1 text-nowrap">p156</pre>
             <img :src="BannerHoney"
                  alt="《凡人修仙传》156集"
-                 class="select-none rounded-2xl size-full -z-1"
+                 class="select-none rounded-2xl opacity-50 transition-opacity duration-500 size-full -z-1 hover:opacity-100"
                  draggable="false" />
         </div>
         <span>与 43 万+ 道友共同见证韩立结婴！（有幸出现在本集片尾名单）</span>
