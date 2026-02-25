@@ -85,7 +85,7 @@ onUnmounted(() => {
 <section id="panel"
          class="w-full h-screen flex justify-center items-center"
          style="background-color: var(--background)">
-    <div class="p-12 inline-flex flex-col items-center gap-8 text-nowrap">
+    <div class="p-12 flex flex-col items-center gap-8 text-nowrap">
         <h1 class="text-5xl text-white"><b>{{ mooncakeDocs.name }}</b></h1>
         <span class="text-lg text-amber-100 tracking-[.1em]">· {{ mooncakeDocs.desc }} ·</span>
     </div>
@@ -104,9 +104,9 @@ onUnmounted(() => {
          :style="{'--button-hoverColor': index % 2 ? 'var(--color-cyan-950)' : 'var(--color-gray-800)'}"
          class="w-full h-screen flex justify-center items-center flex-col"
          style="background-color: var(--button-hoverColor)">
-    <div class="p-12 inline-flex flex-col items-center gap-6 text-amber-100 z-10">
+    <div class="p-12 flex flex-col items-center gap-6 text-amber-100 z-10">
         <span class="text-3xl text-nowrap">{{ project.name }}</span>
-        <div class="inline-flex flex-row flex-nowrap items-center gap-4">
+        <div class="flex flex-row flex-nowrap items-center gap-4">
             <template v-for="item in project.socials">
                 <a v-if="item.icon"
                    :href="item.link"
@@ -140,7 +140,7 @@ onUnmounted(() => {
          style="background-color: var(--background)">
     <div class="p-1.5 select-none MooncakeRect"
          style="background-color: var(--color-gray-400)">
-        <div class="p-12 inline-flex items-center flex-wrap gap-6 max-sm:flex-col MooncakeRect"
+        <div class="p-12 flex items-center flex-wrap gap-6 max-sm:flex-col MooncakeRect"
              style="background-color: var(--background)">
             <table>
                 <tbody>
