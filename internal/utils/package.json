@@ -13,8 +13,12 @@
         }
     },
     "dependencies": {
-        "@navifox/types": "workspace:*"
+        "@navifox/types": "workspace:*",
+        "lodash-es": "catalog:",
+        "markdown-it": "catalog:"
     },
     "devDependencies": {
+        "@types/lodash-es": "catalog:",
+        "@types/markdown-it": "catalog:"
     }
 }

@@ -1,8 +1,6 @@
 import type { LinkInfo } from '@navifox/types';
 import { curriculumVitae, mooncakeDocs, navifox, navifoxGuild, seraphonogram, } from './websites';
 
-// const nbsp = (txt: string) => txt.replace(' ', '&nbsp;')
-
 export const socials: LinkInfo[] = [
     { text: navifoxGuild.name, icon: 'bi:tencent-qq', link: navifoxGuild.link },
     // { text: '推特<br/>X／Twitter', icon: 'simple-icons:x', link: 'https://x.com/aixcyi/' },

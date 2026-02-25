@@ -13,7 +13,8 @@
         }
     },
     "dependencies": {
-        "@navifox/types": "workspace:*"
+        "@navifox/types": "workspace:*",
+        "@navifox/utils": "workspace:*"
     },
     "devDependencies": {
         "vite": "catalog:"

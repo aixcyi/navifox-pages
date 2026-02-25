@@ -1,4 +1,5 @@
 import type { ProjectInfo } from '@navifox/types';
+import { markit } from '@navifox/utils';
 
 export const projects: ProjectInfo[] = [
     {
@@ -12,7 +13,7 @@ export const projects: ProjectInfo[] = [
         ]
     }, {
         name: 'Python Dunder All',
-        description: '一个 PyCharm 插件，提供 <code>__all__</code> 的生成与格式化能力，包括列表顺序的调整、引号风格的切换、换行方式的转换等。',
+        description: '一个 PyCharm 插件，提供 `__all__` 的生成与格式化能力，包括列表顺序的调整、引号风格的切换、换行方式的转换等。',
         documentation: '',
         typeIco: 'devicon-plain:pycharm',
         socials: [
@@ -33,3 +34,6 @@ export const projects: ProjectInfo[] = [
         ]
     }
 ]
+for (const project of projects) {
+    project.description = markit(project.description)
+}
