@@ -22,4 +22,5 @@ catalog:
   vite: npm:rolldown-vite@7.2.5
   vite-plugin-zip-file: ^5.0.0
   vue: ^3.5.27
+  vue-router: ^4.6.4
   vue-tsc: ^3.1.4

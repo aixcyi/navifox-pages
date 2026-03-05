@@ -13,6 +13,11 @@ export const navifoxGuild: WebsiteInfo = {
     link: 'https://qm.qq.com/q/7WO1tJmTss',
     desc: '妖灵会馆之一，坐落在名为“网络”的无主空间，广罗（收容）世间狐妖。',
 }
+export const navifoxRefs: WebsiteInfo = {
+    name: '罗狐内参',
+    link: 'https://refs.navifox.net',
+    desc: '罗狐会馆内部参考。',
+}
 export const seraphonogram: WebsiteInfo = {
     name: '羽音 · 博客',
     link: 'https://blog.navifox.net',

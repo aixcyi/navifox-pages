@@ -136,3 +136,33 @@ export interface Experience {
      */
     detail?: Component
 }
+
+/**
+ * 书签。
+ */
+export interface Bookmark {
+
+    /** 名称。 */
+    name: string
+
+    /** 书签链接。 */
+    link: Hyperlink
+
+    /** 图标。 */
+    icon?: Hyperlink
+
+    /** 备注。 */
+    note?: string
+}
+
+/**
+ * 书签组。
+ */
+export interface BookmarkGroup {
+
+    /** 带链接的标题。 */
+    title: { text: string, icon?: string, fragment: string }
+
+    /** 组内书签。 */
+    items: Bookmark[]
+}

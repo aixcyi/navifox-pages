@@ -17,8 +17,11 @@
             "name": "文档月饼盒 @navifox/docs",
             "path": "./apps/docs",
         }, {
-            "name": "个人简历 @navifox/cv",
+            "name": "己言简 @navifox/cv",
             "path": "./apps/cv",
+        }, {
+            "name": "罗狐内参 @navifox/refs",
+            "path": "./apps/refs",
         }, {
             "name": "@navifox/tsconfig",
             "path": "./internal/tsconfig",

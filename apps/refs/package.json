@@ -1,0 +1,33 @@
+{
+    "name": "@navifox/refs",
+    "version": "0.0.0",
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "dev": "vite",
+        "build": "vue-tsc -b && vite build",
+        "preview": "vite preview",
+        "typecheck": "vue-tsc --noEmit --skipLibCheck"
+    },
+    "dependencies": {
+        "@navifox/constants": "workspace:*",
+        "@navifox/styles": "workspace:*",
+        "@navifox/types": "workspace:*",
+        "@navifox/utils": "workspace:*",
+        "@tailwindcss/vite": "catalog:",
+        "@vueuse/core": "catalog:",
+        "tailwindcss": "catalog:",
+        "vue": "catalog:",
+        "vue-router": "catalog:"
+    },
+    "devDependencies": {
+        "@iconify/vue": "catalog:",
+        "@types/node": "catalog:",
+        "@vitejs/plugin-vue": "catalog:",
+        "@vue/tsconfig": "catalog:",
+        "typescript": "catalog:",
+        "vite": "catalog:",
+        "vite-plugin-zip-file": "catalog:",
+        "vue-tsc": "catalog:"
+    }
+}
