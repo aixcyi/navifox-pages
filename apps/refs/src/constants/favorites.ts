@@ -2,7 +2,7 @@ import type { BookmarkGroup } from '@navifox/types';
 import { markit } from '@navifox/utils';
 
 const groupPython: BookmarkGroup = {
-    title: { text: 'Python', fragment: '#python' },
+    title: { text: 'Python', link: '#python' },
     items: [
         {
             name: '标准库',
@@ -55,7 +55,7 @@ const groupPython: BookmarkGroup = {
     ]
 }
 const groupPythonEcosystem: BookmarkGroup = {
-    title: { text: 'Python 生态', fragment: '#python-ecosystem' },
+    title: { text: 'Python 生态', link: '#python-ecosystem' },
     items: [
         {
             name: 'typing-extensions',
@@ -138,7 +138,7 @@ const groupPythonEcosystem: BookmarkGroup = {
     ]
 }
 const groupDjangoEcosystem: BookmarkGroup = {
-    title: { text: 'Django 生态', fragment: '#django-eco' },
+    title: { text: 'Django 生态', link: '#django-eco' },
     items: [
         {
             name: 'Django 文档',
@@ -163,7 +163,7 @@ const groupDjangoEcosystem: BookmarkGroup = {
     ]
 }
 const groupDjangoSettings: BookmarkGroup = {
-    title: { text: 'Django 配置', fragment: '#django-configs' },
+    title: { text: 'Django 配置', link: '#django-configs' },
     items: [
         {
             name: 'Settings 参考',
@@ -185,7 +185,7 @@ const groupDjangoSettings: BookmarkGroup = {
     ]
 }
 const groupDjangoModel: BookmarkGroup = {
-    title: { text: 'Django 模型层', fragment: '#django-model' },
+    title: { text: 'Django 模型层', link: '#django-model' },
     items: [
         {
             name: '模型',
@@ -228,7 +228,7 @@ const groupDjangoModel: BookmarkGroup = {
 }
 // TODO: 等待补充 Django 视图层、杂项等相关链接。
 const groupKotlin: BookmarkGroup = {
-    title: { text: 'Kotlin', fragment: '#kotlin' },
+    title: { text: 'Kotlin', link: '#kotlin' },
     items: [
         {
             name: 'Kotlin',
@@ -291,7 +291,7 @@ const groupKotlin: BookmarkGroup = {
     ]
 }
 const groupFrontend: BookmarkGroup = {
-    title: { text: '前端', fragment: '#frontend' },
+    title: { text: '前端', link: '#frontend' },
     items: [
         {
             name: 'HTML 元素参考',
@@ -358,7 +358,7 @@ const groupFrontend: BookmarkGroup = {
     ]
 }
 const groupVue: BookmarkGroup = {
-    title: { text: 'Vue 3', fragment: '#vue' },
+    title: { text: 'Vue 3', link: '#vue' },
     items: [
         {
             name: 'Vue.js API 参考',
@@ -408,7 +408,7 @@ const groupVue: BookmarkGroup = {
     ]
 }
 const groupVitePress: BookmarkGroup = {
-    title: { text: 'VitePress', fragment: '#vitepress' },
+    title: { text: 'VitePress', link: '#vitepress' },
     items: [
         {
             name: 'VitePress',
@@ -438,7 +438,7 @@ const groupVitePress: BookmarkGroup = {
     ]
 }
 const groupReact: BookmarkGroup = {
-    title: { text: 'React', fragment: '#react' },
+    title: { text: 'React', link: '#react' },
     items: [
         {
             name: 'Ant Design 组件',
@@ -452,7 +452,7 @@ const groupReact: BookmarkGroup = {
     ]
 }
 const groupNoSQL: BookmarkGroup = {
-    title: { text: '(No)SQL', fragment: '#sql' },
+    title: { text: '(No)SQL', link: '#sql' },
     items: [
         {
             name: 'PostgreSQL',
@@ -487,7 +487,7 @@ const groupNoSQL: BookmarkGroup = {
     ]
 }
 const groupIntelliJ: BookmarkGroup = {
-    title: { text: 'IntelliJ', fragment: 'intellij' },
+    title: { text: 'IntelliJ', link: 'intellij' },
     items: [
         {
             name: 'Marketplace',
@@ -542,7 +542,7 @@ const groupIntelliJ: BookmarkGroup = {
     ]
 }
 const groupProtocol: BookmarkGroup = {
-    title: { text: '协议 · 语法', fragment: '#protocol' },
+    title: { text: '协议 · 语法', link: '#protocol' },
     items: [
         {
             name: 'HTTP',
@@ -582,7 +582,7 @@ const groupProtocol: BookmarkGroup = {
     ]
 }
 const groupMinecraft: BookmarkGroup = {
-    title: { text: 'Minecraft', fragment: '#minecraft' },
+    title: { text: 'Minecraft', link: '#minecraft' },
     items: [
         {
             name: 'Minecraft 维基',
@@ -645,7 +645,7 @@ const groupMinecraft: BookmarkGroup = {
     ]
 }
 const groupMinecraftMods: BookmarkGroup = {
-    title: { text: 'Minecraft 模组', fragment: 'mods' },
+    title: { text: 'Minecraft 模组', link: 'mods' },
     items: [
         {
             name: '暮色森林',
@@ -659,7 +659,7 @@ const groupMinecraftMods: BookmarkGroup = {
     ]
 }
 const groupChores: BookmarkGroup = {
-    title: { text: '杂项', fragment: '#chores' },
+    title: { text: '杂项', link: '#chores' },
     items: [
         {
             name: 'Prettier Configuration',

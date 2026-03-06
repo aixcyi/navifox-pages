@@ -78,7 +78,7 @@ const experiences: Experience[] = [
         </div>
         <div v-if="e.skills" class="text-gray-500 text-sm flex flex-wrap gap-x-3 gap-y-1">
             <div v-for="stack in e.skills" class="flex flex-nowrap gap-1 items-center">
-                <Icon :icon="stack.icon" height="16" />
+                <Icon :icon="stack.logo" height="16" />
                 <span v-if="stack.text">{{ stack.text }}</span>
             </div>
         </div>

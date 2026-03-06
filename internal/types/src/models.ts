@@ -1,68 +1,84 @@
 import type { Component } from 'vue';
-import type { Hyperlink, IconRepresentation } from './strings';
-
-/**
- * 链接信息。
- */
-export interface LinkInfo {
-
-    /** 链接地址。 */
-    link: Hyperlink
-
-    /** 图标链接。 */
-    icon?: IconRepresentation
-
-    /** 展示文字。 */
-    text?: string
-
-    /** 其它附加信息。 */
-    [key: string]: any
-}
 
 /**
  * 徽章。
  */
 export interface Badge {
 
-    /** 徽章图标。 */
-    icon: IconRepresentation
-
-    /** 跳转链接。 */
-    link?: Hyperlink
+    /** 图标名称（尤指图标库的 `id`）。 */
+    logo: string
 
     /** 渲染文本／回退文字／提示信息。 */
     text?: string
+
+    /** 跳转链接。 */
+    link?: string
 }
 
 /**
- * 站点信息。
+ * 网站图标。
  */
-export interface WebsiteInfo {
+export interface Favicon {
+
+    /** 图标链接（`https://` 或 `/` 开头的 URI 地址）。 */
+    icon?: string
+
+    /** 图标名称（尤指图标库的 `id`）。 */
+    logo?: string
+}
+
+/**
+ * 超链接。
+ */
+export interface Hyperlink extends Favicon {
+
+    /** 展示文字。`null` 表示用作隔断。 */
+    text: string | null
+
+    /** 链接地址。 */
+    link: string
+
+    icon?: string
+
+    logo?: string
+}
+
+/**
+ * 站点。
+ */
+export interface Website extends Favicon {
 
     /** 站点名称。 */
     name: string
 
-    /** 站点首页链接。 */
-    link: Hyperlink
+    /** 首页链接。 */
+    link: string
+
+    icon?: string
 
     /**
-     * 包含
+     * 图标的
      * [MIME]{@link https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Guides/MIME_types}
-     * 类型的站点图标。
+     * 类型。
      */
-    icon?: { href: string, type: string }
+    mime?: string
 
-    /** 站点图标。 */
-    logo?: IconRepresentation
+    logo?: string
 
     /**
      * 站点描述。
      *
      * 列宽不足时每一行单独换行。 */
-    desc?: string
+    description?: string
+
+    /** 站点作者。 */
+    author?: string
 
     /** 站点关键词。 */
     tags?: string[]
+
+    /** 展示方的备注。 */
+    note?: string
 
     /** 其它附加信息。 */
     [key: string]: any
@@ -71,7 +87,7 @@ export interface WebsiteInfo {
 /**
  * 项目信息。
  */
-export interface ProjectInfo {
+export interface Project {
 
     /** 项目名称。 */
     name: string
@@ -86,20 +102,20 @@ export interface ProjectInfo {
     /**
      * 源代码仓库。
      *
-     * 如果还需要图标，那么应当在“社交链接”中提供，这个字段是专门在不显示图标的情况下用的。
+     * 如果还需要图标，那么应当在“社交链接”中提供，这个字段是专门在 **不显示图标** 的情况下用的。
      */
-    repository?: Hyperlink
+    repository?: string
 
     /** 项目文档。 */
-    documentation?: Hyperlink
+    documentation?: string
 
     /**
-     * 类型图标。
+     * 发行类型。
      *
-     * 这里的类型指的是成品的类型或其存在形式，比如说一个
-     * npm 包、一个 Python 包，一个 VSCode 插件，等等。
+     * - 比如说一个 npm 包、一个 Python 包、一个 VSCode 插件等等。
+     * - 必须是一个图标名称（尤指图标库的 `id`）而不能是一条链接。
      */
-    typeIco?: IconRepresentation
+    releaseType?: string
 
     /** 社交链接。 */
     socials?: Badge[]
@@ -123,7 +139,7 @@ export interface Experience {
     team?: string
 
     /** 负责项目。 */
-    project?: ProjectInfo
+    project?: Project
 
     /** 技能点。 */
     skills?: Badge[]
@@ -138,31 +154,13 @@ export interface Experience {
 }
 
 /**
- * 书签。
- */
-export interface Bookmark {
-
-    /** 名称。 */
-    name: string
-
-    /** 书签链接。 */
-    link: Hyperlink
-
-    /** 图标。 */
-    icon?: Hyperlink
-
-    /** 备注。 */
-    note?: string
-}
-
-/**
  * 书签组。
  */
 export interface BookmarkGroup {
 
-    /** 带链接的标题。 */
-    title: { text: string, icon?: string, fragment: string }
+    /** 标题（带链接）。 */
+    title: Hyperlink
 
     /** 组内书签。 */
-    items: Bookmark[]
+    items: Website[]
 }

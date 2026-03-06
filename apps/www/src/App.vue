@@ -4,7 +4,7 @@ import Footer from '#/components/Footer.vue';
 import Content from '#/layouts/Content.vue';
 import { Icon } from '@iconify/vue';
 import { navifox, signature, socials, tighnari, websites } from '@navifox/constants';
-import { logger } from '@navifox/utils';
+import { logger, useWebsiteLinks, useWebsiteMetas } from '@navifox/utils';
 import { useHead } from '@unhead/vue';
 import { useResizeObserver } from '@vueuse/core';
 import { ref, useTemplateRef } from 'vue';
@@ -17,16 +17,8 @@ logger.draw(signature, '#459199')
 
 useHead({
     title: navifox.name,
-    meta: [
-        { name: 'description', content: navifox.desc },
-        { name: 'author', content: tighnari.name },
-        { name: 'keywords', content: navifox.tags?.join(',') },
-    ],
-    link: [
-        navifox.icon
-            ? { rel: 'icon', ...navifox.icon }
-            : { rel: 'icon', href: navifox.logo },
-    ],
+    meta: [ ...useWebsiteMetas(navifox) ],
+    link: [ ...useWebsiteLinks(navifox) ],
 })
 useResizeObserver(bio, (entries) => {
     cardWidth.value = entries[0]!.contentRect.width

@@ -46,12 +46,8 @@ watch(isShowingNavDropdown, (after) => {
                rel="nofollow"
                role="button">
                 <div class="flex-shrink-0 w-5 h-5 mr-3">
-                    <img v-if="sheet.icon?.startsWith('https://')"
-                         :src="sheet.icon"
-                         class="size-[1.25rem]">
-                    <Icon v-else-if="sheet.icon"
-                          :icon="sheet.icon"
-                          class="size-[1.25rem]" />
+                    <Icon v-if="sheet.logo" :icon="sheet.logo" class="size-[1.25rem]" />
+                    <img v-else-if="sheet.icon" :src="sheet.icon" class="size-[1.25rem]">
                     <div v-else class="size-[1.25rem]" />
                 </div>
                 <span class="font-medium">{{ sheet.text }}</span>

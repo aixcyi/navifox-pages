@@ -1,7 +1,8 @@
 <script lang="ts" setup>
 import FlairButton from '#/components/FlairButton.vue';
 import { Icon } from '@iconify/vue';
-import { copyrightInterval, mooncakeDocs, navifoxGuild, projects, tighnari } from '@navifox/constants';
+import { copyrightInterval, mooncakeDocs, navifoxGuild, projects } from '@navifox/constants';
+import { useWebsiteLinks, useWebsiteMetas } from '@navifox/utils';
 import { useHead } from '@unhead/vue';
 import { useQRCode } from '@vueuse/integrations/useQRCode';
 import { gsap } from 'gsap';
@@ -60,16 +61,8 @@ gsap.registerPlugin(ScrollTrigger)
 
 useHead({
     title: mooncakeDocs.name,
-    meta: [
-        { name: 'description', content: mooncakeDocs.desc },
-        { name: 'author', content: tighnari.name },
-        { name: 'keywords', content: mooncakeDocs.tags?.join(',') },
-    ],
-    link: [
-        mooncakeDocs.icon
-            ? { rel: 'icon', ...mooncakeDocs.icon }
-            : { rel: 'icon', href: mooncakeDocs.logo },
-    ],
+    meta: [ ...useWebsiteMetas(mooncakeDocs) ],
+    link: [ ...useWebsiteLinks(mooncakeDocs) ],
 })
 onMounted(() => {
     setTimeout(initializePanels, 100)
@@ -87,7 +80,7 @@ onUnmounted(() => {
          style="background-color: var(--background)">
     <div class="p-12 flex flex-col items-center gap-8 text-nowrap">
         <h1 class="text-5xl text-white"><b>{{ mooncakeDocs.name }}</b></h1>
-        <span class="text-lg text-amber-100 tracking-[.1em]">· {{ mooncakeDocs.desc }} ·</span>
+        <span class="text-lg text-amber-100 tracking-[.1em]">· {{ mooncakeDocs.description }} ·</span>
     </div>
     <div class="absolute bottom-16 left-1/2" style="transform: translateX(-50%)">
         <Icon v-for="() in range(3)"
@@ -108,10 +101,10 @@ onUnmounted(() => {
         <span class="text-3xl text-nowrap">{{ project.name }}</span>
         <div class="flex flex-row flex-nowrap items-center gap-4">
             <template v-for="item in project.socials">
-                <a v-if="item.icon"
+                <a v-if="item.logo"
                    :href="item.link"
                    class="hover:text-amber-300">
-                    <Icon :icon="item.icon" height="32" />
+                    <Icon :icon="item.logo" height="32" />
                 </a>
             </template>
         </div>
@@ -126,9 +119,9 @@ onUnmounted(() => {
             </FlairButton>
         </div>
     </div>
-    <Icon v-if="project.typeIco"
+    <Icon v-if="project.releaseType"
           :class="index % 2 ? 'text-gray-600' : 'text-gray-700'"
-          :icon="project.typeIco"
+          :icon="project.releaseType"
           class="absolute md:left-16 md:bottom-16 left-8 bottom-8"
           height="unset"
           style="--size: calc(min(100vh, 100vw) / 3 + 1px); height: var(--size); width: var(--size)"

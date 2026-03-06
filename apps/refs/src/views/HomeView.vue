@@ -86,8 +86,8 @@ onMounted(() => {
         <template v-for="group in bookmarks">
             <h2 class="sm:text-xl font-medium mt-6 mb-2 text-slate-800 dark:text-slate-300">
                 <span>{{ group.title.text }}</span>
-                <a v-if="group.title.fragment"
-                   :href="group.title.fragment"
+                <a v-if="group.title.link"
+                   :href="group.title.link"
                    class="opacity-0 hover:opacity-100 transition-opacity duration-200">&nbsp;#</a>
             </h2>
             <div class="h-1 bg-slate-200 dark:bg-slate-800 ounded-full overflow-hidden mb-6">
@@ -99,17 +99,18 @@ onMounted(() => {
                    class="inline-flex items-center Card"
                    target="_blank">
                     <div class="mr-2 min-w-7 text-gray-400 dark:text-gray-600">
-                        <img v-if="!item.icon"
-                             :src="LinkIcon"
-                             class="size-7" />
-                        <img v-else-if="item.icon.startsWith('https://') || item.icon.startsWith('/')"
+                        <Icon v-if="item.logo"
+                              :icon="item.logo"
+                              class="size-7 max-w-7" />
+                        <img v-else-if="item.icon"
                              :src="item.icon"
                              alt="ico"
                              class="w-7"
                              @error="e => { (e.target as HTMLImageElement).src = LinkIcon }" />
-                        <Icon v-else
-                              :icon="item.icon"
-                              class="size-7 max-w-7" />
+                        <img v-else
+                             :src="LinkIcon"
+                             alt="ico"
+                             class="size-7" />
                     </div>
                     <div class="text-sm">
                         <p class="text-black dark:text-white" v-html="item.name" />

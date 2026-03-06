@@ -26,7 +26,7 @@ const stacks = [
             { badge: ColorBadge.Bash, level: 1 },
             { badge: ColorBadge.Cmd, level: 2 },
             { badge: ColorBadge.Powershell, level: 0 },
-            { badge: ColorBadge.Nushell, level: -1 },
+            { badge: ColorBadge.NuShell, level: -1 },
         ]
     },
     {
@@ -120,7 +120,7 @@ for (const tree of stacks) {
         <div v-if="branch.skills" class="text-sm flex flex-wrap gap-x-6 gap-y-2">
             <div v-for="skill in branch.skills"
                  class="Badge flex flex-nowrap gap-2 items-center">
-                <Icon :icon="skill.badge.icon" width="24" />
+                <Icon :icon="skill.badge.logo" width="24" />
                 <div class="flex flex-nowrap gap-1 relative">
                     <span v-for="(label, lv) in branch.levels"
                           :class="Number(lv) <= skill.level ? '' : 'text-gray-700'"

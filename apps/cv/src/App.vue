@@ -7,18 +7,19 @@ import { BackToTopButton, Button } from '#/ui/button';
 import { Icon } from '@iconify/vue';
 import { curriculumVitae, tighnari } from '@navifox/constants';
 import type { Badge } from '@navifox/types';
+import { useWebsiteLinks, useWebsiteMetas } from '@navifox/utils';
 import { useHead } from '@unhead/vue';
 import { ref, useTemplateRef } from 'vue';
 
 function* getStates(): Generator<Badge> {
     if (tighnari.location)
-        yield { icon: 'zondicons:location', text: tighnari.location }
+        yield { logo: 'zondicons:location', text: tighnari.location }
     if (tighnari.age)
-        yield { icon: 'material-symbols:schedule', text: `${tighnari.age}岁` }
+        yield { logo: 'material-symbols:schedule', text: `${tighnari.age}岁` }
     if (tighnari.wxid)
-        yield { icon: 'bi:wechat', text: tighnari.wxid }
+        yield { logo: 'bi:wechat', text: tighnari.wxid }
     if (cvLastUpdateTime)
-        yield { icon: 'stash:last-updates-solid', text: cvLastUpdateTime }
+        yield { logo: 'stash:last-updates-solid', text: cvLastUpdateTime }
 }
 
 const cvLastUpdateTime = '2026.2'
@@ -31,16 +32,8 @@ const timeline = useTemplateRef('timeline')
 
 useHead({
     title: curriculumVitae.name,
-    meta: [
-        { name: 'description', content: curriculumVitae.desc },
-        { name: 'author', content: tighnari.name },
-        { name: 'keywords', content: curriculumVitae.tags?.join(',') },
-    ],
-    link: [
-        curriculumVitae.icon
-            ? { rel: 'icon', ...curriculumVitae.icon }
-            : { rel: 'icon', href: curriculumVitae.logo },
-    ],
+    meta: [ ...useWebsiteMetas(curriculumVitae) ],
+    link: [ ...useWebsiteLinks(curriculumVitae) ],
 })
 </script>
 
@@ -53,11 +46,11 @@ useHead({
         <h1 class="text-4xl"><b class="text-gray-50!">阿羽</b></h1>
         <div class="flex flex-wrap gap-1 justify-center items-center">
             <div v-for="state in egoStates" class="inline-flex flex-nowrap items-center">
-                <Icon :icon="state.icon" height="16" />
+                <Icon :icon="state.logo" height="16" />
                 <span class="ml-1 mr-3 text-nowrap">{{ state.text }}</span>
             </div>
         </div>
-        <span class="text-center text-gray-600 tracking-[.5em]">・{{ curriculumVitae.desc }}・</span>
+        <span class="text-center text-gray-600 tracking-[.5em]">・{{ curriculumVitae.description }}・</span>
     </div>
     <div ref="experiencePanel" class="relative border border-dashed border-(--tick-stroke) tick-left tick-right" />
     <div class="mx-8">

@@ -1,7 +1,7 @@
-import type { LinkInfo } from '@navifox/types';
+import type { Hyperlink } from '@navifox/types';
 import { thisYear } from './chore';
 
-function* detect(): Generator<LinkInfo> {
+function* detect(): Generator<Hyperlink> {
     if (import.meta.env.VITE_ICP_NO)
         yield { text: import.meta.env.VITE_ICP_NO, link: import.meta.env.VITE_ICP_REF }
     if (import.meta.env.VITE_MPS_NO)

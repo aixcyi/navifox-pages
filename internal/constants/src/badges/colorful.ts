@@ -7,81 +7,81 @@ export class ColorBadge {
 
     // -------------------------------- 语言类 --------------------------------
 
-    static readonly Python: Badge = { icon: 'devicon:python' }
-    static readonly Kotlin: Badge = { icon: 'devicon:kotlin' }
-    static readonly Golang: Badge = { icon: 'devicon:go' }
-    static readonly Rust: Badge = { icon: 'catppuccin:rust' }
-    static readonly Java: Badge = { icon: 'devicon:java' }
-    static readonly JavaScript: Badge = { icon: 'devicon:javascript' }
-    static readonly TypeScript: Badge = { icon: 'devicon:typescript' }
-    static readonly WebHTML: Badge = { icon: 'catppuccin:html', text: 'HTML' }
-    static readonly WebCSS: Badge = { icon: 'devicon:css', text: 'CSS' }
-    static readonly Markdown: Badge = { icon: 'catppuccin:markdown' }
-    static readonly Bash: Badge = { icon: 'devicon-plain:bash', text: 'bash' }
-    static readonly Cmd: Badge = { icon: 'codicon:terminal-cmd', text: 'cmd' }
-    static readonly Powershell: Badge = { icon: 'devicon:powershell' }
-    static readonly Nushell: Badge = { icon: 'simple-icons:nushell' }
+    static readonly Python: Badge = { logo: 'devicon:python' }
+    static readonly Kotlin: Badge = { logo: 'devicon:kotlin' }
+    static readonly Golang: Badge = { logo: 'devicon:go' }
+    static readonly Rust: Badge = { logo: 'catppuccin:rust' }
+    static readonly Java: Badge = { logo: 'devicon:java' }
+    static readonly JavaScript: Badge = { logo: 'devicon:javascript' }
+    static readonly TypeScript: Badge = { logo: 'devicon:typescript' }
+    static readonly WebHTML: Badge = { logo: 'catppuccin:html', text: 'HTML' }
+    static readonly WebCSS: Badge = { logo: 'devicon:css', text: 'CSS' }
+    static readonly Markdown: Badge = { logo: 'catppuccin:markdown' }
+    static readonly Bash: Badge = { logo: 'devicon-plain:bash', text: 'bash' }
+    static readonly Cmd: Badge = { logo: 'codicon:terminal-cmd', text: 'cmd' }
+    static readonly Powershell: Badge = { logo: 'devicon:powershell' }
+    static readonly NuShell: Badge = { logo: 'simple-icons:nushell' }
 
     // -------------------------------- 框架类 --------------------------------
 
     // 后端开发
-    static readonly Django: Badge = { icon: 'skill-icons:django' }
-    static readonly DjangoRESTFramework: Badge = { icon: 'devicon:djangorest-wordmark', text: 'Django REST Framework' }
-    static readonly Flask: Badge = { icon: 'file-icons:flask' }
-    static readonly FastAPI: Badge = { icon: 'devicon:fastapi' }
-    static readonly NumPy: Badge = { icon: 'devicon:numpy' }
-    static readonly Pandas: Badge = { icon: 'devicon:pandas' }
-    static readonly Selenium: Badge = { icon: 'logos:selenium' }
-    static readonly Celery: Badge = { icon: 'simple-icons:celery' }
-    static readonly Spring: Badge = { icon: 'devicon:spring' }
+    static readonly Django: Badge = { logo: 'skill-icons:django' }
+    static readonly DjangoRESTFramework: Badge = { logo: 'devicon:djangorest-wordmark', text: 'Django REST Framework' }
+    static readonly Flask: Badge = { logo: 'file-icons:flask' }
+    static readonly FastAPI: Badge = { logo: 'devicon:fastapi' }
+    static readonly NumPy: Badge = { logo: 'devicon:numpy' }
+    static readonly Pandas: Badge = { logo: 'devicon:pandas' }
+    static readonly Selenium: Badge = { logo: 'logos:selenium' }
+    static readonly Celery: Badge = { logo: 'simple-icons:celery' }
+    static readonly Spring: Badge = { logo: 'devicon:spring' }
 
     // 前端开发
-    static readonly TailwindCSS: Badge = { icon: 'devicon:tailwindcss', text: 'Tailwind CSS' }
-    static readonly Vue: Badge = { icon: 'devicon:vuejs' }
-    static readonly VueUse: Badge = { icon: 'logos:vueuse' }
-    static readonly Lodash: Badge = { icon: 'devicon:lodash' }
-    static readonly Pinia: Badge = { icon: 'logos:pinia' }
-    static readonly Gsap: Badge = { icon: 'simple-icons:gsap', text: 'GSAP' }
-    static readonly VitePress: Badge = { icon: 'simple-icons:vitepress' }
-    static readonly Bootstrap: Badge = { icon: 'devicon:bootstrap' }
-    static readonly Naive: Badge = { icon: 'logos:naiveui' }
+    static readonly TailwindCSS: Badge = { logo: 'devicon:tailwindcss', text: 'Tailwind CSS' }
+    static readonly Vue: Badge = { logo: 'devicon:vuejs' }
+    static readonly VueUse: Badge = { logo: 'logos:vueuse' }
+    static readonly Lodash: Badge = { logo: 'devicon:lodash' }
+    static readonly Pinia: Badge = { logo: 'logos:pinia' }
+    static readonly Gsap: Badge = { logo: 'simple-icons:gsap', text: 'GSAP' }
+    static readonly VitePress: Badge = { logo: 'simple-icons:vitepress' }
+    static readonly Bootstrap: Badge = { logo: 'devicon:bootstrap' }
+    static readonly Naive: Badge = { logo: 'logos:naiveui' }
 
     // -------------------------------- 存储类 --------------------------------
 
-    static readonly PostgreSQL: Badge = { icon: 'devicon:postgresql' }
-    static readonly SQLite: Badge = { icon: 'devicon:sqlite' }
-    static readonly MySQL: Badge = { icon: 'devicon:mysql' }
-    static readonly Redis: Badge = { icon: 'devicon:redis' }
+    static readonly PostgreSQL: Badge = { logo: 'devicon:postgresql' }
+    static readonly SQLite: Badge = { logo: 'devicon:sqlite' }
+    static readonly MySQL: Badge = { logo: 'devicon:mysql' }
+    static readonly Redis: Badge = { logo: 'devicon:redis' }
 
     // -------------------------------- 环境类 --------------------------------
 
-    static readonly PyCharm: Badge = { icon: 'logos:pycharm' }
-    static readonly IntelliJ: Badge = { icon: 'logos:intellij-idea' }
-    static readonly WebStorm: Badge = { icon: 'logos:webstorm' }
-    static readonly Goland: Badge = { icon: 'logos:goland' }
-    static readonly DataGrip: Badge = { icon: 'logos:datagrip' }
-    static readonly VisualStudioCode: Badge = { icon: 'devicon:vscode', text: 'Visual Studio Code' }
-    static readonly VisualStudio: Badge = { icon: 'devicon:visualstudio', text: 'Visual Studio' }
-    static readonly Ubuntu: Badge = { icon: 'logos:ubuntu' }
-    static readonly Kali: Badge = { icon: 'devicon:kalilinux' }
+    static readonly PyCharm: Badge = { logo: 'logos:pycharm' }
+    static readonly IntelliJ: Badge = { logo: 'logos:intellij-idea' }
+    static readonly WebStorm: Badge = { logo: 'logos:webstorm' }
+    static readonly Goland: Badge = { logo: 'logos:goland' }
+    static readonly DataGrip: Badge = { logo: 'logos:datagrip' }
+    static readonly VisualStudioCode: Badge = { logo: 'devicon:vscode', text: 'Visual Studio Code' }
+    static readonly VisualStudio: Badge = { logo: 'devicon:visualstudio', text: 'Visual Studio' }
+    static readonly Ubuntu: Badge = { logo: 'logos:ubuntu' }
+    static readonly Kali: Badge = { logo: 'devicon:kalilinux' }
 
     // -------------------------------- DevOps --------------------------------
 
-    static readonly Git: Badge = { icon: 'devicon:git', text: 'git' }
-    static readonly GitHubAction: Badge = { icon: 'devicon:githubactions', text: 'GitHub Action' }
-    static readonly Apifox: Badge = { icon: 'simple-icons:apifox' }
-    static readonly Grafana: Badge = { icon: 'devicon:grafana' }
+    static readonly Git: Badge = { logo: 'devicon:git', text: 'git' }
+    static readonly GitHubAction: Badge = { logo: 'devicon:githubactions', text: 'GitHub Action' }
+    static readonly Apifox: Badge = { logo: 'simple-icons:apifox' }
+    static readonly Grafana: Badge = { logo: 'devicon:grafana' }
 
     // -------------------------------- 工具类 --------------------------------
 
-    static readonly Vite: Badge = { icon: 'devicon:vitejs' }
-    static readonly Npm: Badge = { icon: 'devicon:npm', text: 'NPM' }
-    static readonly Pnpm: Badge = { icon: 'devicon:pnpm', text: 'PNPM' }
+    static readonly Vite: Badge = { logo: 'devicon:vitejs' }
+    static readonly Npm: Badge = { logo: 'devicon:npm', text: 'NPM' }
+    static readonly Pnpm: Badge = { logo: 'devicon:pnpm', text: 'PNPM' }
 
     // -------------------------------- 杂类 --------------------------------
 
-    static readonly Firefox: Badge = { icon: 'logos:firefox' }
-    static readonly Chrome: Badge = { icon: 'logos:chrome' }
+    static readonly Firefox: Badge = { logo: 'logos:firefox' }
+    static readonly Chrome: Badge = { logo: 'logos:chrome' }
 
     // -------------------------------- --------------------------------
 
