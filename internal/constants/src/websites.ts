@@ -6,7 +6,7 @@ export const navifox: Website = {
     link: 'https://www.navifox.net',
     icon: 'https://www.navifox.net/favicon.ico',
     mime: 'image/png',
-    description: '愿在生活的密林里遇见一只郭狐，\n与你相伴，为你领航。',
+    description: '<span>愿在生活的密林里遇见一只郭狐，</span><span>与你相伴，为你领航。</span>',
     author: tighnari.name,
     tags: [ '路狐羽', '阿羽', 'aixcyi', 'ayu', '路狐领航', '罗狐会馆', '妖灵会馆' ],
 }

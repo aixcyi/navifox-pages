@@ -26,9 +26,7 @@ const linkMap = {
         <div class="text-2xl pb-2">
             <b class="text-white">{{ navifox.name }}</b>
         </div>
-        <div class="pb-4 flex flex-wrap">
-            <span v-for="line in navifox.description?.split('\n')">{{ line }}</span>
-        </div>
+        <div class="pb-4 flex flex-wrap" v-html="navifox.description" />
         <template v-for="copyright in copyrights">
             <a :href="copyright.link"
                class="flex no-underline"

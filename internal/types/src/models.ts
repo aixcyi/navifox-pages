@@ -65,10 +65,7 @@ export interface Website extends Favicon {
 
     logo?: string
 
-    /**
-     * 站点描述。
-     *
-     * 列宽不足时每一行单独换行。 */
+    /** 站点描述。 */
     description?: string
 
     /** 站点作者。 */
