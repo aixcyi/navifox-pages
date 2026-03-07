@@ -2,24 +2,24 @@ import type { Hyperlink } from '@navifox/types';
 import { curriculumVitae, mooncakeDocs, navifox, navifoxGuild, seraphonogram, } from './websites';
 
 export const socials: Hyperlink[] = [
-    { text: navifoxGuild.name, icon: 'bi:tencent-qq', link: navifoxGuild.link },
-    // { text: '推特<br/>X／Twitter', icon: 'simple-icons:x', link: 'https://x.com/aixcyi/' },
+    { text: navifoxGuild.name, logo: 'bi:tencent-qq', link: navifoxGuild.link },
+    // { text: '推特<br/>X／Twitter', logo: 'simple-icons:x', link: 'https://x.com/aixcyi/' },
     { text: null, link: '' },
-    { text: 'GitHub', icon: 'simple-icons:github', link: 'https://github.com/aixcyi/' },
-    { text: 'PyPI', icon: 'file-icons:pypi', link: 'https://pypi.org/user/aixcyi/' },
+    { text: 'GitHub', logo: 'simple-icons:github', link: 'https://github.com/aixcyi/' },
+    { text: 'PyPI', logo: 'file-icons:pypi', link: 'https://pypi.org/user/aixcyi/' },
     {
         text: 'JetBrains 插件市场',
-        icon: 'simple-icons:jetbrains',
+        logo: 'simple-icons:jetbrains',
         link: 'https://plugins.jetbrains.com/author/aixcyi/',
     },
-    // { text: 'Gitee', icon: 'simple-icons:gitee', link: 'https://gitee.com/aixcyi/' },
+    // { text: 'Gitee', logo: 'simple-icons:gitee', link: 'https://gitee.com/aixcyi/' },
 ]
 
 export const websites: Hyperlink[] = [
     // { text: seraphonogram.name, link: seraphonogram.link },
-    // { text: '友情链接', link: '/links', icon: 'solar:link-square-line-duotone' },
-    // { text: travelling.name, link: travelling.link, icon: 'pepicons-print:train' },
-    // { text: moeTravel.name, link: moeTravel.link, icon: 'solar:planet-bold-duotone' },
+    // { text: '友情链接', link: '/links', logo: 'solar:link-square-line-duotone' },
+    // { text: travelling.name, link: travelling.link, logo: 'pepicons-print:train' },
+    // { text: moeTravel.name, link: moeTravel.link, logo: 'solar:planet-bold-duotone' },
 ]
 
 export const sitemap: Hyperlink[] = [

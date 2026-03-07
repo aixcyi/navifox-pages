@@ -76,7 +76,7 @@ useResizeObserver(bio, (entries) => {
             <div :style="{ maxWidth: `${cardWidth}px` }"
                  class="flex flex-wrap items-center gap-x-4 gap-y-5 align-top">
                 <template v-for="site in socials">
-                    <div v-if="!site.text"
+                    <div v-if="!site.text || !site.logo"
                          class="h-5 border-r border-(--fox-cyan-2)" />
                     <a v-else
                        :href="site.link"
@@ -86,7 +86,7 @@ useResizeObserver(bio, (entries) => {
                        @mouseleave="btnTextSocial = ''"
                        @mouseover="btnTextSocial = site.text ?? ''"
                     >
-                        <Icon :icon="site.icon!" height="32" />
+                        <Icon :icon="site.logo" height="32" />
                     </a>
                 </template>
                 <span class="flex-1 text-right text-sm leading-4"
