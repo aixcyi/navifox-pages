@@ -99,7 +99,7 @@ useResizeObserver(bio, (entries) => {
     </div>
 </Content>
 
-<Content class="w-screen text-sm py-10 bg-black border-t border-(--fox-cyan-1)"
+<Content class="w-full text-sm py-10 bg-black border-t border-(--fox-cyan-1)"
          use="footer"
          wide="fattier">
     <Footer />
