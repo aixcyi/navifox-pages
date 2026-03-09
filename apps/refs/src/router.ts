@@ -1,3 +1,4 @@
+import Content from '#/layouts/Content.vue';
 import HomeView from '#/views/HomeView.vue';
 import TimestampView from '#/views/TimestampView.vue';
 import { navifoxRefs } from '@navifox/constants';
@@ -7,17 +8,18 @@ const router = createRouter({
     history: createWebHistory(),
     routes: [
         {
-            component: HomeView,
             path: '/',
-            name: 'HomeView',
+            name: 'Homepage',
+            component: HomeView,
         },
         {
-            component: TimestampView,
             path: '/timestamp',
-            name: 'TimestampView',
+            name: 'TimestampSheet',
             meta: {
                 title: '时间戳对照表',
-            }
+            },
+            component: Content,
+            children: [ { path: '', component: TimestampView } ],
         }
     ]
 })

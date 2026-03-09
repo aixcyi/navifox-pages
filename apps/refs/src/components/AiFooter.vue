@@ -56,11 +56,12 @@ const linkMap = [
                         <div :class="styles.icon"
                              class="w-8 h-8 flex items-center justify-center flex-shrink-0 mr-3">
                             <Icon v-if="item.logo" :icon="item.logo" height="24" />
-                            <img v-if="item.icon" :src="item.icon" alt="ico" class="size-6" />
+                            <img v-else-if="item.icon" :src="item.icon" alt="ico" class="size-6 select-none" />
+                            <div v-else class="size-6" />
                         </div>
                         <div class="min-w-0 flex-1">
                             <h4 :class="styles.title"
-                                class="font-medium text-sm text-slate-900 dark:text-slate-100 truncate">
+                                class="font-medium text-sm text-slate-900 dark:text-slate-100 truncate transition-colors duration-200">
                                 {{ item.name }}
                                 <span v-if="item.note" class="text-slate-400">{{ item.note }}</span>
                             </h4>
@@ -72,7 +73,7 @@ const linkMap = [
                 </div>
             </div>
 
-            <div class="order-last xl:order-first">
+            <div class="order-last xl:order-first space-y-0.5">
                 <div class="mb-2">
                     <a :href="navifox.link"
                        class="flex font-medium items-center justify-center md:justify-start text-slate-800 dark:text-slate-300"
@@ -97,7 +98,7 @@ const linkMap = [
                     <template v-for="social in socials">
                         <a v-if="social.logo"
                            :href="social.link"
-                           class="hover:text-slate-900 dark:hover:text-slate-100"
+                           class="hover:text-orange-500 dark:hover:text-orange-300 transition-colors duration-200"
                            target="_blank">
                             <Icon :icon="social.logo" height="24" />
                         </a>
@@ -114,11 +115,11 @@ const linkMap = [
                 <p class="flex flex-wrap text-sm text-slate-600 dark:text-slate-400">
                     <span>
                         使用了
-                        <a class="hover:text-orange-500 dark:hover:text-orange-300"
+                        <a class="hover:text-orange-500 dark:hover:text-orange-300 hover:underline hover:decoration-wavy"
                            href="https://github.com/Fechin/"
                            target="_blank">Fechin</a>
-                        的开源作品
-                        <a class="hover:text-orange-500 dark:hover:text-orange-300"
+                        开源仓库
+                        <a class="hover:text-orange-500 dark:hover:text-orange-300 transition-colors duration-200"
                            href="https://github.com/Fechin/reference"
                            target="_blank">reference</a>
                         中的主题。

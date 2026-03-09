@@ -35,7 +35,7 @@ onMounted(() => {
          style="animation-delay:2s;animation-duration:3s">{ }
     </div>
     <div class="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-black/10 pointer-events-none" />
-    <NavBar class="MaxContainer z-20" />
+    <NavBar class="MaxContainer z-20" cover />
     <div class="w-full flex flex-col text-center pt-8 pb-10 relative z-30">
         <div class="MaxContainer lg:w-4/5 xl:w-3/4 relative z-30">
             <h1 class="text-4xl md:text-5xl lg:text-6xl text-white leading-tight font-bold tracking-tight">
