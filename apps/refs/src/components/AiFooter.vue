@@ -7,9 +7,12 @@ import {
     sitemap,
     socials,
     thanks,
-    tighnari
+    tighnari,
 } from '@navifox/constants';
+import { useDark, useToggle } from '@vueuse/core';
 
+const isDark = useDark()
+const toggleDark = useToggle(isDark)
 const linkMap = [
     {
         title: '站内导航', subtitle: 'Sitemap', data: sitemap,
@@ -44,8 +47,7 @@ const linkMap = [
 
             <div v-for="{title, subtitle, data, styles} in linkMap">
                 <h3 class="text-lg font-semibold text-slate-900 dark:text-slate-100 mb-4 flex items-center">
-                    {{ title }}
-                    <span class="text-slate-500 ml-2">{{ subtitle }}</span>
+                    {{ title }}<span class="text-slate-500 ml-2">{{ subtitle }}</span>
                 </h3>
                 <div class="flex flex-col flex-nowrap gap-3">
                     <a v-for="item in data"
@@ -73,7 +75,7 @@ const linkMap = [
                 </div>
             </div>
 
-            <div class="order-last xl:order-first space-y-0.5">
+            <div class="relative order-last xl:order-first space-y-0.5">
                 <div class="mb-2">
                     <a :href="navifox.link"
                        class="flex font-medium items-center justify-center md:justify-start text-slate-800 dark:text-slate-300"
@@ -143,6 +145,17 @@ const linkMap = [
                         字体渲染。
                     </span>
                 </p>
+                <div class="h-9 mt-2" />
+                <div class="absolute bottom-0 xl:left-0 right-0">
+                    <button
+                        class="cursor-pointer inline-flex items-center justify-center flex-shrink-0 h-9 w-9 rounded-3xl backdrop-blur-sm transition-colors duration-200 group bg-white outline outline-slate-200 dark:bg-slate-800 dark:outline-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700"
+                        @click="toggleDark(!isDark)">
+                        <i class="transition-all duration-200 text-slate-600 dark:text-slate-300">
+                            <Icon :icon="isDark ? 'material-symbols:dark-mode' : 'material-symbols:light-mode'"
+                                  height="1.25rem" />
+                        </i>
+                    </button>
+                </div>
             </div>
 
         </div>

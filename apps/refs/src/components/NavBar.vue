@@ -2,20 +2,12 @@
 import { isShowingNavDropdown } from '#/storage.ts';
 import { Icon } from '@iconify/vue';
 import { navifoxRefs } from '@navifox/constants';
-import { onMounted, ref } from 'vue';
+import { useDark, useToggle } from '@vueuse/core';
 
 defineProps<{ cover?: boolean }>()
 
-const isDarkMode = ref(false)
-
-function toggleDarkMode() {
-    document.documentElement.classList.toggle('dark')
-    isDarkMode.value = document.documentElement.classList.contains('dark')
-}
-
-onMounted(() => {
-    isDarkMode.value = document.documentElement.classList.contains('dark')
-})
+const isDark = useDark()
+const toggleDark = useToggle(isDark)
 </script>
 
 
@@ -64,18 +56,18 @@ onMounted(() => {
             <button
                 v-if="cover"
                 class="cursor-pointer inline-flex items-center justify-center flex-shrink-0 h-9 w-9 rounded-3xl ml-2 lg:ml-3 backdrop-blur-sm transition-colors duration-200 group bg-white/10 outline outline-white/20 text-white hover:bg-white/20 hover:outline-white/30"
-                @click="toggleDarkMode">
+                @click="toggleDark(!isDark)">
                 <i class="transition-all duration-200 text-white">
-                    <Icon :icon="isDarkMode ? 'material-symbols:dark-mode' : 'material-symbols:light-mode'"
+                    <Icon :icon="isDark ? 'material-symbols:dark-mode' : 'material-symbols:light-mode'"
                           height="1.25rem" />
                 </i>
             </button>
             <button
                 v-else
-                class="cursor-pointer inline-flex items-center justify-center flex-shrink-0 h-9 w-9 rounded-3xl ml-2 lg:ml-3 backdrop-blur-sm transition-colors duration-200 group bg-white outline outline-1 outline-slate-200 dark:bg-slate-800 dark:outline-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700"
-                @click="toggleDarkMode">
+                class="cursor-pointer inline-flex items-center justify-center flex-shrink-0 h-9 w-9 rounded-3xl ml-2 lg:ml-3 backdrop-blur-sm transition-colors duration-200 group bg-white outline outline-slate-200 dark:bg-slate-800 dark:outline-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700"
+                @click="toggleDark(!isDark)">
                 <i class="transition-all duration-200 text-slate-600 dark:text-slate-300">
-                    <Icon :icon="isDarkMode ? 'material-symbols:dark-mode' : 'material-symbols:light-mode'"
+                    <Icon :icon="isDark ? 'material-symbols:dark-mode' : 'material-symbols:light-mode'"
                           height="1.25rem" />
                 </i>
             </button>
@@ -100,7 +92,7 @@ onMounted(() => {
                         id="nav-trigger"
                         aria-expanded="false"
                         aria-haspopup="true"
-                        class="cursor-pointer inline-flex h-9 items-center rounded-3xl backdrop-blur-sm ml-0 px-3 py-2 transition-colors duration-200 group bg-white outline outline-1 outline-slate-200 dark:bg-slate-800 dark:outline-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700"
+                        class="cursor-pointer inline-flex h-9 items-center rounded-3xl backdrop-blur-sm ml-0 px-3 py-2 transition-colors duration-200 group bg-white outline outline-slate-200 dark:bg-slate-800 dark:outline-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700"
                         type="button"
                         @click="isShowingNavDropdown = !isShowingNavDropdown">
                     <div class="text-slate-700 dark:text-slate-300">

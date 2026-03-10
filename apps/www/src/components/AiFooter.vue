@@ -10,7 +10,10 @@ import {
     thanks,
     tighnari,
 } from '@navifox/constants';
+import { useDark, useToggle } from '@vueuse/core';
 
+const isDark = useDark()
+const toggleDark = useToggle(isDark)
 const version = __APP_VERSION__
 const linkMap = [
     {
@@ -74,7 +77,7 @@ const linkMap = [
                 </div>
             </div>
 
-            <div class="order-last xl:order-first space-y-0.5 text-sm text-slate-600 dark:text-slate-400">
+            <div class="relative order-last xl:order-first space-y-0.5 text-sm text-slate-600 dark:text-slate-400">
                 <div class="mb-2">
                     <a :href="navifox.link"
                        class="flex font-medium items-center justify-center md:justify-start text-slate-800 dark:text-slate-300"
@@ -153,6 +156,17 @@ const linkMap = [
                 <p>
                     <span>构建为 <code>{{ version }}</code></span>
                 </p>
+                <div class="h-9 mt-2" />
+                <div class="absolute bottom-0 xl:left-0 right-0">
+                    <button
+                        class="cursor-pointer inline-flex items-center justify-center flex-shrink-0 h-9 w-9 rounded-3xl backdrop-blur-sm transition-colors duration-200 group bg-white outline outline-slate-200 dark:bg-slate-800 dark:outline-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700"
+                        @click="toggleDark(!isDark)">
+                        <i class="transition-all duration-200 text-slate-600 dark:text-slate-300">
+                            <Icon :icon="isDark ? 'material-symbols:dark-mode' : 'material-symbols:light-mode'"
+                                  height="1.25rem" />
+                        </i>
+                    </button>
+                </div>
             </div>
 
         </div>

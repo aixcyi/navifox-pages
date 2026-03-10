@@ -1,5 +1,7 @@
 @import 'tailwindcss';
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
     --fox-cyan-1: #459199;
     --fox-cyan-2: #285559;
