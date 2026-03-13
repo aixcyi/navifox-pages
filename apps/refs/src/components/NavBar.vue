@@ -27,6 +27,7 @@ const toggleDark = useToggle(isDark)
                 <span class="bg-gradient-to-r from-white to-orange-200 bg-clip-text text-transparent">navi</span>
                 <span class="text-orange-400 font-black">fox</span>
                 <span class="text-gray-400 font-black">.net</span>
+                <span class="border-l ml-3 pl-3 border-l-slate-300 text-slate-300">{{ navifoxRefs.name }}</span>
             </span>
             <span v-else
                   class="hidden md:flex domain text-xl md:text-2xl lg:text-3xl font-bold tracking-tight">
@@ -34,6 +35,9 @@ const toggleDark = useToggle(isDark)
                     class="bg-gradient-to-r from-slate-800 to-orange-600 dark:from-slate-200 dark:to-orange-300 bg-clip-text text-transparent">navi</span>
                 <span class="text-orange-400 font-black">fox</span>
                 <span class="text-gray-400 font-black">.net</span>
+                <span
+                    class="border-l ml-3 pl-3 border-l-slate-300 dark:border-l-slate-700 text-purple-700/50 dark:text-purple-300/80">
+                    {{ navifoxRefs.name }}</span>
             </span>
         </a>
         <div class="md:ml-auto flex flex-wrap items-center text-base justify-center">
