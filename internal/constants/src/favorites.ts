@@ -336,16 +336,6 @@ const groupFrontend: BookmarkGroup = {
             link: 'https://nodejs.org/zh-cn/about/previous-releases',
             logo: 'logos:nodejs-icon-alt',
         }, {
-            name: 'Hover, focus... states',
-            link: 'https://tailwindcss.com/docs/hover-focus-and-other-states',
-            logo: 'logos:tailwindcss-icon',
-            note: 'Tailwind 定语缩写',
-        }, {
-            name: 'Customizing theme',
-            link: 'https://tailwindcss.com/docs/theme#customizing-your-theme',
-            logo: 'logos:tailwindcss-icon',
-            note: '定制自己的主题',
-        }, {
             name: 'TypeScript Cheat Sheets',
             link: 'https://www.typescriptlang.org/cheatsheets/',
             logo: 'logos:typescript-icon',
@@ -353,6 +343,21 @@ const groupFrontend: BookmarkGroup = {
             name: 'GSAP Demo Hub',
             link: 'https://demos.gsap.com/explore/',
             note: 'GSAP 官方示例库',
+        }, {
+            name: 'Hover, focus... states',
+            link: 'https://tailwindcss.com/docs/hover-focus-and-other-states',
+            logo: 'logos:tailwindcss-icon',
+            note: 'Tailwind 定语缩写',
+        }, {
+            name: 'background-image',
+            link: 'https://tailwindcss.com/docs/background-image',
+            logo: 'logos:tailwindcss-icon',
+            note: 'Tailwind 背景图片',
+        }, {
+            name: 'Customizing theme',
+            link: 'https://tailwindcss.com/docs/theme#customizing-your-theme',
+            logo: 'logos:tailwindcss-icon',
+            note: '定制自己的主题',
         }
     ]
 }

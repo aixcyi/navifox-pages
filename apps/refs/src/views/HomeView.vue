@@ -4,9 +4,8 @@ import AiFooter from '#/components/AiFooter.vue';
 import NavBar from '#/components/NavBar.vue';
 import NavDropdown from '#/components/NavDropdown.vue';
 import SignatureLine from '#/components/SignatureLine.vue';
-import { anchors, bookmarks } from '#/favorites.ts';
 import { Icon } from '@iconify/vue';
-import { navifoxRefs, } from '@navifox/constants';
+import { anchors, bookmarks, navifoxRefs } from '@navifox/constants';
 import { onMounted } from 'vue';
 
 onMounted(() => {
