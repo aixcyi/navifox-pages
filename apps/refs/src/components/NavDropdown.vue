@@ -9,13 +9,10 @@ const navDropdown = useTemplateRef('nav-dropdown')
 const { width } = useWindowSize()
 const { y } = useWindowScroll()
 const sheets: Hyperlink[] = [
-    { text: '时间戳对照表', link: '/timestamp' },
-    { text: '语法更新摘要', link: '/grammar', logo: 'material-icon-theme:python' },
-    { text: '镜像源', link: '/mirrors' },
-    { text: 'UUID 结构', link: '/uuid' },
+    { text: '时间戳对照表', link: '/timestamp', logo: 'svg-spinners:clock' },
+    { text: '角色天赋表', link: '/genshin/talent' },
     { text: null, link: '' },
     { text: 'CheatSheets.zip', link: 'https://cheatsheets.zip/', icon: 'https://cheatsheets.zip/images/favicon.png' },
-    { text: '路狐领航', link: 'https://www.navifox.net/', logo: 'fluent-emoji-flat:fox' },
 ]
 
 function resize() {
@@ -46,7 +43,7 @@ watch(isShowingNavDropdown, (after) => {
      :class="isShowingNavDropdown?['opacity-100','visible','scale-100','pointer-events-auto']:['opacity-0','invisible','scale-95','pointer-events-none']"
      class="fixed z-[9999] w-56 rounded-3xl bg-white dark:bg-slate-800 shadow-xl outline outline-slate-200 dark:outline-slate-700 transform transition-all duration-200"
      style="right: -999px; top: -999px;"
-     @blur="isShowingNavDropdown = false; console.log('喵')">
+     @blur="isShowingNavDropdown = false">
     <div class="py-2">
         <template v-for="sheet in sheets">
             <a v-if="sheet.text"
@@ -57,7 +54,7 @@ watch(isShowingNavDropdown, (after) => {
                role="button">
                 <div class="flex-shrink-0 w-5 h-5 mr-3">
                     <Icon v-if="sheet.logo" :icon="sheet.logo" class="size-[1.25rem]" />
-                    <img v-else-if="sheet.icon" :src="sheet.icon" alt="ico" class="size-[1.25rem]">
+                    <img v-else-if="sheet.icon" :src="sheet.icon" alt="ico" class="size-[1.25rem] select-none">
                     <div v-else class="size-[1.25rem]" />
                 </div>
                 <span class="font-medium">{{ sheet.text }}</span>

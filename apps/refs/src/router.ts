@@ -1,6 +1,4 @@
-import Content from '#/layouts/Content.vue';
 import HomeView from '#/views/HomeView.vue';
-import TimestampView from '#/views/TimestampView.vue';
 import { navifoxRefs } from '@navifox/constants';
 import { createRouter, createWebHistory } from 'vue-router';
 
@@ -17,9 +15,9 @@ const router = createRouter({
             name: 'TimestampSheet',
             meta: {
                 title: '时间戳对照表',
+                description: '对照、查询不同进位制（字符集）下的计数空间，以及不同单位的时间存储上限。',
             },
-            component: Content,
-            children: [ { path: '', component: TimestampView } ],
+            component: () => import('#/views/TimestampView.vue'),
         }
     ]
 })
