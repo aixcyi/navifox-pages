@@ -67,7 +67,7 @@ const configs = {
         <LinkButton text="秒戳" @click="tabCursor=1" />
         <LinkButton text="日戳" @click="tabCursor=2" />
     </template>
-    <div class="MaxContainer max-w-dvw! flex flex-col overflow-x-scroll">
+    <div class="MaxContainer flex flex-col overflow-x-scroll">
         <TransitionGroup>
             <TimestampTable v-show="tabCursor===0" key="millisecondStamp" v-bind="configs.millisecond" />
             <TimestampTable v-show="tabCursor===1" key="secondStamp" v-bind="configs.second" />
