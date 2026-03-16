@@ -1,17 +1,7 @@
-import { UTCDate } from '@date-fns/utc'
-import { format } from 'date-fns'
-import { pi } from './math'
-
-export enum DurationLevel {
-    NANOSECOND,
-    MICROSECOND,
-    MILLISECOND,
-    SECOND,
-    MINUTE,
-    HOUR,
-    DAY,
-    YEAR,
-}
+import { UTCDate } from '@date-fns/utc';
+import { DurationLevel } from '@navifox/types';
+import { format } from 'date-fns';
+import { pi } from './math';
 
 export class Duration {
     static POWERS = [ 1000n, 1000n, 1000n, 60n, 60n, 24n, 365n ]
