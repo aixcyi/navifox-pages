@@ -16,8 +16,9 @@
         "@date-fns/utc": "^2.1.1",
         "@navifox/types": "workspace:*",
         "date-fns": "^4.1.0",
-        "markdown-it": "catalog:"
         "es-toolkit": "catalog:",
+        "markdown-it": "catalog:",
+        "vue": "catalog:"
     },
     "devDependencies": {
         "@types/markdown-it": "catalog:"

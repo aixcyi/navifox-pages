@@ -10,7 +10,7 @@ const { width } = useWindowSize()
 const { y } = useWindowScroll()
 const sheets: Hyperlink[] = [
     { text: '时间戳对照表', link: '/timestamp', logo: 'svg-spinners:clock' },
-    { text: '角色天赋表', link: '/genshin/talent' },
+    { text: '角色实用天赋表', link: '/genshin/talent' },
     { text: null, link: '' },
     { text: 'CheatSheets.zip', link: 'https://cheatsheets.zip/', icon: 'https://cheatsheets.zip/images/favicon.png' },
 ]
