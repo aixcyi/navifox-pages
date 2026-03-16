@@ -50,9 +50,7 @@ const stacks = [
         skills: [
             { badge: ColorBadge.TailwindCSS, level: 2 },
             { badge: ColorBadge.Vue, level: 2 },
-            { badge: ColorBadge.VueUse, level: 1 },
             { badge: ColorBadge.Bootstrap, level: 1 },
-            { badge: ColorBadge.Lodash, level: 1 },
             { badge: ColorBadge.Pinia, level: 0 },
             { badge: ColorBadge.Gsap, level: 1 },
             { badge: ColorBadge.VitePress, level: 2 },
