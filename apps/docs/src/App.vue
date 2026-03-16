@@ -5,9 +5,9 @@ import { copyrightInterval, mooncakeDocs, navifoxGuild, projects } from '@navifo
 import { useWebsiteLinks, useWebsiteMetas } from '@navifox/utils';
 import { useHead } from '@unhead/vue';
 import { useQRCode } from '@vueuse/integrations/useQRCode';
+import { range } from 'es-toolkit';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { range } from 'lodash-es';
 import { onMounted, onUnmounted } from 'vue';
 
 function initializePanels() {

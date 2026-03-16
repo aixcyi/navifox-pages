@@ -18,15 +18,14 @@
         "@unhead/vue": "catalog:",
         "@vueuse/core": "catalog:",
         "@vueuse/integrations": "^14.2.1",
+        "es-toolkit": "catalog:",
         "gsap": "catalog:",
-        "lodash-es": "catalog:",
         "qrcode": "^1.5.4",
         "tailwindcss": "catalog:",
         "vue": "catalog:"
     },
     "devDependencies": {
         "@iconify/vue": "catalog:",
-        "@types/lodash-es": "catalog:",
         "@types/node": "catalog:",
         "@vitejs/plugin-vue": "catalog:",
         "@vue/tsconfig": "catalog:",

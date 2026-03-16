@@ -19,7 +19,6 @@
         "@vueuse/core": "catalog:",
         "class-variance-authority": "^0.7.1",
         "clsx": "^2.1.1",
-        "lodash-es": "catalog:",
         "lucide-vue-next": "^0.563.0",
         "reka-ui": "^2.8.0",
         "tailwind-merge": "^3.4.0",
@@ -28,7 +27,6 @@
     },
     "devDependencies": {
         "@iconify/vue": "catalog:",
-        "@types/lodash-es": "catalog:",
         "@types/node": "catalog:",
         "@vitejs/plugin-vue": "catalog:",
         "@vue/tsconfig": "catalog:",

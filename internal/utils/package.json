@@ -16,11 +16,10 @@
         "@date-fns/utc": "^2.1.1",
         "@navifox/types": "workspace:*",
         "date-fns": "^4.1.0",
-        "lodash-es": "catalog:",
         "markdown-it": "catalog:"
+        "es-toolkit": "catalog:",
     },
     "devDependencies": {
-        "@types/lodash-es": "catalog:",
         "@types/markdown-it": "catalog:"
     }
 }

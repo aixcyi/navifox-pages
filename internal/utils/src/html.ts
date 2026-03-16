@@ -1,4 +1,4 @@
-import { trim } from 'lodash-es';
+import { trim } from 'es-toolkit';
 import MarkdownIt from 'markdown-it';
 
 
