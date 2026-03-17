@@ -19,13 +19,20 @@ export interface GenshinCharacter {
     element: '火' | '水' | '风' | '雷' | '草' | '冰' | '岩' | null
 
     /**
-     * 天赋与技能。
+     * 能力。
      */
-    talents: {
-        hunting?: OmissibleDescription,
-        stamina?: OmissibleDescription,
+    abilities: {
+        /** 地图标记。 */
         locator?: OmissibleDescription,
+        /** 探索派遣。 */
         dispatch?: OmissibleDescription,
+        /** 体力减免。 */
+        stamina?: OmissibleDescription,
+        /** 移速加成。 */
         moving?: OmissibleDescription,
+        /** 烹饪与合成。 */
+        crafting?: OmissibleDescription,
+        /** 其它。 */
+        others?: OmissibleDescription,
     }
 }

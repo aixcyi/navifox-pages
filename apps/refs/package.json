@@ -17,6 +17,7 @@
         "@navifox/utils": "workspace:*",
         "@tailwindcss/vite": "catalog:",
         "@vueuse/core": "catalog:",
+        "es-toolkit": "catalog:",
         "tailwindcss": "catalog:",
         "vue": "catalog:",
         "vue-router": "catalog:"
@@ -26,8 +27,8 @@
         "@types/node": "catalog:",
         "@vitejs/plugin-vue": "catalog:",
         "@vue/tsconfig": "catalog:",
+        "genshin-db": "^5.2.9",
         "typescript": "catalog:",
-        "genshin-db": "^5.2.7",
         "vite": "catalog:",
         "vite-plugin-zip-file": "catalog:",
         "vue-tsc": "catalog:"

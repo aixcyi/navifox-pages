@@ -115,11 +115,12 @@ function getTableRowColor(e: GenshinCharacter['element']) {
                 <thead class="**:[th]:p-4">
                 <tr>
                     <th></th>
-                    <th class="py-3">地图标记</th>
-                    <th class="py-3">探索派遣</th>
-                    <th class="py-3">捕猎</th>
-                    <th class="py-3">体力减免</th>
-                    <th class="py-3">移速加成</th>
+                    <th class="py-3">地图<br />标记</th>
+                    <th class="py-3">探索<br />派遣</th>
+                    <th class="py-3">体力<br />减免</th>
+                    <th class="py-3">移速<br />加成</th>
+                    <th class="py-3">烹饪<br />与合成</th>
+                    <th class="py-3">(未分类)</th>
                 </tr>
                 </thead>
                 <tbody class="**:[td]:px-4 **:[td]:py-2">
@@ -134,25 +135,29 @@ function getTableRowColor(e: GenshinCharacter['element']) {
                               height="16"
                               icon="uis:star" />
                     </td>
-                    <td :class="character.talents.locator ? 'cursor-pointer' : ''"
-                        :title="character.talents.locator?.verbose">
-                        {{ character.talents.locator?.short ?? '' }}
+                    <td :class="character.abilities.locator ? 'cursor-pointer' : ''"
+                        :title="character.abilities.locator?.verbose">
+                        {{ character.abilities.locator?.short ?? '' }}
                     </td>
-                    <td :class="character.talents.dispatch ? 'cursor-pointer' : ''"
-                        :title="character.talents.dispatch?.verbose">
-                        {{ character.talents.dispatch?.short ?? '' }}
+                    <td :class="character.abilities.dispatch ? 'cursor-pointer' : ''"
+                        :title="character.abilities.dispatch?.verbose">
+                        {{ character.abilities.dispatch?.short ?? '' }}
                     </td>
-                    <td :class="character.talents.hunting ? 'cursor-pointer' : ''"
-                        :title="character.talents.hunting?.verbose">
-                        {{ character.talents.hunting?.short ?? '' }}
+                    <td :class="character.abilities.stamina ? 'cursor-pointer' : ''"
+                        :title="character.abilities.stamina?.verbose">
+                        {{ character.abilities.stamina?.short ?? '' }}
                     </td>
-                    <td :class="character.talents.stamina ? 'cursor-pointer' : ''"
-                        :title="character.talents.stamina?.verbose">
-                        {{ character.talents.stamina?.short ?? '' }}
+                    <td :class="character.abilities.moving ? 'cursor-pointer' : ''"
+                        :title="character.abilities.moving?.verbose">
+                        {{ character.abilities.moving?.short ?? '' }}
                     </td>
-                    <td :class="character.talents.moving ? 'cursor-pointer' : ''"
-                        :title="character.talents.moving?.verbose">
-                        {{ character.talents.moving?.short ?? '' }}
+                    <td :class="character.abilities.crafting ? 'cursor-pointer' : ''"
+                        :title="character.abilities.crafting?.verbose">
+                        {{ character.abilities.crafting?.short ?? '' }}
+                    </td>
+                    <td :class="character.abilities.others ? 'cursor-pointer' : ''"
+                        :title="character.abilities.others?.verbose">
+                        {{ character.abilities.others?.short ?? '' }}
                     </td>
                 </tr>
                 </tbody>
