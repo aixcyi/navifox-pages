@@ -1,13 +1,32 @@
-export interface OmissibleDescription {
+/**
+ * 能力领域。
+ *
+ * - `locator`，地图标记。
+ * - `dispatch`，探索派遣。
+ * - `stamina`，体力减免。
+ * - `moving`，移速加成。
+ * - `crafting`，烹饪与合成。
+ * - `others`，其它。
+ */
+export type AbilityScope = 'locator' | 'dispatch' | 'stamina' | 'moving' | 'crafting' | 'others'
+
+/**
+ * 能力（包含能力归属领域、简述和原始描述）。
+ */
+export interface Ability {
+    scope: AbilityScope
     short: string
-    verbose: string
+    original: string
 }
 
+/**
+ * 原神角色信息（仅必须的部分）。
+ */
 export interface GenshinCharacter {
     name: string
 
     /** 星级（五星／四星）。 */
-    rarity: number
+    rarity: 4 | 5
 
     /** 所属地区。 */
     region: '蒙德' | '璃月' | '稻妻' | '须弥' | '枫丹' | '纳塔' | '挪德卡莱' | '至冬' | null
@@ -18,21 +37,6 @@ export interface GenshinCharacter {
     /** 元素。 */
     element: '火' | '水' | '风' | '雷' | '草' | '冰' | '岩' | null
 
-    /**
-     * 能力。
-     */
-    abilities: {
-        /** 地图标记。 */
-        locator?: OmissibleDescription,
-        /** 探索派遣。 */
-        dispatch?: OmissibleDescription,
-        /** 体力减免。 */
-        stamina?: OmissibleDescription,
-        /** 移速加成。 */
-        moving?: OmissibleDescription,
-        /** 烹饪与合成。 */
-        crafting?: OmissibleDescription,
-        /** 其它。 */
-        others?: OmissibleDescription,
-    }
+    /** 能力。 */
+    abilities: Ability[]
 }

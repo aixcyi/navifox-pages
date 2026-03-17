@@ -4,7 +4,9 @@ import Content from '#/layouts/Content.vue';
 import { Icon } from '@iconify/vue';
 import type { GenshinCharacter } from '@navifox/types';
 import { useToggles } from '@navifox/utils';
+import { ref } from 'vue';
 
+const columnHighlighted = ref<string>('')
 const [ hasRarity, toggleRarity, noRarity ] = useToggles<number>()
 const [ hasRegion, toggleRegion, noRegion ] = useToggles<string | null>()
 const [ hasWeapon, toggleWeapon, noWeapon ] = useToggles<string>()
@@ -44,6 +46,14 @@ const elements = [
     { id: 'cryo', key: '冰', text: '冰', tableRowColor: 'hover:bg-cyan-200 dark:hover:bg-cyan-700', },
     { id: 'geo', key: '岩', text: '岩', tableRowColor: 'hover:bg-yellow-200 dark:hover:bg-yellow-700', },
     { id: null, key: null, text: '不定', tableRowColor: 'hover:bg-slate-100 dark:hover:bg-slate-900', },
+]
+const columns = [
+    { scope: 'locator', text: '地图<br />标记' },
+    { scope: 'dispatch', text: '探索<br />派遣' },
+    { scope: 'stamina', text: '体力<br />减免' },
+    { scope: 'moving', text: '移速<br />加成' },
+    { scope: 'crafting', text: '烹饪 合成<br />锻造 建筑' },
+    { scope: 'others', text: '（未分类）' },
 ]
 
 function getTableRowColor(e: GenshinCharacter['element']) {
@@ -115,12 +125,11 @@ function getTableRowColor(e: GenshinCharacter['element']) {
                 <thead class="**:[th]:p-4">
                 <tr>
                     <th></th>
-                    <th class="py-3">地图<br />标记</th>
-                    <th class="py-3">探索<br />派遣</th>
-                    <th class="py-3">体力<br />减免</th>
-                    <th class="py-3">移速<br />加成</th>
-                    <th class="py-3">烹饪<br />与合成</th>
-                    <th class="py-3">(未分类)</th>
+                    <th v-for="{scope, text} in columns"
+                        :class="scope === columnHighlighted ? 'bg-slate-300 dark:bg-slate-600' : ''"
+                        class="py-3 cursor-pointer transition-colors duration-200 hover:text-slate-400 dark:hover:text-slate-500"
+                        @click="columnHighlighted = columnHighlighted === scope ? '' : scope"
+                        v-html="text" />
                 </tr>
                 </thead>
                 <tbody class="**:[td]:px-4 **:[td]:py-2">
@@ -128,36 +137,25 @@ function getTableRowColor(e: GenshinCharacter['element']) {
                     v-show="isRowShowable(character)"
                     :class="getTableRowColor(character.element)"
                     class="transition-colors duration-200">
-                    <td class="flex justify-center items-center">
-                        <span>{{ character.name }}</span>
-                        <Icon :class="character.rarity === 5 ? 'text-yellow-400' : 'text-purple-400'"
-                              class="ml-1"
-                              height="16"
-                              icon="uis:star" />
+                    <td>
+                        <div class="flex justify-center items-center">
+                            <div>{{ character.name }}</div>
+                            <Icon :class="character.rarity === 5 ? 'text-yellow-400' : 'text-purple-400'"
+                                  class="ml-1"
+                                  height="16"
+                                  icon="uis:star" />
+                        </div>
                     </td>
-                    <td :class="character.abilities.locator ? 'cursor-pointer' : ''"
-                        :title="character.abilities.locator?.verbose">
-                        {{ character.abilities.locator?.short ?? '' }}
-                    </td>
-                    <td :class="character.abilities.dispatch ? 'cursor-pointer' : ''"
-                        :title="character.abilities.dispatch?.verbose">
-                        {{ character.abilities.dispatch?.short ?? '' }}
-                    </td>
-                    <td :class="character.abilities.stamina ? 'cursor-pointer' : ''"
-                        :title="character.abilities.stamina?.verbose">
-                        {{ character.abilities.stamina?.short ?? '' }}
-                    </td>
-                    <td :class="character.abilities.moving ? 'cursor-pointer' : ''"
-                        :title="character.abilities.moving?.verbose">
-                        {{ character.abilities.moving?.short ?? '' }}
-                    </td>
-                    <td :class="character.abilities.crafting ? 'cursor-pointer' : ''"
-                        :title="character.abilities.crafting?.verbose">
-                        {{ character.abilities.crafting?.short ?? '' }}
-                    </td>
-                    <td :class="character.abilities.others ? 'cursor-pointer' : ''"
-                        :title="character.abilities.others?.verbose">
-                        {{ character.abilities.others?.short ?? '' }}
+                    <td v-for="{scope} in columns"
+                        :class="scope === columnHighlighted ? 'bg-slate-300 dark:bg-slate-600' : ''"
+                        class="transition-colors duration-200">
+                        <template v-for="ability in character.abilities">
+                            <p v-if="ability.scope === scope"
+                               :title="ability.original"
+                               class="cursor-help hover:opacity-25 transition-opacity duration-200">
+                                <span>{{ ability.short }}</span>
+                            </p>
+                        </template>
                     </td>
                 </tr>
                 </tbody>
