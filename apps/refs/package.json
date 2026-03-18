@@ -16,6 +16,7 @@
         "@navifox/types": "workspace:*",
         "@navifox/utils": "workspace:*",
         "@tailwindcss/vite": "catalog:",
+        "@unhead/vue": "catalog:",
         "@vueuse/core": "catalog:",
         "es-toolkit": "catalog:",
         "tailwindcss": "catalog:",

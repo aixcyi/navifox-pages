@@ -1,5 +1,7 @@
 import HomeView from '#/views/HomeView.vue';
 import { navifoxRefs } from '@navifox/constants';
+import { useWebsiteLinks, useWebsiteMetas } from '@navifox/utils';
+import { useHead } from '@unhead/vue';
 import { createRouter, createWebHistory } from 'vue-router';
 
 declare module 'vue-router' {
@@ -37,12 +39,13 @@ const router = createRouter({
         }
     ]
 })
-router.beforeEach((to, _, next) => {
-    document.title =
-        to.meta?.title
-            ? `${to.meta.title} - ${navifoxRefs.name}`
-            : navifoxRefs.name
-    next()
+router.beforeEach(to => {
+    useHead({
+        title: to.meta.title ?? navifoxRefs.name,
+        meta: [ ...useWebsiteMetas(navifoxRefs, { description: to.meta.description }) ],
+        link: [ ...useWebsiteLinks(navifoxRefs) ],
+        titleTemplate: to.meta.title ? `%s - ${navifoxRefs.name}` : null,
+    })
 })
 
 export default router;

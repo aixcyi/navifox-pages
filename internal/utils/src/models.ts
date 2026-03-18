@@ -7,13 +7,20 @@ import type { Website } from '@navifox/types';
  *
  * @see https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/meta/name 标准元数据名称
  */
-export function* useWebsiteMetas(site: Website) {
-    if (site.description)
-        yield { name: 'description', content: site.description }
-    if (site.author)
-        yield { name: 'author', content: site.author }
-    if (site.tags)
-        yield { name: 'keywords', content: site.tags.join(',') }
+export function* useWebsiteMetas(
+    site: Website,
+    overrides?: {
+        description?: string,
+        author?: string,
+        keywords?: string[],
+    },
+) {
+    if (site.description || overrides?.description)
+        yield { name: 'description', content: (overrides?.description ?? site.description)! }
+    if (site.author || overrides?.author)
+        yield { name: 'author', content: (overrides?.author ?? site.author)! }
+    if (site.tags || overrides?.keywords)
+        yield { name: 'keywords', content: (overrides?.keywords ?? site.tags)!.join(',') }
 }
 
 /**
