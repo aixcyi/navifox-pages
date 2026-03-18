@@ -7,10 +7,13 @@ import { default as characterAbilityMap } from './abilities.mjs';
 
 const target = '../../src/constants/characters.ts'
 const talentsText = {
-    'passive1': '固有天赋',
-    'passive2': '固有天赋',
-    'passive3': '固有天赋',
-    'passive4': '固有天赋',
+    'combat1': '普通攻击',
+    'combat2': '元素战技',
+    'combat3': '元素爆发',
+    'passive1': '被动天赋',
+    'passive2': '被动天赋',
+    'passive3': '被动天赋',
+    'passive4': '被动天赋',
 }
 const constellationsText = {
     'c1': '命之座 第1层',

@@ -48,11 +48,12 @@ const elements = [
     { id: null, key: null, text: '不定', tableRowColor: 'hover:bg-slate-100 dark:hover:bg-slate-900', },
 ]
 const columns = [
-    { scope: 'locator', text: '地图<br />标记' },
-    { scope: 'dispatch', text: '探索<br />派遣' },
-    { scope: 'stamina', text: '体力<br />减免' },
-    { scope: 'moving', text: '移速<br />加成' },
+    { scope: 'locator', text: '地图标记' },
+    { scope: 'dispatch', text: '探索派遣' },
+    { scope: 'stamina', text: '体力减免' },
+    { scope: 'moving', text: '移速加成' },
     { scope: 'crafting', text: '烹饪 合成<br />锻造 建筑' },
+    { scope: 'interaction', text: '环境交互' },
     { scope: 'others', text: '（未分类）' },
 ]
 
