@@ -28,7 +28,7 @@
         "@types/node": "catalog:",
         "@vitejs/plugin-vue": "catalog:",
         "@vue/tsconfig": "catalog:",
-        "genshin-db": "^5.2.9",
+        "genshin-db": "latest",
         "typescript": "catalog:",
         "vite": "catalog:",
         "vite-plugin-zip-file": "catalog:",
