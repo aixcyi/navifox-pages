@@ -151,7 +151,7 @@ function getTableRowColor(e: GenshinCharacter['element']) {
                         class="transition-colors duration-200">
                         <template v-for="ability in character.abilities">
                             <p v-if="ability.scope === scope"
-                               :title="ability.original"
+                               :title="ability.field ? `【${ability.field}】\n${ability.original}` : ability.original"
                                class="cursor-help hover:opacity-25 transition-opacity duration-200">
                                 <span>{{ ability.short }}</span>
                             </p>

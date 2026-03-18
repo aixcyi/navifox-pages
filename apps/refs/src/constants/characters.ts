@@ -10,6 +10,7 @@ export const characters: GenshinCharacter[] = [
         "abilities": [
             {
                 "scope": "crafting",
+                "field": "固有天赋",
                 "short": "素材倍产",
                 "original": "合成武器突破素材时，有10%概率获得2倍产出。"
             }
@@ -32,6 +33,7 @@ export const characters: GenshinCharacter[] = [
         "abilities": [
             {
                 "scope": "others",
+                "field": "固有天赋",
                 "short": "禽肉,瘦肉,冷鲜肉",
                 "original": "埃洛伊在队伍中时，队伍中自己的角色接近产出禽肉、兽肉与冷鲜肉的小动物时，不会轻易惊动它们。"
             }
@@ -46,6 +48,7 @@ export const characters: GenshinCharacter[] = [
         "abilities": [
             {
                 "scope": "crafting",
+                "field": "固有天赋",
                 "short": "素材倍产",
                 "original": "合成武器突破素材时，有10%概率获得2倍产出。"
             }
@@ -84,11 +87,13 @@ export const characters: GenshinCharacter[] = [
         "abilities": [
             {
                 "scope": "moving",
+                "field": "命之座 第6层",
                 "short": "元素爆发后",
                 "original": "使用箭雨后的10秒内，队伍中所有角色的移动速度提升15%，攻击力提升15%。"
             },
             {
                 "scope": "stamina",
+                "field": "固有天赋",
                 "short": "滑翔",
                 "original": "队伍中自己的角色滑翔消耗的体力降低20%。\n无法与效果完全相同的固有天赋叠加。"
             }
@@ -103,6 +108,7 @@ export const characters: GenshinCharacter[] = [
         "abilities": [
             {
                 "scope": "crafting",
+                "field": "固有天赋",
                 "short": "天赋另还",
                 "original": "合成角色天赋素材时，有25%概率额外产生一份地区相同的其他随机天赋素材，等阶与合成所消耗的素材相同。"
             }
@@ -117,6 +123,7 @@ export const characters: GenshinCharacter[] = [
         "abilities": [
             {
                 "scope": "crafting",
+                "field": "固有天赋",
                 "short": "烹饪倍产",
                 "original": "完美烹饪恢复类食物时，有12%概率获得2倍产出。"
             }
@@ -139,6 +146,7 @@ export const characters: GenshinCharacter[] = [
         "abilities": [
             {
                 "scope": "dispatch",
+                "field": "固有天赋",
                 "short": "更少时间",
                 "original": "在蒙德执行探索派遣任务时，消耗的时间缩短25%。"
             }
@@ -153,6 +161,7 @@ export const characters: GenshinCharacter[] = [
         "abilities": [
             {
                 "scope": "stamina",
+                "field": "固有天赋",
                 "short": "游泳",
                 "original": "队伍中自己的角色游泳消耗的体力降低20%。\n无法与效果完全相同的固有天赋叠加。"
             }
@@ -175,11 +184,13 @@ export const characters: GenshinCharacter[] = [
         "abilities": [
             {
                 "scope": "moving",
+                "field": "固有天赋",
                 "short": "护盾内",
                 "original": "处于猫爪冻冻的护盾保护下的角色，移动速度提升10%，体力消耗降低10%。"
             },
             {
                 "scope": "crafting",
+                "field": "固有天赋",
                 "short": "烹饪倍产",
                 "original": "完美烹饪恢复类食物时，有12%概率获得2倍产出。"
             }
@@ -194,6 +205,7 @@ export const characters: GenshinCharacter[] = [
         "abilities": [
             {
                 "scope": "crafting",
+                "field": "固有天赋",
                 "short": "锻造返还",
                 "original": "锻造双手剑类武器时，返还15%消耗的矿石。"
             }
@@ -208,6 +220,7 @@ export const characters: GenshinCharacter[] = [
         "abilities": [
             {
                 "scope": "moving",
+                "field": "固有天赋",
                 "short": "日间",
                 "original": "在白天（6时至18时），队伍中自己的角色获得迅行效果：移动速度提高10%。\n该效果在秘境、征讨领域、深境螺旋中无效，迅行效果无法叠加。"
             }
@@ -230,6 +243,7 @@ export const characters: GenshinCharacter[] = [
         "abilities": [
             {
                 "scope": "crafting",
+                "field": "固有天赋",
                 "short": "素材倍产",
                 "original": "合成角色与武器培养素材时，有25%的概率返还部分合成材料。"
             }
@@ -244,6 +258,7 @@ export const characters: GenshinCharacter[] = [
         "abilities": [
             {
                 "scope": "others",
+                "field": "",
                 "short": "奔狼岭→吸引狼群",
                 "original": "（为手工标注，游戏内无对应描述）"
             }
@@ -258,6 +273,7 @@ export const characters: GenshinCharacter[] = [
         "abilities": [
             {
                 "scope": "dispatch",
+                "field": "固有天赋",
                 "short": "更多回报",
                 "original": "在须弥执行时长为20小时的探索派遣任务时，获得的奖励增加25%。"
             }
@@ -280,6 +296,7 @@ export const characters: GenshinCharacter[] = [
         "abilities": [
             {
                 "scope": "stamina",
+                "field": "固有天赋",
                 "short": "水中",
                 "original": "队伍中自己的角色水中耐力消耗降低35%。\n无法与效果完全相同的固有天赋叠加。"
             }
@@ -294,6 +311,7 @@ export const characters: GenshinCharacter[] = [
         "abilities": [
             {
                 "scope": "dispatch",
+                "field": "固有天赋",
                 "short": "更少时间",
                 "original": "在蒙德执行探索派遣任务时，消耗的时间缩短25%。"
             }
@@ -308,6 +326,7 @@ export const characters: GenshinCharacter[] = [
         "abilities": [
             {
                 "scope": "stamina",
+                "field": "固有天赋",
                 "short": "冲刺",
                 "original": "队伍中自己的角色冲刺消耗的体力降低20%。\n无法与效果完全相同的固有天赋叠加。"
             }
@@ -330,6 +349,7 @@ export const characters: GenshinCharacter[] = [
         "abilities": [
             {
                 "scope": "crafting",
+                "field": "固有天赋",
                 "short": "锻造返还",
                 "original": "锻造弓类武器时，返还15%消耗的矿石。"
             }
@@ -368,16 +388,19 @@ export const characters: GenshinCharacter[] = [
         "abilities": [
             {
                 "scope": "moving",
+                "field": "固有天赋",
                 "short": "纳塔采集",
                 "original": "在纳塔存在燃素机制的区域时，与部分采集物交互能够使队伍中自己的角色移动速度提高15%，持续10秒。此外，在小地图上显示周围的纳塔区域特产的位置。"
             },
             {
                 "scope": "moving",
+                "field": "命之座 第1层",
                 "short": "战技落地后",
                 "original": "通过悬猎·游骋高狩，基尼奇进行空中摆荡落地后，移动速度提升30%，持续6秒。\n此外，迴猎贯鳞炮的暴击伤害提升100%。"
             },
             {
                 "scope": "locator",
+                "field": "固有天赋",
                 "short": "区域特产",
                 "original": "在纳塔存在燃素机制的区域时，与部分采集物交互能够使队伍中自己的角色移动速度提高15%，持续10秒。此外，在小地图上显示周围的纳塔区域特产的位置。"
             }
@@ -392,6 +415,7 @@ export const characters: GenshinCharacter[] = [
         "abilities": [
             {
                 "scope": "moving",
+                "field": "固有天赋",
                 "short": "日间",
                 "original": "在白天（6时至18时），队伍中自己的角色获得迅行效果：移动速度提高10%。\n该效果在秘境、征讨领域、深境螺旋中无效，迅行效果无法叠加。"
             }
@@ -406,6 +430,7 @@ export const characters: GenshinCharacter[] = [
         "abilities": [
             {
                 "scope": "dispatch",
+                "field": "固有天赋",
                 "short": "更少时间",
                 "original": "在稻妻执行探索派遣任务时，消耗的时间缩短25%。"
             }
@@ -420,6 +445,7 @@ export const characters: GenshinCharacter[] = [
         "abilities": [
             {
                 "scope": "dispatch",
+                "field": "固有天赋",
                 "short": "更多回报",
                 "original": "在稻妻执行时长为20小时的探索派遣任务时，获得的奖励增加25%。"
             }
@@ -434,6 +460,7 @@ export const characters: GenshinCharacter[] = [
         "abilities": [
             {
                 "scope": "locator",
+                "field": "固有天赋",
                 "short": "区域特产",
                 "original": "在纳塔存在燃素机制的区域时，与部分采集物交互能恢复20点体力。此外，在小地图上显示周围的纳塔区域特产的位置。"
             }
@@ -448,6 +475,7 @@ export const characters: GenshinCharacter[] = [
         "abilities": [
             {
                 "scope": "crafting",
+                "field": "固有天赋",
                 "short": "摆设返还",
                 "original": "制作景观、建筑、庭院类摆设时，有100%概率返还部分材料。"
             }
@@ -462,6 +490,7 @@ export const characters: GenshinCharacter[] = [
         "abilities": [
             {
                 "scope": "stamina",
+                "field": "固有天赋",
                 "short": "冲刺",
                 "original": "队伍中自己的角色冲刺消耗的体力降低20%。\n无法与效果完全相同的固有天赋叠加。"
             }
@@ -476,6 +505,7 @@ export const characters: GenshinCharacter[] = [
         "abilities": [
             {
                 "scope": "stamina",
+                "field": "固有天赋",
                 "short": "攀爬",
                 "original": "队伍中自己的角色攀爬消耗的体力降低20%。\n无法与效果完全相同的固有天赋叠加。"
             }
@@ -490,6 +520,7 @@ export const characters: GenshinCharacter[] = [
         "abilities": [
             {
                 "scope": "stamina",
+                "field": "固有天赋",
                 "short": "滑翔",
                 "original": "队伍中自己的角色滑翔消耗的体力降低20%。\n无法与效果完全相同的固有天赋叠加。"
             }
@@ -504,6 +535,7 @@ export const characters: GenshinCharacter[] = [
         "abilities": [
             {
                 "scope": "locator",
+                "field": "固有天赋",
                 "short": "区域特产",
                 "original": "在小地图上显示周围的蒙德区域特产的位置。"
             }
@@ -518,6 +550,7 @@ export const characters: GenshinCharacter[] = [
         "abilities": [
             {
                 "scope": "locator",
+                "field": "固有天赋",
                 "short": "区域特产",
                 "original": "在小地图上显示周围的枫丹区域特产的位置。"
             }
@@ -532,6 +565,7 @@ export const characters: GenshinCharacter[] = [
         "abilities": [
             {
                 "scope": "dispatch",
+                "field": "固有天赋",
                 "short": "更少时间",
                 "original": "在璃月执行探索派遣任务时，消耗的时间缩短25%。"
             }
@@ -546,6 +580,7 @@ export const characters: GenshinCharacter[] = [
         "abilities": [
             {
                 "scope": "others",
+                "field": "",
                 "short": "挪德卡莱→吸引小动物",
                 "original": "（为手工标注，游戏内无对应描述）"
             }
@@ -560,6 +595,7 @@ export const characters: GenshinCharacter[] = [
         "abilities": [
             {
                 "scope": "crafting",
+                "field": "固有天赋",
                 "short": "素材倍产",
                 "original": "合成武器突破素材时，有10%概率获得2倍产出。"
             }
@@ -574,6 +610,7 @@ export const characters: GenshinCharacter[] = [
         "abilities": [
             {
                 "scope": "crafting",
+                "field": "固有天赋",
                 "short": "天赋倍产",
                 "original": "合成角色天赋素材时，有10%概率获得2倍产出。"
             }
@@ -596,6 +633,7 @@ export const characters: GenshinCharacter[] = [
         "abilities": [
             {
                 "scope": "others",
+                "field": "固有天赋",
                 "short": "剑,长枪→突破更便宜",
                 "original": "突破单手剑和长柄武器时，消耗的摩拉数量减少50%。"
             }
@@ -610,11 +648,13 @@ export const characters: GenshinCharacter[] = [
         "abilities": [
             {
                 "scope": "stamina",
+                "field": "固有天赋",
                 "short": "冲刺",
                 "original": "队伍中自己的角色冲刺消耗的体力降低20%。\n无法与效果完全相同的固有天赋叠加。"
             },
             {
                 "scope": "others",
+                "field": "",
                 "short": "奔狼岭→吸引狼群",
                 "original": "（为手工标注，游戏内无对应描述）"
             }
@@ -629,6 +669,7 @@ export const characters: GenshinCharacter[] = [
         "abilities": [
             {
                 "scope": "crafting",
+                "field": "固有天赋",
                 "short": "药剂返还",
                 "original": "合成药剂时，有20%概率返还部分合成材料。"
             }
@@ -643,6 +684,7 @@ export const characters: GenshinCharacter[] = [
         "abilities": [
             {
                 "scope": "locator",
+                "field": "固有天赋",
                 "short": "区域特产",
                 "original": "在小地图上显示周围的枫丹区域特产的位置。"
             }
@@ -657,6 +699,7 @@ export const characters: GenshinCharacter[] = [
         "abilities": [
             {
                 "scope": "locator",
+                "field": "固有天赋",
                 "short": "复苏水团",
                 "original": "在小地图上显示周围复苏水团的位置，并使接触复苏水团时恢复的水中耐力与生命值提升25%。"
             }
@@ -671,6 +714,7 @@ export const characters: GenshinCharacter[] = [
         "abilities": [
             {
                 "scope": "others",
+                "field": "固有天赋",
                 "short": "弓,法器→突破更便宜",
                 "original": "突破弓与法器时，消耗的摩拉数量减少50%。"
             }
@@ -685,6 +729,7 @@ export const characters: GenshinCharacter[] = [
         "abilities": [
             {
                 "scope": "stamina",
+                "field": "固有天赋",
                 "short": "冲刺",
                 "original": "队伍中自己的角色冲刺消耗的体力降低20%。\n无法与效果完全相同的固有天赋叠加。"
             }
@@ -747,6 +792,7 @@ export const characters: GenshinCharacter[] = [
         "abilities": [
             {
                 "scope": "moving",
+                "field": "固有天赋",
                 "short": "夜间",
                 "original": "在夜间（18时至6时），队伍中自己的角色获得迅行效果：移动速度提高10%。\n该效果在秘境、征讨领域、深境螺旋中无效，迅行效果无法叠加。"
             }
@@ -761,6 +807,7 @@ export const characters: GenshinCharacter[] = [
         "abilities": [
             {
                 "scope": "locator",
+                "field": "固有天赋",
                 "short": "区域特产",
                 "original": "在纳塔存在燃素机制的区域时，与部分采集物交互能够恢复15点燃素。此外，在小地图上显示周围的纳塔区域特产的位置。"
             }
@@ -791,6 +838,7 @@ export const characters: GenshinCharacter[] = [
         "abilities": [
             {
                 "scope": "locator",
+                "field": "固有天赋",
                 "short": "区域特产",
                 "original": "在小地图上显示周围的蒙德区域特产的位置。"
             }
@@ -805,6 +853,7 @@ export const characters: GenshinCharacter[] = [
         "abilities": [
             {
                 "scope": "crafting",
+                "field": "固有天赋",
                 "short": "素材返还",
                 "original": "合成武器突破素材时，有25%概率返还部分合成材料。"
             }
@@ -819,6 +868,7 @@ export const characters: GenshinCharacter[] = [
         "abilities": [
             {
                 "scope": "moving",
+                "field": "固有天赋",
                 "short": "水下冲刺",
                 "original": "队伍中自己的角色进行水下冲刺时，移动速度提升15%。\n无法与效果完全相同的固有天赋叠加。"
             }
@@ -841,6 +891,7 @@ export const characters: GenshinCharacter[] = [
         "abilities": [
             {
                 "scope": "dispatch",
+                "field": "固有天赋",
                 "short": "更多回报",
                 "original": "在枫丹执行时长为20小时的探索派遣任务时，获得的奖励增加25%。"
             }
@@ -863,6 +914,7 @@ export const characters: GenshinCharacter[] = [
         "abilities": [
             {
                 "scope": "crafting",
+                "field": "固有天赋",
                 "short": "烹饪倍产",
                 "original": "完美烹饪冒险类食物时，有12%概率获得2倍产出。"
             }
@@ -877,6 +929,7 @@ export const characters: GenshinCharacter[] = [
         "abilities": [
             {
                 "scope": "locator",
+                "field": "固有天赋",
                 "short": "锻造矿石",
                 "original": "在小地图上显示周围能产出锻造用矿石的矿脉位置。"
             }
@@ -891,6 +944,7 @@ export const characters: GenshinCharacter[] = [
         "abilities": [
             {
                 "scope": "crafting",
+                "field": "固有天赋",
                 "short": "烹饪倍产",
                 "original": "完美烹饪防御类食物时，有12%概率获得2倍产出。"
             }
@@ -905,6 +959,7 @@ export const characters: GenshinCharacter[] = [
         "abilities": [
             {
                 "scope": "moving",
+                "field": "固有天赋",
                 "short": "滑翔时",
                 "original": "队伍中自己的角色滑翔时移动速度提高15%。\n无法与效果完全相同的固有天赋叠加。"
             }
@@ -919,6 +974,7 @@ export const characters: GenshinCharacter[] = [
         "abilities": [
             {
                 "scope": "locator",
+                "field": "固有天赋",
                 "short": "区域特产",
                 "original": "在小地图上显示周围的璃月区域特产的位置。"
             }
@@ -949,6 +1005,7 @@ export const characters: GenshinCharacter[] = [
         "abilities": [
             {
                 "scope": "others",
+                "field": "固有天赋",
                 "short": "禽肉,瘦肉,冷鲜肉",
                 "original": "绮良良在队伍中时，队伍中自己的角色接近产出禽肉、兽肉与冷鲜肉的小动物时，不会轻易惊动它们。"
             }
@@ -971,6 +1028,7 @@ export const characters: GenshinCharacter[] = [
         "abilities": [
             {
                 "scope": "moving",
+                "field": "固有天赋",
                 "short": "锦衣",
                 "original": "队伍中任意自己的角色装备了默认衣装以外的衣装，或初始之翼以外的风之翼时，队伍中自己的角色获得迅行效果：移动速度提升10%。\n该效果在秘境、征讨领域、深境螺旋中无效，迅行效果无法叠加。"
             }
@@ -993,11 +1051,13 @@ export const characters: GenshinCharacter[] = [
         "abilities": [
             {
                 "scope": "moving",
+                "field": "命之座 第2层",
                 "short": "获得元素",
                 "original": "琴获得元素晶球或元素微粒时，队伍中所有角色获得15%攻击速度和15%移动速度提升，持续15秒。"
             },
             {
                 "scope": "crafting",
+                "field": "固有天赋",
                 "short": "烹饪倍产",
                 "original": "完美烹饪恢复类食物时，有12%概率获得2倍产出。"
             }
@@ -1012,6 +1072,7 @@ export const characters: GenshinCharacter[] = [
         "abilities": [
             {
                 "scope": "dispatch",
+                "field": "固有天赋",
                 "short": "更多回报",
                 "original": "在须弥执行时长为20小时的探索派遣任务时，获得的奖励增加25%。"
             }
@@ -1026,6 +1087,7 @@ export const characters: GenshinCharacter[] = [
         "abilities": [
             {
                 "scope": "locator",
+                "field": "固有天赋",
                 "short": "区域特产",
                 "original": "在小地图上显示周围的须弥区域特产的位置。"
             }
@@ -1040,6 +1102,7 @@ export const characters: GenshinCharacter[] = [
         "abilities": [
             {
                 "scope": "crafting",
+                "field": "固有天赋",
                 "short": "素材倍产",
                 "original": "合成角色与武器培养素材时，有10%概率获得2倍产出。"
             }
@@ -1054,6 +1117,7 @@ export const characters: GenshinCharacter[] = [
         "abilities": [
             {
                 "scope": "stamina",
+                "field": "固有天赋",
                 "short": "游泳",
                 "original": "队伍中自己的角色游泳消耗的体力降低20%。\n无法与效果完全相同的固有天赋叠加。"
             }
@@ -1068,6 +1132,7 @@ export const characters: GenshinCharacter[] = [
         "abilities": [
             {
                 "scope": "dispatch",
+                "field": "固有天赋",
                 "short": "更多回报",
                 "original": "在璃月执行时长为20小时的探索派遣任务时，获得的奖励增加25%。"
             }
@@ -1082,6 +1147,7 @@ export const characters: GenshinCharacter[] = [
         "abilities": [
             {
                 "scope": "crafting",
+                "field": "固有天赋",
                 "short": "素材倍产",
                 "original": "合成武器突破素材时，有10%概率获得2倍产出。"
             }
@@ -1120,6 +1186,7 @@ export const characters: GenshinCharacter[] = [
         "abilities": [
             {
                 "scope": "locator",
+                "field": "固有天赋",
                 "short": "区域特产",
                 "original": "在小地图上显示周围的须弥区域特产的位置。"
             }
@@ -1150,6 +1217,7 @@ export const characters: GenshinCharacter[] = [
         "abilities": [
             {
                 "scope": "stamina",
+                "field": "固有天赋",
                 "short": "滑翔",
                 "original": "队伍中自己的角色滑翔消耗的体力降低20%。\n无法与效果完全相同的固有天赋叠加。"
             }
@@ -1164,6 +1232,7 @@ export const characters: GenshinCharacter[] = [
         "abilities": [
             {
                 "scope": "locator",
+                "field": "固有天赋",
                 "short": "区域特产",
                 "original": "在小地图上显示周围的稻妻区域特产的位置。"
             }
@@ -1202,6 +1271,7 @@ export const characters: GenshinCharacter[] = [
         "abilities": [
             {
                 "scope": "stamina",
+                "field": "固有天赋",
                 "short": "冲刺",
                 "original": "队伍中自己的角色冲刺消耗的体力降低20%。\n无法与效果完全相同的固有天赋叠加。"
             }
@@ -1216,6 +1286,7 @@ export const characters: GenshinCharacter[] = [
         "abilities": [
             {
                 "scope": "moving",
+                "field": "固有天赋",
                 "short": "滑翔时",
                 "original": "队伍中自己的角色滑翔时移动速度提高15%。\n无法与效果完全相同的固有天赋叠加。"
             }
@@ -1230,6 +1301,7 @@ export const characters: GenshinCharacter[] = [
         "abilities": [
             {
                 "scope": "crafting",
+                "field": "固有天赋",
                 "short": "烹饪倍产",
                 "original": "完美烹饪攻击类食物时，有12%概率获得2倍产出。"
             }
@@ -1244,6 +1316,7 @@ export const characters: GenshinCharacter[] = [
         "abilities": [
             {
                 "scope": "crafting",
+                "field": "固有天赋",
                 "short": "摆设返还",
                 "original": "制作装潢、摆件、景观类摆设时，有100%概率返还部分材料。"
             }
@@ -1258,6 +1331,7 @@ export const characters: GenshinCharacter[] = [
         "abilities": [
             {
                 "scope": "stamina",
+                "field": "固有天赋",
                 "short": "攀爬",
                 "original": "队伍中自己的角色攀爬消耗的体力降低20%。\n无法与效果完全相同的固有天赋叠加。"
             }
@@ -1272,6 +1346,7 @@ export const characters: GenshinCharacter[] = [
         "abilities": [
             {
                 "scope": "crafting",
+                "field": "固有天赋",
                 "short": "烹饪倍产",
                 "original": "完美烹饪防御类食物时，有12%概率获得2倍产出。"
             }
@@ -1286,6 +1361,7 @@ export const characters: GenshinCharacter[] = [
         "abilities": [
             {
                 "scope": "crafting",
+                "field": "固有天赋",
                 "short": "天赋返还",
                 "original": "合成角色天赋素材时，有25%概率返还部分合成材料。"
             }
@@ -1308,6 +1384,7 @@ export const characters: GenshinCharacter[] = [
         "abilities": [
             {
                 "scope": "locator",
+                "field": "固有天赋",
                 "short": "区域特产",
                 "original": "在小地图上显示周围的璃月区域特产的位置。"
             }
@@ -1322,6 +1399,7 @@ export const characters: GenshinCharacter[] = [
         "abilities": [
             {
                 "scope": "others",
+                "field": "固有天赋",
                 "short": "生物→野生→其它",
                 "original": "瑶瑶在队伍中时，队伍中自己的角色接近晶蝶等部分生物时，不会惊动它们。\n有效对象可参考图鉴中「生物志 / 野生动物」的「其他」分类。"
             }
@@ -1344,6 +1422,7 @@ export const characters: GenshinCharacter[] = [
         "abilities": [
             {
                 "scope": "dispatch",
+                "field": "固有天赋",
                 "short": "更多回报",
                 "original": "在璃月执行时长为20小时的探索派遣任务时，获得的奖励增加25%。"
             }
@@ -1382,6 +1461,7 @@ export const characters: GenshinCharacter[] = [
         "abilities": [
             {
                 "scope": "crafting",
+                "field": "固有天赋",
                 "short": "天赋倍产",
                 "original": "合成角色天赋素材时，有10%概率获得2倍产出。"
             }
@@ -1396,6 +1476,7 @@ export const characters: GenshinCharacter[] = [
         "abilities": [
             {
                 "scope": "crafting",
+                "field": "固有天赋",
                 "short": "烹饪倍产",
                 "original": "完美烹饪冒险类食物时，有12%概率获得2倍产出。"
             }
@@ -1410,6 +1491,7 @@ export const characters: GenshinCharacter[] = [
         "abilities": [
             {
                 "scope": "others",
+                "field": "固有天赋",
                 "short": "生物→野生→其它",
                 "original": "早柚在队伍中时，队伍中自己的角色接近晶蝶等部分生物时，不会惊动它们。\n有效对象可参考图鉴中「生物志 / 野生动物」的「其他」分类。"
             }
@@ -1424,6 +1506,7 @@ export const characters: GenshinCharacter[] = [
         "abilities": [
             {
                 "scope": "crafting",
+                "field": "固有天赋",
                 "short": "锻造返还",
                 "original": "锻造长柄武器时，返还15%消耗的矿石。"
             }
@@ -1438,6 +1521,7 @@ export const characters: GenshinCharacter[] = [
         "abilities": [
             {
                 "scope": "dispatch",
+                "field": "固有天赋",
                 "short": "更少时间",
                 "original": "在璃月执行探索派遣任务时，消耗的时间缩短25%。"
             }

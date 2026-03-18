@@ -5,6 +5,23 @@ import { join, normalize } from 'node:path';
 import { default as characterAbilityMap } from './abilities.mjs';
 
 
+const target = '../../src/constants/characters.ts'
+const talentsText = {
+    'passive1': '固有天赋',
+    'passive2': '固有天赋',
+    'passive3': '固有天赋',
+    'passive4': '固有天赋',
+}
+const constellationsText = {
+    'c1': '命之座 第1层',
+    'c2': '命之座 第2层',
+    'c3': '命之座 第3层',
+    'c4': '命之座 第4层',
+    'c5': '命之座 第5层',
+    'c6': '命之座 第6层',
+}
+
+
 /**
  * 初始化数据库。
  */
@@ -52,13 +69,16 @@ async function migrate(to) {
             const dbTalents = genshindb.talents(name)
             const dbConstellations = genshindb.constellations(name)
             for (const {scope, short, talent, constellation} of characterAbilityMap[name]) {
-                // TODO: 如何提取描述位置（命之座第6层）？还是手动转换字段名？
+                const field =
+                    talent ? talentsText[talent]
+                        : constellation ? constellationsText[constellation]
+                            : ''
                 const original = (
                     talent ? dbTalents[talent]['description']
                         : constellation ? dbConstellations[constellation]['description']
                             : '（为手工标注，游戏内无对应描述）'
                 )
-                data.abilities.push({scope, short, original})
+                data.abilities.push({scope, field, short, original})
             }
         }
         dataset.push(data)
@@ -93,7 +113,7 @@ async function migrate(to) {
 (async function main() {
     // 明确被注入的目标
     const [_, egoPath] = process.argv
-    const targetPath = normalize(join(egoPath, '../../src/constants/characters.ts'))
+    const targetPath = normalize(join(egoPath, target))
     console.log(
         `File will be override:\n\t${targetPath}`
     )

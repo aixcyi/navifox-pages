@@ -14,8 +14,13 @@ export type AbilityScope = 'locator' | 'dispatch' | 'stamina' | 'moving' | 'craf
  * 能力（包含能力归属领域、简述和原始描述）。
  */
 export interface Ability {
+    /** 能力归属的领域。 */
     scope: AbilityScope
+    /** 能力所在位置。 */
+    field: string
+    /** 简述。 */
     short: string
+    /** 原始描述。 */
     original: string
 }
 
