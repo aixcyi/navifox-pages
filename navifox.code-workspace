@@ -1,8 +1,7 @@
 {
     "settings": {
-        "editor.defaultFormatter": "Vue.volar",
-        "javascript.preferences.quoteStyle": "single",
-        "typescript.preferences.quoteStyle": "single",
+        "html.format.indentInnerHtml": false,
+        "js/ts.preferences.quoteStyle": "single",
         "html.format.wrapAttributes": "preserve-aligned",
         "css.lint.duplicateProperties": "warning",
         "css.lint.zeroUnits": "warning",
@@ -13,28 +12,40 @@
         {
             "name": "路狐领航 @navifox/www",
             "path": "./apps/www",
-        }, {
+        },
+        {
             "name": "文档月饼盒 @navifox/docs",
             "path": "./apps/docs",
-        }, {
+        },
+        {
             "name": "己言简 @navifox/cv",
             "path": "./apps/cv",
-        }, {
-            "name": "罗狐内参 @navifox/refs",
+        },
+        {
+            "name": "星笺 @navifox/refs",
             "path": "./apps/refs",
-        }, {
-            "name": "@navifox/tsconfig",
-            "path": "./internal/tsconfig",
-        }, {
-            "name": "@navifox/types",
-            "path": "./internal/types",
-        }, {
+        },
+        {
             "name": "@navifox/constants",
             "path": "./internal/constants",
-        }, {
+        },
+        {
+            "name": "@navifox/styles",
+            "path": "./internal/styles",
+        },
+        {
+            "name": "@navifox/tsconfig",
+            "path": "./internal/tsconfig",
+        },
+        {
+            "name": "@navifox/types",
+            "path": "./internal/types",
+        },
+        {
             "name": "@navifox/utils",
             "path": "./internal/utils",
-        }, {
+        },
+        {
             "name": "根目录",
             "path": ".",
         },

@@ -30,7 +30,7 @@ const constellationsText = {
  */
 async function initial() {
     genshindb.setOptions({
-        queryLanguages: [genshindb.Language.ChineseSimplified],
+        queryLanguages: [ genshindb.Language.ChineseSimplified ],
         resultLanguage: genshindb.Language.ChineseSimplified,
     })
 }
@@ -39,7 +39,7 @@ async function initial() {
  * 预检数据正确性。
  */
 async function precheck() {
-    const nameset = new Set(genshindb.characters('names', {matchCategories: true}))
+    const nameset = new Set(genshindb.characters('names', { matchCategories: true }))
     for (const name of Object.keys(characterAbilityMap))
         if (!nameset.has(name)) {
             console.error(`Character "${name}" does not exist !!!`)
@@ -53,7 +53,7 @@ async function precheck() {
  */
 async function migrate(to) {
     const dataset = []
-    const characters = genshindb.characters('names', {matchCategories: true, verboseCategories: true})
+    const characters = genshindb.characters('names', { matchCategories: true, verboseCategories: true })
     for (const character of characters) {
         // 角色基本信息
         const name = character['name']
@@ -71,7 +71,7 @@ async function migrate(to) {
         if (name in characterAbilityMap) {
             const dbTalents = genshindb.talents(name)
             const dbConstellations = genshindb.constellations(name)
-            for (const {scope, short, talent, constellation} of characterAbilityMap[name]) {
+            for (const { scope, short, talent, constellation } of characterAbilityMap[name]) {
                 const field =
                     talent ? talentsText[talent]
                         : constellation ? constellationsText[constellation]
@@ -81,7 +81,7 @@ async function migrate(to) {
                         : constellation ? dbConstellations[constellation]['description']
                             : '（为手工标注，游戏内无对应描述）'
                 )
-                data.abilities.push({scope, field, short, original})
+                data.abilities.push({ scope, field, short, original })
             }
         }
         dataset.push(data)
@@ -92,13 +92,13 @@ async function migrate(to) {
     // 这里将 `name` 字段改成与天赋数据库中的一致。
     remove(dataset, c => c.name === '空' || c.name === '荧')
     dataset.push(
-        {name: '旅行者 (火元素)', rarity: 5, region: null, weapon: '单手剑', element: '火', abilities: []},
-        {name: '旅行者 (水元素)', rarity: 5, region: null, weapon: '单手剑', element: '水', abilities: []},
-        {name: '旅行者 (风元素)', rarity: 5, region: null, weapon: '单手剑', element: '风', abilities: []},
-        {name: '旅行者 (雷元素)', rarity: 5, region: null, weapon: '单手剑', element: '雷', abilities: []},
-        {name: '旅行者 (草元素)', rarity: 5, region: null, weapon: '单手剑', element: '草', abilities: []},
+        { name: '旅行者 (火元素)', rarity: 5, region: null, weapon: '单手剑', element: '火', abilities: [] },
+        { name: '旅行者 (水元素)', rarity: 5, region: null, weapon: '单手剑', element: '水', abilities: [] },
+        { name: '旅行者 (风元素)', rarity: 5, region: null, weapon: '单手剑', element: '风', abilities: [] },
+        { name: '旅行者 (雷元素)', rarity: 5, region: null, weapon: '单手剑', element: '雷', abilities: [] },
+        { name: '旅行者 (草元素)', rarity: 5, region: null, weapon: '单手剑', element: '草', abilities: [] },
         // {name: '旅行者 (冰元素)', rarity: 5, region: null, weapon: '单手剑', element: '冰', abilities: []},
-        {name: '旅行者 (岩元素)', rarity: 5, region: null, weapon: '单手剑', element: '岩', abilities: []},
+        { name: '旅行者 (岩元素)', rarity: 5, region: null, weapon: '单手剑', element: '岩', abilities: [] },
     )
 
     // 按拼音排序
@@ -115,7 +115,7 @@ async function migrate(to) {
 
 (async function main() {
     // 明确被注入的目标
-    const [_, egoPath] = process.argv
+    const [ _, egoPath ] = process.argv
     const targetPath = normalize(join(egoPath, target))
     console.log(
         `File will be override:\n\t${targetPath}`

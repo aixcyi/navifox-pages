@@ -18,7 +18,7 @@ async function cleanTargetsRecursively(currentDir, targets) {
 
             if (targets.includes(item)) {
                 // 匹配到目标目录或文件时直接删除
-                await fs.rm(itemPath, {force: true, recursive: true});
+                await fs.rm(itemPath, { force: true, recursive: true });
                 console.log(`Deleted: ${itemPath}`);
             } else if (stat.isDirectory()) {
                 // 只对目录进行递归处理
@@ -34,9 +34,9 @@ async function cleanTargetsRecursively(currentDir, targets) {
 
 (async function startCleanup() {
     // 要删除的目录及文件名称
-    const targets = ['node_modules', 'dist', '.turbo', 'dist.zip'];
+    const targets = [ 'node_modules', 'dist', '.turbo', 'dist.zip' ];
     const deleteLockFile = process.argv.includes('--del-lock');
-    const cleanupTargets = [...targets];
+    const cleanupTargets = [ ...targets ];
 
     if (deleteLockFile) {
         cleanupTargets.push('pnpm-lock.yaml');
