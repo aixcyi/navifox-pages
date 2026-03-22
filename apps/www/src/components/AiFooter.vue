@@ -10,11 +10,11 @@ import {
     thanks,
     tighnari,
 } from '@navifox/constants';
-import { useDark, useToggle } from '@vueuse/core';
+import { useBrowserLocation, useDark, useToggle } from '@vueuse/core';
 
 const isDark = useDark()
+const location = useBrowserLocation()
 const toggleDark = useToggle(isDark)
-const version = __APP_VERSION__
 const linkMap = [
     {
         title: '站内导航', subtitle: 'Sitemap', data: sitemap,
@@ -39,12 +39,16 @@ const linkMap = [
         }
     },
 ]
+
+function isOutOfMySite(hyperlink: string) {
+    return new URL(hyperlink).hostname !== location.value.hostname
+}
 </script>
 
 
 <template>
 <footer class="text-slate-700 dark:text-slate-300 bg-slate-200 dark:bg-slate-800">
-    <div class="MaxContainer mx-auto">
+    <div class="MaxContainer py-10!">
         <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 xl:gap-8">
 
             <div v-for="{title, subtitle, data, styles} in linkMap">
@@ -53,6 +57,7 @@ const linkMap = [
                 </h3>
                 <div class="flex flex-col flex-nowrap gap-3">
                     <a v-for="item in data"
+                       v-show="isOutOfMySite(item.link)"
                        :class="styles.link"
                        :href="item.link"
                        :target="item.link.startsWith('https://') ? '_blank' : '_self'"
@@ -154,9 +159,7 @@ const linkMap = [
                         字体渲染。
                     </span>
                 </p>
-                <p>
-                    <span>构建为 <code>{{ version }}</code></span>
-                </p>
+                <slot name="additions"></slot>
                 <div class="h-9 mt-2" />
                 <div class="absolute bottom-0 xl:left-0 right-0">
                     <button

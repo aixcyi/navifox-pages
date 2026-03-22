@@ -31,5 +31,5 @@ const route = useRoute()
     </div>
     <slot></slot>
 </div>
-<AiFooter />
+<AiFooter class="md:mt-14" />
 </template>

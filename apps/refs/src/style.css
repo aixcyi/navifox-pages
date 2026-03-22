@@ -24,13 +24,6 @@ section.Home {
     z-index: 10;
 }
 
-.MaxContainer {
-    max-width: min(1320px, calc(100vw - 20px)); /* 照顾 Chrome 的滚动条 */
-    margin-left: auto;
-    margin-right: auto;
-    padding: 1.25rem 2rem;
-}
-
 header .MaxContainer {
     overflow: visible;
     position: relative;

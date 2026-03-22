@@ -69,7 +69,7 @@ export const sitemap = [
     curriculumVitae,
 ]
 export const socials: Website[] = [
-    { ...navifoxGuild, logo: 'bi:tencent-qq' },
+    { ...navifoxGuild, logo: 'streamline-logos:qq-logo-solid' },
     // { name: '推特<br/>X／Twitter', logo: 'simple-icons:x', link: 'https://x.com/aixcyi/' },
     { name: 'GitHub', logo: 'simple-icons:github', link: 'https://github.com/aixcyi/' },
     { name: 'PyPI', logo: 'file-icons:pypi', link: 'https://pypi.org/user/aixcyi/' },

@@ -2,6 +2,7 @@
 import { Icon } from '@iconify/vue';
 import {
     copyrightInterval as interval,
+    copyrights,
     friends,
     navifox,
     sitemap,
@@ -9,9 +10,10 @@ import {
     thanks,
     tighnari,
 } from '@navifox/constants';
-import { useDark, useToggle } from '@vueuse/core';
+import { useBrowserLocation, useDark, useToggle } from '@vueuse/core';
 
 const isDark = useDark()
+const location = useBrowserLocation()
 const toggleDark = useToggle(isDark)
 const linkMap = [
     {
@@ -37,12 +39,16 @@ const linkMap = [
         }
     },
 ]
+
+function isOutOfMySite(hyperlink: string) {
+    return new URL(hyperlink).hostname !== location.value.hostname
+}
 </script>
 
 
 <template>
-<footer class="text-slate-700 dark:text-slate-300 bg-slate-200 dark:bg-slate-800 md:mt-14">
-    <div class="MaxContainer my-8 md:py-10 mx-auto">
+<footer class="text-slate-700 dark:text-slate-300 bg-slate-200 dark:bg-slate-800">
+    <div class="MaxContainer py-10!">
         <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 xl:gap-8">
 
             <div v-for="{title, subtitle, data, styles} in linkMap">
@@ -51,6 +57,7 @@ const linkMap = [
                 </h3>
                 <div class="flex flex-col flex-nowrap gap-3">
                     <a v-for="item in data"
+                       v-show="isOutOfMySite(item.link)"
                        :class="styles.link"
                        :href="item.link"
                        :target="item.link.startsWith('https://') ? '_blank' : '_self'"
@@ -76,7 +83,7 @@ const linkMap = [
                 </div>
             </div>
 
-            <div class="relative order-last xl:order-first space-y-0.5">
+            <div class="relative order-last xl:order-first space-y-0.5 text-sm text-slate-600 dark:text-slate-400">
                 <div class="mb-2">
                     <a :href="navifox.link"
                        class="flex font-medium items-center justify-center md:justify-start text-slate-800 dark:text-slate-300"
@@ -95,7 +102,7 @@ const linkMap = [
                         </span>
                     </a>
                 </div>
-                <p class="mb-8 flex flex-wrap text-sm text-slate-600 dark:text-slate-400"
+                <p class="mb-8 flex flex-wrap"
                    v-html="navifox.description" />
                 <div class="mb-3 inline-flex flex-wrap gap-4 text-slate-600 dark:text-slate-400">
                     <template v-for="social in socials">
@@ -107,15 +114,21 @@ const linkMap = [
                         </a>
                     </template>
                 </div>
+                <p v-for="copyright in copyrights"
+                   class="flex flex-wrap">
+                    <a :href="copyright.link"
+                       class="hover:text-orange-500 dark:hover:text-orange-300 transition-colors duration-200"
+                       target="_blank">{{ copyright.text }}</a>
+                </p>
                 <p v-show="tighnari.name"
-                   class="flex flex-wrap text-sm text-slate-600 dark:text-slate-400">
+                   class="flex flex-wrap">
                     <span>© {{ interval.start }}-{{ interval.stop }} {{ tighnari.name }} 版权所有</span>
                 </p>
                 <p v-show="tighnari.uid"
-                   class="flex flex-wrap text-sm text-slate-600 dark:text-slate-400">
+                   class="flex flex-wrap">
                     <span>© {{ interval.start }}-{{ interval.stop }} {{ tighnari.uid }}. All Rights Reserved.</span>
                 </p>
-                <p class="flex flex-wrap text-sm text-slate-600 dark:text-slate-400">
+                <p class="flex flex-wrap">
                     <span>
                         使用了
                         <a class="hover:text-orange-500 dark:hover:text-orange-300 hover:underline hover:decoration-wavy"
@@ -128,7 +141,7 @@ const linkMap = [
                         中的主题。
                     </span>
                 </p>
-                <p class="flex flex-wrap text-sm text-slate-600 dark:text-slate-400">
+                <p class="flex flex-wrap">
                     <span>
                         使用了
                         <a class="hover:text-orange-500 dark:hover:text-orange-300 transition-colors duration-200"
@@ -137,7 +150,7 @@ const linkMap = [
                         的能力。
                     </span>
                 </p>
-                <p class="flex flex-wrap text-sm text-slate-600 dark:text-slate-400">
+                <p class="flex flex-wrap">
                     <span>
                         使用了
                         <a class="hover:text-orange-500 dark:hover:text-orange-300 transition-colors duration-200"
@@ -146,6 +159,7 @@ const linkMap = [
                         字体渲染。
                     </span>
                 </p>
+                <slot name="additions"></slot>
                 <div class="h-9 mt-2" />
                 <div class="absolute bottom-0 xl:left-0 right-0">
                     <button

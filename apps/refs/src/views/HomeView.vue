@@ -125,7 +125,7 @@ onMounted(() => {
     </div>
 </section>
 
-<AiFooter />
+<AiFooter class="md:mt-14" />
 </template>
 
 

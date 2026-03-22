@@ -8,6 +8,7 @@ import { useHead } from '@unhead/vue';
 import { useResizeObserver } from '@vueuse/core';
 import { ref, useTemplateRef } from 'vue';
 
+const version = __APP_VERSION__
 const btnTextSocial = ref('')
 const cardWidth = ref(0)
 const bio = useTemplateRef('bio')
@@ -100,7 +101,13 @@ useResizeObserver(bio, (entries) => {
 
     </div>
 </div>
-<AiFooter />
+<AiFooter>
+    <template #additions>
+        <p>
+            <span>构建为 <code>{{ version }}</code></span>
+        </p>
+    </template>
+</AiFooter>
 </template>
 
 
