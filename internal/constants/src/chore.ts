@@ -14,7 +14,7 @@ export const thisYear = Math.max(2026, new Date().getFullYear())
 export const tighnari: Friend = {
     name: '路狐羽',
     uid: 'aixcyi',
-    tags: [ '毛茸茸爱好者', '前后端开发工程师', '罗狐会馆馆长' ],
+    tags: [ '毛茸茸爱好者', '前后端开发', '罗狐会馆馆长' ],
     description: markit('𝑺𝒆𝒆𝒅𝒔 𝒐𝒇 𝒔𝒕𝒐𝒓𝒊𝒆𝒔,\n𝒃𝒓𝒐𝒖𝒈𝒉𝒕 𝒃𝒚 𝒕𝒉𝒆 𝒘𝒊𝒏𝒅 𝒂𝒏𝒅 𝒄𝒖𝒍𝒕𝒊𝒗𝒂𝒕𝒆𝒅 𝒃𝒚 𝒕𝒊𝒎𝒆.'),
     location: '广东 广州',
     wxid: 'navifox',

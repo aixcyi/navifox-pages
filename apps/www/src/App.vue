@@ -31,19 +31,24 @@ useResizeObserver(bio, (entries) => {
 <template>
 <img :src="Background" alt="背景图片" class="absolute size-full select-none object-cover -z-100" />
 <div class="absolute size-full bg-black/25  dark:bg-black/50 -z-10" />
-<div class="MaxContainer md:px-[20%]! h-screen flex items-center justify-end">
+<div class="MaxContainer md:px-[20%]! h-screen flex items-center justify-end selection:bg-[#B5A2FD]/33">
     <div class="max-md:-mx-4 flex w-fit flex-col text-[#FDE2A2]"
          style="text-shadow: 1px 1px 3px #000c,0 0 8px #0009;">
 
         <div ref="bio"
-             class="p-4 border border-transparent rounded-xl flex flex-col gap-y-3 transition-all duration-300 Card">
+             class="p-4 border border-transparent rounded-xl flex flex-col gap-y-3 transition-all duration-300 cursor-default Card">
             <div class="flex flex-wrap items-baseline gap-3">
                 <span class="text-4xl font-semibold text-orange-300">{{ tighnari.name }}</span>
-                <code class="text-xl text-[#A2EBFD]">@{{ tighnari.uid }}</code>
+                <code class="text-xl text-[#B5A2FD]">@{{ tighnari.uid }}</code>
             </div>
-            <div class="border-b border-b-blue-200/25 md:border-b-blue-200/50 -mx-4" />
-            <h3 class="font-semibold text-lg/6">{{ tighnari.tags?.join('／') }}</h3>
-            <h3 class="text-lg/6 text-[#B5A2FD]" v-html="tighnari.description" />
+            <div class="mb-1 border-b border-b-blue-200/25 md:border-b-blue-200/50 -mx-4" />
+            <div v-if="tighnari.tags" class="font-semibold text-sm flex flex-wrap gap-2">
+                <span v-for="tag in tighnari.tags"
+                      class="border border-transparent dark:border-[#FDE2A280] bg-[#FDE2A280] dark:bg-[#FDE2A240] rounded-lg px-2 py-1">
+                    {{ tag }}
+                </span>
+            </div>
+            <h3 class="text-lg/6 text-[#FDA2BD]" v-html="tighnari.description" />
         </div>
 
         <div v-if="sitemap.length && showSitemap"
