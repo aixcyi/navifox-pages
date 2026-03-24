@@ -4,13 +4,20 @@ import { Icon } from '@iconify/vue';
 import type { Hyperlink } from '@navifox/types';
 import { onClickOutside, useWindowScroll, useWindowSize } from '@vueuse/core';
 import { nextTick, onMounted, useTemplateRef, watch } from 'vue';
+import { useRouter } from 'vue-router';
 
+const router = useRouter()
 const navDropdown = useTemplateRef('nav-dropdown')
 const { width } = useWindowSize({ type: 'visual' })
 const { y } = useWindowScroll()
 const sheets: Hyperlink[] = [
-    { text: '时间戳对照表', link: '/timestamp', logo: 'svg-spinners:clock' },
-    { text: '角色实用天赋表', link: '/genshin/talent' },
+    ...router.options.routes.filter(
+        r => typeof r.name === 'string' && r.name.endsWith('Sheet')
+    ).map(r => ({
+        text: r.meta?.title ?? '(未命名参考)',
+        link: r.path,
+        logo: r.meta?.logo,
+    })),
     { text: null, link: '' },
     { text: 'CheatSheets.zip', link: 'https://cheatsheets.zip/', icon: 'https://cheatsheets.zip/images/favicon.png' },
 ]

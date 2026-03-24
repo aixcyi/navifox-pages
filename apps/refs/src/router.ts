@@ -1,16 +1,9 @@
 import HomeView from '#/views/HomeView.vue';
+import NotFoundView from '#/views/NotFoundView.vue';
 import { navifoxRefs } from '@navifox/constants';
 import { useWebsiteLinks, useWebsiteMetas } from '@navifox/utils';
 import { useHead } from '@unhead/vue';
 import { createRouter, createWebHistory } from 'vue-router';
-
-declare module 'vue-router' {
-    interface RouteMeta {
-        title: string
-        description?: string
-        keywords?: string[]
-    }
-}
 
 const router = createRouter({
     history: createWebHistory(),
@@ -19,26 +12,32 @@ const router = createRouter({
             path: '/',
             name: 'Homepage',
             component: HomeView,
-        },
-        {
+        }, {
             path: '/timestamp',
             name: 'TimestampSheet',
             meta: {
                 title: '时间戳对照表',
                 description: '对照、查询不同进位制（字符集）下的计数空间，以及不同单位的时间存储上限。',
                 keywords: [ '时间戳', '进制', '进位制', '表格', '字符集', '字符串', '对照表' ],
+                logo: 'svg-spinners:clock',
             },
             component: () => import('#/views/TimestampView.vue'),
-        },
-        {
+        }, {
             path: '/genshin/talent',
-            name: 'GenshinTalent',
+            name: 'GenshinTalentSheet',
             meta: {
                 title: '角色实用天赋表',
                 description: '原神角色（截止 6.4 月之五版本）部分实用天赋一览表。',
                 keywords: [ '原神', '角色', '天赋', '表格', '月之五', '6.4' ],
             },
             component: () => import('#/views/GenshinTalentsView.vue'),
+        }, {
+            path: '/:pathMatch(.*)*',
+            name: 'NotFound',
+            meta: {
+                title: '页面不存在',
+            },
+            component: NotFoundView,
         }
     ]
 })
