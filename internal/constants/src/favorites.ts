@@ -288,17 +288,17 @@ const groupFrontend: BookmarkGroup = {
             name: 'HTML 元素参考',
             link: 'https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements',
             logo: 'simple-icons:mdnwebdocs',
-            note: '<div/> 之类的东西',
+            note: '<div/> 之类',
         }, {
             name: 'HTML 实体',
             link: 'https://developer.mozilla.org/zh-CN/docs/Glossary/Entity',
             logo: 'simple-icons:mdnwebdocs',
-            note: '&nbsp; 之类的东西',
+            note: '&nbsp; 之类',
         }, {
             name: 'DOM 接口类型',
             link: 'https://developer.mozilla.org/zh-CN/docs/Web/API/HTML_DOM_API#html_dom_api_%E6%8E%A5%E5%8F%A3',
             logo: 'simple-icons:mdnwebdocs',
-            note: 'HTMLDivElement 之类的东西',
+            note: 'HTMLDivElement…',
         }, {
             name: 'HTML 术语表',
             link: 'https://developer.mozilla.org/zh-CN/docs/Glossary',
@@ -307,6 +307,16 @@ const groupFrontend: BookmarkGroup = {
         }, {
             name: 'CSS 属性',
             link: 'https://developer.mozilla.org/zh-CN/docs/Web/CSS/Reference/Properties',
+            logo: 'devicon:css',
+            note: 'MDN - CSS',
+        }, {
+            name: 'CSS 伪元素',
+            link: 'https://developer.mozilla.org/zh-CN/docs/Web/CSS/Reference/Selectors/Pseudo-elements',
+            logo: 'devicon:css',
+            note: 'MDN - CSS',
+        }, {
+            name: 'CSS 伪类',
+            link: 'https://developer.mozilla.org/zh-CN/docs/Web/CSS/Reference/Selectors/Pseudo-classes',
             logo: 'devicon:css',
             note: 'MDN - CSS',
         }, {
@@ -380,6 +390,7 @@ const groupFrontendLibs: BookmarkGroup = {
         }, {
             name: 'Lodash Docs',
             link: 'https://lodash.com/docs',
+            logo: 'logos:lodash',
         }, {
             name: 'es-toolkit 参考',
             link: 'https://es-toolkit.dev/zh_hans/reference/array/at.html',
@@ -528,6 +539,194 @@ const groupIntelliJ: BookmarkGroup = {
         }
     ]
 }
+const groupMarkdown: BookmarkGroup = {
+    title: { text: 'Markdown', link: '#markdown' },
+    items: [
+        {
+            name: '基本撰写和格式语法',
+            link: 'https://docs.github.com/zh/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax',
+            logo: 'simple-icons:github',
+        }, {
+            name: 'Markdown 备忘清单',
+            link: 'https://quickref.cn/docs/markdown.html',
+            icon: 'https://quickref.cn/icons/favicon.svg',
+            mime: 'image/svg+xml',
+        }, {
+            name: 'Markdown cheatsheet',
+            link: 'https://cheatsheets.zip/markdown',
+            icon: 'https://cheatsheets.zip/images/favicon.png?v=1',
+            mime: 'image/png',
+        }, {
+            name: 'Mermaid',
+            link: 'https://mermaid.js.org/intro/',
+        }, {
+            name: '待办任务列表',
+            link: 'https://docs.github.com/zh/get-started/writing-on-github/working-with-advanced-formatting/about-task-lists',
+            logo: 'simple-icons:github',
+        }, {
+            name: '表格',
+            link: 'https://docs.github.com/zh/get-started/writing-on-github/working-with-advanced-formatting/organizing-information-with-tables',
+            logo: 'simple-icons:github',
+        }, {
+            name: '警报',
+            link: 'https://docs.github.com/zh/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#alerts',
+            logo: 'simple-icons:github',
+            note: '提示类组件',
+        }, {
+            name: '折叠',
+            link: 'https://docs.github.com/zh/get-started/writing-on-github/working-with-advanced-formatting/organizing-information-with-collapsed-sections',
+            logo: 'simple-icons:github',
+        }, {
+            name: '代码块→语法着色',
+            link: 'https://docs.github.com/zh/get-started/writing-on-github/working-with-advanced-formatting/creating-and-highlighting-code-blocks',
+            logo: 'simple-icons:github',
+        }, {
+            name: '创建 Mermaid 关系图',
+            link: 'https://docs.github.com/zh/get-started/writing-on-github/working-with-advanced-formatting/creating-diagrams',
+            logo: 'simple-icons:github',
+        }, {
+            name: '自动链接引用和 URL',
+            link: 'https://docs.github.com/zh/get-started/writing-on-github/working-with-advanced-formatting/autolinked-references-and-urls',
+            logo: 'simple-icons:github',
+            note: '仅限 GitHub',
+        }, {
+            name: '编写数学表达式',
+            link: 'https://docs.github.com/zh/get-started/writing-on-github/working-with-advanced-formatting/writing-mathematical-expressions',
+            logo: 'simple-icons:github',
+            note: '参考 LaTeX 语法',
+        }, {
+            name: 'GitHub Flavored Markdown Spec',
+            link: 'https://github.github.com/gfm/',
+            logo: 'simple-icons:github',
+        }
+    ]
+}
+const groupMarkdownVitePress: BookmarkGroup = {
+    items: [
+        {
+            name: '自定义容器',
+            link: 'https://vitepress.dev/zh/guide/markdown#custom-containers',
+            icon: 'https://vitepress.dev/vitepress-logo-mini.svg',
+            mime: 'image/svg+xml',
+            note: 'VitePress 专属',
+        }, {
+            name: '代码块→语法着色',
+            link: 'https://vitepress.dev/zh/guide/markdown#syntax-highlighting-in-code-blocks',
+            icon: 'https://vitepress.dev/vitepress-logo-mini.svg',
+            mime: 'image/svg+xml',
+            note: 'VitePress 专属',
+        }, {
+            name: '代码块→行高亮',
+            link: 'https://vitepress.dev/zh/guide/markdown#line-highlighting-in-code-blocks',
+            icon: 'https://vitepress.dev/vitepress-logo-mini.svg',
+            mime: 'image/svg+xml',
+            note: 'VitePress 专属',
+        }, {
+            name: '代码块→聚焦',
+            link: 'https://vitepress.dev/zh/guide/markdown#line-highlighting-in-code-blocks',
+            icon: 'https://vitepress.dev/vitepress-logo-mini.svg',
+            mime: 'image/svg+xml',
+            note: 'VitePress 专属',
+        }, {
+            name: '代码块→颜色差异',
+            link: 'https://vitepress.dev/zh/guide/markdown#line-highlighting-in-code-blocks',
+            icon: 'https://vitepress.dev/vitepress-logo-mini.svg',
+            mime: 'image/svg+xml',
+            note: 'VitePress diff',
+        }, {
+            name: '代码块→行号',
+            link: 'https://vitepress.dev/zh/guide/markdown#line-numbers',
+            icon: 'https://vitepress.dev/vitepress-logo-mini.svg',
+            mime: 'image/svg+xml',
+            note: 'VitePress 专属',
+        }, {
+            name: 'Shiki Languages',
+            link: 'https://shiki.style/languages',
+            icon: 'https://shiki.style/logo.svg',
+        }, {
+            name: '配置数学表达式',
+            link: 'https://vitepress.dev/zh/guide/markdown#math-equations',
+            icon: 'https://vitepress.dev/vitepress-logo-mini.svg',
+            mime: 'image/svg+xml',
+            note: '参考 LaTeX 语法',
+        }
+    ]
+}
+const groupMarkupLanguages: BookmarkGroup = {
+    title: { text: '标记语言', link: '#markup' },
+    items: [
+        {
+            name: 'JSON `$schema`',
+            link: 'https://json-schema.org/specification',
+            logo: 'logos:json-schema-icon',
+            note: '描述 JSON 的 JSON',
+        }, {
+            name: 'TOML 文档',
+            link: 'https://toml.io/cn/',
+            logo: 'logos:toml',
+        }, {
+            name: 'LaTeX 备忘清单',
+            link: 'https://quickref.cn/docs/latex.html',
+            icon: 'https://quickref.cn/icons/favicon.svg',
+            mime: 'image/svg+xml',
+        }, {
+            name: 'LaTeX cheatsheet',
+            link: 'https://cheatsheets.zip/latex',
+            icon: 'https://cheatsheets.zip/images/favicon.png?v=1',
+            mime: 'image/png',
+        }, {
+            name: 'reStructuredText Primer',
+            link: 'https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html',
+            logo: 'simple-icons:sphinx',
+        }, {
+            name: 'reStructuredText markup',
+            link: 'https://devguide.python.org/documentation/markup/',
+            logo: 'logos:python',
+        }, {
+            name: 'AsciiDoc Language Documentation',
+            link: 'https://docs.asciidoctor.org/asciidoc/latest/',
+            logo: 'logos:asciidoctor',
+        }
+    ]
+}
+const groupSearchEngine: BookmarkGroup = {
+    title: { text: '搜索引擎', link: '#search-engine' },
+    items: [
+        {
+            name: 'Search Operators',
+            link: 'https://duckduckgo.com/duckduckgo-help-pages/results/syntax',
+            logo: 'logos:duckduckgo',
+            note: 'DuckDuckGo',
+        }, {
+            name: '优化搜索范围',
+            link: 'https://support.google.com/websearch?p=adv_operators&hl=zh-CN',
+            logo: 'devicon:google',
+            note: 'Google',
+        }, {
+            name: 'Google Advanced Search Operators',
+            link: 'https://docs.google.com/document/d/1ydVaJJeL1EYbWtlfj9TPfBTE5IBADkQfZrQaBZxqXGs/edit',
+            logo: 'devicon:google',
+        }, {
+            name: '高级搜索选项',
+            link: 'https://support.microsoft.com/zh-cn/topic/%E9%AB%98%E7%BA%A7%E6%90%9C%E7%B4%A2%E9%80%89%E9%A1%B9-b92e25f1-0085-4271-bdf9-14aaea720930',
+            logo: 'logos:bing',
+            note: '必应',
+        }, {
+            name: 'Bing Advanced search options',
+            link: 'https://support.microsoft.com/en-us/topic/advanced-search-options-b92e25f1-0085-4271-bdf9-14aaea720930',
+            logo: 'logos:bing',
+        }, {
+            name: '代码搜索语法',
+            link: 'https://docs.github.com/zh/search-github/github-code-search/understanding-github-code-search-syntax',
+            logo: 'simple-icons:github',
+            note: 'GitHub',
+        }, {
+            name: 'Searching Syntax',
+            link: 'https://www.voidtools.com/support/everything/searching/',
+            note: 'Everything',
+        }
+    ]
+}
 const groupMinecraft: BookmarkGroup = {
     title: { text: 'Minecraft', link: '#minecraft' },
     items: [
@@ -594,23 +793,13 @@ const groupChores: BookmarkGroup = {
             link: 'https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Guides/MIME_types/Common_types',
             logo: 'simple-icons:mdnwebdocs',
         }, {
-            name: 'JSON Schema',
-            link: 'https://json-schema.org/specification',
-            logo: 'logos:json-schema-icon',
-        }, {
-            name: 'Shiki Languages',
-            link: 'https://shiki.style/languages',
-            icon: 'https://shiki.style/logo.svg',
-        }, {
-            name: 'mermaid',
-            link: 'https://mermaid.js.org/intro/',
-        }, {
             name: 'Prettier Configuration',
             link: 'https://prettier.io/docs/options',
-            icon: 'https://prettier.io/icon.png',
+            logo: 'logos:prettier',
         }, {
             name: 'EditorConfig',
             link: 'https://spec.editorconfig.org/',
+            logo: 'logos:editorconfig',
         }
     ]
 }
@@ -628,13 +817,18 @@ export const bookmarks = [
     groupFrontendLibs,
     groupVue,
     groupReact,
+    groupMarkdown,
+    groupMarkdownVitePress,
+    groupMarkupLanguages,
+    groupSearchEngine,
     groupMinecraft,
 ]
 export const anchors: Hyperlink[] = [
     { text: 'Python & Django', link: groupPython.title!.link, logo: 'catppuccin:python' },
     { text: 'Kotlin & IntelliJ', link: groupKotlin.title!.link, logo: 'catppuccin:kotlin' },
     { text: '(No)SQL', link: groupNoSQL.title!.link, logo: 'catppuccin:database' },
-    { text: '前端+', link: groupFrontend.title!.link, logo: 'catppuccin:javascript' },
+    { text: '前端技术栈', link: groupFrontend.title!.link, logo: 'catppuccin:xml' },
+    { text: '标记 & 搜索', link: groupMarkdown.title!.link, logo: 'catppuccin:markdown' },
     { text: '更多', link: groupMinecraft.title!.link, logo: 'fluent-emoji-flat:fox' },
 ]
 

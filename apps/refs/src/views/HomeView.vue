@@ -36,9 +36,11 @@ import { anchors, bookmarks, navifoxRefs } from '@navifox/constants';
                 </span>
                 <span class="block mt-2">{{ navifoxRefs.name }}</span>
             </h1>
-            <h2 class="lg:w-3/4 xl:w-2/3 text-center mx-auto text-lg md:text-xl lg:text-2xl text-slate-300 leading-relaxed font-light tracking-wide mt-8 mb-12 *:[b]:text-pink-300 *:[b]:font-semibold"
-                v-html="navifoxRefs.description" />
-            <div class="flex flex-col lg:flex-row items-center justify-center gap-4 mb-16 max-w-4xl mx-auto">
+            <h2 class="lg:w-3/4 xl:w-2/3 text-center mx-auto text-lg md:text-xl lg:text-2xl text-slate-300 leading-relaxed font-light tracking-wide mt-8 mb-12">
+                <span class="*:[b]:text-pink-300 *:[b]:font-semibold" v-html="navifoxRefs.description" />
+                <span>这一页收录了部分常用的书签，并按以下几个大类分布，更多参考见右上角。</span>
+            </h2>
+            <div class="flex flex-row flex-wrap items-center justify-center gap-4 mb-16 max-w-4xl mx-auto">
                 <a v-for="(anchor, i) in anchors"
                    :class="i + 1 === anchors.length
                    ? ['bg-gradient-to-r','from-orange-500/20','to-yellow-500/20','outline-orange-300/30','hover:from-orange-500/30','hover:to-yellow-500/30']
@@ -85,7 +87,7 @@ import { anchors, bookmarks, navifoxRefs } from '@navifox/constants';
                     <div class="mr-2 min-w-7 text-gray-400 dark:text-gray-600">
                         <Icon v-if="item.logo"
                               :icon="item.logo"
-                              class="size-7 max-w-7" />
+                              class="size-7 max-w-7 text-gray-600 dark:text-gray-400" />
                         <img v-else-if="item.icon"
                              :src="item.icon"
                              alt="ico"
