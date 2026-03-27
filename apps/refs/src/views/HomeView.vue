@@ -1,11 +1,11 @@
 <script lang="ts" setup>
 import LinkIcon from '#/asserts/AkarIconsLinkOut.svg';
-import AiFooter from '#/components/AiFooter.vue';
 import NavBar from '#/components/NavBar.vue';
 import NavDropdown from '#/components/NavDropdown.vue';
 import SignatureLine from '#/components/SignatureLine.vue';
 import { Icon } from '@iconify/vue';
 import { anchors, bookmarks, navifoxRefs } from '@navifox/constants';
+import { AiFooter } from '@navifox/ui';
 </script>
 
 

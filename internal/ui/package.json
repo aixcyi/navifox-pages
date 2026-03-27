@@ -1,0 +1,25 @@
+{
+    "name": "@navifox/ui",
+    "private": true,
+    "version": "0.0.0",
+    "type": "module",
+    "sideEffects": [
+        "**/*.css"
+    ],
+    "exports": {
+        ".": {
+            "types": "./src/index.ts",
+            "default": "./src/index.ts"
+        }
+    },
+    "dependencies": {
+        "@navifox/constants": "workspace:*",
+        "@navifox/types": "workspace:*",
+        "@vueuse/core": "catalog:",
+        "tailwindcss": "catalog:",
+        "vue": "catalog:"
+    },
+    "devDependencies": {
+        "@iconify/vue": "catalog:"
+    }
+}

@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import Background from '#/assets/background.jpg';
-import AiFooter from '#/components/AiFooter.vue';
 import { Icon } from '@iconify/vue';
 import { navifox, signature, sitemap, socials, tighnari } from '@navifox/constants';
+import { AiFooter } from '@navifox/ui';
 import { logger, useWebsiteLinks, useWebsiteMetas } from '@navifox/utils';
 import { useHead } from '@unhead/vue';
 import { useResizeObserver } from '@vueuse/core';

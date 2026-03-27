@@ -13,6 +13,7 @@
         "@navifox/constants": "workspace:*",
         "@navifox/styles": "workspace:*",
         "@navifox/types": "workspace:*",
+        "@navifox/ui": "workspace:*",
         "@navifox/utils": "workspace:*",
         "@tailwindcss/vite": "catalog:",
         "@unhead/vue": "catalog:",

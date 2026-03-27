@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import AiFooter from '#/components/AiFooter.vue';
 import NavBar from '#/components/NavBar.vue';
 import NavDropdown from '#/components/NavDropdown.vue';
+import { AiFooter } from '@navifox/ui';
 import { useTemplateRef } from 'vue';
 import { useRoute } from 'vue-router';
 
