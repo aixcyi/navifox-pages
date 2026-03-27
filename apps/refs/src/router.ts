@@ -32,6 +32,15 @@ const router = createRouter({
             },
             component: () => import('#/views/MirrorView.vue'),
         }, {
+            path: '/uuid',
+            name: 'UUIDAnalysisSheet',
+            meta: {
+                title: 'UUID 结构',
+                description: '通用唯一标识符 UUID（Universally Unique IDentifier）结构解析。',
+                keywords: [ 'UUID', 'id', 'RFC9562', 'RFC4122' ],
+            },
+            component: () => import('#/views/UUIDAnalysisView.vue'),
+        }, {
             path: '/genshin/talent',
             name: 'GenshinTalentSheet',
             meta: {
@@ -55,7 +64,7 @@ router.beforeEach(to => {
         title: to.meta.title ?? navifoxRefs.name,
         meta: [ ...useWebsiteMetas(navifoxRefs, { description: to.meta.description, keywords: to.meta.keywords }) ],
         link: [ ...useWebsiteLinks(navifoxRefs) ],
-        titleTemplate: to.meta.title ? `%s - ${navifoxRefs.name}` : null,
+        titleTemplate: to.meta.title ? `%s × ${navifoxRefs.name}` : null,
     })
 })
 
