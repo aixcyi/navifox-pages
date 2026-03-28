@@ -10,16 +10,24 @@
         ".": {
             "types": "./src/index.ts",
             "default": "./src/index.ts"
+        },
+        "./lib/utils": {
+            "types": "./src/lib/utils.ts",
+            "default": "./src/lib/utils.ts"
         }
     },
     "dependencies": {
         "@navifox/constants": "workspace:*",
-        "@navifox/types": "workspace:*",
         "@vueuse/core": "catalog:",
-        "tailwindcss": "catalog:",
+        "class-variance-authority": "catalog:",
+        "clsx": "catalog:",
+        "reka-ui": "catalog:",
+        "tailwind-merge": "catalog:",
         "vue": "catalog:"
     },
     "devDependencies": {
-        "@iconify/vue": "catalog:"
+        "@iconify/vue": "catalog:",
+        "vite": "catalog:",
+        "vue-tsc": "catalog:"
     }
 }

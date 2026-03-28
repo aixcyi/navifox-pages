@@ -11,11 +11,11 @@
     },
     "iconLibrary": "lucide",
     "aliases": {
-        "components": "#/components",
-        "utils": "#/lib/utils",
-        "ui": "#/ui",
-        "lib": "#/lib",
-        "composables": "#/composables"
+        "components": "",
+        "utils": "",
+        "ui": "",
+        "lib": "",
+        "composables": ""
     },
     "registries": { }
 }

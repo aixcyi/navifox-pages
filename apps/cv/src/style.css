@@ -1,6 +1,8 @@
 @import 'tailwindcss';
 @import 'tw-animate-css';
 
+@source '../node_modules/@navifox/ui';
+
 @custom-variant dark (&:is(.dark *));
 
 :root {
