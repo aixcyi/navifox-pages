@@ -18,6 +18,7 @@
         "date-fns": "^4.1.0",
         "es-toolkit": "catalog:",
         "markdown-it": "catalog:",
+        "uuid": "catalog:",
         "vue": "catalog:"
     },
     "devDependencies": {

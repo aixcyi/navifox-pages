@@ -19,3 +19,7 @@ export function limit(floor: number, n: number, ceiling: number): number {
         return ceiling
     return n
 }
+
+export function abs(n: bigint) {
+    return n >= 0n ? n : -n
+}
