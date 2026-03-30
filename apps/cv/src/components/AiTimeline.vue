@@ -170,7 +170,7 @@ import { navifox } from '@navifox/constants';
         从古法手敲代码入坑 AI 辅助开发，从 Cursor 到 Trae 再到 Trae CN，最后还是换回
         VSCode 然后搭配 Kimi Code 使用，并且尝试编写前端、后端开发工程师的 SKILL。<br />
     </AiTimelineItem>
-    <AiTimelineItem :colors="['#FF7F27','var(--color-gray-800)']">
+    <AiTimelineItem :colors="['#FF7F27','var(--color-slate-800)']">
         <div v-html="navifox.description" />
     </AiTimelineItem>
 </ul>

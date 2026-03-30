@@ -109,7 +109,7 @@ for (const tree of stacks) {
                 <Icon :icon="skill.badge.logo" width="24" />
                 <div class="flex flex-nowrap gap-1 relative">
                     <span v-for="(label, level) in branch.levels"
-                          :class="level <= skill.level ? '' : 'text-gray-700'"
+                          :class="level <= skill.level ? '' : 'text-slate-700'"
                           class="BadgeLevel cursor-default">{{ label }}</span>
                     <span class="BadgeText">{{ skill.badge.text }}&nbsp;</span>
                 </div>
@@ -136,8 +136,8 @@ for (const tree of stacks) {
     left: 0;
     top: 0;
     text-wrap: nowrap;
-    background-color: var(--color-gray-800);
-    color: var(--color-gray-400);
+    background-color: var(--color-slate-800);
+    color: var(--color-slate-400);
     opacity: 0;
 }
 </style>

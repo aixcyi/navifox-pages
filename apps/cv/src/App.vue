@@ -41,18 +41,20 @@ useHead({
 
 
 <template>
-<article class="mt-4 py-8 rounded-xl bg-gray-800 flex flex-col gap-8"
-         style="--tick-stroke: var(--color-gray-700)">
+<div class="mt-2 mx-2 text-slate-800/25 text-nowrap overflow-x-hidden selection:bg-slate-900 selection:text-slate-600"
+     v-html="tighnari.description?.replaceAll('<br>','')" />
+<article class="py-8 rounded-xl bg-slate-800 flex flex-col gap-8"
+         style="--tick-stroke: var(--color-slate-700)">
     <div class="mx-8 flex flex-col gap-3 text-center items-center">
         <!-- 头部信息 -->
-        <h1 class="text-4xl"><b class="text-gray-50!">阿羽</b></h1>
+        <h1 class="text-4xl"><b class="text-slate-50!">阿羽</b></h1>
         <div class="flex flex-wrap gap-1 justify-center items-center">
             <div v-for="state in egoStates" class="inline-flex flex-nowrap items-center">
                 <Icon :icon="state.logo" height="16" />
                 <span class="ml-1 mr-3 text-nowrap">{{ state.text }}</span>
             </div>
         </div>
-        <span class="text-center text-gray-600 tracking-[.5em]">・{{ curriculumVitae.description }}・</span>
+        <span class="text-center text-slate-600 tracking-[.5em]">・{{ curriculumVitae.description }}・</span>
     </div>
     <div ref="experiencePanel" class="relative border border-dashed border-(--tick-stroke) tick-left tick-right" />
     <div class="mx-8">
@@ -60,10 +62,10 @@ useHead({
     </div>
     <div ref="programmerPanel" class="relative border border-dashed border-(--tick-stroke) tick-left tick-right" />
     <div class="mx-8">
-        <span class="mr-2"><b class="text-gray-50!">技能评估等级</b></span>
+        <span class="mr-2"><b class="text-slate-50!">技能评估等级</b></span>
         <span class="ml-2 float-end"><code>{{ cvLastUpdateTime }}</code></span>
         <span>
-            <a class="not-hover:text-gray-500!"
+            <a class="not-hover:text-slate-500!"
                href="https://github.com/bennyhuo/programmer-levels"
                target="_blank">霍丙乾 Programmer Levels v0.4</a>
         </span>
@@ -75,7 +77,7 @@ useHead({
     </div>
     <div ref="timeline" class="relative border border-dashed border-(--tick-stroke) tick-left tick-right" />
     <div class="mx-8">
-        <b class="text-gray-50!">风带来了故事的种子</b>
+        <b class="text-slate-50!">风带来了故事的种子</b>
         <section class="mt-8">
             <AiTimeline />  <!-- 大事年表 -->
         </section>

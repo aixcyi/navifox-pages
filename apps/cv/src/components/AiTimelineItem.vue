@@ -20,7 +20,7 @@ if (props.colors && props.colors.length < 2) {
         <div>
             <slot></slot>
         </div>
-        <div v-if="timestamp" class="mt-1 text-sm text-gray-600">{{ timestamp }}</div>
+        <div v-if="timestamp" class="mt-1 text-sm text-slate-600">{{ timestamp }}</div>
     </div>
 </li>
 </template>

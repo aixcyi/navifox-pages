@@ -45,12 +45,12 @@
     min-height: 100vh;
 
     color-scheme: only light;
-    color: var(--color-gray-400);
-    background-color: var(--color-gray-900);
+    color: var(--color-slate-400);
+    background-color: var(--color-slate-900);
 }
 
 a {
-    color: var(--color-gray-100);
+    color: var(--color-slate-100);
 }
 
 a:hover {
@@ -58,7 +58,7 @@ a:hover {
 }
 
 b {
-    color: var(--color-gray-300);
+    color: var(--color-slate-300);
 }
 
 p {

@@ -63,7 +63,7 @@ for (const level of programmerLevels) {
         <div><b>{{ desc.level }}</b></div>
         <ul class="max-md:leading-relaxed">
             <li v-for="point in desc.points"
-                :class="point.unlit ? '' : 'text-gray-600'">
+                :class="point.unlit ? '' : 'text-slate-600'">
                 <icon :icon="point.unlit ? 'icons8:circle' : 'icons8:checked'"
                       class="mr-1"
                       height="20" />
@@ -97,7 +97,7 @@ li :deep(*) {
 }
 
 li:hover {
-    color: var(--color-gray-100);
+    color: var(--color-slate-100);
 
     :deep(u) {
         text-decoration: underline 3px var(--color-orange-500);
