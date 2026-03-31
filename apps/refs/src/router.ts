@@ -32,6 +32,16 @@ const router = createRouter({
             },
             component: () => import('#/views/MirrorView.vue'),
         }, {
+            path: '/tailwind',
+            name: 'TailwindColorSheet',
+            meta: {
+                title: 'Tailwind 颜色一览',
+                description: 'Tailwind CSS v4 颜色相关类名与变量名一览',
+                keywords: [ 'Tailwind', 'TailwindCSS', 'CSS', '颜色' ],
+                logo: 'logos:tailwindcss-icon',
+            },
+            component: () => import('#/views/TailwindColorView.vue'),
+        }, {
             path: '/uuid',
             name: 'UUIDAnalysisSheet',
             meta: {
