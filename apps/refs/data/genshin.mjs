@@ -210,6 +210,7 @@ export const characters = [
         name: '珊瑚宫心海',
         abilities: [
             { scope: 'stamina', short: '游泳体力', talent: 'passive3' },
+            { scope: 'others', short: '水面移动(元素爆发)', talent: 'combat3' },
         ]
     }, {
         name: '托马',
@@ -318,6 +319,7 @@ export const characters = [
         name: '艾尔海森',
         abilities: [
             { scope: 'crafting', short: '武器突破素材倍产', talent: 'passive3' },
+            { scope: 'interaction', short: '始基力：芒性', talent: 'combat2' },
         ]
     }, {
         name: '迪希雅',
@@ -346,42 +348,55 @@ export const characters = [
         name: '琳妮特',
         abilities: [
             { scope: 'locator', short: '复苏水团', talent: 'passive3' },
+            { scope: 'interaction', short: '始基力：荒性', talent: 'combat2' },
         ]
     }, {
         name: '林尼',
         abilities: [
             { scope: 'locator', short: '区域特产', talent: 'passive3' },
+            { scope: 'interaction', short: '始基力：芒性', talent: 'combat1' },
         ]
     }, {
         name: '菲米尼',
         abilities: [
             { scope: 'stamina', short: '水中耐力', talent: 'passive3' },
+            { scope: 'interaction', short: '始基力：芒性', talent: 'combat2' },
         ]
     }, {
         name: '那维莱特',
         abilities: [
             { scope: 'moving', short: '水下冲刺', talent: 'passive3' },
+            { scope: 'interaction', short: '始基力：芒性', talent: 'combat2' },
         ]
     }, {
         name: '莱欧斯利',
         abilities: [
             { scope: 'crafting', short: '武器突破素材倍产', talent: 'passive3' },
+            { scope: 'interaction', short: '始基力：荒性', talent: 'combat3' },
         ]
     }, {
         name: '夏洛蒂',
-        abilities: []
+        abilities: [
+            { scope: 'interaction', short: '始基力：芒性', talent: 'combat1' },
+        ]
     }, {
         name: '芙宁娜',
-        abilities: []
+        abilities: [
+            { scope: 'interaction', short: '始基力：荒性、芒性', talent: 'combat1' },
+            { scope: 'interaction', short: '始基力：荒性⇿芒性', talent: 'combat2' },
+            { scope: 'others', short: '水面移动(元素战技)', talent: 'combat2' },
+        ]
     }, {
         name: '娜维娅',
         abilities: [
             { scope: 'dispatch', short: '更多回报', talent: 'passive3' },
+            { scope: 'interaction', short: '始基力：荒性', talent: 'combat2' },
         ]
     }, {
         name: '夏沃蕾',
         abilities: [
             { scope: 'stamina', short: '冲刺体力', talent: 'passive3' },
+            { scope: 'interaction', short: '始基力：荒性', talent: 'combat2' },
         ]
     }, {
         name: '嘉明',
@@ -410,13 +425,18 @@ export const characters = [
         name: '克洛琳德',
         abilities: [
             { scope: 'locator', short: '区域特产', talent: 'passive3' },
+            { scope: 'interaction', short: '始基力：荒性', talent: 'combat2' },
         ]
     }, {
         name: '希格雯',
-        abilities: []
+        abilities: [
+            { scope: 'interaction', short: '始基力：荒性', talent: 'combat2' },
+        ]
     }, {
         name: '艾梅莉埃',
-        abilities: []
+        abilities: [
+            { scope: 'interaction', short: '始基力：芒性', talent: 'combat2' },
+        ]
     }, {
         name: '卡齐娜',
         abilities: [
@@ -481,7 +501,9 @@ export const characters = [
         ]
     }, {
         name: '爱可菲',
-        abilities: []
+        abilities: [
+            { scope: 'interaction', short: '始基力：荒性', talent: 'combat2' },
+        ]
     }, {
         name: '塔利雅',
         abilities: [
@@ -490,7 +512,9 @@ export const characters = [
         ]
     }, {
         name: '丝柯克',
-        abilities: []
+        abilities: [
+            { scope: 'others', short: '水面移动(元素战技)', talent: 'combat2' },
+        ]
     }, {
         name: '伊涅芙',
         abilities: [
