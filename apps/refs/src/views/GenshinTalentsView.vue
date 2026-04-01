@@ -54,6 +54,7 @@ const columns: { scope: AbilityScope, text: string }[] = [
     { scope: 'dispatch', text: '探索派遣' },
     { scope: 'stamina', text: '体力减免' },
     { scope: 'moving', text: '移速加成' },
+    { scope: 'teamup', text: '队伍加成' },
     { scope: 'crafting', text: '烹饪 合成 锻造' },
     { scope: 'interaction', text: '环境交互' },
     { scope: 'others', text: '（未分类）' },

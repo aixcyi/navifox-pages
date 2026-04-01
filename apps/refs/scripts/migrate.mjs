@@ -86,7 +86,7 @@ async function migrate(to) {
                 const original = (
                     talent ? queryTalents[talent]['description']
                         : constellation ? queryConstellations[constellation]['description']
-                            : '（为手工标注，游戏内无对应描述）'
+                            : '【人工标注】\n游戏内无对应描述，或数据库未提供。'
                 )
                 data.abilities.push({ scope, field, short, original })
             }

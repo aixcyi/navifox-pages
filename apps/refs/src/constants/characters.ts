@@ -13,7 +13,13 @@ export const characters: GenshinCharacter[] = [
                 "scope": "interaction",
                 "field": "",
                 "short": "狼群(奔狼岭)",
-                "original": "（为手工标注，游戏内无对应描述）"
+                "original": "【人工标注】\n游戏内无对应描述，或数据库未提供。"
+            },
+            {
+                "scope": "teamup",
+                "field": "",
+                "short": "魔导",
+                "original": "【人工标注】\n游戏内无对应描述，或数据库未提供。"
             }
         ]
     },
@@ -39,6 +45,12 @@ export const characters: GenshinCharacter[] = [
                 "field": "被动天赋",
                 "short": "夜间",
                 "original": "在夜间（18时至6时），队伍中自己的角色获得迅行效果：移动速度提高10%。\n该效果在秘境、征讨领域、深境螺旋中无效，迅行效果无法叠加。\n此外，叶洛亚似乎能听懂狂猎的低语…"
+            },
+            {
+                "scope": "teamup",
+                "field": "被动天赋",
+                "short": "月兆",
+                "original": "叶洛亚在队伍中时，队伍的月兆将会上升一级。"
             }
         ]
     },
@@ -55,6 +67,12 @@ export const characters: GenshinCharacter[] = [
                 "field": "被动天赋",
                 "short": "小动物(挪德卡莱)",
                 "original": "处于挪德卡莱区域时，队伍中自己的角色倒下时，哥伦比娅将复苏该角色，并为其恢复生命值，恢复值基于哥伦比娅的好感等级，该效果每100秒至多触发一次。该效果在秘境、征讨领域、深境螺旋中无效。\n此外，对受到月矩力影响的部分小动物，哥伦比娅似乎有着特殊的亲和力…"
+            },
+            {
+                "scope": "teamup",
+                "field": "被动天赋",
+                "short": "月兆",
+                "original": "队伍中的角色触发感电/绽放/水元素结晶反应时，将转为触发月感电/月绽放/月结晶反应，且基于哥伦比娅的生命值上限，提升队伍中角色造成的月曜反应的基础伤害：每1000点生命值上限都将提升0.2%月曜反应的基础伤害，至多通过这种方式提升7%伤害。\n\n此外，哥伦比娅在队伍中时，队伍的月兆将会上升一级。"
             },
             {
                 "scope": "others",
@@ -77,6 +95,12 @@ export const characters: GenshinCharacter[] = [
                 "field": "被动天赋",
                 "short": "更多回报",
                 "original": "在蒙德执行时长为20小时的探索派遣任务时，获得的奖励增加25%。"
+            },
+            {
+                "scope": "teamup",
+                "field": "",
+                "short": "魔导",
+                "original": "【人工标注】\n游戏内无对应描述，或数据库未提供。"
             }
         ]
     },
@@ -91,8 +115,14 @@ export const characters: GenshinCharacter[] = [
             {
                 "scope": "dispatch",
                 "field": "被动天赋",
-                "short": "更少时间",
+                "short": "耗时缩短",
                 "original": "在挪德卡莱执行探索派遣任务时，消耗的时间缩短25%。"
+            },
+            {
+                "scope": "teamup",
+                "field": "被动天赋",
+                "short": "月兆",
+                "original": "雅珂达在队伍中时，队伍的月兆将会上升一级。"
             }
         ]
     },
@@ -109,6 +139,12 @@ export const characters: GenshinCharacter[] = [
                 "field": "被动天赋",
                 "short": "更多回报",
                 "original": "在挪德卡莱执行时长为20小时的探索派遣任务时，获得的奖励增加25%。"
+            },
+            {
+                "scope": "teamup",
+                "field": "被动天赋",
+                "short": "月兆",
+                "original": "队伍中的角色触发绽放反应时，将转为触发月绽放反应，且基于奈芙尔的元素精通，提升队伍中角色造成的月绽放反应的基础伤害：每点元素精通都将提升0.0175%月绽放反应的基础伤害，至多通过这种方式提升14%伤害。\n\n此外，奈芙尔在队伍中时，队伍的月兆将会上升一级。"
             }
         ]
     },
@@ -143,6 +179,12 @@ export const characters: GenshinCharacter[] = [
                 "field": "被动天赋",
                 "short": "区域特产",
                 "original": "在小地图上显示周围的挪德卡莱区域特产的位置。\n此外，菲林斯似乎能听懂狂猎的低语…"
+            },
+            {
+                "scope": "teamup",
+                "field": "被动天赋",
+                "short": "月兆",
+                "original": "队伍中的角色触发感电反应时，将转为触发月感电反应，且基于菲林斯的攻击力，提升月感电反应的基础伤害：每100点攻击力都将提升0.7%基础伤害，至多通过这种方式提升14%伤害。\n\n此外，菲林斯在队伍中时，队伍的月兆将会上升一级。"
             }
         ]
     },
@@ -165,6 +207,12 @@ export const characters: GenshinCharacter[] = [
                 "field": "被动天赋",
                 "short": "小动物(挪德卡莱)",
                 "original": "在小地图上显示周围的挪德卡莱区域特产的位置。\n此外，对受到月矩力影响的部分小动物，菈乌玛似乎有着特殊的亲和力…"
+            },
+            {
+                "scope": "teamup",
+                "field": "被动天赋",
+                "short": "月兆",
+                "original": "队伍中的角色触发绽放反应时，将转为触发月绽放反应，且基于菈乌玛的元素精通，提升队伍中角色造成的月绽放反应的基础伤害：每点元素精通都将提升0.0175%月绽放反应的基础伤害，至多通过这种方式提升14%伤害。\n\n此外，菈乌玛在队伍中时，队伍的月兆将会上升一级。"
             }
         ]
     },
@@ -181,6 +229,12 @@ export const characters: GenshinCharacter[] = [
                 "field": "被动天赋",
                 "short": "区域特产",
                 "original": "在小地图上显示周围的挪德卡莱区域特产的位置。\n此外，爱诺似乎可以通过某种途径来改变「冷静一下鸭」的外观…"
+            },
+            {
+                "scope": "teamup",
+                "field": "被动天赋",
+                "short": "月兆",
+                "original": "爱诺在队伍中时，队伍的月兆将会上升一级。"
             }
         ]
     },
@@ -197,6 +251,12 @@ export const characters: GenshinCharacter[] = [
                 "field": "被动天赋",
                 "short": "吃东西→调味剂",
                 "original": "伊涅芙使用食物时，有30%概率获得一个调味剂食材。\n\n此外，在挪德卡莱，似乎可以通过某种途径来改变薇尔琪塔的外观…"
+            },
+            {
+                "scope": "teamup",
+                "field": "被动天赋",
+                "short": "月兆",
+                "original": "队伍中的角色触发感电反应时，将转为触发月感电反应，且基于伊涅芙的攻击力，提升月感电反应的基础伤害：每100点攻击力都将提升0.7%基础伤害，至多通过这种方式提升14%伤害。\n\n此外，伊涅芙在队伍中时，队伍的月兆将会上升一级。"
             }
         ]
     },
@@ -613,7 +673,7 @@ export const characters: GenshinCharacter[] = [
             {
                 "scope": "crafting",
                 "field": "被动天赋",
-                "short": "素材倍产",
+                "short": "武器突破素材倍产",
                 "original": "合成武器突破素材时，有10%概率获得2倍产出。"
             }
         ]
@@ -693,7 +753,7 @@ export const characters: GenshinCharacter[] = [
             {
                 "scope": "interaction",
                 "field": "被动天赋",
-                "short": "禽肉,瘦肉,冷鲜肉",
+                "short": "禽肉、瘦肉、冷鲜肉",
                 "original": "绮良良在队伍中时，队伍中自己的角色接近产出禽肉、兽肉与冷鲜肉的小动物时，不会轻易惊动它们。"
             }
         ]
@@ -718,7 +778,7 @@ export const characters: GenshinCharacter[] = [
             {
                 "scope": "crafting",
                 "field": "被动天赋",
-                "short": "摆设返还",
+                "short": "摆设合成返还",
                 "original": "制作景观、建筑、庭院类摆设时，有100%概率返还部分材料。"
             }
         ]
@@ -766,7 +826,7 @@ export const characters: GenshinCharacter[] = [
             {
                 "scope": "crafting",
                 "field": "被动天赋",
-                "short": "素材倍产",
+                "short": "武器突破素材倍产",
                 "original": "合成武器突破素材时，有10%概率获得2倍产出。"
             }
         ]
@@ -830,7 +890,7 @@ export const characters: GenshinCharacter[] = [
             {
                 "scope": "crafting",
                 "field": "被动天赋",
-                "short": "天赋倍产",
+                "short": "角色天赋素材倍产",
                 "original": "合成角色天赋素材时，有10%概率获得2倍产出。"
             }
         ]
@@ -862,7 +922,7 @@ export const characters: GenshinCharacter[] = [
             {
                 "scope": "crafting",
                 "field": "被动天赋",
-                "short": "烹饪倍产",
+                "short": "冒险类烹饪倍产",
                 "original": "完美烹饪冒险类食物时，有12%概率获得2倍产出。"
             }
         ]
@@ -910,7 +970,7 @@ export const characters: GenshinCharacter[] = [
             {
                 "scope": "crafting",
                 "field": "被动天赋",
-                "short": "素材倍产",
+                "short": "角色武器培养素材倍产",
                 "original": "合成角色与武器培养素材时，有25%的概率返还部分合成材料。"
             }
         ]
@@ -1015,7 +1075,7 @@ export const characters: GenshinCharacter[] = [
             {
                 "scope": "crafting",
                 "field": "被动天赋",
-                "short": "天赋另还",
+                "short": "天赋素材随机返还",
                 "original": "合成角色天赋素材时，有25%概率额外产生一份地区相同的其他随机天赋素材，等阶与合成所消耗的素材相同。"
             }
         ]
@@ -1047,7 +1107,7 @@ export const characters: GenshinCharacter[] = [
             {
                 "scope": "crafting",
                 "field": "被动天赋",
-                "short": "烹饪倍产",
+                "short": "冒险类烹饪倍产",
                 "original": "完美烹饪冒险类食物时，有12%概率获得2倍产出。"
             }
         ]
@@ -1095,7 +1155,7 @@ export const characters: GenshinCharacter[] = [
             {
                 "scope": "interaction",
                 "field": "被动天赋",
-                "short": "钓鱼倍出",
+                "short": "稻妻钓鱼倍产",
                 "original": "旅行者在稻妻成功钓鱼时，因为托马的帮助，有20%概率获得2倍产出。"
             }
         ]
@@ -1143,7 +1203,7 @@ export const characters: GenshinCharacter[] = [
             {
                 "scope": "dispatch",
                 "field": "被动天赋",
-                "short": "更少时间",
+                "short": "耗时缩短",
                 "original": "在稻妻执行探索派遣任务时，消耗的时间缩短25%。"
             }
         ]
@@ -1159,7 +1219,7 @@ export const characters: GenshinCharacter[] = [
             {
                 "scope": "interaction",
                 "field": "被动天赋",
-                "short": "禽肉,瘦肉,冷鲜肉",
+                "short": "禽肉、瘦肉、冷鲜肉",
                 "original": "埃洛伊在队伍中时，队伍中自己的角色接近产出禽肉、兽肉与冷鲜肉的小动物时，不会轻易惊动它们。"
             }
         ]
@@ -1175,7 +1235,7 @@ export const characters: GenshinCharacter[] = [
             {
                 "scope": "crafting",
                 "field": "被动天赋",
-                "short": "摆设返还",
+                "short": "摆设合成返还",
                 "original": "制作装潢、摆件、景观类摆设时，有100%概率返还部分材料。"
             }
         ]
@@ -1207,7 +1267,7 @@ export const characters: GenshinCharacter[] = [
             {
                 "scope": "crafting",
                 "field": "被动天赋",
-                "short": "素材倍产",
+                "short": "武器突破素材倍产",
                 "original": "合成武器突破素材时，有10%概率获得2倍产出。"
             }
         ]
@@ -1239,7 +1299,7 @@ export const characters: GenshinCharacter[] = [
             {
                 "scope": "crafting",
                 "field": "被动天赋",
-                "short": "天赋倍产",
+                "short": "角色天赋天赋倍产",
                 "original": "合成角色天赋素材时，有10%概率获得2倍产出。"
             }
         ]
@@ -1318,7 +1378,7 @@ export const characters: GenshinCharacter[] = [
             {
                 "scope": "crafting",
                 "field": "被动天赋",
-                "short": "锻造返还",
+                "short": "弓类锻造返还",
                 "original": "锻造弓类武器时，返还15%消耗的矿石。"
             }
         ]
@@ -1334,8 +1394,14 @@ export const characters: GenshinCharacter[] = [
             {
                 "scope": "crafting",
                 "field": "被动天赋",
-                "short": "素材倍产",
+                "short": "武器突破素材倍产",
                 "original": "合成武器突破素材时，有10%概率获得2倍产出。"
+            },
+            {
+                "scope": "teamup",
+                "field": "",
+                "short": "魔导",
+                "original": "【人工标注】\n游戏内无对应描述，或数据库未提供。"
             }
         ]
     },
@@ -1350,7 +1416,7 @@ export const characters: GenshinCharacter[] = [
             {
                 "scope": "crafting",
                 "field": "被动天赋",
-                "short": "锻造返还",
+                "short": "长柄武器锻造返还",
                 "original": "锻造长柄武器时，返还15%消耗的矿石。"
             }
         ]
@@ -1366,7 +1432,7 @@ export const characters: GenshinCharacter[] = [
             {
                 "scope": "crafting",
                 "field": "被动天赋",
-                "short": "烹饪倍产",
+                "short": "防御类烹饪倍产",
                 "original": "完美烹饪防御类食物时，有12%概率获得2倍产出。"
             }
         ]
@@ -1403,7 +1469,7 @@ export const characters: GenshinCharacter[] = [
             {
                 "scope": "crafting",
                 "field": "被动天赋",
-                "short": "烹饪倍产",
+                "short": "恢复类烹饪倍产",
                 "original": "完美烹饪恢复类食物时，有12%概率获得2倍产出。"
             }
         ]
@@ -1421,6 +1487,12 @@ export const characters: GenshinCharacter[] = [
                 "field": "被动天赋",
                 "short": "区域特产",
                 "original": "在小地图上显示周围的蒙德区域特产的位置。"
+            },
+            {
+                "scope": "teamup",
+                "field": "",
+                "short": "魔导",
+                "original": "【人工标注】\n游戏内无对应描述，或数据库未提供。"
             }
         ]
     },
@@ -1437,6 +1509,12 @@ export const characters: GenshinCharacter[] = [
                 "field": "被动天赋",
                 "short": "滑翔体力",
                 "original": "队伍中自己的角色滑翔消耗的体力降低20%。\n无法与效果完全相同的固有天赋叠加。"
+            },
+            {
+                "scope": "teamup",
+                "field": "",
+                "short": "魔导",
+                "original": "【人工标注】\n游戏内无对应描述，或数据库未提供。"
             }
         ]
     },
@@ -1451,7 +1529,7 @@ export const characters: GenshinCharacter[] = [
             {
                 "scope": "dispatch",
                 "field": "被动天赋",
-                "short": "更少时间",
+                "short": "耗时缩短",
                 "original": "在璃月执行探索派遣任务时，消耗的时间缩短25%。"
             }
         ]
@@ -1467,8 +1545,14 @@ export const characters: GenshinCharacter[] = [
             {
                 "scope": "crafting",
                 "field": "被动天赋",
-                "short": "素材返还",
+                "short": "武器突破素材返还",
                 "original": "合成武器突破素材时，有25%概率返还部分合成材料。"
+            },
+            {
+                "scope": "teamup",
+                "field": "",
+                "short": "魔导",
+                "original": "【人工标注】\n游戏内无对应描述，或数据库未提供。"
             }
         ]
     },
@@ -1505,7 +1589,7 @@ export const characters: GenshinCharacter[] = [
             {
                 "scope": "crafting",
                 "field": "被动天赋",
-                "short": "锻造返还",
+                "short": "双手剑锻造返还",
                 "original": "锻造双手剑类武器时，返还15%消耗的矿石。"
             }
         ]
@@ -1527,7 +1611,7 @@ export const characters: GenshinCharacter[] = [
             {
                 "scope": "crafting",
                 "field": "被动天赋",
-                "short": "烹饪倍产",
+                "short": "恢复类烹饪倍产",
                 "original": "完美烹饪恢复类食物时，有12%概率获得2倍产出。"
             }
         ]
@@ -1543,8 +1627,14 @@ export const characters: GenshinCharacter[] = [
             {
                 "scope": "crafting",
                 "field": "被动天赋",
-                "short": "素材倍产",
+                "short": "角色武器培养素材倍产",
                 "original": "合成角色与武器培养素材时，有10%概率获得2倍产出。"
+            },
+            {
+                "scope": "teamup",
+                "field": "",
+                "short": "魔导",
+                "original": "【人工标注】\n游戏内无对应描述，或数据库未提供。"
             }
         ]
     },
@@ -1559,7 +1649,7 @@ export const characters: GenshinCharacter[] = [
             {
                 "scope": "dispatch",
                 "field": "被动天赋",
-                "short": "更少时间",
+                "short": "耗时缩短",
                 "original": "在璃月执行探索派遣任务时，消耗的时间缩短25%。"
             }
         ]
@@ -1575,7 +1665,7 @@ export const characters: GenshinCharacter[] = [
             {
                 "scope": "crafting",
                 "field": "被动天赋",
-                "short": "烹饪倍产",
+                "short": "防御类烹饪倍产",
                 "original": "完美烹饪防御类食物时，有12%概率获得2倍产出。"
             }
         ]
@@ -1591,7 +1681,7 @@ export const characters: GenshinCharacter[] = [
             {
                 "scope": "dispatch",
                 "field": "被动天赋",
-                "short": "更少时间",
+                "short": "耗时缩短",
                 "original": "在蒙德执行探索派遣任务时，消耗的时间缩短25%。"
             }
         ]
@@ -1607,8 +1697,14 @@ export const characters: GenshinCharacter[] = [
             {
                 "scope": "dispatch",
                 "field": "被动天赋",
-                "short": "更少时间",
+                "short": "耗时缩短",
                 "original": "在蒙德执行探索派遣任务时，消耗的时间缩短25%。"
+            },
+            {
+                "scope": "teamup",
+                "field": "",
+                "short": "魔导",
+                "original": "【人工标注】\n游戏内无对应描述，或数据库未提供。"
             }
         ]
     },
@@ -1639,7 +1735,7 @@ export const characters: GenshinCharacter[] = [
             {
                 "scope": "crafting",
                 "field": "被动天赋",
-                "short": "天赋返还",
+                "short": "天赋合成返还",
                 "original": "合成角色天赋素材时，有25%概率返还部分合成材料。"
             }
         ]
@@ -1671,7 +1767,7 @@ export const characters: GenshinCharacter[] = [
             {
                 "scope": "crafting",
                 "field": "被动天赋",
-                "short": "烹饪倍产",
+                "short": "攻击类烹饪倍产",
                 "original": "完美烹饪攻击类食物时，有12%概率获得2倍产出。"
             }
         ]
@@ -1694,7 +1790,13 @@ export const characters: GenshinCharacter[] = [
                 "scope": "interaction",
                 "field": "",
                 "short": "狼群(奔狼岭)",
-                "original": "（为手工标注，游戏内无对应描述）"
+                "original": "【人工标注】\n游戏内无对应描述，或数据库未提供。"
+            },
+            {
+                "scope": "teamup",
+                "field": "",
+                "short": "魔导",
+                "original": "【人工标注】\n游戏内无对应描述，或数据库未提供。"
             }
         ]
     },
@@ -1709,7 +1811,7 @@ export const characters: GenshinCharacter[] = [
             {
                 "scope": "crafting",
                 "field": "被动天赋",
-                "short": "烹饪倍产",
+                "short": "恢复类烹饪倍产",
                 "original": "完美烹饪恢复类食物时，有12%概率获得2倍产出。"
             },
             {
@@ -1737,7 +1839,7 @@ export const characters: GenshinCharacter[] = [
             {
                 "scope": "crafting",
                 "field": "被动天赋",
-                "short": "药剂返还",
+                "short": "药剂合成返还",
                 "original": "合成药剂时，有20%概率返还部分合成材料。"
             }
         ]

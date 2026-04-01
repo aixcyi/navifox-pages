@@ -7,9 +7,18 @@
  * - `moving`，移速加成。
  * - `crafting`，烹饪与合成。
  * - `interaction`，环境交互。
+ * - `teamup`，组队策略。
  * - `others`，其它。
  */
-export type AbilityScope = 'locator' | 'dispatch' | 'stamina' | 'moving' | 'crafting' | 'interaction' | 'others'
+export type AbilityScope =
+    'locator'
+    | 'dispatch'
+    | 'stamina'
+    | 'moving'
+    | 'crafting'
+    | 'interaction'
+    | 'teamup'
+    | 'others'
 
 /**
  * 能力（包含能力归属领域、简述和原始描述）。

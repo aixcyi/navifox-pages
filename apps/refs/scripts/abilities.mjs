@@ -7,83 +7,90 @@ export default {
         { scope: 'stamina', short: '冲刺体力', talent: 'passive3' },
     ],
     '丽莎': [
-        { scope: 'crafting', short: '药剂返还', talent: 'passive3' },
+        { scope: 'crafting', short: '药剂合成返还', talent: 'passive3' },
     ],
     '芭芭拉': [
-        { scope: 'crafting', short: '烹饪倍产', talent: 'passive3' },
+        { scope: 'crafting', short: '恢复类烹饪倍产', talent: 'passive3' },
         { scope: 'stamina', short: '元素战技', talent: 'passive1' },
         { scope: 'others', short: '复活(后台)', constellation: 'c6' },
     ],
     '雷泽': [
         { scope: 'stamina', short: '冲刺体力', talent: 'passive3' },
         { scope: 'interaction', short: '狼群(奔狼岭)' },
+        { scope: 'teamup', short: '魔导' },
     ],
     '香菱': [
-        { scope: 'crafting', short: '烹饪倍产', talent: 'passive3' },
+        { scope: 'crafting', short: '攻击类烹饪倍产', talent: 'passive3' },
     ],
     '北斗': [
         { scope: 'stamina', short: '游泳体力', talent: 'passive3' },
     ],
     '行秋': [
-        { scope: 'crafting', short: '天赋返还', talent: 'passive3' },
+        { scope: 'crafting', short: '天赋合成返还', talent: 'passive3' },
     ],
     '凝光': [
         { scope: 'locator', short: '锻造矿石', talent: 'passive3' },
     ],
     '菲谢尔': [
-        { scope: 'dispatch', short: '更少时间', talent: 'passive3' },
+        { scope: 'dispatch', short: '耗时缩短', talent: 'passive3' },
+        { scope: 'teamup', short: '魔导' },
     ],
     '班尼特': [
-        { scope: 'dispatch', short: '更少时间', talent: 'passive3' },
+        { scope: 'dispatch', short: '耗时缩短', talent: 'passive3' },
     ],
     '诺艾尔': [
-        { scope: 'crafting', short: '烹饪倍产', talent: 'passive3' },
+        { scope: 'crafting', short: '防御类烹饪倍产', talent: 'passive3' },
     ],
     '重云': [
-        { scope: 'dispatch', short: '更少时间', talent: 'passive3' },
+        { scope: 'dispatch', short: '耗时缩短', talent: 'passive3' },
     ],
     '砂糖': [
-        { scope: 'crafting', short: '素材倍产', talent: 'passive3' },
+        { scope: 'crafting', short: '角色武器培养素材倍产', talent: 'passive3' },
+        { scope: 'teamup', short: '魔导' },
     ],
     '琴': [
         { scope: 'moving', short: '获得元素', constellation: 'c2' },
-        { scope: 'crafting', short: '烹饪倍产', talent: 'passive3' },
+        { scope: 'crafting', short: '恢复类烹饪倍产', talent: 'passive3' },
     ],
     '迪卢克': [
-        { scope: 'crafting', short: '锻造返还', talent: 'passive3' },
+        { scope: 'crafting', short: '双手剑锻造返还', talent: 'passive3' },
     ],
     '七七': [
         { scope: 'locator', short: '区域特产', talent: 'passive3' },
         { scope: 'others', short: '复活(元素爆发)', constellation: 'c6' },
     ],
     '莫娜': [
-        { scope: 'crafting', short: '素材返还', talent: 'passive3' },
+        { scope: 'crafting', short: '武器突破素材返还', talent: 'passive3' },
+        { scope: 'teamup', short: '魔导' },
     ],
     '刻晴': [
-        { scope: 'dispatch', short: '更少时间', talent: 'passive3' },
+        { scope: 'dispatch', short: '耗时缩短', talent: 'passive3' },
     ],
     '温迪': [
         { scope: 'stamina', short: '滑翔体力', talent: 'passive3' },
+        { scope: 'teamup', short: '魔导' },
     ],
     '可莉': [
         { scope: 'locator', short: '区域特产', talent: 'passive3' },
+        { scope: 'teamup', short: '魔导' },
     ],
     '迪奥娜': [
         { scope: 'moving', short: '护盾内', talent: 'passive1' },
         { scope: 'stamina', short: '护盾内', talent: 'passive1' },
-        { scope: 'crafting', short: '烹饪倍产', talent: 'passive3' },
+        { scope: 'crafting', short: '恢复类烹饪倍产', talent: 'passive3' },
     ],
     '辛焱': [
-        { scope: 'crafting', short: '烹饪倍产', talent: 'passive3' },
+        { scope: 'crafting', short: '防御类烹饪倍产', talent: 'passive3' },
     ],
     '钟离': [
-        { scope: 'crafting', short: '锻造返还', talent: 'passive3' },
+        { scope: 'crafting', short: '长柄武器锻造返还', talent: 'passive3' },
     ],
     '阿贝多': [
-        { scope: 'crafting', short: '素材倍产', talent: 'passive3' },
+        { scope: 'crafting', short: '武器突破素材倍产', talent: 'passive3' },
+        { scope: 'teamup', short: '魔导' },
     ],
     '甘雨': [
-        { scope: 'crafting', short: '锻造返还', talent: 'passive3' },
+        { scope: 'crafting', short: '弓类锻造返还', talent: 'passive3' },
     ],
     '魈': [
         { scope: 'stamina', short: '攀爬体力', talent: 'passive3' },
@@ -96,25 +103,25 @@ export default {
         { scope: 'locator', short: '区域特产', talent: 'passive3' },
     ],
     '优菈': [
-        { scope: 'crafting', short: '天赋倍产', talent: 'passive3' },
+        { scope: 'crafting', short: '角色天赋天赋倍产', talent: 'passive3' },
     ],
     '枫原万叶': [
         { scope: 'stamina', short: '冲刺体力', talent: 'passive3' },
     ],
     '神里绫华': [
-        { scope: 'crafting', short: '素材倍产', talent: 'passive3' },
+        { scope: 'crafting', short: '武器突破素材倍产', talent: 'passive3' },
     ],
     '早柚': [
         { scope: 'interaction', short: '生物→野生→其他', talent: 'passive3' },
     ],
     '宵宫': [
-        { scope: 'crafting', short: '摆设返还', talent: 'passive3' },
+        { scope: 'crafting', short: '摆设合成返还', talent: 'passive3' },
     ],
     '埃洛伊': [
-        { scope: 'interaction', short: '禽肉,瘦肉,冷鲜肉', talent: 'passive3' },
+        { scope: 'interaction', short: '禽肉、瘦肉、冷鲜肉', talent: 'passive3' },
     ],
     '九条裟罗': [
-        { scope: 'dispatch', short: '更少时间', talent: 'passive3' },
+        { scope: 'dispatch', short: '耗时缩短', talent: 'passive3' },
     ],
     '雷电将军': [
         { scope: 'others', short: '突破少花钱(剑,长枪)', talent: 'passive3' },
@@ -123,7 +130,7 @@ export default {
         { scope: 'stamina', short: '游泳体力', talent: 'passive3' },
     ],
     '托马': [
-        { scope: 'interaction', short: '钓鱼倍出', talent: 'passive3' },
+        { scope: 'interaction', short: '稻妻钓鱼倍产', talent: 'passive3' },
     ],
     '五郎': [
         { scope: 'locator', short: '区域特产', talent: 'passive3' },
@@ -132,13 +139,13 @@ export default {
         { scope: 'interaction', short: '砍树多得', talent: 'passive3' },
     ],
     '云堇': [
-        { scope: 'crafting', short: '烹饪倍产', talent: 'passive3' },
+        { scope: 'crafting', short: '冒险类烹饪倍产', talent: 'passive3' },
     ],
     '申鹤': [
         { scope: 'dispatch', short: '更多回报', talent: 'passive3' },
     ],
     '八重神子': [
-        { scope: 'crafting', short: '天赋另还', talent: 'passive3' },
+        { scope: 'crafting', short: '天赋素材随机返还', talent: 'passive3' },
     ],
     '夜兰': [
         { scope: 'dispatch', short: '更多回报', talent: 'passive3' },
@@ -156,7 +163,7 @@ export default {
         { scope: 'locator', short: '区域特产', talent: 'passive3' },
     ],
     '多莉': [
-        { scope: 'crafting', short: '素材倍产', talent: 'passive3' },
+        { scope: 'crafting', short: '角色武器培养素材倍产', talent: 'passive3' },
     ],
     '坎蒂丝': [
         { scope: 'stamina', short: '攀爬体力', talent: 'passive3' },
@@ -168,10 +175,10 @@ export default {
         { scope: 'others', short: '远程采集', talent: 'passive3' },
     ],
     '妮露': [
-        { scope: 'crafting', short: '烹饪倍产', talent: 'passive3' },
+        { scope: 'crafting', short: '冒险类烹饪倍产', talent: 'passive3' },
     ],
     '莱依拉': [
-        { scope: 'crafting', short: '天赋倍产', talent: 'passive3' },
+        { scope: 'crafting', short: '角色天赋素材倍产', talent: 'passive3' },
     ],
     '珐露珊': [
         { scope: 'dispatch', short: '更多回报', talent: 'passive3' },
@@ -183,7 +190,7 @@ export default {
         { scope: 'interaction', short: '生物→野生→其他', talent: 'passive3' },
     ],
     '艾尔海森': [
-        { scope: 'crafting', short: '素材倍产', talent: 'passive3' },
+        { scope: 'crafting', short: '武器突破素材倍产', talent: 'passive3' },
     ],
     '迪希雅': [
         { scope: 'moving', short: '白天', talent: 'passive3' },
@@ -192,10 +199,10 @@ export default {
         { scope: 'locator', short: '区域特产', talent: 'passive3' },
     ],
     '卡维': [
-        { scope: 'crafting', short: '摆设返还', talent: 'passive3' },
+        { scope: 'crafting', short: '摆设合成返还', talent: 'passive3' },
     ],
     '绮良良': [
-        { scope: 'interaction', short: '禽肉,瘦肉,冷鲜肉', talent: 'passive3' },
+        { scope: 'interaction', short: '禽肉、瘦肉、冷鲜肉', talent: 'passive3' },
     ],
     '琳妮特': [
         { scope: 'locator', short: '复苏水团', talent: 'passive3' },
@@ -210,7 +217,7 @@ export default {
         { scope: 'moving', short: '水下冲刺', talent: 'passive3' },
     ],
     '莱欧斯利': [
-        { scope: 'crafting', short: '素材倍产', talent: 'passive3' },
+        { scope: 'crafting', short: '武器突破素材倍产', talent: 'passive3' },
     ],
     '娜维娅': [
         { scope: 'dispatch', short: '更多回报', talent: 'passive3' },
@@ -272,34 +279,44 @@ export default {
     ],
     '伊涅芙': [
         { scope: 'others', short: '吃东西→调味剂', talent: 'passive4' },
+        { scope: 'teamup', short: '月兆', talent: 'passive3' },
     ],
     '爱诺': [
         { scope: 'locator', short: '区域特产', talent: 'passive4' },
+        { scope: 'teamup', short: '月兆', talent: 'passive3' },
     ],
     '菈乌玛': [
         { scope: 'locator', short: '区域特产', talent: 'passive4' },
         { scope: 'interaction', short: '小动物(挪德卡莱)', talent: 'passive4' },
+        { scope: 'teamup', short: '月兆', talent: 'passive3' },
     ],
     '菲林斯': [
         { scope: 'locator', short: '区域特产', talent: 'passive4' },
+        { scope: 'teamup', short: '月兆', talent: 'passive3' },
     ],
     '奈芙尔': [
         { scope: 'dispatch', short: '更多回报', talent: 'passive4' },
+        { scope: 'teamup', short: '月兆', talent: 'passive3' },
     ],
     '雅珂达': [
-        { scope: 'dispatch', short: '更少时间', talent: 'passive4' },
+        { scope: 'dispatch', short: '耗时缩短', talent: 'passive4' },
+        { scope: 'teamup', short: '月兆', talent: 'passive3' },
     ],
     '杜林': [
         { scope: 'dispatch', short: '更多回报', talent: 'passive3' },
+        { scope: 'teamup', short: '魔导' },
     ],
     '哥伦比娅': [
         { scope: 'interaction', short: '小动物(挪德卡莱)', talent: 'passive4' },
+        { scope: 'teamup', short: '月兆', talent: 'passive3' },
         { scope: 'others', short: '复活(挪德卡莱)', talent: 'passive4' },
     ],
     '叶洛亚': [
         { scope: 'moving', short: '夜间', talent: 'passive4' },
+        { scope: 'teamup', short: '月兆', talent: 'passive3' },
     ],
     '法尔伽': [
         { scope: 'interaction', short: '狼群(奔狼岭)' },
+        { scope: 'teamup', short: '魔导' },
     ],
 }
