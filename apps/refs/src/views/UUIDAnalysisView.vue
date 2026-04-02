@@ -163,7 +163,7 @@ onClickOutside(editor, () => {
                     <span class="text-purple-700 dark:text-purple-400">{{ uuid.fields[3]!.substring(0, 1) }}</span>
                     <span class="text-orange-500 dark:text-orange-400">{{ uuid.fields[3]!.substring(1) }}</span>
                     <span>-</span>
-                    <span>{{ uuid.fields[4] }}</span>
+                    <span class="text-pink-500 dark:text-pink-400">{{ uuid.fields[4] }}</span>
                 </code>
             </div>
         </div>
