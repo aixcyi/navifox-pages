@@ -178,7 +178,7 @@ export class UUID {
             return undefined
         const s = this.timestamp / 1000_000_000n
         const ns = trimEnd(abs(this.timestamp % 1000_000_000n).toString(), '0')
-        return `${s}.${ns}`
+        return `${s}.${ns ? ns : '0'}`
     }
 
     /**
@@ -191,7 +191,7 @@ export class UUID {
             return undefined
         const s = this.timestamp / 1000_000_000n
         const ns = trimEnd(abs(this.timestamp % 1000_000_000n).toString(), '0')
-        return format(new Date(Number(s * 1000n)), `yyyy-MM-dd HH:mm:ss.${ns} O`)
+        return format(new Date(Number(s * 1000n)), `yyyy-MM-dd HH:mm:ss.${ns ? ns : '0'} O`)
     }
 
     /**
@@ -204,7 +204,7 @@ export class UUID {
             return undefined
         const s = this.timestamp / 1000_000_000n
         const ns = trimEnd(abs(this.timestamp % 1000_000_000n).toString(), '0')
-        return format(new UTCDate(Number(s * 1000n)), `yyyy-MM-dd HH:mm:ss.${ns} O`)
+        return format(new UTCDate(Number(s * 1000n)), `yyyy-MM-dd HH:mm:ss.${ns ? ns : '0'} O`)
     }
 
     /**
@@ -235,16 +235,18 @@ export class UUID {
         }
     }
 
-    static v3(name: UUID, namespace: UUID) {
-        return UUID.parse(uuid3(name.bytes, namespace.bytes))!
+    static v3(name: string, namespace: UUID | null) {
+        if (!name || !namespace) return null
+        return UUID.parse(uuid3(name, namespace.bytes))!
     }
 
     static v4(options?: Version4Options) {
         return UUID.parse(uuid4(options))!
     }
 
-    static v5(name: UUID, namespace: UUID) {
-        return UUID.parse(uuid5(name.bytes, namespace.bytes))!
+    static v5(name: string, namespace: UUID | null) {
+        if (!name || !namespace) return null
+        return UUID.parse(uuid5(name, namespace.bytes))!
     }
 
     static v6(options?: Version6Options) {
