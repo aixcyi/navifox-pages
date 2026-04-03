@@ -9,6 +9,8 @@ import { nextTick, onMounted, ref, shallowRef, useTemplateRef } from 'vue';
 const editor = useTemplateRef('editor')
 const isEditing = ref(false)
 const plaintext = ref('00112233-4455-6677-8899-aabbccddeeff')
+const namespace = ref('019d5142-085b-7000-8000-c2b7bafcd3f0')
+const name = ref('navifox.net')
 const uuid = shallowRef<UUID | null>(null)
 const bitsoup = shallowRef<{ bit: string, classes: string[] }[][]>([])
 
@@ -23,7 +25,9 @@ interface UUIDInfo<T> {
     local?: T
 }
 
-function update() {
+function analysis(u: UUID | null) {
+    uuid.value = u
+    plaintext.value = uuid.value?.string ?? plaintext.value
     if (!uuid.value) return
     const info: UUIDInfo<number[]> = {}
     switch (uuid.value.variant) {
@@ -71,17 +75,11 @@ function update() {
 }
 
 onMounted(() => {
-    uuid.value = UUID.parse(plaintext.value)
-    plaintext.value = uuid.value?.string ?? plaintext.value
-    update()
+    analysis(UUID.parse(plaintext.value))
 })
 onClickOutside(editor, () => {
-    if (isEditing.value) {
-        uuid.value = UUID.parse(plaintext.value)
-        plaintext.value = uuid.value?.string ?? plaintext.value
-        update()
-    }
-    isEditing.value = false
+    analysis(UUID.parse(plaintext.value))
+    isEditing.value = !uuid.value
 })
 </script>
 
@@ -89,37 +87,45 @@ onClickOutside(editor, () => {
 <template>
 <Content>
     <template #buttons>
-        <AiButton text="UUID v1" @click="uuid = UUID.v1(); plaintext = uuid.string; update()" />
-        <AiButton text="UUID v2" @click="uuid = UUID.v2(); plaintext = uuid.string; update()" />
-        <AiButton text="UUID v4" @click="uuid = UUID.v4(); plaintext = uuid.string; update()" />
-        <AiButton text="UUID v6" @click="uuid = UUID.v6(); plaintext = uuid.string; update()" />
-        <AiButton text="UUID v7" @click="uuid = UUID.v7(); plaintext = uuid.string; update()" />
+        <AiButton text="UUID v1" @click="analysis(UUID.v1())" />
+        <AiButton text="UUID v2" @click="analysis(UUID.v2())" />
+        <AiButton text="UUID v3" @click="analysis(UUID.parse(UUID.EMPTY3))" />
+        <AiButton text="UUID v4" @click="analysis(UUID.v4())" />
+        <AiButton text="UUID v5" @click="analysis(UUID.parse(UUID.EMPTY5))" />
+        <AiButton text="UUID v6" @click="analysis(UUID.v6())" />
+        <AiButton text="UUID v7" @click="analysis(UUID.v7())" />
+        <AiButton text="Nil UUID" @click="analysis(UUID.parse(UUID.NIL))" />
+        <AiButton text="Max UUID" @click="analysis(UUID.parse(UUID.MAX))" />
         <AiButton :copytext="uuid?.hex" coffee text="复制纯 Hex" />
     </template>
     <div class="MaxContainer flex flex-col text-black dark:text-white">
         <div class="md:text-2xl text-center text-nowrap overflow-x-auto selection:bg-pink-300 selection:text-black">
-            <input v-show="isEditing"
-                   id="editor"
-                   ref="editor"
-                   v-model="plaintext"
-                   class="w-full p-4 text-center font-mono border outline-0 rounded-lg bg-slate-200 dark:bg-slate-700 border-slate-300 dark:border-slate-500 hover:border-pink-500 dark:hover:border-pink-300"
-                   placeholder="填写一个 UUID"
-                   type="text"
-                   @focus.self="event => (event.currentTarget as HTMLInputElement).select()"
+            <input
+                v-show="isEditing"
+                id="editor"
+                ref="editor"
+                v-model="plaintext"
+                :class="uuid ? 'border-slate-300 dark:border-slate-500 hover:border-pink-500 dark:hover:border-pink-300' : 'border-orange-400'"
+                class="w-full p-4 font-mono border-2 rounded-lg text-center outline-0 bg-slate-200 dark:bg-slate-700"
+                placeholder="填写一个 UUID"
+                type="text"
+                @focus.self="event => (event.currentTarget as HTMLInputElement).select()"
             />
-            <div v-show="!isEditing"
-                 class="w-full p-4 border rounded-lg border-transparent"
-                 @dblclick="isEditing = true; nextTick(() => editor?.focus())">
+            <div
+                v-show="!isEditing"
+                class="w-full p-4 font-mono border-2 rounded-lg border-transparent"
+                @dblclick="isEditing = true; nextTick(() => editor?.focus())"
+            >
                 <span v-if="uuid?.variant === undefined" class="text-red-500">（填写的UUID无法识别）</span>
-                <code v-else-if="uuid.variant !== UUID.RFC_4122">
+                <span v-else-if="uuid.variant !== UUID.RFC_4122">
                     <span>{{ uuid.fields[0] }}-</span>
                     <span>{{ uuid.fields[1] }}-</span>
                     <span>{{ uuid.fields[2] }}-</span>
                     <span class="text-purple-700 dark:text-purple-400">{{ uuid.fields[3]!.substring(0, 1) }}</span>
                     <span>{{ uuid.fields[3]!.substring(1) }}-</span>
                     <span>{{ uuid.fields[4] }}</span>
-                </code>
-                <code v-else-if="uuid.version === undefined || ![1,2,6,7].includes(uuid.version)">
+                </span>
+                <span v-else-if="uuid.version === undefined || ![1,2,6,7].includes(uuid.version)">
                     <span>{{ uuid.fields[0] }}-</span>
                     <span>{{ uuid.fields[1] }}-</span>
                     <span class="text-cyan-500 dark:text-cyan-400">{{ uuid.fields[2]![0] }}</span>
@@ -127,8 +133,8 @@ onClickOutside(editor, () => {
                     <span class="text-purple-700 dark:text-purple-400">{{ uuid.fields[3]!.substring(0, 1) }}</span>
                     <span>{{ uuid.fields[3]!.substring(1) }}-</span>
                     <span>{{ uuid.fields[4] }}</span>
-                </code>
-                <code v-else-if="uuid.version === 7">
+                </span>
+                <span v-else-if="uuid.version === 7">
                     <span class="text-lime-500 dark:text-lime-400">{{ uuid.fields[0] }}</span>
                     <span>-</span>
                     <span class="text-lime-500 dark:text-lime-400">{{ uuid.fields[1] }}</span>
@@ -138,8 +144,8 @@ onClickOutside(editor, () => {
                     <span class="text-purple-700 dark:text-purple-400">{{ uuid.fields[3]!.substring(0, 1) }}</span>
                     <span>{{ uuid.fields[3]!.substring(1) }}-</span>
                     <span>{{ uuid.fields[4] }}</span>
-                </code>
-                <code v-else-if="uuid.version === 1 || uuid.version === 6">
+                </span>
+                <span v-else-if="uuid.version === 1 || uuid.version === 6">
                     <span class="text-lime-500 dark:text-lime-400">{{ uuid.fields[0] }}</span>
                     <span>-</span>
                     <span class="text-lime-500 dark:text-lime-400">{{ uuid.fields[1] }}</span>
@@ -151,8 +157,8 @@ onClickOutside(editor, () => {
                     <span class="text-orange-500 dark:text-orange-400">{{ uuid.fields[3]!.substring(1) }}</span>
                     <span>-</span>
                     <span class="text-pink-500 dark:text-pink-400">{{ uuid.fields[4] }}</span>
-                </code>
-                <code v-else-if="uuid.version === 2">
+                </span>
+                <span v-else-if="uuid.version === 2">
                     <span class="text-olive-500 dark:text-olive-400">{{ uuid.fields[0] }}</span>
                     <span>-</span>
                     <span class="text-lime-500 dark:text-lime-400">{{ uuid.fields[1] }}</span>
@@ -164,7 +170,7 @@ onClickOutside(editor, () => {
                     <span class="text-orange-500 dark:text-orange-400">{{ uuid.fields[3]!.substring(1) }}</span>
                     <span>-</span>
                     <span class="text-pink-500 dark:text-pink-400">{{ uuid.fields[4] }}</span>
-                </code>
+                </span>
             </div>
         </div>
         <div v-if="uuid" class="mt-4 overflow-x-auto">
@@ -197,6 +203,27 @@ onClickOutside(editor, () => {
                         本地信息<br />
                         <code class="bg-olive-500/50 dark:bg-olive-400/50">{{ uuid.local }}</code>
                     </p>
+                    <div v-if="uuid.version === 3 || uuid.version == 5" class="flex flex-col gap-4">
+                        <div>
+                            命名空间<br />
+                            <input
+                                v-model="namespace"
+                                :class="UUID.parse(namespace) ? 'focus:border-b-pink-500 dark:focus:border-b-pink-300' : 'border-b-orange-400!'"
+                                class="text-nowrap w-full min-w-sm font-mono border-b-2 outline-0 border-b-transparent selection:bg-pink-300 selection:text-black"
+                                type="text" />
+                        </div>
+                        <div>
+                            唯一名称<br />
+                            <input
+                                v-model="name"
+                                class="text-nowrap w-full min-w-sm font-mono border-b-2 outline-0 border-b-transparent focus:border-b-pink-500 dark:focus:border-b-pink-300 selection:bg-pink-300 selection:text-black"
+                                type="text" />
+                        </div>
+                        <div class="flex gap-3">
+                            <AiButton inner text="UUID v3" @click="analysis(UUID.v3(name, UUID.parse(namespace)))" />
+                            <AiButton inner text="UUID v5" @click="analysis(UUID.v5(name, UUID.parse(namespace)))" />
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

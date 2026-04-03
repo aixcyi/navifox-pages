@@ -23,6 +23,11 @@ export class UUID {
     static readonly FUTURE = 0xE0
     static readonly PATTERN = /^\{?(?:urn:uuid:)?([0-9a-f]{8})-?([0-9a-f]{4})-?([0-9a-f]{4})-?([0-9a-f]{4})-?([0-9a-f]{12})}?$/i
 
+    static readonly NIL = '00000000-0000-0000-0000-000000000000'
+    static readonly MAX = 'ffffffff-ffff-ffff-ffff-ffffffffffff'
+    static readonly EMPTY3 = '00000000-0000-3000-8000-000000000000'
+    static readonly EMPTY5 = '00000000-0000-5000-8000-000000000000'
+
     /**
      * 大端字节序排列的字节集。
      */
