@@ -4,10 +4,6 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
-:root {
-    color-scheme: light dark;
-}
-
 header.Home {
     position: relative !important;
     top: auto !important;

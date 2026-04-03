@@ -3,11 +3,3 @@
 @source '../node_modules/@navifox/ui';
 
 @custom-variant dark (&:where(.dark, .dark *));
-
-:root {
-    --fox-cyan-1: #459199;
-    --fox-cyan-2: #285559;
-
-    color-scheme: light dark;
-    color: var(--color-neutral-400);
-}

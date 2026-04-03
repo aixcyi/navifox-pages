@@ -29,9 +29,9 @@ useResizeObserver(bio, (entries) => {
 
 
 <template>
-<img :src="Background" alt="背景图片" class="absolute size-full select-none object-cover -z-100" />
-<div class="absolute size-full bg-black/25  dark:bg-black/50 -z-10" />
-<div class="MaxContainer md:px-[20%]! h-screen flex items-center justify-end selection:bg-[#B5A2FD]/33">
+<img :src="Background" alt="背景图片" class="absolute size-full select-none object-cover z-0" />
+<div class="absolute size-full bg-black/25  dark:bg-black/50 z-10" />
+<div class="MaxContainer md:px-[20%]! h-screen flex items-center justify-end selection:bg-[#B5A2FD]/33 z-20 **:z-20">
     <div class="max-md:-mx-4 flex w-fit flex-col text-[#FDE2A2]"
          style="text-shadow: 1px 1px 3px #000c,0 0 8px #0009;">
 

@@ -4,12 +4,23 @@
 <head>
     <meta charset="UTF-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <meta name="darkreader-lock">
+    <style>
+        html {
+            color-scheme: light dark;
+            background-color: oklch(27.9% 0.041 260.031); /* var(--color-slate-800) */
+        }
+
+        @media (prefers-color-scheme: light) {
+            html {
+                color-scheme: oklch(92.9% 0.013 255.508); /* var(--color-slate-200) */
+            }
+        }
+    </style>
     <title></title>
 </head>
 
 <body>
-<div id="app"></div>
+<div id="app" class="bg-slate-200 dark:bg-slate-800"></div>
 <script src="/src/main.ts" type="module"></script>
 </body>
 

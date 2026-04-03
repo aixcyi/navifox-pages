@@ -8,9 +8,6 @@
     --button-color: var(--color-amber-200);
     --button-hoverColor: var(--background);
     --ease-in-out-quart: cubic-bezier(.645, .045, .355, 1);
-
-    color-scheme: only light;
-    background: var(--background);
 }
 
 *::selection {
