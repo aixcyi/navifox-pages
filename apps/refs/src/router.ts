@@ -1,5 +1,10 @@
-import HomeView from '#/views/HomeView.vue';
-import NotFoundView from '#/views/NotFoundView.vue';
+import Home from '#/Home.vue';
+import NotFound from '#/NotFound.vue';
+import GenshinTalentsView from '#/views/GenshinTalentsView.vue';
+import MirrorView from '#/views/MirrorView.vue';
+import TailwindColorView from '#/views/TailwindColorView.vue';
+import TimestampView from '#/views/TimestampView.vue';
+import UUIDAnalysisView from '#/views/UUIDAnalysisView.vue';
 import { navifoxRefs } from '@navifox/constants';
 import { useWebsiteLinks, useWebsiteMetas } from '@navifox/utils';
 import { useHead } from '@unhead/vue';
@@ -11,7 +16,7 @@ const router = createRouter({
         {
             path: '/',
             name: 'Homepage',
-            component: HomeView,
+            component: Home,
         }, {
             path: '/timestamp',
             name: 'TimestampSheet',
@@ -21,7 +26,7 @@ const router = createRouter({
                 keywords: [ '时间戳', '进制', '进位制', '表格', '字符集', '字符串', '对照表' ],
                 logo: 'svg-spinners:clock',
             },
-            component: () => import('#/views/TimestampView.vue'),
+            component: TimestampView,
         }, {
             path: '/mirror',
             name: 'MirrorSheet',
@@ -30,7 +35,7 @@ const router = createRouter({
                 description: '展示常见包管理器（pip、npm 等等）的镜像源设置，用于快速设置与解决问题；镜像源按收录时间排序。',
                 keywords: [ 'pip', 'npm', 'pnpm', '镜像源' ],
             },
-            component: () => import('#/views/MirrorView.vue'),
+            component: MirrorView,
         }, {
             path: '/tailwind',
             name: 'TailwindColorSheet',
@@ -40,7 +45,7 @@ const router = createRouter({
                 keywords: [ 'Tailwind', 'TailwindCSS', 'CSS', '颜色' ],
                 logo: 'logos:tailwindcss-icon',
             },
-            component: () => import('#/views/TailwindColorView.vue'),
+            component: TailwindColorView,
         }, {
             path: '/uuid',
             name: 'UUIDAnalysisSheet',
@@ -49,7 +54,7 @@ const router = createRouter({
                 description: '通用唯一标识符 UUID（Universally Unique IDentifier）结构解析。',
                 keywords: [ 'UUID', 'id', 'RFC9562', 'RFC4122' ],
             },
-            component: () => import('#/views/UUIDAnalysisView.vue'),
+            component: UUIDAnalysisView,
         }, {
             path: '/genshin/talent',
             name: 'GenshinTalentSheet',
@@ -58,14 +63,14 @@ const router = createRouter({
                 description: '原神角色（截止 6.4 月之五版本）部分实用天赋一览表（按游戏内图鉴顺序排序）。',
                 keywords: [ '原神', '角色', '天赋', '空月之歌', '月之五', '6.4' ],
             },
-            component: () => import('#/views/GenshinTalentsView.vue'),
+            component: GenshinTalentsView,
         }, {
             path: '/:pathMatch(.*)*',
             name: 'NotFound',
             meta: {
                 title: '页面不存在',
             },
-            component: NotFoundView,
+            component: NotFound,
         }
     ]
 })
