@@ -1,5 +1,28 @@
+<script lang="ts" setup>
+import Experience from '#/components/Experience.vue';
+import { ColorBadge } from '@navifox/constants';
+import type { Project } from '@navifox/types';
+
+const project: Project = {
+    name: '景区生态系统',
+    description: '',
+    stack: [
+        ColorBadge.Python,
+        ColorBadge.Django,
+        ColorBadge.DjangoRESTFramework,
+        ColorBadge.Vue,
+        ColorBadge.JavaScript,
+        ColorBadge.PostgreSQL,
+        ColorBadge.Redis,
+        ColorBadge.Apifox,
+        ColorBadge.Grafana,
+    ]
+}
+</script>
+
+
 <template>
-<div>
+<Experience :project start="2022.3" team="广州某某科技" title="后端开发">
     <p>
         <span>公司深耕旅游行业，摸索自研了一整套 SaaS 景区生态系统，而我主要参与了其中几个子服务的建设和维护。</span>
         <span>目前所有服务均面向三个层面开发：景区、自营商户/入驻商户、员工/顾客。</span>
@@ -31,5 +54,5 @@
             留存在缓存中，仅存储了“主平台”侧的 <code>biz_id</code> 与便于执行认证的
             Session-ID，导致子服务缺少类型提示和快速关联查找能力。</span>
     </p>
-</div>
+</Experience>
 </template>

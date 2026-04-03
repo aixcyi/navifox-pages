@@ -1,11 +1,29 @@
 <script lang="ts" setup>
-import { curriculumVitae, mooncakeDocs, navifox, navifoxRefs } from '@navifox/constants';
+import Experience from '#/components/Experience.vue';
+import { ColorBadge, curriculumVitae, mooncakeDocs, navifox, navifoxRefs } from '@navifox/constants';
+import type { Project } from '@navifox/types';
+
+const project: Project = {
+    name: 'Navifox Pages',
+    description: '',
+    stack: [
+        ColorBadge.TypeScript,
+        ColorBadge.Vue,
+        ColorBadge.TailwindCSS,
+        ColorBadge.Gsap,
+        ColorBadge.VueUse,
+        ColorBadge.Vite,
+        ColorBadge.Pnpm,
+    ],
+}
 </script>
 
 
 <template>
-<div>
-    <p>一个使用 <code>pnpm</code> 构建的 Monorepo 架构的仓库，整个仓库包含了多个存在依赖的子项目，业务层主要有以下几个：
+<Experience :project start="2026.1" title="前端开发">
+    <p>
+        一个使用 <code>pnpm</code> 构建的 Monorepo
+        架构的仓库，整个仓库包含了多个存在依赖的子项目，业务层主要有以下几个：<br />
     </p>
     <p>
         <span><a :href="navifox.link">{{ navifox.name }}</a>（我的主页）。</span>
@@ -44,5 +62,5 @@ import { curriculumVitae, mooncakeDocs, navifox, navifoxRefs } from '@navifox/co
         <span>到手搓 <code>String.prototype.trimPrefix()</code>，</span>
         <span>最后决心拥抱 JavaScript 生态，慢慢摸索用上了 <u>Lodash</u>、<u>VueUse</u> 等等前人造好的轮子。</span>
     </p>
-</div>
+</Experience>
 </template>

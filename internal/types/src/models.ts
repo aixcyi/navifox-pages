@@ -1,5 +1,3 @@
-import type { Component } from 'vue';
-
 /**
  * 徽章。
  */
@@ -123,38 +121,9 @@ export interface Project {
 
     /** 社交链接。 */
     socials?: Badge[]
-}
 
-/**
- * 项目经历。
- */
-export interface Experience {
-
-    /** 岗位／担任／职能。 */
-    title: string
-
-    /** 开始时间。 */
-    start: { year: number, month: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 }
-
-    /** 结束时间。 */
-    stop?: { year: number, month: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 }
-
-    /** 所在组织／团队／公司。 */
-    team?: string
-
-    /** 负责项目。 */
-    project?: Project
-
-    /** 技能点。 */
-    skills?: Badge[]
-
-    /**
-     * 自定义代码块
-     *
-     * 用于呈现经历细节。因为没办法细致约定字段，只能以组件的形式存储。
-     * 组件建议存放在 `./src/components/experiences/`
-     */
-    detail?: Component
+    /** 技术栈。 */
+    stack?: Badge[]
 }
 
 /**

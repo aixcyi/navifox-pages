@@ -39,7 +39,6 @@ export class ColorBadge {
     static readonly TailwindCSS: Badge = { logo: 'devicon:tailwindcss', text: 'Tailwind CSS' }
     static readonly Vue: Badge = { logo: 'devicon:vuejs' }
     static readonly VueUse: Badge = { logo: 'logos:vueuse' }
-    static readonly Lodash: Badge = { logo: 'devicon:lodash' }
     static readonly Pinia: Badge = { logo: 'logos:pinia' }
     static readonly Gsap: Badge = { logo: 'simple-icons:gsap', text: 'GSAP' }
     static readonly VitePress: Badge = { logo: 'simple-icons:vitepress' }
