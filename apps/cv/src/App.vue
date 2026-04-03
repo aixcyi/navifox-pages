@@ -93,11 +93,11 @@ useHead({
 <div class="fixed right-10 bottom-10">
     <div class="flex gap-3">
         <BackToTopButton :see="experiencePanel"
-                         class="rounded-full bg-cyan-900 hover:bg-cyan-700 cursor-pointer"
+                         class="rounded-full bg-sky-800 hover:bg-sky-700 cursor-pointer"
                          size="icon-2xl">
             <Icon class="size-6" icon="tdesign:backtop" />
         </BackToTopButton>
-        <Button class="rounded-full bg-cyan-900 hover:bg-cyan-700 cursor-pointer"
+        <Button class="rounded-full bg-sky-800 hover:bg-sky-700 cursor-pointer"
                 size="icon-2xl"
                 @click="isShowingCatalog = !isShowingCatalog"
                 @focusout="isShowingCatalog = false">
@@ -116,22 +116,22 @@ useHead({
     >
         <div v-if="isShowingCatalog" class="flex flex-col gap-3 items-end">
             <BackToTopButton :to="experiencePanel"
-                             class="rounded-full bg-cyan-900 hover:bg-cyan-700 cursor-pointer"
+                             class="rounded-full bg-sky-800 hover:bg-sky-700 cursor-pointer"
                              size="lg">
                 <span>项目经历</span>
             </BackToTopButton>
             <BackToTopButton :to="programmerPanel"
-                             class="rounded-full bg-cyan-900 hover:bg-cyan-700 cursor-pointer"
+                             class="rounded-full bg-sky-800 hover:bg-sky-700 cursor-pointer"
                              size="lg">
                 <span>技能评估等级</span>
             </BackToTopButton>
             <BackToTopButton :to="skillsPanel"
-                             class="rounded-full bg-cyan-900 hover:bg-cyan-700 cursor-pointer"
+                             class="rounded-full bg-sky-800 hover:bg-sky-700 cursor-pointer"
                              size="lg">
                 <span>技能面板</span>
             </BackToTopButton>
             <BackToTopButton :to="timeline"
-                             class="rounded-full bg-cyan-900 hover:bg-cyan-700 cursor-pointer"
+                             class="rounded-full bg-sky-800 hover:bg-sky-700 cursor-pointer"
                              size="lg">
                 <span>时间线</span>
             </BackToTopButton>
@@ -145,12 +145,12 @@ useHead({
 <style scoped>
 :deep(.n-float-button) {
     transition: all .3s;
-    background-color: var(--color-cyan-900);
+    background-color: var(--color-sky-800);
 }
 
 :deep(.n-float-button):hover {
     color: white;
-    background-color: var(--color-cyan-600);
+    background-color: var(--color-sky-600);
 }
 
 .n-float-button :deep(.n-float-button__menu) {
