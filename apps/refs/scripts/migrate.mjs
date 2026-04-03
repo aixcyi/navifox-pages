@@ -49,9 +49,9 @@ async function migrate(to) {
         { name: '旅行者 (火元素)', rarity: 5, region: null, weapon: '单手剑', element: '火', abilities: [] },
         // { name: '旅行者 (冰元素)', rarity: 5, region: null, weapon: '单手剑', element: '冰', abilities: [] },
     ].concat(characters.map(({ name, abilities }) => {
-        const info = genshindb.characters(name)//角色基本信息
-        const talents = genshindb.talents(name)//天赋
-        const constellations = genshindb.constellations(name)// 命之座
+        const info = genshindb.characters(name)  // 角色基本信息
+        const talents = genshindb.talents(name)  // 天赋
+        const constellations = genshindb.constellations(name)  // 命之座
         if (!info) {
             throw Error(
                 `Character "${name}" was not in genshin-db!` +
@@ -60,24 +60,26 @@ async function migrate(to) {
         }
         return {
             name,
-            rarity: info['rarity'],
-            region: info['region'] ? info['region'] : null,
-            weapon: info['weaponText'],
-            element: info['elementText']
-                ? info['elementText'] !== '无' ? info['elementText'] : null
+            rarity: info.rarity,
+            region: info.region ? info.region : null,
+            weapon: info.weaponText,
+            element: info.elementText
+                ? info.elementText !== '无' ? info.elementText : null
                 : null,
-            abilities: abilities.map(({ scope, short, talent, constellation }) => {
-                const field =
-                    talent ? talentsText[talent]
-                        : constellation ? constellationsText[constellation]
-                            : ''
-                const original = (
-                    talent ? talents[talent]['description']
-                        : constellation ? constellations[constellation]['description']
-                            : '【人工标注】\n游戏内无对应描述，或数据库未提供。'
-                )
-                return { scope, field, short, original }
-            })
+            abilities: abilities.map(({ scope, short, talent, constellation }) => ({
+                scope,
+                short,
+                field: talent
+                    ? talentsText[talent]
+                    : constellation
+                        ? constellationsText[constellation]
+                        : '',
+                original: talent
+                    ? talents[talent].description
+                    : constellation
+                        ? constellations[constellation].description
+                        : '【人工标注】\n游戏内无对应描述，或数据库未提供。',
+            }))
         }
     }))
 
@@ -103,7 +105,6 @@ async function migrate(to) {
     console.log(
         `File will be override:\n\t${targetPath}`
     )
-
     try {
         await initial()
         await migrate(targetPath)
