@@ -1,25 +1,30 @@
 @font-face {
     font-family: 'JetBrains Mono';
-    src: url('./assets/JetBrainsMono-Regular.woff2') format('woff2');
+    src: url('./assets/JetBrainsMono/JetBrainsMono-Regular.woff2') format('woff2');
 }
 
 @font-face {
     font-family: 'JetBrains Mono';
     font-weight: bold;
-    src: url('./assets/JetBrainsMono-Bold.woff2') format('woff2');
+    src: url('./assets/JetBrainsMono/JetBrainsMono-Bold.woff2') format('woff2');
 }
 
 @font-face {
     font-family: 'JetBrains Mono';
     font-style: italic;
-    src: url('./assets/JetBrainsMono-Italic.woff2') format('woff2');
+    src: url('./assets/JetBrainsMono/JetBrainsMono-Italic.woff2') format('woff2');
 }
 
 @font-face {
     font-family: 'JetBrains Mono';
     font-weight: bold;
     font-style: italic;
-    src: url('./assets/JetBrainsMono-BoldItalic.woff2') format('woff2');
+    src: url('./assets/JetBrainsMono/JetBrainsMono-BoldItalic.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Whisper';
+    src: url('./assets/Whisper/Whisper-Regular.ttf');
 }
 
 :root {

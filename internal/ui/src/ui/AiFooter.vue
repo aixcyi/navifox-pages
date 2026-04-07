@@ -96,72 +96,77 @@ const linkMap = [
                         </span>
                     </a>
                 </div>
-                <p class="mb-8 flex flex-wrap"
-                   v-html="navifoxHome.description" />
+                <p class="mb-8 flex flex-wrap" v-html="navifoxHome.description" />
                 <div class="mb-3 inline-flex flex-wrap gap-4 text-slate-600 dark:text-slate-400">
                     <template v-for="social in socials">
                         <a v-if="social.logo"
                            :href="social.link"
                            class="hover:text-orange-500 dark:hover:text-orange-300 transition-colors duration-200"
-                           target="_blank">
+                           target="_blank"
+                        >
                             <Icon :icon="social.logo" height="24" />
                         </a>
                     </template>
                 </div>
-                <p v-for="copyright in copyrights"
-                   class="flex flex-wrap">
+                <p v-for="copyright in copyrights" class="flex flex-wrap">
                     <a :href="copyright.link"
                        class="hover:text-orange-500 dark:hover:text-orange-300 transition-colors duration-200"
                        target="_blank">{{ copyright.text }}</a>
                 </p>
-                <p v-show="tighnari.name"
-                   class="flex flex-wrap">
-                    <span>© {{ interval.start }}-{{ interval.stop }} {{ tighnari.name }} 版权所有</span>
+                <p v-show="tighnari.name">
+                    © {{ interval.start }}-{{ interval.stop }}
+                    <a :href="navifoxHome.link"
+                       class="hover:text-orange-500 dark:hover:text-orange-300 hover:underline hover:decoration-wavy"
+                       target="_blank">{{ tighnari.name }}</a>
+                    版权所有。<br />
                 </p>
-                <p v-show="tighnari.uid"
-                   class="flex flex-wrap">
-                    <span>© {{ interval.start }}-{{ interval.stop }} {{ tighnari.uid }}. All Rights Reserved.</span>
+                <p v-show="tighnari.uid">
+                    © {{ interval.start }}-{{ interval.stop }}
+                    <a :href="navifoxHome.link"
+                       class="hover:text-orange-500 dark:hover:text-orange-300 hover:underline hover:decoration-wavy"
+                       target="_blank">{{ tighnari.uid }}</a>.
+                    All Rights Reserved.<br />
                 </p>
-                <p class="flex flex-wrap">
-                    <span>
-                        使用了
-                        <a class="hover:text-orange-500 dark:hover:text-orange-300 hover:underline hover:decoration-wavy"
-                           href="https://github.com/Fechin/"
-                           target="_blank">Fechin</a>
-                        开源仓库
-                        <a class="hover:text-orange-500 dark:hover:text-orange-300 transition-colors duration-200"
-                           href="https://github.com/Fechin/reference"
-                           target="_blank">reference</a>
-                        中的主题。
-                    </span>
+                <p>
+                    使用了
+                    <a class="hover:text-orange-500 dark:hover:text-orange-300 transition-colors duration-200"
+                       href="https://github.com/Fechin/reference"
+                       target="_blank">reference</a>
+                    同款主题。<br />
                 </p>
-                <p class="flex flex-wrap">
-                    <span>
-                        使用了
-                        <a class="hover:text-orange-500 dark:hover:text-orange-300 transition-colors duration-200"
-                           href="https://iconify.design/"
-                           target="_blank">Iconify</a>
-                        的能力。
-                    </span>
+                <p>
+                    使用了
+                    <a class="hover:text-orange-500 dark:hover:text-orange-300 transition-colors duration-200"
+                       href="https://iconify.design/"
+                       target="_blank">Iconify</a>
+                    的能力。<br />
                 </p>
-                <p class="flex flex-wrap">
-                    <span>
-                        使用了
-                        <a class="hover:text-orange-500 dark:hover:text-orange-300 transition-colors duration-200"
-                           href="https://www.jetbrains.com/lp/mono/"
-                           target="_blank"><code>JetBrains Mono</code></a>
-                        字体渲染。
-                    </span>
+                <p>
+                    使用了
+                    <a class="hover:text-orange-500 dark:hover:text-orange-300 transition-colors duration-200"
+                       href="https://fonts.google.com/specimen/Whisper"
+                       target="_blank">Whisper</a>
+                    字体渲染签名。<br />
+                </p>
+                <p>
+                    使用了
+                    <a class="hover:text-orange-500 dark:hover:text-orange-300 transition-colors duration-200"
+                       href="https://www.jetbrains.com/lp/mono/"
+                       target="_blank">JetBrains Mono</a>
+                    字体渲染代码。<br />
                 </p>
                 <slot name="additions"></slot>
                 <div class="h-9 mt-2" />
                 <div class="absolute bottom-0 xl:left-0 right-0">
                     <button
                         class="cursor-pointer inline-flex items-center justify-center flex-shrink-0 h-9 w-9 rounded-3xl backdrop-blur-sm transition-colors duration-200 group bg-white outline outline-slate-200 dark:bg-slate-800 dark:outline-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700"
-                        @click="toggleDark(!isDark)">
+                        @click="toggleDark(!isDark)"
+                    >
                         <i class="transition-all duration-200 text-slate-600 dark:text-slate-300">
-                            <Icon :icon="isDark ? 'material-symbols:dark-mode' : 'material-symbols:light-mode'"
-                                  height="1.25rem" />
+                            <Icon
+                                :icon="isDark ? 'material-symbols:dark-mode' : 'material-symbols:light-mode'"
+                                height="1.25rem"
+                            />
                         </i>
                     </button>
                 </div>
