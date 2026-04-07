@@ -77,27 +77,10 @@ const linkMap = [
                 </div>
             </div>
 
-            <div class="relative order-last xl:order-first space-y-0.5 text-sm text-slate-600 dark:text-slate-400">
-                <div class="mb-2">
-                    <a :href="navifoxHome.link"
-                       class="flex font-medium items-center justify-center md:justify-start text-slate-800 dark:text-slate-300"
-                       target="_blank">
-                        <div class="justify-center text-emerald-600 dark:text-emerald-400 mr-3 text-4xl">
-                            <div class="self-center">
-                                <Icon height="36" icon="fluent-emoji:fox" />
-                            </div>
-                        </div>
-                        <span class="hidden md:flex text-xl md:text-2xl lg:text-3xl font-bold tracking-tight">
-                            <span
-                                class="bg-gradient-to-r from-slate-800 to-orange-600 bg-clip-text text-transparent dark:from-slate-200 dark:to-orange-300">
-                                navi</span>
-                            <span class="text-orange-400 font-black">fox</span>
-                            <span class="text-gray-400 font-black">.net</span>
-                        </span>
-                    </a>
-                </div>
-                <p class="mb-8 flex flex-wrap" v-html="navifoxHome.description" />
-                <div class="mb-3 inline-flex flex-wrap gap-4 text-slate-600 dark:text-slate-400">
+            <div
+                class="h-full flex flex-col order-last xl:order-first gap-0.5 text-sm text-slate-600 dark:text-slate-400"
+            >
+                <div class="mb-3 inline-flex flex-wrap items-center gap-4 text-slate-600 dark:text-slate-400">
                     <template v-for="social in socials">
                         <a v-if="social.logo"
                            :href="social.link"
@@ -107,6 +90,17 @@ const linkMap = [
                             <Icon :icon="social.logo" height="24" />
                         </a>
                     </template>
+                    <button
+                        class="cursor-pointer inline-flex items-center justify-center flex-shrink-0 h-9 w-9 rounded-3xl backdrop-blur-sm transition-colors duration-200 group bg-white outline outline-slate-200 dark:bg-slate-800 dark:outline-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700"
+                        @click="toggleDark(!isDark)"
+                    >
+                        <i class="transition-all duration-200 text-slate-600 dark:text-slate-300">
+                            <Icon
+                                :icon="isDark ? 'material-symbols:dark-mode' : 'material-symbols:light-mode'"
+                                height="1.25rem"
+                            />
+                        </i>
+                    </button>
                 </div>
                 <p v-for="copyright in copyrights" class="flex flex-wrap">
                     <a :href="copyright.link"
@@ -156,20 +150,26 @@ const linkMap = [
                     字体渲染代码。<br />
                 </p>
                 <slot name="additions"></slot>
-                <div class="h-9 mt-2" />
-                <div class="absolute bottom-0 xl:left-0 right-0">
-                    <button
-                        class="cursor-pointer inline-flex items-center justify-center flex-shrink-0 h-9 w-9 rounded-3xl backdrop-blur-sm transition-colors duration-200 group bg-white outline outline-slate-200 dark:bg-slate-800 dark:outline-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700"
-                        @click="toggleDark(!isDark)"
+                <div class="mt-auto pt-6">
+                    <a :href="navifoxHome.link"
+                       class="flex font-medium items-center justify-center md:justify-start text-slate-800 dark:text-slate-300"
+                       target="_blank"
                     >
-                        <i class="transition-all duration-200 text-slate-600 dark:text-slate-300">
-                            <Icon
-                                :icon="isDark ? 'material-symbols:dark-mode' : 'material-symbols:light-mode'"
-                                height="1.25rem"
-                            />
-                        </i>
-                    </button>
+                        <div class="justify-center text-emerald-600 dark:text-emerald-400 mr-3 text-4xl">
+                            <div class="self-center">
+                                <Icon height="36" icon="fluent-emoji:fox" />
+                            </div>
+                        </div>
+                        <span class="hidden md:flex text-xl md:text-2xl lg:text-3xl font-bold tracking-tight">
+                            <span
+                                class="bg-gradient-to-r from-slate-800 to-orange-600 bg-clip-text text-transparent dark:from-slate-200 dark:to-orange-300">
+                                navi</span>
+                            <span class="text-orange-400 font-black">fox</span>
+                            <span class="text-gray-400 font-black">.net</span>
+                        </span>
+                    </a>
                 </div>
+                <p class="mt-2 pb-4 flex flex-wrap" v-html="navifoxHome.description" />
             </div>
 
         </div>
