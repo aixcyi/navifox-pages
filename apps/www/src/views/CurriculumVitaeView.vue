@@ -49,7 +49,9 @@ const skillsPanel = useTemplateRef('skillsPanel')
                     <span class="ml-1 mr-3 text-nowrap">{{ state.text }}</span>
                 </div>
             </div>
-            <span class="text-center text-slate-600 tracking-[.5em]">・于时光中铭记你我・</span>
+            <p v-if="tighnari.titles" class="text-center">
+                {{ tighnari.titles.join(' ・ ') }}
+            </p>
         </div>
 
         <!-- 项目经历 -->

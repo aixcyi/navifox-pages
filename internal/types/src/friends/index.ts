@@ -18,6 +18,8 @@ export interface Friend {
     styles?: { avatar: string[] }
     /** 所在地址。 */
     location?: string
+    /** 职位、头衔…… */
+    titles?: string[]
     /** 社交链接。 */
     socials?: { [brand: string]: string }
     /** 是否隐藏或不可用。 */
