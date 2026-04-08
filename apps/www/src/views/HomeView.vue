@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import Background from '#/assets/background.jpg';
 import { Icon } from '@iconify/vue';
-import { signature, sitemap, tighnari } from '@navifox/constants';
+import { signature, tighnari } from '@navifox/constants';
 import { logger } from '@navifox/utils';
 import { onClickOutside } from '@vueuse/core';
 import { ref, useTemplateRef } from 'vue';
@@ -20,46 +20,18 @@ onClickOutside(dropdown, () => isShowingDropdown.value = false)
 <template>
 <img :src="Background" alt="背景图片" class="absolute size-full select-none object-cover z-0" />
 <div class="absolute size-full bg-black/67 z-10" />
-<div ref="dropdown" class="absolute md:hidden right-0 w-full z-30">
-    <div class="size-full p-4 flex flex-col items-end">
-        <button
-            class="p-5 cursor-pointer hover:text-cyan-600 dark:hover:text-[#B5A2FD] transition-colors duration-200"
-            @click="isShowingDropdown = true"
-        >
-            <Icon height="28" icon="lineicons:menu" />
-        </button>
-    </div>
-</div>
-<div ref="dropdown" class="fixed md:hidden right-0 w-full z-40">
-    <Transition>
-        <div
-            v-if="isShowingDropdown"
-            class="size-full p-4 flex flex-col items-end text-slate-900 dark:text-slate-200 bg-slate-200 dark:bg-slate-800 rounded-t-lg"
-        >
+
+<div class="absolute right-0 z-30 w-full">
+    <div class="MaxContainer">
+        <div class="md:hidden flex justify-end">
             <button
                 class="p-5 cursor-pointer hover:text-cyan-600 dark:hover:text-[#B5A2FD] transition-colors duration-200"
-                @click="isShowingDropdown = false"
+                @click="isShowingDropdown = true"
             >
-                <Icon height="28" icon="lineicons:close" />
+                <Icon height="28" icon="lineicons:menu" />
             </button>
-            <div class="w-full flex flex-col gap-[1px]">
-                <template v-for="(site, index) in sitemap">
-                    <div v-if="index > 0" class="border-t border-t-slate-300 dark:border-t-slate-700" />
-                    <a :href="site.link"
-                       class="p-5 text-nowrap hover:text-cyan-600 dark:hover:text-[#B5A2FD] transition-colors duration-200"
-                       target="_blank"
-                    >
-                        <span>{{ site.name }}&nbsp;&nbsp;</span>
-                        <span class="text-slate-400 dark:text-slate-500">{{ site.note }}</span>
-                    </a>
-                </template>
-            </div>
         </div>
-    </Transition>
-</div>
-<div class="MaxContainer h-screen flex flex-col selection:bg-[#B5A2FD]/33 z-20 **:z-20">
-    <div class="flex flex-nowrap justify-end">
-        <div class="hidden md:flex flex-nowrap gap-4">
+        <div class="md:flex hidden flex-nowrap justify-end gap-4">
             <a
                 v-for="{meta, path} in router.options.routes.filter(r => r.meta?.showOnNavbar)"
                 :href="path"
@@ -69,6 +41,35 @@ onClickOutside(dropdown, () => isShowingDropdown.value = false)
             </a>
         </div>
     </div>
+</div>
+
+<div ref="dropdown" class="fixed right-0 z-40 md:hidden w-full">
+    <Transition>
+        <div
+            v-if="isShowingDropdown"
+            class="text-slate-900 dark:text-slate-200 bg-slate-200 dark:bg-slate-800 rounded-t-lg"
+        >
+            <div class="MaxContainer flex flex-col items-end">
+                <button
+                    class="p-5 cursor-pointer hover:text-cyan-600 dark:hover:text-[#B5A2FD] transition-colors duration-200"
+                    @click="isShowingDropdown = false"
+                >
+                    <Icon height="28" icon="lineicons:close" />
+                </button>
+                <div class="w-full flex flex-col gap-[1px]">
+                    <template v-for="({meta, path}, index) in router.options.routes.filter(r => r.meta?.showOnNavbar)">
+                        <div v-if="index > 0" class="border-t border-t-slate-300 dark:border-t-slate-700" />
+                        <a :href="path"
+                           class="p-5 text-nowrap hover:text-cyan-600 dark:hover:text-[#B5A2FD] transition-colors duration-200"
+                           target="_blank">{{ meta?.title ?? '首页' }}</a>
+                    </template>
+                </div>
+            </div>
+        </div>
+    </Transition>
+</div>
+
+<div class="MaxContainer h-screen flex flex-col selection:bg-[#B5A2FD]/33 z-20 **:z-20">
     <div class="h-full mb-8 md:mb-20 flex flex-col justify-end">
         <div class="text-xl md:text-2xl mb-4 text-[#B5A2FD]"><code>@{{ tighnari.uid }}</code></div>
         <div class="font-medium text-4xl md:text-6xl md:max-w-[75%]">
