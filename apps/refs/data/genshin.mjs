@@ -1,5 +1,55 @@
 export const characters = [
     {
+        name: '旅行者 (风元素)',
+        rarity: 5,
+        region: null,
+        weapon: '单手剑',
+        element: '风',
+        abilities: []
+    }, {
+        name: '旅行者 (岩元素)',
+        rarity: 5,
+        region: null,
+        weapon: '单手剑',
+        element: '岩',
+        abilities: []
+    }, {
+        name: '旅行者 (雷元素)',
+        rarity: 5,
+        region: null,
+        weapon: '单手剑',
+        element: '雷',
+        abilities: []
+    }, {
+        name: '旅行者 (草元素)',
+        rarity: 5,
+        region: null,
+        weapon: '单手剑',
+        element: '草',
+        abilities: []
+    }, {
+        name: '旅行者 (水元素)',
+        rarity: 5,
+        region: null,
+        weapon: '单手剑',
+        element: '水',
+        abilities: []
+    }, {
+        name: '旅行者 (火元素)',
+        rarity: 5,
+        region: null,
+        weapon: '单手剑',
+        element: '火',
+        abilities: []
+    }, {
+        name: '旅行者 (冰元素)',
+        hidden: true,  // TODO: 冰系主角还未实装
+        rarity: 5,
+        region: null,
+        weapon: '单手剑',
+        element: '冰',
+        abilities: []
+    }, {
         name: '安柏',
         abilities: [
             { scope: 'moving', short: '元素爆发后', constellation: 'c6' },
@@ -579,12 +629,24 @@ export const characters = [
         ]
     }, {
         name: '兹白',
+        region: '璃月',  // TODO: genshin-db@5.2.9 “兹白”缺失的字段。
         abilities: []
     }, {
         name: '法尔伽',
         abilities: [
             { scope: 'interaction', short: '狼群(奔狼岭)' },
             { scope: 'teamup', short: '魔导' },
+        ]
+    }, {
+        name: '莉奈娅',  // TODO: genshin-db@5.2.9 还未更新“莉奈娅”的信息。
+        rarity: 5,
+        region: '挪德卡莱',
+        weapon: '弓',
+        element: '岩',
+        abilities: [
+            { scope: 'teamup', short: '月兆', talent: 'passive3' },
+            { scope: 'interaction', short: '远程挖矿', talent: 'passive4' },
+            { scope: 'interaction', short: '拘出小动物', talent: 'passive4' },
         ]
     }
 ]

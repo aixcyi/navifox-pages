@@ -1,3 +1,14 @@
+/**
+ * 此脚本用于从可靠数据源迁移数据。
+ *
+ * - 借助此脚本，只需手动维护信息量更少的 `./data/genshin.mjs`
+ *   即可得到信息量更大的 `./src/constants/characters.ts` 。
+ * - 正常情况下，您不应该手动修改后者（即此脚本的运行产物）。
+ * - 如果上游数据源不再可靠，那么应当立即弃用此脚本和
+ *   `./data/genshin.mjs`，转为手动维护
+ *   `./src/constants/characters.ts` 。
+ */
+
 import genshindb from 'genshin-db';
 import { promises as fs } from 'node:fs';
 import { join, normalize } from 'node:path';
@@ -40,55 +51,34 @@ async function initial() {
  */
 async function migrate(to) {
     // 这么写是为了保持字段顺序
-    const dataset = [
-        { name: '旅行者 (风元素)', rarity: 5, region: null, weapon: '单手剑', element: '风', abilities: [] },
-        { name: '旅行者 (岩元素)', rarity: 5, region: null, weapon: '单手剑', element: '岩', abilities: [] },
-        { name: '旅行者 (雷元素)', rarity: 5, region: null, weapon: '单手剑', element: '雷', abilities: [] },
-        { name: '旅行者 (草元素)', rarity: 5, region: null, weapon: '单手剑', element: '草', abilities: [] },
-        { name: '旅行者 (水元素)', rarity: 5, region: null, weapon: '单手剑', element: '水', abilities: [] },
-        { name: '旅行者 (火元素)', rarity: 5, region: null, weapon: '单手剑', element: '火', abilities: [] },
-        // { name: '旅行者 (冰元素)', rarity: 5, region: null, weapon: '单手剑', element: '冰', abilities: [] },
-    ].concat(characters.map(({ name, abilities }) => {
+    const dataset = characters.filter(c => !c.hidden).map(({ name, rarity, region, weapon, element, abilities }) => {
         const info = genshindb.characters(name)  // 角色基本信息
         const talents = genshindb.talents(name)  // 天赋
         const constellations = genshindb.constellations(name)  // 命之座
         if (!info) {
-            throw Error(
-                `Character "${name}" was not in genshin-db!` +
+            console.warn(
+                `[WARN] Character "${name}" was not in genshin-db! ` +
                 `Check your node.js package version please.`
             )
         }
         return {
             name,
-            rarity: info.rarity,
-            region: info.region ? info.region : null,
-            weapon: info.weaponText,
-            element: info.elementText
+            rarity: info?.rarity ?? rarity,
+            region: (info?.region ? info.region : region) ?? null,
+            weapon: info?.weaponText ?? weapon,
+            element: info?.elementText
                 ? info.elementText !== '无' ? info.elementText : null
-                : null,
+                : element,
             abilities: abilities.map(({ scope, short, talent, constellation }) => ({
                 scope,
+                field: talentsText[talent] ?? constellationsText[constellation] ?? '手工标注',
                 short,
-                field: talent
-                    ? talentsText[talent]
-                    : constellation
-                        ? constellationsText[constellation]
-                        : '',
-                original: talent
-                    ? talents[talent].description
-                    : constellation
-                        ? constellations[constellation].description
-                        : '【人工标注】\n游戏内无对应描述，或数据库未提供。',
+                original: (talents ?? {})[talent]?.description
+                    ?? (constellations ?? {})[constellation]?.description
+                    ?? '游戏内无对应描述，或数据库暂未更新。',
             }))
         }
-    }))
-
-    // FIXME: 临时补上 genshin-db@5.2.9 “兹白”缺失的 region 字段。
-    const char = dataset.find(c => c.name === '兹白')
-    if (char) {
-        char.region = '璃月'
-    }
-
+    })
     const data = (
         "import type { GenshinCharacter } from '@navifox/types';\n" +
         '// 此文件由脚本生成。\n' +
@@ -103,14 +93,14 @@ async function migrate(to) {
     const [ _, egoPath ] = process.argv
     const targetPath = normalize(join(egoPath, target))
     console.log(
-        `File will be override:\n\t${targetPath}`
+        `[INFO] File override: ${targetPath}`
     )
     try {
         await initial()
         await migrate(targetPath)
-        console.log('OK.')
+        console.log('[INFO] OK.')
     } catch (error) {
-        console.error(`Unexpected error during extracting:\n\t${error.message}`)
+        console.error(`[ERROR] Unexpected error during extracting:\n\t${error.message}`)
         process.exit(1)
     }
 })()

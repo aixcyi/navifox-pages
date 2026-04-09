@@ -12,19 +12,19 @@ export const characters: GenshinCharacter[] = [
                 "scope": "teamup",
                 "field": "被动天赋",
                 "short": "月兆",
-                "original": "数据库暂未更新，此条由人工标注。"
+                "original": "游戏内无对应描述，或数据库暂未更新。"
             },
             {
                 "scope": "interaction",
                 "field": "被动天赋",
                 "short": "远程挖矿",
-                "original": "数据库暂未更新，此条由人工标注。"
+                "original": "游戏内无对应描述，或数据库暂未更新。"
             },
             {
                 "scope": "interaction",
                 "field": "被动天赋",
                 "short": "拘出小动物",
-                "original": "数据库暂未更新，此条由人工标注。"
+                "original": "游戏内无对应描述，或数据库暂未更新。"
             }
         ]
     },
@@ -37,15 +37,15 @@ export const characters: GenshinCharacter[] = [
         "abilities": [
             {
                 "scope": "interaction",
-                "field": "",
+                "field": "手工标注",
                 "short": "狼群(奔狼岭)",
-                "original": "【人工标注】\n游戏内无对应描述，或数据库未提供。"
+                "original": "游戏内无对应描述，或数据库暂未更新。"
             },
             {
                 "scope": "teamup",
-                "field": "",
+                "field": "手工标注",
                 "short": "魔导",
-                "original": "【人工标注】\n游戏内无对应描述，或数据库未提供。"
+                "original": "游戏内无对应描述，或数据库暂未更新。"
             }
         ]
     },
@@ -120,9 +120,9 @@ export const characters: GenshinCharacter[] = [
             },
             {
                 "scope": "teamup",
-                "field": "",
+                "field": "手工标注",
                 "short": "魔导",
-                "original": "【人工标注】\n游戏内无对应描述，或数据库未提供。"
+                "original": "游戏内无对应描述，或数据库暂未更新。"
             }
         ]
     },
@@ -1452,9 +1452,9 @@ export const characters: GenshinCharacter[] = [
             },
             {
                 "scope": "teamup",
-                "field": "",
+                "field": "手工标注",
                 "short": "魔导",
-                "original": "【人工标注】\n游戏内无对应描述，或数据库未提供。"
+                "original": "游戏内无对应描述，或数据库暂未更新。"
             }
         ]
     },
@@ -1538,9 +1538,9 @@ export const characters: GenshinCharacter[] = [
             },
             {
                 "scope": "teamup",
-                "field": "",
+                "field": "手工标注",
                 "short": "魔导",
-                "original": "【人工标注】\n游戏内无对应描述，或数据库未提供。"
+                "original": "游戏内无对应描述，或数据库暂未更新。"
             }
         ]
     },
@@ -1559,9 +1559,9 @@ export const characters: GenshinCharacter[] = [
             },
             {
                 "scope": "teamup",
-                "field": "",
+                "field": "手工标注",
                 "short": "魔导",
-                "original": "【人工标注】\n游戏内无对应描述，或数据库未提供。"
+                "original": "游戏内无对应描述，或数据库暂未更新。"
             }
         ]
     },
@@ -1595,9 +1595,9 @@ export const characters: GenshinCharacter[] = [
             },
             {
                 "scope": "teamup",
-                "field": "",
+                "field": "手工标注",
                 "short": "魔导",
-                "original": "【人工标注】\n游戏内无对应描述，或数据库未提供。"
+                "original": "游戏内无对应描述，或数据库暂未更新。"
             }
         ]
     },
@@ -1673,9 +1673,9 @@ export const characters: GenshinCharacter[] = [
             },
             {
                 "scope": "teamup",
-                "field": "",
+                "field": "手工标注",
                 "short": "魔导",
-                "original": "【人工标注】\n游戏内无对应描述，或数据库未提供。"
+                "original": "游戏内无对应描述，或数据库暂未更新。"
             }
         ]
     },
@@ -1739,9 +1739,9 @@ export const characters: GenshinCharacter[] = [
             },
             {
                 "scope": "teamup",
-                "field": "",
+                "field": "手工标注",
                 "short": "魔导",
-                "original": "【人工标注】\n游戏内无对应描述，或数据库未提供。"
+                "original": "游戏内无对应描述，或数据库暂未更新。"
             }
         ]
     },
@@ -1820,15 +1820,15 @@ export const characters: GenshinCharacter[] = [
             },
             {
                 "scope": "interaction",
-                "field": "",
+                "field": "手工标注",
                 "short": "狼群(奔狼岭)",
-                "original": "【人工标注】\n游戏内无对应描述，或数据库未提供。"
+                "original": "游戏内无对应描述，或数据库暂未更新。"
             },
             {
                 "scope": "teamup",
-                "field": "",
+                "field": "手工标注",
                 "short": "魔导",
-                "original": "【人工标注】\n游戏内无对应描述，或数据库未提供。"
+                "original": "游戏内无对应描述，或数据库暂未更新。"
             }
         ]
     },
