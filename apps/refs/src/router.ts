@@ -60,8 +60,8 @@ const router = createRouter({
             name: 'GenshinTalentSheet',
             meta: {
                 title: '角色实用天赋表',
-                description: '原神角色（截止 6.4 月之五版本）部分实用天赋一览表（按游戏内图鉴顺序排序）。',
-                keywords: [ '原神', '角色', '天赋', '空月之歌', '月之五', '6.4' ],
+                description: '原神角色（截止 6.5 月之六版本）部分实用天赋一览表（按游戏内图鉴顺序排序）。',
+                keywords: [ '原神', '角色', '天赋', '空月之歌', '月之六', '6.5' ],
             },
             component: GenshinTalentsView,
         }, {

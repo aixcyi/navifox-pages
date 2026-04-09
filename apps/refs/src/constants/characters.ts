@@ -2,6 +2,33 @@ import type { GenshinCharacter } from '@navifox/types';
 // 此文件由脚本生成。
 export const characters: GenshinCharacter[] = [
     {
+        "name": "莉奈娅",
+        "rarity": 5,
+        "region": "挪德卡莱",
+        "weapon": "弓",
+        "element": "岩",
+        "abilities": [
+            {
+                "scope": "teamup",
+                "field": "被动天赋",
+                "short": "月兆",
+                "original": "数据库暂未更新，此条由人工标注。"
+            },
+            {
+                "scope": "interaction",
+                "field": "被动天赋",
+                "short": "远程挖矿",
+                "original": "数据库暂未更新，此条由人工标注。"
+            },
+            {
+                "scope": "interaction",
+                "field": "被动天赋",
+                "short": "拘出小动物",
+                "original": "数据库暂未更新，此条由人工标注。"
+            }
+        ]
+    },
+    {
         "name": "法尔伽",
         "rarity": 5,
         "region": "蒙德",
