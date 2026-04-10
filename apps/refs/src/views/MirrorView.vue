@@ -3,21 +3,32 @@ import Content from '#/layouts/Content.vue';
 import { Icon } from '@iconify/vue';
 import { AiButton } from '@navifox/ui';
 import { head, last } from 'es-toolkit';
-import { isRef, type Ref, ref } from 'vue';
+import { computed, isRef, type Ref, ref } from 'vue';
 
-const pipSources = [
+const pySources = [
     { indexUrl: `https://mirrors.ustc.edu.cn/pypi/simple`, name: '中科大' },
     { indexUrl: 'https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple', name: '清华' },
     { indexUrl: 'https://pypi.tuna.tsinghua.edu.cn/simple', name: '清华 TUNA' },
+    { indexUrl: `https://mirrors.pku.edu.cn/pypi/web/simple`, name: '北大' },
+    { indexUrl: `https://mirrors.cernet.edu.cn/pypi/web/simple`, name: 'CERNET' },
     { indexUrl: 'https://mirrors.sustech.edu.cn/pypi/web/simple', name: '南科大' },
     { indexUrl: 'https://mirrors.cloud.aliyuncs.com/pypi/simple', name: '阿里云' },
     { indexUrl: 'https://mirrors.huaweicloud.com/repository/pypi/simple', name: '华为云' },
     { indexUrl: 'https://mirrors.163.com/pypi/simple', name: '网易' },
     { indexUrl: 'https://pypi.douban.com/simple', name: '豆瓣' },
-].map(
-    item => ({ ...item, host: new URL(item.indexUrl).hostname })
-)
-const npmSources = [
+]
+const pyManagers = {
+    pip: 'logos:pypi',
+    uv: 'vscode-icons:file-type-uv',
+    pipx: 'simple-icons:pipx',
+}
+const pyCliZIndex = ref(0)
+const pySourceHost = computed(() => new URL(pySource.value).hostname)
+const pySource = ref(head(pySources)!.indexUrl)
+const pyPackage = ref('django')
+const pyManager = ref<'pip' | 'uv' | 'pipx'>('pip')
+
+const nodeSources = [
     { registry: 'https://npmreg.proxy.ustclug.org/', name: '中科大' },
     { registry: 'https://registry.npmmirror.com/', name: '淘宝' },
     { registry: 'https://npm.aliyun.com/', name: '阿里云' },
@@ -25,19 +36,19 @@ const npmSources = [
     { registry: 'https://mirrors.huaweicloud.com/repository/npm/', name: '华为云' },
     { registry: 'https://mirrors.163.com/npm/', name: '网易' },
     { registry: 'https://registry.npmjs.org/', name: 'npm' },
-].map(
-    item => ({ ...item, host: new URL(item.registry).hostname })
-)
-const pipLayout = ref(0)
-const npmLayout = ref(0)
-const pipHost = ref(head(pipSources)!.host)
-const pipSource = ref(head(pipSources)!.indexUrl)
-const pyPackage = ref('django')
-const npmSource = ref(head(npmSources)!.registry)
+]
+const nodeManagers = {
+    npm: 'logos:npm-icon',
+    pnpm: 'devicon:pnpm',
+    yarn: 'logos:yarn',
+}
+const nodeCliZIndex = ref(0)
+const nodeSource = ref(head(nodeSources)!.registry)
 const nodePackage = ref('vue')
 const nodeManager = ref<'npm' | 'pnpm' | 'yarn'>('npm')
+
 const thePackage = (p: string | Ref<string>) => isRef(p) ? (p.value ? p.value : 'zeraora') : (p ? p : 'zeraora')
-const cli = () => ({
+const cli = computed(() => ({
     pip: {
         show: (
             'pip config get global.index-url\n' +
@@ -48,150 +59,242 @@ const cli = () => ({
             'pip config unset global.trusted-host'
         ),
         config: (
-            `pip config set global.index-url ${pipSource.value}\n` +
-            `pip config set global.trusted-host ${pipHost.value}`
+            `pip config set global.index-url ${pySource.value}\n` +
+            `pip config set global.trusted-host ${pySourceHost.value}`
         ),
         install: [
             // @formatter:off
-            `pip install ${thePackage(pyPackage)} -i ${pipSource.value} --trusted-host ${pipHost.value}`,
-            `pip install ${thePackage(pyPackage)} -i ${pipSource.value} --trusted-host ${pipHost.value}`,
-                        `${thePackage(pyPackage)} -i ${pipSource.value} --trusted-host ${pipHost.value}`,
-                                                 `-i ${pipSource.value} --trusted-host ${pipHost.value}`,
-                                                       pipSource.value,
+            `pip install ${thePackage(pyPackage)} -i ${pySource.value} --trusted-host ${pySourceHost.value}`,
+            `pip install ${thePackage(pyPackage)} -i ${pySource.value} --trusted-host ${pySourceHost.value}`,
+                        `${thePackage(pyPackage)} -i ${pySource.value} --trusted-host ${pySourceHost.value}`,
+                                                 `-i ${pySource.value} --trusted-host ${pySourceHost.value}`,
+                                                       pySource.value,
+            // @formatter:on
+        ]
+    },
+    uv: {
+        show: (
+            'uv pip config get global.index-url\n' +
+            'uv pip config get global.trusted-host'
+        ),
+        clean: (
+            'uv pip config unset global.index-url\n' +
+            'uv pip config unset global.trusted-host'
+        ),
+        config: (
+            `uv pip config set global.index-url ${pySource.value}\n` +
+            `uv pip config set global.trusted-host ${pySourceHost.value}`
+        ),
+        install: [
+            // @formatter:off
+            `uv pip install ${thePackage(pyPackage)} --index ${pySource.value} --trusted-host ${pySourceHost.value}`,
+            `uv pip install ${thePackage(pyPackage)} --index ${pySource.value} --trusted-host ${pySourceHost.value}`,
+                           `${thePackage(pyPackage)} --index ${pySource.value} --trusted-host ${pySourceHost.value}`,
+                                                    `--index ${pySource.value} --trusted-host ${pySourceHost.value}`,
+                                                               pySource.value,
+            // @formatter:on
+        ]
+    },
+    pipx: {
+        show: (
+            'pip config get global.index-url\n' +
+            'pip config get global.trusted-host'
+        ),
+        clean: (
+            'pip config unset global.index-url\n' +
+            'pip config unset global.trusted-host'
+        ),
+        config: (
+            `pip config set global.index-url ${pySource.value}\n` +
+            `pip config set global.trusted-host ${pySourceHost.value}`
+        ),
+        install: [
+            // @formatter:off
+            `pipx install ${thePackage(pyPackage)} -i ${pySource.value} --pip-args="--trusted-host=${pySourceHost.value}"`,
+            `pipx install ${thePackage(pyPackage)} -i ${pySource.value} --pip-args="--trusted-host=${pySourceHost.value}"`,
+                         `${thePackage(pyPackage)} -i ${pySource.value} --pip-args="--trusted-host=${pySourceHost.value}"`,
+                                                  `-i ${pySource.value} --pip-args="--trusted-host=${pySourceHost.value}"`,
+                                                        pySource.value,
             // @formatter:on
         ]
     },
     npm: {
         show: 'npm config get --global registry',
         clean: 'npm config delete --global registry',
-        config: `npm config set --global registry=${npmSource.value}`,
+        config: `npm config set --global registry=${nodeSource.value}`,
         install: [
             // @formatter:off
-            `npm install ${thePackage(nodePackage)} --registry ${npmSource.value}`,
-            `npm install ${thePackage(nodePackage)} --registry ${npmSource.value}`,
-                        `${thePackage(nodePackage)} --registry ${npmSource.value}`,
-                                                   `--registry ${npmSource.value}`,
-                                                                 npmSource.value,
+            `npm install ${thePackage(nodePackage)} --registry ${nodeSource.value}`,
+            `npm install ${thePackage(nodePackage)} --registry ${nodeSource.value}`,
+                        `${thePackage(nodePackage)} --registry ${nodeSource.value}`,
+                                                   `--registry ${nodeSource.value}`,
+                                                                 nodeSource.value,
             // @formatter:on
         ]
     },
     pnpm: {
         show: 'pnpm config get --global registry',
         clean: 'pnpm config delete --global registry',
-        config: `pnpm config set --global registry ${npmSource.value}`,
+        config: `pnpm config set --global registry ${nodeSource.value}`,
         install: [
             // @formatter:off
-            `pnpm add ${thePackage(nodePackage)} --registry ${npmSource.value}`,
-            `pnpm add ${thePackage(nodePackage)} --registry ${npmSource.value}`,
-                     `${thePackage(nodePackage)} --registry ${npmSource.value}`,
-                                                `--registry ${npmSource.value}`,
-                                                              npmSource.value,
+            `pnpm add ${thePackage(nodePackage)} --registry ${nodeSource.value}`,
+            `pnpm add ${thePackage(nodePackage)} --registry ${nodeSource.value}`,
+                     `${thePackage(nodePackage)} --registry ${nodeSource.value}`,
+                                                `--registry ${nodeSource.value}`,
+                                                              nodeSource.value,
             // @formatter:on
         ]
     },
     yarn: {
         show: 'yarn config get --global registry',
         clean: 'yarn config unset --global registry',
-        config: `yarn config set --global registry ${npmSource.value}`,
+        config: `yarn config set --global registry ${nodeSource.value}`,
         install: [
             // @formatter:off
-            `yarn add ${thePackage(nodePackage)} --registry ${npmSource.value}`,
-            `yarn add ${thePackage(nodePackage)} --registry ${npmSource.value}`,
-                     `${thePackage(nodePackage)} --registry ${npmSource.value}`,
-                                                `--registry ${npmSource.value}`,
-                                                              npmSource.value,
+            `yarn add ${thePackage(nodePackage)} --registry ${nodeSource.value}`,
+            `yarn add ${thePackage(nodePackage)} --registry ${nodeSource.value}`,
+                     `${thePackage(nodePackage)} --registry ${nodeSource.value}`,
+                                                `--registry ${nodeSource.value}`,
+                                                              nodeSource.value,
             // @formatter:on
         ]
     },
-})
+}))
 </script>
 
 
 <template>
 <Content>
     <div
-        class="MaxContainer flex flex-col space-y-16 text-black dark:text-white **:[p]:border-b **:[p]:border-b-slate-200 dark:**:[p]:border-b-slate-700">
-
+        class="MaxContainer flex flex-col space-y-16 text-black dark:text-white **:[p]:border-b **:[p]:border-b-slate-200 dark:**:[p]:border-b-slate-700"
+    >
         <div class="p-6 md:p-12 space-y-2 bg-white dark:bg-slate-800 rounded-lg">
-            <h2 class="mb-6 max-md:mt-6 text-2xl flex flex-nowrap items-center gap-2 justify-center">
-                <Icon class="min-w-8" height="32" icon="logos:pypi" />
-                <span>pip</span>
-            </h2>
+            <div class="mb-6 max-md:mt-6 text-2xl flex flex-nowrap items-center justify-center overflow-x-hidden">
+                <template v-for="(icon, manager, index) in pyManagers">
+                    <div
+                        v-if="index > 0"
+                        class="ml-4 pr-4 h-full border-l border-l-slate-300 dark:border-l-slate-600"
+                    >
+                        {{ '\x00' }}
+                    </div>
+                    <button
+                        :class="pyManager === manager ? 'opacity-100' : 'opacity-20'"
+                        class="flex flex-nowrap gap-2 cursor-pointer"
+                        type="button"
+                        @click="pyManager = manager"
+                    >
+                        <Icon :icon class="min-w-8" height="32" />
+                        <span v-show="pyManager === manager">{{ manager }}</span>
+                    </button>
+                </template>
+            </div>
             <div class="mb-12 flex flex-wrap items-center justify-center gap-3">
                 <AiButton
-                    v-for="{indexUrl, name, host} in pipSources"
+                    v-for="{indexUrl, name} in pySources"
                     :text="name"
                     inner
-                    @click="pipSource = indexUrl; pipHost = host" />
+                    @click="pySource = indexUrl" />
             </div>
             <h3 class="mb-3 text-xl flex gap-2">
                 <span class="cursor-default text-nowrap">直接安装</span>
-                <input v-model="pyPackage"
-                       class="w-full selection:bg-amber-300 selection:text-[#366E9D] dark:selection:bg-[#366E9D] dark:selection:text-amber-200"
-                       placeholder="zeraora" />
+                <input
+                    v-model="pyPackage"
+                    class="w-full rounded-xs outline-2 outline-transparent focus:outline-[#366E9D] dark:focus:outline-amber-300 selection:bg-amber-300 selection:text-[#366E9D] dark:selection:bg-[#366E9D] dark:selection:text-amber-200"
+                    placeholder="zeraora" />
             </h3>
-            <p>
-                <code :class="pipLayout===1 ? 'text-pink-500 dark:text-pink-400' : ''">
+            <p v-if="pyManager === 'pip'">
+                <code :class="pyCliZIndex===1 ? 'text-pink-500 dark:text-pink-400' : ''">
                     <span>pip install</span>
-                    <code :class="pipLayout===2 ? 'text-pink-500 dark:text-pink-400' : ''">
+                    <code :class="pyCliZIndex===2 ? 'text-pink-500 dark:text-pink-400' : ''">
                         <span>&nbsp;{{ thePackage(pyPackage) }}</span>
-                        <code :class="pipLayout===3 ? 'text-pink-500 dark:text-pink-400' : ''">
+                        <code :class="pyCliZIndex===3 ? 'text-pink-500 dark:text-pink-400' : ''">
                             <span>&nbsp;-i</span>
-                            <code :class="pipLayout===4 ? 'text-pink-500 dark:text-pink-400' : ''">
-                                <span>&nbsp;{{ pipSource }}</span>
+                            <code :class="pyCliZIndex===4 ? 'text-pink-500 dark:text-pink-400' : ''">
+                                <span>&nbsp;{{ pySource }}</span>
                             </code>
-                            <span>&nbsp;--trusted-host {{ pipHost }}</span>
+                            <span>&nbsp;--trusted-host {{ pySourceHost }}</span>
                         </code>
                     </code>
                 </code>
             </p>
-            <div class="mb-8 flex flex-wrap gap-3">
+            <p v-if="pyManager === 'uv'">
+                <code :class="pyCliZIndex===1 ? 'text-pink-500 dark:text-pink-400' : ''">
+                    <span>uv pip install</span>
+                    <code :class="pyCliZIndex===2 ? 'text-pink-500 dark:text-pink-400' : ''">
+                        <span>&nbsp;{{ thePackage(pyPackage) }}</span>
+                        <code :class="pyCliZIndex===3 ? 'text-pink-500 dark:text-pink-400' : ''">
+                            <span>&nbsp;-i</span>
+                            <code :class="pyCliZIndex===4 ? 'text-pink-500 dark:text-pink-400' : ''">
+                                <span>&nbsp;{{ pySource }}</span>
+                            </code>
+                            <span>&nbsp;--trusted-host {{ pySourceHost }}</span>
+                        </code>
+                    </code>
+                </code>
+            </p>
+            <p v-if="pyManager === 'pipx'">
+                <code :class="pyCliZIndex===1 ? 'text-pink-500 dark:text-pink-400' : ''">
+                    <span>pipx install</span>
+                    <code :class="pyCliZIndex===2 ? 'text-pink-500 dark:text-pink-400' : ''">
+                        <span>&nbsp;{{ thePackage(pyPackage) }}</span>
+                        <code :class="pyCliZIndex===3 ? 'text-pink-500 dark:text-pink-400' : ''">
+                            <span>&nbsp;-i</span>
+                            <code :class="pyCliZIndex===4 ? 'text-pink-500 dark:text-pink-400' : ''">
+                                <span>&nbsp;{{ pySource }}</span>
+                            </code>
+                            <span>&nbsp;--pip-args="--trusted-host={{ pySourceHost }}"</span>
+                        </code>
+                    </code>
+                </code>
+            </p>
+            <div class="mb-8 flex flex-wrap justify-end gap-3">
                 <AiButton
-                    :copytext="cli().pip.install[1]"
+                    :copytext="cli[pyManager].install[4]"
+                    inner
+                    text="复制链接"
+                    @mouseleave="pyCliZIndex = 0"
+                    @mouseover="pyCliZIndex = 4" />
+                <AiButton
+                    :copytext="cli[pyManager].install[3]"
+                    inner
+                    text="复制可选参数"
+                    @mouseleave="pyCliZIndex = 0"
+                    @mouseover="pyCliZIndex = 3" />
+                <AiButton
+                    :copytext="cli[pyManager].install[2]"
+                    inner
+                    text="复制所有参数"
+                    @mouseleave="pyCliZIndex = 0"
+                    @mouseover="pyCliZIndex = 2" />
+                <AiButton
+                    :copytext="cli[pyManager].install[1]"
                     coffee
                     inner
                     text="复制所有"
-                    @mouseleave="pipLayout = 0"
-                    @mouseover="pipLayout = 1" />
-                <AiButton
-                    :copytext="cli().pip.install[2]"
-                    inner
-                    text="复制所有参数"
-                    @mouseleave="pipLayout = 0"
-                    @mouseover="pipLayout = 2" />
-                <AiButton
-                    :copytext="cli().pip.install[3]"
-                    inner
-                    text="复制可选参数"
-                    @mouseleave="pipLayout = 0"
-                    @mouseover="pipLayout = 3" />
-                <AiButton
-                    :copytext="cli().pip.install[4]"
-                    inner
-                    text="复制链接"
-                    @mouseleave="pipLayout = 0"
-                    @mouseover="pipLayout = 4" />
+                    @mouseleave="pyCliZIndex = 0"
+                    @mouseover="pyCliZIndex = 1" />
             </div>
             <h3 class="mb-3 text-xl">
                 <span class="cursor-default">全局设置</span>
             </h3>
-            <p v-for="line in cli().pip.config.split('\n')"><code>{{ line }}</code></p>
-            <div class="mb-8 flex flex-wrap gap-3">
-                <AiButton :copytext="cli().pip.config" coffee inner text="复制所有" />
+            <p v-for="line in cli[pyManager].config.split('\n')"><code>{{ line }}</code></p>
+            <div class="mb-8 flex flex-wrap justify-end gap-3">
+                <AiButton :copytext="cli[pyManager].config" coffee inner text="复制所有" />
             </div>
             <h3 class="mb-3 text-xl">
                 <span class="cursor-default">查看全局设置</span>
             </h3>
-            <p v-for="line in cli().pip.show.split('\n')"><code>{{ line }}</code></p>
-            <div class="mb-8 flex flex-wrap gap-3">
-                <AiButton :copytext="cli().pip.show" coffee inner text="复制所有" />
+            <p v-for="line in cli[pyManager].show.split('\n')"><code>{{ line }}</code></p>
+            <div class="mb-8 flex flex-wrap justify-end gap-3">
+                <AiButton :copytext="cli[pyManager].show" coffee inner text="复制所有" />
             </div>
             <h3 class="mb-3 text-xl">
                 <span class="cursor-default">清除全局设置</span>
             </h3>
-            <p v-for="line in cli().pip.clean.split('\n')"><code>{{ line }}</code></p>
-            <div class="flex flex-wrap gap-3">
-                <AiButton :copytext="cli().pip.clean" coffee inner text="复制所有" />
+            <p v-for="line in cli[pyManager].clean.split('\n')"><code>{{ line }}</code></p>
+            <div class="flex flex-wrap justify-end gap-3">
+                <AiButton :copytext="cli[pyManager].clean" coffee inner text="复制所有" />
             </div>
         </div>
 
@@ -199,133 +302,128 @@ const cli = () => ({
 
         <div class="p-6 md:p-12 space-y-2 bg-white dark:bg-slate-800 rounded-lg">
             <div class="mb-6 max-md:mt-6 text-2xl flex flex-nowrap items-center justify-center overflow-x-hidden">
-                <button :class="nodeManager === 'npm' ? 'opacity-100' : 'opacity-20'"
+                <template v-for="(icon, manager, index) in nodeManagers">
+                    <div
+                        v-if="index > 0"
+                        class="ml-4 pr-4 h-full border-l border-l-slate-300 dark:border-l-slate-600"
+                    >
+                        {{ '\x00' }}
+                    </div>
+                    <button
+                        :class="nodeManager === manager ? 'opacity-100' : 'opacity-20'"
                         class="flex flex-nowrap gap-2 cursor-pointer"
                         type="button"
-                        @click="nodeManager = 'npm'">
-                    <Icon class="min-w-8" height="32" icon="logos:npm-icon" />
-                    <span>npm</span>
-                </button>
-                <div class="ml-4 pr-4 h-full border-l border-l-slate-300 dark:border-l-slate-600">{{ '\x00' }}</div>
-                <button :class="nodeManager === 'pnpm' ? 'opacity-100' : 'opacity-20'"
-                        class="flex flex-nowrap gap-2 cursor-pointer"
-                        type="button"
-                        @click="nodeManager = 'pnpm'">
-                    <Icon class="min-w-8" height="32" icon="logos:pnpm" />
-                    <span>pnpm</span>
-                </button>
-                <div class="ml-4 pr-4 h-full border-l border-l-slate-300 dark:border-l-slate-600">{{ '\x00' }}</div>
-                <button :class="nodeManager === 'yarn' ? 'opacity-100' : 'opacity-20'"
-                        class="flex flex-nowrap gap-2 cursor-pointer"
-                        type="button"
-                        @click="nodeManager = 'yarn'">
-                    <Icon class="min-w-8" height="32" icon="logos:yarn" />
-                    <span>yarn</span>
-                </button>
+                        @click="nodeManager = manager"
+                    >
+                        <Icon :icon class="min-w-8" height="32" />
+                        <span v-show="nodeManager === manager">{{ manager }}</span>
+                    </button>
+                </template>
             </div>
             <div class="mb-12 flex flex-wrap items-center justify-center gap-3">
                 <AiButton
-                    v-for="{registry, name} in npmSources"
+                    v-for="{registry, name} in nodeSources"
                     :text="name"
                     inner
-                    @click="npmSource = registry" />
+                    @click="nodeSource = registry" />
             </div>
             <h3 class="mb-3 text-xl flex items-center gap-2">
                 <span class="cursor-default text-nowrap">直接安装</span>
-                <input v-model="nodePackage"
-                       class="w-full selection:bg-red-500 dark:selection:bg-red-700 selection:text-white"
-                       placeholder="zeraora" />
+                <input
+                    v-model="nodePackage"
+                    class="w-full  rounded-xs outline-2 outline-transparent focus:outline-black dark:focus:outline-yellow-300 selection:bg-yellow-300 selection:text-black"
+                    placeholder="zeraora" />
             </h3>
-            <p v-if="nodeManager === 'npm'">
-                <code :class="npmLayout===1 ? 'text-pink-500 dark:text-pink-400' : ''">
+            <p v-show="nodeManager === 'npm'">
+                <code :class="nodeCliZIndex===1 ? 'text-pink-500 dark:text-pink-400' : ''">
                     <span>npm install</span>
-                    <code :class="npmLayout===2 ? 'text-pink-500 dark:text-pink-400' : ''">
+                    <code :class="nodeCliZIndex===2 ? 'text-pink-500 dark:text-pink-400' : ''">
                         <span>&nbsp;{{ thePackage(nodePackage) }}</span>
-                        <code :class="npmLayout===3 ? 'text-pink-500 dark:text-pink-400' : ''">
+                        <code :class="nodeCliZIndex===3 ? 'text-pink-500 dark:text-pink-400' : ''">
                             <span class="pl-2">--registry</span>
-                            <code :class="npmLayout===4 ? 'text-pink-500 dark:text-pink-400' : ''">
-                                <span class="pl-2">{{ npmSource }}</span>
+                            <code :class="nodeCliZIndex===4 ? 'text-pink-500 dark:text-pink-400' : ''">
+                                <span class="pl-2">{{ nodeSource }}</span>
                             </code>
                         </code>
                     </code>
                 </code>
             </p>
-            <p v-if="nodeManager === 'pnpm'">
-                <code :class="npmLayout===1 ? 'text-pink-500 dark:text-pink-400' : ''">
+            <p v-show="nodeManager === 'pnpm'">
+                <code :class="nodeCliZIndex===1 ? 'text-pink-500 dark:text-pink-400' : ''">
                     <span>pnpm add</span>
-                    <code :class="npmLayout===2 ? 'text-pink-500 dark:text-pink-400' : ''">
+                    <code :class="nodeCliZIndex===2 ? 'text-pink-500 dark:text-pink-400' : ''">
                         <span>&nbsp;{{ thePackage(nodePackage) }}</span>
-                        <code :class="npmLayout===3 ? 'text-pink-500 dark:text-pink-400' : ''">
+                        <code :class="nodeCliZIndex===3 ? 'text-pink-500 dark:text-pink-400' : ''">
                             <span class="pl-2">--registry</span>
-                            <code :class="npmLayout===4 ? 'text-pink-500 dark:text-pink-400' : ''">
-                                <span class="pl-2">{{ npmSource }}</span>
+                            <code :class="nodeCliZIndex===4 ? 'text-pink-500 dark:text-pink-400' : ''">
+                                <span class="pl-2">{{ nodeSource }}</span>
                             </code>
                         </code>
                     </code>
                 </code>
             </p>
-            <p v-if="nodeManager === 'yarn'">
-                <code :class="npmLayout===1 ? 'text-pink-500 dark:text-pink-400' : ''">
+            <p v-show="nodeManager === 'yarn'">
+                <code :class="nodeCliZIndex===1 ? 'text-pink-500 dark:text-pink-400' : ''">
                     <span>yarn add</span>
-                    <code :class="npmLayout===2 ? 'text-pink-500 dark:text-pink-400' : ''">
+                    <code :class="nodeCliZIndex===2 ? 'text-pink-500 dark:text-pink-400' : ''">
                         <span>&nbsp;{{ thePackage(nodePackage) }}</span>
-                        <code :class="npmLayout===3 ? 'text-pink-500 dark:text-pink-400' : ''">
+                        <code :class="nodeCliZIndex===3 ? 'text-pink-500 dark:text-pink-400' : ''">
                             <span class="pl-2">--registry</span>
-                            <code :class="npmLayout===4 ? 'text-pink-500 dark:text-pink-400' : ''">
-                                <span class="pl-2">{{ npmSource }}</span>
+                            <code :class="nodeCliZIndex===4 ? 'text-pink-500 dark:text-pink-400' : ''">
+                                <span class="pl-2">{{ nodeSource }}</span>
                             </code>
                         </code>
                     </code>
                 </code>
             </p>
-            <div class="mb-8 flex flex-wrap gap-3">
+            <div class="mb-8 flex flex-wrap justify-end gap-3">
                 <AiButton
-                    :copytext="cli()[nodeManager].install[1]"
+                    :copytext="cli[nodeManager].install[4]"
+                    inner
+                    text="复制链接"
+                    @mouseleave="nodeCliZIndex = 0"
+                    @mouseover="nodeCliZIndex = 4" />
+                <AiButton
+                    :copytext="cli[nodeManager].install[3]"
+                    inner
+                    text="复制可选参数"
+                    @mouseleave="nodeCliZIndex = 0"
+                    @mouseover="nodeCliZIndex = 3" />
+                <AiButton
+                    :copytext="cli[nodeManager].install[2]"
+                    inner
+                    text="复制所有参数"
+                    @mouseleave="nodeCliZIndex = 0"
+                    @mouseover="nodeCliZIndex = 2" />
+                <AiButton
+                    :copytext="cli[nodeManager].install[1]"
                     coffee
                     inner
                     text="复制所有"
-                    @mouseleave="npmLayout = 0"
-                    @mouseover="npmLayout = 1" />
-                <AiButton
-                    :copytext="cli()[nodeManager].install[2]"
-                    inner
-                    text="复制所有参数"
-                    @mouseleave="npmLayout = 0"
-                    @mouseover="npmLayout = 2" />
-                <AiButton
-                    :copytext="cli()[nodeManager].install[3]"
-                    inner
-                    text="复制可选参数"
-                    @mouseleave="npmLayout = 0"
-                    @mouseover="npmLayout = 3" />
-                <AiButton
-                    :copytext="cli()[nodeManager].install[4]"
-                    inner
-                    text="复制链接"
-                    @mouseleave="npmLayout = 0"
-                    @mouseover="npmLayout = 4" />
+                    @mouseleave="nodeCliZIndex = 0"
+                    @mouseover="nodeCliZIndex = 1" />
             </div>
             <h3 class="mb-3 text-xl">
                 <span class="cursor-default">
-                    {{ npmSource === last(npmSources)!.registry ? '重置全局设置' : '全局设置' }}</span>
+                    {{ nodeSource === last(nodeSources)!.registry ? '重置全局设置' : '全局设置' }}</span>
             </h3>
-            <p><code>{{ cli()[nodeManager].config }}</code></p>
-            <div class="mb-8 flex flex-wrap gap-3">
-                <AiButton :copytext="cli()[nodeManager].config" coffee inner text="复制所有" />
+            <p><code>{{ cli[nodeManager].config }}</code></p>
+            <div class="mb-8 flex flex-wrap justify-end gap-3">
+                <AiButton :copytext="cli[nodeManager].config" coffee inner text="复制所有" />
             </div>
             <h3 class="mb-3 text-xl">
                 <span class="cursor-default">查看全局设置</span>
             </h3>
-            <p><code>{{ cli()[nodeManager].show }}</code></p>
-            <div class="mb-8 flex flex-wrap gap-3">
-                <AiButton :copytext="cli()[nodeManager].show" coffee inner text="复制所有" />
+            <p><code>{{ cli[nodeManager].show }}</code></p>
+            <div class="mb-8 flex flex-wrap justify-end gap-3">
+                <AiButton :copytext="cli[nodeManager].show" coffee inner text="复制所有" />
             </div>
             <h3 class="mb-3 text-xl">
                 <span class="cursor-default">清除全局设置</span>
             </h3>
-            <p><code>{{ cli()[nodeManager].clean }}</code></p>
-            <div class="flex flex-wrap gap-3">
-                <AiButton :copytext="cli()[nodeManager].clean" coffee inner text="复制所有" />
+            <p><code>{{ cli[nodeManager].clean }}</code></p>
+            <div class="flex flex-wrap justify-end gap-3">
+                <AiButton :copytext="cli[nodeManager].clean" coffee inner text="复制所有" />
             </div>
         </div>
 

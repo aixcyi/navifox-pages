@@ -32,8 +32,10 @@ const router = createRouter({
             name: 'MirrorSheet',
             meta: {
                 title: '镜像源',
-                description: '展示常见包管理器（pip、npm 等等）的镜像源设置，用于快速设置与解决问题；镜像源按收录时间排序。',
-                keywords: [ 'pip', 'npm', 'pnpm', '镜像源' ],
+                description: '展示部分编程常用包管理器的镜像设置，用于快速设置与解决问题；镜像源按收录时间排序。',
+                keywords: [
+                    '镜像源', '镜像', 'pip', 'npm', 'pnpm', 'conda', 'uv', 'hatch', 'poetry', 'yarn',
+                ],
             },
             component: MirrorView,
         }, {
