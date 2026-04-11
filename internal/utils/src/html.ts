@@ -28,7 +28,7 @@ const md = MarkdownIt({ breaks: true }).use((md) => {
             tokenOpen.markup = MARKUP;
 
             const tokenContent = state.push('text', '', 0);
-            tokenContent.content = state.src.slice(contentStart + 2, contentEnd);
+            tokenContent.content = state.src.slice(contentStart, contentEnd);
 
             const tokenClose = state.push('underline_close', ELEMENT, -1);
             tokenClose.markup = MARKUP;
