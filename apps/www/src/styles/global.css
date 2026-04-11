@@ -1,6 +1,6 @@
 @import 'tailwindcss';
 
-@source '../node_modules/@navifox/ui';
+@source '../../node_modules/@navifox/ui';
 
 @custom-variant dark (&:where(.dark, .dark *));
 

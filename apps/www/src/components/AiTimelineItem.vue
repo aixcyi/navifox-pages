@@ -24,12 +24,3 @@ if (props.colors && props.colors.length < 2) {
     </div>
 </li>
 </template>
-
-
-<style scoped>
-:deep(svg) {
-    /* Tailwind 的 @layer base { svg } 自带了 display: block，
-     * 没办法用 Icon 自带的 inline 属性覆盖。 */
-    display: inline;
-}
-</style>

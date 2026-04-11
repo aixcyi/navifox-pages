@@ -20,7 +20,7 @@ import { navifoxHome, tighnari } from '@navifox/constants';
     <article class="py-8 bg-slate-800 rounded-xl flex flex-col gap-8">
         <b class="mx-8 text-slate-50!">风带来了故事的种子</b>
         <AiDivider />
-        <section class="mx-8">
+        <section class="Content mx-8">
             <ul>
                 <AiTimelineItem :colors="['#00A2E8']" timestamp="2012 年，暑假">
                     迷上了
@@ -195,13 +195,3 @@ import { navifoxHome, tighnari } from '@navifox/constants';
 
 </div>
 </template>
-
-
-<style scoped>
-@reference '#/style.css';
-
-a {
-    @apply transition-colors duration-200 text-slate-200;
-    @apply hover:text-orange-500 dark:hover:text-orange-300;
-}
-</style>

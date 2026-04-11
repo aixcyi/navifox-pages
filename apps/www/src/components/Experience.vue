@@ -51,30 +51,3 @@ defineProps<ExperienceDetail>()
     <slot></slot>
 </section>
 </template>
-
-
-<style scoped>
-@reference '#/style.css';
-
-:deep(u) {
-    text-decoration: underline 3px var(--color-orange-500);
-    text-underline-offset: 3px;
-}
-
-:deep(a) {
-    @apply transition-colors duration-200 text-slate-200;
-    @apply hover:text-orange-500 dark:hover:text-orange-300;
-}
-
-:deep(b) {
-    @apply text-slate-300;
-}
-
-:deep(p) {
-    @apply mt-2 indent-8;
-}
-
-:deep(ol), :deep(ul) {
-    @apply mt-2;
-}
-</style>

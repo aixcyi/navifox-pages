@@ -10,6 +10,7 @@ import { tighnari } from '@navifox/constants';
 import type { Badge } from '@navifox/types';
 import { BackToTopButton, Button } from '@navifox/ui';
 import { type ComponentPublicInstance, ref, useTemplateRef } from 'vue';
+import '#/styles/content.css';
 
 function* getStates(): Generator<Badge> {
     if (tighnari.location)
@@ -33,14 +34,13 @@ const skillsPanel = useTemplateRef<ComponentPublicInstance>('skillsPanel')
 
 <template>
 <div class="mx-auto px-4 max-w-[210mm] min-h-screen text-slate-600 dark:text-slate-400">
-
     <div
         class="mx-2 text-slate-300/25 dark:text-slate-800/25 text-nowrap overflow-x-hidden selection:bg-slate-200 dark:selection:bg-slate-900 selection:text-slate-400 dark:selection:text-slate-600"
     >
         <i v-html="tighnari.description?.replaceAll('<br>','')" />
     </div>
 
-    <article class="py-8 rounded-xl bg-white dark:bg-slate-800 flex flex-col gap-8">
+    <article class="Content py-8 rounded-xl bg-white dark:bg-slate-800 flex flex-col gap-8">
 
         <!-- 头部信息 -->
         <div class="mx-8 flex flex-col gap-3 text-center items-center">

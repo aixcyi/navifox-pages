@@ -61,49 +61,23 @@ for (const level of programmerLevels) {
 <div class="flex flex-col gap-6">
     <section v-for="desc in programmerLevels">
         <div><b>{{ desc.level }}</b></div>
-        <ul class="max-md:leading-relaxed">
+        <ul class="max-md:leading-relaxed **:transition-all **:duration-200">
             <li
                 v-for="point in desc.points"
                 :class="point.unlit ? '' : 'text-slate-400 dark:text-slate-600'"
+                class="cursor-default group hover:text-slate-900 dark:hover:text-slate-100"
             >
-                <icon :icon="point.unlit ? 'icons8:circle' : 'icons8:checked'"
-                      class="mr-1"
-                      height="20" />
-                <span v-html="point.text" />
+                <icon
+                    :icon="point.unlit ? 'icons8:circle' : 'icons8:checked'"
+                    class="mr-1"
+                    height="20"
+                />
+                <span
+                    class="*:[u]:underline-offset-5! *:[u]:decoration-transparent! group-hover:*:[u]:decoration-orange-500!"
+                    v-html="point.text"
+                />
             </li>
         </ul>
     </section>
 </div>
 </template>
-
-
-<style scoped>
-@reference '#/style.css';
-
-svg {
-    /* Tailwind 的 @layer base { svg } 自带了 display: block，
-     * 没办法用 Icon 自带的 inline 属性覆盖。 */
-    @apply inline;
-}
-
-li {
-    @apply cursor-default;
-}
-
-li,
-li :deep(*) {
-    @apply transition-all duration-200;
-}
-
-:deep(u) {
-    @apply underline-offset-5 decoration-transparent;
-}
-
-li:hover {
-    @apply text-slate-900 dark:text-slate-100;
-
-    :deep(u) {
-        @apply decoration-orange-500;
-    }
-}
-</style>
