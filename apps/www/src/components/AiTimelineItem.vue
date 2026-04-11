@@ -1,35 +1,25 @@
 <script lang="ts" setup>
-const props = defineProps<{ timestamp?: string, colors?: string[] }>()
-if (props.colors && props.colors.length < 2) {
-    props.colors.push(...props.colors)
-}
+defineProps<{ color: string, color2?: string, last?: boolean, timestamp?: string }>()
 </script>
 
 
 <template>
 <li class="relative pb-6">
-    <div :style="{ backgroundImage: colors ? `linear-gradient(to bottom, ${colors?.join(', ')})` : 'initial' }"
-         class="absolute h-full bg-neutral-600 left-[10px] top-[10px] w-[3px]" />
+    <div
+        :style="{ backgroundImage: `linear-gradient(to bottom, ${color}, ${color2 ?? (last ? 'transparent' : color)})` }"
+        class="absolute h-full left-[10px] top-[10px] w-[3px]"
+    />
     <div class="absolute">
-        <div :style="{ backgroundColor: colors?.[0] || '#777777' }"
+        <div :style="{ backgroundColor: color }"
              class="absolute size-[11px] rounded-[50%] z-1 left-[6px] top-[6px]" />
-        <div :style="{ backgroundColor: colors?.[0] || '#777777' }"
+        <div :style="{ backgroundColor: color }"
              class="absolute opacity-50 size-[22px] rounded-[50%]" />
     </div>
     <div class="relative pl-8">
         <div>
             <slot></slot>
         </div>
-        <div v-if="timestamp" class="mt-1 text-sm text-slate-600">{{ timestamp }}</div>
+        <div v-if="timestamp" class="mt-1 text-sm text-slate-300 dark:text-slate-600">{{ timestamp }}</div>
     </div>
 </li>
 </template>
-
-
-<style scoped>
-:deep(svg) {
-    /* Tailwind 的 @layer base { svg } 自带了 display: block，
-     * 没办法用 Icon 自带的 inline 属性覆盖。 */
-    display: inline;
-}
-</style>

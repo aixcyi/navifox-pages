@@ -7,3 +7,33 @@
 @theme {
     --font-sign: 'Whisper', serif;  /* class="font-sign" */
 }
+
+@layer components {
+    .Content {
+        u {
+            text-decoration: underline 3px var(--color-orange-500);
+            text-underline-offset: 3px;
+        }
+
+        a {
+            @apply transition-colors duration-200 text-cyan-700 dark:text-slate-200;
+            @apply hover:text-orange-500 dark:hover:text-orange-300;
+        }
+
+        b {
+            @apply text-slate-700 dark:text-slate-300;
+        }
+
+        p {
+            @apply mt-2 indent-8;
+        }
+
+        ol, ul {
+            @apply mt-2;
+        }
+
+        svg {
+            @apply inline;
+        }
+    }
+}
