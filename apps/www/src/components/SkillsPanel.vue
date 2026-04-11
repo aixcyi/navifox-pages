@@ -110,7 +110,7 @@ for (const tree of stacks) {
                 <div class="flex flex-nowrap gap-1 relative">
                     <span
                         v-for="(label, level) in branch.levels"
-                        :class="level <= skill.level ? '' : 'text-slate-700'"
+                        :class="level <= skill.level ? '' : 'text-slate-300 dark:text-slate-700'"
                         class="cursor-default group-hover:opacity-0"
                     >
                         {{ label }}</span>

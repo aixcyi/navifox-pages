@@ -92,12 +92,14 @@ const skillsPanel = useTemplateRef<ComponentPublicInstance>('skillsPanel')
     <!-- 浮动工具 -->
     <div class="fixed right-10 bottom-10">
         <div class="flex gap-3 text-slate-200">
-            <BackToTopButton :see="experiencePanel?.$el"
-                             class="rounded-full bg-sky-800 hover:bg-sky-700 cursor-pointer"
-                             size="icon-2xl">
+            <BackToTopButton
+                :see="experiencePanel?.$el"
+                class="rounded-full bg-sky-600 dark:bg-sky-800 hover:bg-sky-700 cursor-pointer"
+                size="icon-2xl"
+            >
                 <Icon class="size-6" icon="tdesign:backtop" />
             </BackToTopButton>
-            <Button class="rounded-full bg-sky-800 hover:bg-sky-700 cursor-pointer"
+            <Button class="rounded-full bg-sky-600 dark:bg-sky-800 hover:bg-sky-700 cursor-pointer"
                     size="icon-2xl"
                     @click="isShowingCatalog = !isShowingCatalog"
                     @focusout="isShowingCatalog = false">
@@ -115,19 +117,25 @@ const skillsPanel = useTemplateRef<ComponentPublicInstance>('skillsPanel')
             leave-to-class="opacity-0"
         >
             <div v-if="isShowingCatalog" class="flex flex-col gap-3 items-end text-slate-200">
-                <BackToTopButton :to="experiencePanel?.$el"
-                                 class="rounded-full bg-sky-800 hover:bg-sky-700 cursor-pointer"
-                                 size="lg">
+                <BackToTopButton
+                    :to="experiencePanel?.$el"
+                    class="rounded-full bg-sky-600 dark:bg-sky-800 hover:bg-sky-700 cursor-pointer"
+                    size="lg"
+                >
                     <span>项目经历</span>
                 </BackToTopButton>
-                <BackToTopButton :to="programmerPanel?.$el"
-                                 class="rounded-full bg-sky-800 hover:bg-sky-700 cursor-pointer"
-                                 size="lg">
+                <BackToTopButton
+                    :to="programmerPanel?.$el"
+                    class="rounded-full bg-sky-600 dark:bg-sky-800 hover:bg-sky-700 cursor-pointer"
+                    size="lg"
+                >
                     <span>技能评估等级</span>
                 </BackToTopButton>
-                <BackToTopButton :to="skillsPanel?.$el"
-                                 class="rounded-full bg-sky-800 hover:bg-sky-700 cursor-pointer"
-                                 size="lg">
+                <BackToTopButton
+                    :to="skillsPanel?.$el"
+                    class="rounded-full bg-sky-600 dark:bg-sky-800 hover:bg-sky-700 cursor-pointer"
+                    size="lg"
+                >
                     <span>技能面板</span>
                 </BackToTopButton>
             </div>
