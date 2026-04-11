@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import AiDivider from '#/components/AiDivider.vue';
 import Job2021 from '#/components/experiences/Job2021.vue';
 import Job2022 from '#/components/experiences/Job2022.vue';
 import NavifoxPages from '#/components/experiences/NavifoxPages.vue';
@@ -8,7 +9,7 @@ import { Icon } from '@iconify/vue';
 import { tighnari } from '@navifox/constants';
 import type { Badge } from '@navifox/types';
 import { BackToTopButton, Button } from '@navifox/ui';
-import { ref, useTemplateRef } from 'vue';
+import { type ComponentPublicInstance, ref, useTemplateRef } from 'vue';
 
 function* getStates(): Generator<Badge> {
     if (tighnari.location)
@@ -24,9 +25,9 @@ function* getStates(): Generator<Badge> {
 const cvLastUpdateTime = '2026.3'
 const egoStates = [ ...getStates() ]
 const isShowingCatalog = ref(false)
-const experiencePanel = useTemplateRef('experiencePanel')
-const programmerPanel = useTemplateRef('programmerPanel')
-const skillsPanel = useTemplateRef('skillsPanel')
+const experiencePanel = useTemplateRef<ComponentPublicInstance>('experiencePanel')
+const programmerPanel = useTemplateRef<ComponentPublicInstance>('programmerPanel')
+const skillsPanel = useTemplateRef<ComponentPublicInstance>('skillsPanel')
 </script>
 
 
@@ -37,8 +38,7 @@ const skillsPanel = useTemplateRef('skillsPanel')
         <i v-html="tighnari.description?.replaceAll('<br>','')" />
     </div>
 
-    <article class="py-8 rounded-xl bg-slate-800 flex flex-col gap-8"
-             style="--tick-stroke: var(--color-slate-700)">
+    <article class="py-8 rounded-xl bg-white dark:bg-slate-800 flex flex-col gap-8">
 
         <!-- 头部信息 -->
         <div class="mx-8 flex flex-col gap-3 text-center items-center">
@@ -55,15 +55,15 @@ const skillsPanel = useTemplateRef('skillsPanel')
         </div>
 
         <!-- 项目经历 -->
-        <div ref="experiencePanel" class="relative border border-dashed border-(--tick-stroke) tick-left tick-right" />
+        <AiDivider ref="experiencePanel" />
         <NavifoxPages class="mx-8" />
-        <div class="relative border border-dashed border-(--tick-stroke) tick-left tick-right" />
+        <AiDivider />
         <Job2022 class="mx-8" />
-        <div class="relative border border-dashed border-(--tick-stroke) tick-left tick-right" />
+        <AiDivider />
         <Job2021 class="mx-8" />
 
         <!-- 技能评级 -->
-        <div ref="programmerPanel" class="relative border border-dashed border-(--tick-stroke) tick-left tick-right" />
+        <AiDivider ref="programmerPanel" />
         <section class="mx-8">
             <span class="mr-2"><b class="text-slate-50!">技能评估等级</b></span>
             <span class="ml-2 float-end"><code>{{ cvLastUpdateTime }}</code></span>
@@ -76,7 +76,7 @@ const skillsPanel = useTemplateRef('skillsPanel')
         <ProgrammerPanel class="mx-8" />
 
         <!-- 技能面板 -->
-        <div ref="skillsPanel" class="relative border border-dashed border-(--tick-stroke) tick-left tick-right" />
+        <AiDivider ref="skillsPanel" />
         <div class="mx-8">
             <SkillsPanel />
         </div>
@@ -91,7 +91,7 @@ const skillsPanel = useTemplateRef('skillsPanel')
     <!-- 浮动工具 -->
     <div class="fixed right-10 bottom-10">
         <div class="flex gap-3 text-slate-200">
-            <BackToTopButton :see="experiencePanel"
+            <BackToTopButton :see="experiencePanel?.$el"
                              class="rounded-full bg-sky-800 hover:bg-sky-700 cursor-pointer"
                              size="icon-2xl">
                 <Icon class="size-6" icon="tdesign:backtop" />
@@ -114,17 +114,17 @@ const skillsPanel = useTemplateRef('skillsPanel')
             leave-to-class="opacity-0"
         >
             <div v-if="isShowingCatalog" class="flex flex-col gap-3 items-end text-slate-200">
-                <BackToTopButton :to="experiencePanel"
+                <BackToTopButton :to="experiencePanel?.$el"
                                  class="rounded-full bg-sky-800 hover:bg-sky-700 cursor-pointer"
                                  size="lg">
                     <span>项目经历</span>
                 </BackToTopButton>
-                <BackToTopButton :to="programmerPanel"
+                <BackToTopButton :to="programmerPanel?.$el"
                                  class="rounded-full bg-sky-800 hover:bg-sky-700 cursor-pointer"
                                  size="lg">
                     <span>技能评估等级</span>
                 </BackToTopButton>
-                <BackToTopButton :to="skillsPanel"
+                <BackToTopButton :to="skillsPanel?.$el"
                                  class="rounded-full bg-sky-800 hover:bg-sky-700 cursor-pointer"
                                  size="lg">
                     <span>技能面板</span>
@@ -151,31 +151,5 @@ const skillsPanel = useTemplateRef('skillsPanel')
 .n-float-button :deep(.n-float-button__menu) {
     right: 0;
     align-items: end;
-}
-
-.tick-right::after {
-    content: "";
-    border-top: 5px solid #0000;
-    border-right: 5px solid var(--tick-stroke);
-    border-bottom: 5px solid #0000;
-    border-left: 5px solid #0000;
-    width: 0;
-    height: 0;
-    position: absolute;
-    top: -5px;
-    right: 0;
-}
-
-.tick-left::before {
-    content: "";
-    border-top: 5px solid #0000;
-    border-bottom: 5px solid #0000;
-    border-right: 5px solid #0000;
-    border-left: 5px solid var(--tick-stroke);
-    width: 0;
-    height: 0;
-    position: absolute;
-    top: -5px;
-    left: 0;
 }
 </style>

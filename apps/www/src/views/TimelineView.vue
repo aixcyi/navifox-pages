@@ -3,6 +3,7 @@ import BannerGI from '#/assets/genshin.jpg';
 import BannerHei from '#/assets/hei.jpg';
 import BannerHoney from '#/assets/honey.jpg';
 import BannerZZZ from '#/assets/zzz.webp';
+import AiDivider from '#/components/AiDivider.vue';
 import AiTimelineItem from '#/components/AiTimelineItem.vue';
 import { Icon } from '@iconify/vue';
 import { navifoxHome, tighnari } from '@navifox/constants';
@@ -16,10 +17,9 @@ import { navifoxHome, tighnari } from '@navifox/constants';
         <i v-html="tighnari.description?.replaceAll('<br>','')" />
     </div>
 
-    <article class="py-8 bg-slate-800 rounded-xl flex flex-col gap-8"
-             style="--tick-stroke: var(--color-slate-700)">
+    <article class="py-8 bg-slate-800 rounded-xl flex flex-col gap-8">
         <b class="mx-8 text-slate-50!">风带来了故事的种子</b>
-        <div class="relative border border-dashed border-(--tick-stroke) tick-left tick-right" />
+        <AiDivider />
         <section class="mx-8">
             <ul>
                 <AiTimelineItem :colors="['#00A2E8']" timestamp="2012 年，暑假">
@@ -197,38 +197,11 @@ import { navifoxHome, tighnari } from '@navifox/constants';
 </template>
 
 
-<!--suppress CssUnusedSymbol -->
 <style scoped>
 @reference '#/style.css';
 
 a {
     @apply transition-colors duration-200 text-slate-200;
     @apply hover:text-orange-500 dark:hover:text-orange-300;
-}
-
-.tick-right::after {
-    content: "";
-    border-top: 5px solid #0000;
-    border-right: 5px solid var(--tick-stroke);
-    border-bottom: 5px solid #0000;
-    border-left: 5px solid #0000;
-    width: 0;
-    height: 0;
-    position: absolute;
-    top: -5px;
-    right: 0;
-}
-
-.tick-left::before {
-    content: "";
-    border-top: 5px solid #0000;
-    border-bottom: 5px solid #0000;
-    border-right: 5px solid #0000;
-    border-left: 5px solid var(--tick-stroke);
-    width: 0;
-    height: 0;
-    position: absolute;
-    top: -5px;
-    left: 0;
 }
 </style>
