@@ -10,7 +10,6 @@ import { tighnari } from '@navifox/constants';
 import type { Badge } from '@navifox/types';
 import { BackToTopButton, Button } from '@navifox/ui';
 import { type ComponentPublicInstance, ref, useTemplateRef } from 'vue';
-import '#/styles/content.css';
 
 function* getStates(): Generator<Badge> {
     if (tighnari.location)

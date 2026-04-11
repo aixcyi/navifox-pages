@@ -105,39 +105,22 @@ for (const tree of stacks) {
         <div><b>{{ branch.scope }}</b></div>
         <div v-if="branch.skills" class="text-sm flex flex-wrap gap-x-6 gap-y-2">
             <div v-for="skill in branch.skills"
-                 class="Badge flex flex-nowrap gap-2 items-center">
+                 class="group flex flex-nowrap gap-2 items-center">
                 <Icon :icon="skill.badge.logo" width="24" />
                 <div class="flex flex-nowrap gap-1 relative">
-                    <span v-for="(label, level) in branch.levels"
-                          :class="level <= skill.level ? '' : 'text-slate-700'"
-                          class="BadgeLevel cursor-default">{{ label }}</span>
-                    <span class="BadgeText">{{ skill.badge.text }}&nbsp;</span>
+                    <span
+                        v-for="(label, level) in branch.levels"
+                        :class="level <= skill.level ? '' : 'text-slate-700'"
+                        class="cursor-default group-hover:opacity-0"
+                    >
+                        {{ label }}</span>
+                    <span
+                        class="absolute left-0 top-0 text-nowrap bg-white dark:bg-slate-800 text-slate-500 dark:text-slate-400 opacity-0 group-hover:opacity-100"
+                    >
+                        {{ skill.badge.text }}&nbsp;</span>
                 </div>
             </div>
         </div>
     </section>
 </div>
 </template>
-
-
-<style scoped>
-.Badge:hover {
-    .BadgeLevel {
-        opacity: 0;
-    }
-
-    .BadgeText {
-        opacity: 100%;
-    }
-}
-
-.BadgeText {
-    position: absolute;
-    left: 0;
-    top: 0;
-    text-wrap: nowrap;
-    background-color: var(--color-slate-800);
-    color: var(--color-slate-400);
-    opacity: 0;
-}
-</style>
