@@ -629,7 +629,7 @@ export const characters = [
         ]
     }, {
         name: '兹白',
-        region: '璃月',  // TODO: genshin-db@5.2.9 “兹白”缺失的字段。
+        region: '璃月',  // TODO: genshin-db@5.2.10 “兹白”缺失的字段。
         abilities: []
     }, {
         name: '法尔伽',
@@ -638,11 +638,7 @@ export const characters = [
             { scope: 'teamup', short: '魔导' },
         ]
     }, {
-        name: '莉奈娅',  // TODO: genshin-db@5.2.9 还未更新“莉奈娅”的信息。
-        rarity: 5,
-        region: '挪德卡莱',
-        weapon: '弓',
-        element: '岩',
+        name: '莉奈娅',
         abilities: [
             { scope: 'teamup', short: '月兆', talent: 'passive3' },
             { scope: 'interaction', short: '远程挖矿', talent: 'passive4' },

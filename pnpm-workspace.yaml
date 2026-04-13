@@ -20,7 +20,7 @@ catalog:
   codemod: ^1.7.11
   date-fns: ^4.1.0
   es-toolkit: ^1.45.1
-  genshin-db: ^5.2.9
+  genshin-db: ^5.2.10
   gsap: ^3.14.2
   markdown-it: ^14.1.1
   qrcode: ^1.5.4
