@@ -17,10 +17,10 @@
         "@tailwindcss/vite": "catalog:",
         "@unhead/vue": "catalog:",
         "@vueuse/core": "catalog:",
-        "@vueuse/integrations": "^14.2.1",
+        "@vueuse/integrations": "catalog:",
         "es-toolkit": "catalog:",
         "gsap": "catalog:",
-        "qrcode": "^1.5.4",
+        "qrcode": "catalog:",
         "tailwindcss": "catalog:",
         "vue": "catalog:"
     },

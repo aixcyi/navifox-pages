@@ -13,9 +13,9 @@
         }
     },
     "dependencies": {
-        "@date-fns/utc": "^2.1.1",
+        "@date-fns/utc": "catalog:",
         "@navifox/types": "workspace:*",
-        "date-fns": "^4.1.0",
+        "date-fns": "catalog:",
         "es-toolkit": "catalog:",
         "markdown-it": "catalog:",
         "uuid": "catalog:",

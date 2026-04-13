@@ -17,14 +17,16 @@
         "repreview:docs": "pnpm run build:docs && pnpm run preview:docs",
         "repreview:refs": "pnpm run build:refs && pnpm run preview:refs",
         "clean": "node ./scripts/clean.mjs",
-        "migrate": "pnpm dlx codemod pnpm/catalog",
+        "migrate": "codemod pnpm/catalog",
         "reinstall": "pnpm run clean --del-lock && pnpm install"
     },
     "dependencies": {
     },
     "devDependencies": {
+        "@codemod.com/cli-win32-x64-msvc": "catalog:",
         "@navifox/tsconfig": "workspace:*",
         "@types/node": "catalog:",
+        "codemod": "catalog:",
         "typescript": "catalog:"
     },
     "packageManager": "pnpm@10.28.0",
