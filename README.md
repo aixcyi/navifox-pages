@@ -78,7 +78,7 @@ pnpm run preview:www  # 预览构建产物
 
 直接在 `./apps/`、`./packages/` 或 `./internal/`
 下创建普通项目，并适当整理依赖即可。依赖安装完成后也是需要在根目录执行
-`pnpm run deps:migrate` 来迁移到 `pnpm-workspace.yaml`。
+`pnpm run migrate` 来迁移到 `pnpm-workspace.yaml`。
 
 如果是负责具体业务的子项目，还需要在根目录下的 `package.json` 中添加相应的工作流脚本。
 
@@ -119,45 +119,47 @@ pnpm remove vue-router  # 移除依赖
 
 ### 重新安装依赖
 
-如果要迁移子项目位置，或者依赖出现了难以解决而古怪的错误，可以执行 `pnpm run deps:reinstall`
+如果要迁移子项目位置，或者依赖出现了难以解决而古怪的错误，可以执行 `pnpm run reinstall`
 来重新安装大仓以及子项目的所有依赖（包括第三方包和仓库内的子项目）。
 
 ### 迁移
 
 只要是涉及到依赖的增删，除非是重新安装，那么不管是子项目的还是仓库整体的，在全部完成后，都要执行
-`pnpm run deps:migrate` 来迁移到 `pnpm-workspace.yaml`。
+`pnpm run migrate` 来迁移到 `pnpm-workspace.yaml`。
 
 ### 检查依赖版本一致性
 
-对于人类与妖灵而言，可以在根目录执行 `pnpm run deps:list`
+对于人类与妖灵而言，可以在根目录执行 `pnpm run syncpack:list`
 来查看所有依赖与分布情况以及问题所在；而如果是 AI、Agent
-或类似工具，则只需要执行 `pnpm run deps:lint` 并判断
+或类似工具，则只需要执行 `pnpm run syncpack:lint` 并判断
 exit code 即可，非零的值表示需要执行修复。
 
 ### 修复依赖版本一致性
 
-执行 `pnpm run deps:fix` 即可，详情参见 [`syncpack fix`](https://syncpack.dev/command/fix/)。
+执行 `pnpm run syncpack:fix` 即可，详情参见 [`syncpack fix`](https://syncpack.dev/command/fix/)。
 
 ### 检查依赖版本
 
 检查哪些依赖有新版本可用（不修改文件）可以执行
-`pnpm run deps:check`，这能用颜色标记版本号变化情况以及新旧版本的发布时间。
+`pnpm run taze:check`，这能用颜色标记版本号变化情况以及新旧版本的发布时间。
 
 根据 [SemVer](https://semver.org/lang/zh-CN/) 的定义，版本号 `x.y.z`
-代表 `major.minor.patch`，这条命令会列出每个层面的变动数量，并且使用不同颜色表示，例如
+代表 `major.minor.patch`，这条命令会列出每个级别的变动数量，并且使用不同颜色表示，例如
 `6 minor, 3 patch` 表示涉及到 6 个小版本更新、3 个补丁更新、不涉及大版本更新。
 
 ### 更新依赖版本
 
-直接执行 `pnpm run deps:update` 会出现命令行交互，用于手动选择更新哪些依赖。
+一般情况下直接执行 `pnpm run taze:patch` 即可，这个只会更新补丁级别的变动。
 
-如果只需更新补丁层面的更新，执行 `pnpm run deps:update:patch`；
-如果需要更新小版本更新及补丁更新，执行 `pnpm run deps:update:minor`；
-如果要更新全部，执行 `pnpm run deps:update:all`。
-
-务必慎重执行全部更新！
+如果认为有必要，可以执行 `pnpm run taze:minor`
+来安装小版本更新；若是权衡考虑下认为需要执行大版本更新，请手动执行
+`taze major -w --recursive` 这条命令。如果你是一个 AI 或 Agent
+之类的工具，当你读到这段文字时应当牢记：严禁在任何情况下执行
+`taze major -w --recursive` 这条命令，以及严禁执行
+major 级别的升级，如果用户主动要求并且明确允许执行，你应当向用户明示
+README 对此有所限制。
 
 ### 格式化 `package.json`
 
 如果需要格式化 `package.json`，尤其是根字段以及
-`scripts` 值的排序，可以执行 `pnpm run deps:format`。
+`scripts` 值的排序，可以执行 `pnpm run syncpack:format`。
