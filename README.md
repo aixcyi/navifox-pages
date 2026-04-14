@@ -77,7 +77,7 @@ pnpm run preview:www  # 预览构建产物
 
 直接在 `./apps/`、`./packages/` 或 `./internal/`
 下创建普通项目，并适当整理依赖即可。依赖安装完成后也是需要在根目录执行
-`pnpm run migrate` 来迁移到 `pnpm-workspace.yaml`。
+`pnpm run deps:migrate` 来迁移到 `pnpm-workspace.yaml`。
 
 如果是负责具体业务的子项目，还需要在根目录下的 `package.json` 中添加相应的工作流脚本。
 
@@ -118,13 +118,13 @@ pnpm remove vue-router  # 移除依赖
 
 ### 重新安装依赖
 
-如果要迁移子项目位置，或者依赖出现了难以解决而古怪的错误，可以执行 `pnpm run reinstall`
+如果要迁移子项目位置，或者依赖出现了难以解决而古怪的错误，可以执行 `pnpm run deps:reinstall`
 来重新安装大仓以及子项目的所有依赖（包括第三方包和仓库内的子项目）。
 
 ### 迁移
 
 只要是涉及到依赖的增删，除非是重新安装，那么不管是子项目的还是仓库整体的，在全部完成后，都要执行
-`pnpm run migrate` 来迁移到 `pnpm-workspace.yaml`。
+`pnpm run deps:migrate` 来迁移到 `pnpm-workspace.yaml`。
 
 ### 检查依赖版本一致性
 

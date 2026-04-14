@@ -13,7 +13,9 @@
         "deps:format": "syncpack format",
         "deps:lint": "syncpack lint",
         "deps:list": "syncpack list",
+        "deps:migrate": "codemod pnpm/catalog",
         "deps:mismatches": "syncpack list",
+        "deps:reinstall": "pnpm run clean --del-lock && pnpm install",
         "deps:update": "taze -w -i --recursive",
         "deps:update:all": "taze major -w --recursive",
         "deps:update:minor": "taze minor -w --recursive",
@@ -21,11 +23,9 @@
         "dev:docs": "pnpm --filter @navifox/docs run dev --host",
         "dev:refs": "pnpm --filter @navifox/refs run dev --host",
         "dev:www": "pnpm --filter @navifox/www run dev --host",
-        "migrate": "codemod pnpm/catalog",
         "preview:docs": "pnpm --filter @navifox/docs run preview --host",
         "preview:refs": "pnpm --filter @navifox/refs run preview --host",
-        "preview:www": "pnpm --filter @navifox/www run preview --host",
-        "reinstall": "pnpm run clean --del-lock && pnpm install"
+        "preview:www": "pnpm --filter @navifox/www run preview --host"
     },
     "dependencies": { },
     "devDependencies": {
