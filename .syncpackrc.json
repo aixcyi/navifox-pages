@@ -1,0 +1,55 @@
+{
+    "$schema": "./node_modules/syncpack/schema.json",
+    "sortFirst": [
+        "name",
+        "version",
+        "private",
+        "type",
+        "files",
+        "sideEffects",
+        "exports",
+        "scripts",
+        "dependencies",
+        "devDependencies",
+        "peerDependencies",
+        "optionalDependencies"
+    ],
+    "versionGroups": [
+        {
+            "label": "`workspace:*` packages",
+            "pinVersion": "workspace:*",
+            "dependencies": ["@navifox/*"]
+        },
+        {
+            "label": "`catalog:` packages",
+            "pinVersion": "catalog:",
+            "dependencies": [
+                "@iconify/vue",
+                "@tailwindcss/vite",
+                "@types/markdown-it",
+                "@types/node",
+                "@unhead/vue",
+                "@vitejs/plugin-vue",
+                "@vue/tsconfig",
+                "@vueuse/core",
+                "class-variance-authority",
+                "clsx",
+                "es-toolkit",
+                "genshin-db",
+                "gsap",
+                "markdown-it",
+                "reka-ui",
+                "tailwindcss",
+                "tailwind-merge",
+                "tw-animate-css",
+                "typescript",
+                "uuid",
+                "vite",
+                "vite-plugin-zip-file",
+                "vue",
+                "vue-router",
+                "vue-tsc"
+            ]
+        }
+    ]
+}
