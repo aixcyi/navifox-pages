@@ -1,48 +1,52 @@
 {
     "settings": {
+        "editor.defaultFormatter": "oxc.oxc-vscode",
         "html.format.indentInnerHtml": false,
-        "js/ts.preferences.quoteStyle": "single",
         "html.format.wrapAttributes": "preserve-aligned",
+        "css.format.spaceAroundSelectorSeparator": true,
         "css.lint.duplicateProperties": "warning",
         "css.lint.zeroUnits": "warning",
+        "js/ts.preferences.quoteStyle": "single",
+        "js/ts.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets": true,
+        "js/ts.format.insertSpaceAfterOpeningAndBeforeClosingJsxExpressionBraces": true,
         "vue.editor.focusMode": true,
         "vue.format.template.initialIndent": false,
     },
     "folders": [
         {
-            "name": "路狐领航",
+            "name": "@navifox/www",
             "path": "./apps/www",
         },
         {
-            "name": "文档月饼盒",
+            "name": "@navifox/docs",
             "path": "./apps/docs",
         },
         {
-            "name": "星笺",
+            "name": "@navifox/refs",
             "path": "./apps/refs",
         },
         {
-            "name": "常量库",
+            "name": "@navifox/constants",
             "path": "./internal/constants",
         },
         {
-            "name": "样式库",
+            "name": "@navifox/styles",
             "path": "./internal/styles",
         },
         {
-            "name": "tsconfig配置库",
+            "name": "@navifox/tsconfig",
             "path": "./internal/tsconfig",
         },
         {
-            "name": "类型库",
+            "name": "@navifox/types",
             "path": "./internal/types",
         },
         {
-            "name": "UI库",
+            "name": "@navifox/ui",
             "path": "./internal/ui",
         },
         {
-            "name": "工具库",
+            "name": "@navifox/utils",
             "path": "./internal/utils",
         },
         {
@@ -55,6 +59,7 @@
             "Vue.volar",
             "antfu.pnpm-catalog-lens",
             "bradlc.vscode-tailwindcss",
+            "oxc.oxc-vscode",
         ],
     },
 }

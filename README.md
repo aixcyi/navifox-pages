@@ -40,6 +40,7 @@
     - `utils/`，存放共享工具。
   - `scripts/`，存放仓库级别的脚本。
   - `.nvmrc`，存放协作时统一采用的 Node.js 版本号。
+  - `.oxfmtrc.json`，oxfmt 的[配置](https://oxc.rs/docs/guide/usage/formatter/config-file-reference.html)。
   - `.syncpackrc.ts`，[SyncPack](https://syncpack.dev/config/syncpackrc/) 的配置文件。
   - `navifox.code-workspace`，Visual Studio Code 工作区配置文件，可以直观呈现项目结构。不过不要直接打开这个工作区，而是复制到
     `navifox-pages.code-workspace` 或其它你喜欢的名称，再打开新复制的这个工作区。
