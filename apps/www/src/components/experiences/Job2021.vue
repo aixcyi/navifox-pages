@@ -2,6 +2,7 @@
 import Experience from '#/components/Experience.vue';
 import { ColorBadge } from '@navifox/constants';
 import type { Project } from '@navifox/types';
+import { Markdown as down } from '@navifox/ui';
 
 const project: Project = {
     name: '跨境电商ERP',
@@ -21,8 +22,8 @@ const project: Project = {
     <div>
         <p>
             <span>在职期间领导开发部门将偏内部的 ERP 拆分为 WMS、OMS 及管理端，重新设计 ORM 模型、路由交互，</span>
-            <span>分出 <code>master</code>、<code>dev</code>、<code>prod</code> 三条分支管理，</span>
-            <span>并定期主持<u>代码审查</u>（Code Review）。</span>
+            <down>分出 `master`、`dev`、`prod` 三条分支管理，</down>
+            <down>并定期主持__代码审查__（Code Review）。</down>
         </p>
         <p>
             <span>借助 GitHub 的 Issues、Projects 规划设计、管理项目、追踪问题、进行团队协作；</span>

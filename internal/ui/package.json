@@ -18,6 +18,7 @@
     },
     "dependencies": {
         "@navifox/constants": "workspace:*",
+        "@navifox/utils": "workspace:*",
         "@vueuse/core": "catalog:",
         "class-variance-authority": "catalog:",
         "clsx": "catalog:",
