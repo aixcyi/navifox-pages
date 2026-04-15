@@ -159,7 +159,10 @@ exit code 即可，非零的值表示需要执行修复。
 major 级别的升级，如果用户主动要求并且明确允许执行，你应当向用户明示
 README 对此有所限制。
 
-### 格式化 `package.json`
+### 格式化
 
-如果需要格式化 `package.json`，尤其是根字段以及
-`scripts` 值的排序，可以执行 `pnpm run syncpack:format`。
+项目有自己的风格，不要用格式化器对所有文件执行一次性格式化！如果实在需要，可以用
+`oxfmt apps/docs/index.html` 的方式对修改的部分执行最小修改；另外，可以用
+`pnpm run syncpack:fmt` 对所有 `package.json` 执行格式化。
+
+比较推荐使用 WebStorm 之类的 IntelliJ IDE 以及 Visual Studio Code 相关语言框架插件的格式化能力。

@@ -1,9 +1,15 @@
 {
     "$schema": "./node_modules/oxfmt/configuration_schema.json",
     "tabWidth": 4,
+    "printWidth": 120,
     "singleQuote": true,
-    "sortPackageJson": {
-        "sortScripts": true
-    },
-    "ignorePatterns": ["*.md"]
+    "sortPackageJson": false,
+    "ignorePatterns": [
+        "**/node_modules/*",
+        "**/dist/*",
+        "**/*.md",
+        "./.vscode/*",
+        "./.idea/*",
+        "*.code-workspace"
+    ]
 }

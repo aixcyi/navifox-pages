@@ -1,6 +1,5 @@
 {
     "settings": {
-        "editor.defaultFormatter": "oxc.oxc-vscode",
         "html.format.indentInnerHtml": false,
         "html.format.wrapAttributes": "preserve-aligned",
         "css.format.spaceAroundSelectorSeparator": true,
@@ -59,7 +58,6 @@
             "Vue.volar",
             "antfu.pnpm-catalog-lens",
             "bradlc.vscode-tailwindcss",
-            "oxc.oxc-vscode",
         ],
     },
 }
