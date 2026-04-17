@@ -161,8 +161,10 @@ README 对此有所限制。
 
 ### 格式化
 
-项目有自己的风格，不要用格式化器对所有文件执行一次性格式化！如果实在需要，可以用
-`oxfmt apps/docs/index.html` 的方式对修改的部分执行最小修改；另外，可以用
-`pnpm run syncpack:fmt` 对所有 `package.json` 执行格式化。
+使用 `pnpm run format` 对项目所有代码执行格式化。
 
-比较推荐使用 WebStorm 之类的 IntelliJ IDE 以及 Visual Studio Code 相关语言框架插件的格式化能力。
+如果要格式化部分文件，可以指定
+[oxfmt](https://oxc.rs/docs/guide/usage/formatter/cli.html#available-positional-items)
+的参数，例如 `pnpm run format apps/www` 可以格式化 `./apps/www/` 下的所有文件。
+
+SyncPack 也有格式化 `package.json` 的能力，不过还是统一用 oxfmt 比较好。

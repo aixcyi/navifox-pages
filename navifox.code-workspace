@@ -1,5 +1,6 @@
 {
     "settings": {
+        "editor.defaultFormatter": "oxc.oxc-vscode",
         "html.format.indentInnerHtml": false,
         "html.format.wrapAttributes": "preserve-aligned",
         "css.format.spaceAroundSelectorSeparator": true,
@@ -10,6 +11,9 @@
         "js/ts.format.insertSpaceAfterOpeningAndBeforeClosingJsxExpressionBraces": true,
         "vue.editor.focusMode": true,
         "vue.format.template.initialIndent": false,
+        "[yaml]": {
+            "editor.defaultFormatter": "oxc.oxc-vscode",
+        },
     },
     "folders": [
         {
@@ -58,6 +62,7 @@
             "Vue.volar",
             "antfu.pnpm-catalog-lens",
             "bradlc.vscode-tailwindcss",
+            "oxc.oxc-vscode"
         ],
     },
 }

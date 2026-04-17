@@ -3,13 +3,17 @@
     "tabWidth": 4,
     "printWidth": 120,
     "singleQuote": true,
-    "sortPackageJson": false,
+    "sortTailwindcss": true,
+    "sortPackageJson": {
+        "sortScripts": true
+    },
     "ignorePatterns": [
         "**/node_modules/*",
         "**/dist/*",
         "**/*.md",
-        "./.vscode/*",
-        "./.idea/*",
+        ".vscode/*",
+        ".idea/*",
+        ".agents/*",
         "*.code-workspace"
     ]
 }
