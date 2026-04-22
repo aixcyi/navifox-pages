@@ -135,7 +135,7 @@ export class Duration {
     toUTCDateString(fmt: string, _default: string) {
         try {
             return format(this.toUTCDate(), fmt);
-        } catch (e) {
+        } catch {
             return _default;
         }
     }

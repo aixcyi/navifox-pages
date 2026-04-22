@@ -91,6 +91,7 @@ function handleSelection(e: PointerEvent) {
 <style scoped>
 @reference '#/style.css';
 
+/* noinspection CssUnusedSymbol */
 .UnusableClass {
     @apply text-amber-50 text-amber-100 text-amber-200 text-amber-300 text-amber-400 text-amber-500 text-amber-600 text-amber-700 text-amber-800 text-amber-900 text-amber-950;
     @apply text-blue-50 text-blue-100 text-blue-200 text-blue-300 text-blue-400 text-blue-500 text-blue-600 text-blue-700 text-blue-800 text-blue-900 text-blue-950;

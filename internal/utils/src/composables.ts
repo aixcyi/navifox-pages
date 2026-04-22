@@ -12,7 +12,8 @@ export function useToggles<T>(...initialValues: T[]): [(v: T) => boolean, (v: T)
     const has = (value: T) => states.has(value);
 
     const toggle = (value: T) => {
-        states.has(value) ? states.delete(value) : states.add(value);
+        if (states.has(value)) states.delete(value);
+        else states.add(value);
     };
 
     const empty = () => states.size === 0;
