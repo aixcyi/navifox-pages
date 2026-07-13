@@ -44,5 +44,13 @@ catalog:
     vue-router: ^4.6.4
     vue-tsc: ^3.3.7
 
+minimumReleaseAgeExclude:
+    - '@codemod.com/cli-darwin-arm64@1.12.12'
+    - '@codemod.com/cli-darwin-x64@1.12.12'
+    - '@codemod.com/cli-linux-arm64-gnu@1.12.12'
+    - '@codemod.com/cli-linux-x64-gnu@1.12.12'
+    - '@codemod.com/cli-win32-x64-msvc@1.12.12'
+    - codemod@1.12.12
+
 overrides:
     vite: 'catalog:'
