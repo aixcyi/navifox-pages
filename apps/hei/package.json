@@ -16,6 +16,7 @@
         "vue": "catalog:"
     },
     "devDependencies": {
+        "@types/markdown-it": "catalog:",
         "@types/node": "catalog:",
         "glob": "catalog:",
         "gray-matter": "catalog:",
