@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Spirit } from '../types';
+import type { Spirit } from '../types';
 import AiSpiritCard from './AiSpiritCard.vue';
 
 defineProps<{ spirits: Spirit[] }>();

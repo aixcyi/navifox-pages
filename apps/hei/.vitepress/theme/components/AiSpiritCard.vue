@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { VPLink } from 'vitepress/theme';
-import { Spirit } from '../types';
+import type { Spirit } from '../types';
 
 defineProps<Spirit>();
 </script>

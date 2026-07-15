@@ -1,4 +1,4 @@
-import { VitePressConfigurator, PageHooks } from './utils/vitepress';
+import { VitePressConfigurator, type PageHooks } from './utils/vitepress';
 import { trimSuffix } from './utils/string';
 
 // https://vitepress.dev/reference/site-config

@@ -75,6 +75,16 @@ export class VitePressConfigurator {
     private locale: string = 'root';
 
     /**
+     * 当前 locale 的 themeConfig。
+     */
+    private get themeConfig() {
+        if (!this.configs.locales || !this.configs.locales[this.locale]?.themeConfig) {
+            throw new Error(`请先在 VitePress 配置中添加 "locales.${this.locale}.themeConfig"`);
+        }
+        return this.configs.locales[this.locale]!.themeConfig as DefaultTheme.Config;
+    }
+
+    /**
      * VitePress 配置器。
      *
      * @param configs VitePress 配置。
@@ -125,7 +135,10 @@ export class VitePressConfigurator {
      * 手动追加一个导航（链接）。
      */
     public pushNavLink(nav: DefaultTheme.NavItemWithLink) {
-        this.configs.locales[this.locale].themeConfig.nav.push(nav);
+        if (!Array.isArray(this.themeConfig.nav)) {
+            throw new Error(`"locales.${this.locale}.themeConfig.nav" 必须配置为一个数组。`);
+        }
+        this.themeConfig.nav.push(nav);
         return this;
     }
 
@@ -133,7 +146,10 @@ export class VitePressConfigurator {
      * 手动追加一个导航菜单。
      */
     public pushNavMenu(nav: DefaultTheme.NavItemWithChildren) {
-        this.configs.locales[this.locale].themeConfig.nav.push(nav);
+        if (!Array.isArray(this.themeConfig.nav)) {
+            throw new Error(`"locales.${this.locale}.themeConfig.nav" 必须配置为一个数组。`);
+        }
+        this.themeConfig.nav.push(nav);
         return this;
     }
 
@@ -192,7 +208,10 @@ export class VitePressConfigurator {
      * @param sidebar 侧边栏数据。
      */
     public pushSidebar(path: string, sidebar: DefaultTheme.SidebarItem[]) {
-        this.configs.locales[this.locale].themeConfig.sidebar[path] = sidebar;
+        if (!this.themeConfig.sidebar || Array.isArray(this.themeConfig.sidebar)) {
+            throw new Error(`locales.${this.locale}.themeConfig.sidebar 必须配置为一个空对象。`);
+        }
+        this.themeConfig.sidebar[path] = sidebar;
         return this;
     }
 
@@ -244,7 +263,7 @@ export class VitePressConfigurator {
         for (const page of pages) {
             const parts = page.filepath.slice(root.length).split(/[\\/]/);
             page.depth = parts.length - 1;
-            page.isIndex = parts[page.depth].match(/^index\.md$/) !== null;
+            page.isIndex = parts[page.depth]?.match(/^index\.md$/) !== null;
         }
         const folders = pages
             .filter((page) => page.depth === 1 && page.isIndex)
@@ -262,12 +281,15 @@ export class VitePressConfigurator {
         };
     }
 
-    private deepNav(dir: string, hooks?: PageHooks) {
+    private deepNav(dir: string, hooks?: PageHooks): DefaultTheme.NavItemWithChildren {
         const { items: pages, index } = this.part(dir, hooks);
-        const items = [];
+        const items: DefaultTheme.NavItemWithChildren['items'] = [];
         for (const page of pages) {
-            if (!page.isIndex) items.push({ text: page.frontmatter.title, link: `/${page.url}` });
-            else items.push(this.deepNav(pathlib.join(page.filepath, '../'), hooks));
+            if (!page.isIndex) {
+                items.push({ text: page.frontmatter.title, link: `/${page.url}` });
+            } else {
+                items.push(this.deepNav(pathlib.join(page.filepath, '../'), hooks) as DefaultTheme.NavItemChildren);
+            }
         }
         return {
             text: index?.frontmatter?.title,
