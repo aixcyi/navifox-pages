@@ -6,16 +6,14 @@ const configurator = new VitePressConfigurator(
     {
         outDir: './dist.press',
         cacheDir: './cache',
-        title: '蓝溪拾遗',
-        description: '罗小黑世界观下的设定集与友链。',
         head: [['link', { rel: 'icon', href: '/favicon.ico', type: 'image/ico' }]],
         locales: {
             root: {
                 lang: 'zh-CN',
                 label: '简体中文',
-                title: 'Zeraora',
-                titleTemplate: ':title × Zeraora',
-                description: 'Zeraora 文档',
+                title: '蓝溪拾遗',
+                titleTemplate: ':title · 蓝溪拾遗', // •
+                description: '罗小黑世界观下的设定集与友链。',
                 themeConfig: {
                     // https://vitepress.dev/reference/default-theme-config
                     langMenuLabel: '切换语言',
