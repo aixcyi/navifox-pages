@@ -3,11 +3,19 @@ packages:
     - packages/*
     - apps/*
     - '!**/test/**'
-
 allowBuilds:
     vue-demi: true
-
+minimumReleaseAgeExclude:
+    - '@codemod.com/cli-darwin-arm64@1.12.12'
+    - '@codemod.com/cli-darwin-x64@1.12.12'
+    - '@codemod.com/cli-linux-arm64-gnu@1.12.12'
+    - '@codemod.com/cli-linux-x64-gnu@1.12.12'
+    - '@codemod.com/cli-win32-x64-msvc@1.12.12'
+    - codemod@1.12.12
+overrides:
+    vite: 'catalog:'
 catalog:
+    '@catppuccin/vitepress': ^0.1.2
     '@codemod.com/cli-win32-x64-msvc': ^1.12.12
     '@date-fns/utc': ^2.1.1
     '@iconify/vue': ^5.0.1
@@ -25,10 +33,13 @@ catalog:
     date-fns: ^4.4.0
     es-toolkit: ^1.49.0
     genshin-db: ^5.2.12
+    glob: ^13.0.6
+    gray-matter: ^4.0.3
     gsap: ^3.15.0
     markdown-it: ^14.3.0
     oxfmt: ^0.45.0
     oxlint: ^1.73.0
+    path-to-regexp: ^8.4.2
     qrcode: ^1.5.4
     reka-ui: ^2.10.1
     syncpack: ^14.3.1
@@ -40,17 +51,7 @@ catalog:
     uuid: ^13.0.2
     vite: ^8.1.4
     vite-plugin-zip-file: ^5.0.1
+    vitepress: 2.0.0-alpha.18
     vue: ^3.5.39
     vue-router: ^4.6.4
     vue-tsc: ^3.3.7
-
-minimumReleaseAgeExclude:
-    - '@codemod.com/cli-darwin-arm64@1.12.12'
-    - '@codemod.com/cli-darwin-x64@1.12.12'
-    - '@codemod.com/cli-linux-arm64-gnu@1.12.12'
-    - '@codemod.com/cli-linux-x64-gnu@1.12.12'
-    - '@codemod.com/cli-win32-x64-msvc@1.12.12'
-    - codemod@1.12.12
-
-overrides:
-    vite: 'catalog:'

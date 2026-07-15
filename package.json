@@ -17,7 +17,7 @@
         "format:check": "oxfmt --check",
         "lint": "oxlint",
         "lint:fix": "oxlint --fix",
-        "migrate": "codemod pnpm/catalog",
+        "migrate": "codemod pnpm/catalog && pnpm run format",
         "preview:docs": "pnpm --filter @navifox/docs run preview --host",
         "preview:hei": "pnpm --filter @navifox/hei run preview --host",
         "preview:refs": "pnpm --filter @navifox/refs run preview --host",
@@ -46,7 +46,7 @@
         "packageManager": {
             "name": "pnpm",
             "version": "11.11.0",
-            "onFail": "error"
+            "onFail": "warn"
         },
         "runtime": {
             "name": "node",
