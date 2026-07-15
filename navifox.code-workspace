@@ -29,6 +29,10 @@
             "path": "./apps/refs",
         },
         {
+            "name": "@navifox/hei",
+            "path": "./apps/hei",
+        },
+        {
             "name": "@navifox/constants",
             "path": "./internal/constants",
         },

@@ -1,0 +1,27 @@
+{
+    "name": "@navifox/hei",
+    "version": "0.0.0",
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "build": "vitepress build",
+        "dev": "vitepress dev",
+        "preview": "vitepress preview",
+        "typecheck": "vue-tsc --noEmit --skipLibCheck"
+    },
+    "dependencies": {
+        "@catppuccin/vitepress": "^0.1.2",
+        "@navifox/constants": "workspace:*",
+        "date-fns": "catalog:",
+        "vue": "catalog:"
+    },
+    "devDependencies": {
+        "@types/node": "catalog:",
+        "glob": "^13.0.6",
+        "gray-matter": "^4.0.3",
+        "markdown-it": "catalog:",
+        "path-to-regexp": "^8.4.2",
+        "vite": "catalog:",
+        "vitepress": "2.0.0-alpha.18"
+    }
+}

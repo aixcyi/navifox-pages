@@ -17,6 +17,7 @@ export const tighnari: Friend = {
     titles: ['Django 高级后端开发', 'Vue3 开发'],
     description: markit('Seeds of stories,\nbrought by the wind and cultivated by time.'),
     location: '广东 广州',
+    groupQQ: '540457640',
     wxid: 'navifox',
     age: thisYear - 2000,
 };

@@ -1,0 +1,21 @@
+// https://vitepress.dev/guide/custom-theme
+import { h } from 'vue';
+import type { Theme } from 'vitepress';
+import DefaultTheme from 'vitepress/theme';
+import './style.css';
+import '@catppuccin/vitepress/theme/mocha/mauve.css';
+import AiSpiritCard from './components/AiSpiritCard.vue';
+import AiSpiritsView from './components/AiSpiritsView.vue';
+
+export default {
+    extends: DefaultTheme,
+    Layout: () => {
+        return h(DefaultTheme.Layout, null, {
+            // https://vitepress.dev/guide/extending-default-theme#layout-slots
+        });
+    },
+    enhanceApp({ app }) {
+        app.component('AiSpiritCard', AiSpiritCard);
+        app.component('AiSpiritsView', AiSpiritsView);
+    },
+} satisfies Theme;
