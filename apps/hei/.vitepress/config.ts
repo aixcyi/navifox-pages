@@ -1,6 +1,5 @@
 import { VitePressConfigurator, PageHooks } from './utils/vitepress';
 import { trimSuffix } from './utils/string';
-import { navifoxGuild } from '@navifox/constants';
 
 // https://vitepress.dev/reference/site-config
 const configurator = new VitePressConfigurator(
@@ -38,7 +37,7 @@ const configurator = new VitePressConfigurator(
                         /* 在下方以代码形式定义侧边栏 */
                     },
                     socialLinks: [
-                        { icon: 'qq', link: navifoxGuild.link, ariaLabel: '罗狐会馆群聊' },
+                        { icon: 'qq', link: 'https://qm.qq.com/q/7WO1tJmTss', ariaLabel: '罗狐会馆群聊' },
                         { icon: 'github', link: 'https://github.com/vuejs/vitepress', ariaLabel: 'GitHub 仓库' },
                     ],
                 },
