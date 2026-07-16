@@ -243,6 +243,19 @@ export class VitePressConfigurator {
     }
 
     /**
+     * 手动追加一个社交链接。
+     *
+     * @param social 链接数据。
+     */
+    public pushSocial(social: DefaultTheme.SocialLink) {
+        if (!Array.isArray(this.themeConfig.socialLinks)) {
+            throw new Error(`locales.${this.locale}.themeConfig.socialLinks 必须配置为一个数组。`);
+        }
+        this.themeConfig.socialLinks.push(social);
+        return this;
+    }
+
+    /**
      * 返回 VitePress 构建好的配置。
      */
     public define() {

@@ -13,7 +13,7 @@ const configurator = new VitePressConfigurator(
                 label: '简体中文',
                 title: '蓝溪拾遗',
                 titleTemplate: ':title · 蓝溪拾遗', // •
-                description: '罗小黑世界观下的设定集与友链。',
+                description: '罗小黑世界观下的设定集与通联友链。',
                 themeConfig: {
                     // https://vitepress.dev/reference/default-theme-config
                     langMenuLabel: '切换语言',
@@ -35,8 +35,7 @@ const configurator = new VitePressConfigurator(
                         /* 在下方以代码形式定义侧边栏 */
                     },
                     socialLinks: [
-                        { icon: 'qq', link: 'https://qm.qq.com/q/7WO1tJmTss', ariaLabel: '罗狐会馆群聊' },
-                        { icon: 'github', link: 'https://github.com/vuejs/vitepress', ariaLabel: 'GitHub 仓库' },
+                        /* 在下方以代码形式定义社交链接 */
                     ],
                 },
             },
@@ -73,14 +72,15 @@ configurator
     .autoSidebar('/guild/', './guild/', { hooks: hooksOrdered, deep: true })
     .autoSidebar('/spirit/', './spirit/', { hooks: hooksOrdered, deep: true })
     .pushNavLink({ text: '妖灵集', link: '/spirit', activeMatch: '/spirit/' })
-    .pushNavLink({ text: '会馆名录', link: '/guild/cangnan', activeMatch: '/guild/' })
-    .pushNavLink({ text: '术语表', link: '/glossary' })
+    .pushNavLink({ text: '已通联会馆', link: '/guild/cangnan', activeMatch: '/guild/' })
+    .pushSocial({ ariaLabel: '罗狐会馆群聊', icon: 'qq', link: 'https://qm.qq.com/q/7WO1tJmTss' })
+    .pushSocial({ ariaLabel: 'GitHub 仓库', icon: 'github', link: 'https://github.com/vuejs/vitepress' })
     .pushNavMenu({
-        text: '更多',
+        text: '参考 & 链接',
         items: [
-            { text: '发行说明', link: '/releases' },
-            { text: '如何参与贡献？', link: '/contributing' },
-            { text: '路狐领航', link: 'https://www.navifox.net/' },
+            { text: '设定术语表', link: '/glossary' },
+            { text: '关于《蓝溪拾遗》', link: '/about' },
+            { items: [{ text: '路狐领航', link: 'https://www.navifox.net/' }] },
         ],
     });
 
