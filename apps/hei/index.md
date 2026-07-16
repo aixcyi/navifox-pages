@@ -8,7 +8,7 @@ hero:
   text: "湖面倒影着水中日月"
   tagline: "罗小黑世界观下的设定集与通联友链"
   image:
-    src: /hei.gif
+    src: /assets/hei.gif
     alt: "猫猫状小黑"
   actions:
     - theme: brand
