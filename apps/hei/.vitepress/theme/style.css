@@ -120,3 +120,12 @@
     --vp-custom-block-tip-bg: var(--vp-c-brand-soft);
     --vp-custom-block-tip-code-bg: var(--vp-c-brand-soft);
 }
+
+/**
+ * Component: Table
+ * -------------------------------------------------------------------------- */
+
+th,
+td {
+    text-wrap: nowrap;
+}
