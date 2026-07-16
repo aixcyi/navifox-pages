@@ -6,6 +6,7 @@ export const spirits = [
     { name: '池年', english: 'chi-nian', titles: ['妖灵会馆长老'] },
     { name: '灵遥', english: 'lingyao', titles: ['妖灵会馆长老'] },
     { name: '静一', english: 'jingyi', titles: ['妖灵会馆长老'] },
+    { name: '无限', english: 'wuxian', titles: ['一级执行者'] },
     { name: '卡里', english: 'kali', titles: ['灵溪会馆馆长'] },
     { name: '秃贝', english: 'tubei', titles: ['灵溪会馆常驻妖精'] },
     { name: '大松', english: 'dasong', titles: ['流石会馆馆长'] },
@@ -15,6 +16,7 @@ export const spirits = [
     { name: '鸠老', english: 'jiulao', titles: ['一级执行者'] },
     { name: '若水', english: 'ruoshui', titles: ['执行者'] },
     { name: '郑信毅', english: 'zhengxinyi', titles: ['洞桥会馆馆长'] },
+    // 在此处添加更多妖灵...
     {
         name: '路狐羽',
         english: 'navifox',
