@@ -5,10 +5,6 @@ aside: false
 
 <script setup lang="ts">
 import { navifoxGuild, tighnari } from '@navifox/constants';
-
-const spirits = [
-    { name: '路狐羽', titles: ['罗狐会馆馆长', '二级执行者'], link: '/spirit/navifox', avatar: 'https://www.navifox.net/avatar256.jpg' },
-]
 </script>
 
 # 罗狐会馆
@@ -17,7 +13,7 @@ const spirits = [
 
 ## 妖灵
 
-<AiSpiritsView :spirits />
+<AiSpiritsView names="路狐羽" />
 
 ## 传送门
 

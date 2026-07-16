@@ -1,13 +1,13 @@
 <script setup lang="ts">
-import type { Spirit } from '../types';
 import AiSpiritCard from './AiSpiritCard.vue';
 
-defineProps<{ spirits: Spirit[] }>();
+const props = defineProps<{ names: string | string[] }>();
+const names = typeof props.names === 'string' ? props.names.split(/[\s,]/) : props.names;
 </script>
 
 <template>
     <div class="AiSpirits">
-        <AiSpiritCard v-bind="spirit" v-for="spirit in spirits" />
+        <AiSpiritCard v-for="name in names" :name />
     </div>
 </template>
 

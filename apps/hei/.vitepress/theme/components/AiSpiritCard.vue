@@ -1,22 +1,23 @@
 <script setup lang="ts">
 import { VPLink } from 'vitepress/theme';
-import type { Spirit } from '../types';
+import { spirits, spiritsByName } from '../../spirits';
 
-defineProps<Spirit>();
+const props = defineProps<{ name: string }>();
+const spirit = spiritsByName[props.name] || spirits.at(-1)!;
 </script>
 
 <template>
-    <VPLink class="AiSpiritCard" :href="link" target="_self" :no-icon="true" :tag="link ? 'a' : 'div'">
+    <VPLink class="AiSpiritCard" :href="spirit.link" target="_self" :no-icon="true" :tag="spirit.link ? 'a' : 'div'">
         <article class="box">
-            <img v-if="avatar" :src="avatar" :alt="name" class="avatar" />
+            <img v-if="spirit.avatar" :src="spirit.avatar" :alt="name" class="avatar" />
             <div v-else class="avatar"></div>
             <div class="content">
                 <div class="name" v-html="name" />
-                <div class="titles" v-if="typeof titles === 'string'">
-                    <div v-for="title in titles.split(' ')">{{ title }}</div>
+                <div class="titles" v-if="typeof spirit.titles === 'string'">
+                    <div v-for="title in spirit.titles.split(' ')">{{ title }}</div>
                 </div>
                 <div class="titles" v-else>
-                    <div v-for="title in titles">{{ title }}</div>
+                    <div v-for="title in spirit.titles">{{ title }}</div>
                 </div>
             </div>
         </article>

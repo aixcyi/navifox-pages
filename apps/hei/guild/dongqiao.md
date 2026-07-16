@@ -3,17 +3,11 @@ title: 洞桥会馆
 aside: false
 ---
 
-<script setup lang="ts">
-const spirits = [
-    { name: '郑信毅', avatar: '/assets/spirit/zhengxinyi.jpg', titles: ['洞桥会馆馆长'] },
-]
-</script>
-
 # 洞桥会馆
 
 ## 妖灵
 
-<AiSpiritsView :spirits />
+<AiSpiritsView names="郑信毅" />
 
 ## 时间线
 
