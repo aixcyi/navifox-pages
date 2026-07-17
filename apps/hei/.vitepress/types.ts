@@ -1,7 +1,7 @@
 export type Spirit = {
     name: string;
+    tags?: string[];
     avatar?: string;
-    titles?: string[];
     guild?: string;
     link?: string;
 };

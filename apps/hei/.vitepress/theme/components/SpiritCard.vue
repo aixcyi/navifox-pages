@@ -12,8 +12,8 @@ defineProps<Spirit>();
             <div v-else class="avatar"></div>
             <div class="content">
                 <div class="name" v-html="name" />
-                <div class="titles">
-                    <div v-for="title in titles">{{ title }}</div>
+                <div class="tags">
+                    <div v-for="tag in tags">{{ tag }}</div>
                 </div>
             </div>
         </article>
@@ -70,7 +70,7 @@ defineProps<Spirit>();
     line-height: 24px;
 }
 
-.titles {
+.tags {
     color: var(--vp-c-text-2);
     display: flex;
     flex-direction: row;
