@@ -43,11 +43,14 @@ const configurator = new VitePressConfigurator(
         lastUpdated: true,
         markdown: {
             container: {
+                infoLabel: '信息',
+                noteLabel: '备注',
                 tipLabel: '提示',
                 warningLabel: '注意',
-                dangerLabel: '当心',
-                infoLabel: '信息',
-                detailsLabel: '详细信息',
+                dangerLabel: '慎重',
+                detailsLabel: '详情',
+                importantLabel: '重点',
+                cautionLabel: '当心',
             },
         },
         vite: {
