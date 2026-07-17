@@ -7,7 +7,7 @@ aside: false
 
 <SpiritBanner names="无限" />
 
-一个普通的人类，却拥有惊人的实力，尚未成仙便能与仙相争，成仙后已经能与神一较高下。在妖灵会馆，每一位一级执行者都是一方豪强，而无限是其中最强的那位。
+　　一个普通的人类，却拥有惊人的实力，尚未成仙便能与仙相争，成仙后已经能与神一较高下。在妖灵会馆，每一位一级执行者都是一方豪强，而无限是其中最强的那位。
 
 ## 能力
 
@@ -85,10 +85,6 @@ aside: false
 
 
 <style scoped>
-.VPDoc p {
-    text-indent: 2rem;
-}
-
 table {
     width: fit-content;
     max-height: calc(100vh * 0.75);
