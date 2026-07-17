@@ -1,7 +1,4 @@
 ---
-title: 已通联会馆
-sidebar: false
-aside: false
-prev: false
-next: false
+title: 妖灵会馆一览
+layout: page
 ---

@@ -77,17 +77,19 @@ const hooksOrdered: PageHooks = {
 
 configurator
     .goto('root')
+    .pushSocial({ ariaLabel: '罗狐会馆群聊', icon: 'qq', link: 'https://qm.qq.com/q/7WO1tJmTss' })
+    .pushSocial({ ariaLabel: 'GitHub 仓库', icon: 'github', link: 'https://github.com/vuejs/vitepress' })
     .autoSidebar('/guild/', './guild/', { hooks: hooksOrdered, deep: true })
     .autoSidebar('/spirit/', './spirit/', { hooks: hooksOrdered, deep: true })
     .pushNavLink({ text: '妖灵集', link: '/spirit', activeMatch: '/spirit/' })
-    .pushNavLink({ text: '已通联会馆', link: '/guild/cangnan', activeMatch: '/guild/' })
-    .pushSocial({ ariaLabel: '罗狐会馆群聊', icon: 'qq', link: 'https://qm.qq.com/q/7WO1tJmTss' })
-    .pushSocial({ ariaLabel: 'GitHub 仓库', icon: 'github', link: 'https://github.com/vuejs/vitepress' })
+    .pushNavLink({ text: '妖灵会馆一览', link: '/guild/cangnan', activeMatch: '/guild/' })
+    .pushNavLink({ text: '术语简表', link: '/glossary', activeMatch: '/glossary/' })
     .pushNavMenu({
-        text: '参考 & 链接',
+        text: '关于',
         items: [
-            { text: '设定术语表', link: '/glossary' },
-            { text: '关于《蓝溪拾遗》', link: '/about' },
+            { text: '此网站', link: '/about' },
+            { text: '妖灵通联指南', link: '/about#spirit' },
+            { text: '会馆联谊', link: '/about#guild' },
             { items: [{ text: '路狐领航', link: 'https://www.navifox.net/' }] },
         ],
     });
