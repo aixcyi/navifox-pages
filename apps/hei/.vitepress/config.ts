@@ -5,9 +5,10 @@ import { trimSuffix } from './utils/string';
 const configurator = new VitePressConfigurator({
     outDir: './dist.press',
     cacheDir: './cache',
-    srcExclude: [
-        '**/dist.*/**',
-    ],
+    srcExclude:
+        process.env.NODE_ENV === 'production'
+            ? ['**/dist.*/**', '**/*.draft.*'] // 不打包草稿文件
+            : ['**/dist.*/**'],
     head: [['link', { rel: 'icon', href: '/favicon.ico', type: 'image/ico' }]],
     locales: {
         root: {
