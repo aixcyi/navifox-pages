@@ -30,6 +30,12 @@ const configurator = new VitePressConfigurator({
                     text: '最后提交时间',
                     formatOptions: { dateStyle: 'full', timeStyle: 'medium' },
                 },
+                notFound: {
+                    title: '星夜湖畔的书简缺了一页',
+                    quote: '或许已不存在，或许从不存在',
+                    linkLabel: '返回首页',
+                    linkText: '回到梦开始的地方',
+                },
                 nav: [
                     /* 在下方以代码形式定义导航栏 */
                 ],
