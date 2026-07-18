@@ -53,7 +53,7 @@ export class Page {
 /**
  * 页面信息处理的相关钩子。
  */
-export type PageHooks = {
+export type PageHook = {
     /**
      * 比较所有文件夹（即所有 xxx/index.md）。
      */
@@ -71,6 +71,7 @@ export type PageHooks = {
 };
 
 export class VitePressConfigurator {
+    private hookPage?: PageHook = undefined;
     private pages: Page[] = [];
     private locale: string = 'root';
 
@@ -88,12 +89,8 @@ export class VitePressConfigurator {
      * VitePress 配置器。
      *
      * @param configs VitePress 配置。
-     * @param hooks 全局排序钩子。可以在单次操作中被覆盖。
      */
-    constructor(
-        private configs: UserConfig<DefaultTheme.Config>,
-        private hooks?: PageHooks,
-    ) {
+    constructor(private configs: UserConfig<DefaultTheme.Config>) {
         const markdown = MarkdownIt();
         const rewrite = compileRewrites(this.configs.rewrites);
         const base = this.configs.srcDir ?? '.';
@@ -132,6 +129,14 @@ export class VitePressConfigurator {
     }
 
     /**
+     * 设置排序钩子。
+     */
+    public hookPageOrdering(hook: PageHook) {
+        this.hookPage = hook;
+        return this;
+    }
+
+    /**
      * 手动追加一个导航（链接）。
      */
     public pushNavLink(nav: DefaultTheme.NavItemWithLink) {
@@ -158,10 +163,10 @@ export class VitePressConfigurator {
      *
      * @param dir 需要搜索哪个目录下的 Markdown。
      * @param options 可选参数。
-     * @param options.hooks 排序钩子。
+     * @param options.pageHook 排序钩子。
      */
-    public autoNavLinks(dir: string, options?: { hooks?: PageHooks }) {
-        this.part(dir, options?.hooks)
+    public autoNavLinks(dir: string, options?: { pageHook?: PageHook }) {
+        this.part(dir, options?.pageHook)
             .files.map((page) => ({
                 text: page.frontmatter.title,
                 link: `/${page.url}`,
@@ -179,11 +184,11 @@ export class VitePressConfigurator {
      * @param options 可选参数。
      * @param options.text 菜单的标题，不指定则使用 `index.md` 的 `title` 字段。
      * @param options.deep 是否递归搜索该目录。
-     * @param options.hooks 排序钩子。
+     * @param options.pageHook 排序钩子。
      */
-    public autoNavMenu(dir: string, options?: { text?: string; deep?: boolean; hooks?: PageHooks }) {
+    public autoNavMenu(dir: string, options?: { text?: string; deep?: boolean; pageHook?: PageHook }) {
         if (!options?.deep) {
-            const { files, index } = this.part(dir, options?.hooks);
+            const { files, index } = this.part(dir, options?.pageHook);
             this.pushNavMenu({
                 text: options?.text ?? index?.frontmatter?.title ?? '(无标题)',
                 items: files.map((page) => ({
@@ -192,7 +197,7 @@ export class VitePressConfigurator {
                 })),
             });
         } else {
-            const { text, items } = this.deepNav(dir, options?.hooks);
+            const { text, items } = this.deepNav(dir, options?.pageHook);
             this.pushNavMenu({
                 text: options?.text ?? text ?? '(无标题)',
                 items,
@@ -223,21 +228,21 @@ export class VitePressConfigurator {
      * @param options 可选参数。
      * @param options.collapsed 是否收起当前目录。子目录会使用当前目录的设置。
      * @param options.deep 是否递归搜索该目录。
-     * @param options.hooks 排序钩子。
+     * @param options.pageHook 排序钩子。
      */
     public autoSidebar(
         path: string,
         dir: string,
-        options?: { collapsed?: boolean; deep?: boolean; hooks?: PageHooks },
+        options?: { collapsed?: boolean; deep?: boolean; pageHook?: PageHook },
     ) {
         if (!options?.deep) {
-            const { files } = this.part(dir, options?.hooks);
+            const { files } = this.part(dir, options?.pageHook);
             this.pushSidebar(
                 path,
                 files.map((page) => ({ text: page.frontmatter.title, link: `/${page.url}` })),
             );
         } else {
-            this.pushSidebar(path, this.deepSidebar(dir, options?.collapsed, options?.hooks));
+            this.pushSidebar(path, this.deepSidebar(dir, options?.collapsed, options?.pageHook));
         }
         return this;
     }
@@ -270,7 +275,7 @@ export class VitePressConfigurator {
      * - 所有子孙文件（夹）`items`
      * - 首页 `index`
      */
-    private part(dir: string, hooks?: PageHooks) {
+    private part(dir: string, pageHook?: PageHook) {
         const root = pathlib.join(pathlib.resolve(dir), '/');
         const pages = this.pages.filter((page) => page.filepath.startsWith(root));
         for (const page of pages) {
@@ -280,12 +285,12 @@ export class VitePressConfigurator {
         }
         const folders = pages
             .filter((page) => page.depth === 1 && page.isIndex)
-            .sort((hooks ?? this.hooks)?.compareFolder);
+            .sort((pageHook ?? this.hookPage)?.compareFolder);
         const files = pages
             .filter((page) => page.depth === 0 && !page.isIndex)
-            .sort((hooks ?? this.hooks)?.compareFile);
+            .sort((pageHook ?? this.hookPage)?.compareFile);
         const index = pages.filter((page) => page.depth === 0 && page.isIndex)[0];
-        const items = [...folders, ...files].sort((hooks ?? this.hooks)?.compareItem);
+        const items = [...folders, ...files].sort((pageHook ?? this.hookPage)?.compareItem);
         return {
             folders,
             files,
@@ -294,14 +299,14 @@ export class VitePressConfigurator {
         };
     }
 
-    private deepNav(dir: string, hooks?: PageHooks): DefaultTheme.NavItemWithChildren {
-        const { items: pages, index } = this.part(dir, hooks);
+    private deepNav(dir: string, pageHook?: PageHook): DefaultTheme.NavItemWithChildren {
+        const { items: pages, index } = this.part(dir, pageHook);
         const items: DefaultTheme.NavItemWithChildren['items'] = [];
         for (const page of pages) {
             if (!page.isIndex) {
                 items.push({ text: page.frontmatter.title, link: `/${page.url}` });
             } else {
-                items.push(this.deepNav(pathlib.join(page.filepath, '../'), hooks) as DefaultTheme.NavItemChildren);
+                items.push(this.deepNav(pathlib.join(page.filepath, '../'), pageHook) as DefaultTheme.NavItemChildren);
             }
         }
         return {
@@ -310,8 +315,8 @@ export class VitePressConfigurator {
         };
     }
 
-    private deepSidebar(dir: string, collapsed?: boolean, hooks?: PageHooks) {
-        const { items: pages } = this.part(dir, hooks);
+    private deepSidebar(dir: string, collapsed?: boolean, pageHook?: PageHook) {
+        const { items: pages } = this.part(dir, pageHook);
         const items: DefaultTheme.SidebarItem[] = [];
         for (const page of pages) {
             if (!page.isIndex)
@@ -322,7 +327,7 @@ export class VitePressConfigurator {
             else
                 items.push({
                     text: page.frontmatter.title,
-                    items: this.deepSidebar(pathlib.join(page.filepath, '../'), collapsed, hooks),
+                    items: this.deepSidebar(pathlib.join(page.filepath, '../'), collapsed, pageHook),
                     collapsed: collapsed,
                 });
         }
