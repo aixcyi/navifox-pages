@@ -120,10 +120,10 @@ export class VitePressConfigurator {
     }
 
     /**
-     * 切换要操作的 `local`。
+     * 切换要操作的 `locale`。
      */
-    public goto(local: string = 'root') {
-        this.locale = local;
+    public goto(locale: string = 'root') {
+        this.locale = locale;
         return this;
     }
 
