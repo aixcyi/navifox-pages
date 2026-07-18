@@ -60,25 +60,52 @@
 
 ## 工作流
 
-> 本节提到的绝大部分命令都应当（默认）在项目根目录下执行。
+本节提到的绝大部分命令都应当（默认）在项目根目录下执行。
 
-### 运行、构建、预览
+只有 `./apps/` 下的子项目具有 dev、build、preview 命令，`./internal/` 的子项目不能直接 **运行** 和 **预览**，也无须执行 **构建（并打包）**，`./packages/` 待定。
 
-对于负责具体业务的子项目，以 `www` 子项目为例：
+### 运行
 
 ```bash
-pnpm run dev:www      # 运行子项目
-pnpm run build:www    # 构建子项目
-pnpm run preview:www  # 预览构建产物
+pnpm run dev:docs
+pnpm run dev:hei
+pnpm run dev:refs
+pnpm run dev:www
 ```
 
-目前支持 `www`、`docs`、`refs`、`hei` 四个子项目的 dev/build/preview 命令，其它子项目（`internal/`
-下的共享包）不能直接运行和预览，也无须执行构建。
+命令添加了 `--host` 参数，所以运行起来后会默认向 `0.0.0.0:5173` 开放。
 
-执行 `pnpm run build` 可以一次性构建所有（能构建的）子项目。
+理论上可以用 `pnpm run dev` 一次性运行所有子项目，但由于都是单独的项目，加上先运行的子项目会先占用端口号，可能会影响内网穿透，所以不打算提供这样的命令。
 
-理论上可以 `pnpm run dev` 和 `pnpm run preview`，如果有需要的话只需模仿 `pnpm run build`
-的命令新增即可，不过同时运行多个子项目会占用不同的端口，本项目不常用，所以不提供这两条命令。
+### 构建（并打包）
+
+```bash
+pnpm run build:docs
+pnpm run build:hei
+pnpm run build:refs
+pnpm run build:www
+```
+
+构建之后会调用系统 zip 命令压缩打包到 `./apps/*/dist.zip` 以便部署，Windows 系统没有自带这个命令，用户可以选择自行安装，亦或者交给 Node.js 进行压缩打包（实际体验其实并不慢）。
+
+如果要一次性构建所有（能构建的）子项目，并打包，那么执行：
+
+```bash
+pnpm run build
+```
+
+### 预览
+
+```bash
+pnpm run preview:docs
+pnpm run preview:hei
+pnpm run preview:refs
+pnpm run preview:www
+```
+
+预览构建产物。
+
+命令添加了 `--host` 参数，所以运行起来之后会默认向 `0.0.0.0:4173` 开放。
 
 ### 添加子项目
 
