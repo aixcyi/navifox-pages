@@ -84,7 +84,7 @@ configurator
     .hookPageOrdering(pageHookDefault)
     .goto('root')
     .pushSocial({ ariaLabel: '罗狐会馆群聊', icon: 'qq', link: 'https://qm.qq.com/q/7WO1tJmTss' })
-    .pushSocial({ ariaLabel: 'GitHub 仓库', icon: 'github', link: 'https://github.com/vuejs/vitepress' })
+    .pushSocial({ ariaLabel: 'GitHub 仓库', icon: 'github', link: 'https://github.com/aixcyi/navifox-pages' })
     .autoSidebar('/guild/', './guild/', { pageHook: pageHookOrdered, deep: true })
     .autoSidebar('/spirit/', './spirit/', { pageHook: pageHookOrdered, deep: true })
     .pushNavLink({ text: '妖灵集', link: '/spirit', activeMatch: '/spirit/' })
