@@ -4,7 +4,7 @@
     "private": true,
     "type": "module",
     "scripts": {
-        "build": "vitepress build",
+        "build": "vitepress build && cd dist && bestzip ../dist.zip *",
         "dev": "vitepress dev",
         "preview": "vitepress preview"
     },
@@ -17,6 +17,7 @@
     "devDependencies": {
         "@types/markdown-it": "catalog:",
         "@types/node": "catalog:",
+        "bestzip": "catalog:",
         "glob": "catalog:",
         "gray-matter": "catalog:",
         "markdown-it": "catalog:",

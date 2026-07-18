@@ -27,6 +27,7 @@ catalog:
     '@vue/tsconfig': ^0.8.1
     '@vueuse/core': ^14.3.0
     '@vueuse/integrations': ^14.3.0
+    bestzip: ^2.1.0
     class-variance-authority: ^0.7.1
     clsx: ^2.1.1
     codemod: ^1.12.12

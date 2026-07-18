@@ -3,12 +3,9 @@ import { trimSuffix } from './utils/string';
 
 // https://vitepress.dev/reference/site-config
 const configurator = new VitePressConfigurator({
-    outDir: './dist.press',
+    outDir: './dist',
     cacheDir: './cache',
-    srcExclude:
-        process.env.NODE_ENV === 'production'
-            ? ['**/dist.*/**', '**/*.draft.*'] // 不打包草稿文件
-            : ['**/dist.*/**'],
+    srcExclude: process.env.NODE_ENV === 'production' ? ['**/*.draft.*'] : [], // 不打包草稿文件
     head: [['link', { rel: 'icon', href: '/favicon.ico', type: 'image/ico' }]],
     locales: {
         root: {
