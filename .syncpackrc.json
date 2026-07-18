@@ -32,6 +32,7 @@
                 "@vitejs/plugin-vue",
                 "@vue/tsconfig",
                 "@vueuse/core",
+                "bestzip",
                 "class-variance-authority",
                 "clsx",
                 "es-toolkit",
@@ -45,7 +46,6 @@
                 "typescript",
                 "uuid",
                 "vite",
-                "vite-plugin-zip-file",
                 "vue",
                 "vue-router",
                 "vue-tsc"

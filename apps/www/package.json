@@ -4,7 +4,7 @@
     "private": true,
     "type": "module",
     "scripts": {
-        "build": "vue-tsc -b && vite build",
+        "build": "vue-tsc -b && vite build && cd dist && bestzip ../dist.zip *",
         "dev": "vite",
         "preview": "vite preview",
         "typecheck": "vue-tsc --noEmit --skipLibCheck"
@@ -27,9 +27,9 @@
         "@types/node": "catalog:",
         "@vitejs/plugin-vue": "catalog:",
         "@vue/tsconfig": "catalog:",
+        "bestzip": "catalog:",
         "typescript": "catalog:",
         "vite": "catalog:",
-        "vite-plugin-zip-file": "catalog:",
         "vue-tsc": "catalog:"
     }
 }
