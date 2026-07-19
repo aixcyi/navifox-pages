@@ -6,7 +6,7 @@ titleTemplate: false
 hero:
   name: "蓝溪拾遗"
   text: "星夜湖畔倒映日月前事"
-  tagline: "罗小黑世界观下的设定集与友链簿"
+  tagline: "罗小黑世界架构下的设定集与友链簿"
   image:
     src: /assets/hei.gif
     alt: "猫猫状小黑"
@@ -49,7 +49,7 @@ features:
     linkText: 前往传送门
   - title: "临川会馆"
     details: "江水汤汤，山色苍苍，心坚志鸿，意在青云。"
-  - title: "风灵会馆"
+  - title: "听澜会馆"
     details: "灵意随风起，风止意平宁，初心在会馆就在，广罗天下执行者，一个激进的执行部。"
 ---
 

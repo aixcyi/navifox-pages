@@ -1,12 +1,19 @@
 <script setup lang="ts">
 import { VPLink } from 'vitepress/theme';
-import type { Spirit } from '#/types';
+import type { SpiritInfo } from '#/spirits';
 
-defineProps<Spirit>();
+defineProps<SpiritInfo>();
 </script>
 
 <template>
-    <VPLink class="SpiritCard" :href="link" target="_self" :no-icon="true" :tag="link ? 'a' : 'div'">
+    <VPLink
+        class="SpiritCard"
+        :class="faded ? 'faded' : ''"
+        :href="link"
+        target="_self"
+        :no-icon="true"
+        :tag="link ? 'a' : 'div'"
+    >
         <article class="box">
             <img v-if="avatar" :src="avatar" :alt="name" class="avatar" />
             <div v-else class="avatar"></div>
@@ -33,6 +40,15 @@ defineProps<Spirit>();
     transition:
         border-color 0.25s,
         background-color 0.25s;
+}
+
+.SpiritCard:hover {
+    background-color: var(--vp-c-gray-soft);
+}
+
+.SpiritCard.faded:hover img {
+    filter: grayscale(100%);
+    transition: filter 1s ease;
 }
 
 .SpiritCard.link:hover {

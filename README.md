@@ -6,7 +6,7 @@
 |-----------------------------------|--------------------|
 | [路狐领航](https://www.navifox.net)   | Navifox 主页。        |
 | [文档月饼盒](https://docs.navifox.net) | 收纳展示散落在各个项目仓库的文档。  |
-| [蓝溪拾遗](https://hei.navifox.net)   | 罗小黑世界观下的设定集与友链簿。   |
+| [蓝溪拾遗](https://hei.navifox.net)   | 罗小黑世界架构下的设定集与友链簿。  |
 | [星笺](https://refs.navifox.net)    | 狐狸们用小爪子敲出的一页纸快速参考。 |
 
 ## 开始
