@@ -4,7 +4,7 @@
     "private": true,
     "type": "module",
     "scripts": {
-        "build": "vue-tsc -b && vite build",
+        "build": "vue-tsc -b && vite build && cd dist && bestzip ../dist.zip *",
         "db:migrate": "node scripts/migrate.mjs",
         "dev": "vite",
         "preview": "vite preview",
@@ -29,10 +29,10 @@
         "@types/node": "catalog:",
         "@vitejs/plugin-vue": "catalog:",
         "@vue/tsconfig": "catalog:",
+        "bestzip": "catalog:",
         "genshin-db": "catalog:",
         "typescript": "catalog:",
         "vite": "catalog:",
-        "vite-plugin-zip-file": "catalog:",
         "vue-tsc": "catalog:"
     }
 }

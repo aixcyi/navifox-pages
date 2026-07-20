@@ -27,6 +27,7 @@ catalog:
     '@vue/tsconfig': ^0.8.1
     '@vueuse/core': ^14.3.0
     '@vueuse/integrations': ^14.3.0
+    bestzip: ^2.1.0
     class-variance-authority: ^0.7.1
     clsx: ^2.1.1
     codemod: ^1.12.12
@@ -50,7 +51,6 @@ catalog:
     typescript: ~5.9.3
     uuid: ^13.0.2
     vite: ^8.1.4
-    vite-plugin-zip-file: ^5.0.1
     vitepress: 2.0.0-alpha.18
     vue: ^3.5.39
     vue-router: ^4.6.4

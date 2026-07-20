@@ -51,7 +51,7 @@ features:
     details: "江水汤汤，山色苍苍，心坚志鸿，意在青云。"
     link: /guild/linchuan
     linkText: 前往传送门
-  - title: "风灵会馆"
+  - title: "听澜会馆"
     details: "灵意随风起，风止意平宁，初心在会馆就在，广罗天下执行者，一个激进的执行部。"
 ---
 

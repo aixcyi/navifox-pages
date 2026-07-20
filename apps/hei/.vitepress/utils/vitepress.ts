@@ -103,6 +103,7 @@ export class VitePressConfigurator {
                 '**/node_modules/**',
                 '**/cache/**',
                 '**/dist/**',
+                // 'README.md',  // 应该在 VitePress config 配置。
                 ...(this.configs.srcExclude ?? []),
             ],
         });

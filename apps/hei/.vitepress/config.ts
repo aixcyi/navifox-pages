@@ -3,12 +3,12 @@ import { trimSuffix } from './utils/string';
 
 // https://vitepress.dev/reference/site-config
 const configurator = new VitePressConfigurator({
-    outDir: './dist.press',
+    outDir: './dist',
     cacheDir: './cache',
-    srcExclude:
-        process.env.NODE_ENV === 'production'
-            ? ['**/dist.*/**', '**/*.draft.*'] // 不打包草稿文件
-            : ['**/dist.*/**'],
+    srcExclude: [
+        'README.md',
+        ...(process.env.NODE_ENV === 'production' ? ['**/*.draft.*'] : []),
+    ],
     head: [['link', { rel: 'icon', href: '/favicon.ico', type: 'image/ico' }]],
     locales: {
         root: {
@@ -16,7 +16,7 @@ const configurator = new VitePressConfigurator({
             label: '简体中文',
             title: '蓝溪拾遗',
             titleTemplate: ':title · 蓝溪拾遗', // •
-            description: '罗小黑世界观下的设定集与通联友链。',
+            description: '罗小黑世界架构下的设定集与友链簿。',
             themeConfig: {
                 // https://vitepress.dev/reference/default-theme-config
                 langMenuLabel: '切换语言',
@@ -87,12 +87,12 @@ configurator
     .hookPageOrdering(pageHookDefault)
     .goto('root')
     .pushSocial({ ariaLabel: '罗狐会馆群聊', icon: 'qq', link: 'https://qm.qq.com/q/7WO1tJmTss' })
-    .pushSocial({ ariaLabel: 'GitHub 仓库', icon: 'github', link: 'https://github.com/vuejs/vitepress' })
+    .pushSocial({ ariaLabel: 'GitHub 仓库', icon: 'github', link: 'https://github.com/aixcyi/navifox-pages' })
     .autoSidebar('/guild/', './guild/', { pageHook: pageHookOrdered, deep: true })
     .autoSidebar('/spirit/', './spirit/', { pageHook: pageHookOrdered, deep: true })
-    .pushNavLink({ text: '妖灵集', link: '/spirit', activeMatch: '/spirit/' })
-    .pushNavLink({ text: '妖灵会馆一览', link: '/guild/cangnan', activeMatch: '/guild/' })
-    .pushNavLink({ text: '术语简表', link: '/glossary', activeMatch: '/glossary/' })
+    .pushNavLink({ text: '拾遗录', link: '/spirit', activeMatch: '/spirit/' })
+    .pushNavLink({ text: '妖灵会馆', link: '/guild/cangnan', activeMatch: '/guild/' })
+    .pushNavLink({ text: '术语表', link: '/glossary', activeMatch: '/glossary/' })
     .pushNavMenu({
         text: '关于',
         items: [

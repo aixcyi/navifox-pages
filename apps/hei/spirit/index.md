@@ -1,10 +1,10 @@
 ---
-title: 妖灵集
+title: "妖灵集 · 拾遗录"
 layout: page
 ---
 
 <script setup>
-import SpiritPage from '#/theme/components/SpiritPage.vue'
+import Spirits from '#/theme/Spirits.vue'
 </script>
 
-<SpiritPage />
+<Spirits />

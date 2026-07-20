@@ -1,6 +1,24 @@
 # Navifox Pages
 
-本项目是 Navifox 生态页面仓库，一个基于 pnpm Workspace 的 Monorepo，内含多个子项目。整个项目的技术栈是：
+本项目是 Navifox 生态页面仓库，一个基于 pnpm Workspace 的 Monorepo，包含多个子项目。
+
+| 项目                                | 描述                 |
+|-----------------------------------|--------------------|
+| [路狐领航](https://www.navifox.net)   | Navifox 主页。        |
+| [文档月饼盒](https://docs.navifox.net) | 收纳展示散落在各个项目仓库的文档。  |
+| [蓝溪拾遗](https://hei.navifox.net)   | 罗小黑世界架构下的设定集与友链簿。  |
+| [星笺](https://refs.navifox.net)    | 狐狸们用小爪子敲出的一页纸快速参考。 |
+
+## 开始
+
+1. 切换到 pnpm 11 版本；只安装了 npm 的话可以通过 `corepack enable pnpm` 来安装 pnpm。
+2. 在项目根目录下使用 `pnpm install` 安装所有依赖。
+3. 参见下文[工作流](#工作流)一节运行本地开发服务，例如 `pnpm run dev:docs`。
+4. Visual Studio Code 用户复制 `./navifox.code-workspace` 到喜欢的位置，再打开新复制的这个工作区。
+
+## 技术栈
+
+整个项目的技术栈是：
 
 - Node.js 22
 - pnpm 11
@@ -17,14 +35,9 @@
 - GSAP（`www`、`docs`）
 - Unhead（`www`、`docs`、`refs`）
 
-## 开始
-
-1. 切换到 pnpm 11 版本；只安装了 npm 的话可以通过 `corepack enable pnpm` 来安装 pnpm。
-2. 在项目根目录下使用 `pnpm install` 安装所有依赖。
-3. 参见下文[工作流](#工作流)一节运行本地开发服务，例如 `pnpm run dev:docs`。
-4. Visual Studio Code 用户复制 `./navifox.code-workspace` 到喜欢的位置，再打开新复制的这个工作区。
-
 ## 结构
+
+### 目录结构
 
 - `navifox-pages/`，项目本体（仓库整体），俗称"**大仓**"。
   - `apps/`，存放负责具体业务的子项目。
@@ -37,18 +50,20 @@
   - `.syncpackrc.json`，SyncPack 的[配置](https://syncpack.dev/config/syncpackrc/)。
   - `navifox.code-workspace`，Visual Studio Code 工作区配置文件（只读），可以直观呈现项目结构。
 
-| 路径                     | `name`             |                项目名                | 用途                             |
-|------------------------|--------------------|:---------------------------------:|--------------------------------|
-| `.apps/docs/`          | @navifox/docs      | [文档月饼盒](https://docs.navifox.net) | 存放文档与资料链接的网站。                  |
-| `.apps/hei/`           | @navifox/hei       |  [蓝溪拾遗](https://hei.navifox.net)  | 存放罗小黑世界观的百科网站，基于 VitePress 构建。 |
-| `.apps/refs/`          | @navifox/refs      |  [星笺](https://refs.navifox.net)   | 存放一些 CheatSheet 与参考工具的网站。      |
-| `.apps/www/`           | @navifox/www       |  [路狐领航](https://www.navifox.net)  | Navifox 主页。                    |
-| `.internal/constants/` | @navifox/constants |                                   | 存放全局常量。                        |
-| `.internal/styles/`    | @navifox/styles    |                                   | 存放全局样式及字体。                     |
-| `.internal/tsconfig/`  | @navifox/tsconfig  |                                   | 存放共享 `tsconfig` 配置。            |
-| `.internal/types/`     | @navifox/types     |                                   | 存放全局类型定义。                      |
-| `.internal/ui/`        | @navifox/ui        |                                   | 存放共享 UI，包括 shadcn 等组件。         |
-| `.internal/utils/`     | @navifox/utils     |                                   | 存放共享工具。                        |
+### 工作区结构
+
+| 路径                      | 包名                 | 用途                                               |
+|-------------------------|--------------------|--------------------------------------------------|
+| `./apps/docs/`          | @navifox/docs      | [文档月饼盒](https://docs.navifox.net)。               |
+| `./apps/hei/`           | @navifox/hei       | [蓝溪拾遗](https://hei.navifox.net)，基于 VitePress 构建。 |
+| `./apps/refs/`          | @navifox/refs      | [星笺](https://refs.navifox.net)。                  |
+| `./apps/www/`           | @navifox/www       | [路狐领航](https://www.navifox.net)。                 |
+| `./internal/constants/` | @navifox/constants | 存放全局常量。                                          |
+| `./internal/styles/`    | @navifox/styles    | 存放全局样式及字体。                                       |
+| `./internal/tsconfig/`  | @navifox/tsconfig  | 存放共享 `tsconfig` 配置。                              |
+| `./internal/types/`     | @navifox/types     | 存放全局类型定义。                                        |
+| `./internal/ui/`        | @navifox/ui        | 存放共享 UI，包括 shadcn 等组件。                           |
+| `./internal/utils/`     | @navifox/utils     | 存放共享工具。                                          |
 
 ## 约定
 
@@ -60,25 +75,52 @@
 
 ## 工作流
 
-> 本节提到的绝大部分命令都应当（默认）在项目根目录下执行。
+本节提到的绝大部分命令都应当（默认）在项目根目录下执行。
 
-### 运行、构建、预览
+只有 `./apps/` 下的子项目具有 dev、build、preview 命令，`./internal/` 的子项目不能直接 **运行** 和 **预览**，也无须执行 **构建（并打包）**，`./packages/` 待定。
 
-对于负责具体业务的子项目，以 `www` 子项目为例：
+### 运行
 
 ```bash
-pnpm run dev:www      # 运行子项目
-pnpm run build:www    # 构建子项目
-pnpm run preview:www  # 预览构建产物
+pnpm run dev:docs
+pnpm run dev:hei
+pnpm run dev:refs
+pnpm run dev:www
 ```
 
-目前支持 `www`、`docs`、`refs`、`hei` 四个子项目的 dev/build/preview 命令，其它子项目（`internal/`
-下的共享包）不能直接运行和预览，也无须执行构建。
+命令添加了 `--host` 参数，所以运行起来后会默认向 `0.0.0.0:5173` 开放。
 
-执行 `pnpm run build` 可以一次性构建所有（能构建的）子项目。
+理论上可以用 `pnpm run dev` 一次性运行所有子项目，但由于都是单独的项目，加上先运行的子项目会先占用端口号，可能会影响内网穿透，所以不打算提供这样的命令。
 
-理论上可以 `pnpm run dev` 和 `pnpm run preview`，如果有需要的话只需模仿 `pnpm run build`
-的命令新增即可，不过同时运行多个子项目会占用不同的端口，本项目不常用，所以不提供这两条命令。
+### 构建（并打包）
+
+```bash
+pnpm run build:docs
+pnpm run build:hei
+pnpm run build:refs
+pnpm run build:www
+```
+
+构建之后会调用系统 zip 命令压缩打包到 `./apps/*/dist.zip` 以便部署，Windows 系统没有自带这个命令，用户可以选择自行安装，亦或者交给 Node.js 进行压缩打包（实际体验其实并不慢）。
+
+如果要一次性构建所有（能构建的）子项目，并打包，那么执行：
+
+```bash
+pnpm run build
+```
+
+### 预览
+
+```bash
+pnpm run preview:docs
+pnpm run preview:hei
+pnpm run preview:refs
+pnpm run preview:www
+```
+
+预览构建产物。
+
+命令添加了 `--host` 参数，所以运行起来之后会默认向 `0.0.0.0:4173` 开放。
 
 ### 添加子项目
 

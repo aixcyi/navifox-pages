@@ -7,7 +7,7 @@ import { spirits } from '#/spirits';
 <template>
     <VPTeamPage>
         <VPTeamPageTitle>
-            <template #title>妖灵集</template>
+            <template #title>妖灵集 · 拾遗录</template>
             <template #lead>某年某月，某妖聚灵某地；命运交汇，我们相聚于此</template>
         </VPTeamPageTitle>
         <div class="box">
