@@ -16,7 +16,7 @@ outline: deep
 4. 根据仓库根目录下的 README.md 安装并配置环境。
 5. 修改需要的位置，或添加必要的文件。
 6. 在仓库根目录下运行 `pnpm run dev:hei`。
-7. 浏览器访问 http://localhost:5173 即可预览《蓝溪拾遗》。
+7. 浏览器访问 `http://localhost:5173` 即可预览《蓝溪拾遗》。
 8. 修改完毕后，在仓库根目录下运行 `pnpm run build:hei` 确认构建无误。
 9. 推送分支到你的仓库。
 10. 前往 GitHub 创建推送请求（Pull Request）。
