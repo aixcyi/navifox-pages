@@ -18,6 +18,36 @@ export const spiritsOC: SpiritInfo[] = [
         avatar: 'https://www.navifox.net/avatar256.jpg',
         link: `/spirit/navifox`,
     },
+    {
+        name: '林',
+        tags: ['临川会馆馆长'],
+        avatar: "https://crazying-dev.top/favicon.ico",
+        link: `/spirit/Lin`,
+    },
+    {
+        name: '济慈',
+        tags: ['苍南会馆下属前攻组组长', '一级执行者'],
+        avatar: "https://img.crazying-dev.top/Friend/Keats.jpg",
+        link: '/spirit/Keats',
+    },
+    {
+        name: '兰知',
+        tags: ['临川会馆画师'],
+        avatar: 'https://img.crazying-dev.top/Friend/LanZhi.jpg',
+        link: '/spirit/LANZHI',
+    },
+    {
+        name: '念一',
+        tags: ['(只是一个游历于世界各地的旅行者)'],
+        avatar: 'https://img.crazying-dev.top/Friend/killing.jpg',
+        link: '/spirit/Killing',
+    },
+    {
+        name: '拾七',
+        tags: ['吉祥物'],
+        avatar: 'https://img.crazying-dev.top/Friend/seventeen.png',
+        link: '/spirit/seventeen',
+    }
 ];
 
 export const spiritsAV = [
