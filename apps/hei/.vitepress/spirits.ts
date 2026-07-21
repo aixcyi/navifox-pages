@@ -1,13 +1,28 @@
 /**
- * 妖灵信息。
+ * 妖精与人类（统称妖灵）的设定信息。
  */
 export type SpiritInfo = {
+    /** 妖灵名称（中文名） */
     name: string;
+
+    /** 标签。 */
     tags: string[];
+
+    /** 头像URL。 */
     avatar: string;
+
+    /** 详情页内联地址。 */
     link: string;
+
+    /**
+     * 原著中设定的妖灵。
+     *
+     * Canon 这个单词是欧美圈子用词，与 Fanon 相对，近年来似乎愈发少用。
+     */
+    canon?: boolean;
+
+    /** 已故妖灵。 */
     faded?: boolean;
-    builtin?: boolean;
 };
 
 export const spiritsOC: SpiritInfo[] = [
@@ -39,27 +54,29 @@ export const spiritsOC: SpiritInfo[] = [
 ];
 
 export const spiritsAV = [
-    { name: '雨笛', english: 'yudi', tags: ['总馆长', '苍南会馆馆长', '妖灵会馆长老'], faded: false },
+    { name: '雨笛', english: 'yudi', tags: ['总馆长', '苍南会馆馆长', '妖灵会馆长老'], faded: false, drafting: true },
     { name: '西木子', english: 'ximuzi', tags: ['妖灵会馆长老'], faded: false },
-    { name: '池年', english: 'chi-nian', tags: ['妖灵会馆长老'], faded: false },
-    { name: '灵遥', english: 'lingyao', tags: ['妖灵会馆长老'], faded: false },
-    { name: '静一', english: 'jingyi', tags: ['妖灵会馆长老'], faded: false },
+    { name: '池年', english: 'chi-nian', tags: ['妖灵会馆长老'], faded: false, drafting: true },
+    { name: '灵遥', english: 'lingyao', tags: ['妖灵会馆长老'], faded: false, drafting: true },
+    { name: '静一', english: 'jingyi', tags: ['妖灵会馆长老'], faded: false, drafting: true },
     { name: '无限', english: 'wuxian', tags: ['一级执行者'], faded: false },
-    { name: '卡里', english: 'kali', tags: ['灵溪会馆馆长'], faded: false },
-    { name: '秃贝', english: 'tubei', tags: ['灵溪会馆常驻妖精'], faded: false },
-    { name: '大松', english: 'dasong', tags: ['流石会馆馆长'], faded: true },
-    { name: '明月', english: 'mingyue', tags: ['流石会馆常驻妖精'], faded: true },
-    { name: '清泉', english: 'qingquan', tags: ['流石会馆常驻妖精'], faded: true },
-    { name: '潘靖', english: 'panjing', tags: ['龙游会馆馆长'], faded: false },
-    { name: '鸠老', english: 'jiulao', tags: ['一级执行者'], faded: false },
-    { name: '若水', english: 'ruoshui', tags: ['执行者'], faded: false },
-    { name: '郑信毅', english: 'zhengxinyi', tags: ['洞桥会馆馆长'], faded: false },
-].map((s) => {
+    { name: '卡里', english: 'kali', tags: ['灵溪会馆馆长'], faded: false, drafting: true },
+    { name: '秃贝', english: 'tubei', tags: ['灵溪会馆常驻妖精'], faded: false, drafting: true },
+    { name: '大松', english: 'dasong', tags: ['流石会馆馆长'], faded: true, drafting: true },
+    { name: '明月', english: 'mingyue', tags: ['流石会馆常驻妖精'], faded: true, drafting: true },
+    { name: '清泉', english: 'qingquan', tags: ['流石会馆常驻妖精'], faded: true, drafting: true },
+    { name: '潘靖', english: 'panjing', tags: ['龙游会馆馆长'], faded: false, drafting: true },
+    { name: '鸠老', english: 'jiulao', tags: ['一级执行者'], faded: false, drafting: true },
+    { name: '若水', english: 'ruoshui', tags: ['执行者'], faded: false, drafting: true },
+    { name: '郑信毅', english: 'zhengxinyi', tags: ['洞桥会馆馆长'], faded: false, drafting: true },
+].map(({ name, english, tags, faded, drafting }) => {
     return {
-        ...s,
-        avatar: `/assets/spirit/${s.english}.jpg`,
-        link: `/spirit/${s.english}`,
-        builtin: true,
+        name,
+        tags,
+        avatar: `/assets/spirit/${english}.jpg`,
+        link: drafting ? '' : `/spirit/${english}`,
+        faded,
+        canon: true, // 官方设定角色。与 Fanon 相对。
     } as SpiritInfo;
 });
 
