@@ -63,6 +63,6 @@ export const spiritsAV = [
     } as SpiritInfo;
 });
 
-export const spirits = [...spiritsAV, ...spiritsOC];
+export const spirits = [...spiritsAV, ...spiritsOC].sort((a, b) => a.name.localeCompare(b.name));
 
 export const spiritsByName = Object.fromEntries(spirits.map((s) => [s.name, s]));
