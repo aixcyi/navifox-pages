@@ -13,7 +13,7 @@ import { navifoxGuild, tighnari } from '@navifox/constants';
 
 ## 妖灵
 
-<SpiritBanner names="林 兰知 济慈 念一 拾七" />
+<SpiritBanner names="林 兰知 念一 拾七" />
 
 ## 传送门
 

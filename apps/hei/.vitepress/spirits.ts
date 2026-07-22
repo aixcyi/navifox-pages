@@ -21,13 +21,13 @@ export const spiritsOC: SpiritInfo[] = [
     {
         name: '林',
         tags: ['临川会馆馆长'],
-        avatar: "https://crazying-dev.top/favicon.ico",
+        avatar: 'https://crazying-dev.top/favicon.ico',
         link: `/spirit/Lin`,
     },
     {
         name: '济慈',
         tags: ['苍南会馆下属前攻组组长', '一级执行者'],
-        avatar: "https://img.crazying-dev.top/Friend/Keats.jpg",
+        avatar: 'https://img.crazying-dev.top/Friend/Keats.jpg',
         link: '/spirit/Keats',
     },
     {
@@ -47,7 +47,7 @@ export const spiritsOC: SpiritInfo[] = [
         tags: ['吉祥物'],
         avatar: 'https://img.crazying-dev.top/Friend/seventeen.png',
         link: '/spirit/seventeen',
-    }
+    },
 ];
 
 export const spiritsAV = [
