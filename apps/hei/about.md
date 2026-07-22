@@ -1,9 +1,10 @@
 ---
 title: 关于
-outline: deep
+aside: false
 ---
 
 <script setup lang="ts">
+import SpiritForm from '#/theme/components/SpiritForm.vue';
 import IDTestLinkCard from '#/theme/components/IDTestLinkCard.vue';
 </script>
 
@@ -18,66 +19,17 @@ import IDTestLinkCard from '#/theme/components/IDTestLinkCard.vue';
 
 欢迎各位妖精与人类前来通联，也欢迎馆长参与联谊。
 
-## 妖灵通联手册 {#spirit}
+## 妖灵通联申请 {#spirit}
 
 将你喜爱的原创妖灵设定收录到《蓝溪拾遗》中（参见[演示页](/spirit/navifox)），并一直存续下去，直至永远。
 
-### 步骤
+填写以下表单并复制**生成结果**，随后前往[罗狐会馆](/guild/foxery)联系馆长或常驻妖灵。目前暂时只支持一个设定，如果有多个设定，或者区分OC与本体，请选择一个最能代表自己或最喜爱的设定。提交前需要至少满足以下其中两点：
 
-1. 按照[指引卡片信息](#指引卡片信息)填写指引信息。
-2. 按照[妖灵详情页模板](#妖灵详情页模板)填写设定资料。
-3. 前往[罗狐会馆](/guild/foxery)联系馆长或常驻妖灵们提交，也欢迎参考[提交指南](/contribute)直接修改源码。
+- 有位于一级域名的个人主页或博客，并添加了友链。
+- 有基于罗小黑世界架构的详细原创设定。
+- 由馆长添加。
 
-### 注意事项
-
-- 头像需要正方形、128*128 像素及以上的尺寸。
-- 目前暂时只支持一个设定。如果有多个设定，或者区分OC与本体，请选择一个最能代表自己或最喜爱的设定。
-- 提交前需要至少满足以下其中两点：
-  - 有位于一级域名的个人主页或博客，并添加了友链。
-  - 有基于罗小黑世界架构的详细原创设定。
-  - 由馆长添加。
-
-### 指引卡片信息
-
-```typescript
-const spirit: SpiritInfo = {
-    name: '妖灵名称',
-    tags: ['能力设定', '执行者评级', ''],
-    avatar: '头像URL',
-    link: '/spirit/妖灵ID',
-}
-```
-
-<IDTestLinkCard catalog="spirit" title="妖灵ID测试卡">
-    在下面输入ID，可以是英文名或拼音全拼，然后点击这张卡片，看看你的ID是否已被使用。
-</IDTestLinkCard>
-
-### 妖灵详情页模板
-
-```markdown
----
-title: 妖灵名称
-aside: false
----
-
-# 妖灵名称
-
-<SpiritBanner names="妖灵名称" />
-
-　　简单介绍。
-
-## 能力
-
-| 派系  | 子派系／命名 | 描述／备注 |
-|:-----:|:----------:|------------|
-| 御灵系 |     木     |            |
-
-　　基于罗小黑世界架构的能力设定……
-
-## 坐标
-
-可以公开的联系方式（三思隐私泄露的可能）。
-```
+<SpiritForm />
 
 ## 会馆联谊 {#guild}
 

@@ -94,7 +94,7 @@ configurator
         text: '附卷',
         items: [
             { text: '关于', link: '/about' },
-            { text: '妖灵通联手册', link: '/about#spirit' },
+            { text: '妖灵通联申请', link: '/about#spirit' },
             { text: '会馆联谊', link: '/about#guild' },
             { text: '源代码仓库提交指南', link: '/contribute' },
             { items: [{ text: '路狐领航', link: 'https://www.navifox.net/' }] },
