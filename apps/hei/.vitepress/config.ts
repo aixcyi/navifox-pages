@@ -5,7 +5,7 @@ import { trimSuffix } from './utils/string';
 const configurator = new VitePressConfigurator({
     outDir: './dist',
     cacheDir: './cache',
-    srcExclude: ['README.md', ...(process.env.NODE_ENV === 'production' ? ['**/*.draft.*'] : [])],
+    srcExclude: process.env.NODE_ENV === 'production' ? ['**/*.draft.*'] : [],
     head: [['link', { rel: 'icon', href: '/favicon.ico', type: 'image/ico' }]],
     locales: {
         root: {
@@ -91,11 +91,12 @@ configurator
     .pushNavLink({ text: '妖灵会馆', link: '/guild/cangnan', activeMatch: '/guild/' })
     .pushNavLink({ text: '术语表', link: '/glossary', activeMatch: '/glossary/' })
     .pushNavMenu({
-        text: '关于',
+        text: '附卷',
         items: [
-            { text: '此网站', link: '/about' },
-            { text: '妖灵通联指南', link: '/about#spirit' },
+            { text: '关于', link: '/about' },
+            { text: '妖灵通联申请', link: '/about#spirit' },
             { text: '会馆联谊', link: '/about#guild' },
+            { text: '源代码仓库提交指南', link: '/contribute' },
             { items: [{ text: '路狐领航', link: 'https://www.navifox.net/' }] },
         ],
     });

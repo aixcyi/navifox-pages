@@ -1,5 +1,5 @@
 ---
-title: "妖灵集 · 拾遗录"
+title: 妖灵集
 layout: page
 ---
 

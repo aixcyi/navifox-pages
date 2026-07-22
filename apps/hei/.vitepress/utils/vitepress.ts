@@ -7,6 +7,23 @@ import { compile, match } from 'path-to-regexp';
 import { normalizePath } from 'vite';
 import { type DefaultTheme, defineConfig, type UserConfig } from 'vitepress';
 
+const NORMAL_SOURCE_EXCLUDES = [
+    '**/node_modules/**',
+    '**/cache/**',
+    '**/dist/**',
+    'README.md',
+    'LICENSE.md', // 预防一下，虽然更多时候不会有 .md 这个后缀。
+    'CHANGELOG.md',
+    'UPGRADING.md',
+    'SECURITY.md',
+    'AUTHORS.md',
+    'CONTRIBUTING.md',
+    'CONTRIBUTORS.md',
+    'CODE_OF_CONDUCT.md',
+    'ACKNOWLEDGMENTS.md',
+    'SUPPORT.md',
+];
+
 /**
  * 编译 `UserConfig<DefaultTheme.Config>['rewrites']` 并返回重写函数。
  */
@@ -99,13 +116,7 @@ export class VitePressConfigurator {
             cwd: this.configs.srcDir ?? '.',
             nodir: true,
             absolute: true,
-            ignore: [
-                '**/node_modules/**',
-                '**/cache/**',
-                '**/dist/**',
-                // 'README.md',  // 应该在 VitePress config 配置。
-                ...(this.configs.srcExclude ?? []),
-            ],
+            ignore: [...NORMAL_SOURCE_EXCLUDES, ...(this.configs.srcExclude ?? [])],
         });
         for (const file of files) {
             const url = normalizePath(rewrite(pathlib.relative(base, file).replace(/\\/g, '/')))
