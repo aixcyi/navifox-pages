@@ -28,6 +28,18 @@ export type SpiritInfo = {
 export const spiritsOC: SpiritInfo[] = [
     // 在此处添加更多妖灵...
     {
+        name: '绛棂',
+        tags: ['临川会馆下派榕城外事部组长', '二级执行者'],
+        avatar: 'https://i.imgs.ovh/2026/07/23/0b3c422c8d4b43c00b40cbb899c58c7e.jpg',
+        link: '/spirit/chulan',
+    },
+    {
+        name: '初岚',
+        tags: ['一条咸鱼（师父养我）'],
+        avatar: 'https://7liy1go4htnm81hs.public.blob.vercel-storage.com/avatars/26a3f8177769c1445a6da1936552d127-2kWqbSOcPV4zPfqrXvxdvrgDrHYVkr.webp',
+        link: '/spirit/chulan',
+    },
+    {
         name: '邔符',
         tags: ['粤东管理', '一级执行者'],
         avatar: 'https://img.crazying-dev.top/other/1784726746504.png',
