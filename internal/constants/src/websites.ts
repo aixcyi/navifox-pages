@@ -43,6 +43,16 @@ export const navifoxDocs: Website = {
     description: '收纳展示散落在各个项目仓库的文档。',
     author: tighnari.name,
 };
+export const navifoxHei: Website = {
+    name: '蓝溪拾遗',
+    link: 'https://hei.navifox.net',
+    icon: 'https://www.navifox.net/favicon.ico',
+    mime: 'image/png',
+    description: '收录罗小黑世界中的原著设定与以此架构的有趣脑洞。',
+    author: tighnari.name,
+    tags: ['罗小黑', '妖精', '妖灵', '设定', 'OC'],
+    note: '设定集',
+};
 export const travelling: Website = {
     name: '开往',
     link: 'https://www.travellings.cn/go.html',
@@ -58,6 +68,7 @@ export const sitemap = [
     navifoxBlog,
     navifoxDocs,
     navifoxRefs,
+    navifoxHei,
     //
 ];
 export const socials: Website[] = [

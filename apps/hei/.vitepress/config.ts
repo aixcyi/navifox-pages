@@ -13,7 +13,7 @@ const configurator = new VitePressConfigurator({
             label: '简体中文',
             title: '蓝溪拾遗',
             titleTemplate: ':title · 蓝溪拾遗', // •
-            description: '罗小黑世界架构下的设定集与友链簿。',
+            description: '收录罗小黑世界中的原著设定与以此架构的有趣脑洞。',
             themeConfig: {
                 // https://vitepress.dev/reference/default-theme-config
                 langMenuLabel: '切换语言',

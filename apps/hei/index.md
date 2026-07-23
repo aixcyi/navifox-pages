@@ -6,7 +6,7 @@ titleTemplate: false
 hero:
   name: "蓝溪拾遗"
   text: "星夜湖畔倒映日月前事"
-  tagline: "罗小黑世界观下的设定集与友链簿"
+  tagline: "收录罗小黑世界中的原著设定与以此架构的有趣脑洞"
   image:
     src: /assets/hei.gif
     alt: "猫猫状小黑"
