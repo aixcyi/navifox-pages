@@ -28,6 +28,12 @@ export type SpiritInfo = {
 export const spiritsOC: SpiritInfo[] = [
     // 在此处添加更多妖灵...
     {
+        name: '邔符',
+        tags: ['粤东管理', '一级执行者'],
+        avatar: 'https://img.crazying-dev.top/other/1784726746504.png',
+        link: '/spirit/wensley',
+    },
+    {
         name: '念月',
         tags: ['苍南会馆跨境追缉组组长', '一级执行者', '无限大徒弟'],
         avatar: 'https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAEXoZFqX5rk6ukttXGdfE1STDfx2PLj_QAC7CAAAtJdAAFXR_rGsPnqvNs9BA.jpg',
@@ -55,25 +61,19 @@ export const spiritsOC: SpiritInfo[] = [
         name: '林',
         tags: ['临川会馆馆长'],
         avatar: 'https://crazying-dev.top/favicon.ico',
-        link: `/spirit/Lin`,
-    },
-    {
-        name: '济慈',
-        tags: ['苍南会馆下属前攻组组长', '一级执行者'],
-        avatar: 'https://img.crazying-dev.top/Friend/Keats.jpg',
-        link: '/spirit/Keats',
+        link: `/spirit/lin`,
     },
     {
         name: '兰知',
         tags: ['临川会馆画师'],
         avatar: 'https://img.crazying-dev.top/Friend/LanZhi.jpg',
-        link: '/spirit/LANZHI',
+        link: '/spirit/lanzhi',
     },
     {
         name: '念一',
         tags: ['(只是一个游历于世界各地的旅行者)'],
         avatar: 'https://img.crazying-dev.top/Friend/killing.jpg',
-        link: '/spirit/Killing',
+        link: '/spirit/killing',
     },
     {
         name: '拾七',
