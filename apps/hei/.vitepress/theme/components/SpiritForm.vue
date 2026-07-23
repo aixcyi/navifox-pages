@@ -71,7 +71,7 @@ const outputMarkdown = computed(() => {
     }
     if (hasAbilities.value) {
         lines.push('## 能力', '');
-        lines.push('| 派系  | 子派系／命名 | 描述／备注 |');
+        lines.push('| 派系  |     命名     | 注释     |');
         lines.push('|:-----:|:----------:|------------|');
         for (const r of abilities) {
             if (r.faction || r.sub || r.desc) {
@@ -127,7 +127,7 @@ const outputMarkdown = computed(() => {
         <h4>能力</h4>
         <div class="ability-row" v-for="(row, i) in abilities" :key="i">
             <input v-model="row.faction" placeholder="派系" />
-            <input v-model="row.sub" placeholder="子派系" />
+            <input v-model="row.sub" placeholder="命名" />
             <input v-model="row.desc" placeholder="简介、来源、影响、作用、微观……" class="wide" />
             <button class="btn-rm" @click="removeAbility(i)" :disabled="abilities.length === 1" title="移除此行">
                 &minus;
