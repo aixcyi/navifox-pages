@@ -20,7 +20,7 @@ defineProps<SpiritInfo>();
             <div class="content">
                 <div class="name" v-html="name" />
                 <div class="tags">
-                    <div v-for="tag in tags">{{ tag }}</div>
+                    <div v-for="tag in tags" v-html="tag" />
                 </div>
             </div>
         </article>
@@ -73,10 +73,12 @@ defineProps<SpiritInfo>();
     width: 80px;
     height: 80px;
     margin: 0;
+    color: var(--vp-c-text-3);
     border-radius: 50%;
     background-color: rgba(0 0 0 / 20%);
     text-align: center;
     align-content: center;
+    flex-shrink: 0;
 }
 
 .name {
