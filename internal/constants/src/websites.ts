@@ -12,7 +12,7 @@ export const navifoxHome: Website = {
 export const navifoxGuild: Website = {
     name: '罗狐会馆',
     link: 'https://qm.qq.com/q/7WO1tJmTss',
-    description: '妖灵会馆之一，广罗世间狐妖，提供技术讨论与休憩之地。',
+    description: '妖灵会馆之一，广罗天下狐妖，提供技术讨论与休憩之地。',
     author: tighnari.name,
 };
 export const navifoxRefs: Website = {

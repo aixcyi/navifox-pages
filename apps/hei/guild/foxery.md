@@ -9,7 +9,7 @@ import { navifoxGuild, tighnari } from '@navifox/constants';
 
 # 罗狐会馆
 
-> 广罗世间狐妖，提供技术讨论与休憩之地。
+> 广罗天下狐妖，震慑海上异象。
 
 ## 妖灵
 
