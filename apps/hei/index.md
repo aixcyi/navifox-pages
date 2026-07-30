@@ -15,8 +15,8 @@ hero:
       text: "感知妖灵"
       link: "/spirit"
     - theme: alt
-      text: "妖灵会馆一览"
-      link: "/guild/cangnan"
+      text: "前往罗狐会馆"
+      link: "/guild/foxery"
 
 features:
   - title: "苍南会馆"
@@ -36,7 +36,7 @@ features:
     link: /guild/liushi
     linkText: 浏览设定
   - title: "洞桥会馆"
-    details: "身处北方一座学校中，普普通通的教学楼与办公室，悄无声息地联系着人类与妖精。黄土原野上，一只小猫曾行经此地。"
+    details: "身处北方一座学校中，普普通通的教学楼与办公室，悄无声息地联系着人类与妖精。"
     link: /guild/dongqiao
     linkText: 浏览设定
   - title: "风灵会馆"

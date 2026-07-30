@@ -2,6 +2,8 @@
 import { computed, reactive, ref } from 'vue';
 import SpiritCard from '#/theme/components/SpiritCard.vue';
 
+defineProps<{ title: string }>();
+
 interface AbilityRow {
     faction: string;
     sub: string;
@@ -90,7 +92,7 @@ const outputMarkdown = computed(() => {
 
 <template>
     <div class="form">
-        <h3>妖灵通联申请表</h3>
+        <h3>{{ title }}</h3>
         <h4>名称</h4>
         <label>
             <input v-model="name" placeholder="例如：无限" />

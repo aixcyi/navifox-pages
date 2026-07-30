@@ -1,5 +1,5 @@
 ---
-title: 妖灵集
+title: 妖灵卷
 layout: page
 ---
 

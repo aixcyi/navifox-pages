@@ -87,16 +87,16 @@ configurator
     .pushSocial({ ariaLabel: 'GitHub 仓库', icon: 'github', link: 'https://github.com/aixcyi/navifox-pages' })
     .autoSidebar('/guild/', './guild/', { pageHook: pageHookOrdered, deep: true })
     .autoSidebar('/spirit/', './spirit/', { pageHook: pageHookOrdered, deep: true })
-    .pushNavLink({ text: '拾遗录', link: '/spirit', activeMatch: '/spirit/' })
-    .pushNavLink({ text: '妖灵会馆', link: '/guild/cangnan', activeMatch: '/guild/' })
+    .pushNavLink({ text: '妖灵卷', link: '/spirit', activeMatch: '/spirit/' })
+    .pushNavLink({ text: '会馆卷', link: '/guild/cangnan', activeMatch: '/guild/' })
     .pushNavLink({ text: '术语表', link: '/glossary', activeMatch: '/glossary/' })
+    .pushNavLink({ text: '抄本', link: '/copied', activeMatch: '/copied/' })
     .pushNavMenu({
-        text: '附卷',
+        text: '附录',
         items: [
             { text: '关于', link: '/about' },
-            { text: '妖灵通联申请', link: '/about#spirit' },
-            { text: '会馆联谊', link: '/about#guild' },
-            { text: '源代码仓库提交指南', link: '/contribute' },
+            { text: '朝花溪拾指南', link: '/contribute' },
+            { text: '妖灵申请表（旧版）', link: '/register' },
             { items: [{ text: '路狐领航', link: 'https://www.navifox.net/' }] },
         ],
     });

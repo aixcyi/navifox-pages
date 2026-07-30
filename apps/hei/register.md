@@ -1,0 +1,10 @@
+---
+title: 妖灵申请表
+aside: false
+---
+
+<script setup lang="ts">
+import SpiritForm from '#/theme/components/SpiritForm.vue';
+</script>
+
+<SpiritForm title="妖灵申请表" />
