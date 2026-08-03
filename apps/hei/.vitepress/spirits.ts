@@ -28,10 +28,10 @@ export type SpiritInfo = {
 export const spiritsOC: SpiritInfo[] = [
     // 在此处添加更多妖灵...
     {
-        name: '林洛',
+        name: '清灵',
         tags: ['感知组成员', '一级执行者', '龙游会馆妖精'],
-        avatar: '/assets/spirit/linluo.jpg',
-        link: '/spirit/linluo',
+        avatar: '/assets/spirit/qingling.jpg',
+        link: '/spirit/qingling',
     },
     {
         name: '绛棂',
