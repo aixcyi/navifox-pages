@@ -16,7 +16,7 @@ const { copy, copied } = useClipboard();
         target="_self"
         :no-icon="true"
         :style="{ cursor: copyOnly ? 'copy' : link ? 'pointer' : 'default' }"
-        @click="copyOnly && !copied ? copy(link) : {}"
+        @click="copyOnly && !copied && copy(link)"
     >
         <article class="box">
             <div v-if="copied" class="avatar">已复制</div>
@@ -25,7 +25,7 @@ const { copy, copied } = useClipboard();
             <div class="content">
                 <div class="name" v-html="name" />
                 <div class="tags">
-                    <div v-for="tag in tags" v-html="tag" />
+                    <div v-for="(tag, i) in tags" :key="i" v-html="tag" />
                 </div>
             </div>
         </article>
@@ -63,7 +63,6 @@ const { copy, copied } = useClipboard();
 
 .box {
     display: flex;
-    flex-direction: row;
     gap: 16px;
     padding: 24px;
     height: 100%;

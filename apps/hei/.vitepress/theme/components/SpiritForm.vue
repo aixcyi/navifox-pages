@@ -27,13 +27,13 @@ function removeAbility(index: number) {
 }
 
 const hasAbilities = computed(() => abilities.some((r) => r.faction || r.sub || r.desc));
-const englishNotEmpty = computed(() => english.value.length > 0);
 const rules = computed(() => {
     const n = english.value;
+    if (!n) return { length: null, startWithAlpha: null, charset: null };
     return {
-        length: englishNotEmpty.value ? n.length >= 4 : null,
-        startWithAlpha: englishNotEmpty.value ? /^[a-z]/.test(n) : null,
-        charset: englishNotEmpty.value ? /^[a-z0-9_-]+$/.test(n) : null,
+        length: n.length >= 4,
+        startWithAlpha: /^[a-z]/.test(n),
+        charset: /^[a-z0-9_-]+$/.test(n),
     };
 });
 
@@ -104,11 +104,9 @@ const outputMarkdown = computed(() => {
             <span class="hint">可以是英文名，也可以是拼音全拼。需要满足以下所有条件：</span>
         </label>
         <ul class="hint rules">
-            <li :class="{ pass: rules.length === true, fail: rules.length === false }">四个字或以上。</li>
-            <li :class="{ pass: rules.startWithAlpha === true, fail: rules.startWithAlpha === false }">
-                以小写英文字母开头。
-            </li>
-            <li :class="{ pass: rules.charset === true, fail: rules.charset === false }">
+            <li :class="{ pass: rules.length, fail: rules.length === false }">四个字或以上。</li>
+            <li :class="{ pass: rules.startWithAlpha, fail: rules.startWithAlpha === false }">以小写英文字母开头。</li>
+            <li :class="{ pass: rules.charset, fail: rules.charset === false }">
                 由小写英文字母、数字、减号、下划线组成。
             </li>
         </ul>

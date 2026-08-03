@@ -4,12 +4,12 @@ import { spiritsByName } from '#/spirits';
 
 const props = defineProps<{ names: string | string[]; copyOnly?: boolean }>();
 const names = typeof props.names === 'string' ? props.names.split(/[\s,]/) : props.names;
-const spirits = names.map((name) => spiritsByName[name]).filter((s) => !!s);
+const spirits = names.map((name) => spiritsByName[name]).filter(Boolean);
 </script>
 
 <template>
     <div class="SpiritBanner">
-        <SpiritCard v-for="spirit in spirits" v-bind="spirit" :copyOnly="copyOnly" />
+        <SpiritCard v-for="spirit in spirits" :key="spirit.name" v-bind="spirit" :copyOnly="copyOnly" />
     </div>
 </template>
 
