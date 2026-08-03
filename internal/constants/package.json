@@ -10,6 +10,10 @@
         ".": {
             "types": "./src/index.ts",
             "default": "./src/index.ts"
+        },
+        "./website": {
+            "types": "./src/website.ts",
+            "default": "./src/website.ts"
         }
     },
     "dependencies": {

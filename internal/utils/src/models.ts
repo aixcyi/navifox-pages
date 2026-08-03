@@ -35,4 +35,30 @@ export const website = {
         if (site.icon && site.mime) yield { rel: 'icon', href: site.icon, type: site.mime };
         else if (site.icon) yield { rel: 'icon', href: site.icon };
     },
+
+    /**
+     * 从 {@link Website} 结构中提取 _任意个_
+     * {@link https://ogp.me/ Open Graph Protocol}
+     * `<meta property="og:*" />`。
+     *
+     * @see https://ogp.me/#metadata 基本元数据
+     */
+    *og(
+        site: Website,
+        overrides?: {
+            title?: string;
+            description?: string;
+            url?: string;
+            image?: string;
+            type?: string;
+        },
+    ) {
+        yield { property: 'og:type', content: overrides?.type ?? 'website' };
+        yield { property: 'og:title', content: overrides?.title ?? site.name };
+        const description = overrides?.description ?? site.description;
+        if (description) yield { property: 'og:description', content: description };
+        yield { property: 'og:url', content: overrides?.url ?? site.link };
+        if (overrides?.image) yield { property: 'og:image', content: overrides.image };
+        yield { property: 'og:site_name', content: site.name };
+    },
 } as const;

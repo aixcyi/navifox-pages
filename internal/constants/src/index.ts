@@ -1,5 +1,4 @@
-export * from './chore';
-export * from './websites';
+export * from './website';
 export * from './badges';
 export * from './rights';
 export * from './projects';

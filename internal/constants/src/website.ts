@@ -1,13 +1,40 @@
-import type { Website } from '@navifox/types';
-import { tighnari } from './chore';
+/**
+ * 本文件包含了可**静态编译**的网站元数据，包括：
+ *
+ * - 站点信息（{@link Website}）
+ * - 个人信息（{@link Friend}）
+ * - ASCII 签名画（用在控制台输出）
+ * - 当年年份
+ */
+import type { Friend, Website } from '@navifox/types';
 
+export const thisYear = Math.max(2026, new Date().getFullYear());
+export const signature: string = `
+      •  ┓       •
+     ╋┓┏┓┣┓┏┓┏┓┏┓┓
+━━━━━┗┗┗┫┛┗┛┗┗┻┛ ┗━━━━━━
+        ┛
+\n`;
+export const tighnari: Friend = {
+    name: '路狐羽',
+    uid: 'aixcyi',
+    tags: ['毛茸茸爱好者', '开发工程师', '罗狐会馆馆长'],
+    titles: ['Django 高级后端开发', 'Vue3 开发'],
+    description: 'Seeds of stories, brought by the wind and cultivated by time.',
+    descriptionRich: 'Seeds of stories,<br/>brought by the wind and cultivated by time.',
+    location: '广东 广州',
+    groupQQ: '540457640',
+    wxid: 'navifox',
+    age: thisYear - 2000,
+};
 export const navifoxHome: Website = {
     name: '路狐领航',
     link: 'https://www.navifox.net',
     icon: 'https://www.navifox.net/favicon.ico',
-    description: '<span>愿在生活的密林里遇见一只路狐，</span><span>与你相伴，为你领航。</span>',
+    description: '愿在生活的密林里遇见一只路狐，与你相伴，为你领航。',
+    descriptionRich: '<span>愿在生活的密林里遇见一只路狐，</span><span>与你相伴，为你领航。</span>',
     author: tighnari.name,
-    tags: ['路狐羽', '阿羽', 'aixcyi', 'ayu', '路狐领航', '罗狐会馆', '妖灵会馆'],
+    tags: [tighnari.name, '阿羽', 'aixcyi', 'ayu', '路狐领航', '罗狐会馆', '妖灵会馆'],
 };
 export const navifoxGuild: Website = {
     name: '罗狐会馆',
@@ -19,7 +46,8 @@ export const navifoxRefs: Website = {
     name: '星笺',
     link: 'https://refs.navifox.net',
     icon: 'https://www.navifox.net/favicon.ico',
-    description: '狐狸们用小爪子敲出的<b>一页纸快速参考</b>。',
+    description: '狐狸们用小爪子敲出的一页纸快速参考。',
+    descriptionRich: '狐狸们用小爪子敲出的<b>一页纸快速参考</b>。',
     author: tighnari.name,
     tags: ['快速参考', '参考', '星笺', '导航', '路狐领航'],
     note: '快速参考',
@@ -28,7 +56,8 @@ export const navifoxBlog: Website = {
     name: '羽音',
     link: 'https://blog.navifox.net',
     icon: 'https://www.navifox.net/favicon.ico',
-    description: '<span>静谧星夜下</span><span>不绝如缕的羽音。</span>',
+    description: '静谧星夜下不绝如缕的羽音。',
+    descriptionRich: '<span>静谧星夜下</span><span>不绝如缕的羽音。</span>',
     author: tighnari.name,
     note: '博客',
 };

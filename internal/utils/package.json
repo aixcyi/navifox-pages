@@ -10,6 +10,10 @@
         ".": {
             "types": "./src/index.ts",
             "default": "./src/index.ts"
+        },
+        "./vite": {
+            "types": "./src/vite.ts",
+            "default": "./src/vite.ts"
         }
     },
     "dependencies": {
@@ -22,6 +26,7 @@
         "vue": "catalog:"
     },
     "devDependencies": {
-        "@types/markdown-it": "catalog:"
+        "@types/markdown-it": "catalog:",
+        "vite": "catalog:"
     }
 }

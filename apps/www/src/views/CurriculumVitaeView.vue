@@ -35,7 +35,7 @@ const skillsPanel = useTemplateRef<ComponentPublicInstance>('skillsPanel');
         <div
             class="mx-2 overflow-x-hidden pt-28 text-nowrap text-slate-300/25 selection:bg-slate-100 selection:text-slate-400 dark:text-slate-800/25 dark:selection:bg-slate-900 dark:selection:text-slate-600"
         >
-            <i v-html="tighnari.description?.replaceAll('<br>', '')" />
+            <i>{{ tighnari.description }}</i>
         </div>
 
         <article class="Content flex flex-col gap-8 rounded-xl bg-white py-8 dark:bg-slate-800">

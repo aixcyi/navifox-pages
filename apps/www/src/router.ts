@@ -59,6 +59,11 @@ router.beforeEach((to) => {
                 description: to.meta.description as string | undefined,
                 keywords: to.meta.keywords as string[] | undefined,
             }),
+            ...website.og(navifoxHome, {
+                title: to.meta.title as string | undefined,
+                description: to.meta.description as string | undefined,
+                url: navifoxHome.link + to.fullPath,
+            }),
         ],
         link: [...website.links(navifoxHome)],
         titleTemplate: to.meta.title ? `%s × ${navifoxHome.name}` : null,

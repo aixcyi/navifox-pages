@@ -26,7 +26,7 @@ logger.draw(signature, '#459199');
             </div>
             <div
                 class="font-sign mt-4 text-4xl text-white md:text-5xl dark:text-gray-300"
-                v-html="tighnari.description"
+                v-html="tighnari.descriptionRich"
             />
         </div>
     </div>

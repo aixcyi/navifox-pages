@@ -66,8 +66,15 @@ export interface Website extends Favicon {
 
     logo?: string;
 
-    /** 站点描述。 */
+    /**
+     * 站点描述。
+     *
+     * 纯文本，不应包含 Markdown 或 HTML 等等。
+     */
     description?: string;
+
+    /** 站点描述（HTML格式）。*/
+    descriptionRich?: string;
 
     /** 站点作者。 */
     author?: string;

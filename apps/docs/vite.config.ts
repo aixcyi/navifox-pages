@@ -1,11 +1,22 @@
+import { navifoxDocs } from '@navifox/constants/website';
 import tailwindcss from '@tailwindcss/vite';
 import vue from '@vitejs/plugin-vue';
 import * as path from 'node:path';
 import { defineConfig } from 'vite';
+import { ogPlugin } from '@navifox/utils/vite';
 
 // https://vite.dev/config/
 export default defineConfig({
-    plugins: [tailwindcss(), vue()],
+    plugins: [
+        tailwindcss(),
+        vue(),
+        ogPlugin({
+            title: navifoxDocs.name,
+            description: navifoxDocs.description ?? '',
+            url: navifoxDocs.link,
+            siteName: navifoxDocs.name,
+        }),
+    ],
     resolve: {
         alias: {
             '#': path.resolve(__dirname, './src'),

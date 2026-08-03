@@ -693,6 +693,9 @@ importers:
       '@types/markdown-it':
         specifier: 'catalog:'
         version: 14.1.2
+      vite:
+        specifier: ^8.1.4
+        version: 8.1.4(@types/node@24.13.3)(jiti@2.7.0)(yaml@2.9.0)
 
 packages:
 

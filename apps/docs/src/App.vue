@@ -61,7 +61,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 useHead({
     title: navifoxDocs.name,
-    meta: [...website.metas(navifoxDocs)],
+    meta: [...website.metas(navifoxDocs), ...website.og(navifoxDocs)],
     link: [...website.links(navifoxDocs)],
 });
 onMounted(() => {

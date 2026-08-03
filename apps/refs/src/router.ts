@@ -83,7 +83,17 @@ const router = createRouter({
 router.beforeEach((to) => {
     useHead({
         title: to.meta.title ?? navifoxRefs.name,
-        meta: [...website.metas(navifoxRefs, { description: to.meta.description, keywords: to.meta.keywords })],
+        meta: [
+            ...website.metas(navifoxRefs, {
+                description: to.meta.description,
+                keywords: to.meta.keywords,
+            }),
+            ...website.og(navifoxRefs, {
+                title: to.meta.title,
+                description: to.meta.description,
+                url: navifoxRefs.link + to.fullPath,
+            }),
+        ],
         link: [...website.links(navifoxRefs)],
         titleTemplate: to.meta.title ? `%s × ${navifoxRefs.name}` : null,
     });

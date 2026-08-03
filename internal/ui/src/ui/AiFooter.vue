@@ -219,7 +219,7 @@ const linkMap = [
                             </span>
                         </a>
                     </div>
-                    <p class="mt-2 flex flex-wrap pb-4" v-html="navifoxHome.description" />
+                    <p class="mt-2 flex flex-wrap pb-4" v-html="navifoxHome.descriptionRich" />
                 </div>
             </div>
         </div>

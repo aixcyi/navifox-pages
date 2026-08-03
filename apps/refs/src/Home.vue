@@ -48,7 +48,7 @@ import { takeRight } from 'es-toolkit';
                 <h2
                     class="mx-auto mt-8 mb-12 text-center text-lg leading-relaxed font-light tracking-wide text-slate-300 md:text-xl lg:w-3/4 lg:text-2xl xl:w-2/3"
                 >
-                    <span class="*:[b]:font-semibold *:[b]:text-pink-300" v-html="navifoxRefs.description" />
+                    <span class="*:[b]:font-semibold *:[b]:text-pink-300" v-html="navifoxRefs.descriptionRich" />
                     <span>这一页收录了部分常用的书签，并按以下几个大类分布，更多参考见右上角。</span>
                 </h2>
                 <div class="mx-auto mb-16 flex max-w-4xl flex-row flex-wrap items-center justify-center gap-4">
