@@ -5,7 +5,7 @@ aside: false
 
 # 邔符
 
-<SpiritBanner names="邔符" />
+<SpiritBanner names="邔符" copy-only />
 
 　　两千岁出头的社恐，已成神，游乐于世间的猫，聚灵于山水相逢之地，近百年来定居于会馆，此前居于自己的灵质空间。
 

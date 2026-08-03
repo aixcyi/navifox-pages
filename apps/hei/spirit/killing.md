@@ -5,7 +5,7 @@ aside: false
 
 # 念一
 
-<SpiritBanner names="念一" />
+<SpiritBanner names="念一" copy-only />
 
 　　你问我旅途中印象最深的是什么？当然是每次走在人类的街道上，都会有人类给我好吃的，他们笑得真傻，真是奇怪，但不讨厌。
 

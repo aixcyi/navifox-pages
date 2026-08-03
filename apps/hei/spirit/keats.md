@@ -5,7 +5,7 @@ aside: false
 
 # 济慈
 
-<SpiritBanner names="济慈" />
+<SpiritBanner names="济慈" copy-only />
 
 　　羊水到河水，只一眼。在黑暗中，Keats是母亲唯一的救赎，济慈是我的重生。
 

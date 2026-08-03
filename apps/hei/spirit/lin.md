@@ -5,7 +5,7 @@ aside: false
 
 # 林
 
-<SpiritBanner names="林" />
+<SpiritBanner names="林" copy-only />
 
 只是一只小猫妖，真的，不会攻击人，你信我。
 

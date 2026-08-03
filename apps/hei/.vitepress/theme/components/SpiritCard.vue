@@ -3,19 +3,20 @@ import { VPLink } from 'vitepress/theme';
 import type { SpiritInfo } from '#/spirits';
 import { useClipboard } from '@vueuse/core';
 
+defineProps<SpiritInfo & { copyOnly?: boolean }>();
+
 const { copy, copied } = useClipboard();
-defineProps<SpiritInfo & { noncopyable?: boolean }>();
 </script>
 
 <template>
     <VPLink
         class="SpiritCard"
         :class="{ faded: faded }"
-        :href="noncopyable ? link : ''"
+        :href="copyOnly ? '' : link"
         target="_self"
         :no-icon="true"
-        :style="{ cursor: noncopyable ? (link ? 'pointer' : 'default') : 'copy' }"
-        @click="noncopyable || copied ? {} : copy(link)"
+        :style="{ cursor: copyOnly ? 'copy' : link ? 'pointer' : 'default' }"
+        @click="copyOnly && !copied ? copy(link) : {}"
     >
         <article class="box">
             <div v-if="copied" class="avatar">已复制</div>

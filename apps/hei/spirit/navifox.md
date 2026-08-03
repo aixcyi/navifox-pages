@@ -5,7 +5,7 @@ outline: deep
 
 # 路狐羽
 
-<SpiritBanner names="路狐羽" />
+<SpiritBanner names="路狐羽" copy-only />
 
 　　清幽的树林中趴伏着一只硕大的狐，它感知你的到来，稍稍低头看向你，深邃的眼眸中竟有些疑惑。此地的主人仍未求得升仙之法，尚不能打开灵质空间，你是如何进来的？
 

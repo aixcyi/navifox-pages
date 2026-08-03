@@ -5,7 +5,7 @@ aside: false
 
 # 攸往
 
-<SpiritBanner names="攸往" />
+<SpiritBanner names="攸往" copy-only />
 
 　　聚灵于雪原的妖精，本体是体型相当庞大的猞猁，因人类的贪念被迫离开诞生地，此后再也没有回来过，后被妖灵会馆长老池年收作首徒，十分看重师门不需要血缘的亲情。
 

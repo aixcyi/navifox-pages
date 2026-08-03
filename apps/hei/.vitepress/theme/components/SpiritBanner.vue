@@ -2,14 +2,14 @@
 import SpiritCard from './SpiritCard.vue';
 import { spiritsByName } from '#/spirits';
 
-const props = defineProps<{ names: string | string[] }>();
+const props = defineProps<{ names: string | string[]; copyOnly?: boolean }>();
 const names = typeof props.names === 'string' ? props.names.split(/[\s,]/) : props.names;
 const spirits = names.map((name) => spiritsByName[name]).filter((s) => !!s);
 </script>
 
 <template>
     <div class="SpiritBanner">
-        <SpiritCard v-for="spirit in spirits" v-bind="spirit" />
+        <SpiritCard v-for="spirit in spirits" v-bind="spirit" :copyOnly="copyOnly" />
     </div>
 </template>
 

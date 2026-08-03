@@ -11,7 +11,7 @@ import { spirits } from '#/spirits';
             <template #lead>某年某月，某妖聚灵某地；命运交汇，我们相聚于此</template>
         </VPTeamPageTitle>
         <div class="box">
-            <SpiritCard v-bind="spirit" v-for="spirit in spirits" noncopyable />
+            <SpiritCard v-bind="spirit" v-for="spirit in spirits" />
         </div>
     </VPTeamPage>
 </template>

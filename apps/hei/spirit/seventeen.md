@@ -5,7 +5,7 @@ aside: false
 
 # 拾七
 
-<SpiritBanner names="拾七" />
+<SpiritBanner names="拾七" copy-only />
 
 　　他的骨灰，我还能拿到吗？我还等着用他骨灰做骰子，让他给我出鬼点子呢……
 

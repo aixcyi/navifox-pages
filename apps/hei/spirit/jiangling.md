@@ -5,7 +5,7 @@ outline: deep
 
 # 绛棂
 
-<SpiritBanner names="绛棂" />
+<SpiritBanner names="绛棂" copy-only />
 
 > 　　曾经对人类犯下的错我不想在犯了……
 >

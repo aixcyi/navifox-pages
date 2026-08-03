@@ -5,7 +5,7 @@ aside: false
 
 # 兰知
 
-<SpiritBanner names="兰知" />
+<SpiritBanner names="兰知" copy-only />
 
 　　一只兰花，一段空心竹，一个村庄的遗孤。
 

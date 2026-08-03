@@ -5,7 +5,7 @@ aside: false
 
 # 念月
 
-<SpiritBanner names="念月" />
+<SpiritBanner names="念月" copy-only />
 
 　　念月是北方雪原聚灵而生的一只小狼，那时战乱不断，念月从北方雪原流浪到中原，在逃跑的途中受了伤，被无限所救后拜师，称为无限大弟子。
 
