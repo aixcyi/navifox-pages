@@ -27,4 +27,3 @@ import { spirits } from '#/spirits';
     justify-content: center;
 }
 </style>
-

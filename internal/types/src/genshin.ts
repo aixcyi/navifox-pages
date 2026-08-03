@@ -26,10 +26,13 @@ export type AbilityScope =
 export interface Ability {
     /** 能力归属的领域。 */
     scope: AbilityScope;
+
     /** 能力所在位置。 */
     field: string;
+
     /** 简述。 */
     short: string;
+
     /** 原始描述。 */
     original: string;
 }
