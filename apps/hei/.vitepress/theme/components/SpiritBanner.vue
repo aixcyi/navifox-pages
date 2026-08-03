@@ -4,7 +4,7 @@ import { spiritsByName } from '#/spirits';
 
 const props = defineProps<{ names: string | string[]; copyOnly?: boolean }>();
 const names = typeof props.names === 'string' ? props.names.split(/[\s,]/) : props.names;
-const spirits = names.map((name) => spiritsByName[name]).filter(Boolean);
+const spirits = names.map((name) => spiritsByName[name]).filter((s) => !!s);
 </script>
 
 <template>
