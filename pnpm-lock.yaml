@@ -430,6 +430,12 @@ importers:
       '@navifox/constants':
         specifier: workspace:*
         version: link:../../internal/constants
+      '@navifox/utils':
+        specifier: workspace:*
+        version: link:../../internal/utils
+      '@navifox/vitepress':
+        specifier: workspace:*
+        version: link:../../internal/vitepress
       '@vueuse/core':
         specifier: 'catalog:'
         version: 14.3.0(vue@3.5.39(typescript@5.9.3))
@@ -696,6 +702,34 @@ importers:
       vite:
         specifier: ^8.1.4
         version: 8.1.4(@types/node@24.13.3)(jiti@2.7.0)(yaml@2.9.0)
+
+  internal/vitepress:
+    dependencies:
+      glob:
+        specifier: 'catalog:'
+        version: 13.0.6
+      gray-matter:
+        specifier: 'catalog:'
+        version: 4.0.3
+      markdown-it:
+        specifier: 'catalog:'
+        version: 14.3.0
+      path-to-regexp:
+        specifier: 'catalog:'
+        version: 8.4.2
+    devDependencies:
+      '@types/markdown-it':
+        specifier: 'catalog:'
+        version: 14.1.2
+      '@types/node':
+        specifier: 'catalog:'
+        version: 24.13.3
+      vite:
+        specifier: ^8.1.4
+        version: 8.1.4(@types/node@24.13.3)(jiti@2.7.0)(yaml@2.9.0)
+      vitepress:
+        specifier: 'catalog:'
+        version: 2.0.0-alpha.18(@types/node@24.13.3)(jiti@2.7.0)(postcss@8.5.19)(qrcode@1.5.4)(typescript@5.9.3)(yaml@2.9.0)
 
 packages:
 

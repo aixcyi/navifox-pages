@@ -1,5 +1,5 @@
-import { VitePressConfigurator, type PageHook } from './utils/vitepress';
-import { trimSuffix } from './utils/string';
+import { VitePressConfigurator, type PageHook } from '@navifox/vitepress';
+import { trimSuffix } from '@navifox/utils/string';
 
 // https://vitepress.dev/reference/site-config
 const configurator = new VitePressConfigurator({

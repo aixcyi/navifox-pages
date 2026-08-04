@@ -56,14 +56,24 @@ function compileRewrites(rewrites: UserConfig['rewrites']) {
  * Markdown 文件解析得到的页面信息。
  */
 export class Page {
+    public readonly url: string;
+    public readonly filepath: string;
+    public readonly frontmatter: Record<string, any>;
+    public depth: number;
+    public isIndex: boolean;
+
     constructor(
-        public readonly url: string,
-        public readonly filepath: string,
-        public readonly frontmatter: Record<string, any>,
-        public depth: number = 0,
-        public isIndex: boolean = false,
+        url: string,
+        filepath: string,
+        frontmatter: Record<string, any>,
+        depth: number = 0,
+        isIndex: boolean = false,
     ) {
+        this.url = url;
+        this.filepath = filepath;
         this.frontmatter = { ...frontmatter };
+        this.depth = depth;
+        this.isIndex = isIndex;
     }
 }
 
@@ -88,6 +98,7 @@ export type PageHook = {
 };
 
 export class VitePressConfigurator {
+    private readonly configs: UserConfig<DefaultTheme.Config>;
     private hookPage?: PageHook = undefined;
     private pages: Page[] = [];
     private locale: string = 'root';
@@ -107,7 +118,8 @@ export class VitePressConfigurator {
      *
      * @param configs VitePress 配置。
      */
-    constructor(private configs: UserConfig<DefaultTheme.Config>) {
+    constructor(configs: UserConfig<DefaultTheme.Config>) {
+        this.configs = configs;
         const markdown = MarkdownIt();
         const rewrite = compileRewrites(this.configs.rewrites);
         const base = this.configs.srcDir ?? '.';

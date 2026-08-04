@@ -52,7 +52,7 @@
 
 ### 工作区结构
 
-| 路径                      | 包名                 | 用途                                               |
+| 路径（按字母顺序排序）             | 包名                 | 用途                                               |
 |-------------------------|--------------------|--------------------------------------------------|
 | `./apps/docs/`          | @navifox/docs      | [文档月饼盒](https://docs.navifox.net)。               |
 | `./apps/hei/`           | @navifox/hei       | [蓝溪拾遗](https://hei.navifox.net)，基于 VitePress 构建。 |
@@ -62,6 +62,7 @@
 | `./internal/styles/`    | @navifox/styles    | 存放全局样式及字体。                                       |
 | `./internal/tsconfig/`  | @navifox/tsconfig  | 存放共享 `tsconfig` 配置。                              |
 | `./internal/types/`     | @navifox/types     | 存放全局类型定义。                                        |
+| `./internal/vitepress/` | @navifox/vitepress | 存放 VitePress 工具。                                 |
 | `./internal/ui/`        | @navifox/ui        | 存放共享 UI，包括 shadcn 等组件。                           |
 | `./internal/utils/`     | @navifox/utils     | 存放共享工具。                                          |
 
