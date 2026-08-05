@@ -5,18 +5,10 @@ packages:
     - '!**/test/**'
 allowBuilds:
     vue-demi: true
-minimumReleaseAgeExclude:
-    - '@codemod.com/cli-darwin-arm64@1.12.12'
-    - '@codemod.com/cli-darwin-x64@1.12.12'
-    - '@codemod.com/cli-linux-arm64-gnu@1.12.12'
-    - '@codemod.com/cli-linux-x64-gnu@1.12.12'
-    - '@codemod.com/cli-win32-x64-msvc@1.12.12'
-    - codemod@1.12.12
 overrides:
     vite: 'catalog:'
 catalog:
     '@catppuccin/vitepress': ^0.1.2
-    '@codemod.com/cli-win32-x64-msvc': ^1.12.12
     '@date-fns/utc': ^2.1.1
     '@iconify/vue': ^5.0.1
     '@tailwindcss/vite': ^4.3.2
@@ -30,7 +22,6 @@ catalog:
     bestzip: ^3.0.1
     class-variance-authority: ^0.7.1
     clsx: ^2.1.1
-    codemod: ^1.12.12
     date-fns: ^4.4.0
     es-toolkit: ^1.49.0
     genshin-db: ^5.2.12

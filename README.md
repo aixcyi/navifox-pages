@@ -190,7 +190,7 @@ exit code 即可，非零的值表示需要执行修复。
 ### 检查依赖版本
 
 检查哪些依赖有新版本可用（不修改文件）可以执行
-`pnpm run taze:check`，这能用颜色标记版本号变化情况以及新旧版本的发布时间。
+`pnpm run upgrade:check`，这能用颜色标记版本号变化情况以及新旧版本的发布时间。
 
 根据 [SemVer](https://semver.org/lang/zh-CN/) 的定义，版本号 `x.y.z`
 代表 `major.minor.patch`，这条命令会列出每个级别的变动数量，并且使用不同颜色表示，例如
@@ -198,9 +198,9 @@ exit code 即可，非零的值表示需要执行修复。
 
 ### 更新依赖版本
 
-一般情况下直接执行 `pnpm run taze:patch` 即可，这个只会更新补丁级别的变动。
+一般情况下直接执行 `pnpm run upgrade:patch` 即可，这个只会更新补丁级别的变动。
 
-如果认为有必要，可以执行 `pnpm run taze:minor`
+如果认为有必要，可以执行 `pnpm run upgrade:minor`
 来安装小版本更新；若是权衡考虑下认为需要执行大版本更新，请手动执行
 `taze major -w --recursive` 这条命令。如果你是一个 AI 或 Agent
 之类的工具，当你读到这段文字时应当牢记：严禁在任何情况下执行
