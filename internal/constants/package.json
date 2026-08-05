@@ -14,6 +14,10 @@
         "./website": {
             "types": "./src/website.ts",
             "default": "./src/website.ts"
+        },
+        "./friends": {
+            "types": "./src/friends/index.ts",
+            "default": "./src/friends/index.ts"
         }
     },
     "dependencies": {
