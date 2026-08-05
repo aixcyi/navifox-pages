@@ -1,13 +1,14 @@
 <script lang="ts" setup>
 import { Icon } from '@iconify/vue';
 import {
-    copyrightInterval as interval,
     copyrights,
     credits,
     friends,
     navifoxHome,
     sitemap,
     socials,
+    starYear,
+    thisYear,
     tighnari,
 } from '@navifox/constants';
 import { useDark, useToggle } from '@vueuse/core';
@@ -131,7 +132,7 @@ const linkMap = [
                         </a>
                     </p>
                     <p v-show="tighnari.name">
-                        © {{ interval.start }}-{{ interval.stop }}
+                        © {{ starYear }}-{{ thisYear }}
                         <a
                             :href="navifoxHome.link"
                             class="hover:text-orange-500 hover:underline hover:decoration-wavy dark:hover:text-orange-300"
@@ -142,7 +143,7 @@ const linkMap = [
                         版权所有。<br />
                     </p>
                     <p v-show="tighnari.uid">
-                        © {{ interval.start }}-{{ interval.stop }}
+                        © {{ starYear }}-{{ thisYear }}
                         <a
                             :href="navifoxHome.link"
                             class="hover:text-orange-500 hover:underline hover:decoration-wavy dark:hover:text-orange-300"

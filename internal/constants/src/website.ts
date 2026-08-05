@@ -6,9 +6,22 @@
  * - ASCII 签名画（用在控制台输出）
  * - 当年年份
  */
-import type { Friend, Website } from '@navifox/types';
 
+/// <reference types="vite/client" />
+
+import type { Friend, Hyperlink, Website } from '@navifox/types';
+
+function* detect(): Generator<Hyperlink> {
+    const env = import.meta.env;
+    if (!env) return;
+    if (env.VITE_ICP_NO) yield { text: env.VITE_ICP_NO, link: env.VITE_ICP_REF };
+    if (env.VITE_MPS_NO) yield { text: env.VITE_MPS_NO, link: env.VITE_MPS_REF };
+    if (env.VITE_MOE_NO) yield { text: env.VITE_MOE_NO, link: env.VITE_MOE_REF };
+}
+
+export const starYear = 2016;
 export const thisYear = Math.max(2026, new Date().getFullYear());
+export const copyrights = [...detect()];
 export const signature: string = `
       •  ┓       •
      ╋┓┏┓┣┓┏┓┏┓┏┓┓

@@ -6,8 +6,8 @@
 !/navifox.code-workspace
 
 # Environment
-/.env.local
-/.env.*.local
+**/.env.local
+**/.env.*.local
 **/node_modules/
 **/cache/
 **/dist/
