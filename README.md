@@ -2,12 +2,13 @@
 
 本项目是 Navifox 生态页面仓库，一个基于 pnpm Workspace 的 Monorepo，包含多个子项目。
 
-| 项目                                | 描述                       |
-|-----------------------------------|--------------------------|
-| [路狐领航](https://www.navifox.net)   | Navifox 主页。              |
+|                项目                 | 描述                       |
+|:---------------------------------:|--------------------------|
+|  [路狐领航](https://www.navifox.net)  | Navifox 主页。              |
+| [羽音树洞](https://blog.navifox.net)  | Navifox 博客。静谧星夜下不绝如缕的羽音。 |
 | [文档月饼盒](https://docs.navifox.net) | 收纳展示散落在各个项目仓库的文档。        |
-| [蓝溪拾遗](https://hei.navifox.net)   | 收录罗小黑世界中的原著设定与以此架构的有趣脑洞。 |
-| [星笺](https://refs.navifox.net)    | 狐狸们用小爪子敲出的一页纸快速参考。       |
+|  [蓝溪拾遗](https://hei.navifox.net)  | 收录罗小黑世界中的原著设定与以此架构的有趣脑洞。 |
+|  [星笺](https://refs.navifox.net)   | 狐狸们用小爪子敲出的一页纸快速参考。       |
 
 ## 开始
 
@@ -31,7 +32,7 @@
 部分子项目所用的技术栈还包括：
 
 - Vue Router（`www`、`refs`）
-- VitePress（`hei`）
+- VitePress（`blog`、`hei`）
 - GSAP（`www`、`docs`）
 - Unhead（`www`、`docs`、`refs`）
 

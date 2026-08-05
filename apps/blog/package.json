@@ -1,0 +1,24 @@
+{
+    "name": "@navifox/blog",
+    "version": "0.0.0",
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "build": "vitepress build && cd dist && bestzip ../dist.zip *",
+        "dev": "vitepress dev",
+        "preview": "vitepress preview"
+    },
+    "dependencies": {
+        "@navifox/constants": "workspace:*",
+        "@navifox/utils": "workspace:*",
+        "@navifox/vitepress": "workspace:*",
+        "vue": "catalog:"
+    },
+    "devDependencies": {
+        "markdown-it-mathjax3": "catalog:",
+        "vite": "catalog:",
+        "vitepress": "catalog:",
+        "vitepress-plugin-group-icons": "catalog:",
+        "vue": "catalog:"
+    }
+}
