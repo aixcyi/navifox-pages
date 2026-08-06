@@ -9,6 +9,8 @@ tags:
 excerpt:
 ---
 
+# 宝塔面板与 Python 3 的恩怨情仇
+
 ## 问题描述
 
 服务器镜像有宝塔面板 + Python 2，用 yum 和 pip3 安装 Python3＋Flask＋Gunicorn 后，宝塔面板打不开了。报错如下：

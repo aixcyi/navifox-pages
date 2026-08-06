@@ -10,6 +10,8 @@ excerpt:
     本文介绍如何通过运行命令打开文件夹。
 ---
 
+# 通过命令行打开文件夹
+
 <hr style="margin-top: 48px"/>
 
 `explorer.exe /select,addr`

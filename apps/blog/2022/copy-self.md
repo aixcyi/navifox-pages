@@ -12,6 +12,8 @@ excerpt:
     等等。如果不借助标准库 copy，可以在 **类体内** 调用自身的 **构造方法** 达到相同目的。
 ---
 
+# 为自身定义 copy 方法
+
 <style scoped>
 .VPDoc p:not(.custom-block-title) {
     text-indent: 2em;

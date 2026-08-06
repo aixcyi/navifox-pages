@@ -11,6 +11,8 @@ excerpt:
     帮助新手修改包括 PyCharm、IDEA、WebStorm、GoLand、PhpStorm 等集成开发环境（IDE）的语言。
 ---
 
+# 设置 JetBrains IDE 的语言
+
 <style scoped>
 .VPDoc p:not(.custom-block-title) {
     text-indent: 2em;

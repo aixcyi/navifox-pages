@@ -13,6 +13,8 @@ excerpt:
     与 [Django REST Framework](https://www.django-rest-framework.org/api-guide/views/) 两个框架视图类的脉络。
 ---
 
+# 浅析 Django 及衍生的类视图
+
 ## 类的继承脉络 {#hierarchy}
 
 ### 视图（基类） {#view}

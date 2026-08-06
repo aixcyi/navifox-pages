@@ -11,6 +11,8 @@ excerpt:
     使用默认值有可能导致抽象泄漏（Leaky Abstraction），指本应对用户隐藏实现细节的抽象行为会不可避免地暴露出底层细节与局限性。
 ---
 
+# 默认值导致抽象泄漏
+
 <style scoped>
 .VPDoc p:not(.custom-block-title) {
     text-indent: 2em;

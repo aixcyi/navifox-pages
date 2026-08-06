@@ -10,6 +10,8 @@ excerpt:
     '在创建 Django ORM 模型实例时，如果仅向外键字段提供模型实例，或仅提供相应的 `_id` 属性，能否在保存（到数据库）前得到另一属性值？'
 ---
 
+# 外键的 id 与实例
+
 其实是都可以的，只要是[外键](https://docs.djangoproject.com/zh-hans/5.2/ref/models/fields/#foreignkey)的模型实例，都会自动给相应的
 `instance_id` 属性赋予 `Instance().id` 的值，只不过由于新创建、未保存的实例的 `id` 为 `None`，相应的 `instance_id` 也为
 `None`；反之，向 `instance_id` 属性赋值之后，访问 `instance` 属性也可以得到模型实例，除非这个 `id` 不存在。

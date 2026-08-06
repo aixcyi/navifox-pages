@@ -12,6 +12,8 @@ excerpt:
     早得多得多，所以如果需要让插件语言跟随用户安装的语言包插件来切换，就要进行一定的适配。
 ---
 
+# IntelliJ 插件中使用 Bundle
+
 <style scoped>
 .VPDoc p:not(.custom-block-title) {
     text-indent: 2em;

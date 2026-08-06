@@ -11,6 +11,8 @@ excerpt:
     内置函数 [`open()`](https://docs.python.org/zh-cn/3/library/functions.html#open) 打开模式这个参数的归纳。
 ---
 
+# Python 文件打开模式
+
 ## 打开模式
 
 下表改编自 [Stack Overflow](https://stackoverflow.com/a/30931305) 和 [Stack Overflow](https://stackoverflow.com/a/67558256) 两个回答。

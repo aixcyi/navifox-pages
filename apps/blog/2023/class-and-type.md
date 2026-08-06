@@ -13,6 +13,8 @@ excerpt:
     一次关于 Python 类型（type）、类（class）、对象（object）的思考。
 ---
 
+# 类与类型
+
 <style scoped>
 .VPDoc p:not(.custom-block-title) {
     text-indent: 2em;

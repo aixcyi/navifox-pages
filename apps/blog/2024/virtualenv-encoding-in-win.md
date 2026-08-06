@@ -14,6 +14,8 @@ excerpt:
     `(venv)` 字样，但 `pip -V` 显示当前 pip 并没有指向父环境。
 ---
 
+# virtualenv 在 Windows 中无法激活
+
 <style scoped>
 .VPDoc p:not(.custom-block-title) {
     text-indent: 2em;

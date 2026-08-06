@@ -11,6 +11,8 @@ excerpt:
     Extras 或 Optional Dependencies。本文介绍了该功能的引入时间，并给出了查看具体依赖的方法。
 ---
 
+# pip 额外依赖
+
 > [!WARNING] AIGC 手工审查事项
 > 1. [redis-py](https://github.com/redis/redis-py) 项目的
 >    [pyproject.toml](https://github.com/redis/redis-py/blob/master/pyproject.toml)

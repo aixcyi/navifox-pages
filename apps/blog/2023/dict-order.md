@@ -12,6 +12,8 @@ excerpt:
     '`dict` 里的键原本是无序排列的，后来改成有序的了。'
 ---
 
+# Python 字典中，键的顺序
+
 <style scoped>
 .VPDoc p:not(.custom-block-title) {
     text-indent: 2em;

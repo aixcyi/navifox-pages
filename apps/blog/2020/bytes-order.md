@@ -9,6 +9,8 @@ tags:
 excerpt:
 ---
 
+# 两种字节序的直观比较
+
 <hr style="margin-top: 48px"/>
 
 > 小端字节序：低位字节在前，高位字节在后。  

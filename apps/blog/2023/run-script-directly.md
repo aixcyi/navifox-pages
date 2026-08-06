@@ -13,6 +13,8 @@ excerpt:
     本文介绍了在 Ubuntu 和 Windows 下直接运行 Python 脚本所需的配置。
 ---
 
+# 直接运行 Python 脚本
+
 ## 在 Ubuntu 下 {#ubuntu}
 
 ### 1、准备 {#ubuntu1}

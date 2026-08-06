@@ -14,6 +14,8 @@ excerpt:
     后端使用 Decimal 时，前端应当配合传递 string 而非 number，否则会从数据源就可能出现过长的小数，导致排查链路过长或者问题反复出现。
 ---
 
+# 避免 Decimal 溢出
+
 ## 背景交代
 
 ::: details 概念

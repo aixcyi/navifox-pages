@@ -11,6 +11,8 @@ excerpt:
     如何通过 Django Channels 在 Django 项目中通过 WebSocket 实现后端主动通知前端。
 ---
 
+# Django Channels 主动模式
+
 ## 背景
 
 <p class="paragraph">

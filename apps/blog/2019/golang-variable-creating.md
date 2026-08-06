@@ -9,6 +9,8 @@ tags:
 excerpt:
 ---
 
+# Golang 创建同一个变量
+
 <hr style="margin-top: 48px"/>
 
 在阅读别人的工程代码时，发现有一个函数内调用的方法都是返回一个不同类型的值+error。

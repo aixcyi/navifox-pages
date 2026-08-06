@@ -12,6 +12,8 @@ excerpt:
     VitePress 没有自带翻译，一些不可避免展示文字的地方会使用英文，需要汉化时可以参考本文进行配置。
 ---
 
+# VitePress 汉化摘要
+
 ## 默认主题
 
 <LinkCard href="https://vitepress.dev/zh/reference/default-theme-config" text="默认主题配置 | VitePress" />

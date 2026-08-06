@@ -13,6 +13,8 @@ excerpt:
     中的令牌 `Token` 的生成、刷新、撤销、获取时，数据库层面的行为，以及 ORM 模型字段的变化。
 ---
 
+# Django OAuth Toolkit 令牌机制
+
 <style scoped>
 .VPDoc p:not(.custom-block-title) {
     text-indent: 2em;
