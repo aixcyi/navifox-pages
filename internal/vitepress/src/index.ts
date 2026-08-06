@@ -160,72 +160,15 @@ export class VitePressConfigurator {
     }
 
     /**
-     * 手动追加一个导航（链接）。
-     */
-    public pushNavLink(nav: DefaultTheme.NavItemWithLink) {
-        if (!Array.isArray(this.themeConfig.nav)) {
-            throw new Error(`"locales.${this.locale}.themeConfig.nav" 必须配置为一个数组。`);
-        }
-        this.themeConfig.nav.push(nav);
-        return this;
-    }
-
-    /**
-     * 手动追加一个导航菜单。
-     */
-    public pushNavMenu(nav: DefaultTheme.NavItemWithChildren) {
-        if (!Array.isArray(this.themeConfig.nav)) {
-            throw new Error(`"locales.${this.locale}.themeConfig.nav" 必须配置为一个数组。`);
-        }
-        this.themeConfig.nav.push(nav);
-        return this;
-    }
-
-    /**
-     * 自动追加一批导航（链接），平铺在导航栏上。
+     * 手动追加一个社交链接按钮。
      *
-     * @param dir 需要搜索哪个目录下的 Markdown。
-     * @param options 可选参数。
-     * @param options.pageHook 排序钩子。
+     * @param social 链接数据。
      */
-    public autoNavLinks(dir: string, options?: { pageHook?: PageHook }) {
-        this.part(dir, options?.pageHook)
-            .files.map((page) => ({
-                text: page.frontmatter.title,
-                link: `/${page.url}`,
-            }))
-            .forEach((nav) => {
-                this.pushNavLink(nav);
-            });
-        return this;
-    }
-
-    /**
-     * 自动追加一个导航菜单。
-     *
-     * @param dir 需要搜索哪个目录下的 Markdown。
-     * @param options 可选参数。
-     * @param options.text 菜单的标题，不指定则使用 `index.md` 的 `title` 字段。
-     * @param options.deep 是否递归搜索该目录。
-     * @param options.pageHook 排序钩子。
-     */
-    public autoNavMenu(dir: string, options?: { text?: string; deep?: boolean; pageHook?: PageHook }) {
-        if (!options?.deep) {
-            const { files, index } = this.part(dir, options?.pageHook);
-            this.pushNavMenu({
-                text: options?.text ?? index?.frontmatter?.title ?? '(无标题)',
-                items: files.map((page) => ({
-                    text: page.frontmatter.title,
-                    link: `/${page.url}`,
-                })),
-            });
-        } else {
-            const { text, items } = this.deepNav(dir, options?.pageHook);
-            this.pushNavMenu({
-                text: options?.text ?? text ?? '(无标题)',
-                items,
-            });
+    public pushSocial(social: DefaultTheme.SocialLink) {
+        if (!Array.isArray(this.themeConfig.socialLinks)) {
+            throw new Error(`locales.${this.locale}.themeConfig.socialLinks 必须配置为一个数组。`);
         }
+        this.themeConfig.socialLinks.push(social);
         return this;
     }
 
@@ -271,15 +214,72 @@ export class VitePressConfigurator {
     }
 
     /**
-     * 手动追加一个社交链接。
-     *
-     * @param social 链接数据。
+     * 手动追加一个导航（链接）。
      */
-    public pushSocial(social: DefaultTheme.SocialLink) {
-        if (!Array.isArray(this.themeConfig.socialLinks)) {
-            throw new Error(`locales.${this.locale}.themeConfig.socialLinks 必须配置为一个数组。`);
+    public pushNavLink(nav: DefaultTheme.NavItemWithLink) {
+        if (!Array.isArray(this.themeConfig.nav)) {
+            throw new Error(`"locales.${this.locale}.themeConfig.nav" 必须配置为一个数组。`);
         }
-        this.themeConfig.socialLinks.push(social);
+        this.themeConfig.nav.push(nav);
+        return this;
+    }
+
+    /**
+     * 自动追加一批导航（链接），平铺在导航栏上。
+     *
+     * @param dir 需要搜索哪个目录下的 Markdown。
+     * @param options 可选参数。
+     * @param options.pageHook 排序钩子。
+     */
+    public autoNavLinks(dir: string, options?: { pageHook?: PageHook }) {
+        this.part(dir, options?.pageHook)
+            .files.map((page) => ({
+                text: page.frontmatter.title,
+                link: `/${page.url}`,
+            }))
+            .forEach((nav) => {
+                this.pushNavLink(nav);
+            });
+        return this;
+    }
+
+    /**
+     * 手动追加一个导航菜单。
+     */
+    public pushNavMenu(nav: DefaultTheme.NavItemWithChildren) {
+        if (!Array.isArray(this.themeConfig.nav)) {
+            throw new Error(`"locales.${this.locale}.themeConfig.nav" 必须配置为一个数组。`);
+        }
+        this.themeConfig.nav.push(nav);
+        return this;
+    }
+
+    /**
+     * 自动追加一个导航菜单。
+     *
+     * @param dir 需要搜索哪个目录下的 Markdown。
+     * @param options 可选参数。
+     * @param options.text 菜单的标题，不指定则使用 `index.md` 的 `title` 字段。
+     * @param options.deep 是否递归搜索该目录。
+     * @param options.pageHook 排序钩子。
+     */
+    public autoNavMenu(dir: string, options?: { text?: string; deep?: boolean; pageHook?: PageHook }) {
+        if (!options?.deep) {
+            const { files, index } = this.part(dir, options?.pageHook);
+            this.pushNavMenu({
+                text: options?.text ?? index?.frontmatter?.title ?? '(无标题)',
+                items: files.map((page) => ({
+                    text: page.frontmatter.title,
+                    link: `/${page.url}`,
+                })),
+            });
+        } else {
+            const { text, items } = this.deepNav(dir, options?.pageHook);
+            this.pushNavMenu({
+                text: options?.text ?? text ?? '(无标题)',
+                items,
+            });
+        }
         return this;
     }
 
