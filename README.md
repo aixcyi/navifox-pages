@@ -53,19 +53,20 @@
 
 ### 工作区结构
 
-| 路径（按字母顺序排序）             | 包名                 | 用途                                               |
-|-------------------------|--------------------|--------------------------------------------------|
-| `./apps/docs/`          | @navifox/docs      | [文档月饼盒](https://docs.navifox.net)。               |
-| `./apps/hei/`           | @navifox/hei       | [蓝溪拾遗](https://hei.navifox.net)，基于 VitePress 构建。 |
-| `./apps/refs/`          | @navifox/refs      | [星笺](https://refs.navifox.net)。                  |
-| `./apps/www/`           | @navifox/www       | [路狐领航](https://www.navifox.net)。                 |
-| `./internal/constants/` | @navifox/constants | 存放全局常量。                                          |
-| `./internal/styles/`    | @navifox/styles    | 存放全局样式及字体。                                       |
-| `./internal/tsconfig/`  | @navifox/tsconfig  | 存放共享 `tsconfig` 配置。                              |
-| `./internal/types/`     | @navifox/types     | 存放全局类型定义。                                        |
-| `./internal/vitepress/` | @navifox/vitepress | 存放 VitePress 工具。                                 |
-| `./internal/ui/`        | @navifox/ui        | 存放共享 UI，包括 shadcn 等组件。                           |
-| `./internal/utils/`     | @navifox/utils     | 存放共享工具。                                          |
+| 路径（按字母顺序排序）             | 包名                 | 用途                                                |
+|-------------------------|--------------------|---------------------------------------------------|
+| `./apps/blog/`          | @navifox/blog      | [羽音树洞](https://blog.navifox.net)，基于 VitePress 构建。 |
+| `./apps/docs/`          | @navifox/docs      | [文档月饼盒](https://docs.navifox.net)。                |
+| `./apps/hei/`           | @navifox/hei       | [蓝溪拾遗](https://hei.navifox.net)，基于 VitePress 构建。  |
+| `./apps/refs/`          | @navifox/refs      | [星笺](https://refs.navifox.net)。                   |
+| `./apps/www/`           | @navifox/www       | [路狐领航](https://www.navifox.net)。                  |
+| `./internal/constants/` | @navifox/constants | 存放全局常量。                                           |
+| `./internal/styles/`    | @navifox/styles    | 存放全局样式及字体。                                        |
+| `./internal/tsconfig/`  | @navifox/tsconfig  | 存放共享 `tsconfig` 配置。                               |
+| `./internal/types/`     | @navifox/types     | 存放全局类型定义。                                         |
+| `./internal/vitepress/` | @navifox/vitepress | 存放 VitePress 工具。                                  |
+| `./internal/ui/`        | @navifox/ui        | 存放共享 UI，包括 shadcn 等组件。                            |
+| `./internal/utils/`     | @navifox/utils     | 存放共享工具。                                           |
 
 ## 约定
 
@@ -84,6 +85,7 @@
 ### 运行
 
 ```bash
+pnpm run dev:blog
 pnpm run dev:docs
 pnpm run dev:hei
 pnpm run dev:refs
@@ -97,6 +99,7 @@ pnpm run dev:www
 ### 构建（并打包）
 
 ```bash
+pnpm run build:blog
 pnpm run build:docs
 pnpm run build:hei
 pnpm run build:refs
@@ -114,6 +117,7 @@ pnpm run build
 ### 预览
 
 ```bash
+pnpm run preview:blog
 pnpm run preview:docs
 pnpm run preview:hei
 pnpm run preview:refs
@@ -229,4 +233,4 @@ SyncPack 也有格式化 `package.json` 的能力，不过还是统一用 oxfmt 
 
 ### 类型检查
 
-使用 `pnpm run typecheck` 对所有子项目执行 TypeScript 类型检查（`vue-tsc --noEmit --skipLibCheck`）。注意 `hei` 是 VitePress 项目，内部已自行处理 TypeScript，不参与此项检查。
+使用 `pnpm run typecheck` 对所有子项目执行 TypeScript 类型检查（`vue-tsc --noEmit --skipLibCheck`）。注意 `hei` 和 `blog` 是 VitePress 项目，内部已自行处理 TypeScript，不参与此项检查。
