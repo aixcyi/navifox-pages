@@ -284,6 +284,34 @@ export class VitePressConfigurator {
     }
 
     /**
+     * 自动追加一个导航菜单，以每个子目录作为一个菜单项。
+     * 每个子目录会自动挑选一篇代表文章作为该菜单项的链接。
+     *
+     * @param dir 需要搜索哪个目录下的子目录。
+     * @param options 可选参数。
+     * @param options.text 菜单的标题，不指定则使用 `index.md` 的 `title` 字段。
+     * @param options.pageHook 排序钩子（compareFile 决定哪篇作为代表链接）。
+     */
+    public autoDirMenu(dir: string, options?: { text?: string; pageHook?: PageHook }) {
+        const { folders, index } = this.part(dir, options?.pageHook);
+        const items: DefaultTheme.NavItemWithLink[] = [];
+        for (const folder of folders) {
+            const subdir = pathlib.dirname(folder.filepath);
+            const { files: subFiles } = this.part(subdir, options?.pageHook);
+            const target = subFiles[0] ?? folder;
+            items.push({
+                text: folder.frontmatter.title ?? pathlib.basename(subdir),
+                link: `/${target.url}`,
+            });
+        }
+        this.pushNavMenu({
+            text: options?.text ?? index?.frontmatter?.title ?? '(无标题)',
+            items,
+        });
+        return this;
+    }
+
+    /**
      * 返回 VitePress 构建好的配置。
      */
     public define() {

@@ -1,5 +1,4 @@
 import { VitePressConfigurator, type PageHook } from '@navifox/vitepress';
-import { trimSuffix } from '@navifox/utils/string';
 import { navifoxHome, starYear, thisYear, tighnari } from '@navifox/constants/website';
 import { groupIconMdPlugin, groupIconVitePlugin } from 'vitepress-plugin-group-icons';
 
@@ -86,12 +85,9 @@ const configurator = new VitePressConfigurator({
 });
 
 const pageHookDefault: PageHook = {
-    compareFolder: (a, b) => a.url.localeCompare(b.url),
-    compareFile: (a, b) => trimSuffix(a.url, '.html').localeCompare(trimSuffix(b.url, '.html')),
+    compareFolder: (a, b) => b.url.localeCompare(a.url),
+    compareFile: (a, b) => b.frontmatter.title.localeCompare(a.frontmatter.title),
     compareItem: () => 1,
-};
-const pageHookOrdered: PageHook = {
-    compareFile: (a, b) => a.frontmatter.title.localeCompare(b.frontmatter.title),
 };
 
 configurator
@@ -99,7 +95,8 @@ configurator
     .goto('root')
     .pushSocial({ ariaLabel: 'QQ群聊', icon: 'qq', link: 'https://qm.qq.com/q/ZqCGqpMXy8' })
     .pushSocial({ ariaLabel: 'GitHub 仓库', icon: 'github', link: 'https://github.com/aixcyi/navifox-pages' })
-    .autoSidebar('/', './', { pageHook: pageHookOrdered, deep: true })
+    .autoSidebar('/', './', { deep: true })
+    .autoDirMenu('./', { text: '归档' })
     .pushNavMenu({
         text: '更多',
         items: [
