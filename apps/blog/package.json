@@ -9,6 +9,7 @@
         "preview": "vitepress preview"
     },
     "dependencies": {
+        "@catppuccin/vitepress": "catalog:",
         "@navifox/constants": "workspace:*",
         "@navifox/utils": "workspace:*",
         "@navifox/vitepress": "workspace:*",

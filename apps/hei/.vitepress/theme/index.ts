@@ -2,8 +2,8 @@
 import { h } from 'vue';
 import type { Theme } from 'vitepress';
 import DefaultTheme from 'vitepress/theme';
+import '@catppuccin/vitepress/theme/macchiato/peach.css';
 import '#/theme/style.css';
-import '@catppuccin/vitepress/theme/mocha/mauve.css';
 import SpiritCard from '#/theme/components/SpiritCard.vue';
 import SpiritBanner from '#/theme/components/SpiritBanner.vue';
 

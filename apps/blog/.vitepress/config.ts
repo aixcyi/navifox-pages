@@ -53,7 +53,12 @@ const configurator = new VitePressConfigurator({
     },
     lastUpdated: true,
     markdown: {
+        lineNumbers: true,
         math: true,
+        theme: {
+            light: 'catppuccin-latte',
+            dark: 'dark-plus',
+        },
         container: {
             infoLabel: '信息',
             noteLabel: '备注',
