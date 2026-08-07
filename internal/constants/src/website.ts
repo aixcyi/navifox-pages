@@ -19,8 +19,8 @@ function* detect(): Generator<Hyperlink> {
     if (env.VITE_MOE_NO) yield { text: env.VITE_MOE_NO, link: env.VITE_MOE_REF };
 }
 
-export const starYear = 2016;
-export const thisYear = Math.max(2026, new Date().getFullYear());
+export const sinceYear = 2016;
+export const untilYear = Math.max(2026, new Date().getFullYear());
 export const copyrights = [...detect()];
 export const signature: string = `
       •  ┓       •
@@ -38,7 +38,7 @@ export const tighnari: Friend = {
     location: '广东 广州',
     groupQQ: '540457640',
     wxid: 'navifox',
-    age: thisYear - 2000,
+    age: untilYear - 2000,
 };
 export const navifoxHome: Website = {
     name: '路狐领航',

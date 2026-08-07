@@ -1,5 +1,5 @@
 import { VitePressConfigurator, type PageHook } from '@navifox/vitepress';
-import { navifoxHome, starYear, thisYear, tighnari } from '@navifox/constants/website';
+import { navifoxHome, sinceYear, untilYear, tighnari } from '@navifox/constants/website';
 import { groupIconMdPlugin, groupIconVitePlugin } from 'vitepress-plugin-group-icons';
 
 // https://vitepress.dev/reference/site-config
@@ -27,7 +27,7 @@ const configurator = new VitePressConfigurator({
                 docFooter: { prev: '上一篇', next: '下一篇' },
                 footer: {
                     message: undefined,
-                    copyright: `© ${starYear}-${thisYear} <a href="${navifoxHome.link}" target="_blank">${tighnari.name}</a> 版权所有. All Rights Reserved.`,
+                    copyright: `© ${sinceYear}-${untilYear} <a href="${navifoxHome.link}" target="_blank">${tighnari.name}</a> 版权所有. All Rights Reserved.`,
                 },
                 lastUpdated: {
                     text: '最后提交时间',

@@ -7,8 +7,8 @@ import {
     navifoxHome,
     sitemap,
     socials,
-    starYear,
-    thisYear,
+    sinceYear,
+    untilYear,
     tighnari,
 } from '@navifox/constants';
 import { useDark, useToggle } from '@vueuse/core';
@@ -132,7 +132,7 @@ const linkMap = [
                         </a>
                     </p>
                     <p v-show="tighnari.name">
-                        © {{ starYear }}-{{ thisYear }}
+                        © {{ sinceYear }}-{{ untilYear }}
                         <a
                             :href="navifoxHome.link"
                             class="hover:text-orange-500 hover:underline hover:decoration-wavy dark:hover:text-orange-300"
@@ -143,7 +143,7 @@ const linkMap = [
                         版权所有。<br />
                     </p>
                     <p v-show="tighnari.uid">
-                        © {{ starYear }}-{{ thisYear }}
+                        © {{ sinceYear }}-{{ untilYear }}
                         <a
                             :href="navifoxHome.link"
                             class="hover:text-orange-500 hover:underline hover:decoration-wavy dark:hover:text-orange-300"

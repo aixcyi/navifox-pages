@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import FlairButton from '#/components/FlairButton.vue';
 import { Icon } from '@iconify/vue';
-import { copyrightInterval, navifoxDocs, navifoxGuild, projects } from '@navifox/constants';
+import { navifoxDocs, navifoxGuild, projects, sinceYear } from '@navifox/constants';
 import { website } from '@navifox/utils';
 import { useHead } from '@unhead/vue';
 import { useQRCode } from '@vueuse/integrations/useQRCode';
@@ -53,8 +53,8 @@ const qrcode = useQRCode(navifoxGuild.link, { color: { light: '#FFFFFF00', dark:
 const boxStates = {
     产地: navifoxGuild.name,
     包装规格: `${projects.length} 个/盒`,
-    生产日期: `${copyrightInterval.start} 年`,
-    保质期: `${copyrightInterval.start + 1000} 年`,
+    生产日期: `${sinceYear} 年`,
+    保质期: `${sinceYear + 1000} 年`,
 };
 
 gsap.registerPlugin(ScrollTrigger);
