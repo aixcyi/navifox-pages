@@ -1,6 +1,7 @@
 ---
 title: 关于
 aside: false
+lastUpdated: false
 ---
 
 # 关于
@@ -12,3 +13,8 @@ aside: false
 　　本网站与现实作品及创作团队并无任何关联，仅为官方作品设定与二次创作设定的信息汇编，并以友情链接的方式呈现。
 
 
+<script setup lang="ts">
+import Hei from '#/theme/components/Hei.vue';
+</script>
+
+<Hei />

@@ -12,6 +12,7 @@
         "**/node_modules/*",
         "**/dist/*",
         "**/*.md",
+        "**/*.svg",
         ".vscode/*",
         ".idea/*",
         ".agents/*",

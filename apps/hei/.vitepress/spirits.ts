@@ -95,7 +95,7 @@ export const spiritsOC: SpiritInfo[] = [
     },
     {
         name: '拾七',
-        tags: ['吉祥物'],
+        tags: ['一级执行者'],
         avatar: '/assets/spirit/seventeen.jpg',
         link: '/spirit/seventeen',
     },
