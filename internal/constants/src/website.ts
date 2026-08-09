@@ -33,6 +33,9 @@ export const tighnari: Friend = {
     uid: 'aixcyi',
     tags: ['毛茸茸爱好者', '开发工程师', '罗狐会馆馆长'],
     titles: ['Django 高级后端开发', 'Vue3 开发'],
+    avatar: 'https://www.navifox.net/avatar.jpg',
+    avatar256: 'https://www.navifox.net/avatar256.jpg',
+    avatar512: 'https://www.navifox.net/avatar512.jpg',
     description: 'Seeds of stories, brought by the wind and cultivated by time.',
     descriptionRich: 'Seeds of stories,<br/>brought by the wind and cultivated by time.',
     location: '广东 广州',
@@ -58,7 +61,7 @@ export const navifoxGuild: Website = {
 export const navifoxRefs: Website = {
     name: '星笺',
     link: 'https://refs.navifox.net',
-    icon: 'https://www.navifox.net/favicon.ico',
+    icon: navifoxHome.icon,
     description: '狐狸们用小爪子敲出的一页纸快速参考。',
     descriptionRich: '狐狸们用小爪子敲出的<b>一页纸快速参考</b>。',
     author: tighnari.name,
@@ -68,7 +71,7 @@ export const navifoxRefs: Website = {
 export const navifoxBlog: Website = {
     name: '羽音',
     link: 'https://blog.navifox.net',
-    icon: 'https://www.navifox.net/favicon.ico',
+    icon: navifoxHome.icon,
     description: '静谧星夜下不绝如缕的羽音。',
     descriptionRich: '<span>静谧星夜下</span><span>不绝如缕的羽音。</span>',
     author: tighnari.name,
@@ -77,14 +80,14 @@ export const navifoxBlog: Website = {
 export const navifoxDocs: Website = {
     name: '文档月饼盒',
     link: 'https://docs.navifox.net',
-    icon: 'https://www.navifox.net/favicon.ico',
+    icon: navifoxHome.icon,
     description: '收纳展示散落在各个项目仓库的文档。',
     author: tighnari.name,
 };
 export const navifoxHei: Website = {
     name: '蓝溪拾遗',
     link: 'https://hei.navifox.net',
-    icon: 'https://www.navifox.net/favicon.ico',
+    icon: navifoxHome.icon,
     description: '收录罗小黑世界中的原著设定与以此架构的有趣脑洞。',
     author: tighnari.name,
     tags: ['罗小黑', '妖精', '妖灵', '设定', 'OC'],

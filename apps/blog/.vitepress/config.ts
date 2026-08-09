@@ -107,7 +107,7 @@ configurator
         items: [
             { text: '关于', link: '/about' },
             // ...
-            { items: [{ text: '路狐领航', link: 'https://www.navifox.net/' }] },
+            { items: [{ text: navifoxHome.name, link: navifoxHome.link }] },
         ],
     });
 

@@ -1,5 +1,6 @@
 import { VitePressConfigurator, type PageHook } from '@navifox/vitepress';
 import { trimSuffix } from '@navifox/utils/string';
+import { navifoxHome } from '@navifox/constants/website';
 
 // https://vitepress.dev/reference/site-config
 const configurator = new VitePressConfigurator({
@@ -97,7 +98,7 @@ configurator
             { text: '关于', link: '/about' },
             { text: '朝花溪拾指南', link: '/contribute' },
             { text: '妖灵申请表（旧版）', link: '/register' },
-            { items: [{ text: '路狐领航', link: 'https://www.navifox.net/' }] },
+            { items: [{ text: navifoxHome.name, link: navifoxHome.link }] },
         ],
     });
 
