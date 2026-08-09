@@ -14,7 +14,7 @@ lastUpdated: false
 
 
 <script setup lang="ts">
-import Hei from '#/theme/components/Hei.vue';
+import Hei from './Hei.vue';
 </script>
 
 <Hei />

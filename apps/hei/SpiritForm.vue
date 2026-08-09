@@ -63,7 +63,7 @@ const outputMarkdown = computed(() => {
         '',
         `# ${name.value || '妖灵名称'}`,
         '',
-        `<SpiritBanner names="${name.value || '妖灵名称'}" />`,
+        `<SpiritBanner names="${name.value || '妖灵名称'}" copy-only />`,
         '',
     ];
     if (intro.value) {
@@ -73,7 +73,7 @@ const outputMarkdown = computed(() => {
     }
     if (hasAbilities.value) {
         lines.push('## 能力', '');
-        lines.push('| 派系  |     命名     | 注释     |');
+        lines.push('| 流派  |     命名     | 注释     |');
         lines.push('|:-----:|:----------:|------------|');
         for (const r of abilities) {
             if (r.faction || r.sub || r.desc) {

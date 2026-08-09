@@ -4,7 +4,7 @@ layout: page
 ---
 
 <script setup>
-import Spirits from '#/theme/Spirits.vue'
+import Spirits from './Spirits.vue'
 </script>
 
 <Spirits />
