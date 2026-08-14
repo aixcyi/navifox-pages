@@ -1,6 +1,9 @@
 ---
-title: 博客目录
+title: 目录
 outline: false
+lastUpdated: false
+prev: false
+next: false
 ---
 
 <script setup lang="ts">
