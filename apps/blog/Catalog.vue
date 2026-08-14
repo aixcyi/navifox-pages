@@ -95,21 +95,8 @@ const tagCounts = computed(() => {
 <template>
     <div class="catalog">
         <div class="filter-grid">
-            <div class="filter-label">领域</div>
-            <div class="filter-buttons">
-                <button
-                    v-for="d in domains"
-                    :key="d"
-                    :class="['filter-button', { active: selectedDomain === d }]"
-                    :disabled="selectedDomain !== d && (domainCounts.get(d) ?? 0) === 0"
-                    @click="selectDomain(d)"
-                >
-                    {{ d }}<span class="count">{{ domainCounts.get(d) ?? 0 }}</span>
-                </button>
-            </div>
-
             <div class="filter-label">类型</div>
-            <div class="filter-buttons">
+            <div class="filter-buttons filter-buttons-type">
                 <button
                     v-for="c in categories"
                     :key="c"
@@ -121,8 +108,21 @@ const tagCounts = computed(() => {
                 </button>
             </div>
 
+            <div class="filter-label">领域</div>
+            <div class="filter-buttons filter-buttons-domain">
+                <button
+                    v-for="d in domains"
+                    :key="d"
+                    :class="['filter-button', { active: selectedDomain === d }]"
+                    :disabled="selectedDomain !== d && (domainCounts.get(d) ?? 0) === 0"
+                    @click="selectDomain(d)"
+                >
+                    {{ d }}<span class="count">{{ domainCounts.get(d) ?? 0 }}</span>
+                </button>
+            </div>
+
             <div class="filter-label">标签</div>
-            <div class="filter-buttons">
+            <div class="filter-buttons filter-buttons-tag">
                 <button
                     v-for="tag in allTags"
                     :key="tag"
@@ -207,6 +207,22 @@ const tagCounts = computed(() => {
     gap: 0.375rem;
 }
 
+/* 各筛选行的按钮按 post-item 徽章色系着色：领域=品牌红，类型=天蓝，标签=绿色强调 */
+.filter-buttons-domain {
+    --row-color: var(--vp-c-brand-1);
+    --row-soft: var(--vp-c-brand-soft);
+}
+
+.filter-buttons-type {
+    --row-color: var(--post-category-color);
+    --row-soft: var(--filter-type-soft);
+}
+
+.filter-buttons-tag {
+    --row-color: var(--filter-tag-color);
+    --row-soft: var(--filter-tag-soft);
+}
+
 .filter-button {
     display: inline-flex;
     align-items: center;
@@ -229,15 +245,15 @@ const tagCounts = computed(() => {
 }
 
 .filter-button:hover:not(:disabled) {
-    border-color: var(--vp-c-brand-1);
-    color: var(--vp-c-brand-1);
-    background: var(--vp-c-brand-soft);
+    border-color: var(--row-color);
+    color: var(--row-color);
+    background: var(--row-soft);
 }
 
 .filter-button.active {
-    border-color: var(--vp-c-brand-1);
-    background: var(--vp-c-brand-soft);
-    color: var(--vp-c-brand-1);
+    border-color: var(--row-color);
+    background: var(--row-soft);
+    color: var(--row-color);
 }
 
 .filter-button:disabled {
@@ -278,7 +294,7 @@ const tagCounts = computed(() => {
     margin-bottom: 1.5rem;
 }
 
-/* 搜索框聚焦时，分隔线淡入与站点品牌一致的渐变（brand → #41d1ff） */
+/* 搜索框聚焦时，分隔线淡入与渐变色一致（brand → #41d1ff） */
 .divider::after {
     content: '';
     position: absolute;
@@ -352,7 +368,7 @@ const tagCounts = computed(() => {
     border-radius: 5px;
 }
 
-/* 覆盖 .vp-doc a:hover 的品牌色，hover 时内部文字颜色保持不变 */
+/* 覆盖 .vp-doc a:hover 的主题色，hover 时内部文字颜色保持不变 */
 .post-item:hover {
     color: inherit;
 }
@@ -410,7 +426,9 @@ const tagCounts = computed(() => {
 }
 
 .post-category {
-    border: 1px solid var(--vp-c-divider);
+    /* 采用渐变的另一色（brand → #41d1ff），按深浅主题适配，变量定义见 theme/style.css */
+    border: 1px solid var(--post-category-color);
+    color: var(--post-category-color);
 }
 
 .post-excerpt {
