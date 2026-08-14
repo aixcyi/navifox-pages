@@ -44,7 +44,13 @@
  * -------------------------------------------------------------------------- */
 
 :root {
-    /* PASS */
+    /* Catppuccin 主题没有重写 --vp-c-brand-soft，默认仍是 VitePress 的海蓝
+       indigo-soft，改为桃橙微染（同 --vp-badge-tip-bg 的 hsla 色相） */
+    --vp-c-brand-soft: hsla(22, 99%, 52%, 0.14);
+}
+
+.dark {
+    --vp-c-brand-soft: hsla(21, 85%, 73%, 0.16);
 }
 
 /**
