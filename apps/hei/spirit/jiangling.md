@@ -3,13 +3,16 @@ title: 绛棂
 outline: deep
 ---
 
-# 绛棂
+<h1>
+    绛
+    <sup style="font-size: 12px; vertical-align: super">绛浔云吞月</sup>
+    <sub style="font-size: 12px">华光一綏棂</sub>
+    棂
+</h1>
 
 <SpiritBanner names="绛棂" copy-only />
 
-> 　　曾经对人类犯下的错我不想在犯了……
->
-> 　　有了师父才惊觉以前可笑的日子只不过是为了现在安稳自在的日子挂个彩。
+> 　　曾经对人类犯下的错我不想在犯了……有了师父才惊觉以前可笑的日子只不过是为了现在安稳自在的日子挂个彩。
 >
 > <p style="text-align: end">——敬活下来的日子</p>
 
