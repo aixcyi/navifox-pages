@@ -88,16 +88,16 @@ configurator
     .pushSocial({ ariaLabel: 'GitHub 仓库', icon: 'github', link: 'https://github.com/aixcyi/navifox-pages' })
     .autoSidebar('/guild/', './guild/', { pageHook: pageHookOrdered, deep: true })
     .autoSidebar('/spirit/', './spirit/', { pageHook: pageHookOrdered, deep: true })
-    .pushNavLink({ text: '妖灵卷', link: '/spirit', activeMatch: '/spirit/' })
-    .pushNavLink({ text: '会馆卷', link: '/guild/cangnan', activeMatch: '/guild/' })
-    .pushNavLink({ text: '术语表', link: '/glossary', activeMatch: '/glossary/' })
-    .pushNavLink({ text: '抄本', link: '/copied', activeMatch: '/copied/' })
+    .autoNavLink({ link: '/spirit', activeMatch: '/spirit/' })
+    .autoNavLink({ link: '/guild', activeMatch: '/guild/' }, '/guild/cangnan')
+    .autoNavLink({ link: '/glossary', activeMatch: '/glossary/' })
+    .autoNavLink({ link: '/copied', activeMatch: '/copied/' })
     .pushNavMenu({
         text: '附录',
         items: [
-            { text: '关于', link: '/about' },
-            { text: '朝花溪拾指南', link: '/contribute' },
-            { text: '妖灵申请表（旧版）', link: '/register' },
+            configurator.findNavLink({ link: '/about' }),
+            configurator.findNavLink({ link: '/contribute' }),
+            configurator.findNavLink({ link: '/register' }),
             { items: [{ text: navifoxHome.name, link: navifoxHome.link }] },
         ],
     });

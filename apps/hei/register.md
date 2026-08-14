@@ -1,5 +1,5 @@
 ---
-title: 妖灵申请表
+title: 妖灵申请表（旧版）
 aside: false
 ---
 

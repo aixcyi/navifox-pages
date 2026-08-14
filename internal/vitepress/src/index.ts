@@ -225,6 +225,88 @@ export class VitePressConfigurator {
     }
 
     /**
+     * 查找并返回一个导航（链接）。
+     *
+     * 根据 `link` 查找对应的 Markdown 页面并读取 frontmatter 中的 `title` 作为
+     * `NavItemWithLink` 结构（入参必须缺失）的 `text` 字段，其余字段将原样保留。
+     *
+     * ```ts
+     * configurator.pushNavLink(
+     *     configurator.findNavLink(
+     *         { link: '/posts' }
+     *     )
+     * );
+     * configurator.pushNavLink(
+     *     configurator.findNavLink(
+     *         { link: '/archive', activeMatch: '/archive/' }
+     *     )
+     * );
+     * configurator.pushNavMenu({
+     *     text: '更多',
+     *     items: [
+     *         configurator.findNavLink({ link: '/friends' }),
+     *         { text: '路狐领航', link: 'https://www.navifox.net' },
+     *     ]
+     * });
+     * ```
+     *
+     * @param nav 导航。`link` 字段必须为字符串类型。
+     * @param goto 可选，返回的 `link` 将替换为该值（哪怕是空字符串）。
+     * @returns 补全后的导航链接项。
+     * @throws Error `link` 找不到对应的 Markdown 页面。
+     */
+    public findNavLink(
+        nav: Omit<DefaultTheme.NavItemWithLink, 'text' | 'link'> & { link: string },
+        goto?: string,
+    ): DefaultTheme.NavItemWithLink {
+        const { link, ...rest } = nav;
+        const target = link
+            .replace(/^\/+/, '')
+            .replace(/\/+$/, '')
+            .replace(/\.html$/, '');
+        const page = this.pages.find(
+            (p) =>
+                p.url === target ||
+                p.url === `${target}.html` ||
+                p.url === `${target}/index.html` ||
+                p.url === `${target}/`,
+        );
+        if (!page) {
+            throw new Error(`找不到链接 "${link}" 对应的 Markdown 页面。`);
+        }
+        return {
+            ...rest,
+            link: goto ?? link,
+            text: page.frontmatter.title,
+        };
+    }
+
+    /**
+     * 自动追加一个导航（链接）。
+     *
+     * 根据 `link` 查找对应的 Markdown 页面并读取 frontmatter 中的 `title` 作为
+     * `NavItemWithLink` 结构（入参必须缺失）的 `text` 字段，其余字段将原样保留，
+     * 然后追加到 `themeConfig.nav`。
+     *
+     * 等价于 `pushNavLink(findNavLink(nav, goto))`。
+     *
+     * ```ts
+     * configurator.autoNavLink({ link: '/spirit', activeMatch: '/spirit/' });
+     * configurator.autoNavLink({ link: '/guild', activeMatch: '/guild/' }, '/guild/cangnan');
+     * ```
+     *
+     * @param nav 导航。`link` 字段必须为字符串类型。
+     * @param goto 可选，返回的 `link` 将替换为该值（哪怕是空字符串）。
+     * @throws Error `link` 找不到对应的 Markdown 页面。
+     */
+    public autoNavLink(
+        nav: Omit<DefaultTheme.NavItemWithLink, 'text' | 'link'> & { link: string },
+        goto?: string,
+    ): this {
+        return this.pushNavLink(this.findNavLink(nav, goto));
+    }
+
+    /**
      * 自动追加一批导航（链接），平铺在导航栏上。
      *
      * @param dir 需要搜索哪个目录下的 Markdown。
