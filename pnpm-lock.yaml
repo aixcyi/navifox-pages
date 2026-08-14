@@ -370,6 +370,9 @@ importers:
       '@types/markdown-it':
         specifier: 'catalog:'
         version: 14.1.2
+      bestzip:
+        specifier: 'catalog:'
+        version: 3.0.1
       es-toolkit:
         specifier: 'catalog:'
         version: 1.49.0

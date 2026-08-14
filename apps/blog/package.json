@@ -19,6 +19,7 @@
     "devDependencies": {
         "@napi-rs/pinyin": "^1.7.7",
         "@types/markdown-it": "catalog:",
+        "bestzip": "catalog:",
         "es-toolkit": "catalog:",
         "markdown-it": "catalog:",
         "markdown-it-mathjax3": "catalog:",
