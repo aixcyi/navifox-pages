@@ -20,7 +20,7 @@ onContentUpdated(() => {
 </script>
 
 <template>
-    <div class="AiDocAsideMeta">
+    <div class="AiDocAsideMeta" v-if="$frontmatter.createAt">
         <div class="content">
             <div class="meta-title">信息</div>
             <dl class="meta-list">
