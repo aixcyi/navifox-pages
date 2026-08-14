@@ -1,7 +1,7 @@
 {
     "$schema": "https://json.schemastore.org/tsconfig",
     "extends": "@navifox/tsconfig/web.json",
-    "include": ["*.ts", "*.vue"],
+    "include": ["*.ts", "*.vue", ".vitepress/**/*.ts", ".vitepress/**/*.vue"],
     "exclude": ["node_modules"],
     "compilerOptions": {
         "baseUrl": ".",

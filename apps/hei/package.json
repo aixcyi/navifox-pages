@@ -6,7 +6,8 @@
     "scripts": {
         "build": "vitepress build && cd dist && bestzip ../dist.zip *",
         "dev": "vitepress dev",
-        "preview": "vitepress preview"
+        "preview": "vitepress preview",
+        "typecheck": "vue-tsc --noEmit --skipLibCheck"
     },
     "dependencies": {
         "@catppuccin/vitepress": "catalog:",
@@ -26,6 +27,7 @@
         "markdown-it": "catalog:",
         "path-to-regexp": "catalog:",
         "vite": "catalog:",
-        "vitepress": "catalog:"
+        "vitepress": "catalog:",
+        "vue-tsc": "catalog:"
     }
 }

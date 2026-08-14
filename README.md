@@ -233,4 +233,4 @@ SyncPack 也有格式化 `package.json` 的能力，不过还是统一用 oxfmt 
 
 ### 类型检查
 
-使用 `pnpm run typecheck` 对所有子项目执行 TypeScript 类型检查（`vue-tsc --noEmit --skipLibCheck`）。注意 `hei` 和 `blog` 是 VitePress 项目，内部已自行处理 TypeScript，不参与此项检查。
+使用 `pnpm run typecheck` 对所有子项目（包括 VitePress 项目 `hei` 与 `blog`）执行 TypeScript 类型检查（`vue-tsc --noEmit --skipLibCheck`）。
