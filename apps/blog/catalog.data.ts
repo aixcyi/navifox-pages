@@ -9,7 +9,7 @@ export interface Post {
     title: string;
     tags: string[];
     domain: string;
-    category: string;
+    genre: string;
     excerpt: string;
     createAt: string;
     updateAt: string | null;
@@ -18,7 +18,7 @@ export interface Post {
 export interface CatalogData {
     posts: Post[];
     domains: string[];
-    categories: string[];
+    genres: string[];
     tags: string[];
 }
 
@@ -40,19 +40,19 @@ export default createContentLoader(pattern, {
                 url: page.url,
                 title: page.frontmatter.title,
                 domain: page.frontmatter.domain || '(未归类)',
-                category: page.frontmatter.category || '(未归类)',
+                genre: page.frontmatter.genre || '(未归类)',
                 tags: page.frontmatter.tags || [],
                 excerpt: page.frontmatter.excerpt ? mdit.renderInline(page.frontmatter.excerpt) : '',
                 createAt: page.frontmatter.createAt,
                 updateAt: page.frontmatter.updateAt ?? null,
             }));
 
-        const categories = [...new Set(posts.map((p) => p.category))].sort((a, b) => a.localeCompare(b));
+        const genres = [...new Set(posts.map((p) => p.genre))].sort((a, b) => a.localeCompare(b));
         const domains = [...new Set(posts.map((p) => p.domain))].sort((a, b) => a.localeCompare(b));
         const tags = [...new Set(posts.flatMap((p) => p.tags))].sort((a, b) =>
             pinyin(a).join('').localeCompare(pinyin(b).join('')),
         );
 
-        return { posts, domains, categories, tags };
+        return { posts, domains, genres, tags };
     },
 });

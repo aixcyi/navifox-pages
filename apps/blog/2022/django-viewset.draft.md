@@ -3,8 +3,8 @@ navTitle: Django 及衍生的类视图
 title: 浅析 Django 及衍生的类视图
 outline: deep
 createAt: 2022-10-11 11:52
-category: 思考
 domain: 框架
+genre: 思考
 tags:
     - Django
 excerpt:

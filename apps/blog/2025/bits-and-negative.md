@@ -2,8 +2,8 @@
 title: Python 中的负数与比特位
 outline: deep
 createAt: 2025-03-14 15:09
-category: 思考
 domain: 语言
+genre: 思考
 tags:
     - Python
     - 设计

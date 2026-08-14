@@ -2,8 +2,8 @@
 title: 默认值导致抽象泄漏
 outline: false
 createAt: 2024-01-30 23:42
-category: 思考
 domain: 语言
+genre: 思考
 tags:
     - 设计
     - Python

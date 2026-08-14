@@ -1,8 +1,8 @@
 ---
 title: Java 运算精度
 createAt: 2019-11-20 21:26
-category: 思考
 domain: 语言
+genre: 思考
 tags:
     - Java
     - 类型系统

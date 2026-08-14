@@ -1,8 +1,8 @@
 ---
 title: 理解矩阵转置及矩阵转置算法
 createAt: 2016-08-24 22:31
-category: 思考
 domain: 算法
+genre: 思考
 tags:
     - 算法
     - 易语言

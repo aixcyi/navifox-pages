@@ -2,8 +2,8 @@
 title: date 格式化失败
 outline: deep
 createAt: 2023-11-14 23:32
-category: 复盘
 domain: 语言
+genre: 复盘
 tags:
     - Python
     - 兼容

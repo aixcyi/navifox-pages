@@ -1,8 +1,8 @@
 ---
 title: 设置 JetBrains IDE 的语言
 createAt: 2024-12-30 00:55
-category: 教程
 domain: 工程
+genre: 教程
 tags:
     - i18n
     - JetBrains IDE

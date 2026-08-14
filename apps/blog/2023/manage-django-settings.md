@@ -1,8 +1,8 @@
 ---
 title: 管理 Django Settings
 createAt: 2023-12-21 11:48
-category: 教程
 domain: 框架
+genre: 教程
 tags:
     - Django
     - 配置

@@ -1,8 +1,8 @@
 ---
 title: 为自身定义 copy 方法
 createAt: 2022-08-17 00:04
-category: 教程
 domain: 语言
+genre: 教程
 tags:
     - Python
     - 浅拷贝

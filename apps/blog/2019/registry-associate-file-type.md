@@ -1,8 +1,8 @@
 ---
 title: 注册表：文件关联与关联文件
 createAt: 2019-01-28 12:06
-category: 笔记
 domain: 系统
+genre: 笔记
 tags:
     - 运维
     - 注册表

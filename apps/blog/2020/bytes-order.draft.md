@@ -1,8 +1,8 @@
 ---
 title: 两种字节序的直观比较
 createAt: 2020-02-22 16:45
-category: 思考
 domain: 语言
+genre: 思考
 tags:
     - 字节序
     - 易语言

@@ -1,8 +1,8 @@
 ---
 title: 避免 Decimal 溢出
 createAt: 2025-01-14 14:49
-category: 复盘
 domain: 框架
+genre: 复盘
 tags:
     - Django
     - 序列化

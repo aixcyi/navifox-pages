@@ -3,10 +3,10 @@ import { computed, ref } from 'vue';
 import type { Post } from './catalog.data';
 import { data } from './catalog.data';
 
-const { posts, domains, categories, tags: allTags } = data;
+const { posts, domains, genres, tags: allTags } = data;
 
 const selectedDomain = ref<string | null>(null);
-const selectedCategory = ref<string | null>(null);
+const selectedGenre = ref<string | null>(null);
 const selectedTags = ref<string[]>([]);
 const searchQuery = ref('');
 const searchFocused = ref(false); // 搜索框是否聚焦：用于联动上下分隔线变色
@@ -15,8 +15,8 @@ function selectDomain(domain: string | null) {
     selectedDomain.value = selectedDomain.value === domain ? null : domain;
 }
 
-function selectCategory(cat: string | null) {
-    selectedCategory.value = selectedCategory.value === cat ? null : cat;
+function selectGenre(genre: string | null) {
+    selectedGenre.value = selectedGenre.value === genre ? null : genre;
 }
 
 function toggleTag(tag: string) {
@@ -35,8 +35,8 @@ const filteredPosts = computed<Post[]>(() => {
         result = result.filter((p) => p.domain === selectedDomain.value);
     }
 
-    if (selectedCategory.value) {
-        result = result.filter((p) => p.category === selectedCategory.value);
+    if (selectedGenre.value) {
+        result = result.filter((p) => p.genre === selectedGenre.value);
     }
 
     if (selectedTags.value.length > 0) {
@@ -58,7 +58,7 @@ const filteredPosts = computed<Post[]>(() => {
 
 const domainCounts = computed(() => {
     let base: Post[] = posts;
-    if (selectedCategory.value) base = base.filter((p) => p.category === selectedCategory.value);
+    if (selectedGenre.value) base = base.filter((p) => p.genre === selectedGenre.value);
     if (selectedTags.value.length > 0) base = base.filter((p) => selectedTags.value.every((t) => p.tags.includes(t)));
     const count = new Map<string, number>();
     for (const p of base) {
@@ -67,13 +67,13 @@ const domainCounts = computed(() => {
     return count;
 });
 
-const categoryCounts = computed(() => {
+const genreCounts = computed(() => {
     let base: Post[] = posts;
     if (selectedDomain.value) base = base.filter((p) => p.domain === selectedDomain.value);
     if (selectedTags.value.length > 0) base = base.filter((p) => selectedTags.value.every((t) => p.tags.includes(t)));
     const count = new Map<string, number>();
     for (const p of base) {
-        count.set(p.category, (count.get(p.category) || 0) + 1);
+        count.set(p.genre, (count.get(p.genre) || 0) + 1);
     }
     return count;
 });
@@ -81,7 +81,7 @@ const categoryCounts = computed(() => {
 const tagCounts = computed(() => {
     let base: Post[] = posts;
     if (selectedDomain.value) base = base.filter((p) => p.domain === selectedDomain.value);
-    if (selectedCategory.value) base = base.filter((p) => p.category === selectedCategory.value);
+    if (selectedGenre.value) base = base.filter((p) => p.genre === selectedGenre.value);
     const count = new Map<string, number>();
     for (const p of base) {
         for (const t of p.tags) {
@@ -96,15 +96,15 @@ const tagCounts = computed(() => {
     <div class="catalog">
         <div class="filter-grid">
             <div class="filter-label">类型</div>
-            <div class="filter-buttons filter-buttons-type">
+            <div class="filter-buttons filter-buttons-genre">
                 <button
-                    v-for="c in categories"
+                    v-for="c in genres"
                     :key="c"
-                    :class="['filter-button', { active: selectedCategory === c }]"
-                    :disabled="selectedCategory !== c && (categoryCounts.get(c) ?? 0) === 0"
-                    @click="selectCategory(c)"
+                    :class="['filter-button', { active: selectedGenre === c }]"
+                    :disabled="selectedGenre !== c && (genreCounts.get(c) ?? 0) === 0"
+                    @click="selectGenre(c)"
                 >
-                    {{ c }}<span class="count">{{ categoryCounts.get(c) ?? 0 }}</span>
+                    {{ c }}<span class="count">{{ genreCounts.get(c) ?? 0 }}</span>
                 </button>
             </div>
 
@@ -170,7 +170,7 @@ const tagCounts = computed(() => {
                     <span class="post-title">{{ post.title }}</span>
                     <span class="post-meta">
                         <span class="post-domain">{{ post.domain }}</span>
-                        <span class="post-category">{{ post.category }}</span>
+                        <span class="post-genre">{{ post.genre }}</span>
                         <span class="post-date">{{ post.createAt.slice(0, 10) }}</span>
                     </span>
                     <span v-if="post.excerpt" class="post-excerpt" v-html="post.excerpt"></span>
@@ -213,9 +213,9 @@ const tagCounts = computed(() => {
     --row-soft: var(--vp-c-brand-soft);
 }
 
-.filter-buttons-type {
-    --row-color: var(--post-category-color);
-    --row-soft: var(--filter-type-soft);
+.filter-buttons-genre {
+    --row-color: var(--post-genre-color);
+    --row-soft: var(--filter-genre-soft);
 }
 
 .filter-buttons-tag {
@@ -414,7 +414,7 @@ const tagCounts = computed(() => {
 }
 
 .post-domain,
-.post-category {
+.post-genre {
     border-radius: 3px;
     padding: 0 0.375rem;
     font-size: 0.7rem;
@@ -425,10 +425,10 @@ const tagCounts = computed(() => {
     color: var(--vp-c-brand-1);
 }
 
-.post-category {
+.post-genre {
     /* 采用渐变的另一色（brand → #41d1ff），按深浅主题适配，变量定义见 theme/style.css */
-    border: 1px solid var(--post-category-color);
-    color: var(--post-category-color);
+    border: 1px solid var(--post-genre-color);
+    color: var(--post-genre-color);
 }
 
 .post-excerpt {

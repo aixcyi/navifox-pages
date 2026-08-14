@@ -43,7 +43,7 @@ onContentUpdated(() => {
                     <dt class="meta-label">关联标签</dt>
                     <dd class="meta-value vp-doc tags">
                         <span v-if="$frontmatter.domain">{{ $frontmatter.domain }}</span>
-                        <span v-if="$frontmatter.category">{{ $frontmatter.category }}</span>
+                        <span v-if="$frontmatter.genre">{{ $frontmatter.genre }}</span>
                         <span v-for="tag in $frontmatter.tags">{{ tag }}</span>
                     </dd>
                 </template>

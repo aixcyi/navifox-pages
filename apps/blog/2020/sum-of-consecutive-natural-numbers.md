@@ -1,8 +1,8 @@
 ---
 title: 连续自然数之和
 createAt: 2020-04-06 12:53
-category: 教程
 domain: 算法
+genre: 教程
 tags:
     - 算法
 excerpt:

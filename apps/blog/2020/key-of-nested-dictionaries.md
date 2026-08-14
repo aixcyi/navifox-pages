@@ -1,8 +1,8 @@
 ---
 title: 字典添加二级键值的问题
 createAt: 2020-12-19 17:19
-category: 复盘
 domain: 语言
+genre: 复盘
 tags:
   - Python
   - 类型系统

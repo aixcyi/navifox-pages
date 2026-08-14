@@ -3,8 +3,8 @@ title: 类与类型
 outline: false
 createAt: 2023-12-22 11:03
 updateAt: 2024-12-27 17:54
-category: 思考
 domain: 语言
+genre: 思考
 tags:
     - 类型系统
     - 设计

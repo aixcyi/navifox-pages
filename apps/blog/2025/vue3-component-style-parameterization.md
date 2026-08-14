@@ -2,8 +2,8 @@
 title: Vue 3 组件样式参数化
 outline: deep
 createAt: 2025-08-13 10:14
-category: 选型
 domain: 框架
+genre: 选型
 tags:
     - Vue 3
 excerpt:
