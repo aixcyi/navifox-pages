@@ -3,8 +3,9 @@ title: 使用乘号复制变量引起的问题
 outline: deep
 createAt: 2020-12-20 23:29
 expired: 1000
+category: 复盘
+domain: 语言
 tags:
-    - 开发
     - Python
     - 浅拷贝
 excerpt:

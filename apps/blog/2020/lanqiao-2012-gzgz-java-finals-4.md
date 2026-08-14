@@ -1,6 +1,8 @@
 ---
 title: Excel 地址转换
 createAt: 2020-01-20 15:09
+category: 实践
+domain: 算法
 tags:
     - 算法
     - 蓝桥杯

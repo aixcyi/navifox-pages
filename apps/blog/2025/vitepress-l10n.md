@@ -3,11 +3,11 @@ title: VitePress 汉化摘要
 outline: deep
 createAt: 2025-03-12 15:20
 updateAt: 2025-03-21 15:41
-expires: 1096
+category: 笔记
+domain: 工程
 tags:
-    - 开发
     - VitePress
-    - L10N
+    - i18n
 excerpt:
     VitePress 没有自带翻译，一些不可避免展示文字的地方会使用英文，需要汉化时可以参考本文进行配置。
 ---

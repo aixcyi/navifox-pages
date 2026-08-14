@@ -2,9 +2,9 @@
 title: Vue 3 组件样式参数化
 outline: deep
 createAt: 2025-08-13 10:14
-expires: 1096
+category: 选型
+domain: 框架
 tags:
-    - 开发
     - Vue 3
 excerpt:
     有时候可能希望同一个 Vue 组件有不同的颜色（样式），本文对比了两种实现方法。

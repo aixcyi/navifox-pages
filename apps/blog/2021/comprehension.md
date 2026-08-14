@@ -3,12 +3,12 @@ navTitle: 推导式
 title: Python 推导式
 outline: deep
 createAt: 2021-11-05 00:00
-expires: 3650
+category: 教程
+domain: 语言
 tags:
-    - 开发
-    - Python
-    - 数组 集合 映射
-    - 语法特性
+  - Python
+  - 语法特性
+  - 类型系统
 excerpt:
     推导式又叫生成式，是一种用于生成序列、集合、映射的语句。本文用直观的方式向读者解释其语法。
 ---

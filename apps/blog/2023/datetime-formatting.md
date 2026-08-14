@@ -2,9 +2,9 @@
 title: date 格式化失败
 outline: deep
 createAt: 2023-11-14 23:32
-expires: 1096
+category: 复盘
+domain: 语言
 tags:
-    - 开发
     - Python
     - 兼容
     - Windows

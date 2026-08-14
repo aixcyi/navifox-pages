@@ -1,14 +1,13 @@
 ---
 title: 避免 Decimal 溢出
 createAt: 2025-01-14 14:49
-expires: 1096
+category: 复盘
+domain: 框架
 tags:
-    - DRF
-    - 开发
+    - Django
     - 序列化
     - 测试
     - Python
-    - Django
     - 小数
 excerpt:
     后端使用 Decimal 时，前端应当配合传递 string 而非 number，否则会从数据源就可能出现过长的小数，导致排查链路过长或者问题反复出现。

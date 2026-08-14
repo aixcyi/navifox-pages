@@ -1,9 +1,9 @@
 ---
 title: 注册表：文件关联与关联文件
 createAt: 2019-01-28 12:06
-expires: 1096
+category: 笔记
+domain: 工程
 tags:
-    - 开发
     - 运维
     - 注册表
 excerpt:

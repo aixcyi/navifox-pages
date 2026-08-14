@@ -13,9 +13,14 @@
         "@navifox/constants": "workspace:*",
         "@navifox/utils": "workspace:*",
         "@navifox/vitepress": "workspace:*",
+        "date-fns": "catalog:",
         "vue": "catalog:"
     },
     "devDependencies": {
+        "@napi-rs/pinyin": "^1.7.7",
+        "@types/markdown-it": "catalog:",
+        "es-toolkit": "catalog:",
+        "markdown-it": "catalog:",
         "markdown-it-mathjax3": "catalog:",
         "vite": "catalog:",
         "vitepress": "catalog:",

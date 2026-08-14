@@ -1,40 +1,22 @@
 <script setup lang="ts">
-import { computed } from 'vue';
-import { useData } from 'vitepress';
-import { tighnari, navifoxHome } from '@navifox/constants/website';
+import { ref } from 'vue';
+import { useData, onContentUpdated } from 'vitepress';
+import { parse, differenceInDays } from 'date-fns';
 
-const { frontmatter } = useData();
+const $frontmatter = useData().frontmatter;
+const revisionAge = ref<number>(0); // days
 
-function parseDate(key: string): string | null {
-    const raw = frontmatter.value[key];
-    if (!raw) return null;
-    const date = new Date(raw);
-    if (Number.isNaN(date.getTime())) return null;
-    return date.toLocaleDateString('zh-CN', {
-        year: 'numeric',
-        month: '2-digit',
-        day: '2-digit',
-        weekday: 'long',
-    });
-}
-
-function parseAuthor(key: string): { name: string; link?: string } {
-    const raw = frontmatter.value[key];
-    if (!raw) return { name: tighnari.name, link: navifoxHome.link };
-    const match = raw.match(/^(.+?)\s*<(.+@.+)>$/);
-    if (match) {
-        return { name: match[1]!.trim(), link: `mailto:${match[2]!.trim()}` };
+onContentUpdated(() => {
+    const matter = $frontmatter.value;
+    const current = Date.now();
+    const created = matter.createAt ? parse(matter.createAt, 'yyyy-MM-dd HH:mm', new Date()) : undefined;
+    const updated = matter.updateAt ? parse(matter.updateAt, 'yyyy-MM-dd HH:mm', new Date()) : undefined;
+    if (updated) {
+        revisionAge.value = differenceInDays(current, updated);
+    } else if (created) {
+        revisionAge.value = differenceInDays(current, created);
     }
-    if (raw.includes('@')) {
-        return { name: raw.trim(), link: `mailto:${raw.trim()}` };
-    }
-    return { name: raw.trim() };
-}
-
-const createAt = computed(() => parseDate('createAt'));
-const updateAt = computed(() => parseDate('updateAt'));
-const author = computed(() => parseAuthor('author')); // FUTURE: author 还是 authors？还是都兼容？
-const tags = computed(() => frontmatter.value.tags ?? []);
+});
 </script>
 
 <template>
@@ -42,42 +24,43 @@ const tags = computed(() => frontmatter.value.tags ?? []);
         <div class="content">
             <div class="meta-title">信息</div>
             <dl class="meta-list">
-                <template v-if="createAt">
+                <template v-if="$frontmatter.createAt">
                     <dt class="meta-label">创作时间</dt>
-                    <dd class="meta-value">{{ createAt }}</dd>
+                    <dd class="meta-value">{{ $frontmatter.createAt }}</dd>
                 </template>
 
-                <template v-if="createAt && updateAt">
+                <template v-if="$frontmatter.createAt && $frontmatter.updateAt">
                     <dt class="meta-label">修订时间</dt>
-                    <dd class="meta-value">{{ updateAt }}</dd>
+                    <dd class="meta-value">{{ $frontmatter.updateAt }}</dd>
                 </template>
 
-                <template v-if="author.name">
-                    <dt class="meta-label">文章作者</dt>
-                    <dd class="meta-value vp-doc">
-                        <a :href="author.link" target="_blank" rel="noopener noreferrer">{{ author.name }}</a>
-                    </dd>
+                <template v-if="$frontmatter.createAt || $frontmatter.updateAt">
+                    <dt class="meta-label">已逝年华</dt>
+                    <dd class="meta-value">{{ revisionAge }} 天</dd>
                 </template>
 
-                <template v-if="tags">
-                    <dt class="meta-label">文章标签</dt>
+                <template v-if="$frontmatter.tags?.length">
+                    <dt class="meta-label">关联标签</dt>
                     <dd class="meta-value vp-doc tags">
-                        <span v-for="tag in tags">{{ tag }}</span>
+                        <span v-if="$frontmatter.domain">{{ $frontmatter.domain }}</span>
+                        <span v-if="$frontmatter.category">{{ $frontmatter.category }}</span>
+                        <span v-for="tag in $frontmatter.tags">{{ tag }}</span>
                     </dd>
                 </template>
             </dl>
+        </div>
+        <div class="content">
+            <div class="meta-title">简介</div>
+            <dl class="meta-value vp-doc"><div v-html="$frontmatter.excerpt" /></dl>
         </div>
     </div>
 </template>
 
 <style scoped>
-.AiDocAsideMeta {
-    margin-bottom: 16px;
-}
-
 .content {
     position: relative;
     border-left: 1px solid var(--vp-c-divider);
+    margin-bottom: 16px;
     padding-left: 16px;
     font-size: 13px;
     font-weight: 500;
@@ -121,21 +104,24 @@ const tags = computed(() => frontmatter.value.tags ?? []);
 
 .tags span {
     display: inline-block;
-    padding: 2px 8px;
-    font-size: 11px;
+    font-size: 12px;
     font-weight: 500;
-    line-height: 18px;
-    color: var(--vp-c-text-3);
-    background-color: transparent;
-    border: 1px solid var(--vp-c-divider);
-    border-radius: 3px;
-    transition:
-        color 0.25s,
-        border-color 0.25s;
+    line-height: 20px;
+    transition: color 0.25s;
+    color: var(--vp-c-text-2);
 }
 
 .tags span:hover {
     color: var(--vp-c-brand-1);
-    border-color: var(--vp-c-brand-2);
+}
+
+.tags span::before {
+    content: '# ';
+    transition: color 0.25s;
+    color: var(--vp-c-text-3);
+}
+
+.tags span:hover::before {
+    color: var(--vp-c-brand-3);
 }
 </style>

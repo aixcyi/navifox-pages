@@ -2,12 +2,11 @@
 title: 针对不同对象抛出不同 KeyError
 outline: deep
 createAt: 2025-05-31 22:26
-expires: 1096
+category: 实践
+domain: 语言
 tags:
-    - 开发
-    - Python
-    - 类型系统
-    - 数组 集合 映射
+  - Python
+  - 类型系统
 excerpt:
     '在有些情况下，你可能需要在访问 **不同的字典对象** 时抛出不同的 `KeyError` 来进行不同的提示。'
 ---

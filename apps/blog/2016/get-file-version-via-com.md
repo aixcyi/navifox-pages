@@ -1,12 +1,11 @@
 ---
 title: 使用COM对象取文件版本
 createAt: 2016-08-22 15:06
-expires: 1096
+category: 笔记
+domain: 工程
 tags:
-    - 开发
     - 易语言
     - COM
-    - API
 excerpt:
 ---
 

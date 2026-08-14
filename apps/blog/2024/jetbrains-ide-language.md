@@ -1,11 +1,11 @@
 ---
 title: 设置 JetBrains IDE 的语言
 createAt: 2024-12-30 00:55
-expires: 1096
+category: 教程
+domain: 工程
 tags:
-    - 开发
     - i18n
-    - IntelliJ IDE
+    - JetBrains IDE
     - 配置
 excerpt:
     帮助新手修改包括 PyCharm、IDEA、WebStorm、GoLand、PhpStorm 等集成开发环境（IDE）的语言。

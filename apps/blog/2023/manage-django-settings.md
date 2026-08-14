@@ -1,10 +1,9 @@
 ---
 title: 管理 Django Settings
 createAt: 2023-12-21 11:48
-expires: 1096
+category: 教程
+domain: 框架
 tags:
-    - 开发
-    - 测试
     - Django
     - 配置
 excerpt:

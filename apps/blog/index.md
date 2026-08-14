@@ -6,7 +6,7 @@ titleTemplate: false
 
 hero:
   name: "Seraphonogram"
-  text: "静谧星夜下\n不绝如缕的羽音"
+  text: "空羽复归之初音"
   tagline: "一只毛茸茸爱好者的博客，整洁、纯粹、温暖"
   actions:
     - theme: brand

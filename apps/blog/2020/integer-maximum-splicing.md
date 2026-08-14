@@ -1,6 +1,8 @@
 ---
 title: 多个整数连接为最大整数问题
 createAt: 2020-03-13 15:08
+category: 实践
+domain: 算法
 tags:
     - 算法
 excerpt:

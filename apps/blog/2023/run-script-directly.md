@@ -3,7 +3,8 @@ title: 直接运行 Python 脚本
 outline: deep
 createAt: 2023-09-05 23:32
 updateAt: 2024-01-03 09:44
-expires: 365
+category: 教程
+domain: 工程
 tags:
     - 运维
     - Python

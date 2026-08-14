@@ -2,9 +2,9 @@
 title: Django OAuth Toolkit 令牌机制
 outline: deep
 createAt: 2024-02-20 11:55
-expires: 1096
+category: 思考
+domain: 框架
 tags:
-    - 开发
     - Django
     - 协议
     - ORM

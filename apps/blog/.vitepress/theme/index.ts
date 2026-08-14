@@ -15,7 +15,7 @@ export default {
             'aside-outline-before': () => h(AiDocAsideMeta),
         });
     },
-    enhanceApp({ app, router, siteData }) {
+    enhanceApp() {
         // ...
     },
 } satisfies Theme;

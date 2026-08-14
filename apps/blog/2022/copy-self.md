@@ -1,9 +1,9 @@
 ---
 title: 为自身定义 copy 方法
 createAt: 2022-08-17 00:04
-expires: 1096
+category: 教程
+domain: 语言
 tags:
-    - 开发
     - Python
     - 浅拷贝
 excerpt:

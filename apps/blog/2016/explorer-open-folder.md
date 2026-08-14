@@ -1,9 +1,9 @@
 ---
 title: 通过命令行打开文件夹
 createAt: 2016-09-23 17:57
-expires: 1096
+category: 笔记
+domain: 工程
 tags:
-    - 开发
     - 易语言
     - shell
 excerpt:

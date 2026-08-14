@@ -2,7 +2,8 @@
 title: 十进制转任意进制与 yield
 outline: deep
 createAt: 2022-08-18 00:10
-expires: 1096
+category: 教程
+domain: 算法
 tags:
     - 算法
     - 进位制

@@ -1,11 +1,11 @@
 ---
 title: 字典添加二级键值的问题
 createAt: 2020-12-19 17:19
-expires: 1096
+category: 复盘
+domain: 语言
 tags:
-    - 开发
-    - Python
-    - 数组 集合 映射
+  - Python
+  - 类型系统
 excerpt:
 ---
 

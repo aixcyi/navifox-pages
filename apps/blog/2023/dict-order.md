@@ -2,12 +2,13 @@
 navTitle: 字典中，键的顺序
 title: Python 字典中，键的顺序
 createAt: 2023-12-21 10:02
-expires: 3650
+category: 笔记
+domain: 语言
 tags:
-    - 测试
-    - 兼容
-    - Python
-    - 数组 集合 映射
+  - 测试
+  - 兼容
+  - Python
+  - 类型系统
 excerpt:
     '`dict` 里的键原本是无序排列的，后来改成有序的了。'
 ---

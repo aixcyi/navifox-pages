@@ -1,6 +1,10 @@
 import { VitePressConfigurator, type PageHook } from '@navifox/vitepress';
 import { navifoxHome, sinceYear, untilYear, tighnari } from '@navifox/constants/website';
 import { groupIconMdPlugin, groupIconVitePlugin } from 'vitepress-plugin-group-icons';
+import MarkdownIt from 'markdown-it';
+import { pinyin } from '@napi-rs/pinyin';
+
+const mdit = MarkdownIt();
 
 // https://vitepress.dev/reference/site-config
 const configurator = new VitePressConfigurator({
@@ -87,6 +91,12 @@ const configurator = new VitePressConfigurator({
             allowedHosts: ['.navifox.net'],
         },
     },
+    transformPageData(p) {
+        p.frontmatter.excerpt = p.frontmatter.excerpt ? mdit.renderInline(p.frontmatter.excerpt) : '';
+        p.frontmatter.tags = ((p.frontmatter.tags ?? []) as string[]).sort((a, b) =>
+            pinyin(a).join('').localeCompare(pinyin(b).join('')),
+        );
+    },
 });
 
 const pageHookDefault: PageHook = {
@@ -101,6 +111,7 @@ configurator
     .pushSocial({ ariaLabel: 'QQ群聊', icon: 'qq', link: 'https://qm.qq.com/q/ZqCGqpMXy8' })
     .pushSocial({ ariaLabel: 'GitHub 仓库', icon: 'github', link: 'https://github.com/aixcyi/navifox-pages' })
     .autoSidebar('/', './', { deep: true })
+    .pushNavLink({ text: '博客目录', link: '/posts', activeMatch: '/posts/' })
     .autoDirMenu('./', { text: '归档' })
     .pushNavMenu({
         text: '更多',

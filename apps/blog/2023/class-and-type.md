@@ -3,11 +3,11 @@ title: 类与类型
 outline: false
 createAt: 2023-12-22 11:03
 updateAt: 2024-12-27 17:54
-expires: 1096
+category: 思考
+domain: 语言
 tags:
     - 类型系统
     - 设计
-    - 开发
     - Python
 excerpt:
     一次关于 Python 类型（type）、类（class）、对象（object）的思考。

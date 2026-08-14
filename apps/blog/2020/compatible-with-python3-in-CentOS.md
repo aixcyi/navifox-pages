@@ -1,7 +1,8 @@
 ---
 title: 宝塔面板与 Python 3 的恩怨情仇
 createAt: 2020-03-02 22:06
-expires: 1096
+category: 复盘
+domain: 工程
 tags:
     - 运维
     - CentOS

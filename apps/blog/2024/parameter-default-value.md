@@ -2,10 +2,10 @@
 title: 默认值导致抽象泄漏
 outline: false
 createAt: 2024-01-30 23:42
-expires: 1096
+category: 思考
+domain: 语言
 tags:
     - 设计
-    - 开发
     - Python
 excerpt:
     使用默认值有可能导致抽象泄漏（Leaky Abstraction），指本应对用户隐藏实现细节的抽象行为会不可避免地暴露出底层细节与局限性。

@@ -1,10 +1,10 @@
 ---
 title: 两种字节序的直观比较
 createAt: 2020-02-22 16:45
-expires: 1096
+category: 思考
+domain: 语言
 tags:
     - 字节序
-    - 开发
     - 易语言
 excerpt:
 ---

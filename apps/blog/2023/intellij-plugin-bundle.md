@@ -1,11 +1,10 @@
 ---
 title: IntelliJ 插件中使用 Bundle
 createAt: 2023-09-06 23:32
-expires: 365
+category: 实践
+domain: 工程
 tags:
-    - 开发
-    - IntelliJ IDE
-    - 插件
+    - JetBrains IDE
     - i18n
 excerpt:
     Bundle 是 Java 自带的提供本地化翻译的功能，因为出现时间比 IntelliJ

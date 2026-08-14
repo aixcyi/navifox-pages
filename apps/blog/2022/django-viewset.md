@@ -3,11 +3,10 @@ navTitle: Django 及衍生的类视图
 title: 浅析 Django 及衍生的类视图
 outline: deep
 createAt: 2022-10-11 11:52
-expires: 1096
+category: 思考
+domain: 框架
 tags:
-    - 开发
     - Django
-    - DRF
 excerpt:
     浅析 [Django](https://docs.djangoproject.com/zh-hans/5.2/topics/class-based-views/)
     与 [Django REST Framework](https://www.django-rest-framework.org/api-guide/views/) 两个框架视图类的脉络。

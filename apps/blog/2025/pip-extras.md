@@ -2,10 +2,10 @@
 title: pip 额外依赖
 outline: deep
 createAt: 2025-04-11 14:53
-expires: 1096
+category: 思考
+domain: 工程
 tags:
-    - 包管理器
-    - AIGC
+    - pip
 excerpt:
     pip 支持通过方括号语法（如 `redis[hiredis]`）安装带有可选依赖项的包，这一功能被称为
     Extras 或 Optional Dependencies。本文介绍了该功能的引入时间，并给出了查看具体依赖的方法。
