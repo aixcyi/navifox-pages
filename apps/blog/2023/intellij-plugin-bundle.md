@@ -1,7 +1,7 @@
 ---
 title: IntelliJ 插件中使用 Bundle
 createAt: 2023-09-06 23:32
-category: 实践
+category: 教程
 domain: 工程
 tags:
     - JetBrains IDE

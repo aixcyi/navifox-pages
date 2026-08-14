@@ -1,7 +1,7 @@
 ---
 title: NOIP 380. 校门外的树
 createAt: 2020-03-12 17:24
-category: 实践
+category: 教程
 domain: 算法
 tags:
     - 算法

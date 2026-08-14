@@ -2,7 +2,7 @@
 navTitle: 12. 整数转罗马数字
 title: LeetCode 12. 整数转罗马数字
 createAt: 2024-01-09 17:37
-category: 实践
+category: 教程
 domain: 算法
 tags:
     - 算法

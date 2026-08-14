@@ -111,11 +111,12 @@ configurator
     .pushSocial({ ariaLabel: 'QQ群聊', icon: 'qq', link: 'https://qm.qq.com/q/ZqCGqpMXy8' })
     .pushSocial({ ariaLabel: 'GitHub 仓库', icon: 'github', link: 'https://github.com/aixcyi/navifox-pages' })
     .autoSidebar('/', './', { deep: true })
-    .pushNavLink({ text: '博客目录', link: '/posts', activeMatch: '/posts/' })
+    .pushNavLink({ text: '博客目录', link: '/posts' })
     .autoDirMenu('./', { text: '归档' })
     .pushNavMenu({
         text: '更多',
         items: [
+            { text: '分类注记', link: '/taxonomy' },
             { text: '关于', link: '/about' },
             // ...
             { items: [{ text: navifoxHome.name, link: navifoxHome.link }] },

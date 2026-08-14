@@ -2,7 +2,7 @@
 title: virtualenv 在 Windows 中无法激活
 createAt: 2024-02-28 16:29
 category: 复盘
-domain: 工程
+domain: 系统
 tags:
     - 运维
     - Windows

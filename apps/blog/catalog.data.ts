@@ -1,5 +1,8 @@
-import { countBy } from 'es-toolkit';
 import { createContentLoader } from 'vitepress';
+import { pinyin } from '@napi-rs/pinyin';
+import MarkdownIt from 'markdown-it';
+
+const mdit = MarkdownIt();
 
 export interface Post {
     url: string;
@@ -39,17 +42,16 @@ export default createContentLoader(pattern, {
                 domain: page.frontmatter.domain || '(未归类)',
                 category: page.frontmatter.category || '(未归类)',
                 tags: page.frontmatter.tags || [],
-                excerpt: page.frontmatter.excerpt || '',
+                excerpt: page.frontmatter.excerpt ? mdit.renderInline(page.frontmatter.excerpt) : '',
                 createAt: page.frontmatter.createAt,
                 updateAt: page.frontmatter.updateAt ?? null,
             }));
 
-        const categories = [...new Set(posts.map((p) => p.category))].sort();
-        const domains = [...new Set(posts.map((p) => p.domain))].sort();
-        const tags = Object
-            .entries(countBy(posts.flatMap((p) => p.tags), (t) => t))
-            .sort((a, b) => b[1] - a[1])
-            .map(([tag]) => tag);
+        const categories = [...new Set(posts.map((p) => p.category))].sort((a, b) => a.localeCompare(b));
+        const domains = [...new Set(posts.map((p) => p.domain))].sort((a, b) => a.localeCompare(b));
+        const tags = [...new Set(posts.flatMap((p) => p.tags))].sort((a, b) =>
+            pinyin(a).join('').localeCompare(pinyin(b).join('')),
+        );
 
         return { posts, domains, categories, tags };
     },

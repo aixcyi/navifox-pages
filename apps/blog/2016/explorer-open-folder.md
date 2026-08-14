@@ -2,7 +2,7 @@
 title: 通过命令行打开文件夹
 createAt: 2016-09-23 17:57
 category: 笔记
-domain: 工程
+domain: 系统
 tags:
     - 易语言
     - shell
