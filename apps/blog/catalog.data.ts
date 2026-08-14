@@ -22,7 +22,9 @@ export interface CatalogData {
 declare const data: CatalogData;
 export { data };
 
-export default createContentLoader('2*/*.md', {
+const pattern = process.env.NODE_ENV === 'production' ? ['2*/*.md', '!2*/*.draft.md'] : '2*/*.md';
+
+export default createContentLoader(pattern, {
     transform(rawData): CatalogData {
         const posts: Post[] = rawData
             .filter((page) => page.frontmatter.title && page.frontmatter.createAt)
