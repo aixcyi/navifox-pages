@@ -1,5 +1,5 @@
 ---
-title: 分类注记
+title: 分类注记（领域×类型）
 lastUpdated: false
 prev: false
 next: false

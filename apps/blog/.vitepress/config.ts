@@ -117,7 +117,7 @@ configurator
         text: '更多',
         items: [
             configurator.findNavLink({ link: '/taxonomy' }),
-            { text: '关于', link: '/about' },
+            configurator.findNavLink({ link: '/about' }),
             { items: [{ text: navifoxHome.name, link: navifoxHome.link }] },
         ],
     });
