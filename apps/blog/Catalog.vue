@@ -104,7 +104,7 @@ const tagCounts = computed(() => {
                     :disabled="selectedGenre !== c && (genreCounts.get(c) ?? 0) === 0"
                     @click="selectGenre(c)"
                 >
-                    {{ c }}<span class="count">{{ genreCounts.get(c) ?? 0 }}</span>
+                    {{ c }}<span v-if="(genreCounts.get(c) ?? 0) > 0" class="count">{{ genreCounts.get(c) ?? 0 }}</span>
                 </button>
             </div>
 
@@ -117,7 +117,7 @@ const tagCounts = computed(() => {
                     :disabled="selectedDomain !== d && (domainCounts.get(d) ?? 0) === 0"
                     @click="selectDomain(d)"
                 >
-                    {{ d }}<span class="count">{{ domainCounts.get(d) ?? 0 }}</span>
+                    {{ d }}<span v-if="(domainCounts.get(d) ?? 0) > 0" class="count">{{ domainCounts.get(d) ?? 0 }}</span>
                 </button>
             </div>
 
@@ -130,7 +130,7 @@ const tagCounts = computed(() => {
                     :disabled="!selectedTags.includes(tag) && (tagCounts.get(tag) ?? 0) === 0"
                     @click="toggleTag(tag)"
                 >
-                    {{ tag }}<span class="count">{{ tagCounts.get(tag) ?? 0 }}</span>
+                    {{ tag }}<span v-if="(tagCounts.get(tag) ?? 0) > 0" class="count">{{ tagCounts.get(tag) ?? 0 }}</span>
                 </button>
             </div>
         </div>
@@ -387,12 +387,12 @@ const tagCounts = computed(() => {
         linear-gradient(var(--vp-c-bg), var(--vp-c-bg)) padding-box,
         linear-gradient(300deg, var(--vp-c-brand-1) 30%, #41d1ff) border-box;
     opacity: 0;
-    transition: opacity 0.35s ease;
+    transition: opacity 0.5s ease;
 }
 
 .post-item:hover::before {
     opacity: 1;
-    transition-duration: 0.25s;
+    transition-duration: 0.2s;
 }
 
 .post-title {
