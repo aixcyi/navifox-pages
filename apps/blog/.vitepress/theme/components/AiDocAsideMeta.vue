@@ -1,57 +1,50 @@
 <script setup lang="ts">
-import { ref } from 'vue';
-import { useData, onContentUpdated } from 'vitepress';
+import { computed } from 'vue';
+import { useData } from 'vitepress';
 import { parse, differenceInDays } from 'date-fns';
 
 const $frontmatter = useData().frontmatter;
-const revisionAge = ref<number>(0); // days
 
-onContentUpdated(() => {
+const ageLabel = computed(() => {
     const matter = $frontmatter.value;
-    const current = Date.now();
     const created = matter.createAt ? parse(matter.createAt, 'yyyy-MM-dd HH:mm', new Date()) : undefined;
     const updated = matter.updateAt ? parse(matter.updateAt, 'yyyy-MM-dd HH:mm', new Date()) : undefined;
-    if (updated) {
-        revisionAge.value = differenceInDays(current, updated);
-    } else if (created) {
-        revisionAge.value = differenceInDays(current, created);
+    const base = updated ?? created;
+    if (!base) return '';
+    const now = new Date();
+    const days = differenceInDays(now, base);
+    if (days <= 0) return '今天';
+    if (days === 1) return '昨天';
+    if (days === 2) return '前天';
+    if (
+        base.getFullYear() !== now.getFullYear() &&
+        base.getMonth() === now.getMonth() &&
+        base.getDate() === now.getDate()
+    ) {
+        return '当年今日';
     }
+    return `${days} 天前`;
 });
 </script>
 
 <template>
     <div class="AiDocAsideMeta" v-if="$frontmatter.createAt">
-        <div class="content">
-            <div class="meta-title">信息</div>
-            <dl class="meta-list">
-                <template v-if="$frontmatter.createAt">
-                    <dt class="meta-label">创作时间</dt>
-                    <dd class="meta-value">{{ $frontmatter.createAt }}</dd>
-                </template>
-
-                <template v-if="$frontmatter.createAt && $frontmatter.updateAt">
-                    <dt class="meta-label">修订时间</dt>
-                    <dd class="meta-value">{{ $frontmatter.updateAt }}</dd>
-                </template>
-
-                <template v-if="$frontmatter.createAt || $frontmatter.updateAt">
-                    <dt class="meta-label">已逝年华</dt>
-                    <dd class="meta-value">{{ revisionAge }} 天</dd>
-                </template>
-
-                <template v-if="$frontmatter.tags?.length">
-                    <dt class="meta-label">关联标签</dt>
-                    <dd class="meta-value vp-doc tags">
-                        <span v-if="$frontmatter.domain">{{ $frontmatter.domain }}</span>
-                        <span v-if="$frontmatter.genre">{{ $frontmatter.genre }}</span>
-                        <span v-for="tag in $frontmatter.tags">{{ tag }}</span>
-                    </dd>
-                </template>
-            </dl>
+        <div class="content" v-if="$frontmatter.excerpt">
+            <div class="meta-title">简介</div>
+            <div class="meta-excerpt vp-doc" v-html="$frontmatter.excerpt" />
         </div>
         <div class="content">
-            <div class="meta-title">简介</div>
-            <dl class="meta-value vp-doc"><div v-html="$frontmatter.excerpt" /></dl>
+            <div class="meta-title">信息</div>
+            <div class="meta-list">
+                <div v-if="$frontmatter.createAt" class="meta-line">{{ $frontmatter.createAt }} 创作</div>
+                <div v-if="$frontmatter.updateAt" class="meta-line">{{ $frontmatter.updateAt }} 修订</div>
+                <div class="meta-line meta-tags">
+                    <span class="meta-age">{{ ageLabel }}</span>
+                    <span v-if="$frontmatter.domain" class="tag">{{ $frontmatter.domain }}</span>
+                    <span v-if="$frontmatter.genre" class="tag">{{ $frontmatter.genre }}</span>
+                    <span v-for="tag in $frontmatter.tags" :key="tag" class="tag">{{ tag }}</span>
+                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -62,7 +55,7 @@ onContentUpdated(() => {
     border-left: 1px solid var(--vp-c-divider);
     margin-bottom: 16px;
     padding-left: 16px;
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 500;
 }
 
@@ -72,56 +65,49 @@ onContentUpdated(() => {
     font-weight: 600;
 }
 
-.meta-list {
-    margin: 0;
-}
-
-.meta-label {
-    margin-top: 4px;
-    font-size: 11px;
-    font-weight: 500;
-    color: var(--vp-c-text-3);
-    line-height: 20px;
-}
-
-.meta-label + .meta-label {
-    margin-top: 8px;
-}
-
-.meta-value {
-    margin: 0 0 8px 0;
-    font-size: 12px;
-    font-weight: 500;
+.meta-excerpt {
+    margin: 0 0 8px;
+    line-height: 24px;
+    text-indent: 2em;
     color: var(--vp-c-text-2);
-    line-height: 20px;
 }
 
-.tags {
+.meta-list {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.meta-line {
+    line-height: 24px;
+    color: var(--vp-c-text-2);
+}
+
+.meta-tags {
     display: flex;
     flex-wrap: wrap;
     gap: 6px;
 }
 
-.tags span {
-    display: inline-block;
-    font-size: 12px;
-    font-weight: 500;
-    line-height: 20px;
+.meta-age::before,
+.tag::before {
+    content: '#';
+    margin-right: 2px;
     transition: color 0.25s;
-    color: var(--vp-c-text-2);
+    color: var(--vp-c-text-3);
+    opacity: 0.5;
 }
 
-.tags span:hover {
+.tag {
+    display: inline-block;
+    transition: color 0.25s;
+}
+
+.tag:hover {
     color: var(--vp-c-brand-1);
 }
 
-.tags span::before {
-    content: '# ';
-    transition: color 0.25s;
-    color: var(--vp-c-text-3);
-}
-
-.tags span:hover::before {
+.tag:hover::before {
     color: var(--vp-c-brand-3);
 }
 </style>
