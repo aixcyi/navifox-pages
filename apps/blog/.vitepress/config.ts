@@ -110,7 +110,7 @@ configurator
     .goto('root')
     .pushSocial({ ariaLabel: 'QQ群聊', icon: 'qq', link: 'https://qm.qq.com/q/ZqCGqpMXy8' })
     .pushSocial({ ariaLabel: 'GitHub 仓库', icon: 'github', link: 'https://github.com/aixcyi/navifox-pages' })
-    .autoSidebar('/', './', { deep: true })
+    .autoSidebar('/', './', { deep: 'only' })
     .autoNavLink({ link: '/posts' })
     .autoDirMenu('./', { text: '归档' })
     .pushNavMenu({

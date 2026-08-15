@@ -193,19 +193,35 @@ export class VitePressConfigurator {
      * @param dir 需要展示哪个目录下的 Markdown。
      * @param options 可选参数。
      * @param options.collapsed 是否收起当前目录。子目录会使用当前目录的设置。
-     * @param options.deep 是否递归搜索该目录。
+     * @param options.deep 是否递归搜索该目录，`'only'` 排除 {@link dir} 的直接子文件，仅递归扫描子目录。
      * @param options.pageHook 排序钩子。
      */
     public autoSidebar(
         path: string,
         dir: string,
-        options?: { collapsed?: boolean; deep?: boolean; pageHook?: PageHook },
+        options?: { collapsed?: boolean; deep?: boolean | 'only'; pageHook?: PageHook },
     ) {
         if (!options?.deep) {
             const { files } = this.part(dir, options?.pageHook);
             this.pushSidebar(
                 path,
                 files.map((page) => ({ text: page.frontmatter.title, link: `/${page.url}` })),
+            );
+        } else if (options.deep === 'only') {
+            const { items } = this.part(dir, options?.pageHook);
+            this.pushSidebar(
+                path,
+                items
+                    .filter((page) => page.isIndex)
+                    .map((folder) => ({
+                        text: folder.frontmatter.title,
+                        items: this.deepSidebar(
+                            pathlib.join(folder.filepath, '../'),
+                            options?.collapsed,
+                            options?.pageHook,
+                        ),
+                        collapsed: options?.collapsed,
+                    })),
             );
         } else {
             this.pushSidebar(path, this.deepSidebar(dir, options?.collapsed, options?.pageHook));
