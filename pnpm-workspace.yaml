@@ -11,6 +11,7 @@ catalog:
     '@catppuccin/vitepress': ^0.1.2
     '@date-fns/utc': ^2.1.1
     '@iconify/vue': ^5.0.1
+    '@napi-rs/pinyin': ^1.7.7
     '@tailwindcss/vite': ^4.3.2
     '@types/markdown-it': ^14.1.2
     '@types/node': ^24.13.3

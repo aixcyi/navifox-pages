@@ -12,13 +12,14 @@
     "dependencies": {
         "@catppuccin/vitepress": "catalog:",
         "@navifox/constants": "workspace:*",
+        "@navifox/styles": "workspace:*",
         "@navifox/utils": "workspace:*",
         "@navifox/vitepress": "workspace:*",
         "date-fns": "catalog:",
         "vue": "catalog:"
     },
     "devDependencies": {
-        "@napi-rs/pinyin": "^1.7.7",
+        "@napi-rs/pinyin": "catalog:",
         "@types/markdown-it": "catalog:",
         "bestzip": "catalog:",
         "es-toolkit": "catalog:",

@@ -2,6 +2,7 @@
 import { h } from 'vue';
 import type { Theme } from 'vitepress';
 import DefaultTheme from 'vitepress/theme';
+import '@navifox/styles/fonts';
 import '@catppuccin/vitepress/theme/macchiato/maroon.css';
 import 'virtual:group-icons.css';
 import '#/theme/style.css';

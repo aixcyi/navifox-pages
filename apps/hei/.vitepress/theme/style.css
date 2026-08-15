@@ -85,3 +85,17 @@ th,
 td {
     text-wrap: nowrap;
 }
+
+/**
+ * Typography — 字体由 @navifox/styles/fonts 提供
+ * -------------------------------------------------------------------------- */
+
+:root {
+    --vp-font-family-mono: var(--font-mono);
+}
+
+/* 选择器需与 VitePress vars.css 中 [lang]:where(:lang(zh, ja)) 同特异性，
+   且本文件在其后引入，才能覆盖其 Inter4CJK */
+[lang]:where(:lang(zh, ja)) {
+    --vp-font-family-base: var(--font-sans);
+}

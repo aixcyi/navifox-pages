@@ -214,6 +214,9 @@ catalogs:
     '@iconify/vue':
       specifier: ^5.0.1
       version: 5.0.1
+    '@napi-rs/pinyin':
+      specifier: ^1.7.7
+      version: 1.7.7
     '@tailwindcss/vite':
       specifier: ^4.3.2
       version: 4.3.2
@@ -351,6 +354,9 @@ importers:
       '@navifox/constants':
         specifier: workspace:*
         version: link:../../internal/constants
+      '@navifox/styles':
+        specifier: workspace:*
+        version: link:../../internal/styles
       '@navifox/utils':
         specifier: workspace:*
         version: link:../../internal/utils
@@ -365,7 +371,7 @@ importers:
         version: 3.5.39(typescript@5.9.3)
     devDependencies:
       '@napi-rs/pinyin':
-        specifier: ^1.7.7
+        specifier: 'catalog:'
         version: 1.7.7(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)
       '@types/markdown-it':
         specifier: 'catalog:'
@@ -470,6 +476,9 @@ importers:
       '@navifox/constants':
         specifier: workspace:*
         version: link:../../internal/constants
+      '@navifox/styles':
+        specifier: workspace:*
+        version: link:../../internal/styles
       '@navifox/utils':
         specifier: workspace:*
         version: link:../../internal/utils
