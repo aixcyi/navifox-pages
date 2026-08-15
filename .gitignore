@@ -1,9 +1,11 @@
-# IDEs & AI files
+# IDEs & AI
 /.idea
 /.vscode
 /.agents
 /*.code-workspace
 !/navifox.code-workspace
+/*.md
+!/README.md
 
 # Environment
 **/.env.local
@@ -13,10 +15,17 @@
 **/dist/
 **/dist-ssr/
 **/dist.*
+/.venv/
 
 # Scripts
 **/*.bat
 **/*.cmd
 **/*.ps1
+**/*.py
 **/*.sh
 **/*.bash
+
+# System
+**/desktop.ini
+**/.DS_Store/
+**/__MACOSX/
