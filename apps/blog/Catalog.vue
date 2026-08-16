@@ -104,7 +104,10 @@ const tagCounts = computed(() => {
                     :disabled="selectedGenre !== c && (genreCounts.get(c) ?? 0) === 0"
                     @click="selectGenre(c)"
                 >
-                    {{ c }}<span v-if="(genreCounts.get(c) ?? 0) > 0" class="count">{{ genreCounts.get(c) ?? 0 }}</span>
+                    {{ c }}
+                    <span v-if="(genreCounts.get(c) ?? 0) > 0" class="count">
+                        {{ genreCounts.get(c) ?? 0 }}
+                    </span>
                 </button>
             </div>
 
@@ -117,7 +120,10 @@ const tagCounts = computed(() => {
                     :disabled="selectedDomain !== d && (domainCounts.get(d) ?? 0) === 0"
                     @click="selectDomain(d)"
                 >
-                    {{ d }}<span v-if="(domainCounts.get(d) ?? 0) > 0" class="count">{{ domainCounts.get(d) ?? 0 }}</span>
+                    {{ d }}
+                    <span v-if="(domainCounts.get(d) ?? 0) > 0" class="count">
+                        {{ domainCounts.get(d) ?? 0 }}
+                    </span>
                 </button>
             </div>
 
@@ -130,7 +136,10 @@ const tagCounts = computed(() => {
                     :disabled="!selectedTags.includes(tag) && (tagCounts.get(tag) ?? 0) === 0"
                     @click="toggleTag(tag)"
                 >
-                    {{ tag }}<span v-if="(tagCounts.get(tag) ?? 0) > 0" class="count">{{ tagCounts.get(tag) ?? 0 }}</span>
+                    {{ tag }}
+                    <span v-if="(tagCounts.get(tag) ?? 0) > 0" class="count">
+                        {{ tagCounts.get(tag) ?? 0 }}
+                    </span>
                 </button>
             </div>
         </div>
