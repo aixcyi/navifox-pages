@@ -78,6 +78,50 @@
 }
 
 /**
+ * Component: Home Features
+ * -------------------------------------------------------------------------- */
+
+/* 特性卡片 hover 渐变边框：::before 覆盖层 + opacity 过渡实现淡入淡出。
+   不动卡片自身的 background-color/背景层，避免简写重置背景色导致 hover 结束时的闪变。
+   同时把 hover 时的实色边框钉在 bg-soft，防止默认的品牌红边框在渐变淡入时透出 */
+.VPFeature.VPFeature.link {
+    position: relative;
+    isolation: isolate;
+}
+
+.VPFeature.VPFeature.link:hover {
+    border-color: var(--vp-c-bg-soft);
+}
+
+.VPFeature.VPFeature.link::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border: 1px solid transparent;
+    border-radius: 12px;
+    background:
+        linear-gradient(var(--vp-c-bg-soft), var(--vp-c-bg-soft)) padding-box,
+        var(--vp-home-hero-name-background) border-box;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+}
+
+.VPFeature.VPFeature.link:hover::before {
+    opacity: 1;
+}
+
+/**
+ * Component: Sidebar
+ * -------------------------------------------------------------------------- */
+
+/* 侧边栏条目换行后行内间距减半：默认 24px 行高含约 10px 行距，
+   减半后取 19px（不小于 14px 字号，避免行间重叠） */
+.VPSidebarItem .text {
+    line-height: 19px;
+}
+
+/**
  * Component: Catalog
  * -------------------------------------------------------------------------- */
 
