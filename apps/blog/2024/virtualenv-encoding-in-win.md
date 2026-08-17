@@ -6,7 +6,7 @@ genre: 复盘
 tags:
     - 运维
     - Windows
-    - Python
+    - Python3
     - virtualenv
     - pip
 excerpt:

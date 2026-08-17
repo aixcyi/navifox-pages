@@ -5,7 +5,7 @@ createAt: 2025-08-13 10:14
 domain: 框架
 genre: 选型
 tags:
-    - Vue 3
+    - Vue3
 excerpt:
     有时候可能希望同一个 Vue 组件有不同的颜色（样式），本文对比了两种实现方法。
 ---

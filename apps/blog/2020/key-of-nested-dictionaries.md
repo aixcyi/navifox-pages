@@ -4,7 +4,7 @@ createAt: 2020-12-19 17:19
 domain: 语言
 genre: 复盘
 tags:
-  - Python
+  - Python3
   - 类型系统
 excerpt:
 ---

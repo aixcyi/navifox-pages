@@ -5,7 +5,7 @@ createAt: 2025-03-14 15:09
 domain: 语言
 genre: 思考
 tags:
-    - Python
+    - Python3
     - 设计
 excerpt:
     Python 中负整数使用符号+原码进行“表达”，归根到底是传统的补码需要依赖有穷的存储空间，而 Python 支持无穷的存储空间；但在“运算”时仍然需要翻译成补码。

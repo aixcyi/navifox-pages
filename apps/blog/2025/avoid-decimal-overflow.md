@@ -7,7 +7,7 @@ tags:
     - Django
     - 序列化
     - 测试
-    - Python
+    - Python3
     - 小数
 excerpt:
     后端使用 Decimal 时，前端应当配合传递 string 而非 number，否则会从数据源就可能出现过长的小数，导致排查链路过长或者问题反复出现。

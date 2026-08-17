@@ -7,7 +7,7 @@ genre: 教程
 tags:
     - 算法
     - 进位制
-    - Python
+    - Python3
     - 语法特性
 excerpt:
     仅用 Python [内置函数](https://docs.python.org/zh-cn/3/library/functions.html)

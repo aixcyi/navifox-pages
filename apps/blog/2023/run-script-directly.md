@@ -7,7 +7,7 @@ domain: 工程
 genre: 教程
 tags:
     - 运维
-    - Python
+    - Python3
     - Windows
     - Ubuntu
 excerpt:

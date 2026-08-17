@@ -5,7 +5,7 @@ domain: 语言
 genre: 笔记
 tags:
   - 语法特性
-  - Python
+  - Python3
   - 类型系统
 excerpt:
     列表、元组、集合、字典的正确类型标注方式，细节可参阅

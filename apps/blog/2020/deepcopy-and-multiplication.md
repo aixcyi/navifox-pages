@@ -6,7 +6,7 @@ expired: 1000
 domain: 语言
 genre: 复盘
 tags:
-    - Python
+    - Python3
     - 浅拷贝
 excerpt:
     '`[...] * n` 是浅拷贝，所以尽量避免用来复制对象。'

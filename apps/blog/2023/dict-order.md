@@ -7,7 +7,7 @@ genre: 笔记
 tags:
   - 测试
   - 兼容
-  - Python
+  - Python3
   - 类型系统
 excerpt:
     '`dict` 里的键原本是无序排列的，后来改成有序的了。'

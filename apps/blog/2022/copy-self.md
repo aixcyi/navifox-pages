@@ -4,7 +4,7 @@ createAt: 2022-08-17 00:04
 domain: 语言
 genre: 教程
 tags:
-    - Python
+    - Python3
     - 浅拷贝
 excerpt:
     一些类自带了 `copy()` 或者用于浅拷贝的方法，比如内置的

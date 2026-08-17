@@ -5,7 +5,7 @@ createAt: 2025-05-31 22:26
 domain: 语言
 genre: 教程
 tags:
-  - Python
+  - Python3
   - 类型系统
 excerpt:
     '在有些情况下，你可能需要在访问 **不同的字典对象** 时抛出不同的 `KeyError` 来进行不同的提示。'

@@ -6,7 +6,7 @@ createAt: 2021-11-05 00:00
 domain: 语言
 genre: 教程
 tags:
-  - Python
+  - Python3
   - 语法特性
   - 类型系统
 excerpt:

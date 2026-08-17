@@ -5,7 +5,7 @@ createAt: 2025-02-21 20:55
 domain: 框架
 genre: 教程
 tags:
-    - Python
+    - Python3
     - Django
 excerpt:
     如何通过 Django Channels 在 Django 项目中通过 WebSocket 实现后端主动通知前端。

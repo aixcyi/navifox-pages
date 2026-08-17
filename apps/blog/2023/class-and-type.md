@@ -8,7 +8,7 @@ genre: 思考
 tags:
     - 类型系统
     - 设计
-    - Python
+    - Python3
 excerpt:
     一次关于 Python 类型（type）、类（class）、对象（object）的思考。
 ---

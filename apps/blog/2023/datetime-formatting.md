@@ -5,7 +5,7 @@ createAt: 2023-11-14 23:32
 domain: 语言
 genre: 复盘
 tags:
-    - Python
+    - Python3
     - 兼容
     - Windows
     - 格式化

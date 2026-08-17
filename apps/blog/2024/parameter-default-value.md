@@ -6,7 +6,7 @@ domain: 语言
 genre: 思考
 tags:
     - 设计
-    - Python
+    - Python3
 excerpt:
     使用默认值有可能导致抽象泄漏（Leaky Abstraction），指本应对用户隐藏实现细节的抽象行为会不可避免地暴露出底层细节与局限性。
 ---
