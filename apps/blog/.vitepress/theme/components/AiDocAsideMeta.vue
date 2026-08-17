@@ -28,12 +28,12 @@ const ageLabel = computed(() => {
 </script>
 
 <template>
-    <div class="AiDocAsideMeta" v-if="$frontmatter.createAt">
+    <div class="AiDocAsideMeta">
         <div class="content" v-if="$frontmatter.excerpt">
             <div class="meta-title">简介</div>
             <div class="meta-excerpt vp-doc" v-html="$frontmatter.excerpt" />
         </div>
-        <div class="content">
+        <div class="content" v-if="$frontmatter.excerpt">
             <div class="meta-title">信息</div>
             <div class="meta-list">
                 <div v-if="$frontmatter.createAt" class="meta-line">{{ $frontmatter.createAt }} 创作</div>

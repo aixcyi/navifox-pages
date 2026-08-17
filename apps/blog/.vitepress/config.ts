@@ -116,13 +116,7 @@ configurator
     .autoSidebar('/', './', { deep: 'only' })
     .autoNavLink({ link: '/posts' })
     .autoDirMenu('./', { text: '归档' })
-    .pushNavMenu({
-        text: '更多',
-        items: [
-            configurator.findNavLink({ link: '/taxonomy' }),
-            configurator.findNavLink({ link: '/about' }),
-            { items: [{ text: navifoxHome.name, link: navifoxHome.link }] },
-        ],
-    });
+    .autoNavLink({ link: '/anywhere' })
+    .pushNavLink({ text: navifoxHome.name, link: navifoxHome.link });
 
 export default configurator.define();
