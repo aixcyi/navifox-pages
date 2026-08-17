@@ -1,21 +1,27 @@
 # IDEs & AI
-/.idea
-/.vscode
-/.agents
+/.idea/
+/.vscode/
+/.agents/
+/.claude/
 /*.code-workspace
-!/navifox.code-workspace
 /*.md
+!/navifox.code-workspace
 !/README.md
+/skills-lock.json
 
 # Environment
 **/.env.local
 **/.env.*.local
 **/node_modules/
+/.venv/
+
+# Caches
+**/__pycache__/
 **/cache/
 **/dist/
 **/dist-ssr/
 **/dist.*
-/.venv/
+/temp/
 
 # Scripts
 **/*.bat
