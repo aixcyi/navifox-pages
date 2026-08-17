@@ -7,7 +7,10 @@ const configurator = new VitePressConfigurator({
     outDir: './dist',
     cacheDir: './cache',
     srcExclude: process.env.NODE_ENV === 'production' ? ['**/*.draft.*'] : [],
-    head: [['link', { rel: 'icon', href: '/favicon.ico', type: 'image/ico' }]],
+    head: [
+        ['link', { rel: 'icon', href: '/favicon.ico', type: 'image/ico' }],
+        ['link', { rel: 'preconnect', href: 'https://cdn.jsdelivr.net', crossorigin: '' }],
+    ],
     locales: {
         root: {
             lang: 'zh-CN',

@@ -152,6 +152,12 @@
 :root {
     --vp-font-family-mono: var(--font-mono);
     --font-sign: 'Whisper', serif;
+    text-autospace: normal;
+}
+
+code,
+pre {
+    text-autospace: no-autospace;
 }
 
 /* 选择器需与 VitePress vars.css 中 [lang]:where(:lang(zh, ja)) 同特异性，
@@ -163,4 +169,10 @@
 .VPHero .name {
     font-family: var(--font-sign);
     font-weight: 400; /* Whisper 仅有 Regular 字重，禁止浏览器合成粗体 */
+}
+
+/* 首页 hero 文本换行平衡：避免居中/大字多行时只落一两个字符在末行 */
+.VPHero .text,
+.VPHero .tagline {
+    text-wrap: balance;
 }

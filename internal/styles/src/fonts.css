@@ -1,3 +1,12 @@
+/*
+ * MiSans 在线加载：https://github.com/dsrkafuu/misans
+ * 每个字重拆成 ~110 个带 unicode-range 的 woff2 分片，浏览器只下载用到的分片。
+ * 字重映射：Regular=330（正文 400 的最近匹配）、Semibold=520、Bold=630（标题 600/700 的最近匹配）。
+ */
+@import url('https://cdn.jsdelivr.net/npm/misans@4.1.0/lib/Normal/MiSans-Regular.min.css');
+@import url('https://cdn.jsdelivr.net/npm/misans@4.1.0/lib/Normal/MiSans-Semibold.min.css');
+@import url('https://cdn.jsdelivr.net/npm/misans@4.1.0/lib/Normal/MiSans-Bold.min.css');
+
 @font-face {
     font-family: 'JetBrains Mono';
     src: url('./assets/JetBrainsMono/JetBrainsMono-Regular.woff2') format('woff2');
@@ -27,13 +36,30 @@
     src: url('./assets/Whisper/Whisper-Regular.ttf');
 }
 
+/* 指向本地安装的 MiSans（VF 或静态版均可）。family 名刻意区别于在线 'MiSans'，
+   以绕开「@font-face 名遮蔽本地同名安装字体」的匹配规则（Mozilla name-collision reftest），
+   实现系统装有 MiSans 时零网络请求。 */
+@font-face {
+    font-family: 'MiSans Local';
+    font-weight: 100 900;
+    src: local('MiSans VF'), local('MiSans');
+}
+
 :root {
-    --font-serif: 'HarmonyOS Sans SC', 'MiSans VF', serif;
-    --font-sans: 'HarmonyOS Sans SC', 'MiSans VF', sans-serif;
+    /* 字体回退链（自上而下）：
+       1. 系统装有 HarmonyOS Sans SC → 直接用本地字体（无网络请求）；
+       2. 'MiSans Local' 命中系统安装的 MiSans（VF 或静态）→ 用本地，零下载；
+       3. 都没有 → 'MiSans' 命中在线 @font-face（jsDelivr 分片，见文件头部）；
+       4. 断网/加载失败 → 落到 sans-serif 泛型。 */
+    --font-serif: 'HarmonyOS Sans SC', 'MiSans Local', 'MiSans', serif;
+    --font-sans: 'HarmonyOS Sans SC', 'MiSans Local', 'MiSans', sans-serif;
     --font-mono: 'JetBrains Mono', 'Consolas', 'Courier New', monospace;
+
+    /* 中文字体缺字重时禁止浏览器合成粗体（笔画会糊成一团），改用最近的真实字重；斜体合成保留。 */
+    font-synthesis: style;
 }
 
 i,
 em {
-    font-family: 'Segoe UI', 'HarmonyOS Sans SC', 'MiSans VF', sans-serif;
+    font-family: 'Segoe UI', 'HarmonyOS Sans SC', 'MiSans Local', 'MiSans', sans-serif;
 }
