@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useData } from 'vitepress';
-import { parse, differenceInDays } from 'date-fns';
+import { parse, differenceInDays, startOfWeek, addDays } from 'date-fns';
 
 const $frontmatter = useData().frontmatter;
 
@@ -16,6 +16,10 @@ const ageLabel = computed(() => {
     if (days <= 0) return '今天';
     if (days === 1) return '昨天';
     if (days === 2) return '前天';
+    const thisWeekStart = startOfWeek(now, { weekStartsOn: 1 });
+    const lastWeekStart = startOfWeek(addDays(now, -7), { weekStartsOn: 1 });
+    if (base >= thisWeekStart) return '本周';
+    if (base >= lastWeekStart) return '上周';
     if (
         base.getFullYear() !== now.getFullYear() &&
         base.getMonth() === now.getMonth() &&
