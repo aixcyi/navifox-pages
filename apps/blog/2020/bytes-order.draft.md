@@ -5,6 +5,7 @@ domain: 语言
 genre: 思考
 tags:
     - 字节序
+    - 二进制
     - 易语言
 excerpt:
 ---

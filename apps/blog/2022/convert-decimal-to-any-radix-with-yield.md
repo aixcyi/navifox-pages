@@ -5,7 +5,6 @@ createAt: 2022-08-18 00:10
 domain: 算法
 genre: 教程
 tags:
-    - 算法
     - 进位制
     - Python3
     - 语法特性

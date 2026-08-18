@@ -4,7 +4,6 @@ createAt: 2016-08-24 22:31
 domain: 算法
 genre: 思考
 tags:
-    - 算法
     - 易语言
 excerpt:
 ---

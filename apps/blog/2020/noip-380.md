@@ -4,7 +4,6 @@ createAt: 2020-03-12 17:24
 domain: 算法
 genre: 教程
 tags:
-    - 算法
     - NOIP
     - 蓝桥杯
 excerpt:

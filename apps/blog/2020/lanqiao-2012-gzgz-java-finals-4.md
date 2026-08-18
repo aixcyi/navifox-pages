@@ -4,7 +4,6 @@ createAt: 2020-01-20 15:09
 domain: 算法
 genre: 教程
 tags:
-    - 算法
     - 蓝桥杯
 excerpt:
     2012 年高职高专组 JAVA 组 决赛第 4 题，2012 年高职高专组 C 语言组 决赛第 3 题
