@@ -1,16 +1,77 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
+import { useFocus } from '@vueuse/core';
 import { Icon } from '@iconify/vue';
 import type { Post } from './catalog.data';
 import { data } from './catalog.data';
-
-const { posts, domains, genres, tags: allTags } = data;
 
 const selectedDomain = ref<string | null>(null);
 const selectedGenre = ref<string | null>(null);
 const selectedTags = ref<string[]>([]);
 const searchQuery = ref('');
-const searchFocused = ref(false); // 搜索框是否聚焦：用于联动上下分隔线变色
+const searchInput = ref<HTMLInputElement | null>(null); // 搜索框是否聚焦：用于联动上下分隔线变色
+const { focused: searchFocused } = useFocus(searchInput);
+const { posts, domains, genres, tags: allTags } = data;
+const byDomain = (list: Post[], value: string | null) => (value ? list.filter((p) => p.domain === value) : list);
+const byGenre = (list: Post[], value: string | null) => (value ? list.filter((p) => p.genre === value) : list);
+const byTags = (list: Post[], values: string[]) =>
+    values.length > 0 ? list.filter((p) => values.some((t) => p.tags.includes(t))) : list;
+
+const countBy = (list: Post[], field: (p: Post) => string): Map<string, number> => {
+    const count = new Map<string, number>();
+    for (const p of list) {
+        const key = field(p);
+        count.set(key, (count.get(key) || 0) + 1);
+    }
+    return count;
+};
+const countAll = (list: Post[], field: (p: Post) => Iterable<string>): Map<string, number> => {
+    const count = new Map<string, number>();
+    for (const p of list) {
+        for (const key of field(p)) {
+            count.set(key, (count.get(key) || 0) + 1);
+        }
+    }
+    return count;
+};
+const filteredPosts = computed<Post[]>(() => {
+    let result = byTags(byGenre(byDomain(posts, selectedDomain.value), selectedGenre.value), selectedTags.value);
+    const q = searchQuery.value.trim().toLowerCase();
+    if (q) {
+        result = result.filter(
+            (p) =>
+                p.title.toLowerCase().includes(q) ||
+                (p.excerpt && p.excerpt.toLowerCase().includes(q)) ||
+                p.tags.some((t) => t.toLowerCase().includes(q)),
+        );
+    }
+    return result;
+});
+const domainCounts = computed(() =>
+    countBy(byGenre(byTags(posts, selectedTags.value), selectedGenre.value), (p) => p.domain),
+);
+const genreCounts = computed(() =>
+    countBy(byDomain(byTags(posts, selectedTags.value), selectedDomain.value), (p) => p.genre),
+);
+const tagCounts = computed(() =>
+    countAll(byDomain(byGenre(posts, selectedGenre.value), selectedDomain.value), (p) => p.tags),
+);
+const categoryIcons = [
+    { name: '语言', icon: 'tabler:language' },
+    { name: '框架', icon: 'tabler:stack-2' },
+    { name: '算法', icon: 'tabler:binary-tree' },
+    { name: '前端', icon: 'tabler:browser' },
+    { name: '工程', icon: 'tabler:tools' },
+    { name: '系统', icon: 'tabler:cpu' },
+    { name: '安全', icon: 'tabler:shield' },
+    { name: '生活', icon: 'tabler:leaf' },
+    { name: '教程', icon: 'tabler:book-2' },
+    { name: '笔记', icon: 'tabler:notes' },
+    { name: '复盘', icon: 'tabler:history' },
+    { name: '思考', icon: 'tabler:brain' },
+    { name: '选型', icon: 'tabler:list-check' },
+];
+const categoryIconOf = (name: string): string | undefined => categoryIcons.find((c) => c.name === name)?.icon;
 
 function selectDomain(domain: string | null) {
     selectedDomain.value = selectedDomain.value === domain ? null : domain;
@@ -28,88 +89,6 @@ function toggleTag(tag: string) {
         selectedTags.value.push(tag);
     }
 }
-
-const filteredPosts = computed<Post[]>(() => {
-    let result: Post[] = posts;
-
-    if (selectedDomain.value) {
-        result = result.filter((p) => p.domain === selectedDomain.value);
-    }
-
-    if (selectedGenre.value) {
-        result = result.filter((p) => p.genre === selectedGenre.value);
-    }
-
-    if (selectedTags.value.length > 0) {
-        result = result.filter((p) => selectedTags.value.every((t) => p.tags.includes(t)));
-    }
-
-    if (searchQuery.value.trim()) {
-        const q = searchQuery.value.trim().toLowerCase();
-        result = result.filter(
-            (p) =>
-                p.title.toLowerCase().includes(q) ||
-                (p.excerpt && p.excerpt.toLowerCase().includes(q)) ||
-                p.tags.some((t) => t.toLowerCase().includes(q)),
-        );
-    }
-
-    return result;
-});
-
-const domainCounts = computed(() => {
-    let base: Post[] = posts;
-    if (selectedGenre.value) base = base.filter((p) => p.genre === selectedGenre.value);
-    if (selectedTags.value.length > 0) base = base.filter((p) => selectedTags.value.every((t) => p.tags.includes(t)));
-    const count = new Map<string, number>();
-    for (const p of base) {
-        count.set(p.domain, (count.get(p.domain) || 0) + 1);
-    }
-    return count;
-});
-
-const genreCounts = computed(() => {
-    let base: Post[] = posts;
-    if (selectedDomain.value) base = base.filter((p) => p.domain === selectedDomain.value);
-    if (selectedTags.value.length > 0) base = base.filter((p) => selectedTags.value.every((t) => p.tags.includes(t)));
-    const count = new Map<string, number>();
-    for (const p of base) {
-        count.set(p.genre, (count.get(p.genre) || 0) + 1);
-    }
-    return count;
-});
-
-const tagCounts = computed(() => {
-    let base: Post[] = posts;
-    if (selectedDomain.value) base = base.filter((p) => p.domain === selectedDomain.value);
-    if (selectedGenre.value) base = base.filter((p) => p.genre === selectedGenre.value);
-    const count = new Map<string, number>();
-    for (const p of base) {
-        for (const t of p.tags) {
-            count.set(t, (count.get(t) || 0) + 1);
-        }
-    }
-    return count;
-});
-
-const genreIcons: Record<string, string> = {
-    '教程': 'tabler:book-2',
-    '笔记': 'tabler:notes',
-    '复盘': 'tabler:history',
-    '思考': 'tabler:brain',
-    '选型': 'tabler:list-check',
-};
-
-const domainIcons: Record<string, string> = {
-    '语言': 'tabler:language',
-    '框架': 'tabler:stack-2',
-    '算法': 'tabler:binary-tree',
-    '前端': 'tabler:browser',
-    '工程': 'tabler:tools',
-    '系统': 'tabler:cpu',
-    '安全': 'tabler:shield',
-    '生活': 'tabler:leaf',
-};
 
 interface FilterRow {
     key: 'genre' | 'domain' | 'tag';
@@ -129,7 +108,7 @@ const filterRows = computed<FilterRow[]>(() => [
         counts: genreCounts.value,
         isActive: (item: string) => selectedGenre.value === item,
         toggle: (item: string) => selectGenre(item),
-        iconOf: (item: string) => genreIcons[item],
+        iconOf: (item: string) => categoryIconOf(item),
     },
     {
         key: 'domain',
@@ -138,7 +117,7 @@ const filterRows = computed<FilterRow[]>(() => [
         counts: domainCounts.value,
         isActive: (item: string) => selectedDomain.value === item,
         toggle: (item: string) => selectDomain(item),
-        iconOf: (item: string) => domainIcons[item],
+        iconOf: (item: string) => categoryIconOf(item),
     },
     {
         key: 'tag',
@@ -191,13 +170,12 @@ const filterRows = computed<FilterRow[]>(() => [
                 <path d="m21 21-4.35-4.35" />
             </svg>
             <input
+                ref="searchInput"
                 v-model="searchQuery"
                 type="text"
                 role="searchbox"
                 placeholder="搜索文章标题、摘要或标签……"
                 class="search-input"
-                @focus="searchFocused = true"
-                @blur="searchFocused = false"
             />
         </div>
 
@@ -209,11 +187,11 @@ const filterRows = computed<FilterRow[]>(() => [
                 <a v-for="post in filteredPosts" :key="post.url" :href="post.url" class="post-item">
                     <span class="post-genre">
                         {{ post.genre }}
-                        <Icon class="icon-lg" :icon="genreIcons[post.genre] ?? 'tabler:tag'" />
+                        <Icon class="icon-lg" :icon="categoryIconOf(post.genre) ?? 'tabler:tag'" />
                     </span>
                     <span class="post-title">{{ post.title }}</span>
                     <span class="post-domain">
-                        <Icon class="icon-lg" :icon="domainIcons[post.domain] ?? 'tabler:tag'" />
+                        <Icon class="icon-lg" :icon="categoryIconOf(post.domain) ?? 'tabler:tag'" />
                         {{ post.domain }}
                     </span>
                     <span class="post-meta">
