@@ -351,6 +351,9 @@ importers:
       '@catppuccin/vitepress':
         specifier: 'catalog:'
         version: 0.1.2(typescript@5.9.3)
+      '@iconify/vue':
+        specifier: 'catalog:'
+        version: 5.0.1(vue@3.5.39(typescript@5.9.3))
       '@navifox/constants':
         specifier: workspace:*
         version: link:../../internal/constants

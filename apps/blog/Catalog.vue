@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
+import { Icon } from '@iconify/vue';
 import type { Post } from './catalog.data';
 import { data } from './catalog.data';
 
@@ -90,58 +91,88 @@ const tagCounts = computed(() => {
     }
     return count;
 });
+
+const genreIcons: Record<string, string> = {
+    '教程': 'tabler:book-2',
+    '笔记': 'tabler:notes',
+    '复盘': 'tabler:history',
+    '思考': 'tabler:brain',
+    '选型': 'tabler:list-check',
+};
+
+const domainIcons: Record<string, string> = {
+    '语言': 'tabler:language',
+    '框架': 'tabler:stack-2',
+    '算法': 'tabler:binary-tree',
+    '前端': 'tabler:browser',
+    '工程': 'tabler:tools',
+    '系统': 'tabler:cpu',
+    '安全': 'tabler:shield',
+    '生活': 'tabler:leaf',
+};
+
+interface FilterRow {
+    key: 'genre' | 'domain' | 'tag';
+    label: string;
+    items: string[];
+    counts: Map<string, number>;
+    isActive: (item: string) => boolean;
+    toggle: (item: string) => void;
+    iconOf: (item: string) => string | undefined;
+}
+
+const filterRows = computed<FilterRow[]>(() => [
+    {
+        key: 'genre',
+        label: '类型',
+        items: genres,
+        counts: genreCounts.value,
+        isActive: (item: string) => selectedGenre.value === item,
+        toggle: (item: string) => selectGenre(item),
+        iconOf: (item: string) => genreIcons[item],
+    },
+    {
+        key: 'domain',
+        label: '领域',
+        items: domains,
+        counts: domainCounts.value,
+        isActive: (item: string) => selectedDomain.value === item,
+        toggle: (item: string) => selectDomain(item),
+        iconOf: (item: string) => domainIcons[item],
+    },
+    {
+        key: 'tag',
+        label: '标签',
+        items: allTags,
+        counts: tagCounts.value,
+        isActive: (item: string) => selectedTags.value.includes(item),
+        toggle: (item: string) => toggleTag(item),
+        iconOf: () => undefined,
+    },
+]);
 </script>
 
 <template>
     <div class="catalog">
         <div class="filter-grid">
-            <div class="filter-label">类型</div>
-            <div class="filter-buttons filter-buttons-genre">
-                <button
-                    v-for="c in genres"
-                    :key="c"
-                    :class="['filter-button', { active: selectedGenre === c }]"
-                    :disabled="selectedGenre !== c && (genreCounts.get(c) ?? 0) === 0"
-                    @click="selectGenre(c)"
-                >
-                    {{ c }}
-                    <span v-if="(genreCounts.get(c) ?? 0) > 0" class="count">
-                        {{ genreCounts.get(c) ?? 0 }}
-                    </span>
-                </button>
-            </div>
-
-            <div class="filter-label">领域</div>
-            <div class="filter-buttons filter-buttons-domain">
-                <button
-                    v-for="d in domains"
-                    :key="d"
-                    :class="['filter-button', { active: selectedDomain === d }]"
-                    :disabled="selectedDomain !== d && (domainCounts.get(d) ?? 0) === 0"
-                    @click="selectDomain(d)"
-                >
-                    {{ d }}
-                    <span v-if="(domainCounts.get(d) ?? 0) > 0" class="count">
-                        {{ domainCounts.get(d) ?? 0 }}
-                    </span>
-                </button>
-            </div>
-
-            <div class="filter-label">标签</div>
-            <div class="filter-buttons filter-buttons-tag">
-                <button
-                    v-for="tag in allTags"
-                    :key="tag"
-                    :class="['filter-button', { active: selectedTags.includes(tag) }]"
-                    :disabled="!selectedTags.includes(tag) && (tagCounts.get(tag) ?? 0) === 0"
-                    @click="toggleTag(tag)"
-                >
-                    {{ tag }}
-                    <span v-if="(tagCounts.get(tag) ?? 0) > 0" class="count">
-                        {{ tagCounts.get(tag) ?? 0 }}
-                    </span>
-                </button>
-            </div>
+            <template v-for="row in filterRows" :key="row.key">
+                <div class="filter-label">{{ row.label }}</div>
+                <div :class="['filter-buttons', `filter-buttons-${row.key}`]">
+                    <button
+                        v-for="item in row.items"
+                        :key="item"
+                        :class="['filter-button', { active: row.isActive(item) }]"
+                        :disabled="!row.isActive(item) && (row.counts.get(item) ?? 0) === 0"
+                        @click="row.toggle(item)"
+                    >
+                        <Icon v-if="row.iconOf(item)" class="icon-lg" :icon="row.iconOf(item) ?? ''" />
+                        {{ item }}
+                        <span v-if="(row.counts.get(item) ?? 0) > 0" class="count">
+                            {{ row.counts.get(item) ?? 0 }}
+                        </span>
+                    </button>
+                </div>
+            </template>
         </div>
 
         <div :class="['divider', 'divider-before-search', { 'divider-focus': searchFocused }]"></div>
@@ -176,10 +207,16 @@ const tagCounts = computed(() => {
             <div v-if="filteredPosts.length === 0" class="empty">没有找到匹配的文章</div>
             <template v-else>
                 <a v-for="post in filteredPosts" :key="post.url" :href="post.url" class="post-item">
+                    <span class="post-genre">
+                        {{ post.genre }}
+                        <Icon class="icon-lg" :icon="genreIcons[post.genre] ?? 'tabler:tag'" />
+                    </span>
                     <span class="post-title">{{ post.title }}</span>
+                    <span class="post-domain">
+                        <Icon class="icon-lg" :icon="domainIcons[post.domain] ?? 'tabler:tag'" />
+                        {{ post.domain }}
+                    </span>
                     <span class="post-meta">
-                        <span class="post-domain">{{ post.domain }}</span>
-                        <span class="post-genre">{{ post.genre }}</span>
                         <span class="post-date">{{ post.createAt.slice(0, 10) }}</span>
                     </span>
                     <span v-if="post.excerpt" class="post-excerpt" v-html="post.excerpt"></span>
@@ -197,7 +234,6 @@ const tagCounts = computed(() => {
 .filter-grid {
     display: grid;
     grid-template-columns: 64px 1fr;
-    /* 行间距统一由 gap 控制（原 margin-bottom 已并入） */
     gap: 1rem 0;
     align-items: start;
 }
@@ -216,7 +252,6 @@ const tagCounts = computed(() => {
     gap: 0.375rem;
 }
 
-/* 各筛选行的按钮按 post-item 徽章色系着色：领域=品牌红，类型=天蓝，标签=绿色强调 */
 .filter-buttons-domain {
     --row-color: var(--vp-c-brand-1);
     --row-soft: var(--vp-c-brand-soft);
@@ -273,6 +308,29 @@ const tagCounts = computed(() => {
 .filter-button:focus-visible {
     outline: 2px solid var(--vp-c-brand-1);
     outline-offset: 2px;
+}
+
+/* 类型/领域行按钮：无边框、以 | 分隔的文本样式（图 类型 | 图 类型 | …） */
+.filter-buttons-genre .filter-button,
+.filter-buttons-domain .filter-button {
+    border: none;
+    border-radius: 0;
+    background: none;
+    padding: 0.2rem 0;
+}
+
+.filter-buttons-genre .filter-button:hover:not(:disabled),
+.filter-buttons-genre .filter-button.active,
+.filter-buttons-domain .filter-button:hover:not(:disabled),
+.filter-buttons-domain .filter-button.active {
+    background: none;
+}
+
+.filter-buttons-genre .filter-button:not(:last-child)::after,
+.filter-buttons-domain .filter-button:not(:last-child)::after {
+    content: '|';
+    margin-left: 0.375rem;
+    color: var(--vp-c-divider);
 }
 
 .filter-button.active .count {
@@ -424,20 +482,24 @@ const tagCounts = computed(() => {
 
 .post-domain,
 .post-genre {
-    border-radius: 3px;
-    padding: 0 0.375rem;
-    font-size: 0.7rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    font-size: 0.875rem;
+    opacity: 0.5;
 }
 
 .post-domain {
-    border: 1px solid var(--vp-c-brand-1);
+    align-self: center;
     color: var(--vp-c-brand-1);
 }
 
 .post-genre {
-    /* 采用渐变的另一色（brand → #41d1ff），按深浅主题适配，变量定义见 theme/style.css */
-    border: 1px solid var(--post-genre-color);
     color: var(--post-genre-color);
+}
+
+.icon-lg {
+    font-size: 1.5em;
 }
 
 .post-excerpt {
