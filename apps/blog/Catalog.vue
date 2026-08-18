@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue';
+import { computed, ref, watch } from 'vue';
 import { useFocus } from '@vueuse/core';
 import { Icon } from '@iconify/vue';
+import { useRoute } from 'vitepress';
 import type { Post } from './catalog.data';
 import { data } from './catalog.data';
 
@@ -12,6 +13,25 @@ const searchQuery = ref('');
 const searchInput = ref<HTMLInputElement | null>(null); // 搜索框是否聚焦：用于联动上下分隔线变色
 const { focused: searchFocused } = useFocus(searchInput);
 const { posts, domains, genres, tags: allTags } = data;
+
+const route = useRoute();
+const applyQueryFilter = () => {
+    const query = new URLSearchParams(route.query);
+    const domain = query.getAll('domain').find((v) => domains.includes(v));
+    const genre = query.getAll('genre').find((v) => genres.includes(v));
+    const tags = query.getAll('tag').filter((v) => allTags.includes(v));
+    if (domain === undefined && genre === undefined && tags.length === 0) {
+        selectedDomain.value = null;
+        selectedGenre.value = null;
+        selectedTags.value = [];
+        searchQuery.value = '';
+        return;
+    }
+    selectedDomain.value = domain ?? null;
+    selectedGenre.value = genre ?? null;
+    selectedTags.value = tags;
+    searchQuery.value = '';
+};
 const byDomain = (list: Post[], value: string | null) => (value ? list.filter((p) => p.domain === value) : list);
 const byGenre = (list: Post[], value: string | null) => (value ? list.filter((p) => p.genre === value) : list);
 const byTags = (list: Post[], values: string[]) =>
@@ -73,12 +93,30 @@ const categoryIcons = [
 ];
 const categoryIconOf = (name: string): string | undefined => categoryIcons.find((c) => c.name === name)?.icon;
 
+// 过滤按钮状态 → URL 同步：让 URL 查询参数始终与当前筛选一致（可刷新、可分享、可后退恢复）。
+// 与 applyQueryFilter（URL → 状态）互为反向；点击按钮不触发 route.query 更新，不会形成循环。
+// 用 replaceState 避免筛选点击产生历史噪音；保留 history.state，防止 VitePress 的
+// popstate 处理（e.state === null 时直接 return）在后退/前进时失效。
+const syncUrl = () => {
+    const params = new URLSearchParams();
+    if (selectedDomain.value) params.set('domain', selectedDomain.value);
+    if (selectedGenre.value) params.set('genre', selectedGenre.value);
+    for (const tag of selectedTags.value) params.append('tag', tag);
+    const search = params.toString();
+    const target = search ? `${location.pathname}?${search}` : location.pathname;
+    if (location.pathname + location.search !== target) {
+        history.replaceState(history.state ?? {}, '', target);
+    }
+};
+
 function selectDomain(domain: string | null) {
     selectedDomain.value = selectedDomain.value === domain ? null : domain;
+    syncUrl();
 }
 
 function selectGenre(genre: string | null) {
     selectedGenre.value = selectedGenre.value === genre ? null : genre;
+    syncUrl();
 }
 
 function toggleTag(tag: string) {
@@ -88,7 +126,10 @@ function toggleTag(tag: string) {
     } else {
         selectedTags.value.push(tag);
     }
+    syncUrl();
 }
+
+watch(() => route.query, applyQueryFilter, { immediate: true });
 
 interface FilterRow {
     key: 'genre' | 'domain' | 'tag';

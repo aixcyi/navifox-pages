@@ -5,6 +5,8 @@ import { parse, differenceInDays, startOfWeek, addDays } from 'date-fns';
 
 const $frontmatter = useData().frontmatter;
 
+const filterLink = (param: string, value: string) => `/posts?${param}=${encodeURIComponent(value)}`;
+
 const ageLabel = computed(() => {
     const matter = $frontmatter.value;
     const created = matter.createAt ? parse(matter.createAt, 'yyyy-MM-dd HH:mm', new Date()) : undefined;
@@ -44,9 +46,15 @@ const ageLabel = computed(() => {
                 <div v-if="$frontmatter.updateAt" class="meta-line">{{ $frontmatter.updateAt }} 修订</div>
                 <div class="meta-line meta-tags">
                     <span class="meta-age">{{ ageLabel }}</span>
-                    <span v-if="$frontmatter.domain" class="tag">{{ $frontmatter.domain }}</span>
-                    <span v-if="$frontmatter.genre" class="tag">{{ $frontmatter.genre }}</span>
-                    <span v-for="tag in $frontmatter.tags" :key="tag" class="tag">{{ tag }}</span>
+                    <a v-if="$frontmatter.domain" class="tag" :href="filterLink('domain', $frontmatter.domain)">
+                        {{ $frontmatter.domain }}
+                    </a>
+                    <a v-if="$frontmatter.genre" class="tag" :href="filterLink('genre', $frontmatter.genre)">
+                        {{ $frontmatter.genre }}
+                    </a>
+                    <a v-for="tag in $frontmatter.tags" :key="tag" class="tag" :href="filterLink('tag', tag)">
+                        {{ tag }}
+                    </a>
                 </div>
             </div>
         </div>
@@ -104,6 +112,8 @@ const ageLabel = computed(() => {
 
 .tag {
     display: inline-block;
+    color: var(--vp-c-text-2);
+    text-decoration: none;
     transition: color 0.25s;
 }
 
