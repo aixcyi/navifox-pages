@@ -64,9 +64,9 @@
 | `./internal/styles/`    | @navifox/styles    | 存放全局样式及字体。                                        |
 | `./internal/tsconfig/`  | @navifox/tsconfig  | 存放共享 `tsconfig` 配置。                               |
 | `./internal/types/`     | @navifox/types     | 存放全局类型定义。                                         |
-| `./internal/vitepress/` | @navifox/vitepress | 存放 VitePress 工具。                                  |
 | `./internal/ui/`        | @navifox/ui        | 存放共享 UI，包括 shadcn 等组件。                            |
 | `./internal/utils/`     | @navifox/utils     | 存放共享工具。                                           |
+| `./packages/vitepress/` | @navifox/vitepress | 存放 VitePress 工具（可发布到 npm）。                        |
 
 ## 约定
 
@@ -80,7 +80,7 @@
 
 本节提到的绝大部分命令都应当（默认）在项目根目录下执行。
 
-只有 `./apps/` 下的子项目具有 dev、build、preview 命令，`./internal/` 的子项目不能直接 **运行** 和 **预览**，也无须执行 **构建（并打包）**，`./packages/` 待定。
+只有 `./apps/` 下的子项目具有 dev、build、preview 命令，`./internal/` 与 `./packages/` 的子项目不能直接 **运行** 和 **预览**，也无须执行 **构建（并打包）**；`./packages/` 下的子项目可以发布到 npm。
 
 ### 运行
 

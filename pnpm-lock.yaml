@@ -365,7 +365,7 @@ importers:
         version: link:../../internal/utils
       '@navifox/vitepress':
         specifier: workspace:*
-        version: link:../../internal/vitepress
+        version: link:../../packages/vitepress
       '@vueuse/core':
         specifier: 'catalog:'
         version: 14.3.0(vue@3.5.39(typescript@5.9.3))
@@ -490,7 +490,7 @@ importers:
         version: link:../../internal/utils
       '@navifox/vitepress':
         specifier: workspace:*
-        version: link:../../internal/vitepress
+        version: link:../../packages/vitepress
       '@vueuse/core':
         specifier: 'catalog:'
         version: 14.3.0(vue@3.5.39(typescript@5.9.3))
@@ -761,7 +761,7 @@ importers:
         specifier: ^8.1.4
         version: 8.1.4(@types/node@24.13.3)(jiti@2.7.0)(yaml@2.9.0)
 
-  internal/vitepress:
+  packages/vitepress:
     dependencies:
       glob:
         specifier: 'catalog:'
