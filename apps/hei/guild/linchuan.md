@@ -3,10 +3,6 @@ title: "临川会馆"
 aside: false
 ---
 
-<script setup lang="ts">
-import { navifoxGuild, tighnari } from '@navifox/constants';
-</script>
-
 # 临川会馆
 
 > 江水汤汤，山色苍苍，心坚志鸿，意在青云。

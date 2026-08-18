@@ -1,5 +1,5 @@
 import { VitePressConfigurator, type PageHook } from '@navifox/vitepress';
-import { navifoxHome, sinceYear, untilYear, tighnari } from '@navifox/constants/website';
+import { navifoxHome, sinceYear, untilYear, tighnari, foxeryGuild } from '@navifox/constants/website';
 import { groupIconMdPlugin, groupIconVitePlugin } from 'vitepress-plugin-group-icons';
 import MarkdownIt from 'markdown-it';
 import { pinyin } from '@napi-rs/pinyin';
@@ -111,7 +111,7 @@ const pageHookDefault: PageHook = {
 configurator
     .hookPageOrdering(pageHookDefault)
     .goto('root')
-    .pushSocial({ ariaLabel: 'QQ群聊', icon: 'qq', link: 'https://qm.qq.com/q/ZqCGqpMXy8' })
+    .pushSocial({ ariaLabel: 'QQ群聊', icon: 'qq', link: foxeryGuild.link })
     .pushSocial({ ariaLabel: 'GitHub 仓库', icon: 'github', link: 'https://github.com/aixcyi/navifox-pages' })
     .autoSidebar('/', './', { deep: 'only' })
     .autoNavLink({ link: '/posts' })

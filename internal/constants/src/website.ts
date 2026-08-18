@@ -52,12 +52,6 @@ export const navifoxHome: Website = {
     author: tighnari.name,
     tags: [tighnari.name, '阿羽', 'aixcyi', 'ayu', '路狐领航', '罗狐会馆', '妖灵会馆'],
 };
-export const navifoxGuild: Website = {
-    name: '罗狐会馆',
-    link: 'https://qm.qq.com/q/7WO1tJmTss',
-    description: '妖灵会馆之一，广罗天下狐妖，提供技术讨论与休憩之地。',
-    author: tighnari.name,
-};
 export const navifoxRefs: Website = {
     name: '星笺',
     link: 'https://refs.navifox.net',
@@ -93,6 +87,12 @@ export const navifoxHei: Website = {
     tags: ['罗小黑', '妖精', '妖灵', '设定', 'OC'],
     note: '设定集',
 };
+export const foxeryGuild: Website = {
+    name: '罗狐会馆',
+    link: 'https://qm.qq.com/q/7WO1tJmTss',
+    description: '妖灵会馆之一，广罗天下狐妖，提供技术讨论与休憩之地。',
+    author: tighnari.name,
+};
 export const travelling: Website = {
     name: '开往',
     link: 'https://www.travellings.cn/go.html',
@@ -112,7 +112,7 @@ export const sitemap = [
     //
 ];
 export const socials: Website[] = [
-    { ...navifoxGuild, logo: 'streamline-logos:qq-logo-solid' },
+    { ...foxeryGuild, logo: 'streamline-logos:qq-logo-solid' },
     // { name: '推特<br/>X／Twitter', logo: 'simple-icons:x', link: 'https://x.com/aixcyi/' },
     { name: 'GitHub', logo: 'simple-icons:github', link: 'https://github.com/aixcyi/' },
     { name: 'PyPI', logo: 'file-icons:pypi', link: 'https://pypi.org/user/aixcyi/' },

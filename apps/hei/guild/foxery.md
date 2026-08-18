@@ -4,7 +4,7 @@ aside: false
 ---
 
 <script setup lang="ts">
-import { navifoxGuild, tighnari } from '@navifox/constants';
+import { foxeryGuild, tighnari } from '@navifox/constants';
 </script>
 
 # 罗狐会馆
@@ -18,7 +18,7 @@ import { navifoxGuild, tighnari } from '@navifox/constants';
 ## 传送门
 
 <div style="display: flex; flex-direction: column; justify-content: center; align-items: center">
-    <a :href="navifoxGuild.link" target="_blank">
+    <a :href="foxeryGuild.link" target="_blank">
         <img
             alt="FoxeryGuildQRCode"
             src="/assets/guild/foxery-qrcode.png"

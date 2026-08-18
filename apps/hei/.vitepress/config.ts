@@ -1,6 +1,6 @@
 import { VitePressConfigurator, type PageHook } from '@navifox/vitepress';
 import { trimSuffix } from '@navifox/utils/string';
-import { navifoxHome } from '@navifox/constants/website';
+import { foxeryGuild, navifoxHome } from '@navifox/constants/website';
 
 // https://vitepress.dev/reference/site-config
 const configurator = new VitePressConfigurator({
@@ -87,7 +87,7 @@ const pageHookOrdered: PageHook = {
 configurator
     .hookPageOrdering(pageHookDefault)
     .goto('root')
-    .pushSocial({ ariaLabel: '罗狐会馆群聊', icon: 'qq', link: 'https://qm.qq.com/q/7WO1tJmTss' })
+    .pushSocial({ ariaLabel: '罗狐会馆群聊', icon: 'qq', link: foxeryGuild.link })
     .pushSocial({ ariaLabel: 'GitHub 仓库', icon: 'github', link: 'https://github.com/aixcyi/navifox-pages' })
     .autoSidebar('/guild/', './guild/', { pageHook: pageHookOrdered, deep: true })
     .autoSidebar('/spirit/', './spirit/', { pageHook: pageHookOrdered, deep: true })

@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import FlairButton from '#/components/FlairButton.vue';
 import { Icon } from '@iconify/vue';
-import { navifoxDocs, navifoxGuild, projects, sinceYear } from '@navifox/constants';
+import { navifoxDocs, foxeryGuild, projects, sinceYear } from '@navifox/constants';
 import { website } from '@navifox/utils';
 import { useHead } from '@unhead/vue';
 import { useQRCode } from '@vueuse/integrations/useQRCode';
@@ -49,9 +49,9 @@ function initializeArrows() {
     });
 }
 
-const qrcode = useQRCode(navifoxGuild.link, { color: { light: '#FFFFFF00', dark: '#99a1afFF' } });
+const qrcode = useQRCode(foxeryGuild.link, { color: { light: '#FFFFFF00', dark: '#99a1afFF' } });
 const boxStates = {
-    产地: navifoxGuild.name,
+    产地: foxeryGuild.name,
     包装规格: `${projects.length} 个/盒`,
     生产日期: `${sinceYear} 年`,
     保质期: `${sinceYear + 1000} 年`,
