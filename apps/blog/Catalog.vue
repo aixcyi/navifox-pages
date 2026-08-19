@@ -236,7 +236,9 @@ const filterRows = computed<FilterRow[]>(() => [
                         {{ post.domain }}
                     </span>
                     <span class="post-meta">
-                        <span class="post-date">{{ post.createAt.slice(0, 10) }}</span>
+                        <span class="post-date">
+                            {{ post.updateAt ? post.updateAt.slice(0, 10) : post.createAt.slice(0, 10) }}
+                        </span>
                     </span>
                     <span v-if="post.excerpt" class="post-excerpt" v-html="post.excerpt"></span>
                 </a>

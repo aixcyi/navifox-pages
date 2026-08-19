@@ -104,7 +104,9 @@ const configurator = new VitePressConfigurator({
 
 const pageHookDefault: PageHook = {
     compareFolder: (a, b) => b.url.localeCompare(a.url),
-    compareFile: (a, b) => b.frontmatter.title.localeCompare(a.frontmatter.title),
+    compareFile: (a, b) =>
+        +new Date(b.frontmatter.updateAt ?? b.frontmatter.createAt) -
+        +new Date(a.frontmatter.updateAt ?? a.frontmatter.createAt),
     compareItem: () => 1,
 };
 
