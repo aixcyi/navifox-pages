@@ -51,6 +51,7 @@
 
 .dark {
     --vp-c-brand-soft: hsla(355, 71%, 77%, 0.16);
+    --vp-button-brand-active-text: var(--ctp-macchiato-crust) !important;
 }
 
 /**
