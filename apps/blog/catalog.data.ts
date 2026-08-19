@@ -13,6 +13,7 @@ export interface Post {
     excerpt: string;
     createAt: string;
     updateAt: string | null;
+    isDraft: boolean;
 }
 
 export interface CatalogData {
@@ -45,6 +46,7 @@ export default createContentLoader(pattern, {
                 excerpt: page.frontmatter.excerpt ? mdit.renderInline(page.frontmatter.excerpt) : '',
                 createAt: page.frontmatter.createAt,
                 updateAt: page.frontmatter.updateAt ?? null,
+                isDraft: page.url.includes('.draft.'),
             }));
 
         const genres = [...new Set(posts.map((p) => p.genre))].sort((a, b) => a.localeCompare(b));

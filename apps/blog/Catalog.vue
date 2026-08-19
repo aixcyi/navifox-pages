@@ -9,10 +9,11 @@ import { data } from './catalog.data';
 const selectedDomain = ref<string | null>(null);
 const selectedGenre = ref<string | null>(null);
 const selectedTags = ref<string[]>([]);
+const draftFilter = ref<string | null>(null);
 const searchQuery = ref('');
 const searchInput = ref<HTMLInputElement | null>(null); // 搜索框是否聚焦：用于联动上下分隔线变色
 const { focused: searchFocused } = useFocus(searchInput);
-const { posts, domains, genres, tags: allTags } = data;
+const { posts: pages, domains, genres, tags: allTags } = data;
 
 const route = useRoute();
 const applyQueryFilter = () => {
@@ -34,6 +35,9 @@ const applyQueryFilter = () => {
 };
 const byDomain = (list: Post[], value: string | null) => (value ? list.filter((p) => p.domain === value) : list);
 const byGenre = (list: Post[], value: string | null) => (value ? list.filter((p) => p.genre === value) : list);
+const byDraft = (list: Post[], mode: string | null) =>
+        mode === null ? list : list.filter((p) => (mode === '仅草稿') === p.isDraft);
+
 const byTags = (list: Post[], values: string[]) =>
     values.length > 0 ? list.filter((p) => values.some((t) => p.tags.includes(t))) : list;
 
@@ -54,8 +58,9 @@ const countAll = (list: Post[], field: (p: Post) => Iterable<string>): Map<strin
     }
     return count;
 };
-const filteredPosts = computed<Post[]>(() => {
-    let result = byTags(byGenre(byDomain(posts, selectedDomain.value), selectedGenre.value), selectedTags.value);
+const posts = computed<Post[]>(() => byDraft(pages, draftFilter.value));
+const filteredPages = computed<Post[]>(() => {
+    let result = byTags(byGenre(byDomain(posts.value, selectedDomain.value), selectedGenre.value), selectedTags.value);
     const q = searchQuery.value.trim().toLowerCase();
     if (q) {
         result = result.filter(
@@ -68,13 +73,18 @@ const filteredPosts = computed<Post[]>(() => {
     return result;
 });
 const domainCounts = computed(() =>
-    countBy(byGenre(byTags(posts, selectedTags.value), selectedGenre.value), (p) => p.domain),
+    countBy(byGenre(byTags(posts.value, selectedTags.value), selectedGenre.value), (p) => p.domain),
 );
 const genreCounts = computed(() =>
-    countBy(byDomain(byTags(posts, selectedTags.value), selectedDomain.value), (p) => p.genre),
+    countBy(byDomain(byTags(posts.value, selectedTags.value), selectedDomain.value), (p) => p.genre),
 );
 const tagCounts = computed(() =>
-    countAll(byDomain(byGenre(posts, selectedGenre.value), selectedDomain.value), (p) => p.tags),
+    countAll(byDomain(byGenre(posts.value, selectedGenre.value), selectedDomain.value), (p) => p.tags),
+);
+const draftCounts = computed(() =>
+    countBy(byDomain(byGenre(byTags(pages, selectedTags.value), selectedGenre.value), selectedDomain.value), (p) =>
+        p.isDraft ? '仅草稿' : '非草稿',
+    ),
 );
 const categoryIcons = [
     { name: '语言', icon: 'tabler:language' },
@@ -132,7 +142,7 @@ function toggleTag(tag: string) {
 watch(() => route.query, applyQueryFilter, { immediate: true });
 
 interface FilterRow {
-    key: 'genre' | 'domain' | 'tag';
+    key: 'genre' | 'domain' | 'tag' | 'draft';
     label: string;
     items: string[];
     counts: Map<string, number>;
@@ -141,35 +151,49 @@ interface FilterRow {
     iconOf: (item: string) => string | undefined;
 }
 
-const filterRows = computed<FilterRow[]>(() => [
-    {
-        key: 'genre',
-        label: '类型',
-        items: genres,
-        counts: genreCounts.value,
-        isActive: (item: string) => selectedGenre.value === item,
-        toggle: (item: string) => selectGenre(item),
-        iconOf: (item: string) => categoryIconOf(item),
-    },
-    {
-        key: 'domain',
-        label: '领域',
-        items: domains,
-        counts: domainCounts.value,
-        isActive: (item: string) => selectedDomain.value === item,
-        toggle: (item: string) => selectDomain(item),
-        iconOf: (item: string) => categoryIconOf(item),
-    },
-    {
-        key: 'tag',
-        label: '标签',
-        items: allTags,
-        counts: tagCounts.value,
-        isActive: (item: string) => selectedTags.value.includes(item),
-        toggle: (item: string) => toggleTag(item),
-        iconOf: () => undefined,
-    },
-]);
+const filterRows = computed<FilterRow[]>(() => {
+    const rows: FilterRow[] = [
+        {
+            key: 'genre',
+            label: '类型',
+            items: genres,
+            counts: genreCounts.value,
+            isActive: (item: string) => selectedGenre.value === item,
+            toggle: (item: string) => selectGenre(item),
+            iconOf: (item: string) => categoryIconOf(item),
+        },
+        {
+            key: 'domain',
+            label: '领域',
+            items: domains,
+            counts: domainCounts.value,
+            isActive: (item: string) => selectedDomain.value === item,
+            toggle: (item: string) => selectDomain(item),
+            iconOf: (item: string) => categoryIconOf(item),
+        },
+        {
+            key: 'tag',
+            label: '标签',
+            items: allTags,
+            counts: tagCounts.value,
+            isActive: (item: string) => selectedTags.value.includes(item),
+            toggle: (item: string) => toggleTag(item),
+            iconOf: () => undefined,
+        },
+    ];
+    if (import.meta.env.DEV) {
+        rows.push({
+            key: 'draft',
+            label: '草稿',
+            items: ['仅草稿', '非草稿'],
+            counts: draftCounts.value,
+            isActive: (item: string) => draftFilter.value === item,
+            toggle: (item: string) => (draftFilter.value = draftFilter.value === item ? null : item),
+            iconOf: () => undefined,
+        });
+    }
+    return rows;
+});
 </script>
 
 <template>
@@ -223,24 +247,25 @@ const filterRows = computed<FilterRow[]>(() => [
         <div :class="['divider', 'divider-after-search', { 'divider-focus': searchFocused }]"></div>
 
         <div class="results">
-            <div v-if="filteredPosts.length === 0" class="empty">没有找到匹配的文章</div>
+            <div v-if="filteredPages.length === 0" class="empty">没有找到匹配的文章</div>
             <template v-else>
-                <a v-for="post in filteredPosts" :key="post.url" :href="post.url" class="post-item">
+                <a v-for="page in filteredPages" :key="page.url" :href="page.url" class="post-item">
                     <span class="post-genre">
-                        {{ post.genre }}
-                        <Icon class="icon-lg" :icon="categoryIconOf(post.genre) ?? 'tabler:tag'" />
+                        {{ page.genre }}
+                        <Icon class="icon-lg" :icon="categoryIconOf(page.genre) ?? 'tabler:tag'" />
                     </span>
-                    <span class="post-title">{{ post.title }}</span>
+                    <span class="post-title">{{ page.title }}</span>
                     <span class="post-domain">
-                        <Icon class="icon-lg" :icon="categoryIconOf(post.domain) ?? 'tabler:tag'" />
-                        {{ post.domain }}
+                        <Icon class="icon-lg" :icon="categoryIconOf(page.domain) ?? 'tabler:tag'" />
+                        {{ page.domain }}
                     </span>
                     <span class="post-meta">
-                        <span class="post-date">
-                            {{ post.updateAt ? post.updateAt.slice(0, 10) : post.createAt.slice(0, 10) }}
+                        <span>
+                            {{ page.updateAt ? page.updateAt.slice(0, 10) : page.createAt.slice(0, 10) }}
                         </span>
+                        <span v-if="page.isDraft">草稿</span>
                     </span>
-                    <span v-if="post.excerpt" class="post-excerpt" v-html="post.excerpt"></span>
+                    <span v-if="page.excerpt" class="post-excerpt" v-html="page.excerpt"></span>
                 </a>
             </template>
         </div>
@@ -286,6 +311,11 @@ const filterRows = computed<FilterRow[]>(() => [
 .filter-buttons-tag {
     --row-color: var(--filter-tag-color);
     --row-soft: var(--filter-tag-soft);
+}
+
+.filter-buttons-draft {
+    --row-color: var(--vp-c-text-1);
+    --row-soft: var(--vp-c-bg-soft);
 }
 
 .filter-button {
