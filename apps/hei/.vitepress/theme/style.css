@@ -78,6 +78,37 @@
 }
 
 /**
+ * Component: Home Features
+ * -------------------------------------------------------------------------- */
+
+.VPFeature.link {
+    position: relative;
+    isolation: isolate;
+}
+
+.VPFeature.link:hover {
+    border-color: var(--vp-c-bg-soft) !important;
+}
+
+.VPFeature.link::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border: 1px solid transparent;
+    border-radius: 12px;
+    background:
+        linear-gradient(var(--vp-c-bg-soft), var(--vp-c-bg-soft)) padding-box,
+        var(--vp-home-hero-name-background) border-box;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+}
+
+.VPFeature.link:hover::before {
+    opacity: 1;
+}
+
+/**
  * Component: Table
  * -------------------------------------------------------------------------- */
 
@@ -106,7 +137,6 @@ pre {
     --vp-font-family-base: var(--font-sans);
 }
 
-/* 首页 hero 文本换行平衡：避免居中/大字多行时只落一两个字符在末行 */
 .VPHero .text,
 .VPHero .tagline {
     text-wrap: balance;
