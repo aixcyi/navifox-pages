@@ -1,10 +1,11 @@
 <script lang="ts" setup>
-import Content from '#/layouts/Content.vue';
 import { AiButton } from '@navifox/ui';
 import { chunks, UUID } from '@navifox/utils';
 import { onClickOutside } from '@vueuse/core';
 import { range } from 'es-toolkit';
 import { nextTick, onMounted, ref, shallowRef, useTemplateRef } from 'vue';
+
+import Content from '#/layouts/Content.vue';
 
 const editor = useTemplateRef('editor');
 const isEditing = ref(false);

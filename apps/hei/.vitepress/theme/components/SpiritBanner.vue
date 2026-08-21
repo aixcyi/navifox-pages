@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import SpiritCard from './SpiritCard.vue';
 import { spiritsByName } from '#/spirits';
+
+import SpiritCard from './SpiritCard.vue';
 
 const props = defineProps<{ names: string | string[]; copyOnly?: boolean }>();
 const names = typeof props.names === 'string' ? props.names.split(/[\s,]/) : props.names;

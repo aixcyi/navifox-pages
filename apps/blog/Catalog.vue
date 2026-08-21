@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import { computed, ref, watch } from 'vue';
-import { useFocus } from '@vueuse/core';
 import { Icon } from '@iconify/vue';
+import { useFocus } from '@vueuse/core';
 import { useRoute } from 'vitepress';
+import { computed, ref, watch } from 'vue';
+
 import type { Post } from './catalog.data';
 import { data } from './catalog.data';
 
@@ -36,7 +37,7 @@ const applyQueryFilter = () => {
 const byDomain = (list: Post[], value: string | null) => (value ? list.filter((p) => p.domain === value) : list);
 const byGenre = (list: Post[], value: string | null) => (value ? list.filter((p) => p.genre === value) : list);
 const byDraft = (list: Post[], mode: string | null) =>
-        mode === null ? list : list.filter((p) => (mode === '仅草稿') === p.isDraft);
+    mode === null ? list : list.filter((p) => (mode === '仅草稿') === p.isDraft);
 
 const byTags = (list: Post[], values: string[]) =>
     values.length > 0 ? list.filter((p) => values.some((t) => p.tags.includes(t))) : list;

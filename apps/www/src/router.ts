@@ -1,11 +1,12 @@
-import NotFound from '#/NotFound.vue';
-import CurriculumVitaeView from '#/views/CurriculumVitaeView.vue';
-import HomeView from '#/views/HomeView.vue';
-import TimelineView from '#/views/TimelineView.vue';
 import { navifoxHome } from '@navifox/constants';
 import { website } from '@navifox/utils';
 import { useHead } from '@unhead/vue';
 import { createRouter, createWebHistory } from 'vue-router';
+
+import NotFound from '#/NotFound.vue';
+import CurriculumVitaeView from '#/views/CurriculumVitaeView.vue';
+import HomeView from '#/views/HomeView.vue';
+import TimelineView from '#/views/TimelineView.vue';
 
 const router = createRouter({
     history: createWebHistory(),

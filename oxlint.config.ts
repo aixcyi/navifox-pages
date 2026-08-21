@@ -1,5 +1,6 @@
 import { defineConfig } from 'oxlint';
 
+// https://oxc.rs/docs/guide/usage/linter/config-file-reference.html
 export default defineConfig({
     plugins: ['typescript', 'unicorn', 'oxc'],
     categories: {

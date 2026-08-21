@@ -1,4 +1,8 @@
 <script lang="ts" setup>
+import { Icon } from '@iconify/vue';
+import { navifoxHome, tighnari } from '@navifox/constants';
+import { Markdown } from '@navifox/ui';
+
 import BannerGI from '#/assets/genshin.jpg';
 import BannerHei from '#/assets/hei.jpg';
 import BannerHoney from '#/assets/honey.jpg';
@@ -7,9 +11,6 @@ import AiDivider from '#/components/AiDivider.vue';
 import AiTimelineItem from '#/components/AiTimelineItem.vue';
 import Navbar from '#/components/Navbar.vue';
 import NavDropdownMenu from '#/components/NavDropdownMenu.vue';
-import { Icon } from '@iconify/vue';
-import { navifoxHome, tighnari } from '@navifox/constants';
-import { Markdown } from '@navifox/ui';
 </script>
 
 <template>

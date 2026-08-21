@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed, reactive, ref } from 'vue';
+
 import SpiritCard from '#/theme/components/SpiritCard.vue';
 
 defineProps<{ title: string }>();

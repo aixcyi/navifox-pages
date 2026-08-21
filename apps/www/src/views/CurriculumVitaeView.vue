@@ -1,4 +1,10 @@
 <script lang="ts" setup>
+import { Icon } from '@iconify/vue';
+import { tighnari } from '@navifox/constants';
+import type { Badge } from '@navifox/types';
+import { BackToTopButton, Button } from '@navifox/ui';
+import { type ComponentPublicInstance, ref, useTemplateRef } from 'vue';
+
 import AiDivider from '#/components/AiDivider.vue';
 import Job2021 from '#/components/experiences/Job2021.vue';
 import Job2022 from '#/components/experiences/Job2022.vue';
@@ -7,11 +13,6 @@ import Navbar from '#/components/Navbar.vue';
 import NavDropdownMenu from '#/components/NavDropdownMenu.vue';
 import ProgrammerPanel from '#/components/ProgrammerPanel.vue';
 import SkillsPanel from '#/components/SkillsPanel.vue';
-import { Icon } from '@iconify/vue';
-import { tighnari } from '@navifox/constants';
-import type { Badge } from '@navifox/types';
-import { BackToTopButton, Button } from '@navifox/ui';
-import { type ComponentPublicInstance, ref, useTemplateRef } from 'vue';
 
 function* getStates(): Generator<Badge> {
     if (tighnari.location) yield { logo: 'zondicons:location', text: tighnari.location };

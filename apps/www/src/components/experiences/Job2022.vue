@@ -1,8 +1,9 @@
 <script lang="ts" setup>
-import Experience from '#/components/Experience.vue';
 import { ColorBadge } from '@navifox/constants';
 import type { Project } from '@navifox/types';
 import { Markdown as down } from '@navifox/ui';
+
+import Experience from '#/components/Experience.vue';
 
 const project: Project = {
     name: '景区生态系统',

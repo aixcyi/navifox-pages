@@ -1,13 +1,13 @@
-// https://vitepress.dev/guide/custom-theme
-import { h } from 'vue';
 import type { Theme } from 'vitepress';
 import DefaultTheme from 'vitepress/theme';
+import { h } from 'vue';
 import '@navifox/styles/fonts';
 import '@catppuccin/vitepress/theme/macchiato/maroon.css';
 import 'virtual:group-icons.css';
 import '#/theme/style.css';
 import AiDocAsideMeta from '#/theme/components/AiDocAsideMeta.vue';
 
+// https://vitepress.dev/guide/custom-theme
 export default {
     extends: DefaultTheme,
     Layout: () => {

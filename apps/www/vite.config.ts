@@ -1,9 +1,10 @@
+import { resolve } from 'path';
+
 import { navifoxHome } from '@navifox/constants/website';
+import { ogPlugin } from '@navifox/utils/vite';
 import tailwindcss from '@tailwindcss/vite';
 import vue from '@vitejs/plugin-vue';
-import { resolve } from 'path';
 import { defineConfig } from 'vite';
-import { ogPlugin } from '@navifox/utils/vite';
 
 const timestamp = Math.trunc(new Date().getTime() / 1000);
 

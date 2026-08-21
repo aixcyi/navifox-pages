@@ -2,6 +2,7 @@
 import { useWindowScroll } from '@vueuse/core';
 import { Primitive, type PrimitiveProps } from 'reka-ui';
 import { type HTMLAttributes, nextTick, onMounted, ref } from 'vue';
+
 import type { ButtonVariants } from '.';
 import { buttonVariants } from '.';
 import { cn } from '../../lib/utils';

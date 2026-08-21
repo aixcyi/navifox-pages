@@ -1,9 +1,10 @@
 <script lang="ts" setup>
-import TimestampTable from '#/components/TimestampTable.vue';
-import Content from '#/layouts/Content.vue';
 import { AiButton } from '@navifox/ui';
 import { Duration } from '@navifox/utils';
 import { ref } from 'vue';
+
+import TimestampTable from '#/components/TimestampTable.vue';
+import Content from '#/layouts/Content.vue';
 
 const tabCursor = ref(0);
 const zz = (n: number) => (n > 9 ? '' : '0');

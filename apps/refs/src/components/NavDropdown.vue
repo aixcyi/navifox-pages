@@ -1,10 +1,11 @@
 <script lang="ts" setup>
-import { isShowingNavDropdown } from '#/storage.ts';
 import { Icon } from '@iconify/vue';
 import type { Hyperlink } from '@navifox/types';
 import { onClickOutside, useWindowScroll, useWindowSize } from '@vueuse/core';
 import { nextTick, onMounted, useTemplateRef, watch } from 'vue';
 import { useRouter } from 'vue-router';
+
+import { isShowingNavDropdown } from '#/storage.ts';
 
 const router = useRouter();
 const navDropdown = useTemplateRef('nav-dropdown');

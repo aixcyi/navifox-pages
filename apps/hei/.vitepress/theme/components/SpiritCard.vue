@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import { onMounted } from 'vue';
-import { VPLink } from 'vitepress/theme';
-import type { SpiritInfo } from '#/spirits';
 import { useClipboard } from '@vueuse/core';
+import { VPLink } from 'vitepress/theme';
+import { onMounted } from 'vue';
+
+import type { SpiritInfo } from '#/spirits';
 
 defineProps<SpiritInfo & { copyOnly?: boolean }>();
 

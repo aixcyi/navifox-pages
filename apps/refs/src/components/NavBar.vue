@@ -1,8 +1,9 @@
 <script lang="ts" setup>
-import { isShowingNavDropdown } from '#/storage.ts';
 import { Icon } from '@iconify/vue';
 import { navifoxRefs } from '@navifox/constants';
 import { useDark, useToggle } from '@vueuse/core';
+
+import { isShowingNavDropdown } from '#/storage.ts';
 
 defineProps<{ cover?: boolean }>();
 

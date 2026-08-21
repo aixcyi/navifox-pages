@@ -1,9 +1,10 @@
 <script lang="ts" setup>
-import { isShowingNavDropdownMenu } from '#/storage.ts';
 import { Icon } from '@iconify/vue';
 import { onClickOutside } from '@vueuse/core';
 import { useTemplateRef } from 'vue';
 import { useRouter } from 'vue-router';
+
+import { isShowingNavDropdownMenu } from '#/storage.ts';
 
 const dropdown = useTemplateRef('dropdown');
 const router = useRouter();

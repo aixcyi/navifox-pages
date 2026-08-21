@@ -1,9 +1,10 @@
 <script lang="ts" setup>
+import { signature, tighnari } from '@navifox/constants';
+import { logger } from '@navifox/utils';
+
 import Background from '#/assets/background.jpg';
 import Navbar from '#/components/Navbar.vue';
 import NavDropdownMenu from '#/components/NavDropdownMenu.vue';
-import { signature, tighnari } from '@navifox/constants';
-import { logger } from '@navifox/utils';
 
 logger.draw(signature, '#459199');
 </script>

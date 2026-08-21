@@ -1,6 +1,6 @@
-import { VitePressConfigurator, type PageHook } from '@navifox/vitepress';
-import { trimSuffix } from '@navifox/utils/string';
 import { foxeryGuild, navifoxHome } from '@navifox/constants/website';
+import { trimSuffix } from '@navifox/utils/string';
+import { VitePressConfigurator, type PageHook } from '@navifox/vitepress';
 
 // https://vitepress.dev/reference/site-config
 const configurator = new VitePressConfigurator({

@@ -1,8 +1,8 @@
-import { VitePressConfigurator, type PageHook } from '@navifox/vitepress';
-import { navifoxHome, sinceYear, untilYear, tighnari, foxeryGuild } from '@navifox/constants/website';
-import { groupIconMdPlugin, groupIconVitePlugin } from 'vitepress-plugin-group-icons';
-import MarkdownIt from 'markdown-it';
 import { pinyin } from '@napi-rs/pinyin';
+import { navifoxHome, sinceYear, untilYear, tighnari, foxeryGuild } from '@navifox/constants/website';
+import { VitePressConfigurator, type PageHook } from '@navifox/vitepress';
+import MarkdownIt from 'markdown-it';
+import { groupIconMdPlugin, groupIconVitePlugin } from 'vitepress-plugin-group-icons';
 
 const mdit = MarkdownIt();
 

@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import FlairButton from '#/components/FlairButton.vue';
 import { Icon } from '@iconify/vue';
 import { navifoxDocs, foxeryGuild, projects, sinceYear } from '@navifox/constants';
 import { website } from '@navifox/utils';
@@ -9,6 +8,8 @@ import { range } from 'es-toolkit';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { onMounted, onUnmounted } from 'vue';
+
+import FlairButton from '#/components/FlairButton.vue';
 
 function initializePanels() {
     const panels: HTMLDivElement[] = gsap.utils.toArray('#panel');

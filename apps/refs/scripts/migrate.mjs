@@ -9,9 +9,11 @@
  *   `./src/constants/characters.ts` 。
  */
 
-import genshindb from 'genshin-db';
 import { promises as fs } from 'node:fs';
 import { join, normalize } from 'node:path';
+
+import genshindb from 'genshin-db';
+
 import { characters } from '../data/genshin.mjs';
 
 const target = '../../src/constants/characters.ts';

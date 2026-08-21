@@ -14,6 +14,7 @@ import {
     type Version6Options,
     type Version7Options,
 } from 'uuid';
+
 import { abs } from './math';
 
 export class UUID {

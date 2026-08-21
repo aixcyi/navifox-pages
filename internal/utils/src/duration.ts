@@ -1,6 +1,7 @@
 import { UTCDate } from '@date-fns/utc';
 import { DurationLevel } from '@navifox/types';
 import { format } from 'date-fns';
+
 import { product } from './math';
 
 export class Duration {

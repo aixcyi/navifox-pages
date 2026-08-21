@@ -1,8 +1,9 @@
+import fs from 'node:fs';
+import * as pathlib from 'path';
+
 import * as glob from 'glob';
 import matter from 'gray-matter';
 import MarkdownIt from 'markdown-it';
-import fs from 'node:fs';
-import * as pathlib from 'path';
 import { compile, match } from 'path-to-regexp';
 import { normalizePath } from 'vite';
 import { type DefaultTheme, defineConfig, type UserConfig } from 'vitepress';

@@ -1,3 +1,8 @@
+import { navifoxRefs } from '@navifox/constants';
+import { website } from '@navifox/utils';
+import { useHead } from '@unhead/vue';
+import { createRouter, createWebHistory } from 'vue-router';
+
 import Home from '#/Home.vue';
 import NotFound from '#/NotFound.vue';
 import GenshinTalentsView from '#/views/GenshinTalentsView.vue';
@@ -5,10 +10,6 @@ import MirrorView from '#/views/MirrorView.vue';
 import TailwindColorView from '#/views/TailwindColorView.vue';
 import TimestampView from '#/views/TimestampView.vue';
 import UUIDAnalysisView from '#/views/UUIDAnalysisView.vue';
-import { navifoxRefs } from '@navifox/constants';
-import { website } from '@navifox/utils';
-import { useHead } from '@unhead/vue';
-import { createRouter, createWebHistory } from 'vue-router';
 
 const router = createRouter({
     history: createWebHistory(),

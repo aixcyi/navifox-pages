@@ -1,7 +1,8 @@
 <script lang="ts" setup>
-import { isShowingNavDropdownMenu } from '#/storage.ts';
 import { Icon } from '@iconify/vue';
 import { useRouter } from 'vue-router';
+
+import { isShowingNavDropdownMenu } from '#/storage.ts';
 
 defineProps<{ cover?: boolean }>();
 

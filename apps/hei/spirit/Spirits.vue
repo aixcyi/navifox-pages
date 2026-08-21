@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { VPTeamPage, VPTeamPageTitle } from 'vitepress/theme';
-import SpiritCard from '#/theme/components/SpiritCard.vue';
+
 import { spirits } from '#/spirits';
+import SpiritCard from '#/theme/components/SpiritCard.vue';
 </script>
 
 <template>

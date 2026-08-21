@@ -1,9 +1,10 @@
 <script lang="ts" setup>
+import { AiFooter } from '@navifox/ui';
+import { useTemplateRef } from 'vue';
+
 import NotFoundAnimation from '#/assets/notfound.gif';
 import NavBar from '#/components/NavBar.vue';
 import NavDropdown from '#/components/NavDropdown.vue';
-import { AiFooter } from '@navifox/ui';
-import { useTemplateRef } from 'vue';
 
 const navbar = useTemplateRef('navbar');
 </script>

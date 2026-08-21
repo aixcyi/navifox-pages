@@ -1,9 +1,10 @@
 <script lang="ts" setup>
-import Content from '#/layouts/Content.vue';
 import { Icon } from '@iconify/vue';
 import { AiButton } from '@navifox/ui';
 import { head, last } from 'es-toolkit';
 import { computed, isRef, type Ref, ref } from 'vue';
+
+import Content from '#/layouts/Content.vue';
 
 const pySources = [
     { indexUrl: `https://mirrors.ustc.edu.cn/pypi/simple`, name: '中科大' },

@@ -1,10 +1,11 @@
 <script lang="ts" setup>
-import { characters } from '#/constants/characters.ts';
-import Content from '#/layouts/Content.vue';
 import { Icon } from '@iconify/vue';
 import type { AbilityScope, GenshinCharacter } from '@navifox/types';
 import { useToggles } from '@navifox/utils';
 import { ref } from 'vue';
+
+import { characters } from '#/constants/characters.ts';
+import Content from '#/layouts/Content.vue';
 
 const columnHighlighted = ref<string>('');
 const [hasRarity, toggleRarity, noRarity] = useToggles<number>();

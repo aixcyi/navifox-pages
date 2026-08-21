@@ -1,12 +1,13 @@
 <script lang="ts" setup>
-import LinkIcon from '#/assets/AkarIconsLinkOut.svg';
-import NavBar from '#/components/NavBar.vue';
-import NavDropdown from '#/components/NavDropdown.vue';
-import SignatureLine from '#/components/SignatureLine.vue';
 import { Icon } from '@iconify/vue';
 import { anchors, bookmarks, navifoxRefs } from '@navifox/constants';
 import { AiFooter } from '@navifox/ui';
 import { takeRight } from 'es-toolkit';
+
+import LinkIcon from '#/assets/AkarIconsLinkOut.svg';
+import NavBar from '#/components/NavBar.vue';
+import NavDropdown from '#/components/NavDropdown.vue';
+import SignatureLine from '#/components/SignatureLine.vue';
 </script>
 
 <template>

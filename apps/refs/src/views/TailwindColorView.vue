@@ -1,7 +1,8 @@
 <script lang="ts" setup>
-import Content from '#/layouts/Content.vue';
 import { head, range } from 'es-toolkit';
 import { ref } from 'vue';
+
+import Content from '#/layouts/Content.vue';
 
 const namespaces = ['text-', 'bg-', '--color-'];
 const scales = [
