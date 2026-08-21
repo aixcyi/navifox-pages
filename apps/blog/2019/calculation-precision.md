@@ -4,8 +4,8 @@ createAt: 2019-11-20 21:26
 domain: 语言
 genre: 思考
 tags:
-    - Java
-    - 类型系统
+  - Java
+  - 类型系统
 excerpt:
 ---
 

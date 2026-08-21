@@ -39,7 +39,7 @@ outline: deep
 | 妖灵数据 | **必填** | **必填** | ./apps/hei/.vitepress/spirits.ts            |
 | 头像   | 必填URL  | **必填** | ./apps/hei/public/assets/spirit/\<name>.jpg |
 
-1. 如果有多个妖灵的设定，或者区分 OC 与本体，请选择最喜爱或最能代表的一个设定。 
+1. 如果有多个妖灵的设定，或者区分 OC 与本体，请选择最喜爱或最能代表的一个设定。
 2. 原创妖灵的**头像**需要以 URL 形式填写，不应存放在 git 仓库中。
 3. 原创妖灵的详情页可参考 [演示页](/spirit/navifox) 并在此基础上自由发挥。
 4. 原著中的妖灵的详情页可参考 [无限](/spirit/wuxian) 。

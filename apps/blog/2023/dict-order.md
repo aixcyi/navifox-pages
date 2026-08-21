@@ -10,7 +10,7 @@ tags:
   - Python3
   - 类型系统
 excerpt:
-    '`dict` 里的键原本是无序排列的，后来改成有序的了。'
+  '`dict` 里的键原本是无序排列的，后来改成有序的了。'
 ---
 
 # Python 字典中，键的顺序
@@ -44,4 +44,3 @@ excerpt:
 它的 [`popitem()`](https://docs.python.org/zh-cn/3/library/collections.html#collections.OrderedDict.popitem) 默认按后进先出（LIFO）顺序返回键，指定参数 `last=False` 可以改为先进先出（FIFO）返回。
 
 比较值得留意的特性就这些，更多特性请查阅文档。
-

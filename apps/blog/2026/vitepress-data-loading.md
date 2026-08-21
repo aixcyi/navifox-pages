@@ -5,12 +5,12 @@ createAt: 2026-08-21 02:17
 domain: 工程
 genre: 笔记
 tags:
-    - VitePress
-    - createContentLoader
-    - transformPageData
-    - gray-matter
+  - VitePress
+  - createContentLoader
+  - transformPageData
+  - gray-matter
 excerpt:
-    结合 VitePress 官方文档与 GitHub 源码，梳理页面数据钩子 `transformPageData()` 与 _构建期数据加载_ 两套数据加载机制。
+  结合 VitePress 官方文档与 GitHub 源码，梳理页面数据钩子 `transformPageData()` 与 _构建期数据加载_ 两套数据加载机制。
 ---
 
 # VitePress 数据加载机制备忘
@@ -228,4 +228,3 @@ field: 其它frontmatter字段值
 
 正文内容
 ```
-

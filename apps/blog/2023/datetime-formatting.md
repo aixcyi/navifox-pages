@@ -5,12 +5,12 @@ createAt: 2023-11-14 23:32
 domain: 语言
 genre: 复盘
 tags:
-    - Python3
-    - 兼容
-    - Windows
-    - 格式化
+  - Python3
+  - 兼容
+  - Windows
+  - 格式化
 excerpt:
-    Windows 下 Python 3.7 中 `date().strftime(fmt)` 参数 `fmt` 不能含有中文。
+  Windows 下 Python 3.7 中 `date().strftime(fmt)` 参数 `fmt` 不能含有中文。
 ---
 
 # date 格式化失败

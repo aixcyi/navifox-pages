@@ -6,10 +6,10 @@ expired: 1000
 domain: 语言
 genre: 复盘
 tags:
-    - Python3
-    - 浅拷贝
+  - Python3
+  - 浅拷贝
 excerpt:
-    '`[...] * n` 是浅拷贝，所以尽量避免用来复制对象。'
+  '`[...] * n` 是浅拷贝，所以尽量避免用来复制对象。'
 ---
 
 # 使用乘号复制变量引起的问题
@@ -78,4 +78,3 @@ counter = [STRUCT for _ in range(12)]
 STRUCT = {"income": 0.0, "paid": 0.0}
 counter = [STRUCT.copy() for _ in range(12)]
 ```
-

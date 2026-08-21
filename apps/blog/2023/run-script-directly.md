@@ -6,12 +6,12 @@ updateAt: 2024-01-03 09:44
 domain: 工程
 genre: 教程
 tags:
-    - 运维
-    - Python3
-    - Windows
-    - Ubuntu
+  - 运维
+  - Python3
+  - Windows
+  - Ubuntu
 excerpt:
-    本文介绍了在 Ubuntu 和 Windows 下直接运行 Python 脚本所需的配置。
+  本文介绍了在 Ubuntu 和 Windows 下直接运行 Python 脚本所需的配置。
 ---
 
 # 直接运行 Python 脚本
@@ -101,4 +101,3 @@ reg add "HKCR\py_auto_file\shell\open\command" /ve /d "\"C:\Windows\py.exe\" \"%
 reg add "HKCR\.py" /ve /d "py_auto_file"
 reg add "HKCR\py_auto_file\shell\open\command" /ve /d "\"C:\Users\{YourName}\AppData\Local\Programs\Python\Launcher\py.exe\" \"%1\" %*"
 ```
-

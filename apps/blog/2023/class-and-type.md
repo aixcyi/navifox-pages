@@ -6,11 +6,11 @@ updateAt: 2024-12-27 17:54
 domain: 语言
 genre: 思考
 tags:
-    - 类型系统
-    - 设计
-    - Python3
+  - 类型系统
+  - 设计
+  - Python3
 excerpt:
-    一次关于 Python 类型（type）、类（class）、对象（object）的思考。
+  一次关于 Python 类型（type）、类（class）、对象（object）的思考。
 ---
 
 # 类与类型
@@ -149,5 +149,3 @@ object ---> Model --> Goods  (父类派生出子类)
                        |
                      goods
 ```
-
-

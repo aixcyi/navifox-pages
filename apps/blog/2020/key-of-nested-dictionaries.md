@@ -45,4 +45,3 @@ def update(first: str, second: str, third: str, fourth: str, /, value=None):
         dataset[first][second][third] = dict()
     dataset[first][second][third][fourth] = value
 ```
-

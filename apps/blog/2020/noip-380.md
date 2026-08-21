@@ -4,10 +4,10 @@ createAt: 2020-03-12 17:24
 domain: 算法
 genre: 教程
 tags:
-    - NOIP
-    - 蓝桥杯
+  - NOIP
+  - 蓝桥杯
 excerpt:
-    NOIP 2005 普及组第二题，蓝桥杯 ALGO-29
+  NOIP 2005 普及组第二题，蓝桥杯 ALGO-29
 ---
 
 # NOIP 380. 校门外的树
@@ -108,4 +108,3 @@ public class Main {
     }
 }
 ```
-

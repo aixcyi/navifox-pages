@@ -4,12 +4,12 @@ createAt: 2024-01-24 16:28
 domain: 工程
 genre: 教程
 tags:
-    - JetBrains IDE
-    - Django
-    - shell
-    - 配置
+  - JetBrains IDE
+  - Django
+  - shell
+  - 配置
 excerpt:
-    PyCharm 社区版并没有 Django 控制台，本文提供了将 Python 控制台配置为 Django 控制台的方法。
+  PyCharm 社区版并没有 Django 控制台，本文提供了将 Python 控制台配置为 Django 控制台的方法。
 ---
 
 # PyCharm 配置 Django 控制台
@@ -18,6 +18,7 @@ excerpt:
 > Django 控制台比 Python 控制台更方便执行诸如 `User.objects.pass(is_active=True).get(id=1)` 等数据库相关的代码。
 
 > [!IMPORTANT] 重要
+>
 > 1. 这个配置仅针对当前项目，不会影响、也无法影响其它项目。
 > 2. Django 不能正常运行（因为报错而直接退出）会导致控制台无法使用。
 
@@ -53,4 +54,3 @@ if 'setup' in dir(django): django.setup()
 ## 4、启动！
 
 在左侧的工具栏找到 Python 控制台（Python Console），打开选项卡即可启动。
-

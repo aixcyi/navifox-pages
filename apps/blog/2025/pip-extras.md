@@ -5,15 +5,16 @@ createAt: 2025-04-11 14:53
 domain: 工程
 genre: 思考
 tags:
-    - pip
+  - pip
 excerpt:
-    pip 支持通过方括号语法（如 `redis[hiredis]`）安装带有可选依赖项的包，这一功能被称为
-    Extras 或 Optional Dependencies。本文介绍了该功能的引入时间，并给出了查看具体依赖的方法。
+  pip 支持通过方括号语法（如 `redis[hiredis]`）安装带有可选依赖项的包，这一功能被称为
+  Extras 或 Optional Dependencies。本文介绍了该功能的引入时间，并给出了查看具体依赖的方法。
 ---
 
 # pip 额外依赖
 
 > [!WARNING] AIGC 手工审查事项
+>
 > 1. [redis-py](https://github.com/redis/redis-py) 项目的
 >    [pyproject.toml](https://github.com/redis/redis-py/blob/master/pyproject.toml)
 >    文件确实包含 `[project.optional-dependencies]` 相关配置。
@@ -52,7 +53,7 @@ pip show redis
 
 - 访问包的源代码（如 GitHub 仓库）或文档，查找 `extras_require` 部分。  
   例如 redis-py 的官方文档会明确列出可选依赖项。
-- 对于已安装的包，可以通过 `pip inspect`（较新版本）或第三方工具（如 pipdeptree）分析依赖树：  
+- 对于已安装的包，可以通过 `pip inspect`（较新版本）或第三方工具（如 pipdeptree）分析依赖树：
   ```bash
   pip install pipdeptree
   pipdeptree --packages redis

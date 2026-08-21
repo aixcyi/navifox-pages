@@ -8,8 +8,8 @@ tags:
   - Python3
   - 类型系统
 excerpt:
-    列表、元组、集合、字典的正确类型标注方式，细节可参阅
-    [**PEP 484**](https://peps.python.org/pep-0484/#the-typing-module)。
+  列表、元组、集合、字典的正确类型标注方式，细节可参阅
+  [**PEP 484**](https://peps.python.org/pep-0484/#the-typing-module)。
 ---
 
 # 标准多项集的标注方式

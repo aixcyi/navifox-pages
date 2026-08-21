@@ -5,10 +5,10 @@ createAt: 2021-10-21 00:00
 domain: 语言
 genre: 笔记
 tags:
-    - Python3
-    - I/O
+  - Python3
+  - I/O
 excerpt:
-    内置函数 [`open()`](https://docs.python.org/zh-cn/3/library/functions.html#open) 打开模式这个参数的归纳。
+  内置函数 [`open()`](https://docs.python.org/zh-cn/3/library/functions.html#open) 打开模式这个参数的归纳。
 ---
 
 # Python 文件打开模式

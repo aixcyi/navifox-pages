@@ -5,12 +5,12 @@ createAt: 2022-08-18 00:10
 domain: 算法
 genre: 教程
 tags:
-    - 进位制
-    - Python3
-    - 语法特性
+  - 进位制
+  - Python3
+  - 语法特性
 excerpt:
-    十进制转任意进制用的是除 N 求余法，一般可以用循环和迭代的方式组织代码，但在
-    Python 中，还可以写成一个生成器函数，并且执行效率远高于迭代和直接循环。
+  十进制转任意进制用的是除 N 求余法，一般可以用循环和迭代的方式组织代码，但在
+  Python 中，还可以写成一个生成器函数，并且执行效率远高于迭代和直接循环。
 ---
 
 # 十进制转任意进制与 yield
@@ -106,4 +106,3 @@ if __name__ == '__main__':
 ```
 
 [`yield`](https://docs.python.org/zh-cn/3/reference/simple_stmts.html#the-yield-statement) 只在[生成器函数](https://docs.python.org/zh-cn/3/glossary.html#term-generator)内使用。不同于 `return` 的一旦返回则立即结束，[`yield`](https://docs.python.org/zh-cn/3/reference/expressions.html#yieldexpr) 可以多次返回不同的值，直到函数执行结束。
-

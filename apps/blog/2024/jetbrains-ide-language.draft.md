@@ -4,11 +4,11 @@ createAt: 2024-12-30 00:55
 domain: 工程
 genre: 教程
 tags:
-    - i18n
-    - JetBrains IDE
-    - 配置
+  - i18n
+  - JetBrains IDE
+  - 配置
 excerpt:
-    帮助新手修改包括 PyCharm、IDEA、WebStorm、GoLand、PhpStorm 等集成开发环境（IDE）的语言。
+  帮助新手修改包括 PyCharm、IDEA、WebStorm、GoLand、PhpStorm 等集成开发环境（IDE）的语言。
 ---
 
 # 设置 JetBrains IDE 的语言
@@ -40,6 +40,7 @@ excerpt:
 旧版本没有官方组织的语言支持，需要寻找对应版本的 `resources_cn.jar` 或 `resources_zh_CN.jar` 放入到安装目录的 `lib` 目录下。
 
 > [!WARNING] 注意
+>
 > 1. 由于年代过于久远、版本过于分散，此处无法提供相应资源下载。
 > 2. 尽量从[官方网站](https://www.jetbrains.com/)下载、安装时保持默认选项，以便确保桌面上有应用图标。
 > 3. 以下步骤仅针对 Windows 系统。

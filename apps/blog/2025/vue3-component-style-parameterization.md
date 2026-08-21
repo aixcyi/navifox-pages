@@ -5,9 +5,9 @@ createAt: 2025-08-13 10:14
 domain: 框架
 genre: 选型
 tags:
-    - Vue3
+  - Vue3
 excerpt:
-    有时候可能希望同一个 Vue 组件有不同的颜色（样式），本文对比了两种实现方法。
+  有时候可能希望同一个 Vue 组件有不同的颜色（样式），本文对比了两种实现方法。
 ---
 
 # Vue 3 组件样式参数化
@@ -58,7 +58,6 @@ defineProps<{ prompt: string, code: string }>()
 ```
 
 父组件示例：
-
 
 ```vue :line-numbers [Home.vue]
 <template>
@@ -118,7 +117,6 @@ defineProps<{ prompt: string, code: string }>()
 ```
 
 父组件示例：
-
 
 ```vue :line-numbers [Home.vue]
 <template>
@@ -186,7 +184,6 @@ defineExpose({ colors })
 ```
 
 父组件示例：
-
 
 ```vue :line-numbers [Home.vue]
 <script lang="ts" setup>

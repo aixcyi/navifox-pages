@@ -4,13 +4,13 @@ createAt: 2025-01-14 14:49
 domain: 框架
 genre: 复盘
 tags:
-    - Django
-    - 序列化
-    - 测试
-    - Python3
-    - 小数
+  - Django
+  - 序列化
+  - 测试
+  - Python3
+  - 小数
 excerpt:
-    后端使用 Decimal 时，前端应当配合传递 string 而非 number，否则会从数据源就可能出现过长的小数，导致排查链路过长或者问题反复出现。
+  后端使用 Decimal 时，前端应当配合传递 string 而非 number，否则会从数据源就可能出现过长的小数，导致排查链路过长或者问题反复出现。
 ---
 
 # 避免 Decimal 溢出

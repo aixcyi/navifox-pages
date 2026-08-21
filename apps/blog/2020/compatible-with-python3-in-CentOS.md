@@ -4,9 +4,9 @@ createAt: 2020-03-02 22:06
 domain: 系统
 genre: 复盘
 tags:
-    - 运维
-    - CentOS
-    - Python3
+  - 运维
+  - CentOS
+  - Python3
 excerpt:
 ---
 

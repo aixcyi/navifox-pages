@@ -5,9 +5,9 @@ createAt: 2024-01-10 00:04
 domain: 算法
 genre: 教程
 tags:
-    - LeetCode
+  - LeetCode
 excerpt:
-    判断给定字符串内的括号是否正确匹配。
+  判断给定字符串内的括号是否正确匹配。
 ---
 
 # LeetCode 20. 有效的括号
@@ -78,4 +78,3 @@ assert sol.isValid("()") is True
 assert sol.isValid("()[]{}") is True
 assert sol.isValid("(]") is False
 ```
-

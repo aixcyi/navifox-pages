@@ -4,8 +4,8 @@ createAt: 2019-01-28 12:06
 domain: 系统
 genre: 笔记
 tags:
-    - 运维
-    - 注册表
+  - 运维
+  - 注册表
 excerpt:
 ---
 

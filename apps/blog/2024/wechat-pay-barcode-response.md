@@ -5,9 +5,9 @@ createAt: 2024-01-24 15:41
 domain: 工程
 genre: 笔记
 tags:
-    - 测试
+  - 测试
 excerpt:
-    本地调试返回的一些响应，不代表全部。不过之前的解析做得比较混乱，这里记个备忘。
+  本地调试返回的一些响应，不代表全部。不过之前的解析做得比较混乱，这里记个备忘。
 ---
 
 # 微信扫码支付的响应
@@ -169,4 +169,3 @@ except WeChatPayException as e:
     <sign><![CDATA[BASE64字符串]]></sign>
 </xml>
 ```
-

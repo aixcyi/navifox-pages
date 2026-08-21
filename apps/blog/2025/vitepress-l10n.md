@@ -6,10 +6,10 @@ updateAt: 2025-03-21 15:41
 domain: 工程
 genre: 笔记
 tags:
-    - VitePress
-    - i18n
+  - VitePress
+  - i18n
 excerpt:
-    VitePress 没有自带翻译，一些不可避免展示文字的地方会使用英文，需要汉化时可以参考本文进行配置。
+  VitePress 没有自带翻译，一些不可避免展示文字的地方会使用英文，需要汉化时可以参考本文进行配置。
 ---
 
 # VitePress 汉化摘要
