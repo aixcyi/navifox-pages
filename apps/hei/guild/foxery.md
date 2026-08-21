@@ -9,7 +9,7 @@ import { foxeryGuild, tighnari } from '@navifox/constants';
 
 # 罗狐会馆
 
-> 广罗天下狐妖，震慑海上异象。
+> 广罗天下狐妖，定止海上异象。
 
 ## 妖灵
 
