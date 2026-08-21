@@ -225,6 +225,10 @@ README 对此有所限制。
 
 SyncPack 也有格式化 `package.json` 的能力，不过还是统一用 oxfmt 比较好。
 
+另外，项目也配置了 [dprint](https://dprint.dev) 针对 Markdown
+进行格式化，可以使用 `dprint check` 来检查文件，用 `dprint fmt`
+来执行格式化。不过表格这块儿的效果不太理想，所以没有纳入 `package.json`。
+
 ### 代码检查
 
 使用 `pnpm run lint` 运行 oxlint 代码检查。

@@ -1,0 +1,23 @@
+// https://dprint.dev
+// 目前仅接管 Markdown，代码类文件仍由 oxfmt 直接负责。
+{
+    "includes": ["**/*.md"],
+    "excludes": ["**/node_modules/", "**/dist", "**/.git", "**/temp"],
+    "plugins": [
+        "https://plugins.dprint.dev/markdown-0.22.1.wasm",
+        "https://plugins.dprint.dev/g-plane/pretty_yaml-v0.6.0.wasm",
+    ],
+    "markdown": {
+        // frontmatter 会交给 pretty_yaml 格式化。
+        "lineWidth": 120,
+        "textWrap": "maintain", // 不重排段落文本
+        "newLineKind": "auto", // 按文件现有换行符输出，兼容不同系统
+    },
+    // pretty_yaml（g-plane）配置。
+    "yaml": {
+        "indentWidth": 2,
+        "printWidth": 120,
+        "lineBreak": "lf",
+        "quotes": "preferSingle",
+    },
+}
