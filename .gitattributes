@@ -1,0 +1,13 @@
+# 仅约束 blob 的 EOL 为 LF，执行 git add 时会自动归一化；
+# 不设置 eol 属性，即不约束 checkout 后磁盘文件中的换行符。
+* text=auto
+
+# 二进制文件：禁止任何换行符转换与文本猜测
+*.gif binary
+*.ico binary
+*.jpeg binary
+*.jpg binary
+*.png binary
+*.ttf binary
+*.webp binary
+*.woff2 binary
