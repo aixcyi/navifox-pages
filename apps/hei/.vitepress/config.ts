@@ -91,10 +91,11 @@ configurator
     .pushSocial({ ariaLabel: 'GitHub 仓库', icon: 'github', link: 'https://github.com/aixcyi/navifox-pages' })
     .autoSidebar('/guild/', './guild/', { pageHook: pageHookOrdered, deep: true })
     .autoSidebar('/spirit/', './spirit/', { pageHook: pageHookOrdered, deep: true })
+    .autoSidebar('/copied/lanxizhen/', './copied/lanxizhen/', { deep: true })
     .autoNavLink({ link: '/spirit', activeMatch: '/spirit/' })
     .autoNavLink({ link: '/guild', activeMatch: '/guild/' }, '/guild/cangnan')
     .autoNavLink({ link: '/glossary', activeMatch: '/glossary/' })
-    .autoNavLink({ link: '/copied', activeMatch: '/copied/' })
+    .autoDirMenu('./copied/')
     .pushNavMenu({
         text: '附录',
         items: [
