@@ -6,9 +6,10 @@
         "css.format.spaceAroundSelectorSeparator": true,
         "css.lint.duplicateProperties": "warning",
         "css.lint.zeroUnits": "warning",
-        "js/ts.preferences.quoteStyle": "single",
         "js/ts.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets": true,
         "js/ts.format.insertSpaceAfterOpeningAndBeforeClosingJsxExpressionBraces": true,
+        "js/ts.preferences.quoteStyle": "single",
+        "js/ts.tsdk.path": "./node_modules/typescript/lib",
         "vue.editor.focusMode": true,
         "vue.format.template.initialIndent": false,
         "[yaml]": {
@@ -31,6 +32,10 @@
         {
             "name": "@navifox/hei",
             "path": "./apps/hei",
+        },
+        {
+            "name": "@navifox/vitepress",
+            "path": "./packages/vitepress",
         },
         {
             "name": "@navifox/constants",
@@ -66,7 +71,7 @@
             "Vue.volar",
             "antfu.pnpm-catalog-lens",
             "bradlc.vscode-tailwindcss",
-            "oxc.oxc-vscode"
+            "oxc.oxc-vscode",
         ],
     },
 }
