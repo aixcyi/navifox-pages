@@ -21,7 +21,7 @@
 **/dist/
 **/dist-ssr/
 **/dist.*
-/temp/
+/zoo.*/
 
 # Scripts
 **/*.bat
