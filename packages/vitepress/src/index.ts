@@ -385,6 +385,9 @@ export class VitePressConfigurator {
     /**
      * 自动追加一个导航菜单，以每个子目录作为一个菜单项。
      * 每个子目录会自动挑选一篇代表文章作为该菜单项的链接。
+     * 菜单与其每个菜单项都会自动补充 `activeMatch`（值为对应目录 `index.md` 的 URL，
+     * 例如 `.autoDirMenu('./copied/')` 时菜单匹配 `/copied/`，子菜单匹配 `/copied/lanxizhen/`）。
+     * VitePress 中目录 URL 必须由该目录的 `index.md` 提供，因此目录缺少 `index.md` 时不生成 `activeMatch`。
      *
      * @param dir 需要搜索哪个目录下的子目录。
      * @param options 可选参数。
@@ -401,11 +404,13 @@ export class VitePressConfigurator {
             items.push({
                 text: folder.frontmatter.title ?? pathlib.basename(subdir),
                 link: `/${target.url}`,
+                activeMatch: `/${folder.url}`,
             });
         }
         this.pushNavMenu({
             text: options?.text ?? index?.frontmatter?.title ?? '(无标题)',
             items,
+            activeMatch: index ? `/${index.url}` : undefined,
         });
         return this;
     }
