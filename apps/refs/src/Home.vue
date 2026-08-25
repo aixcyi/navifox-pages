@@ -1,13 +1,31 @@
 <script lang="ts" setup>
 import { Icon } from '@iconify/vue/offline';
 import { anchors, bookmarks, navifoxRefs } from '@navifox/constants';
+import type { Hyperlink, Website } from '@navifox/types';
 import { AiFooter } from '@navifox/ui';
 import { takeRight } from 'es-toolkit';
+import { computed } from 'vue';
 
 import LinkIcon from '#/assets/AkarIconsLinkOut.svg';
 import NavBar from '#/components/NavBar.vue';
 import NavDropdown from '#/components/NavDropdown.vue';
 import SignatureLine from '#/components/SignatureLine.vue';
+
+/**
+ * 未命名分组并入前一个分组，作为其后续区块（隔开一定间距）；
+ * 首个分组若未命名（如 groupChores）则保持独立布局。
+ */
+const bookmarkGroups = computed(() => {
+    const groups: { title?: Hyperlink; sections: { items: Website[] }[] }[] = [];
+    for (const group of bookmarks) {
+        if (group.title || groups.length === 0) {
+            groups.push({ title: group.title, sections: [{ items: group.items }] });
+        } else {
+            groups[groups.length - 1]!.sections.push({ items: group.items });
+        }
+    }
+    return groups;
+});
 </script>
 
 <template>
@@ -83,76 +101,80 @@ import SignatureLine from '#/components/SignatureLine.vue';
     <NavDropdown />
 
     <section class="Home MaxContainer">
-        <div class="mx-auto mt-10 flex w-full flex-col justify-center lg:w-4/5">
-            <template v-for="group in bookmarks">
-                <div v-if="group.title?.elementId" :id="group.title.elementId" />
-                <a
-                    v-if="group.title"
-                    :href="group.title.link"
-                    :target="group.title.link.startsWith('https://') ? '_blank' : '_self'"
-                    class="mt-6 mb-2 font-medium text-slate-800 sm:text-xl dark:text-slate-300"
-                >
-                    <h2 class="hover:*:opacity-100">
-                        <span>{{ group.title.text }}</span>
-                        <span
-                            class="ml-2 text-slate-400 opacity-0 transition-opacity duration-150 select-none dark:text-slate-500"
-                            v-html="'#'"
-                        />
-                    </h2>
-                </a>
-                <div v-if="group.title" class="mb-6 h-1 overflow-hidden rounded-full bg-slate-200 dark:bg-slate-900">
-                    <div class="h-full w-24 bg-linear-to-r from-indigo-500 to-purple-600 dark:bg-slate-800"></div>
-                </div>
-                <div class="mb-8 grid w-full grid-cols-2 gap-1 text-slate-800 md:grid-cols-4 md:gap-2">
+        <div class="mx-auto mt-10 w-full columns-1 gap-x-8 md:columns-2 lg:columns-3">
+            <div v-for="group in bookmarkGroups" class="mb-10 break-inside-avoid">
+                <template v-if="group.title">
+                    <div v-if="group.title?.elementId" :id="group.title.elementId" />
                     <a
-                        v-for="item in group.items"
-                        :href="item.link"
-                        class="inline-flex items-center gap-1.5 rounded-lg border border-transparent px-4 py-3 transition-all duration-200 hover:border-purple-600 hover:bg-purple-600/10 hover:**:[.Note]:border-purple-500 hover:**:[.Note]:text-purple-500"
-                        target="_blank"
+                        :href="group.title.link"
+                        :target="group.title.link.startsWith('https://') ? '_blank' : '_self'"
+                        class="mb-2 font-medium text-slate-800 sm:text-xl dark:text-slate-300"
                     >
-                        <div class="mr-2 min-w-7 text-gray-400 dark:text-gray-600">
-                            <Icon
-                                v-if="item.logo"
-                                :icon="item.logo"
-                                class="size-7 max-w-7 text-gray-600 dark:text-gray-400"
+                        <h2 class="relative hover:*:opacity-100">
+                            <span
+                                class="absolute -left-5 text-slate-400 opacity-0 transition-opacity duration-150 select-none dark:text-slate-500"
+                                v-html="'#'"
                             />
-                            <img
-                                v-else-if="item.icon"
-                                :src="item.icon"
-                                alt="ico"
-                                class="w-7"
-                                loading="lazy"
-                                decoding="async"
-                                @error="
-                                    (e) => {
-                                        (e.target as HTMLImageElement).src = LinkIcon;
-                                    }
-                                "
-                            />
-                            <img v-else :src="LinkIcon" alt="ico" class="size-7" loading="lazy" decoding="async" />
-                        </div>
-                        <div class="text-sm">
-                            <div class="inline-flex flex-wrap items-center text-black dark:text-white">
-                                <span v-html="item.name" />
-                                <span
-                                    v-if="(item.tags || []).includes('catalog')"
-                                    class="Note ml-1.5 inline rounded-xs border border-blue-400 px-0.5 text-xs text-blue-400 transition-colors duration-200 dark:border-amber-200 dark:text-amber-200"
-                                    v-html="'目录'"
-                                />
-                                <!--<Icon-->
-                                <!--    v-if="(item.tags || []).includes('catalog')"-->
-                                <!--    class="Note ml-1 inline text-blue-400 transition-colors duration-200 dark:text-amber-200"-->
-                                <!--    height="16"-->
-                                <!--    icon="carbon:catalog"-->
-                                <!--/>-->
-                            </div>
-                            <div class="Note text-gray-400 transition-colors duration-200 dark:text-gray-600">
-                                {{ item.note }}
-                            </div>
-                        </div>
+                            <span>{{ group.title.text }}</span>
+                        </h2>
                     </a>
-                </div>
-            </template>
+                    <div class="mb-6 h-1 overflow-hidden rounded-full bg-slate-200 dark:bg-slate-800">
+                        <div class="h-full w-24 bg-linear-to-r from-indigo-500 to-purple-600 dark:bg-slate-800"></div>
+                    </div>
+                </template>
+                <template v-for="(section, sectionIndex) in group.sections">
+                    <div v-if="sectionIndex > 0" class="mt-8" aria-hidden="true" />
+                    <div class="flex w-full flex-col gap-1 text-slate-800">
+                        <a
+                            v-for="item in section.items"
+                            :href="item.link"
+                            class="inline-flex items-center gap-1.5 rounded-lg border border-transparent px-2 py-1.5 transition-all duration-200 hover:border-purple-600 hover:bg-purple-600/10 hover:**:[.Note]:border-purple-500 hover:**:[.Note]:text-purple-500"
+                            target="_blank"
+                        >
+                            <div class="min-w-4 text-gray-400 dark:text-gray-600">
+                                <Icon
+                                    v-if="item.logo"
+                                    :icon="item.logo"
+                                    class="size-4 max-w-4 text-gray-600 dark:text-gray-400"
+                                />
+                                <img
+                                    v-else-if="item.icon"
+                                    :src="item.icon"
+                                    alt="ico"
+                                    class="w-4"
+                                    loading="lazy"
+                                    decoding="async"
+                                    @error="
+                                        (e) => {
+                                            (e.target as HTMLImageElement).src = LinkIcon;
+                                        }
+                                    "
+                                />
+                                <img v-else :src="LinkIcon" alt="ico" class="size-4" loading="lazy" decoding="async" />
+                            </div>
+                            <div class="flex flex-row flex-wrap items-center gap-x-1.5 text-sm">
+                                <div class="inline-flex flex-wrap items-center text-black dark:text-gray-300">
+                                    <span v-html="item.name" />
+                                    <span
+                                        v-if="(item.tags || []).includes('catalog')"
+                                        class="Note ml-1.5 inline rounded-xs border border-blue-400 px-0.5 text-xs text-blue-400 transition-colors duration-200 dark:border-amber-200 dark:text-amber-200"
+                                        v-html="'目录'"
+                                    />
+                                    <!--<Icon-->
+                                    <!--    v-if="(item.tags || []).includes('catalog')"-->
+                                    <!--    class="Note ml-1 inline text-blue-400 transition-colors duration-200 dark:text-amber-200"-->
+                                    <!--    height="16"-->
+                                    <!--    icon="carbon:catalog"-->
+                                    <!--/>-->
+                                </div>
+                                <div class="Note text-gray-400 transition-colors duration-200 dark:text-gray-500">
+                                    {{ item.note }}
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </template>
+            </div>
         </div>
     </section>
 
