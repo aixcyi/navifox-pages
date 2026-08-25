@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { Icon } from '@iconify/vue';
+import { Icon } from '@iconify/vue/offline';
 import { AiButton } from '@navifox/ui';
 import { head, last } from 'es-toolkit';
 import { computed, isRef, type Ref, ref } from 'vue';

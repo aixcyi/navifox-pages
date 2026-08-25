@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { Icon } from '@iconify/vue';
+import { Icon } from '@iconify/vue/offline';
 import { Duration } from '@navifox/utils';
 import { ref } from 'vue';
 

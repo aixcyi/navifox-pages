@@ -75,6 +75,8 @@ const linkMap = [
                                     :src="item.icon"
                                     alt="ico"
                                     class="size-6 rounded-md select-none"
+                                    loading="lazy"
+                                    decoding="async"
                                 />
                                 <div v-else class="size-6" />
                             </div>

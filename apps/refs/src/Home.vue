@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { Icon } from '@iconify/vue';
+import { Icon } from '@iconify/vue/offline';
 import { anchors, bookmarks, navifoxRefs } from '@navifox/constants';
 import { AiFooter } from '@navifox/ui';
 import { takeRight } from 'es-toolkit';
@@ -121,13 +121,15 @@ import SignatureLine from '#/components/SignatureLine.vue';
                                 :src="item.icon"
                                 alt="ico"
                                 class="w-7"
+                                loading="lazy"
+                                decoding="async"
                                 @error="
                                     (e) => {
                                         (e.target as HTMLImageElement).src = LinkIcon;
                                     }
                                 "
                             />
-                            <img v-else :src="LinkIcon" alt="ico" class="size-7" />
+                            <img v-else :src="LinkIcon" alt="ico" class="size-7" loading="lazy" decoding="async" />
                         </div>
                         <div class="text-sm">
                             <div class="inline-flex flex-wrap items-center text-black dark:text-white">

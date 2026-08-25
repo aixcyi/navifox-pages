@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { Icon } from '@iconify/vue';
+import { Icon } from '@iconify/vue/offline';
 import type { Hyperlink } from '@navifox/types';
 import { onClickOutside, useWindowScroll, useWindowSize } from '@vueuse/core';
 import { nextTick, onMounted, useTemplateRef, watch } from 'vue';
@@ -64,7 +64,14 @@ watch(y, resize);
                 >
                     <div class="mr-3 h-5 w-5 shrink-0">
                         <Icon v-if="sheet.logo" :icon="sheet.logo" class="size-5" />
-                        <img v-else-if="sheet.icon" :src="sheet.icon" alt="ico" class="size-5 select-none" />
+                        <img
+                            v-else-if="sheet.icon"
+                            :src="sheet.icon"
+                            alt="ico"
+                            class="size-5 select-none"
+                            loading="lazy"
+                            decoding="async"
+                        />
                         <div v-else class="size-5" />
                     </div>
                     <span class="font-medium">{{ sheet.text }}</span>

@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { Icon } from '@iconify/vue';
+import { Icon } from '@iconify/vue/offline';
 import { navifoxRefs } from '@navifox/constants';
 import { useDark, useToggle } from '@vueuse/core';
 
