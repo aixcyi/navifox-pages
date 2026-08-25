@@ -90,7 +90,7 @@ function handleSelection(e: PointerEvent) {
 </template>
 
 <style scoped>
-@reference '#/style.css';
+@reference '../style.css';
 
 /* noinspection CssUnusedSymbol */
 .UnusableClass {

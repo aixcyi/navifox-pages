@@ -16,7 +16,6 @@
         "@navifox/types": "workspace:*",
         "@navifox/ui": "workspace:*",
         "@navifox/utils": "workspace:*",
-        "@tailwindcss/vite": "catalog:",
         "@unhead/vue": "catalog:",
         "@vueuse/core": "catalog:",
         "es-toolkit": "catalog:",
@@ -26,6 +25,7 @@
     },
     "devDependencies": {
         "@iconify/vue": "catalog:",
+        "@tailwindcss/postcss": "catalog:",
         "@types/node": "catalog:",
         "@vitejs/plugin-vue": "catalog:",
         "@vue/tsconfig": "catalog:",
