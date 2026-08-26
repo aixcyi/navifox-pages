@@ -41,15 +41,16 @@ const groupPython: Website[] = [
         logo: 'logos:python',
     },
     {
-        name: 'f-string',
-        link: 'https://docs.python.org/zh-cn/3/reference/lexical_analysis.html#f-strings',
-        logo: 'logos:python',
-    },
-    {
         name: 'Exception 层次结构',
         link: 'https://docs.python.org/zh-cn/3/library/exceptions.html#exception-hierarchy',
         logo: 'logos:python',
         note: '内置异常',
+    },
+    {
+        name: 'f-string',
+        link: 'https://docs.python.org/zh-cn/3/reference/lexical_analysis.html#f-strings',
+        logo: 'logos:python',
+        note: '格式化字符串字面量',
     },
     {
         name: '格式规格迷你语言',
@@ -332,7 +333,7 @@ const groupFrontend: Website[] = [
         name: 'DOM 接口类型',
         link: 'https://developer.mozilla.org/zh-CN/docs/Web/API/HTML_DOM_API#html_dom_api_%E6%8E%A5%E5%8F%A3',
         logo: 'simple-icons:mdnwebdocs',
-        note: 'HTMLDivElement…',
+        note: 'HTMLDivElement 之类',
     },
     {
         name: 'HTML 术语表',
@@ -344,43 +345,43 @@ const groupFrontend: Website[] = [
         name: 'CSS 属性',
         link: 'https://developer.mozilla.org/zh-CN/docs/Web/CSS/Reference/Properties',
         logo: 'devicon:css',
-        note: 'MDN - CSS',
+        note: '- MDN',
     },
     {
         name: 'CSS 伪元素',
         link: 'https://developer.mozilla.org/zh-CN/docs/Web/CSS/Reference/Selectors/Pseudo-elements',
         logo: 'devicon:css',
-        note: 'MDN - CSS',
+        note: '- MDN',
     },
     {
         name: 'CSS 伪类',
         link: 'https://developer.mozilla.org/zh-CN/docs/Web/CSS/Reference/Selectors/Pseudo-classes',
         logo: 'devicon:css',
-        note: 'MDN - CSS',
+        note: '- MDN',
     },
     {
         name: 'CSS 值函数',
         link: 'https://developer.mozilla.org/zh-CN/docs/Web/CSS/Reference/Values/Functions',
         logo: 'devicon:css',
-        note: 'MDN - CSS',
+        note: '- MDN',
     },
     {
-        name: '内置对象',
+        name: 'JavaScript 内置对象',
         link: 'https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects',
         logo: 'logos:javascript',
-        note: 'MDN - JavaScript',
+        note: '- MDN',
     },
     {
-        name: '表达式和运算符',
+        name: 'JavaScript 表达式和运算符',
         link: 'https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators',
         logo: 'logos:javascript',
-        note: 'MDN - JavaScript',
+        note: '- MDN',
     },
     {
-        name: '正则表达式标志',
+        name: 'JavaScript 正则表达式标志',
         link: 'https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Regular_expressions#%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%A0%87%E5%BF%97',
         logo: 'logos:javascript',
-        note: 'MDN - JavaScript',
+        note: '- MDN',
     },
     {
         name: 'TypeScript Cheat Sheets',
@@ -554,18 +555,19 @@ const groupIntelliJ: Website[] = [
         name: '`plugin.xml`',
         link: 'https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html',
         logo: 'vscode-icons:file-type-jetbrains',
+        note: '插件配置文件',
     },
     {
         name: '`build.plugin.kts`',
         link: 'https://plugins.jetbrains.com/docs/intellij/tools-intellij-platform-gradle-plugin.html',
         logo: 'vscode-icons:file-type-jetbrains',
-        note: '2.x 版本',
+        note: '插件 Gradle 构建配置 2.x 版本',
     },
     {
         name: '`build.gradle.kts`',
         link: 'https://plugins.jetbrains.com/docs/intellij/tools-gradle-intellij-plugin.html#usage',
         logo: 'vscode-icons:file-type-jetbrains',
-        note: '1.x 版本',
+        note: '插件 Gradle 构建配置 1.x 版本',
     },
     {
         name: 'Bundled Plugins IDs',
@@ -875,6 +877,28 @@ const groupMinecraft: Website[] = [
 ];
 const groupChores: Website[] = [
     {
+        name: '语义化版本号',
+        link: 'https://semver.org/lang/zh-CN/',
+        icon: 'https://semver.org/assets/500x500(light).jpg',
+        note: 'SemVer 控制规范',
+    },
+    {
+        name: '约定式提交',
+        link: 'https://www.conventionalcommits.org/zh-hans/v1.0.0/',
+        icon: 'https://www.conventionalcommits.org/favicon.ico',
+        note: '约定俗成的 git 提交消息规范',
+    },
+    {
+        name: '如何维护更新日志 `CHANGELOG.md`',
+        link: 'https://keepachangelog.com/zh-CN/1.1.0/',
+        icon: 'https://keepachangelog.com/assets/images/favicon.ico',
+    },
+    {
+        name: '编写有效的 `CLAUDE.md`',
+        link: 'https://code.claude.com/docs/zh-CN/best-practices#write-an-effective-claude-md',
+        logo: 'logos:claude-icon',
+    },
+    {
         name: 'HTTP 状态响应码',
         link: 'https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Reference/Status',
         logo: 'simple-icons:mdnwebdocs',
@@ -906,9 +930,6 @@ export const bookmarks: BookmarkGroup[] = [
     },
     {
         title: { text: 'Django', link: '#django-configs' },
-        items: groupDjango,
-    },
-    {
         items: groupDjangoConfigs,
     },
     {
@@ -916,6 +937,9 @@ export const bookmarks: BookmarkGroup[] = [
     },
     {
         items: groupDjangoView,
+    },
+    {
+        items: groupDjango,
     },
     {
         title: { text: 'Kotlin', link: '#kotlin' },
