@@ -183,11 +183,19 @@ export interface Project {
 }
 
 /**
+ * 书签组所属的生态分类（refs 首页以 Tab 形式呈现）。
+ */
+export type BookmarkCategory = 'python' | 'node' | 'java' | 'more';
+
+/**
  * 书签组。
  */
 export interface BookmarkGroup {
     /** 标题（带链接）。 */
     title?: Hyperlink;
+
+    /** 所属生态分类（refs 首页 Tab）。 */
+    category?: BookmarkCategory;
 
     /** 组内书签。 */
     items: Website[];

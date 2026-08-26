@@ -1,23 +1,26 @@
 <script lang="ts" setup>
 import { Icon } from '@iconify/vue/offline';
-import { anchors, bookmarks, navifoxRefs } from '@navifox/constants';
-import type { Hyperlink, Website } from '@navifox/types';
+import { bookmarkTabs, bookmarks, navifoxRefs } from '@navifox/constants';
+import type { BookmarkCategory, Hyperlink, Website } from '@navifox/types';
 import { AiFooter } from '@navifox/ui';
-import { takeRight } from 'es-toolkit';
-import { computed } from 'vue';
+import { computed, ref } from 'vue';
 
 import LinkIcon from '#/assets/AkarIconsLinkOut.svg';
 import NavBar from '#/components/NavBar.vue';
 import NavDropdown from '#/components/NavDropdown.vue';
 import SignatureLine from '#/components/SignatureLine.vue';
 
+const activeTab = ref<BookmarkCategory>(bookmarkTabs[0]!.key);
+
 /**
  * 未命名分组并入前一个分组，作为其后续区块（隔开一定间距）；
  * 首个分组若未命名（如 groupChores）则保持独立布局。
+ * 仅收集当前激活 Tab（生态分类）下的分组。
  */
 const bookmarkGroups = computed(() => {
     const groups: { title?: Hyperlink; sections: { items: Website[] }[] }[] = [];
     for (const group of bookmarks) {
+        if (group.category !== activeTab.value) continue;
         if (group.title || groups.length === 0) {
             groups.push({ title: group.title, sections: [{ items: group.items }] });
         } else {
@@ -68,31 +71,32 @@ const bookmarkGroups = computed(() => {
                     class="mx-auto mt-8 mb-12 text-center text-lg leading-relaxed font-light tracking-wide text-slate-300 md:text-xl lg:w-3/4 lg:text-2xl xl:w-2/3"
                 >
                     <span class="*:[b]:font-semibold *:[b]:text-pink-300" v-html="navifoxRefs.descriptionRich" />
-                    <span>这一页收录了部分常用的书签，并按以下几个大类分布，更多参考见右上角。</span>
+                    <span>这一页收录了部分常用的书签，并按以下几个大类展示，更多参考见右上角。</span>
                 </h2>
-                <div class="mx-auto mb-16 flex max-w-4xl flex-row flex-wrap items-center justify-center gap-4">
-                    <a
-                        v-for="anchor in anchors.slice(0, -1)"
-                        :href="anchor.link"
-                        :target="anchor.link.startsWith('https://') ? '_blank' : '_self'"
-                        class="group inline-flex h-10 items-center justify-center rounded-3xl bg-white/10 px-6 text-white outline outline-white/20 backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:bg-white/20 hover:shadow-lg"
+                <div
+                    role="tablist"
+                    aria-label="书签分类"
+                    class="mx-auto mb-16 flex max-w-4xl flex-row flex-wrap items-center justify-center gap-4"
+                >
+                    <button
+                        v-for="tab in bookmarkTabs"
+                        :key="tab.key"
+                        type="button"
+                        role="tab"
+                        :aria-selected="activeTab === tab.key"
+                        :class="[
+                            'group inline-flex h-10 cursor-pointer items-center justify-center rounded-3xl px-6 text-white outline backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:bg-white/20 hover:shadow-lg',
+                            activeTab === tab.key
+                                ? 'bg-white/25 shadow-lg outline-white/50'
+                                : 'bg-white/10 outline-white/20',
+                        ]"
+                        @click="activeTab = tab.key"
                     >
-                        <div v-if="anchor.logo" class="mr-2 flex shrink-0 items-center justify-center">
-                            <Icon :icon="anchor.logo" height="24" />
+                        <div class="mr-2 flex shrink-0 items-center justify-center">
+                            <Icon :icon="tab.logo" height="24" />
                         </div>
-                        <span class="leading-none font-semibold">{{ anchor.text }}</span>
-                    </a>
-                    <a
-                        v-for="anchor in takeRight(anchors, 1)"
-                        :href="anchor.link"
-                        :target="anchor.link.startsWith('https://') ? '_blank' : '_self'"
-                        class="group inline-flex h-10 items-center justify-center rounded-3xl bg-linear-to-r from-orange-500/20 to-yellow-500/20 px-6 text-white outline outline-orange-300/30 backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:from-orange-500/30 hover:to-yellow-500/30 hover:shadow-lg"
-                    >
-                        <div v-if="anchor.logo" class="mr-2 flex shrink-0 items-center justify-center">
-                            <Icon :icon="anchor.logo" height="24" />
-                        </div>
-                        <span class="leading-none font-semibold">{{ anchor.text }}</span>
-                    </a>
+                        <span class="leading-none font-semibold">{{ tab.label }}</span>
+                    </button>
                 </div>
             </div>
         </div>
@@ -100,8 +104,8 @@ const bookmarkGroups = computed(() => {
 
     <NavDropdown />
 
-    <section class="Home MaxContainer">
-        <div class="mx-auto mt-10 w-full columns-1 gap-x-8 md:columns-2 lg:columns-3">
+    <section class="Home MaxContainer" role="tabpanel">
+        <div class="mx-auto mt-10 w-full columns-1 gap-x-8 md:columns-2 lg:columns-3 xl:columns-4">
             <div v-for="group in bookmarkGroups" class="mb-10 break-inside-avoid">
                 <template v-if="group.title">
                     <div v-if="group.title?.elementId" :id="group.title.elementId" />

@@ -1,6 +1,20 @@
-import type { BookmarkGroup, Hyperlink, Website } from '@navifox/types';
+import type { BookmarkCategory, BookmarkGroup, Website } from '@navifox/types';
 import { markit } from '@navifox/utils';
 
+const groupPythonChore: Website[] = [
+    {
+        name: 'uv',
+        link: 'https://docs.astral.sh/uv/',
+        icon: 'https://docs.astral.sh/uv/assets/favicon.ico',
+        note: '一个包与项目管理器，Rust 写的炒鸡块',
+    },
+    {
+        name: 'Django Packages',
+        link: 'https://djangopackages.org/',
+        icon: 'https://djangopackages.org/static/img/favicon.png',
+        note: '查找可复用 Django 代码的目录',
+    },
+];
 const groupPython: Website[] = [
     {
         name: '标准库',
@@ -83,6 +97,79 @@ const groupPython: Website[] = [
         link: 'https://devguide.python.org/developer-workflow/development-cycle/index.html',
         logo: 'logos:python',
         note: '发布节奏',
+    },
+];
+const groupPythonLibs: Website[] = [
+    {
+        name: 'typing_extensions',
+        link: 'https://typing-extensions.readthedocs.io/en/latest/#',
+        icon: 'https://typing-extensions.readthedocs.io/favicon.ico',
+        note: '标准库 typing 的跨版本兼容性代替',
+    },
+    {
+        name: 'Requests',
+        link: 'https://requests.readthedocs.io/en/latest/',
+        icon: 'https://requests.readthedocs.io/favicon.ico',
+        note: '优雅而易用的 HTTP 库',
+    },
+    {
+        name: 'NumPy',
+        link: 'https://numpy.org/doc/stable/reference/index.html',
+        logo: 'logos:numpy',
+        note: '行科学计算的基础核心库',
+    },
+    {
+        name: 'Pandas',
+        link: 'https://pandas.pydata.org/docs/reference/index.html',
+        logo: 'logos:pandas-icon',
+        note: '数据结构和数据分析工具',
+    },
+    {
+        name: 'Celery',
+        link: 'https://docs.celeryq.dev/en/stable/index.html',
+        icon: 'https://docs.celeryq.dev/en/stable/_static/favicon.ico',
+        note: '分布式消息队列',
+    },
+    {
+        name: 'Pillow',
+        link: 'https://pillow.readthedocs.io/en/stable/reference/index.html',
+        icon: 'https://pillow.readthedocs.io/en/stable/_static/favicon.ico',
+        note: '图像与图像文件处理工具',
+    },
+    {
+        name: 'Click',
+        link: 'https://click.palletsprojects.com/en/stable/api/',
+        icon: 'https://click.palletsprojects.com/en/stable/_static/click-icon.svg',
+        note: '少量代码创建命令行工具（CLI）',
+    },
+    {
+        name: 'Selenium',
+        link: 'https://www.selenium.dev/zh-cn/documentation/',
+        logo: 'logos:selenium',
+        note: '浏览器自动化工具',
+    },
+    {
+        name: 'Playwright',
+        link: 'https://playwright.dev/python/docs/intro',
+        logo: 'logos:playwright',
+        note: '新兴浏览器自动化工具',
+    },
+    {
+        name: 'Prefab',
+        link: 'https://prefab.prefect.io/docs/',
+        note: '前端 UI 生成框架',
+    },
+    {
+        name: 'django-environ',
+        link: 'https://django-environ.readthedocs.io/en/latest/',
+        icon: 'https://django-environ.readthedocs.io/favicon.ico',
+        note: '让 Django 支持更多环境加载方式',
+    },
+    {
+        name: 'Django OAuth Toolkit',
+        link: 'https://django-oauth-toolkit.readthedocs.io/en/latest/',
+        icon: 'https://django-oauth-toolkit.readthedocs.io/favicon.ico',
+        note: '在 Django 中提供 OAuth 服务',
     },
 ];
 const groupDjango: Website[] = [
@@ -275,7 +362,7 @@ const groupKotlin: Website[] = [
     {
         name: 'JavaSE 8',
         link: 'https://docs.oracle.com/javase/8/docs/api/',
-        logo: 'devicon:java',
+        logo: 'logos:java',
         note: 'API 手册',
         tags: ['catalog'],
     },
@@ -312,7 +399,7 @@ const groupKotlin: Website[] = [
     {
         name: 'Text Components',
         link: 'https://docs.oracle.com/javase/tutorial/uiswing/components/text.html',
-        logo: 'devicon:java',
+        logo: 'logos:java',
         note: '几种文本组件的区别',
     },
 ];
@@ -344,25 +431,25 @@ const groupFrontend: Website[] = [
     {
         name: 'CSS 属性',
         link: 'https://developer.mozilla.org/zh-CN/docs/Web/CSS/Reference/Properties',
-        logo: 'devicon:css',
+        logo: 'logos:css',
         note: '- MDN',
     },
     {
         name: 'CSS 伪元素',
         link: 'https://developer.mozilla.org/zh-CN/docs/Web/CSS/Reference/Selectors/Pseudo-elements',
-        logo: 'devicon:css',
+        logo: 'logos:css',
         note: '- MDN',
     },
     {
         name: 'CSS 伪类',
         link: 'https://developer.mozilla.org/zh-CN/docs/Web/CSS/Reference/Selectors/Pseudo-classes',
-        logo: 'devicon:css',
+        logo: 'logos:css',
         note: '- MDN',
     },
     {
         name: 'CSS 值函数',
         link: 'https://developer.mozilla.org/zh-CN/docs/Web/CSS/Reference/Values/Functions',
-        logo: 'devicon:css',
+        logo: 'logos:css',
         note: '- MDN',
     },
     {
@@ -777,13 +864,13 @@ const groupSearchEngine: Website[] = [
     {
         name: '优化搜索范围',
         link: 'https://support.google.com/websearch?p=adv_operators&hl=zh-CN',
-        logo: 'devicon:google',
+        logo: 'logos:google-icon',
         note: 'Google',
     },
     {
         name: 'Google Advanced Search Operators',
         link: 'https://docs.google.com/document/d/1ydVaJJeL1EYbWtlfj9TPfBTE5IBADkQfZrQaBZxqXGs/edit',
-        logo: 'devicon:google',
+        logo: 'logos:google-icon',
     },
     {
         name: '高级搜索选项',
@@ -920,81 +1007,114 @@ const groupChores: Website[] = [
     },
 ];
 
+/**
+ * refs 首页的生态 Tab 列表（数组顺序即展示顺序）。
+ */
+export const bookmarkTabs: { key: BookmarkCategory; label: string; logo: string }[] = [
+    { key: 'python', label: 'Python 生态', logo: 'catppuccin:python' },
+    { key: 'node', label: 'Node.js 生态', logo: 'catppuccin:package-json' },
+    { key: 'java', label: 'Java 生态', logo: 'catppuccin:kotlin' },
+    { key: 'more', label: '更多', logo: 'fluent-emoji-flat:fox' },
+];
+
 export const bookmarks: BookmarkGroup[] = [
     {
+        category: 'more',
         items: groupChores,
     },
     {
+        category: 'python',
+        items: groupPythonChore,
+    },
+    {
+        category: 'python',
         title: { text: 'Python', link: '#python' },
         items: groupPython,
     },
     {
-        title: { text: 'Django', link: '#django-configs' },
-        items: groupDjangoConfigs,
+        category: 'python',
+        title: { text: 'Python 包', link: '#python-libs' },
+        items: groupPythonLibs,
     },
     {
+        category: 'python',
+        title: { text: 'Django ORM', link: '#django-orm' },
         items: groupDjangoModel,
     },
     {
+        category: 'python',
+        title: { text: 'Django 配置', link: '#django-configs' },
+        items: groupDjangoConfigs,
+    },
+    {
+        category: 'python',
+        title: { text: 'Django 视图层', link: '#django-view' },
         items: groupDjangoView,
     },
     {
+        category: 'python',
+        title: { text: 'Django', link: '#django' },
         items: groupDjango,
     },
     {
-        title: { text: 'Kotlin', link: '#kotlin' },
-        items: groupKotlin,
-    },
-    {
-        title: { text: 'IntelliJ', link: 'intellij' },
-        items: groupIntelliJ,
-    },
-    {
-        title: { text: '存储层', link: '#storage' },
-        items: groupStorage,
-    },
-    {
+        category: 'node',
         title: { text: '前端', link: '#frontend' },
         items: groupFrontend,
     },
     {
+        category: 'node',
+        title: { text: '前端样式', link: '#frontend-style' },
         items: groupFrontendLibs,
     },
     {
+        category: 'node',
         title: { text: 'Vue 3', link: '#vue' },
         items: groupVue,
     },
     {
+        category: 'node',
         title: { text: 'React', link: '#react' },
         items: groupReact,
     },
     {
+        category: 'java',
+        title: { text: 'Kotlin', link: '#kotlin' },
+        items: groupKotlin,
+    },
+    {
+        category: 'java',
+        title: { text: 'IntelliJ', link: 'intellij' },
+        items: groupIntelliJ,
+    },
+    {
+        category: 'more',
+        title: { text: '存储层', link: '#storage' },
+        items: groupStorage,
+    },
+    {
+        category: 'more',
         title: { text: 'Markdown', link: '#markdown' },
         items: groupMarkdown,
     },
     {
+        category: 'more',
         items: groupMarkdownVitePress,
     },
     {
+        category: 'more',
         title: { text: '标记语言', link: '#markup' },
         items: groupMarkupLanguages,
     },
     {
+        category: 'more',
         title: { text: '搜索引擎', link: '#search-engine' },
         items: groupSearchEngine,
     },
     {
+        category: 'more',
         title: { text: 'Minecraft', link: '#minecraft' },
         items: groupMinecraft,
     },
-];
-export const anchors: Hyperlink[] = [
-    { text: 'Python & Django', link: '#python', logo: 'catppuccin:python' },
-    { text: 'Kotlin & IntelliJ', link: '#kotlin', logo: 'catppuccin:kotlin' },
-    { text: '存储层', link: '#storage', logo: 'catppuccin:database' },
-    { text: '前端技术栈', link: '#frontend', logo: 'catppuccin:xml' },
-    { text: '标记 & 搜索', link: '#markdown', logo: 'catppuccin:markdown' },
-    { text: '更多', link: '#minecraft', logo: 'fluent-emoji-flat:fox' },
 ];
 for (const group of bookmarks) {
     if (group.title) group.title.elementId = group.title.link.substring(1);

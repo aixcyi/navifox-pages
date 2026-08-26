@@ -10,11 +10,11 @@ export class ColorBadge {
     static readonly Kotlin: Badge = { logo: 'devicon:kotlin' };
     static readonly Golang: Badge = { logo: 'devicon:go' };
     static readonly Rust: Badge = { logo: 'catppuccin:rust' };
-    static readonly Java: Badge = { logo: 'devicon:java' };
+    static readonly Java: Badge = { logo: 'logos:java' };
     static readonly JavaScript: Badge = { logo: 'devicon:javascript' };
     static readonly TypeScript: Badge = { logo: 'devicon:typescript' };
     static readonly WebHTML: Badge = { logo: 'catppuccin:html', text: 'HTML' };
-    static readonly WebCSS: Badge = { logo: 'devicon:css', text: 'CSS' };
+    static readonly WebCSS: Badge = { logo: 'logos:css', text: 'CSS' };
     static readonly Markdown: Badge = { logo: 'catppuccin:markdown' };
     static readonly Bash: Badge = { logo: 'devicon-plain:bash', text: 'bash' };
     static readonly Cmd: Badge = { logo: 'codicon:terminal-cmd', text: 'cmd' };
@@ -27,9 +27,9 @@ export class ColorBadge {
     static readonly Django: Badge = { logo: 'skill-icons:django' };
     static readonly DjangoRESTFramework: Badge = { logo: 'devicon:djangorest-wordmark', text: 'Django REST Framework' };
     static readonly Flask: Badge = { logo: 'file-icons:flask' };
-    static readonly FastAPI: Badge = { logo: 'devicon:fastapi' };
-    static readonly NumPy: Badge = { logo: 'devicon:numpy' };
-    static readonly Pandas: Badge = { logo: 'devicon:pandas' };
+    static readonly FastAPI: Badge = { logo: 'logos:fastapi-icon' };
+    static readonly NumPy: Badge = { logo: 'logos:numpy' };
+    static readonly Pandas: Badge = { logo: 'logos:pandas-icon' };
     static readonly Selenium: Badge = { logo: 'logos:selenium' };
     static readonly Celery: Badge = { logo: 'simple-icons:celery' };
     static readonly Spring: Badge = { logo: 'devicon:spring' };
