@@ -29,7 +29,8 @@ export default defineConfig({
     },
     server: {
         allowedHosts: ['.navifox.net'],
-        warmup: { // 预热图标注册表与 Tailwind CSS，避免重启后首次访问时现场编译等待。
+        warmup: {
+            // 预热图标注册表与 Tailwind CSS，避免重启后首次访问时现场编译等待。
             clientFiles: ['./src/iconify.ts', './src/style.css'],
         },
     },

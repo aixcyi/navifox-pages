@@ -260,8 +260,8 @@ catalogs:
       specifier: ^1.49.0
       version: 1.49.0
     genshin-db:
-      specifier: ^5.2.12
-      version: 5.2.12
+      specifier: ^5.2.13
+      version: 5.2.13
     glob:
       specifier: ^13.0.6
       version: 13.0.6
@@ -591,7 +591,7 @@ importers:
         version: 3.0.1
       genshin-db:
         specifier: 'catalog:'
-        version: 5.2.12
+        version: 5.2.13
       typescript:
         specifier: 'catalog:'
         version: 5.9.3
@@ -1998,8 +1998,8 @@ packages:
   fuzzysort@1.9.0:
     resolution: {integrity: sha512-MOxCT0qLTwLqmEwc7UtU045RKef7mc8Qz8eR4r2bLNEq9dy/c3ZKMEFp6IEst69otkQdFZ4FfgH2dmZD+ddX1g==}
 
-  genshin-db@5.2.12:
-    resolution: {integrity: sha512-h0yY0bFJxADa85aa7JVj1KggqwRkgBjhoEvISSyC7u9GpVjilWSwnZw2s5Z+5+2GfEE9KV+7oSpwQfO+IzllZg==}
+  genshin-db@5.2.13:
+    resolution: {integrity: sha512-0oedxYGyhUYJRvLvuFStC9rF7wvnJEtIJgPoWq4CEABdWFB/GnJNu1VBRLBqOLaOrtSbUkmMpXO140VeLlMSHA==}
 
   get-caller-file@2.0.5:
     resolution: {integrity: sha512-DyFP3BM/3YHTQOCUL/w0OZHR0lpKeGrxotcHWcqNEdnltqFwXVfhEBQ94eIo34AfQpo0rGki4cyIiftY06h2Fg==}
@@ -3745,7 +3745,7 @@ snapshots:
 
   fuzzysort@1.9.0: {}
 
-  genshin-db@5.2.12:
+  genshin-db@5.2.13:
     dependencies:
       fuzzysort: 1.9.0
       pako: 2.2.0

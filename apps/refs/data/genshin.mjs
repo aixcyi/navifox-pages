@@ -747,7 +747,7 @@ export const characters = [
     },
     {
         name: '兹白',
-        region: '璃月', // TODO: genshin-db@5.2.10 “兹白”缺失的字段。
+        region: '璃月', // TODO: 覆盖源数据的 null（genshin-db@5.2.10）
         abilities: [],
     },
     {
@@ -763,6 +763,47 @@ export const characters = [
             { scope: 'teamup', short: '月兆', talent: 'passive3' },
             { scope: 'interaction', short: '远程挖矿', talent: 'passive4' },
             { scope: 'interaction', short: '拘出小动物', talent: 'passive4' },
+        ],
+    },
+    {
+        name: '布伦妮',
+        abilities: [
+            { scope: 'teamup', short: '魔导' },
+            { scope: 'crafting', short: '天赋素材随机返还', talent: 'passive3' },
+        ],
+    },
+    {
+        name: '尼可',
+        abilities: [
+            { scope: 'teamup', short: '魔导' },
+            { scope: 'locator', short: '寻宝罗盘', talent: 'passive3' },
+        ],
+    },
+    {
+        name: '洛恩',
+        abilities: [
+            { scope: 'teamup', short: '魔导' }, //
+        ],
+    },
+    {
+        name: '桑多涅',
+        region: '至冬', // TODO: 覆盖源数据的 null（genshin-db@5.2.13）
+        abilities: [
+            { scope: 'others', short: '交委托送茶点', talent: 'passive4' }, //
+        ],
+    },
+    {
+        name: '阿罗夏',
+        region: '至冬', // TODO: 覆盖源数据的 null（genshin-db@5.2.13）
+        abilities: [
+            { scope: 'locator', short: '区域特产', talent: 'passive4' }, //
+        ],
+    },
+    {
+        name: '奥黛塔',
+        region: '至冬', // TODO: 覆盖数据源提供的 null（genshin-db@5.2.13）
+        abilities: [
+            { scope: 'locator', short: '区域特产', talent: 'passive4' }, //
         ],
     },
 ];

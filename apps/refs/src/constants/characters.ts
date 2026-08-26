@@ -2,6 +2,110 @@ import type { GenshinCharacter } from '@navifox/types';
 // 此文件由脚本生成。
 export const characters: GenshinCharacter[] = [
     {
+        name: '奥黛塔',
+        rarity: 5,
+        region: '至冬',
+        weapon: '单手剑',
+        element: '冰',
+        abilities: [
+            {
+                scope: 'locator',
+                field: '被动天赋',
+                short: '区域特产',
+                original: '在小地图上显示周围的至冬区域特产的位置。\n在闲暇时练习舞蹈，或许还会触发其他的效果…',
+            },
+        ],
+    },
+    {
+        name: '阿罗夏',
+        rarity: 4,
+        region: '至冬',
+        weapon: '长柄武器',
+        element: '雷',
+        abilities: [
+            {
+                scope: 'locator',
+                field: '被动天赋',
+                short: '区域特产',
+                original: '在小地图上显示周围的至冬区域特产的位置。',
+            },
+        ],
+    },
+    {
+        name: '桑多涅',
+        rarity: 5,
+        region: '至冬',
+        weapon: '双手剑',
+        element: '冰',
+        abilities: [
+            {
+                scope: 'others',
+                field: '被动天赋',
+                short: '交委托送茶点',
+                original: '桑多涅处于队伍中时，向凯瑟琳交付每日委托任务后，会获得额外的茶点奖励。',
+            },
+        ],
+    },
+    {
+        name: '洛恩',
+        rarity: 5,
+        region: '蒙德',
+        weapon: '长柄武器',
+        element: '冰',
+        abilities: [
+            {
+                scope: 'teamup',
+                field: '手工标注',
+                short: '魔导',
+                original: '游戏内无对应描述，或数据库暂未更新。',
+            },
+        ],
+    },
+    {
+        name: '尼可',
+        rarity: 5,
+        region: null,
+        weapon: '法器',
+        element: '火',
+        abilities: [
+            {
+                scope: 'teamup',
+                field: '手工标注',
+                short: '魔导',
+                original: '游戏内无对应描述，或数据库暂未更新。',
+            },
+            {
+                scope: 'locator',
+                field: '被动天赋',
+                short: '寻宝罗盘',
+                original:
+                    '在提瓦特，不处于战斗状态下时，若已获得当前区域的寻宝罗盘，则尼可的重击将会转而施放「御使之引」：呼唤附近的仙灵指引道路，触发等同于当前区域寻宝罗盘的效果。\n该效果有5秒的冷却时间，且在秘境、征讨领域、深境螺旋中无效。',
+            },
+        ],
+    },
+    {
+        name: '布伦妮',
+        rarity: 4,
+        region: '蒙德',
+        weapon: '法器',
+        element: '风',
+        abilities: [
+            {
+                scope: 'teamup',
+                field: '手工标注',
+                short: '魔导',
+                original: '游戏内无对应描述，或数据库暂未更新。',
+            },
+            {
+                scope: 'crafting',
+                field: '被动天赋',
+                short: '天赋素材随机返还',
+                original:
+                    '合成角色天赋素材时，有10%概率额外产生一份地区相同的其他随机天赋素材，等阶与合成后获得的素材相同。',
+            },
+        ],
+    },
+    {
         name: '莉奈娅',
         rarity: 5,
         region: '挪德卡莱',
@@ -94,7 +198,7 @@ export const characters: GenshinCharacter[] = [
                 field: '被动天赋',
                 short: '小动物(挪德卡莱)',
                 original:
-                    '处于挪德卡莱区域时，队伍中自己的角色倒下时，哥伦比娅将复苏该角色，并为其恢复生命值，恢复值基于哥伦比娅的好感等级，该效果每100秒至多触发一次。该效果在秘境、征讨领域、深境螺旋中无效。\n此外，对受到月矩力影响的部分小动物，哥伦比娅似乎有着特殊的亲和力…',
+                    '处于挪德卡莱或霜月区域时，队伍中自己的角色倒下时，哥伦比娅将复苏该角色，并为其恢复生命值，恢复值基于哥伦比娅的好感等级，该效果每100秒至多触发一次。该效果在秘境、征讨领域、深境螺旋中无效。\n此外，对受到月矩力影响的部分小动物，哥伦比娅似乎有着特殊的亲和力…',
             },
             {
                 scope: 'teamup',
@@ -108,7 +212,7 @@ export const characters: GenshinCharacter[] = [
                 field: '被动天赋',
                 short: '复活(挪德卡莱)',
                 original:
-                    '处于挪德卡莱区域时，队伍中自己的角色倒下时，哥伦比娅将复苏该角色，并为其恢复生命值，恢复值基于哥伦比娅的好感等级，该效果每100秒至多触发一次。该效果在秘境、征讨领域、深境螺旋中无效。\n此外，对受到月矩力影响的部分小动物，哥伦比娅似乎有着特殊的亲和力…',
+                    '处于挪德卡莱或霜月区域时，队伍中自己的角色倒下时，哥伦比娅将复苏该角色，并为其恢复生命值，恢复值基于哥伦比娅的好感等级，该效果每100秒至多触发一次。该效果在秘境、征讨领域、深境螺旋中无效。\n此外，对受到月矩力影响的部分小动物，哥伦比娅似乎有着特殊的亲和力…',
             },
         ],
     },
