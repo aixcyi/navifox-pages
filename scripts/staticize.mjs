@@ -17,6 +17,7 @@
 //      AiFooter.vue / AiButton.vue），引用不存在于 Iconify 的图标名会报错
 //      （除非 --allow-missing）。
 //   3. 生成的 apps/refs/src/iconify.ts 提交入库，构建与运行均不依赖网络。
+//   4. iconify.ts 自身不参与扫描；重新生成时会移除已无任何引用的旧图标。
 import { readdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -75,7 +76,9 @@ function extractIconNames(text) {
 }
 
 // 1. 扫描源码，收集图标名（图标名 -> 引用文件列表）。
-const scanFiles = [...walk(SRC_DIR), ...EXTRA_SCAN_FILES];
+// 输出文件 iconify.ts 不参与扫描：若把旧注册表自身当作引用来源，
+// 已无代码引用的图标会被重复收集而永远保留，重新生成无法清理。
+const scanFiles = [...walk(SRC_DIR), ...EXTRA_SCAN_FILES].filter((file) => file !== OUT_FILE);
 const found = new Map(); // icon name -> files
 for (const file of scanFiles) {
     let text = readFileSync(file, 'utf8');
