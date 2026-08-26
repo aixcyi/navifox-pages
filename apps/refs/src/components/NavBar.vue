@@ -29,7 +29,7 @@ const toggleDark = useToggle(isDark);
                 >
                     <span class="bg-linear-to-r from-white to-orange-200 bg-clip-text text-transparent">navi</span>
                     <span class="font-black text-orange-400">fox</span>
-                    <span class="font-black text-gray-400">.net</span>
+                    <span class="font-black text-slate-400">.net</span>
                     <span class="ml-3 border-l border-l-slate-300 pl-3 text-slate-300">{{ navifoxRefs.name }}</span>
                 </span>
                 <span v-else class="domain hidden text-xl font-bold tracking-tight md:flex md:text-2xl lg:text-3xl">
@@ -38,7 +38,7 @@ const toggleDark = useToggle(isDark);
                         v-html="'navi'"
                     />
                     <span class="font-black text-orange-400">fox</span>
-                    <span class="font-black text-gray-400">.net</span>
+                    <span class="font-black text-slate-400">.net</span>
                     <span
                         class="ml-3 border-l border-l-slate-300 pl-3 text-purple-700/50 dark:border-l-slate-700 dark:text-purple-300/80"
                         v-html="navifoxRefs.name"

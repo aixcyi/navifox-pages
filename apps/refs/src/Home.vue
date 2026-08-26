@@ -122,9 +122,9 @@ const bookmarkGroups = computed(() => {
                             <span>{{ group.title.text }}</span>
                         </h2>
                     </a>
-                    <div class="mb-6 h-1 overflow-hidden rounded-full bg-slate-200 dark:bg-slate-800">
-                        <div class="h-full w-24 bg-linear-to-r from-indigo-500 to-purple-600 dark:bg-slate-800"></div>
-                    </div>
+                    <div
+                        class="mt-1 mb-6 h-1 w-24 rounded-full bg-linear-to-r from-indigo-500 to-purple-600 dark:bg-slate-800"
+                    ></div>
                 </template>
                 <template v-for="(section, sectionIndex) in group.sections">
                     <div v-if="sectionIndex > 0" class="mt-8" aria-hidden="true" />
@@ -135,11 +135,11 @@ const bookmarkGroups = computed(() => {
                             class="inline-flex items-center gap-1.5 rounded-lg border border-transparent px-2 py-1.5 transition-all duration-200 hover:border-purple-600 hover:bg-purple-600/10 hover:**:[.Note]:border-purple-500 hover:**:[.Note]:text-purple-500"
                             target="_blank"
                         >
-                            <div class="min-w-4 text-gray-400 dark:text-gray-600">
+                            <div class="min-w-4 text-slate-400 dark:text-slate-600">
                                 <Icon
                                     v-if="item.logo"
                                     :icon="item.logo"
-                                    class="size-4 max-w-4 text-gray-600 dark:text-gray-400"
+                                    class="size-4 max-w-4 text-slate-600 dark:text-slate-400"
                                 />
                                 <img
                                     v-else-if="item.icon"
@@ -157,7 +157,7 @@ const bookmarkGroups = computed(() => {
                                 <img v-else :src="LinkIcon" alt="ico" class="size-4" loading="lazy" decoding="async" />
                             </div>
                             <div class="flex flex-row flex-wrap items-center gap-x-1.5 text-sm">
-                                <div class="inline-flex flex-wrap items-center text-black dark:text-gray-300">
+                                <div class="inline-flex flex-wrap items-center text-black dark:text-slate-300">
                                     <span v-html="item.name" />
                                     <span
                                         v-if="(item.tags || []).includes('catalog')"
@@ -171,7 +171,7 @@ const bookmarkGroups = computed(() => {
                                     <!--    icon="carbon:catalog"-->
                                     <!--/>-->
                                 </div>
-                                <div class="Note text-gray-400 transition-colors duration-200 dark:text-gray-500">
+                                <div class="Note text-slate-400 transition-colors duration-200 dark:text-slate-500">
                                     {{ item.note }}
                                 </div>
                             </div>

@@ -218,7 +218,7 @@ const linkMap = [
                                     v-html="'navi'"
                                 />
                                 <span class="font-black text-orange-400">fox</span>
-                                <span class="font-black text-gray-400">.net</span>
+                                <span class="font-black text-slate-400">.net</span>
                             </span>
                         </a>
                     </div>
