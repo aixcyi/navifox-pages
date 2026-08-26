@@ -85,6 +85,16 @@ function handleSelection(e: PointerEvent) {
                     </div>
                 </div>
             </div>
+
+            <div class="hidden" aria-hidden="true">
+                <!--
+                    静态列出全部 -950 类名，供 Tailwind 扫描器生成缺失的色阶工具类与主题变量
+                    （@apply 路径在 Tailwind 4.x 下无法生成 -950，需由扫描发现才会输出）。
+                -->
+                <span
+                    class="bg-amber-950 bg-blue-950 bg-cyan-950 bg-emerald-950 bg-fuchsia-950 bg-gray-950 bg-green-950 bg-indigo-950 bg-lime-950 bg-mauve-950 bg-mist-950 bg-neutral-950 bg-olive-950 bg-orange-950 bg-pink-950 bg-purple-950 bg-red-950 bg-rose-950 bg-sky-950 bg-slate-950 bg-stone-950 bg-taupe-950 bg-teal-950 bg-violet-950 bg-yellow-950 bg-zinc-950 text-amber-950 text-blue-950 text-cyan-950 text-emerald-950 text-fuchsia-950 text-gray-950 text-green-950 text-indigo-950 text-lime-950 text-mauve-950 text-mist-950 text-neutral-950 text-olive-950 text-orange-950 text-pink-950 text-purple-950 text-red-950 text-rose-950 text-sky-950 text-slate-950 text-stone-950 text-taupe-950 text-teal-950 text-violet-950 text-yellow-950 text-zinc-950"
+                />
+            </div>
         </div>
     </Content>
 </template>
