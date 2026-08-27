@@ -4,6 +4,8 @@ import { VitePressConfigurator, type PageHook } from '@navifox/vitepress';
 import MarkdownIt from 'markdown-it';
 import { groupIconMdPlugin, groupIconVitePlugin } from 'vitepress-plugin-group-icons';
 
+import { markdownContainers } from './markdown-containers';
+
 const mdit = MarkdownIt();
 
 // https://vitepress.dev/reference/site-config
@@ -78,6 +80,7 @@ const configurator = new VitePressConfigurator({
         },
         config(md) {
             md.use(groupIconMdPlugin);
+            md.use(markdownContainers);
         },
     },
     vite: {

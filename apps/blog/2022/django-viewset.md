@@ -45,7 +45,7 @@ excerpt:
 - **UpdateModelMixin** 通过 `.update()` 全量更新和 `.partial_update()` 部分更新一个模型实例，最终是通过 `.perform_update()` 用序列化器更新。
 - **DestroyModelMixin** 通过 `.destroy()` 删除一个模型实例并返回无内容的204，最终是通过 `.perform_destroy()` 直接删除模型实例。
 
-![各个类视图的关系](/media/drf-views.png)
+![各个类视图的关系](/assets/drf-views.webp)
 
 下面通过两条主线来浅析视图(集)。
 

@@ -23,17 +23,17 @@ excerpt:
 
 从这一版本开始内置了语言插件，不必再另外下载安装，只需点击左上角菜单 → _File_ → _Settings_ 打开设置面板（见下方示意图），然后找到 _Appearance & Behavior_ → _System Settings_ → _Language and Region_ 更改 **Language** 的选项并重启即可。
 
-![](/media/jetbrains-ide-language-settings.png)
+![](/assets/jetbrains-ide-language-settings.webp)
 
 当然，如果还未打开任何项目，可以在欢迎页找到 Customize 标签页的 Language and Region 部分（见下方示意图）来更改 **Language** 的选项并重启。
 
-![](/media/jetbrains-ide-language-welcome.png)
+![](/assets/jetbrains-ide-language-welcome.webp)
 
 ## 2020.1.1+ 版本
 
 从这一版本开始可以通过插件市场安装语言插件，搜索 `中文` `Chinese` `language pack` 或者直接搜索插件分类标签 `/tag:"Language Pack"` 都可以找到。
 
-![](/media/jetbrains-ide-language-plugins.png)
+![](/assets/jetbrains-ide-language-plugins.webp)
 
 ## 更旧的版本
 

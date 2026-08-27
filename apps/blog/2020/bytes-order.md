@@ -10,6 +10,10 @@ tags:
 excerpt:
 ---
 
+<script lang="ts" setup>
+import ByteOrderVisualizer from './ByteOrderVisualizer.vue';
+</script>
+
 # 两种字节序的直观比较
 
 <hr style="margin-top: 48px"/>
@@ -31,7 +35,7 @@ $$
 
 使用易语言演示的两种字节序的比较：
 
-![](/media/bytes-order.gif)
+<ByteOrderVisualizer />
 
 ## 位运算
 

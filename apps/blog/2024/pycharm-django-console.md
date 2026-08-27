@@ -26,11 +26,11 @@ excerpt:
 
 中文环境下搜索“控制台”：
 
-![设置页面](/media/django-console-search-cn.png)
+![设置页面](/assets/django-console-search-cn.webp)
 
 Search "console" by settings searcher if you are using English:
 
-![Settings Page](/media/django-console-search-en.png)
+![Settings Page](/assets/django-console-search-en.webp)
 
 ## 2、设置“启动脚本”
 
@@ -43,13 +43,13 @@ if 'setup' in dir(django): django.setup()
 
 也就是专业版中省去引入 `django_manage_shell` 之后的启动脚本（Starting script）。
 
-![设置启动脚本](/media/django-console-starting-script.png)
+![设置启动脚本](/assets/django-console-starting-script.webp)
 
 ## 3、设置环境变量
 
 展开上方的环境一栏（Environment）找到环境变量（Environment variables），填入你的 settings 的包地址 `DJANGO_SETTINGS_MODULE=my_service.settings` 。
 
-![配置环境变量](/media/django-console-env-var.png)
+![配置环境变量](/assets/django-console-env-var.webp)
 
 ## 4、启动！
 

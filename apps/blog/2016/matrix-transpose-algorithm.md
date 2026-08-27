@@ -20,7 +20,58 @@ excerpt:
 
 矩阵转置前后示意图：
 
-![](/media/matrix-in-code.png) ![](/media/matrix-on-code-2.png)
+::: columns
+
+::: col 转置前
+
+```python
+array[0][0] = 0
+array[0][1] = 1
+array[0][2] = 2
+array[0][3] = 3
+array[1][0] = 4
+array[1][1] = 5
+array[1][2] = 6
+array[1][3] = 7
+array[2][0] = 8
+array[2][1] = 9
+array[2][2] = 10
+array[2][3] = 11
+```
+
+|  0  |  1  |  2  |  3  |
+| :-: | :-: | :-: | :-: |
+|  4  |  5  |  6  |  7  |
+|  8  |  9  | 10  | 11  |
+
+:::
+
+::: col 转置后
+
+```python
+array[0][0] = 0
+array[0][1] = 4
+array[0][2] = 8
+array[1][0] = 1
+array[1][1] = 5
+array[1][2] = 9
+array[2][0] = 2
+array[2][1] = 6
+array[2][2] = 10
+array[3][0] = 3
+array[3][1] = 7
+array[3][2] = 11
+```
+
+|  0  |  4  |  8  |
+| :-: | :-: | :-: |
+|  1  |  5  |  9  |
+|  2  |  6  | 10  |
+|  3  |  7  | 11  |
+
+:::
+
+:::
 
 ## 矩阵转置算法
 

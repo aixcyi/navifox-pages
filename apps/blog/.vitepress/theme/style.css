@@ -165,3 +165,39 @@ pre {
 .VPHero .tagline {
     text-wrap: balance;
 }
+
+/**
+ * Component: Columns / Col（文章内并排分栏容器）
+ * -------------------------------------------------------------------------- */
+
+.vp-doc .vp-columns {
+    container-type: inline-size;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+    margin: 24px 0;
+}
+
+.vp-doc .vp-col {
+    min-width: 0;
+}
+
+.vp-doc .vp-col-title {
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--vp-c-brand-1);
+}
+
+.vp-doc .vp-col + .vp-col {
+    padding-left: 16px;
+    border-left: 1px solid var(--vp-c-divider);
+}
+
+/* 窄到只能单列堆叠时（两列至少需要 280×2 + 16 = 576px），去掉左分隔线与缩进 */
+@container (max-width: 575px) {
+    .vp-doc .vp-col + .vp-col {
+        padding-left: 0;
+        border-left: none;
+    }
+}
