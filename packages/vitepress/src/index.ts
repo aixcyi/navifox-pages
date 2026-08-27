@@ -383,18 +383,19 @@ export class VitePressConfigurator {
     }
 
     /**
-     * 自动追加一个导航菜单，以每个子目录作为一个菜单项。
-     * 每个子目录会自动挑选一篇代表文章作为该菜单项的链接。
-     * 菜单与其每个菜单项都会自动补充 `activeMatch`（值为对应目录 `index.md` 的 URL，
-     * 例如 `.autoDirMenu('./copied/')` 时菜单匹配 `/copied/`，子菜单匹配 `/copied/lanxizhen/`）。
-     * VitePress 中目录 URL 必须由该目录的 `index.md` 提供，因此目录缺少 `index.md` 时不生成 `activeMatch`。
+     * 自动追加一个导航菜单，以每个子目录作为一个子菜单。
+     *
+     * 1. 每个子目录会自动挑选一篇代表文章作为该子菜单的链接。
+     * 2. 每个子菜单的 `activeMatch` 都是对应子目录的 URL。
+     * 3. 菜单的 `activeMatch` 则由 {@link options} 提供，默认留空时，VitePress 只会在激活子菜单后激活菜单。
      *
      * @param dir 需要搜索哪个目录下的子目录。
      * @param options 可选参数。
      * @param options.text 菜单的标题，不指定则使用 `index.md` 的 `title` 字段。
-     * @param options.pageHook 排序钩子（compareFile 决定哪篇作为代表链接）。
+     * @param options.pageHook 排序钩子。会自动调用 `compareFile()` 对子目录中的 Markdown 排序，然后取第一篇作为子菜单的链接。
+     * @param options.activeMatch 菜单的激活URL。接收一个正则表达式字符串（而非 RegExp 对象）。
      */
-    public autoDirMenu(dir: string, options?: { text?: string; pageHook?: PageHook }) {
+    public autoDirMenu(dir: string, options?: { text?: string; pageHook?: PageHook; activeMatch?: string }) {
         const { folders, index } = this.part(dir, options?.pageHook);
         const items: DefaultTheme.NavItemWithLink[] = [];
         for (const folder of folders) {
@@ -410,7 +411,7 @@ export class VitePressConfigurator {
         this.pushNavMenu({
             text: options?.text ?? index?.frontmatter?.title ?? '(无标题)',
             items,
-            activeMatch: index ? `/${index.url}` : undefined,
+            activeMatch: options?.activeMatch,
         });
         return this;
     }
