@@ -152,9 +152,7 @@ pre {
     text-autospace: no-autospace;
 }
 
-/* 选择器需与 VitePress vars.css 中 [lang]:where(:lang(zh, ja)) 同特异性，
-   且本文件在其后引入，才能覆盖其 Inter4CJK */
-[lang]:where(:lang(zh, ja)) {
+:root:lang(zh) {
     --vp-font-family-base: var(--font-sans);
 }
 
