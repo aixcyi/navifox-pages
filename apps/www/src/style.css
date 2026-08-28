@@ -6,6 +6,71 @@
 
 @theme {
     --font-sign: 'Whisper', serif; /* class="font-sign" */
+
+    /* 星夜主题：夜空色板（深色模式） */
+    --color-night-950: #141c33;
+    --color-night-900: #1b2540;
+    --color-night-850: #222e4f;
+    --color-night-800: #2b3a5e;
+    --color-night-700: #3a4a72;
+    --color-night-600: #4d5f8e;
+    --color-night-500: #6a7ba3;
+
+    /* 星夜主题：晨光纸色板（浅色模式） */
+    --color-paper-50: #faf7f1;
+    --color-paper-100: #f4efe5;
+    --color-paper-200: #eae1d1;
+    --color-paper-300: #d8ccb6;
+
+    /* 星夜主题：星辉金（主强调色） */
+    --color-starlight-100: #fbf4e0;
+    --color-starlight-200: #f9e8c5;
+    --color-starlight-300: #f3d9a0;
+    --color-starlight-400: #e9c07a;
+    --color-starlight-500: #d8a457;
+    --color-starlight-600: #b7803b;
+
+    /* 星夜主题：极光紫（次强调色） */
+    --color-aurora-200: #d0d5ff;
+    --color-aurora-300: #adb4fa;
+    --color-aurora-400: #8b8ef2;
+    --color-aurora-500: #6f6ae6;
+    --color-aurora-600: #5a4fc9;
+
+    /* 星夜主题：苔藓青（点缀色） */
+    --color-moss-300: #7ce7c9;
+    --color-moss-400: #45d0ab;
+    --color-moss-500: #2cb394;
+    --color-moss-600: #1f9279;
+
+    /* 星夜主题：蔷薇粉（参照 avatar.jpg 的暖玫瑰桃粉） */
+    --color-blossom-200: #f6d2ce;
+    --color-blossom-300: #eeb3a8;
+    --color-blossom-400: #e09f91;
+    --color-blossom-500: #c77e6c;
+    --color-blossom-600: #a45a47;
+
+    /* 星夜主题：动画 */
+    --animate-drift: drift 26s ease-in-out infinite alternate;
+    --animate-twinkle: twinkle 5s ease-in-out infinite alternate;
+
+    @keyframes drift {
+        from {
+            transform: translate3d(-4%, -3%, 0) scale(1);
+        }
+        to {
+            transform: translate3d(5%, 4%, 0) scale(1.1);
+        }
+    }
+
+    @keyframes twinkle {
+        from {
+            opacity: 0.45;
+        }
+        to {
+            opacity: 1;
+        }
+    }
 }
 
 @layer components {

@@ -14,8 +14,8 @@ import NavDropdownMenu from '#/components/NavDropdownMenu.vue';
 </script>
 
 <template>
-    <Navbar class="absolute top-0 right-0 z-10" />
-    <NavDropdownMenu class="fixed top-0 right-0 z-20" />
+    <Navbar />
+    <NavDropdownMenu class="fixed inset-x-0 top-0 z-50" />
     <div class="mx-auto min-h-screen max-w-[210mm] px-4 text-slate-600 dark:text-slate-400">
         <div
             class="mx-2 overflow-x-hidden pt-28 text-nowrap text-slate-300/25 selection:bg-slate-100 selection:text-slate-400 dark:text-slate-800/25 dark:selection:bg-slate-900 dark:selection:text-slate-600"

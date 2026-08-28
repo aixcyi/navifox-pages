@@ -1,55 +1,143 @@
 <script lang="ts" setup>
 import { Icon } from '@iconify/vue';
-import { useRouter } from 'vue-router';
+import { navifoxHome } from '@navifox/constants';
+import { useDark, useToggle } from '@vueuse/core';
+import { computed, onBeforeUnmount, onMounted, ref } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
 
 import { isShowingNavDropdownMenu } from '#/storage.ts';
 
-defineProps<{ cover?: boolean }>();
+const props = defineProps<{ cover?: boolean }>();
 
+const isDark = useDark();
+const route = useRoute();
 const router = useRouter();
+const scrolled = ref(false);
+const toggleDark = useToggle(isDark);
+
+const links = computed(() =>
+    router.options.routes
+        .filter((r) => r.meta?.showOnNavbar)
+        .map(({ meta, path }) => ({
+            title: (meta?.title as string | undefined) ?? '首页',
+            path,
+            isActive: path === route.path,
+        })),
+);
+
+/** 导航当前是否处于「暗表面」（照片遮罩／夜色玻璃），需要白色系文字。 */
+const onDarkSurface = computed(() => (props.cover ? !scrolled.value || isDark.value : isDark.value));
+
+const pillClass = computed(() => {
+    if (props.cover) {
+        if (!scrolled.value) return 'border-transparent bg-transparent';
+        // 浅色模式滚动后：晨光玻璃；深色模式滚动后：夜色玻璃
+        return isDark.value
+            ? 'border-white/15 bg-night-900/75 shadow-xl shadow-night-950/40'
+            : 'border-blossom-300/25 bg-paper-50/85 shadow-xl shadow-starlight-600/10';
+    }
+    return 'border-starlight-500/25 bg-paper-50/85 shadow-lg shadow-night-950/10 dark:border-white/10 dark:bg-night-900/80 dark:shadow-night-950/40';
+});
+
+function onScroll() {
+    scrolled.value = window.scrollY > 12;
+}
+
+onMounted(() => {
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+});
+
+onBeforeUnmount(() => window.removeEventListener('scroll', onScroll));
 </script>
 
 <template>
-    <div v-if="cover" class="w-full">
-        <div class="MaxContainer **:transition-colors **:duration-200 selection:bg-[#B5A2FD60]">
-            <div class="flex justify-end md:hidden">
-                <button
-                    class="cursor-pointer p-5 hover:text-purple-400 dark:hover:text-[#B5A2FD]"
-                    @click="isShowingNavDropdownMenu = true"
+    <nav class="fixed inset-x-0 top-0 z-40 px-3 pt-3 sm:px-4 sm:pt-4">
+        <div class="mx-auto max-w-5xl">
+            <div
+                :class="pillClass"
+                class="flex items-center justify-between gap-3 rounded-full border px-4 py-2 backdrop-blur-xl transition-all duration-300 sm:px-5"
+            >
+                <RouterLink
+                    to="/"
+                    :title="navifoxHome.name"
+                    class="group flex flex-nowrap items-center gap-2 select-none"
                 >
-                    <Icon height="28" icon="lineicons:menu" />
-                </button>
-            </div>
-            <div class="hidden flex-nowrap justify-end gap-4 md:flex">
-                <a
-                    v-for="{ meta, path } in router.options.routes.filter((r) => r.meta?.showOnNavbar)"
-                    :href="path"
-                    class="px-6 py-5 hover:bg-[#B5A2FDA0] hover:text-orange-200 dark:hover:bg-[#B5A2FD50] dark:hover:text-orange-300"
-                >
-                    {{ meta?.title ?? '首页' }}
-                </a>
+                    <span
+                        class="text-2xl leading-none transition-transform duration-300 select-none group-hover:scale-110 group-hover:-rotate-6"
+                    >
+                        <Icon icon="fluent-emoji:fox" />
+                    </span>
+                    <span class="text-lg font-bold tracking-tight whitespace-nowrap">
+                        <span
+                            :class="
+                                onDarkSurface
+                                    ? 'to-starlight-300 bg-gradient-to-r from-white'
+                                    : 'to-starlight-600 dark:to-starlight-300 bg-gradient-to-r from-stone-800 dark:from-white'
+                            "
+                            class="bg-clip-text text-transparent"
+                            >路狐</span
+                        >
+                        <span
+                            :class="onDarkSurface ? 'text-starlight-300' : 'text-starlight-600 dark:text-starlight-400'"
+                            >领航</span
+                        >
+                    </span>
+                </RouterLink>
+
+                <div class="hidden items-center gap-1 md:flex">
+                    <RouterLink
+                        v-for="link in links"
+                        :key="link.path"
+                        :to="link.path"
+                        :class="[
+                            'rounded-full px-4 py-2 text-sm font-medium whitespace-nowrap transition-all duration-200',
+                            link.isActive
+                                ? [
+                                      'bg-starlight-500/15 font-semibold',
+                                      onDarkSurface
+                                          ? 'text-starlight-300'
+                                          : 'text-starlight-600 dark:text-starlight-300',
+                                  ]
+                                : onDarkSurface
+                                  ? 'hover:bg-starlight-500/15 hover:text-starlight-300 text-white/85'
+                                  : 'hover:bg-starlight-500/10 hover:text-starlight-600 dark:hover:text-starlight-300 text-stone-600 dark:text-slate-300',
+                        ]"
+                    >
+                        {{ link.title }}
+                    </RouterLink>
+                </div>
+
+                <div class="flex items-center gap-2">
+                    <button
+                        :class="
+                            onDarkSurface
+                                ? 'hover:bg-starlight-500/15 hover:text-starlight-300 text-white/85'
+                                : 'hover:bg-starlight-500/10 hover:text-starlight-600 dark:hover:text-starlight-300 text-stone-600 dark:text-slate-300'
+                        "
+                        class="hidden size-9 cursor-pointer items-center justify-center rounded-full transition-colors duration-200 md:flex"
+                        :title="isDark ? '切换到浅色模式' : '切换到深色模式'"
+                        @click="toggleDark(!isDark)"
+                    >
+                        <Icon
+                            :icon="isDark ? 'material-symbols:dark-mode' : 'material-symbols:light-mode'"
+                            height="20"
+                        />
+                    </button>
+                    <button
+                        :class="
+                            onDarkSurface
+                                ? 'hover:bg-starlight-500/15 hover:text-starlight-300 text-white/85'
+                                : 'hover:bg-starlight-500/10 hover:text-starlight-600 dark:hover:text-starlight-300 text-stone-600 dark:text-slate-300'
+                        "
+                        class="flex size-10 cursor-pointer items-center justify-center rounded-full transition-colors duration-200 md:hidden"
+                        aria-label="打开导航菜单"
+                        @click="isShowingNavDropdownMenu = true"
+                    >
+                        <Icon height="24" icon="lineicons:menu" />
+                    </button>
+                </div>
             </div>
         </div>
-    </div>
-    <div v-else class="w-full bg-white text-slate-800 dark:bg-slate-800 dark:text-white">
-        <div class="MaxContainer **:transition-colors **:duration-200 selection:bg-[#B5A2FD60]">
-            <div class="flex justify-end md:hidden">
-                <button
-                    class="cursor-pointer p-5 hover:text-purple-400 dark:hover:text-[#B5A2FD]"
-                    @click="isShowingNavDropdownMenu = true"
-                >
-                    <Icon height="28" icon="lineicons:menu" />
-                </button>
-            </div>
-            <div class="hidden flex-nowrap justify-end gap-4 md:flex">
-                <a
-                    v-for="{ meta, path } in router.options.routes.filter((r) => r.meta?.showOnNavbar)"
-                    :href="path"
-                    class="px-6 py-5 hover:bg-cyan-200 hover:text-cyan-600 dark:hover:bg-[#B5A2FD50] dark:hover:text-orange-300"
-                >
-                    {{ meta?.title ?? '首页' }}
-                </a>
-            </div>
-        </div>
-    </div>
+    </nav>
 </template>
