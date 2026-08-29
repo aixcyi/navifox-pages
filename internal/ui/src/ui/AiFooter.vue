@@ -32,8 +32,8 @@ const linkMap = [
         data: credits,
         styles: {
             link: 'hover:border-sky-400/60 dark:hover:border-sky-400/50',
-            icon: 'text-sky-500 dark:text-sky-300',
-            title: 'group-hover:text-sky-500 dark:group-hover:text-sky-300',
+            icon: 'text-sky-500 dark:text-sky-400',
+            title: 'group-hover:text-sky-500 dark:group-hover:text-sky-400',
         },
     },
     {
