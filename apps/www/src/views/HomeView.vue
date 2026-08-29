@@ -3,6 +3,7 @@ import { Icon } from '@iconify/vue';
 import { navifoxHome, signature, socials, tighnari } from '@navifox/constants';
 import { logger } from '@navifox/utils';
 
+import { sectionChronology, sectionIntro, sectionSkills } from '#/anchors.ts';
 import Background from '#/assets/background.jpg';
 import Chronicle from '#/components/Chronicle.vue';
 import Job2021 from '#/components/experiences/Job2021.vue';
@@ -38,10 +39,9 @@ const aboutStates = [
     <div class="MaxContainer selection:bg-starlight-400/40 z-20 flex h-screen flex-col **:z-20">
         <div class="mb-8 flex h-full flex-col justify-end md:mb-20">
             <div
-                class="border-starlight-100/40 bg-starlight-400/25 text-starlight-100 dark:border-starlight-300/30 dark:bg-starlight-400/10 dark:text-starlight-300 mb-4 w-fit rounded-lg border px-3 py-1 text-xl backdrop-blur-sm md:text-2xl"
-            >
-                <code>@{{ tighnari.uid }}</code>
-            </div>
+                class="border-starlight-100/40 bg-starlight-400/25 text-starlight-100 dark:border-starlight-300/30 dark:bg-starlight-400/10 dark:text-starlight-300 mb-4 w-fit rounded-lg border px-3 py-1 font-mono text-xl backdrop-blur-sm md:text-2xl"
+                v-html="`@${tighnari.uid}`"
+            />
             <div class="text-4xl font-medium md:max-w-[75%] md:text-6xl">
                 <span class="text-white">{{ tighnari.name }}</span>
                 <span v-for="tag in tighnari.tags" class="text-gray-300/75 dark:text-gray-400/75">／{{ tag }}</span>
@@ -61,15 +61,13 @@ const aboutStates = [
             <header class="max-w-2xl">
                 <p
                     class="text-starlight-600 dark:text-starlight-300 font-mono text-[0.72rem] tracking-[0.28em] uppercase"
-                >
-                    About · 关于
-                </p>
-                <h2 class="text-night-900 mt-3 text-3xl font-bold tracking-tight sm:text-4xl dark:text-white">
-                    有狐说
-                </h2>
-                <p class="mt-3 leading-relaxed text-stone-500 dark:text-slate-300">
-                    {{ navifoxHome.description }}
-                </p>
+                    v-html="sectionIntro.eyebrow"
+                />
+                <h2
+                    class="text-night-900 mt-3 text-3xl font-bold tracking-tight sm:text-4xl dark:text-white"
+                    v-html="sectionIntro.title"
+                />
+                <p class="mt-3 leading-relaxed text-stone-500 dark:text-slate-300" v-html="sectionIntro.description" />
             </header>
             <div class="mt-12 grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(17rem,24rem)] lg:items-start">
                 <!-- 项目经历 -->
@@ -98,9 +96,8 @@ const aboutStates = [
                     <div
                         aria-hidden="true"
                         class="font-sign text-starlight-500/10 dark:text-starlight-300/5 pointer-events-none absolute -right-8 -bottom-10 text-[9rem] leading-none select-none"
-                    >
-                        {{ tighnari.brand }}
-                    </div>
+                        v-html="tighnari.brand"
+                    />
                     <div class="relative flex flex-col gap-7 p-6 sm:p-8">
                         <!-- 名片 -->
                         <div class="flex items-center gap-5">
@@ -110,18 +107,19 @@ const aboutStates = [
                                 class="border-starlight-400/40 dark:border-starlight-300/30 size-24 shrink-0 rounded-3xl border-2 object-cover select-none"
                             />
                             <div class="min-w-0">
-                                <p class="text-night-900 text-2xl font-bold tracking-tight dark:text-white">
-                                    {{ tighnari.name }}
-                                </p>
-                                <p class="dark:text-night-500 mt-1 font-mono text-xs text-stone-500">
-                                    @{{ tighnari.uid }}
-                                </p>
+                                <p
+                                    class="text-night-900 text-2xl font-bold tracking-tight dark:text-white"
+                                    v-html="tighnari.name"
+                                />
+                                <p
+                                    class="dark:text-night-500 mt-1 font-mono text-xs text-stone-500"
+                                    v-html="`@${tighnari.uid}`"
+                                />
                                 <p
                                     v-if="tighnari.titles"
                                     class="mt-2 text-sm font-medium text-stone-600 dark:text-slate-300"
-                                >
-                                    {{ tighnari.titles.join(' ・ ') }}
-                                </p>
+                                    v-html="tighnari.titles.join(' ・ ')"
+                                />
                             </div>
                         </div>
                         <!-- 自述 -->
@@ -169,29 +167,21 @@ const aboutStates = [
             </div>
         </div>
 
-        <div class="Dusty pointer-events-none absolute inset-0" aria-hidden="true" />
-        <div
-            class="Dusty pointer-events-none absolute inset-0 opacity-60"
-            aria-hidden="true"
-            style="background-size: 300px 300px"
-        />
-
         <!-- 技能树：技能评估等级 + 技能面板 -->
         <section id="skills-tree" class="MaxContainer relative my-24 scroll-mt-28 text-stone-600 dark:text-slate-300">
             <header class="max-w-2xl">
                 <p
                     class="text-starlight-600 dark:text-starlight-300 font-mono text-[0.72rem] tracking-[0.28em] uppercase"
-                >
-                    Programmer Levels · v0.4
-                </p>
+                    v-html="sectionSkills.eyebrow"
+                />
                 <h2 class="text-night-900 mt-3 text-3xl font-bold tracking-tight sm:text-4xl dark:text-white">
-                    技能树
+                    {{ sectionSkills.title }}
                 </h2>
                 <p class="mt-3 leading-relaxed text-stone-500 dark:text-slate-300">
                     更新于 <code class="font-mono">{{ cvLastUpdateTime }}</code> ·
-                    <a href="https://github.com/bennyhuo/programmer-levels" target="_blank"
-                        >霍丙乾 Programmer Levels v0.4</a
-                    >
+                    <a href="https://github.com/bennyhuo/programmer-levels" target="_blank">
+                        霍丙乾 Programmer Levels v0.4<br />
+                    </a>
                 </p>
             </header>
             <div class="mt-12 grid gap-10 lg:grid-cols-[auto_minmax(0,1fr)] lg:items-start">
@@ -202,7 +192,7 @@ const aboutStates = [
                         <h3
                             class="text-starlight-600 dark:text-starlight-200 mb-5 text-lg font-semibold tracking-tight"
                         >
-                            技能面板
+                            技能面板<br />
                         </h3>
                         <SkillsPanel two-columns />
                     </div>
@@ -211,7 +201,7 @@ const aboutStates = [
                     class="Content border-starlight-500/20 min-w-0 rounded-3xl border bg-white/70 p-6 backdrop-blur-sm sm:p-8 dark:border-white/10 dark:bg-white/5"
                 >
                     <h3 class="text-starlight-600 dark:text-starlight-200 mb-5 text-lg font-semibold tracking-tight">
-                        程序员等级评估
+                        程序员等级评估<br />
                     </h3>
                     <ProgrammerPanel />
                 </div>
@@ -223,15 +213,16 @@ const aboutStates = [
             <header class="max-w-2xl">
                 <p
                     class="text-starlight-600 dark:text-starlight-300 font-mono text-[0.72rem] tracking-[0.28em] uppercase"
-                >
-                    Chronicle · 当前时间线
-                </p>
-                <h2 class="text-night-900 mt-3 text-3xl font-bold tracking-tight sm:text-4xl dark:text-white">
-                    时与风
-                </h2>
-                <p class="mt-3 leading-relaxed text-stone-500 dark:text-slate-300">
-                    风带来了故事的种子，时间使之发芽。
-                </p>
+                    v-html="sectionChronology.eyebrow"
+                />
+                <h2
+                    class="text-night-900 mt-3 text-3xl font-bold tracking-tight sm:text-4xl dark:text-white"
+                    v-html="sectionChronology.title"
+                />
+                <p
+                    class="mt-3 leading-relaxed text-stone-500 dark:text-slate-300"
+                    v-html="sectionChronology.description"
+                />
             </header>
             <div
                 class="Content border-starlight-500/20 mt-12 rounded-3xl border bg-white/70 p-6 backdrop-blur-sm sm:p-8 dark:border-white/10 dark:bg-white/5"
@@ -239,6 +230,14 @@ const aboutStates = [
                 <Chronicle />
             </div>
         </section>
+
+        <!-- 星光尘覆盖：置于所有区块之后，使各区块卡片（含技能树、时与风）均覆盖星光 -->
+        <div class="Dusty pointer-events-none absolute inset-0" aria-hidden="true" />
+        <div
+            class="Dusty pointer-events-none absolute inset-0 opacity-60"
+            aria-hidden="true"
+            style="background-size: 300px 300px"
+        />
 
         <!-- 页尾 -->
         <div class="MaxContainer relative my-16!">

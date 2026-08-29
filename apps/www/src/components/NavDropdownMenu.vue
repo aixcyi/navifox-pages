@@ -18,16 +18,11 @@ async function goSection(id: string) {
         await nextTick();
     }
     isShowingNavDropdownMenu.value = false;
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
-}
-
-async function goTop() {
-    if (route.path !== '/') {
-        await router.push('/');
-        await nextTick();
+    if (id === 'top') {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        return;
     }
-    isShowingNavDropdownMenu.value = false;
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
 }
 
 onClickOutside(dropdown, () => (isShowingNavDropdownMenu.value = false));
@@ -57,15 +52,8 @@ onClickOutside(dropdown, () => (isShowingNavDropdownMenu.value = false));
                         </button>
                     </div>
                     <div class="flex w-full flex-col gap-px pb-4">
-                        <button
-                            class="hover:text-starlight-600 dark:hover:text-starlight-300 cursor-pointer p-4 text-left text-nowrap"
-                            type="button"
-                            @click="goTop"
-                        >
-                            首页
-                        </button>
                         <template v-for="(anchor, index) in sectionAnchors" :key="anchor.id">
-                            <div class="border-t-starlight-500/20 border-t dark:border-t-white/10" />
+                            <div v-if="index > 0" class="border-t-starlight-500/20 border-t dark:border-t-white/10" />
                             <button
                                 :class="
                                     index === 0

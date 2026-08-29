@@ -36,16 +36,11 @@ async function goSection(id: string) {
         await router.push('/');
         await nextTick();
     }
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
-}
-
-/** 回到页面顶部（不在首页时先跳转首页）。 */
-async function goTop() {
-    if (route.path !== '/') {
-        await router.push('/');
-        await nextTick();
+    if (id === 'top') {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        return;
     }
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
 }
 
 function onScroll() {
@@ -85,28 +80,16 @@ onBeforeUnmount(() => window.removeEventListener('scroll', onScroll));
                                     : 'to-starlight-600 dark:to-starlight-300 bg-gradient-to-r from-stone-800 dark:from-white'
                             "
                             class="bg-clip-text text-transparent"
-                            >路狐</span
-                        >
+                            v-html="'路狐'"
+                        />
                         <span
                             :class="onDarkSurface ? 'text-starlight-300' : 'text-starlight-600 dark:text-starlight-400'"
-                            >领航</span
-                        >
+                            v-html="'领航'"
+                        />
                     </span>
                 </RouterLink>
 
                 <div class="hidden items-center gap-1 md:flex">
-                    <button
-                        :class="
-                            onDarkSurface
-                                ? 'hover:bg-starlight-500/15 hover:text-starlight-300 text-white/85'
-                                : 'hover:bg-starlight-500/10 hover:text-starlight-600 dark:hover:text-starlight-300 text-stone-600 dark:text-slate-300'
-                        "
-                        class="cursor-pointer rounded-full px-4 py-2 text-sm font-medium whitespace-nowrap transition-all duration-200"
-                        type="button"
-                        @click="goTop"
-                    >
-                        首页
-                    </button>
                     <button
                         v-for="anchor in sectionAnchors"
                         :key="anchor.id"
@@ -118,9 +101,8 @@ onBeforeUnmount(() => window.removeEventListener('scroll', onScroll));
                         class="cursor-pointer rounded-full px-4 py-2 text-sm font-medium whitespace-nowrap transition-all duration-200"
                         type="button"
                         @click="goSection(anchor.id)"
-                    >
-                        {{ anchor.title }}
-                    </button>
+                        v-html="anchor.title"
+                    />
                 </div>
 
                 <div class="flex items-center gap-2">

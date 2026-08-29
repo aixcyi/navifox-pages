@@ -163,3 +163,7 @@ html:not(.dark) .Starry li:hover {
 html:not(.dark) .Starry u {
     text-decoration-color: var(--color-starlight-500);
 }
+
+.dark .Starry u {
+    text-decoration-color: var(--color-starlight-400);
+}
