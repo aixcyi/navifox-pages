@@ -1,16 +1,16 @@
 <script lang="ts" setup>
-import AppFooter from '#/components/AppFooter.vue';
+import { AiFooter } from '@navifox/ui';
 
 const version = __APP_VERSION__;
 </script>
 
 <template>
     <RouterView />
-    <AppFooter class="relative z-30">
+    <AiFooter class="relative z-30">
         <template #additions>
             <p>
                 构建为 <code>{{ version }}</code>
             </p>
         </template>
-    </AppFooter>
+    </AiFooter>
 </template>

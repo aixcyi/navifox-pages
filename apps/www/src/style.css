@@ -4,8 +4,17 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+@layer base {
+    html {
+        scroll-behavior: smooth;
+    }
+}
+
 @theme {
     --font-sign: 'Whisper', serif; /* class="font-sign" */
+
+    /* 确保 stone-300 以 CSS 变量输出（Tailwind 仅输出被 utility 用到的色阶） */
+    --color-stone-300: #d6d3d1;
 
     /* 星夜主题：夜空色板（深色模式） */
     --color-night-950: #141c33;
@@ -102,4 +111,55 @@
             @apply inline;
         }
     }
+}
+
+/* 星空区（首页「关于我／一览」等）浅色适配：slate 蓝灰 → 暖灰 stone，链接与下划线换金色。
+   置于 @layer 之外：未分层规则优先于 @layer utilities（层顺序先于特异性）。 */
+.Starry a {
+    color: var(--color-starlight-600);
+    text-decoration: underline;
+    text-decoration-color: var(--color-starlight-500);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+    transition: color 0.2s;
+}
+
+.Starry a:hover {
+    color: var(--color-starlight-500);
+    text-decoration-color: var(--color-starlight-500);
+}
+
+.dark .Starry a {
+    color: var(--color-starlight-300);
+    text-decoration-color: var(--color-starlight-400);
+}
+
+.dark .Starry a:hover {
+    color: var(--color-starlight-200);
+    text-decoration-color: var(--color-starlight-300);
+}
+
+html:not(.dark) .Starry b {
+    color: var(--color-stone-700);
+}
+
+html:not(.dark) .Starry .text-slate-300 {
+    color: var(--color-stone-300);
+}
+
+html:not(.dark) .Starry .text-slate-400 {
+    color: var(--color-stone-400);
+}
+
+html:not(.dark) .Starry .text-slate-500 {
+    color: var(--color-stone-500);
+}
+
+/* hover 时不论勾选与否统一纯黑，凸显文本（仅浅色；深色保持亮色高亮） */
+html:not(.dark) .Starry li:hover {
+    color: #000;
+}
+
+html:not(.dark) .Starry u {
+    text-decoration-color: var(--color-starlight-500);
 }

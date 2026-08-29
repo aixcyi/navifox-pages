@@ -4,9 +4,7 @@ import { useHead } from '@unhead/vue';
 import { createRouter, createWebHistory } from 'vue-router';
 
 import NotFound from '#/NotFound.vue';
-import CurriculumVitaeView from '#/views/CurriculumVitaeView.vue';
 import HomeView from '#/views/HomeView.vue';
-import TimelineView from '#/views/TimelineView.vue';
 
 const router = createRouter({
     history: createWebHistory(),
@@ -18,28 +16,6 @@ const router = createRouter({
                 showOnNavbar: true,
             },
             component: HomeView,
-        },
-        {
-            path: '/cv',
-            name: 'CurriculumVitae',
-            meta: {
-                title: '己言简',
-                description: '',
-                keywords: [],
-                showOnNavbar: true,
-            },
-            component: CurriculumVitaeView,
-        },
-        {
-            path: '/timeline',
-            name: 'Timeline',
-            meta: {
-                title: '时与风',
-                description: '',
-                keywords: [],
-                showOnNavbar: true,
-            },
-            component: TimelineView,
         },
         {
             path: '/:pathMatch(.*)*',

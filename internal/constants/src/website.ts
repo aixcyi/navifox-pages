@@ -40,7 +40,7 @@ export const tighnari: Friend = {
     descriptionRich: 'Seeds of stories,<br/>brought by the wind and cultivated by time.',
     location: '广东 广州',
     groupQQ: '540457640',
-    wxid: 'navifox',
+    brand: 'Navifox',
     age: untilYear - 2000,
 };
 export const navifoxHome: Website = {

@@ -2,6 +2,13 @@
 import { Icon } from '@iconify/vue';
 import { ColorBadge } from '@navifox/constants';
 
+/**
+ * 两列网格模式：技能项按「2 列 → 1 列」自适应排列（用于宽度贴合内容的场景）。
+ */
+withDefaults(defineProps<{ twoColumns?: boolean }>(), {
+    twoColumns: false,
+});
+
 const stacks = [
     {
         scope: '编程语言',
@@ -108,7 +115,15 @@ for (const tree of stacks) {
             <div>
                 <b>{{ branch.scope }}</b>
             </div>
-            <div v-if="branch.skills" class="flex flex-wrap gap-x-6 gap-y-2 text-sm">
+            <div
+                v-if="branch.skills"
+                :class="
+                    twoColumns
+                        ? 'grid grid-cols-[repeat(auto-fit,minmax(10rem,1fr))] gap-x-6 gap-y-2'
+                        : 'flex flex-wrap gap-x-6 gap-y-2'
+                "
+                class="text-sm"
+            >
                 <div v-for="skill in branch.skills" class="group flex flex-nowrap items-center gap-2">
                     <Icon :icon="skill.badge.logo" width="24" />
                     <div class="relative flex flex-nowrap gap-1">

@@ -2,9 +2,10 @@
 import { Icon } from '@iconify/vue';
 import { navifoxHome } from '@navifox/constants';
 import { useDark, useToggle } from '@vueuse/core';
-import { computed, onBeforeUnmount, onMounted, ref } from 'vue';
+import { computed, nextTick, onBeforeUnmount, onMounted, ref } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 
+import { sectionAnchors } from '#/anchors.ts';
 import { isShowingNavDropdownMenu } from '#/storage.ts';
 
 const props = defineProps<{ cover?: boolean }>();
@@ -14,16 +15,6 @@ const route = useRoute();
 const router = useRouter();
 const scrolled = ref(false);
 const toggleDark = useToggle(isDark);
-
-const links = computed(() =>
-    router.options.routes
-        .filter((r) => r.meta?.showOnNavbar)
-        .map(({ meta, path }) => ({
-            title: (meta?.title as string | undefined) ?? '首页',
-            path,
-            isActive: path === route.path,
-        })),
-);
 
 /** 导航当前是否处于「暗表面」（照片遮罩／夜色玻璃），需要白色系文字。 */
 const onDarkSurface = computed(() => (props.cover ? !scrolled.value || isDark.value : isDark.value));
@@ -38,6 +29,24 @@ const pillClass = computed(() => {
     }
     return 'border-starlight-500/25 bg-paper-50/85 shadow-lg shadow-night-950/10 dark:border-white/10 dark:bg-night-900/80 dark:shadow-night-950/40';
 });
+
+/** 滚动到首页区块锚点；不在首页时先跳转首页再滚动。 */
+async function goSection(id: string) {
+    if (route.path !== '/') {
+        await router.push('/');
+        await nextTick();
+    }
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+}
+
+/** 回到页面顶部（不在首页时先跳转首页）。 */
+async function goTop() {
+    if (route.path !== '/') {
+        await router.push('/');
+        await nextTick();
+    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
 
 function onScroll() {
     scrolled.value = window.scrollY > 12;
@@ -86,26 +95,32 @@ onBeforeUnmount(() => window.removeEventListener('scroll', onScroll));
                 </RouterLink>
 
                 <div class="hidden items-center gap-1 md:flex">
-                    <RouterLink
-                        v-for="link in links"
-                        :key="link.path"
-                        :to="link.path"
-                        :class="[
-                            'rounded-full px-4 py-2 text-sm font-medium whitespace-nowrap transition-all duration-200',
-                            link.isActive
-                                ? [
-                                      'bg-starlight-500/15 font-semibold',
-                                      onDarkSurface
-                                          ? 'text-starlight-300'
-                                          : 'text-starlight-600 dark:text-starlight-300',
-                                  ]
-                                : onDarkSurface
-                                  ? 'hover:bg-starlight-500/15 hover:text-starlight-300 text-white/85'
-                                  : 'hover:bg-starlight-500/10 hover:text-starlight-600 dark:hover:text-starlight-300 text-stone-600 dark:text-slate-300',
-                        ]"
+                    <button
+                        :class="
+                            onDarkSurface
+                                ? 'hover:bg-starlight-500/15 hover:text-starlight-300 text-white/85'
+                                : 'hover:bg-starlight-500/10 hover:text-starlight-600 dark:hover:text-starlight-300 text-stone-600 dark:text-slate-300'
+                        "
+                        class="cursor-pointer rounded-full px-4 py-2 text-sm font-medium whitespace-nowrap transition-all duration-200"
+                        type="button"
+                        @click="goTop"
                     >
-                        {{ link.title }}
-                    </RouterLink>
+                        首页
+                    </button>
+                    <button
+                        v-for="anchor in sectionAnchors"
+                        :key="anchor.id"
+                        :class="
+                            onDarkSurface
+                                ? 'hover:bg-starlight-500/15 hover:text-starlight-300 text-white/85'
+                                : 'hover:bg-starlight-500/10 hover:text-starlight-600 dark:hover:text-starlight-300 text-stone-600 dark:text-slate-300'
+                        "
+                        class="cursor-pointer rounded-full px-4 py-2 text-sm font-medium whitespace-nowrap transition-all duration-200"
+                        type="button"
+                        @click="goSection(anchor.id)"
+                    >
+                        {{ anchor.title }}
+                    </button>
                 </div>
 
                 <div class="flex items-center gap-2">

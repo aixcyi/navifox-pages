@@ -2,24 +2,33 @@
 import { Icon } from '@iconify/vue';
 import { navifoxHome } from '@navifox/constants';
 import { onClickOutside } from '@vueuse/core';
-import { computed, useTemplateRef } from 'vue';
+import { nextTick, useTemplateRef } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 
+import { sectionAnchors } from '#/anchors.ts';
 import { isShowingNavDropdownMenu } from '#/storage.ts';
 
 const dropdown = useTemplateRef('dropdown');
 const route = useRoute();
 const router = useRouter();
 
-const links = computed(() =>
-    router.options.routes
-        .filter((r) => r.meta?.showOnNavbar)
-        .map(({ meta, path }) => ({
-            title: (meta?.title as string | undefined) ?? '首页',
-            path,
-            isActive: path === route.path,
-        })),
-);
+async function goSection(id: string) {
+    if (route.path !== '/') {
+        await router.push('/');
+        await nextTick();
+    }
+    isShowingNavDropdownMenu.value = false;
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+}
+
+async function goTop() {
+    if (route.path !== '/') {
+        await router.push('/');
+        await nextTick();
+    }
+    isShowingNavDropdownMenu.value = false;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
 
 onClickOutside(dropdown, () => (isShowingNavDropdownMenu.value = false));
 </script>
@@ -48,19 +57,27 @@ onClickOutside(dropdown, () => (isShowingNavDropdownMenu.value = false));
                         </button>
                     </div>
                     <div class="flex w-full flex-col gap-px pb-4">
-                        <template v-for="({ title, path, isActive }, index) in links">
-                            <div v-if="index > 0" class="border-t-starlight-500/20 border-t dark:border-t-white/10" />
-                            <RouterLink
-                                :to="path"
-                                :class="[
-                                    'p-4 text-nowrap',
-                                    isActive
+                        <button
+                            class="hover:text-starlight-600 dark:hover:text-starlight-300 cursor-pointer p-4 text-left text-nowrap"
+                            type="button"
+                            @click="goTop"
+                        >
+                            首页
+                        </button>
+                        <template v-for="(anchor, index) in sectionAnchors" :key="anchor.id">
+                            <div class="border-t-starlight-500/20 border-t dark:border-t-white/10" />
+                            <button
+                                :class="
+                                    index === 0
                                         ? 'text-starlight-600 dark:text-starlight-300 font-semibold'
-                                        : 'hover:text-starlight-600 dark:hover:text-starlight-300',
-                                ]"
-                                v-html="title"
-                                @click="isShowingNavDropdownMenu = false"
-                            />
+                                        : 'hover:text-starlight-600 dark:hover:text-starlight-300'
+                                "
+                                class="cursor-pointer p-4 text-left text-nowrap"
+                                type="button"
+                                @click="goSection(anchor.id)"
+                            >
+                                {{ anchor.title }}
+                            </button>
                         </template>
                     </div>
                 </div>
