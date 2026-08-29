@@ -16,7 +16,6 @@ import SkillsPanel from '#/components/SkillsPanel.vue';
 
 logger.draw(signature, '#459199');
 
-const avatarUrl = `${import.meta.env.BASE_URL}avatar256.jpg`;
 const cvLastUpdateTime = '2026.3';
 
 const aboutStates = [
@@ -70,28 +69,9 @@ const aboutStates = [
                 <p class="mt-3 leading-relaxed text-stone-500 dark:text-slate-300" v-html="sectionIntro.description" />
             </header>
             <div class="mt-12 grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(17rem,24rem)] lg:items-start">
-                <!-- 项目经历 -->
-                <div class="flex min-w-0 flex-col gap-6">
-                    <div
-                        class="Content border-starlight-500/20 rounded-3xl border bg-white/70 p-6 backdrop-blur-sm sm:p-8 dark:border-white/10 dark:bg-white/5"
-                    >
-                        <NavifoxPages />
-                    </div>
-                    <div
-                        class="Content border-starlight-500/20 rounded-3xl border bg-white/70 p-6 backdrop-blur-sm sm:p-8 dark:border-white/10 dark:bg-white/5"
-                    >
-                        <Job2022 />
-                    </div>
-                    <div
-                        class="Content border-starlight-500/20 rounded-3xl border bg-white/70 p-6 backdrop-blur-sm sm:p-8 dark:border-white/10 dark:bg-white/5"
-                    >
-                        <Job2021 />
-                    </div>
-                </div>
-
                 <!-- 名片 -->
                 <div
-                    class="border-starlight-500/20 relative overflow-hidden rounded-[2rem] border bg-white/70 backdrop-blur-sm dark:border-white/10 dark:bg-white/5"
+                    class="border-starlight-500/20 relative overflow-hidden rounded-[2rem] border bg-white/70 backdrop-blur-sm lg:order-2 dark:border-white/10 dark:bg-white/5"
                 >
                     <div
                         aria-hidden="true"
@@ -99,14 +79,13 @@ const aboutStates = [
                         v-html="tighnari.brand"
                     />
                     <div class="relative flex flex-col gap-7 p-6 sm:p-8">
-                        <!-- 名片 -->
-                        <div class="flex items-center gap-5">
+                        <div class="flex items-center gap-5 lg:flex-col lg:items-center lg:gap-4">
                             <img
-                                :src="avatarUrl"
+                                :src="tighnari.avatar512"
                                 :alt="tighnari.name"
-                                class="border-starlight-400/40 dark:border-starlight-300/30 size-24 shrink-0 rounded-3xl border-2 object-cover select-none"
+                                class="border-rose-400/40 dark:border-rose-300/40 size-24 shrink-0 rounded-3xl border-2 object-cover select-none lg:aspect-square lg:h-auto lg:w-full lg:rounded-full"
                             />
-                            <div class="min-w-0">
+                            <div class="min-w-0 lg:text-center">
                                 <p
                                     class="text-night-900 text-2xl font-bold tracking-tight dark:text-white"
                                     v-html="tighnari.name"
@@ -122,7 +101,6 @@ const aboutStates = [
                                 />
                             </div>
                         </div>
-                        <!-- 自述 -->
                         <div class="min-w-0">
                             <i
                                 class="text-starlight-600 dark:text-starlight-300 block text-2xl leading-snug italic sm:text-3xl lg:text-xl"
@@ -164,10 +142,29 @@ const aboutStates = [
                         </div>
                     </div>
                 </div>
+
+                <!-- 项目经历 -->
+                <div class="flex min-w-0 flex-col gap-6 lg:order-1">
+                    <div
+                        class="Content border-starlight-500/20 rounded-3xl border bg-white/70 p-6 backdrop-blur-sm sm:p-8 dark:border-white/10 dark:bg-white/5"
+                    >
+                        <NavifoxPages />
+                    </div>
+                    <div
+                        class="Content border-starlight-500/20 rounded-3xl border bg-white/70 p-6 backdrop-blur-sm sm:p-8 dark:border-white/10 dark:bg-white/5"
+                    >
+                        <Job2022 />
+                    </div>
+                    <div
+                        class="Content border-starlight-500/20 rounded-3xl border bg-white/70 p-6 backdrop-blur-sm sm:p-8 dark:border-white/10 dark:bg-white/5"
+                    >
+                        <Job2021 />
+                    </div>
+                </div>
             </div>
         </div>
 
-        <!-- 技能树：技能评估等级 + 技能面板 -->
+        <!-- 技能树 -->
         <section id="skills-tree" class="MaxContainer relative my-24 scroll-mt-28 text-stone-600 dark:text-slate-300">
             <header class="max-w-2xl">
                 <p
@@ -246,7 +243,6 @@ const aboutStates = [
     </div>
 </template>
 
-<!-- suppress CssUnusedSymbol -->
 <style scoped>
 .Dusty {
     --specks: rgb(43 52 44 / 0.35);

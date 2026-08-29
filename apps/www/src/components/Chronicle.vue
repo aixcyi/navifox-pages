@@ -38,7 +38,7 @@ import AiTimelineItem from '#/components/AiTimelineItem.vue';
                 <img
                     :src="BannerGI"
                     alt="原神，Genshin Impact"
-                    class="-z-1 size-full rounded-2xl opacity-25 transition-opacity duration-500 select-none hover:opacity-100"
+                    class="-z-1 size-full rounded-2xl transition-opacity duration-500 select-none hover:opacity-100 dark:opacity-25"
                     draggable="false"
                 />
             </div>
@@ -94,7 +94,7 @@ import AiTimelineItem from '#/components/AiTimelineItem.vue';
                 <img
                     :src="BannerZZZ"
                     alt="绝区零，Zenless Zone Zero"
-                    class="-z-1 size-full rounded-2xl opacity-25 transition-opacity duration-500 select-none hover:opacity-100"
+                    class="-z-1 size-full rounded-2xl transition-opacity duration-500 select-none hover:opacity-100 dark:opacity-25"
                     draggable="false"
                 />
             </div>
@@ -138,7 +138,7 @@ import AiTimelineItem from '#/components/AiTimelineItem.vue';
                 <img
                     :src="BannerHei"
                     alt="《罗小黑战记2》"
-                    class="-z-1 size-full rounded-2xl opacity-25 transition-opacity duration-500 select-none hover:opacity-100"
+                    class="-z-1 size-full rounded-2xl transition-opacity duration-500 select-none hover:opacity-100 dark:opacity-25"
                     draggable="false"
                 />
             </div>
@@ -150,7 +150,7 @@ import AiTimelineItem from '#/components/AiTimelineItem.vue';
                 <img
                     :src="BannerHoney"
                     alt="《凡人修仙传》156集"
-                    class="-z-1 size-full rounded-2xl opacity-50 transition-opacity duration-500 select-none hover:opacity-100"
+                    class="-z-1 size-full rounded-2xl transition-opacity duration-500 select-none hover:opacity-100 dark:opacity-50"
                     draggable="false"
                 />
             </div>

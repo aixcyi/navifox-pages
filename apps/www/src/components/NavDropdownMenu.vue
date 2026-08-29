@@ -74,7 +74,7 @@ onClickOutside(dropdown, () => (isShowingNavDropdownMenu.value = false));
     </div>
 </template>
 
-<!-- suppress CssUnusedSymbol -->
+<!--suppress CssUnusedSymbol-->
 <style scoped>
 .v-enter-active {
     transition: all 0.3s ease-out;
