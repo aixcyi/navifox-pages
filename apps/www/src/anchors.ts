@@ -1,5 +1,3 @@
-import { navifoxHome } from '@navifox/constants';
-
 /**
  * 首页星空区的区块锚点（导航菜单与页面区块共享）。
  */
@@ -25,24 +23,23 @@ export const sectionTop: SectionAnchor = {
 
 /** 有狐说：名片 + 项目经历。 */
 export const sectionIntro: SectionAnchor = {
-    id: 'fox-talk',
+    id: 'intro',
     title: '有狐说',
-    eyebrow: 'About · 关于',
-    description: navifoxHome.description,
+    eyebrow: 'Intro · Experience',
 };
 
 /** 技能树：技能评估等级 + 技能面板。 */
 export const sectionSkills: SectionAnchor = {
-    id: 'skills-tree',
+    id: 'skills',
     title: '技能树',
-    eyebrow: 'Programmer Levels · v0.4',
+    eyebrow: 'Programmer Levels · Skills Bar',
 };
 
 /** 时与风：当前时间线。 */
 export const sectionChronology: SectionAnchor = {
     id: 'chronology',
     title: '时与风',
-    eyebrow: 'Chronicle · 当前时间线',
+    eyebrow: 'Chronicle · Timeline',
     description: '风带来了故事的种子，时间使之发芽。',
 };
 

@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { Icon } from '@iconify/vue';
-import { navifoxHome, signature, socials, tighnari } from '@navifox/constants';
+import { signature, socials, tighnari } from '@navifox/constants';
 import { logger } from '@navifox/utils';
 
 import { sectionChronology, sectionIntro, sectionSkills } from '#/anchors.ts';
@@ -56,7 +56,7 @@ const aboutStates = [
         class="Starry from-paper-100 via-paper-50 to-paper-50 dark:from-night-900 dark:via-night-950 dark:to-night-950 relative z-20 flow-root bg-gradient-to-b"
     >
         <!-- 有狐说：名片 + 项目经历 -->
-        <div id="fox-talk" class="Trail MaxContainer relative my-24 scroll-mt-28 text-stone-600 dark:text-slate-200">
+        <div id="intro" class="Trail MaxContainer relative my-24 scroll-mt-28 text-stone-600 dark:text-slate-200">
             <header class="max-w-2xl">
                 <p
                     class="text-starlight-600 dark:text-starlight-300 font-mono text-[0.72rem] tracking-[0.28em] uppercase"
@@ -83,7 +83,7 @@ const aboutStates = [
                             <img
                                 :src="tighnari.avatar512"
                                 :alt="tighnari.name"
-                                class="border-rose-400/40 dark:border-rose-300/40 size-24 shrink-0 rounded-3xl border-2 object-cover select-none lg:aspect-square lg:h-auto lg:w-full lg:rounded-full"
+                                class="size-24 shrink-0 rounded-3xl border-2 border-rose-400/40 object-cover select-none lg:aspect-square lg:h-auto lg:w-full lg:rounded-full dark:border-rose-300/40"
                             />
                             <div class="min-w-0 lg:text-center">
                                 <p
@@ -108,7 +108,7 @@ const aboutStates = [
                             />
                             <p
                                 class="mt-4 leading-relaxed text-stone-600 dark:text-slate-300"
-                                v-html="navifoxHome.descriptionRich"
+                                v-html="tighnari.status"
                             />
                             <div
                                 class="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-stone-600 dark:text-slate-300"
@@ -165,7 +165,7 @@ const aboutStates = [
         </div>
 
         <!-- 技能树 -->
-        <section id="skills-tree" class="MaxContainer relative my-24 scroll-mt-28 text-stone-600 dark:text-slate-300">
+        <section id="skills" class="MaxContainer relative my-24 scroll-mt-28 text-stone-600 dark:text-slate-300">
             <header class="max-w-2xl">
                 <p
                     class="text-starlight-600 dark:text-starlight-300 font-mono text-[0.72rem] tracking-[0.28em] uppercase"
@@ -175,7 +175,7 @@ const aboutStates = [
                     {{ sectionSkills.title }}
                 </h2>
                 <p class="mt-3 leading-relaxed text-stone-500 dark:text-slate-300">
-                    更新于 <code class="font-mono">{{ cvLastUpdateTime }}</code> ·
+                    <code class="font-mono">{{ cvLastUpdateTime }}</code> ×
                     <a href="https://github.com/bennyhuo/programmer-levels" target="_blank">
                         霍丙乾 Programmer Levels v0.4<br />
                     </a>
