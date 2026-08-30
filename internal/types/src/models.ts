@@ -108,14 +108,17 @@ export interface Friend {
     /** 站点名称。 */
     title?: string;
 
+    /** 站点名称。 */
+    status?: string;
+
     /**
-     * 站点描述／自我介绍／寄语／个性签名。
+     * 站点描述／自我介绍／寄语。
      *
      * 纯文本，不应包含 Markdown 或 HTML 等等。
      */
     description?: string;
 
-    /** 站点描述／自我介绍／寄语／个性签名（HTML格式）。*/
+    /** 站点描述／自我介绍／寄语（HTML格式）。*/
     descriptionRich?: string;
 
     /** 附加渲染样式。Tailwind CSS 类名。 */

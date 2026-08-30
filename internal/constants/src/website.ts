@@ -33,6 +33,7 @@ export const tighnari: Friend = {
     uid: 'aixcyi',
     tags: ['毛茸茸爱好者', '开发工程师', '罗狐会馆馆长'],
     titles: ['Django 高级后端开发', 'Vue3 开发'],
+    status: '有时明月无人夜，独向昭潭制恶龙。',
     avatar: 'https://www.navifox.net/avatar.jpg',
     avatar256: 'https://www.navifox.net/avatar256.jpg',
     avatar512: 'https://www.navifox.net/avatar512.jpg',
