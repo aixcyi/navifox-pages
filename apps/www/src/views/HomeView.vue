@@ -188,9 +188,8 @@ const aboutStates = [
                     >
                         <h3
                             class="text-starlight-600 dark:text-starlight-200 mb-5 text-lg font-semibold tracking-tight"
-                        >
-                            技能面板<br />
-                        </h3>
+                            v-html="'技能面板'"
+                        />
                         <SkillsPanel two-columns />
                     </div>
                 </aside>

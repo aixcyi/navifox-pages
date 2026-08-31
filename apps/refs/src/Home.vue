@@ -124,7 +124,7 @@ const bookmarkGroups = computed(() => {
                     </a>
                     <div
                         class="mt-1 mb-6 h-1 w-24 rounded-full bg-linear-to-r from-indigo-500 to-purple-600 dark:bg-slate-800"
-                    ></div>
+                    />
                 </template>
                 <template v-for="(section, sectionIndex) in group.sections">
                     <div v-if="sectionIndex > 0" class="mt-8" aria-hidden="true" />
