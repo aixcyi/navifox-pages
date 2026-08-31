@@ -1,6 +1,9 @@
 @import 'tailwindcss';
 
-@source '../node_modules/@navifox/ui';
+/* @source '../node_modules/@navifox/ui';
+   的话 Tailwind 会顺着 pnpm 依赖树扫描数万文件，
+   pnpm run dev 样式重编译从 <1s 恶化到 10s+。 */
+@source '../../../internal/ui';
 
 @custom-variant dark (&:where(.dark, .dark *));
 
