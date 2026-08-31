@@ -2,8 +2,7 @@
 title: Django Channels 主动模式
 outline: deep
 createAt: 2025-02-21 20:55
-domain: 框架
-genre: 教程
+category: 开发
 tags:
   - Python3
   - Django

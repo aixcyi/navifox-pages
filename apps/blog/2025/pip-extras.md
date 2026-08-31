@@ -2,8 +2,7 @@
 title: pip 额外依赖
 outline: deep
 createAt: 2025-04-11 14:53
-domain: 工程
-genre: 思考
+category: 技术
 tags:
   - pip
 excerpt:

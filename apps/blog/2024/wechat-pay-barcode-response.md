@@ -2,8 +2,7 @@
 title: 微信扫码支付的响应
 outline: deep
 createAt: 2024-01-24 15:41
-domain: 工程
-genre: 笔记
+category: 开发
 tags:
   - 测试
 excerpt:

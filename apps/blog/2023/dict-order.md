@@ -2,8 +2,7 @@
 navTitle: 字典中，键的顺序
 title: Python 字典中，键的顺序
 createAt: 2023-12-21 10:02
-domain: 语言
-genre: 笔记
+category: 开发
 tags:
   - 测试
   - 兼容

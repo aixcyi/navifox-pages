@@ -1,8 +1,7 @@
 ---
 title: 编译安装 Python3 后 pip3 安装的库如何在命令行调用
 createAt: 2020-03-04 11:13
-domain: 系统
-genre: 复盘
+category: 技术
 tags:
   - 运维
   - CentOS

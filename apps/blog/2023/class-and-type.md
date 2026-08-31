@@ -3,8 +3,7 @@ title: 类与类型
 outline: false
 createAt: 2023-12-22 11:03
 updateAt: 2024-12-27 17:54
-domain: 语言
-genre: 思考
+category: 开发
 tags:
   - 类型系统
   - 设计

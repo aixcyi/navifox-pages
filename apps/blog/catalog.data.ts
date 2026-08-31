@@ -8,8 +8,7 @@ export interface Post {
     url: string;
     title: string;
     tags: string[];
-    domain: string;
-    genre: string;
+    category: string;
     excerpt: string;
     createAt: string;
     updateAt: string | null;
@@ -18,15 +17,23 @@ export interface Post {
 
 export interface CatalogData {
     posts: Post[];
-    domains: string[];
-    genres: string[];
+    categories: string[];
     tags: string[];
+    icons: { name: string; icon: string }[];
 }
 
 declare const data: CatalogData;
 export { data };
 
 const pattern = process.env.NODE_ENV === 'production' ? ['2*/*.md', '!2*/*.draft.md'] : '2*/*.md';
+const icons = [
+    { name: '开发', icon: 'tabler:code' },
+    { name: '技术', icon: 'tabler:mouse' },
+    { name: '安全', icon: 'tabler:bug' },
+    { name: '生活', icon: 'tabler:leaf' },
+    { name: '杂谈', icon: 'tabler:message' },
+    { name: '未分类', icon: 'tabler:circle-dashed' },
+];
 
 export default createContentLoader(pattern, {
     transform(rawData): CatalogData {
@@ -40,8 +47,7 @@ export default createContentLoader(pattern, {
             .map((page) => ({
                 url: page.url,
                 title: page.frontmatter.title,
-                domain: page.frontmatter.domain || '(未归类)',
-                genre: page.frontmatter.genre || '(未归类)',
+                category: page.frontmatter.category || '(未归类)',
                 tags: page.frontmatter.tags || [],
                 excerpt: page.frontmatter.excerpt ? mdit.renderInline(page.frontmatter.excerpt) : '',
                 createAt: page.frontmatter.createAt,
@@ -49,12 +55,11 @@ export default createContentLoader(pattern, {
                 isDraft: page.url.includes('.draft.'),
             }));
 
-        const genres = [...new Set(posts.map((p) => p.genre))].sort((a, b) => a.localeCompare(b));
-        const domains = [...new Set(posts.map((p) => p.domain))].sort((a, b) => a.localeCompare(b));
+        const categories = icons.map((icon) => icon.name);
         const tags = [...new Set(posts.flatMap((p) => p.tags))].sort((a, b) =>
             pinyin(a).join('').localeCompare(pinyin(b).join('')),
         );
 
-        return { posts, domains, genres, tags };
+        return { posts, categories, tags, icons };
     },
 });

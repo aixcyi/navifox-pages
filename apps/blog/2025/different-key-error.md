@@ -2,8 +2,7 @@
 title: 针对不同对象抛出不同 KeyError
 outline: deep
 createAt: 2025-05-31 22:26
-domain: 语言
-genre: 教程
+category: 开发
 tags:
   - Python3
   - 类型系统

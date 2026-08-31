@@ -1,8 +1,7 @@
 ---
 title: 重复下单的 TOCTOU 竞态的排查与修复
 createAt: 2026-08-31 15:09
-domain: 开发
-genre: 复盘
+category: 开发
 tags:
   - TOCTOU
   - 并发

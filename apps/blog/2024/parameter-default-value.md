@@ -2,8 +2,7 @@
 title: 默认值导致抽象泄漏
 outline: false
 createAt: 2024-01-30 23:42
-domain: 语言
-genre: 思考
+category: 杂谈
 tags:
   - 设计
   - Python3

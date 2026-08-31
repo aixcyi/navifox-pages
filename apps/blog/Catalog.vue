@@ -7,35 +7,30 @@ import { computed, ref, watch } from 'vue';
 import type { Post } from './catalog.data';
 import { data } from './catalog.data';
 
-const selectedDomain = ref<string | null>(null);
-const selectedGenre = ref<string | null>(null);
+const selectedCategory = ref<string | null>(null);
 const selectedTags = ref<string[]>([]);
 const draftFilter = ref<string | null>(null);
 const searchQuery = ref('');
 const searchInput = ref<HTMLInputElement | null>(null); // 搜索框是否聚焦：用于联动上下分隔线变色
 const { focused: searchFocused } = useFocus(searchInput);
-const { posts: pages, domains, genres, tags: allTags } = data;
+const { posts: pages, categories, tags: allTags, icons } = data;
 
 const route = useRoute();
 const applyQueryFilter = () => {
     const query = new URLSearchParams(route.query);
-    const domain = query.getAll('domain').find((v) => domains.includes(v));
-    const genre = query.getAll('genre').find((v) => genres.includes(v));
+    const category = query.getAll('category').find((v) => categories.includes(v));
     const tags = query.getAll('tag').filter((v) => allTags.includes(v));
-    if (domain === undefined && genre === undefined && tags.length === 0) {
-        selectedDomain.value = null;
-        selectedGenre.value = null;
+    if (category === undefined && tags.length === 0) {
+        selectedCategory.value = null;
         selectedTags.value = [];
         searchQuery.value = '';
         return;
     }
-    selectedDomain.value = domain ?? null;
-    selectedGenre.value = genre ?? null;
+    selectedCategory.value = category ?? null;
     selectedTags.value = tags;
     searchQuery.value = '';
 };
-const byDomain = (list: Post[], value: string | null) => (value ? list.filter((p) => p.domain === value) : list);
-const byGenre = (list: Post[], value: string | null) => (value ? list.filter((p) => p.genre === value) : list);
+const byCategory = (list: Post[], value: string | null) => (value ? list.filter((p) => p.category === value) : list);
 const byDraft = (list: Post[], mode: string | null) =>
     mode === null ? list : list.filter((p) => (mode === '仅草稿') === p.isDraft);
 
@@ -61,7 +56,7 @@ const countAll = (list: Post[], field: (p: Post) => Iterable<string>): Map<strin
 };
 const posts = computed<Post[]>(() => byDraft(pages, draftFilter.value));
 const filteredPages = computed<Post[]>(() => {
-    let result = byTags(byGenre(byDomain(posts.value, selectedDomain.value), selectedGenre.value), selectedTags.value);
+    let result = byTags(byCategory(posts.value, selectedCategory.value), selectedTags.value);
     const q = searchQuery.value.trim().toLowerCase();
     if (q) {
         result = result.filter(
@@ -73,36 +68,14 @@ const filteredPages = computed<Post[]>(() => {
     }
     return result;
 });
-const domainCounts = computed(() =>
-    countBy(byGenre(byTags(posts.value, selectedTags.value), selectedGenre.value), (p) => p.domain),
-);
-const genreCounts = computed(() =>
-    countBy(byDomain(byTags(posts.value, selectedTags.value), selectedDomain.value), (p) => p.genre),
-);
-const tagCounts = computed(() =>
-    countAll(byDomain(byGenre(posts.value, selectedGenre.value), selectedDomain.value), (p) => p.tags),
-);
+const categoryCounts = computed(() => countBy(byTags(posts.value, selectedTags.value), (p) => p.category));
+const tagCounts = computed(() => countAll(byCategory(posts.value, selectedCategory.value), (p) => p.tags));
 const draftCounts = computed(() =>
-    countBy(byDomain(byGenre(byTags(pages, selectedTags.value), selectedGenre.value), selectedDomain.value), (p) =>
+    countBy(byCategory(byTags(pages, selectedTags.value), selectedCategory.value), (p) =>
         p.isDraft ? '仅草稿' : '非草稿',
     ),
 );
-const categoryIcons = [
-    { name: '语言', icon: 'tabler:brand-cpp' },
-    { name: '框架', icon: 'tabler:stack-2' },
-    { name: '算法', icon: 'tabler:binary-tree' },
-    { name: '开发', icon: 'tabler:code' },
-    { name: '工程', icon: 'tabler:tools' },
-    { name: '系统', icon: 'tabler:cpu' },
-    { name: '安全', icon: 'tabler:shield' },
-    { name: '生活', icon: 'tabler:leaf' },
-    { name: '教程', icon: 'tabler:book-2' },
-    { name: '笔记', icon: 'tabler:notes' },
-    { name: '复盘', icon: 'tabler:history' },
-    { name: '思考', icon: 'tabler:brain' },
-    { name: '选型', icon: 'tabler:directions-filled' },
-];
-const categoryIconOf = (name: string): string | undefined => categoryIcons.find((c) => c.name === name)?.icon;
+const categoryIconOf = (name: string): string | undefined => icons.find((i) => i.name === name)?.icon;
 
 // 过滤按钮状态 → URL 同步：让 URL 查询参数始终与当前筛选一致（可刷新、可分享、可后退恢复）。
 // 与 applyQueryFilter（URL → 状态）互为反向；点击按钮不触发 route.query 更新，不会形成循环。
@@ -110,8 +83,7 @@ const categoryIconOf = (name: string): string | undefined => categoryIcons.find(
 // popstate 处理（e.state === null 时直接 return）在后退/前进时失效。
 const syncUrl = () => {
     const params = new URLSearchParams();
-    if (selectedDomain.value) params.set('domain', selectedDomain.value);
-    if (selectedGenre.value) params.set('genre', selectedGenre.value);
+    if (selectedCategory.value) params.set('category', selectedCategory.value);
     for (const tag of selectedTags.value) params.append('tag', tag);
     const search = params.toString();
     const target = search ? `${location.pathname}?${search}` : location.pathname;
@@ -120,13 +92,8 @@ const syncUrl = () => {
     }
 };
 
-function selectDomain(domain: string | null) {
-    selectedDomain.value = selectedDomain.value === domain ? null : domain;
-    syncUrl();
-}
-
-function selectGenre(genre: string | null) {
-    selectedGenre.value = selectedGenre.value === genre ? null : genre;
+function selectCategory(category: string | null) {
+    selectedCategory.value = selectedCategory.value === category ? null : category;
     syncUrl();
 }
 
@@ -143,7 +110,7 @@ function toggleTag(tag: string) {
 watch(() => route.query, applyQueryFilter, { immediate: true });
 
 interface FilterRow {
-    key: 'genre' | 'domain' | 'tag' | 'draft';
+    key: 'category' | 'tag' | 'draft';
     label: string;
     items: string[];
     counts: Map<string, number>;
@@ -155,21 +122,12 @@ interface FilterRow {
 const filterRows = computed<FilterRow[]>(() => {
     const rows: FilterRow[] = [
         {
-            key: 'genre',
-            label: '类型',
-            items: genres,
-            counts: genreCounts.value,
-            isActive: (item: string) => selectedGenre.value === item,
-            toggle: (item: string) => selectGenre(item),
-            iconOf: (item: string) => categoryIconOf(item),
-        },
-        {
-            key: 'domain',
-            label: '领域',
-            items: domains,
-            counts: domainCounts.value,
-            isActive: (item: string) => selectedDomain.value === item,
-            toggle: (item: string) => selectDomain(item),
+            key: 'category',
+            label: '分类',
+            items: categories,
+            counts: categoryCounts.value,
+            isActive: (item: string) => selectedCategory.value === item,
+            toggle: (item: string) => selectCategory(item),
             iconOf: (item: string) => categoryIconOf(item),
         },
         {
@@ -251,15 +209,11 @@ const filterRows = computed<FilterRow[]>(() => {
             <div v-if="filteredPages.length === 0" class="empty">没有找到匹配的文章</div>
             <template v-else>
                 <a v-for="page in filteredPages" :key="page.url" :href="page.url" class="post-item">
-                    <span class="post-genre">
-                        {{ page.genre }}
-                        <Icon class="icon-lg" :icon="categoryIconOf(page.genre) ?? 'tabler:tag'" />
+                    <span class="post-category">
+                        {{ page.category }}
+                        <Icon class="icon-lg" :icon="categoryIconOf(page.category) ?? 'tabler:tag'" />
                     </span>
                     <span class="post-title">{{ page.title }}</span>
-                    <span class="post-domain">
-                        <Icon class="icon-lg" :icon="categoryIconOf(page.domain) ?? 'tabler:tag'" />
-                        {{ page.domain }}
-                    </span>
                     <span class="post-meta">
                         <span>
                             {{ page.updateAt ? page.updateAt.slice(0, 10) : page.createAt.slice(0, 10) }}
@@ -299,14 +253,9 @@ const filterRows = computed<FilterRow[]>(() => {
     gap: 0.375rem;
 }
 
-.filter-buttons-domain {
+.filter-buttons-category {
     --row-color: var(--vp-c-brand-1);
     --row-soft: var(--vp-c-brand-soft);
-}
-
-.filter-buttons-genre {
-    --row-color: var(--post-genre-color);
-    --row-soft: var(--filter-genre-soft);
 }
 
 .filter-buttons-tag {
@@ -362,24 +311,20 @@ const filterRows = computed<FilterRow[]>(() => {
     outline-offset: 2px;
 }
 
-/* 类型/领域行按钮：无边框、以 | 分隔的文本样式（图 类型 | 图 类型 | …） */
-.filter-buttons-genre .filter-button,
-.filter-buttons-domain .filter-button {
+/* 分类行按钮：无边框、以 | 分隔的文本样式（图 分类 | 图 分类 | …） */
+.filter-buttons-category .filter-button {
     border: none;
     border-radius: 0;
     background: none;
     padding: 0.2rem 0;
 }
 
-.filter-buttons-genre .filter-button:hover:not(:disabled),
-.filter-buttons-genre .filter-button.active,
-.filter-buttons-domain .filter-button:hover:not(:disabled),
-.filter-buttons-domain .filter-button.active {
+.filter-buttons-category .filter-button:hover:not(:disabled),
+.filter-buttons-category .filter-button.active {
     background: none;
 }
 
-.filter-buttons-genre .filter-button:not(:last-child)::after,
-.filter-buttons-domain .filter-button:not(:last-child)::after {
+.filter-buttons-category .filter-button:not(:last-child)::after {
     content: '|';
     margin-left: 0.375rem;
     color: var(--vp-c-divider);
@@ -532,22 +477,14 @@ const filterRows = computed<FilterRow[]>(() => {
     white-space: nowrap;
 }
 
-.post-domain,
-.post-genre {
+.post-category {
     display: inline-flex;
     align-items: center;
     gap: 3px;
     font-size: 0.875rem;
     opacity: 0.5;
-}
-
-.post-domain {
     align-self: center;
-    color: var(--vp-c-brand-1);
-}
-
-.post-genre {
-    color: var(--post-genre-color);
+    color: var(--post-category-color);
 }
 
 .icon-lg {

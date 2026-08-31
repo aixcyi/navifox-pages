@@ -2,8 +2,7 @@
 navTitle: 文件打开模式
 title: Python 文件打开模式
 createAt: 2021-10-21 00:00
-domain: 语言
-genre: 笔记
+category: 开发
 tags:
   - Python3
   - I/O

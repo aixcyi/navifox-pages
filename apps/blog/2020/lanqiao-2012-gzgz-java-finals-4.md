@@ -1,8 +1,7 @@
 ---
 title: Excel 地址转换
 createAt: 2020-01-20 15:09
-domain: 算法
-genre: 教程
+category: 开发
 tags:
   - 蓝桥杯
 excerpt:

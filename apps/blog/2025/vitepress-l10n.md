@@ -3,8 +3,7 @@ title: VitePress 汉化摘要
 outline: deep
 createAt: 2025-03-12 15:20
 updateAt: 2025-03-21 15:41
-domain: 工程
-genre: 笔记
+category: 开发
 tags:
   - VitePress
   - i18n

@@ -1,8 +1,7 @@
 ---
 title: 使用COM对象取文件版本
 createAt: 2016-08-22 15:06
-domain: 系统
-genre: 笔记
+category: 技术
 tags:
   - 易语言
   - COM

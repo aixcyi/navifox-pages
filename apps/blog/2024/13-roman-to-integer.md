@@ -2,8 +2,7 @@
 navTitle: 13. 罗马数字转整数
 title: LeetCode 13. 罗马数字转整数
 createAt: 2024-01-09 17:37
-domain: 算法
-genre: 教程
+category: 开发
 tags:
   - LeetCode
 excerpt:

@@ -1,8 +1,7 @@
 ---
 title: 用户密码重置注意事项
 createAt: 2026-01-25 00:57
-domain: 框架
-genre: 复盘
+category: 开发
 tags:
   - Django
   - DRF

@@ -1,8 +1,7 @@
 ---
 title: 边框粗细不均的由来与处理方式
 createAt: 2026-08-14 10:30
-domain: 开发
-genre: 笔记
+category: 开发
 tags:
   - CSS
   - 亚像素

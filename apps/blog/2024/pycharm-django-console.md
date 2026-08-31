@@ -1,8 +1,7 @@
 ---
 title: PyCharm 配置 Django 控制台
 createAt: 2024-01-24 16:28
-domain: 工程
-genre: 教程
+category: 技术
 tags:
   - JetBrains IDE
   - Django

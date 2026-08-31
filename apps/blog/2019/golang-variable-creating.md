@@ -1,8 +1,7 @@
 ---
 title: Golang 创建同一个变量
 createAt: 2019-11-04 10:32
-domain: 语言
-genre: 思考
+category: 开发
 tags:
   - Golang
   - 语法特性

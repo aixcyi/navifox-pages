@@ -1,8 +1,7 @@
 ---
 title: 外键的 id 与实例
 createAt: 2025-06-01 01:15
-domain: 框架
-genre: 思考
+category: 开发
 tags:
   - Django
   - ORM

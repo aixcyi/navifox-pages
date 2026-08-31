@@ -2,8 +2,7 @@
 navTitle: 20. 有效的括号
 title: LeetCode 20. 有效的括号
 createAt: 2024-01-10 00:04
-domain: 算法
-genre: 教程
+category: 开发
 tags:
   - LeetCode
 excerpt:

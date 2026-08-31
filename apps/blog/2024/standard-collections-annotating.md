@@ -1,8 +1,7 @@
 ---
 title: 标准多项集的标注方式
 createAt: 2024-01-31 17:13
-domain: 语言
-genre: 笔记
+category: 开发
 tags:
   - 语法特性
   - Python3

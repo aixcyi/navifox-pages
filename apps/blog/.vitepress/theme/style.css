@@ -124,16 +124,14 @@
  * -------------------------------------------------------------------------- */
 
 :root {
-    --post-genre-color: #0369a1;
+    --post-category-color: #0369a1;
     --filter-tag-color: #40a02b;
-    --filter-genre-soft: rgba(3, 105, 161, 0.14);
     --filter-tag-soft: rgba(64, 160, 43, 0.14);
 }
 
 .dark {
-    --post-genre-color: #41d1ff;
+    --post-category-color: #41d1ff;
     --filter-tag-color: #a6da95;
-    --filter-genre-soft: rgba(65, 209, 255, 0.16);
     --filter-tag-soft: rgba(166, 218, 149, 0.16);
 }
 

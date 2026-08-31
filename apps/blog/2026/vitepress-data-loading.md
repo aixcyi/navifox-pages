@@ -2,8 +2,7 @@
 title: VitePress 数据加载机制备忘
 outline: deep
 createAt: 2026-08-21 02:17
-domain: 工程
-genre: 笔记
+category: 开发
 tags:
   - VitePress
   - createContentLoader

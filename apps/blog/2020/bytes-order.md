@@ -1,8 +1,7 @@
 ---
 title: 两种字节序的直观比较
 createAt: 2020-02-22 16:45
-domain: 语言
-genre: 思考
+category: 开发
 tags:
   - 字节序
   - 二进制

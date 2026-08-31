@@ -2,8 +2,7 @@
 title: 实现任意进制转十进制
 outline: deep
 createAt: 2022-08-17 16:39
-domain: 算法
-genre: 教程
+category: 开发
 tags:
   - 进位制
   - Python3

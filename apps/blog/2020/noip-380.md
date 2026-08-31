@@ -1,8 +1,7 @@
 ---
 title: NOIP 380. 校门外的树
 createAt: 2020-03-12 17:24
-domain: 算法
-genre: 教程
+category: 开发
 tags:
   - NOIP
   - 蓝桥杯

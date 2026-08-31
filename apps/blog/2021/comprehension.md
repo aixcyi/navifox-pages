@@ -3,8 +3,7 @@ navTitle: 推导式
 title: Python 推导式
 outline: deep
 createAt: 2021-11-05 00:00
-domain: 语言
-genre: 教程
+category: 开发
 tags:
   - Python3
   - 语法特性
