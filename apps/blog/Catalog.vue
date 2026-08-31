@@ -88,10 +88,10 @@ const draftCounts = computed(() =>
     ),
 );
 const categoryIcons = [
-    { name: '语言', icon: 'tabler:language' },
+    { name: '语言', icon: 'tabler:brand-cpp' },
     { name: '框架', icon: 'tabler:stack-2' },
     { name: '算法', icon: 'tabler:binary-tree' },
-    { name: '前端', icon: 'tabler:browser' },
+    { name: '开发', icon: 'tabler:code' },
     { name: '工程', icon: 'tabler:tools' },
     { name: '系统', icon: 'tabler:cpu' },
     { name: '安全', icon: 'tabler:shield' },
@@ -100,7 +100,7 @@ const categoryIcons = [
     { name: '笔记', icon: 'tabler:notes' },
     { name: '复盘', icon: 'tabler:history' },
     { name: '思考', icon: 'tabler:brain' },
-    { name: '选型', icon: 'tabler:list-check' },
+    { name: '选型', icon: 'tabler:directions-filled' },
 ];
 const categoryIconOf = (name: string): string | undefined => categoryIcons.find((c) => c.name === name)?.icon;
 
