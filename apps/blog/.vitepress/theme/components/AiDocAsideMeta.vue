@@ -39,22 +39,26 @@ const ageLabel = computed(() => {
             <div class="meta-title">简介</div>
             <div class="meta-excerpt vp-doc" v-html="$frontmatter.excerpt" />
         </div>
-        <div class="content" v-if="$frontmatter.excerpt">
+        <div class="content" v-if="$frontmatter.createAt">
             <div class="meta-title">信息</div>
             <div class="meta-list">
                 <div v-if="$frontmatter.createAt" class="meta-line">{{ $frontmatter.createAt }} 创作</div>
                 <div v-if="$frontmatter.updateAt" class="meta-line">{{ $frontmatter.updateAt }} 修订</div>
                 <div class="meta-line meta-tags">
                     <span class="meta-age">{{ ageLabel }}</span>
-                    <a v-if="$frontmatter.domain" class="tag" :href="filterLink('domain', $frontmatter.domain)">
-                        {{ $frontmatter.domain }}
-                    </a>
-                    <a v-if="$frontmatter.genre" class="tag" :href="filterLink('genre', $frontmatter.genre)">
-                        {{ $frontmatter.genre }}
-                    </a>
-                    <a v-for="tag in $frontmatter.tags" :key="tag" class="tag" :href="filterLink('tag', tag)">
-                        {{ tag }}
-                    </a>
+                    <a
+                        v-if="$frontmatter.category"
+                        class="tag"
+                        :href="filterLink('category', $frontmatter.category)"
+                        v-html="$frontmatter.category"
+                    />
+                    <a
+                        v-for="tag in $frontmatter.tags"
+                        :key="tag"
+                        class="tag"
+                        :href="filterLink('tag', tag)"
+                        v-html="tag"
+                    />
                 </div>
             </div>
         </div>
