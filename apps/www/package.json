@@ -18,6 +18,7 @@
         "@tailwindcss/vite": "catalog:",
         "@unhead/vue": "catalog:",
         "@vueuse/core": "catalog:",
+        "reka-ui": "catalog:",
         "tailwindcss": "catalog:",
         "vue": "catalog:",
         "vue-router": "catalog:"

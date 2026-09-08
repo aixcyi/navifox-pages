@@ -1,6 +1,6 @@
 import type { Website } from '@navifox/types';
 
-export const friends: Website[] = [
+export const feeds: Website[] = [
     {
         name: 'Rabbit Mind',
         link: 'https://rabbitmind.net/',
@@ -13,6 +13,8 @@ export const friends: Website[] = [
         icon: 'https://www.zhilu.site/icon.png',
         description: '纸鹿至麓不知路，支炉制露不止漉',
     },
+];
+export const pixels: Website[] = [
     {
         name: 'Pinpe 的云端',
         link: 'https://pinpe.top/',

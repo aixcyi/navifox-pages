@@ -1,21 +1,62 @@
 import { navifoxHome } from '@navifox/constants';
 import { website } from '@navifox/utils';
 import { useHead } from '@unhead/vue';
+import { nextTick } from 'vue';
 import { createRouter, createWebHistory } from 'vue-router';
 
 import NotFound from '#/NotFound.vue';
+import BookmarksView from '#/views/BookmarksView.vue';
+import FriendsView from '#/views/FriendsView.vue';
 import HomeView from '#/views/HomeView.vue';
 
 const router = createRouter({
     history: createWebHistory(),
+    /** 带 fragment（如 /#intro）平滑直达区块；普通页面切换回到顶部；前进后退恢复原滚动位置；
+        同路径的重复导航（如已在首页点「首页」）不滚动。
+        滚动前等待 RouterView 完成 DOM 更新，避免从长页深处切换时被旧滚动位置 clamp 在页面底部。 */
+    scrollBehavior: async (to, from, savedPosition) => {
+        if (savedPosition) return savedPosition;
+        // 等待 RouterView 渲染并完成两帧布局后再滚动，
+        // 避免从长页深处切换时被旧滚动位置 clamp 在页面底部
+        await nextTick();
+        await new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+        if (to.hash) {
+            // 自行 scrollIntoView：尊重区块的 scroll-mt 偏移（vue-router 的 el 滚动不读 scroll-margin）
+            document.querySelector(to.hash)?.scrollIntoView({ behavior: 'smooth' });
+            return;
+        }
+        if (to.path === from.path) return undefined;
+        // 对象式调用并显式指定 behavior，覆盖全局 CSS 的 scroll-behavior: smooth
+        window.scrollTo({ top: 0, behavior: 'instant' });
+        return undefined;
+    },
     routes: [
         {
             path: '/',
             name: 'Homepage',
             meta: {
-                showOnNavbar: true,
+                title: '首页',
+                isShowOnNavbar: true,
             },
             component: HomeView,
+        },
+        {
+            path: '/bookmarks',
+            name: 'Bookmarks',
+            meta: {
+                title: '星笺',
+                isShowOnNavbar: true,
+            },
+            component: BookmarksView,
+        },
+        {
+            path: '/friends',
+            name: 'Friends',
+            meta: {
+                title: '友链',
+                isShowOnNavbar: true,
+            },
+            component: FriendsView,
         },
         {
             path: '/:pathMatch(.*)*',
@@ -43,7 +84,7 @@ router.beforeEach((to) => {
             }),
         ],
         link: [...website.links(navifoxHome)],
-        titleTemplate: to.meta.title ? `%s × ${navifoxHome.name}` : null,
+        titleTemplate: to.meta.title ? `%s · ${navifoxHome.name}` : null,
     });
 });
 

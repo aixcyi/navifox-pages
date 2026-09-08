@@ -203,3 +203,32 @@ export interface BookmarkGroup {
     /** 组内书签。 */
     items: Website[];
 }
+
+/**
+ * 滚动目标：
+ * - `string`：页面元素 id，点击后滚动到该元素，URL fragment 形如 `/#intro`；
+ * - `number`：距页面顶部的像素数（目前无对应场景，仅以字面量 `0` 表示顶部）。
+ *
+ * 两种形态都能描述“滚动到哪里”，功能等价，故共用同一字段 {@link Anchor.id}。
+ */
+export type AnchorTarget = string | number;
+
+/**
+ * 页内区块（首页、友链页）的锚点信息，供区块标题、URL fragment 直达等使用。
+ */
+export interface Anchor {
+    /** 滚动目标（见 {@link AnchorTarget}）。 */
+    id: AnchorTarget;
+
+    /** 区块标题。 */
+    title: string;
+
+    /** 眉题（标题上方的英文小标题），如 `Intro · Experience`。 */
+    eyebrow?: string;
+
+    /** 区块介绍（标题下方的说明文字）。 */
+    description?: string;
+
+    /** 区块附带的网站列表（友链页卡片使用）。 */
+    websites?: Website[];
+}

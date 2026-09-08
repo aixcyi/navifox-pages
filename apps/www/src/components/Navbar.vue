@@ -2,11 +2,16 @@
 import { Icon } from '@iconify/vue';
 import { navifoxHome } from '@navifox/constants';
 import { useDark, useToggle } from '@vueuse/core';
-import { computed, nextTick, onBeforeUnmount, onMounted, ref } from 'vue';
+import {
+    DropdownMenuContent,
+    DropdownMenuItem,
+    DropdownMenuLabel,
+    DropdownMenuPortal,
+    DropdownMenuRoot,
+    DropdownMenuTrigger,
+} from 'reka-ui';
+import { computed, onBeforeUnmount, onMounted, ref } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
-
-import { sectionAnchors } from '#/anchors.ts';
-import { isShowingNavDropdownMenu } from '#/storage.ts';
 
 const props = defineProps<{ cover?: boolean }>();
 
@@ -19,6 +24,42 @@ const toggleDark = useToggle(isDark);
 /** 导航当前是否处于「暗表面」（照片遮罩／夜色玻璃），需要白色系文字。 */
 const onDarkSurface = computed(() => (props.cover ? !scrolled.value || isDark.value : isDark.value));
 
+/** 导航条各入口的基础样式（胶囊按钮）。 */
+const baseItemClass =
+    'cursor-pointer rounded-full px-4 py-2 text-sm font-medium whitespace-nowrap transition-all duration-200';
+
+/** 非导航入口（主题切换、移动端汉堡）在暗/亮表面的通用文字与悬停态。 */
+const surfaceClass = computed(() =>
+    onDarkSurface.value
+        ? 'hover:bg-starlight-500/15 hover:text-starlight-300 text-white/85'
+        : 'hover:bg-starlight-500/10 hover:text-starlight-600 dark:hover:text-starlight-300 text-stone-600 dark:text-slate-300',
+);
+
+/** 导航条目样式（含当前页激活态）；`active` 表示该项即当前所在页面。 */
+function navItemClass(active: boolean) {
+    if (onDarkSurface.value) {
+        return active
+            ? 'bg-starlight-500/15 text-starlight-300'
+            : 'text-white/85 hover:bg-starlight-500/15 hover:text-starlight-300';
+    }
+    return active
+        ? 'bg-starlight-500/15 text-starlight-600 dark:text-starlight-300'
+        : 'text-stone-600 hover:bg-starlight-500/10 hover:text-starlight-600 dark:text-slate-300 dark:hover:text-starlight-300';
+}
+
+/** 移动端菜单条目基础样式。 */
+const menuItemClass =
+    'cursor-pointer rounded-lg px-3 py-2.5 text-left text-sm whitespace-nowrap outline-hidden transition-colors duration-200 data-[highlighted]:bg-starlight-500/10';
+
+/** 移动端页面条目的激活态文字（当前页加粗高亮）。 */
+function navMenuItemClass(path: string) {
+    return route.path === path ? 'text-starlight-600 dark:text-starlight-300 font-semibold' : '';
+}
+
+/** 下拉菜单卡片通用样式（含出入场动画，keyframes 见全局 style.css）。 */
+const menuCardClass =
+    'border-starlight-500/20 bg-paper-50/95 text-stone-800 shadow-xl shadow-night-950/10 backdrop-blur-md z-50 min-w-52 rounded-2xl border p-2 dark:border-white/10 dark:bg-night-900/95 dark:text-slate-200 dark:shadow-night-950/40 data-[state=open]:animate-[nav-menu-in_0.18s_ease-out] data-[state=closed]:animate-[nav-menu-out_0.14s_ease-in]';
+
 const pillClass = computed(() => {
     if (props.cover) {
         if (!scrolled.value) return 'border-transparent bg-transparent';
@@ -30,18 +71,15 @@ const pillClass = computed(() => {
     return 'border-starlight-500/25 bg-paper-50/85 shadow-lg shadow-night-950/10 dark:border-white/10 dark:bg-night-900/80 dark:shadow-night-950/40';
 });
 
-/** 滚动到首页区块锚点；不在首页时先跳转首页再滚动。 */
-async function goSection(id: string) {
-    if (route.path !== '/') {
-        await router.push('/');
-        await nextTick();
-    }
-    if (id === 'top') {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-        return;
-    }
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
-}
+/** 显示在导航栏的路由项（由 router meta 的 isShowOnNavbar 控制，标题取 meta.title）。 */
+const navItems = computed(() =>
+    router.options.routes
+        .filter((record) => Boolean(record.meta?.isShowOnNavbar))
+        .map((record) => ({
+            path: record.path,
+            title: (record.meta?.title as string | undefined) ?? record.path,
+        })),
+);
 
 function onScroll() {
     scrolled.value = window.scrollY > 12;
@@ -89,30 +127,24 @@ onBeforeUnmount(() => window.removeEventListener('scroll', onScroll));
                     </span>
                 </RouterLink>
 
+                <!-- 桌面端导航：由路由 meta 生成（isShowOnNavbar），无下拉 -->
                 <div class="hidden items-center gap-1 md:flex">
-                    <button
-                        v-for="anchor in sectionAnchors"
-                        :key="anchor.id"
-                        :class="
-                            onDarkSurface
-                                ? 'hover:bg-starlight-500/15 hover:text-starlight-300 text-white/85'
-                                : 'hover:bg-starlight-500/10 hover:text-starlight-600 dark:hover:text-starlight-300 text-stone-600 dark:text-slate-300'
-                        "
-                        class="cursor-pointer rounded-full px-4 py-2 text-sm font-medium whitespace-nowrap transition-all duration-200"
-                        type="button"
-                        @click="goSection(anchor.id)"
-                        v-html="anchor.title"
-                    />
+                    <RouterLink
+                        v-for="item in navItems"
+                        :key="item.path"
+                        :to="item.path"
+                        :class="[baseItemClass, navItemClass(route.path === item.path)]"
+                    >
+                        {{ item.title }}
+                    </RouterLink>
                 </div>
 
                 <div class="flex items-center gap-2">
                     <button
-                        :class="
-                            onDarkSurface
-                                ? 'hover:bg-starlight-500/15 hover:text-starlight-300 text-white/85'
-                                : 'hover:bg-starlight-500/10 hover:text-starlight-600 dark:hover:text-starlight-300 text-stone-600 dark:text-slate-300'
-                        "
-                        class="hidden size-9 cursor-pointer items-center justify-center rounded-full transition-colors duration-200 md:flex"
+                        :class="[
+                            surfaceClass,
+                            'hidden size-9 cursor-pointer items-center justify-center rounded-full transition-colors duration-200 md:flex',
+                        ]"
                         :title="isDark ? '切换到浅色模式' : '切换到深色模式'"
                         @click="toggleDark(!isDark)"
                     >
@@ -121,18 +153,44 @@ onBeforeUnmount(() => window.removeEventListener('scroll', onScroll));
                             height="20"
                         />
                     </button>
-                    <button
-                        :class="
-                            onDarkSurface
-                                ? 'hover:bg-starlight-500/15 hover:text-starlight-300 text-white/85'
-                                : 'hover:bg-starlight-500/10 hover:text-starlight-600 dark:hover:text-starlight-300 text-stone-600 dark:text-slate-300'
-                        "
-                        class="flex size-10 cursor-pointer items-center justify-center rounded-full transition-colors duration-200 md:hidden"
-                        aria-label="打开导航菜单"
-                        @click="isShowingNavDropdownMenu = true"
-                    >
-                        <Icon height="24" icon="lineicons:menu" />
-                    </button>
+
+                    <!-- 移动端导航菜单：条目同样由路由 meta 生成 -->
+                    <DropdownMenuRoot>
+                        <DropdownMenuTrigger as-child>
+                            <button
+                                :class="[
+                                    surfaceClass,
+                                    'flex size-10 cursor-pointer items-center justify-center rounded-full transition-colors duration-200 md:hidden',
+                                ]"
+                                aria-label="打开导航菜单"
+                                type="button"
+                            >
+                                <Icon height="24" icon="lineicons:menu" />
+                            </button>
+                        </DropdownMenuTrigger>
+                        <DropdownMenuPortal>
+                            <DropdownMenuContent side="bottom" align="end" :side-offset="10" :class="menuCardClass">
+                                <DropdownMenuLabel
+                                    class="flex items-center gap-2 px-3 py-2 text-sm font-bold whitespace-nowrap select-none"
+                                >
+                                    <Icon class="text-xl" icon="fluent-emoji:fox" />
+                                    <span>{{ navifoxHome.name }}</span>
+                                </DropdownMenuLabel>
+                                <div class="border-t-starlight-500/20 mt-1 border-t dark:border-t-white/10" />
+
+                                <DropdownMenuItem
+                                    v-for="item in navItems"
+                                    :key="item.path"
+                                    as-child
+                                    :class="menuItemClass"
+                                >
+                                    <RouterLink :to="item.path" :class="navMenuItemClass(item.path)">
+                                        {{ item.title }}
+                                    </RouterLink>
+                                </DropdownMenuItem>
+                            </DropdownMenuContent>
+                        </DropdownMenuPortal>
+                    </DropdownMenuRoot>
                 </div>
             </div>
         </div>

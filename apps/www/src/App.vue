@@ -1,6 +1,8 @@
 <script lang="ts" setup>
 import { AiFooter } from '@navifox/ui';
 
+import BackToTopButton from '#/components/BackToTopButton.vue';
+
 const version = __APP_VERSION__;
 </script>
 
@@ -13,4 +15,5 @@ const version = __APP_VERSION__;
             </p>
         </template>
     </AiFooter>
+    <BackToTopButton />
 </template>

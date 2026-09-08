@@ -72,7 +72,7 @@ for (const level of programmerLevels) {
                 >
                     <icon :icon="point.unlit ? 'icons8:circle' : 'icons8:checked'" class="mr-1" height="20" />
                     <span
-                        class="*:[u]:decoration-transparent! *:[u]:underline-offset-5! group-hover:*:[u]:decoration-orange-500!"
+                        class="group-hover:*:[u]:decoration-starlight-500! dark:group-hover:*:[u]:decoration-starlight-400! *:[u]:decoration-transparent! *:[u]:underline-offset-5!"
                         v-html="point.text"
                     />
                 </li>

@@ -3,7 +3,7 @@ import { Icon } from '@iconify/vue';
 import {
     copyrights,
     credits,
-    friends,
+    feeds,
     navifoxHome,
     sitemap,
     socials,
@@ -39,7 +39,7 @@ const linkMap = [
     {
         title: '友情链接',
         subtitle: 'Friends',
-        data: friends,
+        data: feeds,
         styles: {
             link: 'hover:border-violet-400/60 dark:hover:border-violet-400/50',
             icon: 'text-violet-500 dark:text-violet-300',
@@ -88,9 +88,11 @@ const linkMap = [
                                     class="truncate text-sm font-medium text-stone-900 transition-colors duration-200 dark:text-slate-100"
                                 >
                                     {{ item.name }}
-                                    <span v-if="item.note" class="text-stone-400 dark:text-slate-500">{{
-                                        item.note
-                                    }}</span>
+                                    <span
+                                        v-if="item.note"
+                                        class="text-stone-400 dark:text-slate-500"
+                                        v-html="item.note"
+                                    />
                                 </h4>
                                 <p
                                     v-if="item.description"

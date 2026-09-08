@@ -1,22 +1,43 @@
 <script lang="ts" setup>
 import { Icon } from '@iconify/vue';
 import { signature, socials, tighnari } from '@navifox/constants';
+import type { Anchor } from '@navifox/types';
 import { logger } from '@navifox/utils';
+import { onMounted } from 'vue';
 
-import { sectionChronology, sectionIntro, sectionSkills } from '#/anchors.ts';
 import Background from '#/assets/background.jpg';
+import AnchorHeading from '#/components/AnchorHeading.vue';
 import Chronicle from '#/components/Chronicle.vue';
 import Job2021 from '#/components/experiences/Job2021.vue';
 import Job2022 from '#/components/experiences/Job2022.vue';
 import NavifoxPages from '#/components/experiences/NavifoxPages.vue';
 import Navbar from '#/components/Navbar.vue';
-import NavDropdownMenu from '#/components/NavDropdownMenu.vue';
 import ProgrammerPanel from '#/components/ProgrammerPanel.vue';
 import SkillsPanel from '#/components/SkillsPanel.vue';
+import Stardust from '#/components/Stardust.vue';
 
 logger.draw(signature, '#459199');
 
 const cvLastUpdateTime = '2026.3';
+
+const anchorIntro = {
+    id: 'intro',
+    title: '有狐说',
+    eyebrow: 'Intro · Experience',
+} satisfies Anchor;
+
+const anchorSkills = {
+    id: 'skills',
+    title: '技能树',
+    eyebrow: 'Programmer Levels · Skills Bar',
+} satisfies Anchor;
+
+const anchorChronology = {
+    id: 'chronology',
+    title: '时与风',
+    eyebrow: 'Chronicle · Timeline',
+    description: '风带来了故事的种子，时间使之发芽。',
+} satisfies Anchor;
 
 const aboutStates = [
     { logo: 'zondicons:location', text: tighnari.location ?? '' },
@@ -24,6 +45,11 @@ const aboutStates = [
     { logo: 'bi:wechat', text: tighnari.brand ?? '' },
     { logo: 'streamline-logos:qq-logo-solid', text: tighnari.groupQQ ?? '' },
 ].filter((state) => state.text);
+
+/** 带 URL fragment（如 /#intro）直达时的兜底滚动（router.scrollBehavior 之外再保一次）。 */
+onMounted(() => {
+    if (location.hash) document.querySelector(location.hash)?.scrollIntoView({ behavior: 'smooth' });
+});
 </script>
 
 <template>
@@ -34,7 +60,6 @@ const aboutStates = [
         class="fixed inset-0 z-10 bg-gradient-to-t from-transparent via-transparent to-transparent dark:from-black/40 dark:via-transparent"
     />
     <Navbar cover />
-    <NavDropdownMenu class="fixed inset-x-0 top-0 z-50" />
     <div class="MaxContainer selection:bg-starlight-400/40 z-20 flex h-screen flex-col **:z-20">
         <div class="mb-8 flex h-full flex-col justify-end md:mb-20">
             <div
@@ -56,17 +81,18 @@ const aboutStates = [
         class="Starry from-paper-100 via-paper-50 to-paper-50 dark:from-night-900 dark:via-night-950 dark:to-night-950 relative z-20 flow-root bg-gradient-to-b"
     >
         <!-- 有狐说：名片 + 项目经历 -->
-        <div id="intro" class="Trail MaxContainer relative my-24 scroll-mt-28 text-stone-600 dark:text-slate-200">
+        <div
+            :id="anchorIntro.id"
+            class="Trail MaxContainer relative my-24 scroll-mt-28 text-stone-600 dark:text-slate-200"
+        >
             <header class="max-w-2xl">
                 <p
                     class="text-starlight-600 dark:text-starlight-300 font-mono text-[0.72rem] tracking-[0.28em] uppercase"
-                    v-html="sectionIntro.eyebrow"
+                    v-html="anchorIntro.eyebrow"
                 />
-                <h2
-                    class="text-night-900 mt-3 text-3xl font-bold tracking-tight sm:text-4xl dark:text-white"
-                    v-html="sectionIntro.title"
-                />
-                <p class="mt-3 leading-relaxed text-stone-500 dark:text-slate-300" v-html="sectionIntro.description" />
+                <h2 class="text-night-900 mt-3 text-3xl font-bold tracking-tight sm:text-4xl dark:text-white">
+                    <AnchorHeading :id="anchorIntro.id" :html="anchorIntro.title" />
+                </h2>
             </header>
             <div class="mt-12 grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(17rem,24rem)] lg:items-start">
                 <!-- 名片 -->
@@ -165,20 +191,25 @@ const aboutStates = [
         </div>
 
         <!-- 技能树 -->
-        <section id="skills" class="MaxContainer relative my-24 scroll-mt-28 text-stone-600 dark:text-slate-300">
+        <section
+            :id="anchorSkills.id"
+            class="MaxContainer relative my-24 scroll-mt-28 text-stone-600 dark:text-slate-300"
+        >
             <header class="max-w-2xl">
                 <p
                     class="text-starlight-600 dark:text-starlight-300 font-mono text-[0.72rem] tracking-[0.28em] uppercase"
-                    v-html="sectionSkills.eyebrow"
+                    v-html="anchorSkills.eyebrow"
                 />
                 <h2 class="text-night-900 mt-3 text-3xl font-bold tracking-tight sm:text-4xl dark:text-white">
-                    {{ sectionSkills.title }}
+                    <AnchorHeading :id="anchorSkills.id" :text="anchorSkills.title" />
                 </h2>
                 <p class="mt-3 leading-relaxed text-stone-500 dark:text-slate-300">
-                    <code class="font-mono">{{ cvLastUpdateTime }}</code> ×
-                    <a href="https://github.com/bennyhuo/programmer-levels" target="_blank">
-                        霍丙乾 Programmer Levels v0.4<br />
-                    </a>
+                    <code class="font-mono" v-html="`${cvLastUpdateTime} × `" />
+                    <a
+                        href="https://github.com/bennyhuo/programmer-levels"
+                        target="_blank"
+                        v-html="'霍丙乾 Programmer Levels v0.4'"
+                    />
                 </p>
             </header>
             <div class="mt-12 grid gap-10 lg:grid-cols-[auto_minmax(0,1fr)] lg:items-start">
@@ -205,19 +236,21 @@ const aboutStates = [
         </section>
 
         <!-- 时间线 -->
-        <section id="chronology" class="MaxContainer relative my-24 scroll-mt-28 text-stone-600 dark:text-slate-300">
+        <section
+            :id="anchorChronology.id"
+            class="MaxContainer relative my-24 scroll-mt-28 text-stone-600 dark:text-slate-300"
+        >
             <header class="max-w-2xl">
                 <p
                     class="text-starlight-600 dark:text-starlight-300 font-mono text-[0.72rem] tracking-[0.28em] uppercase"
-                    v-html="sectionChronology.eyebrow"
+                    v-html="anchorChronology.eyebrow"
                 />
-                <h2
-                    class="text-night-900 mt-3 text-3xl font-bold tracking-tight sm:text-4xl dark:text-white"
-                    v-html="sectionChronology.title"
-                />
+                <h2 class="text-night-900 mt-3 text-3xl font-bold tracking-tight sm:text-4xl dark:text-white">
+                    <AnchorHeading :id="anchorChronology.id" :html="anchorChronology.title" />
+                </h2>
                 <p
                     class="mt-3 leading-relaxed text-stone-500 dark:text-slate-300"
-                    v-html="sectionChronology.description"
+                    v-html="anchorChronology.description"
                 />
             </header>
             <div
@@ -228,12 +261,7 @@ const aboutStates = [
         </section>
 
         <!-- 星光尘覆盖：置于所有区块之后，使各区块卡片（含技能树、时与风）均覆盖星光 -->
-        <div class="Dusty pointer-events-none absolute inset-0" aria-hidden="true" />
-        <div
-            class="Dusty pointer-events-none absolute inset-0 opacity-60"
-            aria-hidden="true"
-            style="background-size: 300px 300px"
-        />
+        <Stardust />
 
         <!-- 页尾 -->
         <div class="MaxContainer relative my-16!">
@@ -241,34 +269,3 @@ const aboutStates = [
         </div>
     </div>
 </template>
-
-<style scoped>
-.Dusty {
-    --specks: rgb(43 52 44 / 0.35);
-    background-image:
-        radial-gradient(1.5px 1.5px at 22% 18%, var(--specks) 50%, transparent 51%),
-        radial-gradient(1px 1px at 58% 42%, var(--specks) 50%, transparent 51%),
-        radial-gradient(1.5px 1.5px at 84% 68%, var(--specks) 50%, transparent 51%),
-        radial-gradient(1px 1px at 38% 82%, var(--specks) 50%, transparent 51%),
-        radial-gradient(1px 1px at 12% 52%, var(--specks) 50%, transparent 51%),
-        radial-gradient(1.5px 1.5px at 68% 12%, var(--specks) 50%, transparent 51%),
-        radial-gradient(1px 1px at 92% 36%, var(--specks) 50%, transparent 51%),
-        radial-gradient(1px 1px at 30% 64%, var(--specks) 50%, transparent 51%);
-    background-repeat: repeat;
-    background-size: 220px 220px;
-    animation: dust-breathe 7s ease-in-out infinite alternate;
-}
-
-.dark .Dusty {
-    --specks: rgb(255 255 255 / 0.35);
-}
-
-@keyframes dust-breathe {
-    from {
-        opacity: 0.4;
-    }
-    to {
-        opacity: 0.85;
-    }
-}
-</style>
