@@ -628,6 +628,15 @@ importers:
       '@vueuse/core':
         specifier: 'catalog:'
         version: 14.3.0(vue@3.5.39(typescript@5.9.3))
+      '@vueuse/integrations':
+        specifier: 'catalog:'
+        version: 14.3.0(focus-trap@8.2.2)(qrcode@1.5.4)(vue@3.5.39(typescript@5.9.3))
+      gsap:
+        specifier: 'catalog:'
+        version: 3.15.0
+      qrcode:
+        specifier: 'catalog:'
+        version: 1.5.4
       reka-ui:
         specifier: 'catalog:'
         version: 2.10.1(vue@3.5.39(typescript@5.9.3))
