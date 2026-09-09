@@ -5,8 +5,8 @@ import { nextTick } from 'vue';
 import { createRouter, createWebHistory } from 'vue-router';
 
 import NotFound from '#/NotFound.vue';
-import BookmarksView from '#/views/BookmarksView.vue';
-import FriendsView from '#/views/FriendsView.vue';
+import FavoritesView from '#/views/FavoritesView.vue';
+import LinksView from '#/views/LinksView.vue';
 import HomeView from '#/views/HomeView.vue';
 
 const router = createRouter({
@@ -41,22 +41,22 @@ const router = createRouter({
             component: HomeView,
         },
         {
-            path: '/bookmarks',
-            name: 'Bookmarks',
+            path: '/favs',
+            name: 'Favorites',
             meta: {
                 title: '星笺',
                 isShowOnNavbar: true,
             },
-            component: BookmarksView,
+            component: FavoritesView,
         },
         {
-            path: '/friends',
-            name: 'Friends',
+            path: '/links',
+            name: 'Links',
             meta: {
-                title: '友链',
+                title: '友人帐',
                 isShowOnNavbar: true,
             },
-            component: FriendsView,
+            component: LinksView,
         },
         {
             path: '/:pathMatch(.*)*',
