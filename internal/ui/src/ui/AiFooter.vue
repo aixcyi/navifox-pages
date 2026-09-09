@@ -64,7 +64,7 @@ const linkMap = [
                             v-for="item in data"
                             :class="styles.link"
                             :href="item.link"
-                            :target="item.link.startsWith('https://') ? '_blank' : '_self'"
+                            :target="(item.link ?? '').startsWith('https://') ? '_blank' : '_self'"
                             class="group flex items-center rounded-xl border border-amber-400/15 bg-white p-3 transition-all duration-200 hover:shadow-md dark:border-white/10 dark:bg-slate-800"
                         >
                             <div

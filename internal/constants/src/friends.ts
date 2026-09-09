@@ -1,27 +1,46 @@
-import type { Website } from '@navifox/types';
+import type { Friend } from '@navifox/types';
 
-export type FriendsWebsite = Website & { type: 'partner' | 'feed' | 'pixel' };
+/**
+ * 友链信息（{@link Friend} 扩展）。
+ */
+export type FriendLink = Friend & {
+    /** 友链类型。 */
+    type: 'partner' | 'feed' | 'pixel';
 
-export const friends: FriendsWebsite[] = [
+    /** 相遇时间。`yyyy/mm/dd` 格式。 */
+    meet?: string;
+
+    /** 头像样式（圆角、底色等非通用部分）。Tailwind v4 类名。 */
+    avatarStyle?: string[];
+};
+
+export const friends: FriendLink[] = [
     {
-        name: 'Rabbit Mind',
+        name: '若米',
         link: 'https://rabbitmind.net/',
-        icon: 'https://rabbitmind.net/favicon.ico',
+        title: 'Ramid',
+        avatar: 'https://rabbitmind.net/favicon.ico',
+        status: '这里的更新速度取决于咖啡浓度☕',
         type: 'partner',
-        description: '这里的更新速度取决于咖啡浓度☕',
     },
     {
-        name: '纸鹿摸鱼处',
+        name: '纸鹿本鹿',
         link: 'https://blog.zhilu.site/',
-        icon: 'https://www.zhilu.site/icon.png',
+        title: '摸鱼处',
+        avatar: 'https://www.zhilu.site/api/avatar.png',
+        status: '纸鹿至麓不知路，支炉制露不止漉',
+        meet: '2025/7/14',
         type: 'feed',
-        description: '纸鹿至麓不知路，支炉制露不止漉',
+        avatarStyle: ['rounded-2xl'],
     },
     {
-        name: 'Pinpe 的云端',
+        name: 'Pinpe',
         link: 'https://pinpe.top/',
-        icon: 'https://pinpe.top/favicon/logo.jpg',
+        title: '的云端',
+        avatar: 'https://pinpe.top/head.jpg',
+        status: '宁为鲜花而死，不为面包而活。',
+        meet: '2025/7/14',
         type: 'pixel',
-        description: '宁为鲜花而死，不为面包而活。',
+        avatarStyle: ['rounded-full'],
     },
 ];

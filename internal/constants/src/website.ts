@@ -54,6 +54,9 @@ export const navifoxHome: Website = {
     author: tighnari.name,
     tags: [tighnari.name, '阿羽', 'aixcyi', 'ayu', '路狐领航', '罗狐会馆', '妖灵会馆'],
 };
+tighnari.link = navifoxHome.link;
+tighnari.title = navifoxHome.name;
+
 export const navifoxRefs: Website = {
     name: '星笺',
     link: 'https://refs.navifox.net',

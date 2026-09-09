@@ -115,7 +115,7 @@ export interface Friend {
     /** 站点名称。 */
     title?: string;
 
-    /** 站点名称。 */
+    /** 个性签名。 */
     status?: string;
 
     /**
