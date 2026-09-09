@@ -87,7 +87,7 @@ const bookmarkGroups = computed(() => {
                                 </h2>
                             </a>
                             <div
-                                class="from-starlight-500 to-aurora-500 dark:from-starlight-600 dark:to-aurora-600 mt-1 mb-6 h-1 w-24 rounded-full bg-gradient-to-r"
+                                class="from-starlight-400 dark:from-starlight-300 mt-1 mb-6 h-1 w-24 rounded-full bg-gradient-to-r to-transparent"
                             />
                         </template>
                         <template v-for="(section, sectionIndex) in group.sections">

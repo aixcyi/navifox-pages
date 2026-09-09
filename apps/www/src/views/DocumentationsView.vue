@@ -170,7 +170,9 @@ onUnmounted(() => {
                     class="text-night-900 text-5xl font-bold tracking-tight sm:text-6xl md:text-7xl dark:text-white"
                     v-html="'文档月饼盒'"
                 />
-                <div class="from-starlight-500 to-aurora-500 h-1 w-24 rounded-full bg-gradient-to-r" />
+                <div
+                    class="via-starlight-400 dark:via-starlight-300 h-1 w-28 rounded-full bg-gradient-to-r from-transparent to-transparent"
+                />
                 <p class="max-w-xl text-base leading-relaxed text-stone-500 sm:text-lg dark:text-slate-300">
                     · {{ navifoxDocs.slogan }} ·
                 </p>
