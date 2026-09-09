@@ -1,5 +1,5 @@
 import { pinyin } from '@napi-rs/pinyin';
-import { navifoxHome, sinceYear, untilYear, tighnari, foxeryGuild } from '@navifox/constants/website';
+import { navifoxHome, sinceYear, untilYear, tighnari, foxeryGuild, navifoxBlog } from '@navifox/constants/website';
 import { VitePressConfigurator, type PageHook } from '@navifox/vitepress';
 import MarkdownIt from 'markdown-it';
 import { groupIconMdPlugin, groupIconVitePlugin } from 'vitepress-plugin-group-icons';
@@ -21,8 +21,8 @@ const configurator = new VitePressConfigurator({
         root: {
             lang: 'zh-CN',
             label: '简体中文',
-            title: '羽音',
-            titleTemplate: ':title · 羽音', // •
+            title: navifoxBlog.name,
+            titleTemplate: `:title · ${navifoxBlog.name}`, // •
             description: '一只毛茸茸爱好者的博客。',
             themeConfig: {
                 // https://vitepress.dev/reference/default-theme-config

@@ -67,6 +67,13 @@ export interface Website extends Favicon {
     logo?: string;
 
     /**
+     * 标语。
+     *
+     * 简洁有力、代表品牌理念的宣传口号，一般不以句号结尾。
+     */
+    slogan?: string;
+
+    /**
      * 站点描述。
      *
      * 纯文本，不应包含 Markdown 或 HTML 等等。

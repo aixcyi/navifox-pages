@@ -172,7 +172,7 @@ onUnmounted(() => {
                 />
                 <div class="from-starlight-500 to-aurora-500 h-1 w-24 rounded-full bg-gradient-to-r" />
                 <p class="max-w-xl text-base leading-relaxed text-stone-500 sm:text-lg dark:text-slate-300">
-                    · {{ navifoxDocs.description }} ·
+                    · {{ navifoxDocs.slogan }} ·
                 </p>
             </div>
             <div

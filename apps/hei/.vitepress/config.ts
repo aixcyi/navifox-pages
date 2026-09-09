@@ -1,4 +1,4 @@
-import { foxeryGuild, navifoxHome } from '@navifox/constants/website';
+import { foxeryGuild, navifoxHei, navifoxHome } from '@navifox/constants/website';
 import { trimSuffix } from '@navifox/utils/string';
 import { VitePressConfigurator, type PageHook } from '@navifox/vitepress';
 
@@ -17,7 +17,7 @@ const configurator = new VitePressConfigurator({
             label: '简体中文',
             title: '蓝溪拾遗',
             titleTemplate: ':title · 蓝溪拾遗', // •
-            description: '收录罗小黑世界中的原著设定与以此架构的有趣脑洞。',
+            description: navifoxHei.description,
             themeConfig: {
                 // https://vitepress.dev/reference/default-theme-config
                 langMenuLabel: '切换语言',
@@ -87,7 +87,7 @@ const pageHookOrdered: PageHook = {
 configurator
     .hookPageOrdering(pageHookDefault)
     .goto('root')
-    .pushSocial({ ariaLabel: '罗狐会馆群聊', icon: 'qq', link: foxeryGuild.link })
+    .pushSocial({ ariaLabel: foxeryGuild.name, icon: 'qq', link: foxeryGuild.link })
     .pushSocial({ ariaLabel: 'GitHub 仓库', icon: 'github', link: 'https://github.com/aixcyi/navifox-pages' })
     .autoSidebar('/guild/', './guild/', { pageHook: pageHookOrdered, deep: true })
     .autoSidebar('/spirit/', './spirit/', { pageHook: pageHookOrdered, deep: true })

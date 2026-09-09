@@ -97,7 +97,7 @@ const linkMap = [
                                 <p
                                     v-if="item.description"
                                     class="text-xs text-stone-500 dark:text-slate-400"
-                                    v-html="item.description"
+                                    v-html="`${item.description}。`"
                                 />
                             </div>
                         </a>
