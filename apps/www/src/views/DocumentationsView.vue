@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { Icon } from '@iconify/vue';
+import { Icon } from '@iconify/vue/offline';
 import { foxeryGuild, navifoxDocs, projects, sinceYear } from '@navifox/constants';
 import { useDark, useWindowSize, watchDebounced } from '@vueuse/core';
 import { gsap } from 'gsap';

@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { Icon } from '@iconify/vue';
+import { Icon } from '@iconify/vue/offline';
 import { friends, tighnari, type FriendLink, navifoxBlog } from '@navifox/constants';
 
 import LinkIcon from '#/assets/AkarIconsLinkOut.svg';

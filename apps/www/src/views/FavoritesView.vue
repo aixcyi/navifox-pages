@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { Icon } from '@iconify/vue';
+import { Icon } from '@iconify/vue/offline';
 import { bookmarkTabs, bookmarks } from '@navifox/constants';
 import type { BookmarkCategory, Hyperlink, Website } from '@navifox/types';
 import { computed, ref } from 'vue';

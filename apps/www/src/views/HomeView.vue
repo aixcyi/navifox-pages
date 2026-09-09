@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { Icon } from '@iconify/vue';
+import { Icon } from '@iconify/vue/offline';
 import { signature, socials, tighnari } from '@navifox/constants';
 import type { Anchor } from '@navifox/types';
 import { logger } from '@navifox/utils';
