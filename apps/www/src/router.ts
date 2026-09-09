@@ -42,15 +42,6 @@ const router = createRouter({
             component: HomeView,
         },
         {
-            path: '/favs',
-            name: 'Favorites',
-            meta: {
-                title: '星笺',
-                isShowOnNavbar: true,
-            },
-            component: FavoritesView,
-        },
-        {
             path: '/docs',
             name: 'Documentations',
             meta: {
@@ -58,6 +49,15 @@ const router = createRouter({
                 isShowOnNavbar: true,
             },
             component: DocumentationsView,
+        },
+        {
+            path: '/favs',
+            name: 'Favorites',
+            meta: {
+                title: '星笺',
+                isShowOnNavbar: true,
+            },
+            component: FavoritesView,
         },
         {
             path: '/links',

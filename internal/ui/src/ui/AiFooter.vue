@@ -3,7 +3,7 @@ import { Icon } from '@iconify/vue';
 import {
     copyrights,
     credits,
-    feeds,
+    friends,
     navifoxHome,
     sitemap,
     socials,
@@ -39,7 +39,7 @@ const linkMap = [
     {
         title: '友情链接',
         subtitle: 'Friends',
-        data: feeds,
+        data: friends.slice(0, Math.max(sitemap.length, credits.length)),
         styles: {
             link: 'hover:border-violet-400/60 dark:hover:border-violet-400/50',
             icon: 'text-violet-500 dark:text-violet-300',

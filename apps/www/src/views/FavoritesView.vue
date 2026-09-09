@@ -36,7 +36,7 @@ const bookmarkGroups = computed(() => {
             <header class="mx-auto mt-48 max-w-2xl text-center">
                 <p
                     class="text-starlight-600 dark:text-starlight-300 font-mono text-[0.72rem] tracking-[0.28em] uppercase sm:text-sm"
-                    v-html="'Navifox · Bookmarks'"
+                    v-html="'Navifox · Favorites'"
                 />
                 <h1
                     class="text-night-900 mt-3 text-3xl font-bold tracking-tight sm:text-4xl dark:text-white"
