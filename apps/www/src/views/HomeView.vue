@@ -94,10 +94,10 @@ onMounted(() => {
                     <AnchorHeading :id="anchorIntro.id" :html="anchorIntro.title" />
                 </h2>
             </header>
-            <div class="mt-12 grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(17rem,24rem)] lg:items-start">
+            <div class="mt-12 grid gap-10 lg:grid-cols-[minmax(17rem,24rem)_minmax(0,1fr)] lg:items-start">
                 <!-- 名片 -->
                 <div
-                    class="border-starlight-500/20 relative overflow-hidden rounded-[2rem] border bg-white/70 backdrop-blur-sm lg:order-2 dark:border-white/10 dark:bg-white/5"
+                    class="border-starlight-500/20 relative overflow-hidden rounded-[2rem] border bg-white/70 backdrop-blur-sm lg:order-1 dark:border-white/10 dark:bg-white/5"
                 >
                     <div
                         aria-hidden="true"
@@ -170,7 +170,7 @@ onMounted(() => {
                 </div>
 
                 <!-- 项目经历 -->
-                <div class="flex min-w-0 flex-col gap-6 lg:order-1">
+                <div class="flex min-w-0 flex-col gap-6 lg:order-2">
                     <div
                         class="Content border-starlight-500/20 rounded-3xl border bg-white/70 p-6 backdrop-blur-sm sm:p-8 dark:border-white/10 dark:bg-white/5"
                     >
@@ -212,8 +212,8 @@ onMounted(() => {
                     />
                 </p>
             </header>
-            <div class="mt-12 grid gap-10 lg:grid-cols-[auto_minmax(0,1fr)] lg:items-start">
-                <aside class="min-w-0 lg:w-[26.5rem]">
+            <div class="mt-12 grid gap-10 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-start">
+                <aside class="min-w-0 lg:order-2 lg:w-[26.5rem]">
                     <div
                         class="border-starlight-500/20 rounded-3xl border bg-white/70 p-6 backdrop-blur-sm sm:p-8 dark:border-white/10 dark:bg-white/5"
                     >
@@ -225,7 +225,7 @@ onMounted(() => {
                     </div>
                 </aside>
                 <div
-                    class="Content border-starlight-500/20 min-w-0 rounded-3xl border bg-white/70 p-6 backdrop-blur-sm sm:p-8 dark:border-white/10 dark:bg-white/5"
+                    class="Content border-starlight-500/20 min-w-0 rounded-3xl border bg-white/70 p-6 backdrop-blur-sm sm:p-8 lg:order-1 dark:border-white/10 dark:bg-white/5"
                 >
                     <h3 class="text-starlight-600 dark:text-starlight-200 mb-5 text-lg font-semibold tracking-tight">
                         程序员等级评估<br />
