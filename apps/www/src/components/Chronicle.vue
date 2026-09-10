@@ -121,8 +121,12 @@ import AiTimelineItem from '#/components/AiTimelineItem.vue';
         <AiTimelineItem class="**:[a]:cursor-no-drop" color="#FF7F27" date="2025 年 1 月" markdown>
             主站从 [`aixcyi.cn`]() 迁移到从“阿羽”全拼衍生的更好记的 [`ayuu.cc`]() 。
         </AiTimelineItem>
+        <AiTimelineItem color="#FF7F27" date="2025 年 2 月">
+            <Icon height="24" icon="logos:deepseek" />
+            横空出世，开始接触对话式 AI 并利用其搜索信息、辅助开发。
+        </AiTimelineItem>
         <AiTimelineItem color="#FF7F27" date="2025 年 6 月" markdown>
-            为了更喜爱的狐狸，移居 [`navifox.net`](https://navifox.net/)，并为小站定名 __“路狐领航”__，同时更名为
+            为了更喜爱的狐狸，毅然移居 [`navifox.net`](https://navifox.net/) 并为小站定名 __“路狐领航”__，同时更名为
             “路狐羽”。
         </AiTimelineItem>
         <AiTimelineItem color="#FF7F27" date="2025 年 7 月">
@@ -164,8 +168,23 @@ import AiTimelineItem from '#/components/AiTimelineItem.vue';
             并创建 Monorepo 仓库容纳 Navifox Pages 向现代化前端开发发展。<br />
         </AiTimelineItem>
         <AiTimelineItem color="#FF7F27" date="2026 年 3 月">
-            从古法手敲代码入坑 AI 辅助开发，从 Cursor 到 Trae 再到 Trae CN，最后还是换回 VSCode 然后搭配 Kimi Code
-            使用，并且尝试编写前端、后端开发工程师的 SKILL。<br />
+            从古法手敲代码入坑 AI 辅助开发，从
+            <Icon height="24" icon="devicon:cursor" />
+            到 Trae 再到 Trae CN，最后还是换回
+            <Icon height="24" icon="devicon:vscode" />
+            VSCode 然后搭配
+            <Icon height="24" icon="simple-icons:kimi" />
+            Kimi Code 使用，并且尝试编写前端、后端开发工程师的 SKILL。<br />
+        </AiTimelineItem>
+        <AiTimelineItem color="#FF7F27" date="2026 年 5 月底">
+            在朋友的推荐下入手一台水冷笔记本，开始接触 NVIDIA GPU、
+            <Icon height="24" icon="simple-icons:ollama" />
+            Ollama 与大语言模型本地部署。
+        </AiTimelineItem>
+        <AiTimelineItem color="#FF7F27" date="2026 年 8 月 13 日" markdown>
+            蓝色大肥鱼推出 __DeepSeek-V4-Pro-0813__ 和
+            [**DeepSeek Harness**](https://github.com/deepseek-ai/deepseek-harness/)，自此开始深度使用
+            AI Coding，一发不可收拾。
         </AiTimelineItem>
         <AiTimelineItem color="#FF7F27" last>
             <div v-html="navifoxHome.descriptionRich" />
