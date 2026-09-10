@@ -20,6 +20,9 @@
             "default": "./src/vite.ts"
         }
     },
+    "scripts": {
+        "typecheck": "tsc --noEmit"
+    },
     "dependencies": {
         "@date-fns/utc": "catalog:",
         "@navifox/types": "workspace:*",

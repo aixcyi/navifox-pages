@@ -20,6 +20,9 @@
             "default": "./src/friends/index.ts"
         }
     },
+    "scripts": {
+        "typecheck": "tsc --noEmit"
+    },
     "dependencies": {
         "@navifox/types": "workspace:*",
         "@navifox/utils": "workspace:*"

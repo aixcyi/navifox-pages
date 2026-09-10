@@ -8,7 +8,7 @@
         "db:migrate": "node scripts/migrate.mjs",
         "dev": "vite",
         "preview": "vite preview",
-        "typecheck": "vue-tsc --noEmit --skipLibCheck"
+        "typecheck": "vue-tsc -b"
     },
     "dependencies": {
         "@navifox/constants": "workspace:*",

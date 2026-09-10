@@ -12,6 +12,9 @@
             "types": "./global.d.ts"
         }
     },
+    "scripts": {
+        "typecheck": "tsc --noEmit"
+    },
     "dependencies": {},
     "devDependencies": {
         "@types/node": "catalog:",

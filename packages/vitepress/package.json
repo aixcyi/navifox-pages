@@ -22,6 +22,9 @@
     "publishConfig": {
         "access": "public"
     },
+    "scripts": {
+        "typecheck": "tsc --noEmit"
+    },
     "dependencies": {
         "glob": "catalog:",
         "gray-matter": "catalog:",

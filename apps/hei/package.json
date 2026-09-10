@@ -7,7 +7,7 @@
         "build": "vitepress build && cd dist && bestzip ../dist.zip *",
         "dev": "vitepress dev",
         "preview": "vitepress preview",
-        "typecheck": "vue-tsc --noEmit --skipLibCheck"
+        "typecheck": "vue-tsc --noEmit"
     },
     "dependencies": {
         "@catppuccin/vitepress": "catalog:",

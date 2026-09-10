@@ -7,7 +7,7 @@
         "build": "vue-tsc -b && vite build && cd dist && bestzip ../dist.zip *",
         "dev": "vite",
         "preview": "vite preview",
-        "typecheck": "vue-tsc --noEmit --skipLibCheck"
+        "typecheck": "vue-tsc -b"
     },
     "dependencies": {
         "@navifox/constants": "workspace:*",

@@ -16,6 +16,9 @@
             "default": "./src/lib/utils.ts"
         }
     },
+    "scripts": {
+        "typecheck": "vue-tsc --noEmit"
+    },
     "dependencies": {
         "@navifox/constants": "workspace:*",
         "@navifox/utils": "workspace:*",
