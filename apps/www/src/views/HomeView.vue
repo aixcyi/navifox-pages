@@ -10,7 +10,6 @@ import AnchorHeading from '#/components/AnchorHeading.vue';
 import Chronicle from '#/components/Chronicle.vue';
 import Job2021 from '#/components/experiences/Job2021.vue';
 import Job2022 from '#/components/experiences/Job2022.vue';
-import NavifoxPages from '#/components/experiences/NavifoxPages.vue';
 import Navbar from '#/components/Navbar.vue';
 import ProgrammerPanel from '#/components/ProgrammerPanel.vue';
 import SkillsPanel from '#/components/SkillsPanel.vue';
@@ -23,28 +22,28 @@ const cvLastUpdateTime = '2026.3';
 const anchorIntro = {
     id: 'intro',
     title: '有狐说',
-    eyebrow: 'Intro · Experience',
+    eyebrow: 'Navifox · Introduction',
+    description: tighnari.status,
 } satisfies Anchor;
 
-const anchorSkills = {
-    id: 'skills',
+const anchorStacks = {
+    id: 'stacks',
     title: '技能树',
-    eyebrow: 'Programmer Levels · Skills Bar',
+    eyebrow: 'Navifox · Technical Skills',
 } satisfies Anchor;
 
 const anchorChronology = {
     id: 'chronology',
-    title: '时与风',
-    eyebrow: 'Chronicle · Timeline',
+    title: '时间线',
+    eyebrow: 'Navifox · Chronicle',
     description: '风带来了故事的种子，时间使之发芽。',
 } satisfies Anchor;
 
-const aboutStates = [
+const aboutStates: { logo: string; text: string }[] = [
     { logo: 'zondicons:location', text: tighnari.location ?? '' },
     { logo: 'material-symbols:schedule', text: `${tighnari.age}岁` },
     { logo: 'bi:wechat', text: tighnari.brand ?? '' },
-    { logo: 'streamline-logos:qq-logo-solid', text: tighnari.groupQQ ?? '' },
-].filter((state) => state.text);
+];
 
 /** 带 URL fragment（如 /#intro）直达时的兜底滚动（router.scrollBehavior 之外再保一次）。 */
 onMounted(() => {
@@ -80,7 +79,6 @@ onMounted(() => {
     <div
         class="Starry from-paper-100 via-paper-50 to-paper-50 dark:from-night-900 dark:via-night-950 dark:to-night-950 relative z-20 flow-root bg-gradient-to-b"
     >
-        <!-- 有狐说：名片 + 项目经历 -->
         <div
             :id="anchorIntro.id"
             class="Trail MaxContainer relative my-24 scroll-mt-28 text-stone-600 dark:text-slate-200"
@@ -93,6 +91,7 @@ onMounted(() => {
                 <h2 class="text-night-900 mt-3 text-3xl font-bold tracking-tight sm:text-4xl dark:text-white">
                     <AnchorHeading :id="anchorIntro.id" :html="anchorIntro.title" />
                 </h2>
+                <p class="mt-3 leading-relaxed text-stone-500 dark:text-slate-300" v-html="anchorIntro.description" />
             </header>
             <div class="mt-12 grid gap-10 lg:grid-cols-[minmax(17rem,24rem)_minmax(0,1fr)] lg:items-start">
                 <!-- 名片 -->
@@ -129,7 +128,7 @@ onMounted(() => {
                         </div>
                         <div class="min-w-0">
                             <i
-                                class="text-starlight-600 dark:text-starlight-300 block text-2xl leading-snug italic sm:text-3xl lg:text-xl"
+                                class="text-starlight-600 dark:text-starlight-300 block text-2xl leading-snug italic sm:text-3xl lg:text-base"
                                 v-html="tighnari.descriptionRich"
                             />
                             <p
@@ -174,11 +173,6 @@ onMounted(() => {
                     <div
                         class="Content border-starlight-500/20 rounded-3xl border bg-white/70 p-6 backdrop-blur-sm sm:p-8 dark:border-white/10 dark:bg-white/5"
                     >
-                        <NavifoxPages />
-                    </div>
-                    <div
-                        class="Content border-starlight-500/20 rounded-3xl border bg-white/70 p-6 backdrop-blur-sm sm:p-8 dark:border-white/10 dark:bg-white/5"
-                    >
                         <Job2022 />
                     </div>
                     <div
@@ -192,16 +186,17 @@ onMounted(() => {
 
         <!-- 技能树 -->
         <section
-            :id="anchorSkills.id"
+            :id="anchorStacks.id"
             class="MaxContainer relative my-24 scroll-mt-28 text-stone-600 dark:text-slate-300"
         >
             <header class="max-w-2xl">
                 <p
+                    v-if="anchorStacks.eyebrow"
                     class="text-starlight-600 dark:text-starlight-300 font-mono text-[0.72rem] tracking-[0.28em] uppercase"
-                    v-html="anchorSkills.eyebrow"
+                    v-html="anchorStacks.eyebrow"
                 />
                 <h2 class="text-night-900 mt-3 text-3xl font-bold tracking-tight sm:text-4xl dark:text-white">
-                    <AnchorHeading :id="anchorSkills.id" :text="anchorSkills.title" />
+                    <AnchorHeading :id="anchorStacks.id" :text="anchorStacks.title" />
                 </h2>
                 <p class="mt-3 leading-relaxed text-stone-500 dark:text-slate-300">
                     <code class="font-mono" v-html="`${cvLastUpdateTime} × `" />
@@ -242,6 +237,7 @@ onMounted(() => {
         >
             <header class="max-w-2xl">
                 <p
+                    v-if="anchorChronology.eyebrow"
                     class="text-starlight-600 dark:text-starlight-300 font-mono text-[0.72rem] tracking-[0.28em] uppercase"
                     v-html="anchorChronology.eyebrow"
                 />
@@ -249,6 +245,7 @@ onMounted(() => {
                     <AnchorHeading :id="anchorChronology.id" :html="anchorChronology.title" />
                 </h2>
                 <p
+                    v-if="anchorChronology.description"
                     class="mt-3 leading-relaxed text-stone-500 dark:text-slate-300"
                     v-html="anchorChronology.description"
                 />
