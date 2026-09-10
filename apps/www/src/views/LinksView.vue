@@ -1,10 +1,11 @@
 <script lang="ts" setup>
 import { Icon } from '@iconify/vue/offline';
 import { friends, tighnari, type FriendLink, navifoxBlog } from '@navifox/constants';
+import { reactive } from 'vue';
 
-import LinkIcon from '#/assets/AkarIconsLinkOut.svg';
 import CopyField from '#/components/CopyField.vue';
 import Navbar from '#/components/Navbar.vue';
+import PawOff from '#/components/PawOff.vue';
 import Stardust from '#/components/Stardust.vue';
 
 /** 各类型友邻的悬停强调色：伙伴金、动态淡粉、像素淡紫。 */
@@ -23,15 +24,20 @@ const friendAccents: Record<FriendLink['type'], { card: string; arrow: string }>
     },
 };
 
+/** 头像加载失败的友邻名称集合，用于触发内联 SVG 占位符。 */
+const failedAvatars = reactive(new Set<string>());
+
 const copyableFields: { title: string; value: string; isPureCode?: boolean }[] = [
     { title: '名称', value: tighnari.name },
+    { title: '简介', value: tighnari.description || '', isPureCode: true },
+    { title: '签名', value: tighnari.status || '' },
     { title: '头像', value: tighnari.avatar512 || '', isPureCode: true },
+    { title: '头像', value: tighnari.avatar256 || '', isPureCode: true },
+    { title: '头像', value: tighnari.avatar || '', isPureCode: true },
     { title: '主页', value: tighnari.title || '' },
     { title: '主页', value: tighnari.link || '', isPureCode: true },
     { title: '博客', value: navifoxBlog.name },
     { title: '博客', value: navifoxBlog.link, isPureCode: true },
-    { title: '签名', value: tighnari.status || '' },
-    { title: '简介', value: tighnari.description || '', isPureCode: true },
 ];
 </script>
 
@@ -63,22 +69,33 @@ const copyableFields: { title: string; value: string; isPureCode?: boolean }[] =
                         target="_blank"
                     >
                         <div class="flex items-center gap-4">
-                            <img
-                                :src="friend.avatar"
-                                :alt="friend.name"
-                                :class="['size-12 shrink-0 object-cover', ...(friend.avatarStyle ?? [])]"
-                                loading="lazy"
-                                decoding="async"
-                                @error="
-                                    (e) => {
-                                        (e.target as HTMLImageElement).src = LinkIcon;
-                                    }
-                                "
-                            />
+                            <div
+                                :class="[
+                                    'flex size-16 shrink-0 items-center justify-center overflow-hidden text-stone-400',
+                                    ...(friend.avatarStyle ?? []),
+                                ]"
+                            >
+                                <img
+                                    v-if="!failedAvatars.has(friend.name)"
+                                    :src="friend.avatar"
+                                    :alt="friend.name"
+                                    class="size-full object-cover"
+                                    loading="lazy"
+                                    decoding="async"
+                                    @error="failedAvatars.add(friend.name)"
+                                />
+                                <PawOff v-else class="text-6xl" aria-hidden="true" />
+                            </div>
                             <h2
                                 class="text-night-900 min-w-0 flex-1 truncate text-lg font-bold tracking-tight dark:text-white"
-                                v-html="friend.name"
-                            />
+                            >
+                                {{ friend.name }}
+                                <span
+                                    class="text-starlight-300 dark:text-slate-600"
+                                    v-if="friend.title"
+                                    v-html="friend.title"
+                                />
+                            </h2>
                             <Icon
                                 :class="[
                                     'shrink-0 opacity-0 transition-opacity duration-200 group-hover:opacity-100',
@@ -95,7 +112,7 @@ const copyableFields: { title: string; value: string; isPureCode?: boolean }[] =
                         />
                         <span
                             v-if="friend.meet"
-                            class="pointer-events-none absolute right-2 -bottom-4 text-6xl leading-none font-bold whitespace-nowrap text-stone-900/10 select-none dark:text-white/10"
+                            class="pointer-events-none absolute right-2 -bottom-4 text-6xl leading-none font-bold whitespace-nowrap text-stone-900/10 opacity-0 transition-opacity duration-300 select-none group-hover:opacity-100 dark:text-white/10"
                             aria-hidden="true"
                             v-html="friend.meet"
                         />
