@@ -116,9 +116,9 @@ const copyableFields: { title: string; value: string; isPureCode?: boolean }[] =
                             />
                         </div>
                         <p
-                            v-if="friend.status"
+                            v-if="friend.status || friend.description || friend.descriptionRich"
                             class="mt-4 text-sm leading-relaxed text-stone-500 dark:text-slate-300"
-                            v-html="friend.status"
+                            v-html="friend.status || friend.description || friend.descriptionRich"
                         />
                         <span
                             v-if="friend.meet"
