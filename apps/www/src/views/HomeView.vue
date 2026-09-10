@@ -170,16 +170,8 @@ onMounted(() => {
 
                 <!-- 项目经历 -->
                 <div class="flex min-w-0 flex-col gap-6 lg:order-2">
-                    <div
-                        class="Content border-starlight-500/20 rounded-3xl border bg-white/70 p-6 backdrop-blur-sm sm:p-8 dark:border-white/10 dark:bg-white/5"
-                    >
-                        <Job2022 />
-                    </div>
-                    <div
-                        class="Content border-starlight-500/20 rounded-3xl border bg-white/70 p-6 backdrop-blur-sm sm:p-8 dark:border-white/10 dark:bg-white/5"
-                    >
-                        <Job2021 />
-                    </div>
+                    <Job2022 class="Content" />
+                    <Job2021 class="Content" />
                 </div>
             </div>
         </div>

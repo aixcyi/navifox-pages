@@ -26,7 +26,9 @@ defineProps<ExperienceDetail>();
 </script>
 
 <template>
-    <section class="flex flex-col gap-2">
+    <section
+        class="border-starlight-500/20 flex flex-col gap-2 rounded-3xl border bg-white/70 p-6 backdrop-blur-sm sm:p-8 dark:border-white/10 dark:bg-white/5"
+    >
         <div>
             <b class="mr-2">{{ project?.name ?? team }}</b>
             <span class="float-end ml-2">
