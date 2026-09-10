@@ -1,5 +1,5 @@
 import { pinyin } from '@napi-rs/pinyin';
-import { navifoxHome, sinceYear, untilYear, tighnari, foxeryGuild, navifoxBlog } from '@navifox/constants/website';
+import { navifoxHome, sinceYear, untilYear, navifox, foxeryGuild, navifoxBlog } from '@navifox/constants/website';
 import { VitePressConfigurator, type PageHook } from '@navifox/vitepress';
 import MarkdownIt from 'markdown-it';
 import { groupIconMdPlugin, groupIconVitePlugin } from 'vitepress-plugin-group-icons';
@@ -36,7 +36,7 @@ const configurator = new VitePressConfigurator({
                 docFooter: { prev: '上一篇', next: '下一篇' },
                 footer: {
                     message: undefined,
-                    copyright: `© ${sinceYear}-${untilYear} <a href="${navifoxHome.link}" target="_blank">${tighnari.name}</a> 版权所有. All Rights Reserved.`,
+                    copyright: `© ${sinceYear}-${untilYear} <a href="${navifoxHome.link}" target="_blank">${navifox.name}</a> 版权所有. All Rights Reserved.`,
                 },
                 lastUpdated: {
                     text: '最后提交时间',

@@ -4,7 +4,7 @@ aside: false
 ---
 
 <script setup lang="ts">
-import { foxeryGuild, tighnari } from '@navifox/constants';
+import { foxeryGuild, navifox } from '@navifox/constants';
 </script>
 
 # 罗狐会馆
@@ -25,5 +25,5 @@ import { foxeryGuild, tighnari } from '@navifox/constants';
             style="width: 240px; margin-top: 64px; padding: 24px; background-color: var(--vp-c-bg); border-radius: 32px"
         />
     </a>
-    <code>{{ tighnari.groupQQ }}</code>
+    <code>{{ navifox.groupQQ }}</code>
 </div>

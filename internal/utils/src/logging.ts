@@ -64,4 +64,4 @@ export class Logger {
     }
 }
 
-export const logger = new Logger('tighnari', location.hostname);
+export const logger = new Logger('navifox', location.hostname);

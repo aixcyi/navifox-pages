@@ -46,7 +46,7 @@ export interface Hyperlink extends Favicon {
 }
 
 /**
- * 站点。
+ * 站点信息。
  */
 export interface Website extends Favicon {
     /** 站点名称。 */
@@ -55,14 +55,14 @@ export interface Website extends Favicon {
     /** 首页链接。 */
     link: string;
 
-    icon?: string;
-
     /**
      * 图标的
      * [MIME]{@link https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Guides/MIME_types}
      * 类型。
      */
     mime?: string;
+
+    icon?: string;
 
     logo?: string;
 
@@ -83,6 +83,15 @@ export interface Website extends Favicon {
     /** 站点描述（HTML格式）。*/
     descriptionRich?: string;
 
+    /** 设置／偏好页。 */
+    settingsUrl?: string;
+
+    /** 登录页。 */
+    loginUrl?: string;
+
+    /** 管理后台。 */
+    adminUrl?: string;
+
     /** 站点作者。 */
     author?: string;
 
@@ -91,66 +100,87 @@ export interface Website extends Favicon {
 
     /** 展示方的备注。 */
     note?: string;
-
-    /** 其它附加信息。 */
-    [key: string]: any;
 }
 
 /**
- * 友情链接。
+ * 友链信息。
  */
-export interface Friend {
-    /** 昵称。 */
+export interface Friend extends Website {
+    /**
+     * 昵称。
+     *
+     * - 此字段不再是父类 {@link Website} 的“站点名称”，而是友人的昵称。
+     */
     name: string;
-
-    /** 链接。 */
-    link?: string;
-
-    /** 头像图片地址。 */
-    avatar?: string;
-
-    /** 常用用户名。 */
-    uid?: string;
-
-    /** 站点名称。 */
-    title?: string;
-
-    /** 个性签名。 */
-    status?: string;
+    link: string;
+    icon?: string;
+    mime?: string;
+    logo?: string;
 
     /**
-     * 站点描述／自我介绍／寄语。
+     * 站点名称。
      *
-     * 纯文本，不应包含 Markdown 或 HTML 等等。
+     * - 用于承接父类 {@link Website} 的 `name` 字段。
+     * - 友链允许没有站点名称。
      */
-    description?: string;
+    title?: string;
 
-    /** 站点描述／自我介绍／寄语（HTML格式）。*/
-    descriptionRich?: string;
+    /**
+     * 头像图片地址。
+     *
+     * - 建议用 64x64 的尺寸，在数据大小和图像尺寸之间是一个平衡点。
+     */
+    avatar?: string;
 
-    /** 附加渲染样式。Tailwind CSS 类名。 */
-    styles?: { avatar: string[] };
+    /**
+     * 头像图片地址。
+     *
+     * - 宽和高都必须是 256 像素或以上。
+     * - 用于应对需要高分辨率但又需要尽量减少数据大小的场景。
+     */
+    avatar256?: string;
 
-    /** 所在地址。 */
-    location?: string;
+    /**
+     * 头像图片地址。
+     *
+     * - 宽和高都必须是 512 像素或以上。
+     * - 极致的高分辨率，不考虑数据大小。
+     */
+    avatar512?: string;
 
     /** 职位、头衔…… */
     titles?: string[];
 
+    /** 个性签名。 */
+    status?: string;
+
+    slogan?: string;
+    description?: string;
+    descriptionRich?: string;
+    settingsUrl?: string;
+    loginUrl?: string;
+    adminUrl?: string;
+    author?: string;
+    tags?: string[];
+    note?: string;
+
     /** 社交链接。 */
     socials?: { [brand: string]: string };
 
-    /** 是否隐藏或不可用。 */
-    disabled?: boolean;
+    /**
+     * 相遇时间。
+     *
+     * - 构造时注意 `Date` 的月份从 `0` 开始。
+     */
+    meet?: Date;
 
-    /** 年龄／网龄／圈龄。 */
-    age?: number;
-
-    /** 附加标签。 */
-    tags?: string[];
-
-    /** 附加信息。 */
-    [key: string]: any;
+    /**
+     * 附加渲染样式。
+     *
+     * - 统一采用 Tailwind CSS v4 类名。
+     * - 数组的每个元素允许是单个类名，也允许是含空格的多个类名，调用方必须兼顾两种情况。
+     */
+    styles?: { avatar?: string[] };
 }
 
 /**

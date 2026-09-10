@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { Icon } from '@iconify/vue/offline';
-import { signature, socials, tighnari } from '@navifox/constants';
+import { navifox, signature, socials } from '@navifox/constants';
 import type { Anchor } from '@navifox/types';
 import { logger } from '@navifox/utils';
 import { onMounted } from 'vue';
@@ -23,7 +23,7 @@ const anchorIntro = {
     id: 'intro',
     title: '有狐说',
     eyebrow: 'Navifox · Introduction',
-    description: tighnari.status,
+    description: navifox.status,
 } satisfies Anchor;
 
 const anchorStacks = {
@@ -36,13 +36,13 @@ const anchorChronology = {
     id: 'chronology',
     title: '时间线',
     eyebrow: 'Navifox · Chronicle',
-    description: '风带来了故事的种子，时间使之发芽。',
+    description: navifox.slogan && `${navifox.slogan}。`,
 } satisfies Anchor;
 
 const aboutStates: { logo: string; text: string }[] = [
-    { logo: 'zondicons:location', text: tighnari.location ?? '' },
-    { logo: 'material-symbols:schedule', text: `${tighnari.age}岁` },
-    { logo: 'bi:wechat', text: tighnari.brand ?? '' },
+    { logo: 'zondicons:location', text: navifox.location ?? '' },
+    { logo: 'material-symbols:schedule', text: `${navifox.age}岁` },
+    { logo: 'bi:wechat', text: navifox.wxid ?? '' },
 ];
 
 /** 带 URL fragment（如 /#intro）直达时的兜底滚动（router.scrollBehavior 之外再保一次）。 */
@@ -63,15 +63,15 @@ onMounted(() => {
         <div class="mb-8 flex h-full flex-col justify-end md:mb-20">
             <div
                 class="border-starlight-100/40 bg-starlight-400/25 text-starlight-100 dark:border-starlight-300/30 dark:bg-starlight-400/10 dark:text-starlight-300 mb-4 w-fit rounded-lg border px-3 py-1 font-mono text-xl backdrop-blur-sm md:text-2xl"
-                v-html="`@${tighnari.uid}`"
+                v-html="`@${navifox.uid}`"
             />
             <div class="text-4xl font-medium md:max-w-[75%] md:text-6xl">
-                <span class="text-white">{{ tighnari.name }}</span>
-                <span v-for="tag in tighnari.tags" class="text-gray-300/75 dark:text-gray-400/75">／{{ tag }}</span>
+                <span class="text-white">{{ navifox.name }}</span>
+                <span v-for="tag in navifox.tags" class="text-gray-300/75 dark:text-gray-400/75">／{{ tag }}</span>
             </div>
             <div
                 class="font-sign text-starlight-200 dark:text-starlight-300 mt-4 text-4xl md:text-5xl"
-                v-html="tighnari.descriptionRich"
+                v-html="navifox.descriptionRich"
             />
         </div>
     </div>
@@ -101,39 +101,39 @@ onMounted(() => {
                     <div
                         aria-hidden="true"
                         class="font-sign text-starlight-500/10 dark:text-starlight-300/5 pointer-events-none absolute -right-8 -bottom-10 text-[9rem] leading-none select-none"
-                        v-html="tighnari.brand"
+                        v-html="navifox.wxid"
                     />
                     <div class="relative flex flex-col gap-7 p-6 sm:p-8">
                         <div class="flex items-center gap-5 lg:flex-col lg:items-center lg:gap-4">
                             <img
-                                :src="tighnari.avatar512"
-                                :alt="tighnari.name"
+                                :src="navifox.avatar512"
+                                :alt="navifox.name"
                                 class="size-24 shrink-0 rounded-3xl border-2 border-rose-400/40 object-cover select-none lg:aspect-square lg:h-auto lg:w-full lg:rounded-full dark:border-rose-300/40"
                             />
                             <div class="min-w-0 lg:text-center">
                                 <p
                                     class="text-night-900 text-2xl font-bold tracking-tight dark:text-white"
-                                    v-html="tighnari.name"
+                                    v-html="navifox.name"
                                 />
                                 <p
                                     class="dark:text-night-500 mt-1 font-mono text-xs text-stone-500"
-                                    v-html="`@${tighnari.uid}`"
+                                    v-html="`@${navifox.uid}`"
                                 />
                                 <p
-                                    v-if="tighnari.titles"
+                                    v-if="navifox.titles"
                                     class="mt-2 text-sm font-medium text-stone-600 dark:text-slate-300"
-                                    v-html="tighnari.titles.join(' ・ ')"
+                                    v-html="navifox.titles.join(' ・ ')"
                                 />
                             </div>
                         </div>
                         <div class="min-w-0">
                             <i
                                 class="text-starlight-600 dark:text-starlight-300 block text-2xl leading-snug italic sm:text-3xl lg:text-base"
-                                v-html="tighnari.descriptionRich"
+                                v-html="navifox.descriptionRich"
                             />
                             <p
                                 class="mt-4 leading-relaxed text-stone-600 dark:text-slate-300"
-                                v-html="tighnari.status"
+                                v-html="navifox.status"
                             />
                             <div
                                 class="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-stone-600 dark:text-slate-300"

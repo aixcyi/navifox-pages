@@ -4,12 +4,12 @@ import {
     copyrights,
     credits,
     friends,
+    navifox,
     navifoxHome,
     sitemap,
     socials,
     sinceYear,
     untilYear,
-    tighnari,
 } from '@navifox/constants';
 import { useDark, useToggle } from '@vueuse/core';
 
@@ -97,7 +97,7 @@ const linkMap = [
                                 <p
                                     v-if="item.description"
                                     class="text-xs text-stone-500 dark:text-slate-400"
-                                    v-html="`${item.description}。`"
+                                    v-html="item.description"
                                 />
                             </div>
                         </a>
@@ -135,30 +135,27 @@ const linkMap = [
                             :href="copyright.link"
                             class="transition-colors duration-200 hover:text-amber-500 dark:hover:text-amber-300"
                             target="_blank"
-                        >
-                            {{ copyright.text }}
-                        </a>
+                            v-html="copyright.text"
+                        />
                     </p>
-                    <p v-show="tighnari.name">
+                    <p v-show="navifox.name">
                         © {{ sinceYear }}-{{ untilYear }}
                         <a
                             :href="navifoxHome.link"
                             class="hover:text-amber-500 hover:underline hover:decoration-wavy dark:hover:text-amber-300"
                             target="_blank"
-                        >
-                            {{ tighnari.name }}
-                        </a>
+                            v-html="navifox.name"
+                        />
                         版权所有。<br />
                     </p>
-                    <p v-show="tighnari.uid">
+                    <p v-show="navifox.uid">
                         © {{ sinceYear }}-{{ untilYear }}
                         <a
                             :href="navifoxHome.link"
                             class="hover:text-amber-500 hover:underline hover:decoration-wavy dark:hover:text-amber-300"
                             target="_blank"
-                        >
-                            {{ tighnari.uid }}
-                        </a>
+                            v-html="navifox.uid"
+                        />
                         <span>.</span>
                         All Rights Reserved.<br />
                     </p>
@@ -168,9 +165,8 @@ const linkMap = [
                             class="transition-colors duration-200 hover:text-amber-500 dark:hover:text-amber-300"
                             href="https://github.com/Fechin/reference"
                             target="_blank"
-                        >
-                            reference
-                        </a>
+                            v-html="'reference'"
+                        />
                         的主题。<br />
                     </p>
                     <p>
@@ -179,9 +175,8 @@ const linkMap = [
                             class="transition-colors duration-200 hover:text-amber-500 dark:hover:text-amber-300"
                             href="https://iconify.design/"
                             target="_blank"
-                        >
-                            Iconify
-                        </a>
+                            v-html="'Iconify'"
+                        />
                         的能力。<br />
                     </p>
                     <p>
@@ -190,9 +185,8 @@ const linkMap = [
                             class="transition-colors duration-200 hover:text-amber-500 dark:hover:text-amber-300"
                             href="https://fonts.google.com/specimen/Whisper"
                             target="_blank"
-                        >
-                            Whisper
-                        </a>
+                            v-html="'Whisper'"
+                        />
                         字体渲染签名。<br />
                     </p>
                     <p>
@@ -201,9 +195,8 @@ const linkMap = [
                             class="transition-colors duration-200 hover:text-amber-500 dark:hover:text-amber-300"
                             href="https://www.jetbrains.com/lp/mono/"
                             target="_blank"
-                        >
-                            JetBrains Mono
-                        </a>
+                            v-html="'JetBrains Mono'"
+                        />
                         字体渲染代码。<br />
                     </p>
                     <slot name="additions"></slot>

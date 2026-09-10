@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { Icon } from '@iconify/vue/offline';
-import { friends, tighnari, type FriendLink, navifoxBlog } from '@navifox/constants';
+import { friends, navifox, type FriendLink, navifoxBlog } from '@navifox/constants';
 import { reactive } from 'vue';
 
 import CopyField from '#/components/CopyField.vue';
@@ -27,15 +27,25 @@ const friendAccents: Record<FriendLink['type'], { card: string; arrow: string }>
 /** 头像加载失败的友邻名称集合，用于触发内联 SVG 占位符。 */
 const failedAvatars = reactive(new Set<string>());
 
+/**
+ * 将相遇时间格式化为 `yyyy/M/d`。
+ *
+ * - 友链数据用 `new Date(年, 月, 日)` 按本地时区构造，此处同样按本地时区读取。
+ */
+function formatMeet(meet: Date | undefined): string {
+    if (!meet) return '';
+    return `${meet.getFullYear()}/${meet.getMonth() + 1}/${meet.getDate()}`;
+}
+
 const copyableFields: { title: string; value: string; isPureCode?: boolean }[] = [
-    { title: '名称', value: tighnari.name },
-    { title: '简介', value: tighnari.description || '', isPureCode: true },
-    { title: '签名', value: tighnari.status || '' },
-    { title: '头像', value: tighnari.avatar512 || '', isPureCode: true },
-    { title: '头像', value: tighnari.avatar256 || '', isPureCode: true },
-    { title: '头像', value: tighnari.avatar || '', isPureCode: true },
-    { title: '主页', value: tighnari.title || '' },
-    { title: '主页', value: tighnari.link || '', isPureCode: true },
+    { title: '名称', value: navifox.name },
+    { title: '简介', value: navifox.description || '', isPureCode: true },
+    { title: '签名', value: navifox.status || '' },
+    { title: '头像', value: navifox.avatar512 || '', isPureCode: true },
+    { title: '头像', value: navifox.avatar256 || '', isPureCode: true },
+    { title: '头像', value: navifox.avatar || '', isPureCode: true },
+    { title: '主页', value: navifox.title || '' },
+    { title: '主页', value: navifox.link || '', isPureCode: true },
     { title: '博客', value: navifoxBlog.name },
     { title: '博客', value: navifoxBlog.link, isPureCode: true },
 ];
@@ -72,7 +82,7 @@ const copyableFields: { title: string; value: string; isPureCode?: boolean }[] =
                             <div
                                 :class="[
                                     'flex size-16 shrink-0 items-center justify-center overflow-hidden text-stone-400',
-                                    ...(friend.avatarStyle ?? []),
+                                    ...(friend.styles?.avatar ?? []),
                                 ]"
                             >
                                 <img
@@ -114,7 +124,7 @@ const copyableFields: { title: string; value: string; isPureCode?: boolean }[] =
                             v-if="friend.meet"
                             class="pointer-events-none absolute right-2 -bottom-4 text-6xl leading-none font-bold whitespace-nowrap text-stone-900/10 opacity-0 transition-opacity duration-300 select-none group-hover:opacity-100 dark:text-white/10"
                             aria-hidden="true"
-                            v-html="friend.meet"
+                            v-html="formatMeet(friend.meet)"
                         />
                     </a>
                 </div>
