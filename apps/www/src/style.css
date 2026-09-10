@@ -112,6 +112,11 @@
 
         svg {
             @apply inline;
+
+            /* Preflight 给 img、svg 等替换元素设了 vertical-align: middle，对 20～24px 的图标而言
+               会让底边沉到基线以下约 8px，与正文明显错位。这里统一改用 Iconify 行内图标的惯例值，
+               使图标光学居中于文字。 */
+            vertical-align: -0.375em;
         }
     }
 }

@@ -20,9 +20,9 @@ import AiTimelineItem from '#/components/AiTimelineItem.vue';
         </AiTimelineItem>
         <AiTimelineItem color="#00A2E8" date="2018 年 10 月">
             初遇
-            <Icon height="24" icon="logos:python" inline />
+            <Icon height="24" icon="logos:python" />
             和
-            <Icon height="24" icon="logos:java" inline />
+            <Icon height="24" icon="logos:java" />
             ，开始接触集成开发环境
             <Icon height="24" icon="logos:pycharm" />
             ，逐渐领略其它语言的魅力。<br />
@@ -127,7 +127,7 @@ import AiTimelineItem from '#/components/AiTimelineItem.vue';
         </AiTimelineItem>
         <AiTimelineItem color="#FF7F27" date="2025 年 7 月">
             用 Reka UI +
-            <Icon height="20" icon="logos:tailwindcss-icon" />
+            <Icon height="24" icon="logos:tailwindcss-icon" />
             代替
             <Icon height="24" icon="logos:element" />
             精细化手搓(重构)主页，开始深入了解 CSS。<br />
@@ -158,9 +158,9 @@ import AiTimelineItem from '#/components/AiTimelineItem.vue';
         </AiTimelineItem>
         <AiTimelineItem color="#FF7F27" date="2026 年 1 月">
             从
-            <Icon height="20" icon="devicon:npm" />
+            <Icon height="24" icon="devicon:npm" />
             换成
-            <Icon height="20" icon="devicon:pnpm" />
+            <Icon height="24" icon="devicon:pnpm" />
             并创建 Monorepo 仓库容纳 Navifox Pages 向现代化前端开发发展。<br />
         </AiTimelineItem>
         <AiTimelineItem color="#FF7F27" date="2026 年 3 月">
