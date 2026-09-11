@@ -1,5 +1,6 @@
 #!/usr/bin/env node
-// 生成各 SPA 子应用的 Iconify 离线图标注册表（apps/refs/src/iconify.ts、apps/www/src/iconify.ts）。
+// 生成各 SPA 子应用的 Iconify 离线图标注册表（apps/refs/src/iconify.ts、apps/www/src/iconify.ts、
+// apps/docs/src/iconify.ts）。
 //
 // 背景：@iconify/vue 以字符串（如 icon="logos:python"）引用图标时，默认在运行时向
 // Iconify 公共 CDN（api.iconify.design）发起网络请求，国内访问慢且不稳定。本脚本将
@@ -52,8 +53,17 @@ const APPS = [
         extraScanFiles: [
             join(REPO_DIR, 'internal/constants/src/favorites.ts'),
             join(REPO_DIR, 'internal/constants/src/website.ts'),
-            join(REPO_DIR, 'internal/constants/src/projects.ts'),
             join(REPO_DIR, 'internal/constants/src/badges/colorful.ts'),
+            join(REPO_DIR, 'internal/ui/src/ui/AiFooter.vue'),
+        ],
+    },
+    {
+        name: 'docs',
+        srcDir: join(REPO_DIR, 'apps/docs/src'),
+        outFile: join(REPO_DIR, 'apps/docs/src/iconify.ts'),
+        extraScanFiles: [
+            join(REPO_DIR, 'internal/constants/src/website.ts'),
+            join(REPO_DIR, 'internal/constants/src/projects.ts'),
             join(REPO_DIR, 'internal/ui/src/ui/AiFooter.vue'),
         ],
     },

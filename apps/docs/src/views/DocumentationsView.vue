@@ -7,8 +7,6 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import QRCode from 'qrcode';
 import { onMounted, onUnmounted, ref, watch } from 'vue';
 
-import Navbar from '#/components/Navbar.vue';
-
 gsap.registerPlugin(ScrollTrigger);
 
 const isDark = useDark();
@@ -56,7 +54,7 @@ function measurePanels() {
 }
 
 /**
- * 面板逐屏钉住 + 滚动吸附（复刻 docs 站的 GSAP 翻滚交互）。
+ * 面板逐屏钉住 + 滚动吸附（本站的 GSAP 翻滚交互）。
  * - 除最后一屏（月饼盒）外逐屏钉住：末屏保留在文档流中，让页脚随它自然滑出；
  * - 吸附点覆盖**全部**屏面的实际起始位（而非按整页均分），
  *   因此末屏同样满足“滚动过半自动吸附翻页”；
@@ -114,14 +112,6 @@ const boxStates: Record<string, string> = {
     保质期: `${sinceYear + 1000} 年`,
 };
 
-/**
- * 项目文档多为 docs 站内的相对路径（由 Nginx 转发到 docs.navifox.net 下），
- * 移植到 www 后需补全 docs 子站域名，避免落到本域 404。
- */
-function resolveDocLink(link: string) {
-    return link.startsWith('/') ? navifoxDocs.link + link : link;
-}
-
 /** 窗口尺寸变化兜底：视口缩放后按面板当前实际位置重算吸附点（防抖，避免拖拽中频繁计算）。 */
 const { width, height } = useWindowSize();
 watchDebounced(
@@ -146,8 +136,6 @@ onUnmounted(() => {
 <template>
     <!-- 整页为“月饼盒”翻页舞台：底色随浅色/深色主题切换（纸面 ↔ 夜色） -->
     <div class="bg-paper-50 dark:bg-night-950 relative min-h-dvh overflow-x-clip text-stone-600 dark:text-slate-300">
-        <Navbar />
-
         <!-- 盒盖 -->
         <section
             class="js-panel bg-paper-50 dark:bg-night-950 relative flex h-screen w-full flex-col items-center justify-center overflow-hidden"
@@ -224,11 +212,11 @@ onUnmounted(() => {
                         </a>
                     </template>
                 </div>
-                <p class="max-w-xl indent-8 text-base leading-relaxed sm:text-lg" v-html="project.description" />
+                <p class="max-w-xl text-base leading-relaxed sm:text-lg" v-html="project.description" />
                 <template v-if="project.documentation">
                     <a
-                        :href="resolveDocLink(project.documentation)"
-                        class="from-starlight-500 to-aurora-500 shadow-starlight-600/30 inline-flex items-center gap-2 rounded-full bg-gradient-to-r px-7 py-3 text-sm font-semibold text-white shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl hover:brightness-110"
+                        :href="project.documentation"
+                        class="from-starlight-500 to-aurora-500 shadow-starlight-600/30 inline-flex items-center gap-2 rounded-full bg-gradient-to-r px-7 py-3 text-sm font-semibold text-white shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl hover:brightness-110 dark:text-black"
                         target="_blank"
                     >
                         <span v-html="'浏览文档'" />
@@ -276,7 +264,7 @@ onUnmounted(() => {
 </template>
 
 <style scoped>
-/* 月饼盒的圆角裁切外框（沿用 docs 站的 MooncakeRect 遮罩） */
+/* 月饼盒的圆角裁切外框 */
 .MooncakeRect {
     mask:
         radial-gradient(circle at calc(100% + 10px) calc(100% + 10px), transparent 0, transparent 24px, #2179f5 25px),

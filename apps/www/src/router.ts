@@ -5,7 +5,6 @@ import { nextTick } from 'vue';
 import { createRouter, createWebHistory } from 'vue-router';
 
 import NotFound from '#/NotFound.vue';
-import DocumentationsView from '#/views/DocumentationsView.vue';
 import FavoritesView from '#/views/FavoritesView.vue';
 import HomeView from '#/views/HomeView.vue';
 import LinksView from '#/views/LinksView.vue';
@@ -40,15 +39,6 @@ const router = createRouter({
                 isShowOnNavbar: true,
             },
             component: HomeView,
-        },
-        {
-            path: '/docs',
-            name: 'Documentations',
-            meta: {
-                title: '月饼盒',
-                isShowOnNavbar: true,
-            },
-            component: DocumentationsView,
         },
         {
             path: '/favs',
