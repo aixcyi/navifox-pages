@@ -145,9 +145,8 @@ export const moeTravel: Website = {
 export const sitemap = [
     navifoxHome,
     navifoxBlog,
-    navifoxDocs,
-    navifoxRefs,
     navifoxHei,
+    navifoxRefs,
     //
 ];
 export const socials: Website[] = [
