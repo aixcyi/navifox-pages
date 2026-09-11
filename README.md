@@ -2,13 +2,13 @@
 
 本项目是 Navifox 生态页面仓库，一个基于 pnpm Workspace 的 Monorepo，包含多个子项目。
 
-|                项目                | 描述                       | 备注                                        |
-|:--------------------------------:|--------------------------|-------------------------------------------|
-| [路狐领航](https://www.navifox.net)  | Navifox 主页。              |                                           |
-| [羽音树洞](https://blog.navifox.net) | Navifox 博客。              |                                           |
-| [蓝溪拾遗](https://hei.navifox.net)  | 收录罗小黑世界中的原著设定与以此架构的有趣脑洞。 |                                           |
-|  [星笺](https://refs.navifox.net)  | 狐狸们用小爪子敲出的一页纸快速参考。       |                                           |
-|              文档月饼盒               | 收纳展示散落在各个项目仓库的文档。        | 已移植到[路狐领航](https://www.navifox.net/docs)。 |
+|                项目                 | 描述                       |
+|:---------------------------------:|--------------------------|
+|  [路狐领航](https://www.navifox.net)  | Navifox 主页。              |
+| [羽音树洞](https://blog.navifox.net)  | Navifox 博客。静谧星夜下不绝如缕的羽音。 |
+| [文档月饼盒](https://docs.navifox.net) | 收纳展示散落在各个项目仓库的文档。        |
+|  [蓝溪拾遗](https://hei.navifox.net)  | 收录罗小黑世界中的原著设定与以此架构的有趣脑洞。 |
+|  [星笺](https://refs.navifox.net)   | 狐狸们用小爪子敲出的一页纸快速参考。       |
 
 ## 开始
 
@@ -53,20 +53,20 @@
 
 ### 工作区结构
 
-| 路径（按字母顺序排序）             | 包名                 | 用途                                                       |
-|-------------------------|--------------------|----------------------------------------------------------|
-| `./apps/blog/`          | @navifox/blog      | [羽音树洞](https://blog.navifox.net)，基于 VitePress 构建。        |
-| `./apps/docs/`          | @navifox/docs      | 文档月饼盒。已移植到 `./apps/www/src/views/DocumentationsView.vue` |
-| `./apps/hei/`           | @navifox/hei       | [蓝溪拾遗](https://hei.navifox.net)，基于 VitePress 构建。         |
-| `./apps/refs/`          | @navifox/refs      | [星笺](https://refs.navifox.net)。                          |
-| `./apps/www/`           | @navifox/www       | [路狐领航](https://www.navifox.net)。                         |
-| `./internal/constants/` | @navifox/constants | 存放全局常量。                                                  |
-| `./internal/styles/`    | @navifox/styles    | 存放全局样式及字体。                                               |
-| `./internal/tsconfig/`  | @navifox/tsconfig  | 存放共享 `tsconfig` 配置。                                      |
-| `./internal/types/`     | @navifox/types     | 存放全局类型定义。                                                |
-| `./internal/ui/`        | @navifox/ui        | 存放共享 UI，包括 shadcn 等组件。                                   |
-| `./internal/utils/`     | @navifox/utils     | 存放共享工具。                                                  |
-| `./packages/vitepress/` | @navifox/vitepress | 存放 VitePress 工具（可发布到 npm）。                               |
+| 路径（按字母顺序排序）             | 包名                 | 用途                                                |
+|-------------------------|--------------------|---------------------------------------------------|
+| `./apps/blog/`          | @navifox/blog      | [羽音树洞](https://blog.navifox.net)，基于 VitePress 构建。 |
+| `./apps/docs/`          | @navifox/docs      | [文档月饼盒](https://docs.navifox.net)。                |
+| `./apps/hei/`           | @navifox/hei       | [蓝溪拾遗](https://hei.navifox.net)，基于 VitePress 构建。  |
+| `./apps/refs/`          | @navifox/refs      | [星笺](https://refs.navifox.net)。                   |
+| `./apps/www/`           | @navifox/www       | [路狐领航](https://www.navifox.net)。                  |
+| `./internal/constants/` | @navifox/constants | 存放全局常量。                                           |
+| `./internal/styles/`    | @navifox/styles    | 存放全局样式及字体。                                        |
+| `./internal/tsconfig/`  | @navifox/tsconfig  | 存放共享 `tsconfig` 配置。                               |
+| `./internal/types/`     | @navifox/types     | 存放全局类型定义。                                         |
+| `./internal/ui/`        | @navifox/ui        | 存放共享 UI，包括 shadcn 等组件。                            |
+| `./internal/utils/`     | @navifox/utils     | 存放共享工具。                                           |
+| `./packages/vitepress/` | @navifox/vitepress | 存放 VitePress 工具（可发布到 npm）。                        |
 
 ## 约定
 
