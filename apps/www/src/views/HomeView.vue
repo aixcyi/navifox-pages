@@ -5,7 +5,6 @@ import type { Anchor } from '@navifox/types';
 import { logger } from '@navifox/utils';
 import { onMounted } from 'vue';
 
-import Background from '#/assets/background.jpg';
 import AnchorHeading from '#/components/AnchorHeading.vue';
 import Chronicle from '#/components/Chronicle.vue';
 import Job2021 from '#/components/experiences/Job2021.vue';
@@ -52,12 +51,6 @@ onMounted(() => {
 </script>
 
 <template>
-    <img :src="Background" alt="背景图片" class="fixed z-0 size-full object-cover select-none" />
-    <div class="fixed z-10 size-full bg-black/33 dark:bg-black/67" />
-    <!-- 星夜氛围渐变（浅色模式交给遮罩，深色模式额外压暗） -->
-    <div
-        class="fixed inset-0 z-10 bg-gradient-to-t from-transparent via-transparent to-transparent dark:from-black/40 dark:via-transparent"
-    />
     <Navbar cover />
     <div class="MaxContainer selection:bg-starlight-400/40 z-20 flex h-screen flex-col **:z-20">
         <div class="mb-8 flex h-full flex-col justify-end md:mb-20">
