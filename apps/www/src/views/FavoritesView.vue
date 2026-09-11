@@ -6,6 +6,7 @@ import { computed, ref } from 'vue';
 
 import LinkIcon from '#/assets/AkarIconsLinkOut.svg';
 import Navbar from '#/components/Navbar.vue';
+import SectionHeader from '#/components/SectionHeader.vue';
 import Stardust from '#/components/Stardust.vue';
 
 const activeTab = ref<BookmarkCategory>(bookmarkTabs[0]!.key);
@@ -33,16 +34,7 @@ const bookmarkGroups = computed(() => {
     <div class="bg-paper-50 dark:bg-night-950 relative min-h-dvh">
         <Navbar />
         <div class="MaxContainer relative text-stone-600 dark:text-slate-300">
-            <header class="mx-auto mt-48 max-w-2xl text-center">
-                <p
-                    class="text-starlight-600 dark:text-starlight-300 font-mono text-[0.72rem] tracking-[0.28em] uppercase sm:text-sm"
-                    v-html="'Navifox · Favorites'"
-                />
-                <h1
-                    class="text-night-900 mt-3 text-3xl font-bold tracking-tight sm:text-4xl dark:text-white"
-                    v-html="'星笺 × 书签'"
-                />
-            </header>
+            <SectionHeader class="mt-48" centered eyebrow="Navifox · Favorites" level="h1" title="星笺 × 书签" />
 
             <div
                 role="tablist"

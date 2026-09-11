@@ -6,6 +6,7 @@ import { reactive } from 'vue';
 import CopyField from '#/components/CopyField.vue';
 import Navbar from '#/components/Navbar.vue';
 import PawOff from '#/components/PawOff.vue';
+import SectionHeader from '#/components/SectionHeader.vue';
 import Stardust from '#/components/Stardust.vue';
 
 /** 各类型友邻的悬停强调色：伙伴金、动态淡粉、像素淡紫。 */
@@ -55,16 +56,9 @@ const copyableFields: { title: string; value: string; isPureCode?: boolean }[] =
     <div class="bg-paper-50 dark:bg-night-950 relative min-h-dvh">
         <Navbar />
         <div class="MaxContainer relative text-stone-600 dark:text-slate-300">
-            <header class="mx-auto mt-48 max-w-2xl text-center">
-                <p
-                    class="text-starlight-600 dark:text-starlight-300 font-mono text-[0.72rem] tracking-[0.28em] uppercase sm:text-sm"
-                    v-html="'Navifox · Links'"
-                />
-                <h1
-                    class="text-night-900 mt-3 text-3xl font-bold tracking-tight sm:text-4xl dark:text-white"
-                    v-html="'网上友邻'"
-                />
-            </header>
+            <SectionHeader class="mt-48" centered eyebrow="Navifox · Links" level="h1" title="网上友邻">
+                站不在深，有朋则名；斯是陋室，因友而馨<br />
+            </SectionHeader>
 
             <section aria-label="网上友邻" class="mx-auto mt-12 mb-36 max-w-6xl">
                 <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -131,16 +125,7 @@ const copyableFields: { title: string; value: string; isPureCode?: boolean }[] =
             </section>
 
             <section aria-label="我的友链信息" class="mx-auto mb-32 max-w-md">
-                <header class="text-center">
-                    <p
-                        class="text-starlight-600 dark:text-starlight-300 font-mono text-[0.72rem] tracking-[0.28em] uppercase"
-                        v-html="'Navifox · Meta-Information'"
-                    />
-                    <h2
-                        class="text-night-900 mt-3 text-3xl font-bold tracking-tight sm:text-4xl dark:text-white"
-                        v-html="'我的友链信息'"
-                    />
-                </header>
+                <SectionHeader centered eyebrow="Navifox · Meta-Information" title="我的友链信息" />
                 <div class="mt-10 flex flex-col gap-2">
                     <CopyField
                         v-for="row in copyableFields"

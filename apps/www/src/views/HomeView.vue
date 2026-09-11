@@ -5,12 +5,12 @@ import type { Anchor } from '@navifox/types';
 import { logger } from '@navifox/utils';
 import { onMounted } from 'vue';
 
-import AnchorHeading from '#/components/AnchorHeading.vue';
 import Chronicle from '#/components/Chronicle.vue';
 import Job2021 from '#/components/experiences/Job2021.vue';
 import Job2022 from '#/components/experiences/Job2022.vue';
 import Navbar from '#/components/Navbar.vue';
 import ProgrammerPanel from '#/components/ProgrammerPanel.vue';
+import SectionHeader from '#/components/SectionHeader.vue';
 import SkillsPanel from '#/components/SkillsPanel.vue';
 import Stardust from '#/components/Stardust.vue';
 
@@ -76,16 +76,12 @@ onMounted(() => {
             :id="anchorIntro.id"
             class="Trail MaxContainer relative my-24 scroll-mt-28 text-stone-600 dark:text-slate-200"
         >
-            <header class="max-w-2xl">
-                <p
-                    class="text-starlight-600 dark:text-starlight-300 font-mono text-[0.72rem] tracking-[0.28em] uppercase"
-                    v-html="anchorIntro.eyebrow"
-                />
-                <h2 class="text-night-900 mt-3 text-3xl font-bold tracking-tight sm:text-4xl dark:text-white">
-                    <AnchorHeading :id="anchorIntro.id" :html="anchorIntro.title" />
-                </h2>
-                <p class="mt-3 leading-relaxed text-stone-500 dark:text-slate-300" v-html="anchorIntro.description" />
-            </header>
+            <SectionHeader
+                :description="anchorIntro.description"
+                :eyebrow="anchorIntro.eyebrow"
+                :id="anchorIntro.id"
+                :title="anchorIntro.title"
+            />
             <div class="mt-12 grid gap-10 lg:grid-cols-[minmax(17rem,24rem)_minmax(0,1fr)] lg:items-start">
                 <!-- 名片 -->
                 <div
@@ -174,24 +170,14 @@ onMounted(() => {
             :id="anchorStacks.id"
             class="MaxContainer relative my-24 scroll-mt-28 text-stone-600 dark:text-slate-300"
         >
-            <header class="max-w-2xl">
-                <p
-                    v-if="anchorStacks.eyebrow"
-                    class="text-starlight-600 dark:text-starlight-300 font-mono text-[0.72rem] tracking-[0.28em] uppercase"
-                    v-html="anchorStacks.eyebrow"
+            <SectionHeader :eyebrow="anchorStacks.eyebrow" :id="anchorStacks.id" :title="anchorStacks.title">
+                <code class="font-mono" v-html="`${cvLastUpdateTime} × `" />
+                <a
+                    href="https://github.com/bennyhuo/programmer-levels"
+                    target="_blank"
+                    v-html="'霍丙乾 Programmer Levels v0.4'"
                 />
-                <h2 class="text-night-900 mt-3 text-3xl font-bold tracking-tight sm:text-4xl dark:text-white">
-                    <AnchorHeading :id="anchorStacks.id" :text="anchorStacks.title" />
-                </h2>
-                <p class="mt-3 leading-relaxed text-stone-500 dark:text-slate-300">
-                    <code class="font-mono" v-html="`${cvLastUpdateTime} × `" />
-                    <a
-                        href="https://github.com/bennyhuo/programmer-levels"
-                        target="_blank"
-                        v-html="'霍丙乾 Programmer Levels v0.4'"
-                    />
-                </p>
-            </header>
+            </SectionHeader>
             <div class="mt-12 grid gap-10 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-start">
                 <aside class="min-w-0 lg:order-2 lg:w-[26.5rem]">
                     <div
@@ -220,21 +206,12 @@ onMounted(() => {
             :id="anchorChronology.id"
             class="MaxContainer relative my-24 scroll-mt-28 text-stone-600 dark:text-slate-300"
         >
-            <header class="max-w-2xl">
-                <p
-                    v-if="anchorChronology.eyebrow"
-                    class="text-starlight-600 dark:text-starlight-300 font-mono text-[0.72rem] tracking-[0.28em] uppercase"
-                    v-html="anchorChronology.eyebrow"
-                />
-                <h2 class="text-night-900 mt-3 text-3xl font-bold tracking-tight sm:text-4xl dark:text-white">
-                    <AnchorHeading :id="anchorChronology.id" :html="anchorChronology.title" />
-                </h2>
-                <p
-                    v-if="anchorChronology.description"
-                    class="mt-3 leading-relaxed text-stone-500 dark:text-slate-300"
-                    v-html="anchorChronology.description"
-                />
-            </header>
+            <SectionHeader
+                :description="anchorChronology.description"
+                :eyebrow="anchorChronology.eyebrow"
+                :id="anchorChronology.id"
+                :title="anchorChronology.title"
+            />
             <div
                 class="Content border-starlight-500/20 mt-12 rounded-3xl border bg-white/70 p-6 backdrop-blur-sm sm:p-8 dark:border-white/10 dark:bg-white/5"
             >

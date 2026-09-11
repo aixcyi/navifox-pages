@@ -24,7 +24,7 @@ defineProps<Props>();
     >
         <span
             aria-hidden="true"
-            class="text-starlight-600 dark:text-starlight-300 absolute top-1/2 -left-7 -translate-y-1/2 opacity-0 transition-opacity duration-200 select-none group-hover:opacity-33"
+            class="text-starlight-600 dark:text-starlight-300 absolute top-1/2 -left-8 -translate-y-1/2 opacity-0 transition-opacity duration-200 select-none group-hover:opacity-33"
             v-html="'#'"
         />
         <span v-if="html" v-html="html" />
