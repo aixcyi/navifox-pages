@@ -84,16 +84,19 @@ const linkMap = [
                             </div>
                             <div class="min-w-0 flex-1">
                                 <h4
+                                    v-if="item.note"
                                     :class="styles.title"
                                     class="truncate text-sm font-medium text-stone-900 transition-colors duration-200 dark:text-slate-100"
                                 >
                                     {{ item.name }}
-                                    <span
-                                        v-if="item.note"
-                                        class="text-stone-400 dark:text-slate-500"
-                                        v-html="item.note"
-                                    />
+                                    <span class="text-stone-400 dark:text-slate-500" v-html="item.note" />
                                 </h4>
+                                <h4
+                                    v-else
+                                    :class="styles.title"
+                                    v-html="item.name"
+                                    class="truncate text-sm font-medium text-stone-900 transition-colors duration-200 dark:text-slate-100"
+                                />
                                 <p
                                     v-if="item.description"
                                     class="text-xs text-stone-500 dark:text-slate-400"

@@ -91,15 +91,17 @@ const copyableFields: { title: string; value: string; isPureCode?: boolean }[] =
                                 <PawOff v-else class="text-6xl" aria-hidden="true" />
                             </div>
                             <h2
+                                v-if="friend.title"
                                 class="text-night-900 min-w-0 flex-1 truncate text-lg font-bold tracking-tight dark:text-white"
                             >
                                 {{ friend.name }}
-                                <span
-                                    class="text-starlight-300 dark:text-slate-600"
-                                    v-if="friend.title"
-                                    v-html="friend.title"
-                                />
+                                <span class="text-starlight-300 dark:text-slate-600" v-html="friend.title" />
                             </h2>
+                            <h2
+                                v-else
+                                v-html="friend.name"
+                                class="text-night-900 min-w-0 flex-1 truncate text-lg font-bold tracking-tight dark:text-white"
+                            />
                             <Icon
                                 :class="[
                                     'shrink-0 opacity-0 transition-opacity duration-200 group-hover:opacity-100',
