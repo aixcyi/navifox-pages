@@ -163,7 +163,7 @@ const linkMap = [
                         All Rights Reserved.<br />
                     </p>
                     <p>
-                        借鉴了
+                        曾借鉴
                         <a
                             class="transition-colors duration-200 hover:text-amber-500 dark:hover:text-amber-300"
                             href="https://github.com/Fechin/reference"

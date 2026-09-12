@@ -20,7 +20,7 @@ const cvLastUpdateTime = '2026.3';
 
 const anchorIntro = {
     id: 'intro',
-    title: '有狐说',
+    title: '捕蛇说',
     eyebrow: 'Navifox · Introduction',
     description: navifox.status,
 } satisfies Anchor;

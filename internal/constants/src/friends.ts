@@ -91,4 +91,12 @@ export const friends: FriendLink[] = [
         styles: { avatar: ['rounded-2xl'] },
         type: 'pixel',
     },
+    {
+        name: '日月前事',
+        link: '#',
+        title: '白夜国馆藏',
+        description: '造化藏奥妙 日月行吉凶 三隅隔昏暗 五圣隐虚空',
+        meet: new Date(),
+        type: 'pixel',
+    },
 ];

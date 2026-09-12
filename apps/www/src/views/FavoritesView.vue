@@ -34,7 +34,7 @@ const bookmarkGroups = computed(() => {
     <div class="bg-paper-50 dark:bg-night-950 relative min-h-dvh">
         <Navbar />
         <div class="MaxContainer relative text-stone-600 dark:text-slate-300">
-            <SectionHeader class="mt-48" centered eyebrow="Navifox · Favorites" level="h1" title="星笺 × 书签" />
+            <SectionHeader class="mt-48" centered eyebrow="Navifox · Favorites" level="h1" title="航路星笺" />
 
             <div
                 role="tablist"

@@ -42,7 +42,7 @@ export const navifox = {
     slogan: '风带来了故事的种子，时间使之发芽',
     description: 'Seeds of stories, brought by the wind and cultivated by time.',
     descriptionRich: 'Seeds of stories,<br/>brought by the wind and cultivated by time.',
-    tags: ['毛茸茸爱好者', '开发工程师', '罗狐会馆馆长'],
+    tags: ['毛茸茸爱好者', '开发工程师', '罗狐会馆馆长', '能工智人'],
     location: '广东 广州',
     groupQQ: '540457640',
     wxid: 'Navifox',
@@ -142,14 +142,6 @@ export const moeTravel: Website = {
     link: 'https://travel.moe/go.html?travel=on',
     settingsUrl: 'https://travel.moe/',
 };
-export const sitemap = [
-    navifoxHome,
-    navifoxBlog,
-    navifoxDocs,
-    navifoxRefs,
-    navifoxHei,
-    //
-];
 export const socials: Website[] = [
     foxeryGuild,
     // egoTwitter,
@@ -157,6 +149,14 @@ export const socials: Website[] = [
     egoPyPI,
     egoJetBrains,
     // egoGitee,
+];
+export const sitemap = [
+    navifoxHome,
+    navifoxBlog,
+    navifoxDocs,
+    navifoxRefs,
+    navifoxHei,
+    //
 ];
 export const credits: Website[] = [
     { name: 'oO大黄Oo', link: 'https://www.pixiv.net/users/9892346', logo: 'fa6-brands:pixiv' },

@@ -44,7 +44,7 @@ const router = createRouter({
             path: '/favs',
             name: 'Favorites',
             meta: {
-                title: '星笺',
+                title: '航路星笺',
                 isShowOnNavbar: true,
             },
             component: FavoritesView,
@@ -53,7 +53,7 @@ const router = createRouter({
             path: '/links',
             name: 'Links',
             meta: {
-                title: '友人帐',
+                title: '狐朋邻友',
                 isShowOnNavbar: true,
             },
             component: LinksView,

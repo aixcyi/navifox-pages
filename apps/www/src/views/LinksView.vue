@@ -56,7 +56,7 @@ const copyableFields: { title: string; value: string; isPureCode?: boolean }[] =
     <div class="bg-paper-50 dark:bg-night-950 relative min-h-dvh">
         <Navbar />
         <div class="MaxContainer relative text-stone-600 dark:text-slate-300">
-            <SectionHeader class="mt-48" centered eyebrow="Navifox · Links" level="h1" title="网上友邻">
+            <SectionHeader class="mt-48" centered eyebrow="Navifox · Links" level="h1" title="狐朋邻友">
                 站不在深，有朋则名；斯是陋室，因友而馨<br />
             </SectionHeader>
 
@@ -80,7 +80,7 @@ const copyableFields: { title: string; value: string; isPureCode?: boolean }[] =
                                 ]"
                             >
                                 <img
-                                    v-if="!failedAvatars.has(friend.name)"
+                                    v-if="friend.avatar && !failedAvatars.has(friend.name)"
                                     :src="friend.avatar"
                                     :alt="friend.name"
                                     class="size-full object-cover"
@@ -92,10 +92,15 @@ const copyableFields: { title: string; value: string; isPureCode?: boolean }[] =
                             </div>
                             <h2
                                 v-if="friend.title"
-                                class="text-night-900 min-w-0 flex-1 truncate text-lg font-bold tracking-tight dark:text-white"
+                                class="text-night-900 flex min-w-0 flex-1 items-center gap-1 text-lg font-bold tracking-tight dark:text-white"
                             >
-                                {{ friend.name }}
-                                <span class="text-starlight-300 dark:text-slate-600" v-html="friend.title" />
+                                <!-- 名称与站点名各自独立截断：省略号由被截断者自己的文本框绘制，
+                                     若两者同处一个截断框内，省略号会统一取名称那一档颜色。 -->
+                                <span class="max-w-full shrink-0 truncate">{{ friend.name }}</span>
+                                <span
+                                    class="text-starlight-300 min-w-0 truncate dark:text-slate-600"
+                                    v-html="friend.title"
+                                />
                             </h2>
                             <h2
                                 v-else

@@ -42,6 +42,7 @@ const isHome = computed(() => route.name === 'Homepage');
     <RouterView />
     <AiFooter class="relative z-30">
         <template #additions>
+            <hr class="my-2 opacity-20" />
             <p>
                 构建为 <code>{{ version }}</code>
             </p>
