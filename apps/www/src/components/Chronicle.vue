@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 import { Icon } from '@iconify/vue/offline';
-import { navifoxHome } from '@navifox/constants';
 import { Markdown } from '@navifox/ui';
 
 import BannerGI from '#/assets/genshin.jpg';
@@ -137,7 +136,7 @@ import AiTimelineItem from '#/components/AiTimelineItem.vue';
             精细化手搓(重构)主页，开始深入了解 CSS。<br />
         </AiTimelineItem>
         <AiTimelineItem color="#FF7F27" date="2025 年 7 月 19 日 19:15">
-            <div class="relative mb-1.5 max-w-lg flex-1">
+            <div class="relative mb-1.5 max-w-3xl flex-1">
                 <pre class="absolute right-4 bottom-3 z-1 text-nowrap text-neutral-200">0:11:42</pre>
                 <img
                     :src="BannerHei"
@@ -149,7 +148,7 @@ import AiTimelineItem from '#/components/AiTimelineItem.vue';
             <span>《罗小黑战记2》首映次日线下观影，品味妖灵会馆之于国人的浪漫。</span>
         </AiTimelineItem>
         <AiTimelineItem color="#FF7F27" date="2025 年 8 月 16 日 11 点">
-            <div class="relative mb-1.5 max-w-lg flex-1">
+            <div class="relative mb-1.5 max-w-3xl flex-1">
                 <pre class="absolute right-4 bottom-3 z-1 text-nowrap text-neutral-200">p156</pre>
                 <img
                     :src="BannerHoney"
@@ -170,24 +169,42 @@ import AiTimelineItem from '#/components/AiTimelineItem.vue';
         <AiTimelineItem color="#FF7F27" date="2026 年 3 月">
             从古法手敲代码入坑 AI 辅助开发，从
             <Icon height="24" icon="devicon:cursor" />
-            到 Trae 再到 Trae CN，最后还是换回
+            Cursor 到 Trae 再到 Trae CN，最后还是换回
             <Icon height="24" icon="devicon:vscode" />
             VSCode 然后搭配
             <Icon height="24" icon="simple-icons:kimi" />
             Kimi Code 使用，并且尝试编写前端、后端开发工程师的 SKILL。<br />
         </AiTimelineItem>
         <AiTimelineItem color="#FF7F27" date="2026 年 5 月底">
-            在朋友的推荐下入手一台水冷笔记本，开始接触 NVIDIA GPU、
+            在朋友的推荐下入手一台水冷笔记本，开始接触
+            <Icon height="24" icon="logos:nvidia" />
+            GPU 和
             <Icon height="24" icon="simple-icons:ollama" />
-            Ollama 与大语言模型本地部署。
+            Ollama。
         </AiTimelineItem>
         <AiTimelineItem color="#FF7F27" date="2026 年 8 月 13 日" markdown>
             蓝色大肥鱼推出 __DeepSeek-V4-Pro-0813__ 和
-            [**DeepSeek Harness**](https://github.com/deepseek-ai/deepseek-harness/)，自此开始深度使用
-            AI Coding，一发不可收拾。
+            [**DeepSeek Harness**](https://github.com/deepseek-ai/deepseek-harness/)
+            大烧货，自此开始深度使用 AI Coding，一发不可收拾。
         </AiTimelineItem>
-        <AiTimelineItem color="#FF7F27" last>
-            <div v-html="navifoxHome.descriptionRich" />
+        <AiTimelineItem color="#FF7F27" date="2026 年 8 月 22 日">
+            借助 onnx 和 OpenCV 对漫画中的文本进行 OCR 识别，并通过
+            <Icon height="24" icon="devicon:huggingface" />
+            HuggingFace 下载了
+            <Markdown>`qwen3:8b` 和 `qwen3:14b`</Markdown>
+            模型推理气泡冒泡对象，不过因为 DSH 同时开了十几二十个子 Agent 而损失惨重，从此开始手搓积累自己的
+            <Markdown>`AGENTS.md`／`AGENTS.local.md`</Markdown>
+            通用规则。
+            <img
+                alt="蓝色大肥鱼表情包"
+                src="https://bjumymxtfpfswthiusfr.storage.supabase.co/storage/v1/object/public/ai-meme/0_preview/meme/085.webp"
+                class="my-2 max-w-80 rounded-2xl transition-opacity duration-500 select-none hover:opacity-100 dark:opacity-50"
+                draggable="false"
+            />
+            <Markdown>
+                [Whale-chan 表情包](https://github.com/the-beating-light-of-the-nail/deepseek-chan-meme-pack)项目
+            </Markdown>
         </AiTimelineItem>
+        <AiTimelineItem color="#FF7F27" last> 狐途初遇，未完待续 </AiTimelineItem>
     </ul>
 </template>
