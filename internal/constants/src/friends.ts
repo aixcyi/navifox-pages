@@ -1,4 +1,5 @@
 import type { Friend } from '@navifox/types';
+import { newDate } from '@navifox/utils/dnt';
 
 /**
  * {@link Friend} 扩展友链信息。
@@ -10,8 +11,6 @@ export type FriendLink = Friend & {
     /** 是否隐藏或不可用。 */
     disabled?: boolean;
 };
-
-const meet = (year: number, month: number, day: number): Date => new Date(year, month - 1, day);
 
 export const friends: FriendLink[] = [
     {
@@ -32,7 +31,7 @@ export const friends: FriendLink[] = [
         avatar: 'https://www.zhilu.site/api/avatar.png',
         description: '纸鹿至麓不知路，支炉制露不止漉。',
         note: '摸鱼处',
-        meet: meet(2025, 7, 14),
+        meet: newDate(2025, 7, 14),
         styles: { avatar: ['rounded-2xl'] },
         type: 'feed',
     },
@@ -44,7 +43,7 @@ export const friends: FriendLink[] = [
         avatar: 'https://pinpe.top/head.jpg',
         description: '宁为鲜花而死，不为面包而活。',
         note: '的云端',
-        meet: meet(2025, 7, 14),
+        meet: newDate(2025, 7, 14),
         styles: { avatar: ['rounded-full'] },
         type: 'pixel',
     },
@@ -56,7 +55,7 @@ export const friends: FriendLink[] = [
         avatar: 'https://www.fatxiaobai.top/proxy-api/public/file/avatar/avatar.jpg',
         description: '爱健身，爱科技，爱生活！',
         note: '空间站',
-        meet: meet(2026, 6, 9),
+        meet: newDate(2026, 6, 9),
         styles: { avatar: ['rounded-full'] },
         type: 'pixel',
     },
@@ -68,7 +67,7 @@ export const friends: FriendLink[] = [
         avatar: 'https://youhuge.site/usr/themes/handsome/assets/img/avatar.png',
         description: '只有分离后才能懂的事，却没有了感慨的时间。',
         note: '幽狐阁',
-        meet: meet(2026, 9, 10),
+        meet: newDate(2026, 9, 10),
         styles: { avatar: ['rounded-full'] },
         type: 'pixel',
     },
@@ -76,7 +75,7 @@ export const friends: FriendLink[] = [
         name: '林の窝',
         link: 'https://www.crazying-dev.top/',
         avatar: 'https://img.crazying-dev.top/crazying-dev.top/me.png',
-        meet: meet(2026, 9, 10),
+        meet: newDate(2026, 9, 10),
         styles: { avatar: ['rounded-full'] },
         type: 'pixel',
     },
@@ -87,7 +86,7 @@ export const friends: FriendLink[] = [
         avatar: 'https://www.unknownmp.top/images/self/avatar.jpg',
         description: 'qwq',
         note: '的主站',
-        meet: meet(2026, 9, 10),
+        meet: newDate(2026, 9, 10),
         styles: { avatar: ['rounded-2xl'] },
         type: 'pixel',
     },

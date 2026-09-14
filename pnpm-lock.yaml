@@ -372,9 +372,6 @@ importers:
       '@vueuse/core':
         specifier: 'catalog:'
         version: 14.3.0(vue@3.5.39(typescript@5.9.3))
-      date-fns:
-        specifier: 'catalog:'
-        version: 4.4.0
       vue:
         specifier: 'catalog:'
         version: 3.5.39(typescript@5.9.3)
@@ -491,9 +488,6 @@ importers:
       '@vueuse/core':
         specifier: 'catalog:'
         version: 14.3.0(vue@3.5.39(typescript@5.9.3))
-      date-fns:
-        specifier: 'catalog:'
-        version: 4.4.0
       vue:
         specifier: 'catalog:'
         version: 3.5.39(typescript@5.9.3)

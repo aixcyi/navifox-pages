@@ -16,7 +16,6 @@
         "@navifox/utils": "workspace:*",
         "@navifox/vitepress": "workspace:*",
         "@vueuse/core": "catalog:",
-        "date-fns": "catalog:",
         "vue": "catalog:"
     },
     "devDependencies": {
