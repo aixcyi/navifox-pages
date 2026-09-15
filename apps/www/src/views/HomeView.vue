@@ -2,7 +2,6 @@
 import { Icon } from '@iconify/vue/offline';
 import { navifox, signature, socials } from '@navifox/constants';
 import type { Anchor } from '@navifox/types';
-import { logger } from '@navifox/utils';
 import { onMounted } from 'vue';
 
 import Chronicle from '#/components/Chronicle.vue';
@@ -14,7 +13,7 @@ import SectionHeader from '#/components/SectionHeader.vue';
 import SkillsPanel from '#/components/SkillsPanel.vue';
 import Stardust from '#/components/Stardust.vue';
 
-logger.draw(signature, '#459199');
+console.log('%c' + signature, 'color: #459199; font-size: 12px; font-family: Consolas;');
 
 const cvLastUpdateTime = '2026.3';
 
@@ -222,7 +221,7 @@ onMounted(() => {
         <Stardust />
 
         <!-- 页尾 -->
-        <div class="MaxContainer relative mb-24 -mt-12">
+        <div class="MaxContainer relative -mt-12 mb-24">
             <Icon class="mx-auto size-18 max-md:size-12" icon="fluent-emoji:fox" />
         </div>
     </div>

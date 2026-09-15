@@ -2,7 +2,6 @@ export * from './array';
 export * from './composables';
 export * from './string';
 export * from './duration';
-export * from './logging';
 export * from './markdown';
 export * from './math';
 export * from './models';
