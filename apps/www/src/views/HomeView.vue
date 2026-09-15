@@ -20,14 +20,14 @@ const cvLastUpdateTime = '2026.3';
 const anchorIntro = {
     id: 'intro',
     title: '有狐说',
-    eyebrow: 'Navifox · Introduction',
-    description: navifox.status,
+    eyebrow: 'Navifox · Intro',
+    description: '有狐善捕蛇，精于 Python 而安于 Kotlin',
 } satisfies Anchor;
 
 const anchorStacks = {
     id: 'stacks',
     title: '技能树',
-    eyebrow: 'Navifox · Technical Skills',
+    eyebrow: 'Navifox · Skills',
 } satisfies Anchor;
 
 const anchorChronology = {
