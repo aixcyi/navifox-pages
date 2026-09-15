@@ -163,8 +163,9 @@ html:not(.dark) .Starry .text-slate-500 {
     color: var(--color-stone-500);
 }
 
-/* hover 时不论勾选与否统一纯黑，凸显文本（仅浅色；深色保持亮色高亮） */
-html:not(.dark) .Starry li:hover {
+/* hover 时不论勾选与否统一纯黑，凸显文本（仅浅色；深色保持亮色高亮）。
+   只作用于「程序员等级评估」的勾选清单：首页其余列表（如时间线）的 li 不应被牵连。 */
+html:not(.dark) .ProgrammerPanel li:hover {
     color: #000;
 }
 

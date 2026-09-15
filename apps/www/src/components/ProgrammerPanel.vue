@@ -77,7 +77,7 @@ for (const level of programmerLevels) {
 </script>
 
 <template>
-    <div class="flex flex-col gap-6">
+    <div class="ProgrammerPanel flex flex-col gap-6">
         <section v-for="desc in programmerLevels">
             <div>
                 <b>{{ desc.level }}</b>
