@@ -35,7 +35,7 @@ const anchorChronology = {
     id: 'chronology',
     title: '时间线',
     eyebrow: 'Navifox · Chronicle',
-    description: navifox.slogan && `${navifox.slogan}。`,
+    description: navifox.slogan || '',
 } satisfies Anchor;
 
 const aboutStates: { logo: string; text: string }[] = [
@@ -207,14 +207,13 @@ onMounted(() => {
             class="MaxContainer relative my-24 scroll-mt-28 text-stone-600 dark:text-slate-300"
         >
             <SectionHeader
+                centered
                 :description="anchorChronology.description"
                 :eyebrow="anchorChronology.eyebrow"
                 :id="anchorChronology.id"
                 :title="anchorChronology.title"
             />
-            <div
-                class="Content border-starlight-500/20 mt-12 rounded-3xl border bg-white/70 p-6 backdrop-blur-sm sm:p-8 dark:border-white/10 dark:bg-white/5"
-            >
+            <div class="Content mx-auto mt-12 max-w-3xl">
                 <Chronicle />
             </div>
         </section>
@@ -223,7 +222,7 @@ onMounted(() => {
         <Stardust />
 
         <!-- 页尾 -->
-        <div class="MaxContainer relative my-16!">
+        <div class="MaxContainer relative mb-24 -mt-12">
             <Icon class="mx-auto size-18 max-md:size-12" icon="fluent-emoji:fox" />
         </div>
     </div>

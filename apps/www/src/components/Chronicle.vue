@@ -12,7 +12,7 @@ import AiTimelineItem from '#/components/AiTimelineItem.vue';
 
 <template>
     <ul>
-        <AiTimelineItem color="#FF7F27" :moment="newDate(2026, 8, 22)">
+        <AiTimelineItem color="#FF7F27" anchor="Currently" :moment="newDate(2026, 8, 22)">
             借助 onnx 和 OpenCV 对漫画中的文本进行 OCR 识别，并通过
             <Icon height="24" icon="devicon:huggingface" />
             HuggingFace 下载了
@@ -51,7 +51,7 @@ import AiTimelineItem from '#/components/AiTimelineItem.vue';
             <Icon height="24" icon="simple-icons:kimi" />
             Kimi Code 使用，并且尝试编写前端、后端开发工程师的 SKILL。<br />
         </AiTimelineItem>
-        <AiTimelineItem color="#FF7F27" :moment="newDate(2026, 1, 15, 14, 33)">
+        <AiTimelineItem color="#FF7F27" anchor="2026" :moment="newDate(2026, 1, 15, 14, 33)">
             从
             <Icon height="24" icon="devicon:npm" />
             换成
@@ -62,7 +62,7 @@ import AiTimelineItem from '#/components/AiTimelineItem.vue';
             购入正版 [Obulis](https://store.steampowered.com/app/11330)，了却遗憾。
         </AiTimelineItem>
         <AiTimelineItem color="#FF7F27" :moment="newDate(2025, 8, 16, 11, 0)">
-            <div class="relative mb-1.5 max-w-3xl flex-1">
+            <div class="relative mb-1.5 max-w-[95%] flex-1">
                 <pre class="absolute right-4 bottom-3 z-1 text-nowrap text-neutral-200">p156</pre>
                 <img
                     :src="BannerHoney"
@@ -74,7 +74,7 @@ import AiTimelineItem from '#/components/AiTimelineItem.vue';
             <span>与 43 万+ 道友共同见证韩立结婴！（有幸出现在本集片尾名单）</span>
         </AiTimelineItem>
         <AiTimelineItem color="#FF7F27" :moment="newDate(2025, 7, 19, 19, 15)">
-            <div class="relative mb-1.5 max-w-3xl flex-1">
+            <div class="relative mb-1.5 max-w-[95%] flex-1">
                 <pre class="absolute right-4 bottom-3 z-1 text-nowrap text-neutral-200">0:11:42</pre>
                 <img
                     :src="BannerHei"
@@ -100,7 +100,7 @@ import AiTimelineItem from '#/components/AiTimelineItem.vue';
             <Icon height="24" icon="logos:deepseek" />
             横空出世，开始接触对话式 AI 并利用其搜索信息、辅助开发。<br />
         </AiTimelineItem>
-        <AiTimelineItem class="**:[a]:cursor-no-drop" color="#FF7F27" date="2025 年 1 月" markdown>
+        <AiTimelineItem class="**:[a]:cursor-no-drop" color="#FF7F27" anchor="2025" date="2025 年 1 月" markdown>
             主站从 [`aixcyi.cn`]() 迁移到从“阿羽”全拼衍生的更好记的 [`ayuu.cc`]() 。
         </AiTimelineItem>
         <AiTimelineItem color="#FF7F27" date="2024 年 12 月" markdown>
@@ -123,7 +123,7 @@ import AiTimelineItem from '#/components/AiTimelineItem.vue';
             TinySnake 拆分为多个 HooTool 系列小插件。
         </AiTimelineItem>
         <AiTimelineItem color="#FF7F27" gradientColor="#A44967" :moment="newDate(2024, 7, 4)">
-            <div class="relative max-w-lg flex-1">
+            <div class="relative max-w-[95%] flex-1">
                 <pre class="absolute right-4 bottom-3 z-1 text-nowrap text-neutral-200">UID 10141611</pre>
                 <img
                     :src="BannerZZZ"
@@ -138,7 +138,7 @@ import AiTimelineItem from '#/components/AiTimelineItem.vue';
             <Icon height="24" icon="logos:jetbrains" />
             Marketplace 中发布 TinySnake 插件。<br />
         </AiTimelineItem>
-        <AiTimelineItem class="::[a]:cursor-no-drop" color="#A349A4" date="2024 年 1 月" markdown>
+        <AiTimelineItem class="::[a]:cursor-no-drop" color="#A349A4" anchor="2024" date="2024 年 1 月" markdown>
             注册并备案以常用 ID 为域名的 [`aixcyi.cn`]()。
         </AiTimelineItem>
         <AiTimelineItem color="#A349A4" date="2023 年 7 月">
@@ -146,7 +146,7 @@ import AiTimelineItem from '#/components/AiTimelineItem.vue';
             <Icon height="24" icon="logos:kotlin-icon" />
             手搓插件 TinySnake 用以解决 Python <code>__all__</code> 的生成和更新。<br />
         </AiTimelineItem>
-        <AiTimelineItem color="#A349A4" :moment="newDate(2023, 4, 25)">
+        <AiTimelineItem color="#A349A4" anchor="2023" :moment="newDate(2023, 4, 25)">
             购买
             <Icon height="24" icon="vscode-icons:file-type-minecraft" />
             Minecraft: Java & Bedrock Edition for PC<br />
@@ -154,7 +154,7 @@ import AiTimelineItem from '#/components/AiTimelineItem.vue';
         <AiTimelineItem color="#A349A4" :moment="newDate(2022, 3, 15)">
             辗转广州，承担电商、餐饮、零售、进销存等生态服务的建模、后端开发、测试、硬件对接、维护、性能优化……<br />
         </AiTimelineItem>
-        <AiTimelineItem color="#A349A4" date="2022 年 2 月">
+        <AiTimelineItem color="#A349A4" anchor="2022" date="2022 年 2 月">
             发现 Quick Reference 并参与贡献，在名为开源的道路上迈出了第一步。<br />
         </AiTimelineItem>
         <AiTimelineItem color="#A349A4" date="2021 下半年">
@@ -165,7 +165,7 @@ import AiTimelineItem from '#/components/AiTimelineItem.vue';
             <Icon height="24" icon="logos:bootstrap" />
             为项目增添色彩。<br />
         </AiTimelineItem>
-        <AiTimelineItem color="#A349A4" :moment="newDate(2021, 3, 1)">
+        <AiTimelineItem color="#A349A4" anchor="2021" :moment="newDate(2021, 3, 1)">
             进入中山一家跨境电商公司实习，接触到
             <Icon height="24" icon="logos:django-icon" />
             与
@@ -178,8 +178,8 @@ import AiTimelineItem from '#/components/AiTimelineItem.vue';
             <Icon height="24" icon="logos:git-icon" />
             的第一页。<br />
         </AiTimelineItem>
-        <AiTimelineItem color="#A349A4" gradientColor="#00A2E8" :moment="newDate(2020, 10, 24)">
-            <div class="relative max-w-lg flex-1">
+        <AiTimelineItem color="#A349A4" anchor="2020" gradientColor="#00A2E8" :moment="newDate(2020, 10, 24)">
+            <div class="relative max-w-[95%] flex-1">
                 <pre class="absolute right-4 bottom-3 z-1 text-nowrap text-neutral-200">UID 138527563</pre>
                 <img
                     :src="BannerGI"
@@ -189,7 +189,7 @@ import AiTimelineItem from '#/components/AiTimelineItem.vue';
                 />
             </div>
         </AiTimelineItem>
-        <AiTimelineItem color="#00A2E8" date="2019 年，暑假">
+        <AiTimelineItem color="#00A2E8" anchor="2019" date="2019 年，暑假">
             开始接触
             <Icon height="24" icon="logos:go" />
             并配合 LiteIDE 学习区块链。<br />
@@ -211,13 +211,13 @@ import AiTimelineItem from '#/components/AiTimelineItem.vue';
         <AiTimelineItem color="#00A2E8" :moment="newDate(2018, 9, 22, 21, 35)" markdown>
             与舍友一同解构 [Obulis](https://store.steampowered.com/app/11330) 存档结构并伪造数据来解锁隐藏关卡。
         </AiTimelineItem>
-        <AiTimelineItem color="#00A2E8" :moment="newDate(2018, 8, 26, 11, 7)">
+        <AiTimelineItem color="#00A2E8" anchor="2018" :moment="newDate(2018, 8, 26, 11, 7)">
             成为“哔哩哔哩无限矿业公司”的一位用户。
         </AiTimelineItem>
-        <AiTimelineItem color="#00A2E8" :moment="newDate(2016, 8, 22, 15, 6)">
+        <AiTimelineItem color="#00A2E8" anchor="2016" :moment="newDate(2016, 8, 22, 15, 6)">
             以“砹小翼”为笔名在博客园发布第一篇博客。<br />
         </AiTimelineItem>
-        <AiTimelineItem color="#00A2E8" date="2012 年，暑假" markdown>
+        <AiTimelineItem color="#00A2E8" anchor="2012" date="2012 年，暑假" markdown>
             迷上了 [Obulis](https://store.steampowered.com/app/11330)，初窥计算机世界，偶遇易语言。
         </AiTimelineItem>
         <AiTimelineItem color="#00A2E8" last>狐途初遇，前缘未续</AiTimelineItem>
