@@ -73,7 +73,7 @@ onMounted(() => {
     >
         <div
             :id="anchorIntro.id"
-            class="Trail MaxContainer relative my-24 scroll-mt-28 text-stone-600 dark:text-slate-200"
+            class="Trail MaxContainer relative my-24 scroll-mt-28 text-stone-600 dark:text-slate-300"
         >
             <SectionHeader
                 :description="anchorIntro.description"

@@ -80,12 +80,16 @@ for (const level of programmerLevels) {
             <ul class="**:transition-all **:duration-200 max-md:leading-relaxed">
                 <li
                     v-for="point in desc.points"
-                    :class="point.unlit ? '' : 'text-slate-400 dark:text-slate-600'"
-                    class="group cursor-default hover:text-slate-900 dark:hover:text-slate-100"
+                    :class="point.unlit ? '' : 'text-slate-300 dark:text-slate-600'"
+                    class="group hover:bg-starlight-500/12! dark:hover:bg-starlight-300/10! cursor-default rounded-md hover:text-black! dark:hover:text-white!"
                 >
-                    <icon :icon="point.unlit ? 'icons8:circle' : 'icons8:checked'" class="mr-1" height="20" />
+                    <icon
+                        :icon="point.unlit ? 'icons8:circle' : 'icons8:checked'"
+                        class="mr-1 transition-transform group-hover:scale-110"
+                        height="20"
+                    />
                     <span
-                        class="group-hover:*:[u]:decoration-starlight-500! dark:group-hover:*:[u]:decoration-starlight-400! *:[u]:decoration-transparent! *:[u]:underline-offset-5!"
+                        class="group-hover:*:[u]:decoration-starlight-500! dark:group-hover:*:[u]:decoration-starlight-400! *:[u]:decoration-transparent! *:[u]:underline-offset-5! group-hover:*:[u]:decoration-2!"
                         v-html="point.text"
                     />
                 </li>
