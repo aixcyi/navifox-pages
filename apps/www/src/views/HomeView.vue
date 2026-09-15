@@ -20,7 +20,7 @@ const cvLastUpdateTime = '2026.3';
 
 const anchorIntro = {
     id: 'intro',
-    title: '捕蛇说',
+    title: '有狐说',
     eyebrow: 'Navifox · Introduction',
     description: navifox.status,
 } satisfies Anchor;
@@ -52,7 +52,7 @@ onMounted(() => {
 
 <template>
     <Navbar cover />
-    <div class="MaxContainer selection:bg-starlight-400/40 z-20 flex h-screen flex-col **:z-20">
+    <div class="MaxContainer selection:bg-starlight-400/40 sticky top-0 z-10 flex h-screen flex-col **:z-20">
         <div class="mb-8 flex h-full flex-col justify-end md:mb-20">
             <div
                 class="border-starlight-100/40 bg-starlight-400/25 text-starlight-100 dark:border-starlight-300/30 dark:bg-starlight-400/10 dark:text-starlight-300 mb-4 w-fit rounded-lg border px-3 py-1 font-mono text-xl backdrop-blur-sm md:text-2xl"
