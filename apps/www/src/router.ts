@@ -5,9 +5,12 @@ import { nextTick } from 'vue';
 import { createRouter, createWebHistory } from 'vue-router';
 
 import NotFound from '#/NotFound.vue';
+import ConsoleView from '#/views/ConsoleView.vue';
 import FavoritesView from '#/views/FavoritesView.vue';
 import HomeView from '#/views/HomeView.vue';
 import LinksView from '#/views/LinksView.vue';
+import MapView from '#/views/MapView.vue';
+import MomentsView from '#/views/MomentsView.vue';
 
 const router = createRouter({
     history: createWebHistory(),
@@ -44,19 +47,46 @@ const router = createRouter({
             path: '/favs',
             name: 'Favorites',
             meta: {
-                title: '航路星笺',
+                title: '它山亭',
                 isShowOnNavbar: true,
             },
             component: FavoritesView,
         },
         {
+            path: '/moments',
+            name: 'Moments',
+            meta: {
+                title: '凭栏处', // 雪泥鸿爪
+                isShowOnNavbar: true,
+            },
+            component: MomentsView, // TODO: 实现一个朋友圈（碎碎念展示）。
+        },
+        {
+            path: '/map',
+            name: 'Map',
+            meta: {
+                title: '游地简',
+                isShowOnNavbar: true,
+            },
+            component: MapView, // TODO: 实现一个旅游地图。
+        },
+        {
             path: '/links',
             name: 'Links',
             meta: {
-                title: '狐朋邻友',
+                title: '旧雨庐',
                 isShowOnNavbar: true,
             },
             component: LinksView,
+        },
+        {
+            path: '/console',
+            name: 'Console',
+            meta: {
+                title: '狐引',
+                isShowOnNavbar: true,
+            },
+            component: ConsoleView, // TODO: 实现一个登录页。
         },
         {
             path: '/:pathMatch(.*)*',

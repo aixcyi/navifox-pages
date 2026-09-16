@@ -47,7 +47,7 @@ const copyableFields: { title: string; value: string; isPureCode?: boolean }[] =
     <div class="bg-paper-50 dark:bg-night-950 relative min-h-dvh">
         <Navbar />
         <div class="MaxContainer relative text-stone-600 dark:text-slate-300">
-            <SectionHeader class="mt-48" centered eyebrow="Navifox · Links" level="h1" title="狐朋邻友">
+            <SectionHeader class="mt-48" centered eyebrow="Navifox · Links" level="h1" title="旧雨庐">
                 站不在深，有朋则名；斯是陋室，因友而馨<br />
             </SectionHeader>
 
