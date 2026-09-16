@@ -1,14 +1,9 @@
 <script lang="ts" setup>
-import { computed } from 'vue';
-
 import MomentCard from '#/components/MomentCard.vue';
 import Navbar from '#/components/Navbar.vue';
 import SectionHeader from '#/components/SectionHeader.vue';
 import Stardust from '#/components/Stardust.vue';
 import { moments } from '#/data/moments';
-
-/** 按时间倒序展示，数据文件里的书写顺序不影响版面。 */
-const sortedMoments = computed(() => [...moments].sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime()));
 </script>
 
 <template>
@@ -20,7 +15,7 @@ const sortedMoments = computed(() => [...moments].sort((a, b) => b.createdAt.get
             </SectionHeader>
 
             <section aria-label="碎碎念" class="mx-auto mt-12 mb-36 flex max-w-2xl flex-col gap-6">
-                <MomentCard v-for="moment in sortedMoments" :key="moment.id" :moment="moment" />
+                <MomentCard v-for="moment in moments" :key="moment.id" :moment="moment" />
             </section>
         </div>
         <Stardust />

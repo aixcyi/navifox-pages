@@ -1,6 +1,7 @@
 import { newDate } from '@navifox/utils/dnt';
 
 import BannerHei from '#/assets/hei.jpg';
+import BannerHoney from '#/assets/honey.jpg';
 
 /** 一条碎碎念。 */
 export interface Moment {
@@ -8,7 +9,7 @@ export interface Moment {
     id: string;
 
     /** 发布时间。 */
-    createdAt: Date;
+    postAt: Date;
 
     /** 正文，支持行内 Markdown（`**加粗**`、`__下划线__`、`` `代码` ``、`[链接](url)`）。 */
     content: string;
@@ -23,55 +24,95 @@ export interface Moment {
     images?: { src: string; alt: string }[];
 }
 
-/** 示例数据：内容与字段都还待定，先随便写几条把版面撑起来。 */
 export const moments: Moment[] = [
     {
-        id: 'm-20260916',
-        createdAt: newDate(2026, 9, 16, 9, 12),
+        id: '269.0',
+        postAt: newDate(2026, 9, 10, 12, 0),
+        content: 'DeepSeek flash 系列降价了，可为什么感觉还是花那么多呢？',
+        tags: ['AI'],
+        images: [
+            {
+                src: 'https://bjumymxtfpfswthiusfr.storage.supabase.co/storage/v1/object/public/ai-meme/meme/077.webp',
+                alt: 'DeepSeek梗图',
+            },
+        ],
+    },
+    {
+        id: '265.0',
+        postAt: newDate(2026, 5, 22),
+        content: '在好友的推荐下入手一台水冷笔记本。',
+        tags: ['开箱'],
+    },
+    {
+        id: '25a.0',
+        postAt: newDate(2025, 10, 14),
+        content: '购入正版 [Obulis](https://store.steampowered.com/app/11330)，了却遗憾。',
+        tags: ['游戏'],
+    },
+    {
+        id: '258.0',
+        postAt: newDate(2025, 8, 16, 11, 0),
+        content: '44万人陪我一起——非！常！震！撼！！！（有幸出现在本集片尾名单，虽然后面重置去掉了）',
+        tags: ['凡人修仙传'],
+        images: [{ src: BannerHoney, alt: '《凡人修仙传》的某一帧' }],
+    },
+    {
+        id: '257.0',
+        postAt: newDate(2025, 7, 19, 19, 15),
         content:
-            '终于给「凭栏处」填上了第一铲土。以前总觉得碎碎念该交给社交平台托管，现在倒是想通了——**自己的地盘还是自己说了算**。',
-        location: '广东 广州',
-        tags: ['建站', '碎碎念'],
+            '《罗小黑战记2》7.18首映，第二天就跑去线下观影了，不得不说很多设定都挺有意思的，整场基本都在心流状态，不过就是不知道得等多久才能上线流媒体了。',
+        tags: ['罗小黑'],
+        images: [{ src: BannerHei, alt: '《罗小黑战记2》的某一帧' }],
     },
     {
-        id: 'm-20260915',
-        createdAt: newDate(2026, 9, 15, 23, 47),
+        id: '24a.0',
+        postAt: newDate(2024, 10, 25, 15, 32),
         content:
-            '凌晨前的最后一杯咖啡，和 `ruff format` 完的一千行 diff。谁懂啊，加班最爽的时刻不是收工，是看到 lint 全绿。',
-        tags: ['开发'],
+            '入手了一套提纳里、一套赛诺的 cos 服（主要是馋狐狸耳朵），第一次穿到了公司，但其实没什么人关注，甚至不会多看一眼，大概这就是广州吧。',
+        location: '广州',
+        tags: ['游戏', 'cosplay'],
     },
     {
-        id: 'm-20260913',
-        createdAt: newDate(2026, 9, 13, 20, 5),
-        content: '拆了三天路由里挂着的 TODO，把三个空页面填成了真的页面。`NotFound` 终于不用再假装自己是朋友圈了。',
-        location: '广东 广州',
-        tags: ['建站', 'Vue3'],
-    },
-    {
-        id: 'm-20260906',
-        createdAt: newDate(2026, 9, 6, 14, 22),
+        id: '248.0',
+        postAt: newDate(2024, 8, 6, 20, 6),
         content:
-            '台风天的广州，窗外雨声大得像有人在敲 `while (true)`。这种天气最适合窝在屋里写代码，也最适合点一份外卖。',
-        tags: ['生活'],
+            '在好友的安利下第一次接触游戏手柄，不过下单时被商品页迷惑了，宣传是冰原狼2，买到手的是第一代，经常断连……',
+        location: '广州',
+        tags: ['游戏', '手柄'],
     },
     {
-        id: 'm-20260830',
-        createdAt: newDate(2026, 8, 30, 21, 36),
-        content: '补票看了《罗小黑战记2》，妖灵会馆那一段还是看得眼睛发热。国漫能做到这个程度，值回票价。',
-        images: [{ src: BannerHei, alt: '《罗小黑战记2》' }],
-        tags: ['观影'],
+        id: '241.0',
+        postAt: newDate(2024, 1, 26, 20, 44),
+        content: '年会抽奖中了一个罗技 MX Master 3s 鼠标，跟同事换了一块 Keychron K10 Pro 机械键盘。',
+        location: '中山',
+        tags: ['公司', '机械键盘'],
     },
     {
-        id: 'm-20260824',
-        createdAt: newDate(2026, 8, 24, 18, 50),
-        content: '楼下新开了一家螺蛳粉，加双份酸笋。吃完感觉自己整个人都被腌入味了。',
-        location: '广东 广州',
-        tags: ['吃'],
+        id: '235.0',
+        postAt: newDate(2023, 5, 28, 16, 7),
+        content: '被好友带去靶场，第一次接触弯弓射箭。',
+        location: '中山',
+        tags: ['聚会'],
     },
     {
-        id: 'm-20260812',
-        createdAt: newDate(2026, 8, 12, 11, 3),
-        content: '把 6.5 版本的角色实用天赋表整理完了，翻图鉴翻到眼睛发酸。写表格有时候比打深渊还累。',
-        tags: ['原神'],
+        id: '227.0',
+        postAt: newDate(2022, 7, 31, 18, 59),
+        content: '被好友们带着玩了第一次剧本杀。',
+        location: '中山',
+        tags: ['聚会', '剧本杀'],
     },
-];
+    {
+        id: '219.0',
+        postAt: newDate(2021, 9, 14, 15, 2),
+        content: '入手一台 Alienware m15 R6，i7-11800H，RTX 3050 Ti Laptop，没有多少兴奋，更多的是“刘姥姥进大观园”。',
+        location: '中山',
+        tags: ['拆箱'],
+    },
+    {
+        id: '189.0',
+        postAt: newDate(2018, 9, 22, 21, 35),
+        content: '与舍友一同解构 [Obulis](https://store.steampowered.com/app/11330) 存档结构并伪造数据来解锁隐藏关卡。',
+        location: '中山',
+        tags: ['游戏'],
+    },
+].sort((a, b) => b.postAt.getTime() - a.postAt.getTime());

@@ -58,9 +58,6 @@ import AiTimelineItem from '#/components/AiTimelineItem.vue';
             <Icon height="24" icon="devicon:pnpm" />
             并创建 Monorepo 仓库容纳 Navifox Pages 向现代化前端开发发展。<br />
         </AiTimelineItem>
-        <AiTimelineItem color="#FF7F27" :moment="newDate(2025, 10, 14)" markdown>
-            购入正版 [Obulis](https://store.steampowered.com/app/11330)，了却遗憾。
-        </AiTimelineItem>
         <AiTimelineItem color="#FF7F27" :moment="newDate(2025, 8, 16, 11, 0)">
             <div class="relative mb-1.5 max-w-[95%] flex-1">
                 <pre class="absolute right-4 bottom-3 z-1 text-nowrap text-neutral-200">p156</pre>
@@ -118,12 +115,6 @@ import AiTimelineItem from '#/components/AiTimelineItem.vue';
             <Icon height="24" icon="logos:nginx" />
             域名转发，自此轰开前端大门。<br />
         </AiTimelineItem>
-        <AiTimelineItem color="#FF7F27" :moment="newDate(2024, 10, 25, 15, 32)">
-            入手一套提纳里一套赛诺 cos 服，第一次穿到了公司。<br />
-        </AiTimelineItem>
-        <AiTimelineItem color="#FF7F27" :moment="newDate(2024, 8, 6, 20, 6)">
-            在好友的安利下，第一次接触并购买了游戏手柄。<br />
-        </AiTimelineItem>
         <AiTimelineItem color="#FF7F27" :moment="newDate(2024, 7, 10, 16, 53)" markdown>
             受 [Csense](https://plugins.jetbrains.com/vendor/fab53479-05ec-4e6d-a40e-05df95be4921) 系列启发，将
             TinySnake 拆分为多个 HooTool 系列小插件。
@@ -144,9 +135,6 @@ import AiTimelineItem from '#/components/AiTimelineItem.vue';
             <Icon height="24" icon="logos:jetbrains" />
             Marketplace 中发布 TinySnake 插件。<br />
         </AiTimelineItem>
-        <AiTimelineItem color="#A349A4" :moment="newDate(2024, 1, 26, 20, 44)">
-            年会抽奖中了一个罗技 MX Master 3s 鼠标，跟同事换了一块 Keychron K10 Pro 机械键盘。<br />
-        </AiTimelineItem>
         <AiTimelineItem class="::[a]:cursor-no-drop" color="#A349A4" anchor="2024" date="2024 年 1 月" markdown>
             注册并备案以常用 ID 为域名的 [`aixcyi.cn`]()。
         </AiTimelineItem>
@@ -155,25 +143,16 @@ import AiTimelineItem from '#/components/AiTimelineItem.vue';
             <Icon height="24" icon="logos:kotlin-icon" />
             手搓插件 TinySnake 用以解决 Python <code>__all__</code> 的生成和更新。<br />
         </AiTimelineItem>
-        <AiTimelineItem color="#A349A4" :moment="newDate(2023, 5, 28, 16, 7)">
-            被好友带去靶场，第一次接触弯弓射箭。<br />
-        </AiTimelineItem>
         <AiTimelineItem color="#A349A4" anchor="2023" :moment="newDate(2023, 4, 25)">
             购买
             <Icon height="24" icon="vscode-icons:file-type-minecraft" />
             Minecraft: Java & Bedrock Edition for PC<br />
-        </AiTimelineItem>
-        <AiTimelineItem color="#A349A4" :moment="newDate(2022, 7, 31, 18, 59)">
-            被好友们带着玩了第一次剧本杀。<br />
         </AiTimelineItem>
         <AiTimelineItem color="#A349A4" :moment="newDate(2022, 3, 15)">
             辗转广州，承担电商、餐饮、零售、进销存等生态服务的建模、后端开发、测试、硬件对接、维护、性能优化……<br />
         </AiTimelineItem>
         <AiTimelineItem color="#A349A4" anchor="2022" :moment="newDate(2022, 2, 27, 10, 45)">
             发现 Quick Reference 并参与贡献，在名为开源的道路上迈出了第一步。<br />
-        </AiTimelineItem>
-        <AiTimelineItem color="#A349A4" :moment="newDate(2021, 9, 14, 15, 2)">
-            入手一台 Alienware m15 R6，i7-11800H，RTX 3050 Ti Laptop。<br />
         </AiTimelineItem>
         <AiTimelineItem color="#A349A4" date="2021 下半年">
             作为主面试官参与到公司 Django 后端开发岗位面试的技术环节。<br />
@@ -230,9 +209,6 @@ import AiTimelineItem from '#/components/AiTimelineItem.vue';
             ，开始接触集成开发环境
             <Icon height="24" icon="logos:pycharm" />
             ，逐渐领略其它语言的魅力。<br />
-        </AiTimelineItem>
-        <AiTimelineItem color="#00A2E8" :moment="newDate(2018, 9, 22, 21, 35)" markdown>
-            与舍友一同解构 [Obulis](https://store.steampowered.com/app/11330) 存档结构并伪造数据来解锁隐藏关卡。
         </AiTimelineItem>
         <AiTimelineItem color="#00A2E8" anchor="2018" :moment="newDate(2018, 8, 26, 11, 7)">
             成为“哔哩哔哩无限矿业公司”的一位用户。<br />

@@ -16,10 +16,10 @@ interface Props {
 const props = defineProps<Props>();
 
 /** 精确时间，作为悬停时的提示。 */
-const absoluteTime = computed(() => format(props.moment.createdAt, 'yyyy/M/d H:mm'));
+const absoluteTime = computed(() => format(props.moment.postAt, 'yyyy/M/d H:mm'));
 
 /** 相对时间标签（今天／昨天／N 天前）。 */
-const relativeTime = computed(() => beforeLabel(props.moment.createdAt));
+const relativeTime = computed(() => beforeLabel(props.moment.postAt));
 </script>
 
 <template>
@@ -42,7 +42,7 @@ const relativeTime = computed(() => beforeLabel(props.moment.createdAt));
             <div class="min-w-0 flex-1">
                 <h2 class="text-night-900 truncate text-sm font-bold dark:text-white">{{ navifox.name }}</h2>
                 <p class="text-xs text-stone-400 dark:text-slate-500">
-                    <time :datetime="moment.createdAt.toISOString()">{{ relativeTime }}</time>
+                    <time :datetime="moment.postAt.toISOString()">{{ relativeTime }}</time>
                     <span v-if="moment.location"> · {{ moment.location }}</span>
                 </p>
             </div>
