@@ -69,6 +69,12 @@
             vertical-align: -0.375em;
         }
     }
+
+    /* 卡片外壳：晨光纸底 + 星辉金细边 + 玻璃感，全站统一。
+       内边距、布局与悬停效果由使用处补工具类；圆角取值不同的卡片不套用此类。 */
+    .GlassCard {
+        @apply border-starlight-500/20 rounded-3xl border bg-white/70 backdrop-blur-sm dark:border-white/10 dark:bg-white/5;
+    }
 }
 
 /* 星空区的浅色适配：把 slate 蓝灰换成暖灰 stone。

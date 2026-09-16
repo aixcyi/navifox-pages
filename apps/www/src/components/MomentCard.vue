@@ -24,7 +24,7 @@ const relativeTime = computed(() => beforeLabel(props.moment.postAt));
 
 <template>
     <article
-        class="border-starlight-500/20 hover:shadow-starlight-600/10 group relative overflow-hidden rounded-3xl border bg-white/70 p-6 backdrop-blur-sm transition-shadow duration-300 hover:shadow-lg dark:border-white/10 dark:bg-white/5"
+        class="GlassCard hover:shadow-starlight-600/10 group relative overflow-hidden p-6 transition-shadow duration-300 hover:shadow-lg"
     >
         <header class="flex items-center gap-3">
             <AvatarRoot class="size-11 shrink-0 overflow-hidden rounded-full">
@@ -58,7 +58,7 @@ const relativeTime = computed(() => beforeLabel(props.moment.postAt));
                 :key="image.src"
                 :src="image.src"
                 :alt="image.alt"
-                class="w-full rounded-2xl select-none"
+                class="max-w-full rounded-2xl select-none"
                 loading="lazy"
                 decoding="async"
                 draggable="false"

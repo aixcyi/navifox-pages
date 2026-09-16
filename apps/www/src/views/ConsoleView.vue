@@ -199,11 +199,7 @@ function onSecondary(): void {
             </SectionHeader>
 
             <div class="mx-auto mt-12 mb-36 max-w-md">
-                <!-- 卡片原有的小标题与说明已由主人移除，`aria-labelledby` 指向的节点随之不存在，
-                     这里改成直接给一个组名，避免留下悬空的 ARIA 引用。 -->
-                <section
-                    class="border-starlight-500/20 rounded-3xl border bg-white/70 p-8 backdrop-blur-sm dark:border-white/10 dark:bg-white/5"
-                >
+                <section class="GlassCard p-8">
                     <form class="flex flex-col gap-5" @submit.prevent="onSubmit">
                         <TabsRoot v-model="activeMethod" class="flex flex-col gap-5">
                             <TabsList :class="tabListClass">

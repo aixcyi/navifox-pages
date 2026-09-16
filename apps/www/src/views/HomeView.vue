@@ -71,10 +71,7 @@ onMounted(() => {
     <div
         class="Starry from-paper-100 via-paper-50 to-paper-50 dark:from-night-900 dark:via-night-950 dark:to-night-950 relative z-20 flow-root bg-gradient-to-b"
     >
-        <div
-            :id="anchorIntro.id"
-            class="Trail MaxContainer relative my-24 scroll-mt-28 text-stone-600 dark:text-slate-300"
-        >
+        <div :id="anchorIntro.id" class="MaxContainer relative my-24 scroll-mt-28 text-stone-600 dark:text-slate-300">
             <SectionHeader
                 :description="anchorIntro.description"
                 :eyebrow="anchorIntro.eyebrow"
@@ -179,9 +176,7 @@ onMounted(() => {
             </SectionHeader>
             <div class="mt-12 grid gap-10 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-start">
                 <aside class="min-w-0 lg:order-2 lg:w-[26.5rem]">
-                    <div
-                        class="border-starlight-500/20 rounded-3xl border bg-white/70 p-6 backdrop-blur-sm sm:p-8 dark:border-white/10 dark:bg-white/5"
-                    >
+                    <div class="GlassCard p-6 sm:p-8">
                         <h3
                             class="text-starlight-600 dark:text-starlight-200 mb-5 text-lg font-semibold tracking-tight"
                             v-html="'技能面板'"
@@ -189,9 +184,7 @@ onMounted(() => {
                         <SkillsPanel two-columns />
                     </div>
                 </aside>
-                <div
-                    class="Content border-starlight-500/20 min-w-0 rounded-3xl border bg-white/70 p-6 backdrop-blur-sm sm:p-8 lg:order-1 dark:border-white/10 dark:bg-white/5"
-                >
+                <div class="GlassCard Content min-w-0 p-6 sm:p-8 lg:order-1">
                     <h3 class="text-starlight-600 dark:text-starlight-200 mb-5 text-lg font-semibold tracking-tight">
                         程序员等级评估<br />
                     </h3>

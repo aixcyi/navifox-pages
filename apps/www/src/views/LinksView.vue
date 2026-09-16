@@ -58,7 +58,7 @@ const copyableFields: { title: string; value: string; isPureCode?: boolean }[] =
                         :key="friend.name"
                         :href="friend.link"
                         :class="[
-                            'border-starlight-500/20 group relative flex flex-col overflow-hidden rounded-3xl border bg-white/70 p-6 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl dark:border-white/10 dark:bg-white/5',
+                            'GlassCard group relative flex flex-col overflow-hidden p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl',
                             friendAccents[friend.type].card,
                         ]"
                         target="_blank"
