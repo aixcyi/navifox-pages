@@ -14,21 +14,43 @@
 }
 
 @layer components {
-    .Content {
+    /* 全站富文本容器：Markdown 渲染结果与手写正文都套这一层。
+       配色必须与星夜色板一致——这里曾经沿用旧主题的青色链接＋橙色下划线，
+       于是首页之外的页面（例如朋友圈卡片）与首页时间线明显不同色。
+
+       `a` / `b` / `strong` / `u` 这些**行内**样式同时挂在 `.Starry` 上：
+       首页有位于 `.Content` 之外、观感却必须一致的片段（技能树小标题里的外链、技能面板里的 <b>）。
+       `p` / `ol` / `ul` / `svg` 不共享——它们会改变排版，一旦挂到 `.Starry` 就会波及
+       SectionHeader 的说明段落等并非富文本的地方。 */
+    .Content,
+    .Starry {
         u {
-            text-decoration: underline 3px var(--color-orange-500);
-            text-underline-offset: 3px;
+            @apply decoration-starlight-500 dark:decoration-starlight-400 underline decoration-[3px] underline-offset-[3px];
         }
 
         a {
-            @apply text-cyan-700 transition-colors duration-200 dark:text-slate-200;
-            @apply hover:text-orange-500 dark:hover:text-orange-300;
+            @apply text-starlight-600 decoration-starlight-500 underline decoration-1 underline-offset-[3px] transition-colors duration-200;
+            @apply hover:text-starlight-500 hover:decoration-starlight-500;
+            @apply dark:text-starlight-300 dark:decoration-starlight-400 dark:hover:text-starlight-200 dark:hover:decoration-starlight-300;
         }
 
-        b {
-            @apply text-slate-700 dark:text-slate-300;
+        /* Markdown 的 `**x**` 渲染成 <strong>，手写正文里则可能是 <b>，两种都要管。
+           加粗的颜色刻意保持「低优先级」：它只是正文里的轻微加深，
+           一旦落在链接里就必须让位给链接色——`<strong>` 自己的 color 会挡住从 <a> 继承来的星辉金，
+           所以下面另有一条把链接内的加粗还原为继承色。 */
+        b,
+        strong {
+            @apply text-stone-700 dark:text-slate-300;
         }
+    }
 
+    /* 链接里的加粗跟随链接色（`[**文字**](url)` 就是这种结构）。
+       特异性比上一条多一个 `a`，必然胜出，不依赖书写顺序。 */
+    :is(.Content, .Starry) a :is(b, strong) {
+        color: inherit;
+    }
+
+    .Content {
         p {
             @apply mt-2 indent-8;
         }
@@ -49,36 +71,9 @@
     }
 }
 
-/* 星空区（首页「关于我／一览」等）浅色适配：slate 蓝灰 → 暖灰 stone，链接与下划线换金色。
+/* 星空区的浅色适配：把 slate 蓝灰换成暖灰 stone。
+   这里只做「工具类改写」，行内富文本样式已并入上面的 `.Content, .Starry`。
    置于 @layer 之外：未分层规则优先于 @layer utilities（层顺序先于特异性）。 */
-.Starry a {
-    color: var(--color-starlight-600);
-    text-decoration: underline;
-    text-decoration-color: var(--color-starlight-500);
-    text-decoration-thickness: 1px;
-    text-underline-offset: 3px;
-    transition: color 0.2s;
-}
-
-.Starry a:hover {
-    color: var(--color-starlight-500);
-    text-decoration-color: var(--color-starlight-500);
-}
-
-.dark .Starry a {
-    color: var(--color-starlight-300);
-    text-decoration-color: var(--color-starlight-400);
-}
-
-.dark .Starry a:hover {
-    color: var(--color-starlight-200);
-    text-decoration-color: var(--color-starlight-300);
-}
-
-html:not(.dark) .Starry b {
-    color: var(--color-stone-700);
-}
-
 html:not(.dark) .Starry .text-slate-300 {
     color: var(--color-stone-300);
 }
@@ -91,35 +86,20 @@ html:not(.dark) .Starry .text-slate-500 {
     color: var(--color-stone-500);
 }
 
-html:not(.dark) .Starry u {
-    text-decoration-color: var(--color-starlight-500);
-}
-
-.dark .Starry u {
-    text-decoration-color: var(--color-starlight-400);
-}
-
 /* 区块锚点标题（AnchorHeading 组件）：默认继承标题本色、无下划线，悬停时才转金色。
-   首页标题位于 .Starry 内，会被其正文链接样式（金色+下划线）误染，需以更高特异性覆盖
-   （含 .dark 组合，深色下 .dark .Starry a 特异性高于 .Starry .AnchorHeading）。 */
-.AnchorHeading,
-.Starry .AnchorHeading,
-.dark .AnchorHeading,
-.dark .Starry .AnchorHeading {
+   富文本链接样式现在位于 @layer components，而未分层规则优先于任何 @layer，
+   所以这里单靠 `.AnchorHeading` 就足以压过去，不再需要堆一串提高特异性的组合选择器。 */
+.AnchorHeading {
     color: inherit;
     text-decoration: none;
     transition: color 0.2s;
 }
 
-.AnchorHeading:hover,
-.Starry .AnchorHeading:hover,
-.dark .AnchorHeading:hover,
-.dark .Starry .AnchorHeading:hover {
+.AnchorHeading:hover {
     color: var(--color-starlight-600);
 }
 
-.dark .AnchorHeading:hover,
-.dark .Starry .AnchorHeading:hover {
+.dark .AnchorHeading:hover {
     color: var(--color-starlight-300);
 }
 
