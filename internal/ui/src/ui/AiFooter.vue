@@ -21,9 +21,9 @@ const linkMap = [
         subtitle: 'Sitemap',
         data: sitemap,
         styles: {
-            link: 'hover:border-rose-300/60 dark:hover:border-rose-300/40',
-            icon: 'text-rose-300',
-            title: 'group-hover:text-rose-400 dark:group-hover:text-rose-300',
+            link: 'hover:border-blossom-300/60 dark:hover:border-blossom-300/40',
+            icon: 'text-blossom-300',
+            title: 'group-hover:text-blossom-400 dark:group-hover:text-blossom-300',
         },
     },
     {
@@ -51,7 +51,7 @@ const linkMap = [
 
 <template>
     <footer
-        class="border-t border-amber-400/20 bg-stone-100 text-stone-700 dark:border-white/10 dark:bg-slate-900 dark:text-slate-300"
+        class="border-starlight-500/20 bg-paper-100 dark:bg-night-900 border-t text-stone-700 dark:border-white/10 dark:text-slate-300"
     >
         <div class="MaxContainer py-10!">
             <div class="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-4 xl:gap-8">
@@ -65,7 +65,7 @@ const linkMap = [
                             :class="styles.link"
                             :href="item.link"
                             :target="(item.link ?? '').startsWith('https://') ? '_blank' : '_self'"
-                            class="group flex items-center rounded-xl border border-amber-400/15 bg-white p-3 transition-all duration-200 hover:shadow-md dark:border-white/10 dark:bg-slate-800"
+                            class="group border-starlight-500/15 flex items-center rounded-xl border bg-white p-3 transition-all duration-200 hover:shadow-md dark:border-white/12 dark:bg-sky-300/10"
                         >
                             <div
                                 :class="styles.icon"
@@ -115,14 +115,14 @@ const linkMap = [
                             <a
                                 v-if="social.logo"
                                 :href="social.link"
-                                class="transition-colors duration-200 hover:text-amber-500 dark:hover:text-amber-300"
+                                class="hover:text-starlight-500 dark:hover:text-starlight-300 transition-colors duration-200"
                                 target="_blank"
                             >
                                 <Icon :icon="social.logo" height="24" />
                             </a>
                         </template>
                         <button
-                            class="group inline-flex h-9 w-9 flex-shrink-0 cursor-pointer items-center justify-center rounded-3xl bg-white text-stone-700 outline outline-amber-400/30 backdrop-blur-sm transition-colors duration-200 hover:bg-stone-50 dark:bg-slate-800 dark:text-slate-300 dark:outline-white/10 dark:hover:bg-slate-700"
+                            class="group outline-starlight-500/30 inline-flex h-9 w-9 flex-shrink-0 cursor-pointer items-center justify-center rounded-3xl bg-white text-stone-700 outline backdrop-blur-sm transition-colors duration-200 hover:bg-stone-50 dark:bg-white/10 dark:text-slate-300 dark:outline-white/10 dark:hover:bg-white/15"
                             @click="toggleDark(!isDark)"
                         >
                             <i class="text-stone-600 transition-all duration-200 dark:text-slate-300">
@@ -136,7 +136,7 @@ const linkMap = [
                     <p v-for="copyright in copyrights" class="flex flex-wrap">
                         <a
                             :href="copyright.link"
-                            class="transition-colors duration-200 hover:text-amber-500 dark:hover:text-amber-300"
+                            class="hover:text-starlight-500 dark:hover:text-starlight-300 transition-colors duration-200"
                             target="_blank"
                             v-html="copyright.text"
                         />
@@ -145,7 +145,7 @@ const linkMap = [
                         © {{ sinceYear }}-{{ untilYear }}
                         <a
                             :href="navifoxHome.link"
-                            class="hover:text-amber-500 hover:underline hover:decoration-wavy dark:hover:text-amber-300"
+                            class="hover:text-starlight-500 dark:hover:text-starlight-300 hover:underline hover:decoration-wavy"
                             target="_blank"
                             v-html="navifox.name"
                         />
@@ -155,7 +155,7 @@ const linkMap = [
                         © {{ sinceYear }}-{{ untilYear }}
                         <a
                             :href="navifoxHome.link"
-                            class="hover:text-amber-500 hover:underline hover:decoration-wavy dark:hover:text-amber-300"
+                            class="hover:text-starlight-500 dark:hover:text-starlight-300 hover:underline hover:decoration-wavy"
                             target="_blank"
                             v-html="navifox.uid"
                         />
@@ -165,7 +165,7 @@ const linkMap = [
                     <p>
                         曾借鉴
                         <a
-                            class="transition-colors duration-200 hover:text-amber-500 dark:hover:text-amber-300"
+                            class="hover:text-starlight-500 dark:hover:text-starlight-300 transition-colors duration-200"
                             href="https://github.com/Fechin/reference"
                             target="_blank"
                             v-html="'reference'"
@@ -175,7 +175,7 @@ const linkMap = [
                     <p>
                         使用了
                         <a
-                            class="transition-colors duration-200 hover:text-amber-500 dark:hover:text-amber-300"
+                            class="hover:text-starlight-500 dark:hover:text-starlight-300 transition-colors duration-200"
                             href="https://iconify.design/"
                             target="_blank"
                             v-html="'Iconify'"
@@ -185,7 +185,7 @@ const linkMap = [
                     <p>
                         使用了
                         <a
-                            class="transition-colors duration-200 hover:text-amber-500 dark:hover:text-amber-300"
+                            class="hover:text-starlight-500 dark:hover:text-starlight-300 transition-colors duration-200"
                             href="https://fonts.google.com/specimen/Whisper"
                             target="_blank"
                             v-html="'Whisper'"
@@ -195,7 +195,7 @@ const linkMap = [
                     <p>
                         使用了
                         <a
-                            class="transition-colors duration-200 hover:text-amber-500 dark:hover:text-amber-300"
+                            class="hover:text-starlight-500 dark:hover:text-starlight-300 transition-colors duration-200"
                             href="https://www.jetbrains.com/lp/mono/"
                             target="_blank"
                             v-html="'JetBrains Mono'"
@@ -216,10 +216,10 @@ const linkMap = [
                             </div>
                             <span class="hidden text-xl font-bold tracking-tight md:flex md:text-2xl lg:text-3xl">
                                 <span
-                                    class="bg-gradient-to-r from-stone-800 to-amber-300 bg-clip-text text-transparent dark:from-slate-100 dark:to-amber-300"
+                                    class="to-starlight-500 dark:to-starlight-300 bg-gradient-to-r from-stone-800 bg-clip-text text-transparent dark:from-slate-100"
                                     v-html="'navi'"
                                 />
-                                <span class="font-black text-amber-500 dark:text-amber-400">fox</span>
+                                <span class="text-starlight-500 dark:text-starlight-300 font-black">fox</span>
                                 <span class="font-black text-stone-400 dark:text-slate-500">.net</span>
                             </span>
                         </a>
