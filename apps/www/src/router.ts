@@ -5,12 +5,7 @@ import { nextTick } from 'vue';
 import { createRouter, createWebHistory } from 'vue-router';
 
 import NotFound from '#/NotFound.vue';
-import ConsoleView from '#/views/ConsoleView.vue';
-import FavoritesView from '#/views/FavoritesView.vue';
 import HomeView from '#/views/HomeView.vue';
-import LinksView from '#/views/LinksView.vue';
-import MapView from '#/views/MapView.vue';
-import MomentsView from '#/views/MomentsView.vue';
 
 const router = createRouter({
     history: createWebHistory(),
@@ -50,7 +45,7 @@ const router = createRouter({
                 title: '它山亭',
                 isShowOnNavbar: true,
             },
-            component: FavoritesView,
+            component: () => import('#/views/FavoritesView.vue'),
         },
         {
             path: '/moments',
@@ -59,7 +54,7 @@ const router = createRouter({
                 title: '凭栏处', // 雪泥鸿爪
                 isShowOnNavbar: true,
             },
-            component: MomentsView, // TODO: 实现一个朋友圈（碎碎念展示）。
+            component: () => import('#/views/MomentsView.vue'),
         },
         {
             path: '/map',
@@ -68,7 +63,7 @@ const router = createRouter({
                 title: '游地简',
                 isShowOnNavbar: true,
             },
-            component: MapView, // TODO: 实现一个旅游地图。
+            component: () => import('#/views/MapView.vue'), // FUTURE: 实现一个旅游地图。
         },
         {
             path: '/links',
@@ -77,7 +72,7 @@ const router = createRouter({
                 title: '旧雨庐',
                 isShowOnNavbar: true,
             },
-            component: LinksView,
+            component: () => import('#/views/LinksView.vue'),
         },
         {
             path: '/console',
@@ -86,7 +81,7 @@ const router = createRouter({
                 title: '狐引',
                 isShowOnNavbar: true,
             },
-            component: ConsoleView, // TODO: 实现一个登录页。
+            component: () => import('#/views/ConsoleView.vue'), // FUTURE: 实现一个登录页。
         },
         {
             path: '/:pathMatch(.*)*',
