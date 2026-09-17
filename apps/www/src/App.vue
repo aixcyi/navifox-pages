@@ -33,7 +33,7 @@ const isHome = computed(() => route.name === 'Homepage');
             decoding="sync"
             class="size-full object-cover"
         />
-        <div class="absolute inset-0 bg-black/33 dark:bg-black/67" />
+        <div class="absolute inset-0 bg-black/50 dark:bg-black/67" />
         <!-- 星夜氛围渐变（浅色模式交给遮罩，深色模式额外压暗） -->
         <div
             class="absolute inset-0 bg-gradient-to-t from-transparent via-transparent to-transparent dark:from-black/40"
