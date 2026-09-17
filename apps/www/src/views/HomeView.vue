@@ -2,6 +2,7 @@
 import { Icon } from '@iconify/vue/offline';
 import { navifox, signature, socials } from '@navifox/constants';
 import type { Anchor } from '@navifox/types';
+import { AvatarFallback, AvatarImage, AvatarRoot } from 'reka-ui';
 import { onMounted } from 'vue';
 
 import Chronicle from '#/components/Chronicle.vue';
@@ -90,11 +91,18 @@ onMounted(() => {
                     />
                     <div class="relative flex flex-col gap-7 p-6 sm:p-8">
                         <div class="flex items-center gap-5 lg:flex-col lg:items-center lg:gap-4">
-                            <img
-                                :src="navifox.avatar512"
-                                :alt="navifox.name"
-                                class="size-24 shrink-0 rounded-3xl border-2 border-rose-400/40 object-cover select-none lg:aspect-square lg:h-auto lg:w-full lg:rounded-full dark:border-rose-300/40"
-                            />
+                            <AvatarRoot
+                                class="border-starlight-500/25 dark:border-starlight-300/15 size-24 shrink-0 overflow-hidden rounded-3xl border-2 select-none lg:aspect-square lg:h-auto lg:w-full lg:rounded-full"
+                            >
+                                <AvatarImage
+                                    :src="navifox.avatar512"
+                                    :alt="navifox.name"
+                                    class="size-full object-cover"
+                                />
+                                <AvatarFallback class="flex size-full items-center justify-center" :delay-ms="200">
+                                    <Icon class="size-1/2" icon="fluent-emoji:fox" />
+                                </AvatarFallback>
+                            </AvatarRoot>
                             <div class="min-w-0 lg:text-center">
                                 <p
                                     class="text-night-900 text-2xl font-bold tracking-tight dark:text-white"

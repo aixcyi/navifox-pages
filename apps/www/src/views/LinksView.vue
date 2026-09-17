@@ -2,7 +2,7 @@
 import { Icon } from '@iconify/vue/offline';
 import { friends, navifox, type FriendLink, navifoxBlog } from '@navifox/constants';
 import { format } from '@navifox/utils/dnt';
-import { reactive } from 'vue';
+import { AvatarFallback, AvatarImage, AvatarRoot } from 'reka-ui';
 
 import CopyField from '#/components/CopyField.vue';
 import Navbar from '#/components/Navbar.vue';
@@ -25,9 +25,6 @@ const friendAccents: Record<FriendLink['type'], { card: string; arrow: string }>
         arrow: 'text-aurora-500 dark:text-aurora-200',
     },
 };
-
-/** 头像加载失败的友邻名称集合，用于触发内联 SVG 占位符。 */
-const failedAvatars = reactive(new Set<string>());
 
 const copyableFields: { title: string; value: string; isPureCode?: boolean }[] = [
     { title: '名称', value: navifox.name },
@@ -64,23 +61,22 @@ const copyableFields: { title: string; value: string; isPureCode?: boolean }[] =
                         target="_blank"
                     >
                         <div class="flex items-center gap-4">
-                            <div
+                            <AvatarRoot
                                 :class="[
                                     'flex size-16 shrink-0 items-center justify-center overflow-hidden text-stone-400',
                                     ...(friend.styles?.avatar ?? []),
                                 ]"
                             >
-                                <img
-                                    v-if="friend.avatar && !failedAvatars.has(friend.name)"
-                                    :src="friend.avatar"
+                                <AvatarImage
+                                    :src="friend.avatar ?? ''"
                                     :alt="friend.name"
                                     class="size-full object-cover"
-                                    loading="lazy"
                                     decoding="async"
-                                    @error="failedAvatars.add(friend.name)"
                                 />
-                                <PawOff v-else class="text-6xl" aria-hidden="true" />
-                            </div>
+                                <AvatarFallback class="flex size-full items-center justify-center">
+                                    <PawOff class="text-6xl" aria-hidden="true" />
+                                </AvatarFallback>
+                            </AvatarRoot>
                             <h2
                                 v-if="friend.title"
                                 class="text-night-900 flex min-w-0 flex-1 items-center gap-1 text-lg font-bold tracking-tight dark:text-white"
