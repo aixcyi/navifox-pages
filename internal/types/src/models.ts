@@ -1,87 +1,136 @@
 /**
- * 徽章。
+ * 链接（基类）。
  */
-export interface Badge {
-    /** 图标名称（尤指图标库的 `id`）。 */
-    logo: string;
-
-    /** 渲染文本／回退文字／提示信息。 */
+export interface Hyperlink {
+    /** 展示文字。 */
     text?: string;
 
-    /** 跳转链接。 */
+    /**
+     * 链接地址。
+     *
+     * - 可以是以 `https://`、`http://` 等开头的绝对地址，也可以是以 `/` 开头的相对路径。
+     */
     link?: string;
-}
 
-/**
- * 网站图标。
- */
-export interface Favicon {
+    /** 图标编号（尤指各类图标库用于标识定位的字符串）。 */
+    logo?: string;
+
     /** 图标链接（`https://` 或 `/` 开头的 URI 地址）。 */
     icon?: string;
 
-    /** 图标名称（尤指图标库的 `id`）。 */
-    logo?: string;
-}
-
-/**
- * 超链接。
- */
-export interface Hyperlink extends Favicon {
-    /** 展示文字。`null` 表示用作隔断。 */
-    text: string | null;
-
-    /** 链接地址。 */
-    link: string;
-
-    icon?: string;
-
-    logo?: string;
-
     /**
-     * HTML 元素 `id`。
-     *
-     * @see https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Global_attributes/id 全局属性 `id`
-     */
-    elementId?: string;
-}
-
-/**
- * 站点信息。
- */
-export interface Website extends Favicon {
-    /** 站点名称。 */
-    name: string;
-
-    /** 首页链接。 */
-    link: string;
-
-    /**
-     * 图标的
+     * 图标链接的
      * [MIME]{@link https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Guides/MIME_types}
-     * 类型。
+     * 类型（专指 {@link icon} 字段）。
      */
     mime?: string;
 
+    /**
+     * 锚点标识符。
+     *
+     * - 不以 `#` 开头。
+     * - 一般用于 HTML 元素 `id` 属性。
+     *
+     * @see https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Global_attributes/id MDN - 全局属性 `id`
+     */
+    anchor?: string;
+}
+
+/**
+ * 徽章。
+ *
+ * {@link Hyperlink} 变种，必须指定 {@link logo} 字段。
+ */
+export interface Badge extends Hyperlink {
+    text?: string;
+
+    /**
+     * 点击徽章后跳转的链接。
+     *
+     * - 可以是以 `https://`、`http://` 等开头的绝对地址，也可以是以 `/` 开头的相对路径。
+     */
+    link?: string;
+
+    logo: string;
+    icon?: undefined;
+    mime?: undefined;
+
+    anchor?: string;
+}
+
+/**
+ * 文字链接。
+ *
+ * {@link Hyperlink} 变种，必须指定 {@link text} 和 {@link link} 字段。
+ */
+export interface TextLink extends Hyperlink {
+    text: string;
+    link: string;
+    logo?: string;
     icon?: string;
+    mime?: string;
+    anchor?: string;
+}
+
+/**
+ * 站点。
+ *
+ * 面向站点信息设计的 {@link TextLink} 变种。
+ */
+export interface Website extends TextLink {
+    /** 站点名称。 */
+    text: string;
+
+    /**
+     * 站点链接。
+     *
+     * - 可以是以 `https://`、`http://` 等开头的绝对地址，也可以是以 `/` 开头的相对路径。
+     */
+    link: string;
+
+    /**
+     * 站内链接。
+     *
+     * - 仅限以 `/` 开头的相对路径。
+     * - 仅当同时需要存储站内外链接时使用。
+     */
+    path?: string;
 
     logo?: string;
+    icon?: string;
+    mime?: string;
+    anchor?: string;
 
     /**
      * 标语。
      *
-     * 简洁有力、代表品牌理念的宣传口号，一般不以句号结尾。
+     * - 简洁有力、代表品牌理念的宣传口号.
+     * - 一般不以句号结尾。
+     * - 一般是一两句话，且不会换行。
      */
     slogan?: string;
 
     /**
      * 站点描述。
      *
-     * 纯文本，不应包含 Markdown 或 HTML 等等。
+     * 此字段一般是面向 OG 协议或其它只能够接受纯文本的场景，因此字段值不应包含
+     * Markdown 或 HTML 等额外的、不可见的标记语言，并且也不建议有换行符。
      */
     description?: string;
 
-    /** 站点描述（HTML格式）。*/
+    /**
+     * 站点描述。
+     *
+     * - 多数情况下是 HTML 格式，如果字面值是 Markdown 或包含其它标记语言，比较建议在最后统一编译为 HTML。
+     * - 实际渲染的内容一般与 {@link description} 字段一致，不过也可以有换行符来书写更多内容。
+     */
     descriptionRich?: string;
+
+    /** 项目文档。 */
+    documentationUrl?: string;
+
+    /** 源代码仓库。 */
+    repositoryUrl?: string;
 
     /** 设置／偏好页。 */
     settingsUrl?: string;
@@ -102,28 +151,33 @@ export interface Website extends Favicon {
     note?: string;
 }
 
+export type FriendType = 'partner' | 'feed' | 'pixel';
+
 /**
- * 友链信息。
+ * 友链。
+ *
+ * - 面向友链业务设计的 {@link Website} 变种。
+ * - 一般情况下友链都会有“站点名称” {@link text} 字段；如果确实没有，用“站点拥有者” {@link author} 字段的值填充，而后者保持为 `undefined` 。
  */
 export interface Friend extends Website {
-    /**
-     * 昵称。
-     *
-     * - 此字段不再是父类 {@link Website} 的“站点名称”，而是友人的昵称。
-     */
-    name: string;
+    text: string;
     link: string;
+    path?: undefined;
+    logo?: string;
     icon?: string;
     mime?: string;
-    logo?: string;
-
-    /**
-     * 站点名称。
-     *
-     * - 用于承接父类 {@link Website} 的 `name` 字段。
-     * - 友链允许没有站点名称。
-     */
-    title?: string;
+    anchor?: string;
+    slogan?: string;
+    description?: string;
+    descriptionRich?: string;
+    documentationUrl?: string;
+    repositoryUrl?: string;
+    settingsUrl?: string;
+    loginUrl?: string;
+    adminUrl?: string;
+    author?: string;
+    tags?: string[];
+    note?: string;
 
     /**
      * 头像图片地址。
@@ -148,24 +202,24 @@ export interface Friend extends Website {
      */
     avatar512?: string;
 
+    /** 友链类型。 */
+    type: FriendType;
+
+    /** 是否隐藏或不可用。 */
+    disabled?: boolean;
+
     /** 职位、头衔…… */
     titles?: string[];
 
     /** 个性签名。 */
     status?: string;
 
-    slogan?: string;
-    description?: string;
-    descriptionRich?: string;
-    settingsUrl?: string;
-    loginUrl?: string;
-    adminUrl?: string;
-    author?: string;
-    tags?: string[];
-    note?: string;
-
-    /** 社交链接。 */
-    socials?: { [brand: string]: string };
+    /**
+     * 社交账号。
+     *
+     * 键为平台名、值为该平台上的地址或 id。
+     */
+    social?: { [brand: string]: string };
 
     /**
      * 相遇时间。
@@ -175,43 +229,67 @@ export interface Friend extends Website {
     meet?: Date;
 
     /**
-     * 附加渲染样式。
+     * 头像的附加渲染样式。
      *
      * - 统一采用 Tailwind CSS v4 类名。
-     * - 数组的每个元素允许是单个类名，也允许是含空格的多个类名，调用方必须兼顾两种情况。
+     * - 需要多个类名时直接写在同一字符串里（如 `'rounded-full ring-2 ring-white'`）。
      */
-    styles?: { avatar?: string[] };
+    avatarStyles?: string;
 }
 
 /**
  * 项目信息。
+ *
+ * 面向项目展示设计的 {@link Website} 变种，必须指定 {@link description} 字段。
  */
-export interface Project {
+export interface Project extends Website {
     /** 项目名称。 */
-    name: string;
+    text: string;
+
+    /**
+     * 项目地址。
+     *
+     * - 优先填官方网站，其次是发行页面（如 npm、PyPI、VSCode Marketplace 等），接着是在线托管的文档，最后才是源代码仓库。
+     * - 即使与其它字段重复，也必须填两份，因为这个字段就是用于提供一个直接的、确定的、可点击的链接。
+     */
+    link: string;
+
+    path?: string;
+    logo?: string;
+    icon?: string;
+    mime?: string;
+    anchor?: string;
+    slogan?: string;
 
     /**
      * 项目简介。
      *
-     * 渲染时不考虑支持多行文本。
+     * 纯文本，不应包含 Markdown 或 HTML 等等，渲染时也不考虑支持多行文本。
      */
     description: string;
 
     /**
-     * 源代码仓库。
+     * 项目简介。
      *
-     * 如果还需要图标，那么应当在“社交链接”中提供，这个字段是专门在 **不显示图标** 的情况下用的。
+     * - 多数情况下是 HTML 格式，如果字面值是 Markdown 或包含其它标记语言，比较建议在最后统一编译为 HTML。
+     * - 实际渲染的内容一般与 {@link description} 字段一致，不过也可以有换行符来书写更多内容。
      */
-    repository?: string;
+    descriptionRich?: string;
 
-    /** 项目文档。 */
-    documentation?: string;
+    documentationUrl?: string;
+    repositoryUrl?: string;
+    settingsUrl?: string;
+    loginUrl?: string;
+    adminUrl?: string;
+    author?: string;
+    tags?: string[];
+    note?: string;
 
     /**
      * 发行类型。
      *
      * - 比如说一个 npm 包、一个 Python 包、一个 VSCode 插件等等。
-     * - 必须是一个图标名称（尤指图标库的 `id`）而不能是一条链接。
+     * - 必须是一个图标名称（尤指各类图标库用于标识定位的字符串）而不能是一条链接。
      */
     releaseType?: string;
 
@@ -223,7 +301,7 @@ export interface Project {
 }
 
 /**
- * 书签组所属的生态分类（refs 首页以 Tab 形式呈现）。
+ * 书签组所属的生态分类。
  */
 export type BookmarkCategory = 'python' | 'node' | 'java' | 'more';
 
@@ -232,9 +310,9 @@ export type BookmarkCategory = 'python' | 'node' | 'java' | 'more';
  */
 export interface BookmarkGroup {
     /** 标题（带链接）。 */
-    title?: Hyperlink;
+    title?: TextLink;
 
-    /** 所属生态分类（refs 首页 Tab）。 */
+    /** 所属生态分类。 */
     category?: BookmarkCategory;
 
     /** 组内书签。 */

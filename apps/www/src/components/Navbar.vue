@@ -102,7 +102,7 @@ onBeforeUnmount(() => window.removeEventListener('scroll', onScroll));
             >
                 <RouterLink
                     to="/"
-                    :title="navifoxHome.name"
+                    :title="navifoxHome.text"
                     class="group flex flex-nowrap items-center gap-2 select-none"
                 >
                     <span
@@ -174,7 +174,7 @@ onBeforeUnmount(() => window.removeEventListener('scroll', onScroll));
                                     class="flex items-center gap-2 px-3 py-2 text-sm font-bold whitespace-nowrap select-none"
                                 >
                                     <Icon class="text-xl" icon="fluent-emoji:fox" />
-                                    <span>{{ navifoxHome.name }}</span>
+                                    <span>{{ navifoxHome.text }}</span>
                                 </DropdownMenuLabel>
                                 <div class="border-t-starlight-500/20 mt-1 border-t dark:border-t-white/10" />
 

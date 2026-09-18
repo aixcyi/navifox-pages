@@ -21,8 +21,8 @@ const configurator = new VitePressConfigurator({
         root: {
             lang: 'zh-CN',
             label: '简体中文',
-            title: navifoxBlog.name,
-            titleTemplate: `:title · ${navifoxBlog.name}`, // •
+            title: navifoxBlog.text,
+            titleTemplate: `:title · ${navifoxBlog.text}`, // •
             description: '一只毛茸茸爱好者的博客。',
             themeConfig: {
                 // https://vitepress.dev/reference/default-theme-config
@@ -36,7 +36,7 @@ const configurator = new VitePressConfigurator({
                 docFooter: { prev: '上一篇', next: '下一篇' },
                 footer: {
                     message: undefined,
-                    copyright: `© ${sinceYear}-${untilYear} <a href="${navifoxHome.link}" target="_blank">${navifox.name}</a> 版权所有. All Rights Reserved.`,
+                    copyright: `© ${sinceYear}-${untilYear} <a href="${navifoxHome.link}" target="_blank">${navifox.author}</a> 版权所有. All Rights Reserved.`,
                 },
                 lastUpdated: {
                     text: '最后提交时间',
@@ -122,6 +122,6 @@ configurator
     .autoNavLink({ link: '/posts' })
     .autoDirMenu('./', { text: '归档' })
     .autoNavLink({ link: '/anywhere' })
-    .pushNavLink({ text: navifoxHome.name, link: navifoxHome.link });
+    .pushNavLink({ text: navifoxHome.text, link: navifoxHome.link });
 
 export default configurator.define();

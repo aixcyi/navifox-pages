@@ -6,7 +6,8 @@ import { Markdown as down } from '@navifox/ui';
 import Experience from '#/components/Experience.vue';
 
 const project: Project = {
-    name: '跨境电商ERP',
+    text: '跨境电商ERP',
+    link: '#',
     description: '',
     stack: [
         ColorBadge.Python,

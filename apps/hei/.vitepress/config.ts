@@ -87,7 +87,7 @@ const pageHookOrdered: PageHook = {
 configurator
     .hookPageOrdering(pageHookDefault)
     .goto('root')
-    .pushSocial({ ariaLabel: foxeryGuild.name, icon: 'qq', link: foxeryGuild.link })
+    .pushSocial({ ariaLabel: foxeryGuild.text, icon: 'qq', link: foxeryGuild.link })
     .pushSocial({ ariaLabel: 'GitHub 仓库', icon: 'github', link: 'https://github.com/aixcyi/navifox-pages' })
     .autoSidebar('/guild/', './guild/', { pageHook: pageHookOrdered, deep: true })
     .autoSidebar('/spirit/', './spirit/', { pageHook: pageHookOrdered, deep: true })
@@ -102,7 +102,7 @@ configurator
             configurator.findNavLink({ link: '/about' }),
             configurator.findNavLink({ link: '/contribute' }),
             configurator.findNavLink({ link: '/register' }),
-            { items: [{ text: navifoxHome.name, link: navifoxHome.link }] },
+            { items: [{ text: navifoxHome.text, link: navifoxHome.link }] },
         ],
     });
 

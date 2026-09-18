@@ -29,8 +29,8 @@ const relativeTime = computed(() => beforeLabel(props.moment.postAt));
         <header class="flex items-center gap-3">
             <AvatarRoot class="size-11 shrink-0 overflow-hidden rounded-full">
                 <AvatarImage
-                    :src="navifox.avatar"
-                    :alt="navifox.name"
+                    :src="navifox.avatar ?? ''"
+                    :alt="navifox.author"
                     class="size-full object-cover"
                     loading="lazy"
                     decoding="async"
@@ -40,7 +40,7 @@ const relativeTime = computed(() => beforeLabel(props.moment.postAt));
                 </AvatarFallback>
             </AvatarRoot>
             <div class="min-w-0 flex-1">
-                <h2 class="text-night-900 truncate text-sm font-bold dark:text-white">{{ navifox.name }}</h2>
+                <h2 class="text-night-900 truncate text-sm font-bold dark:text-white">{{ navifox.author }}</h2>
                 <p class="text-xs text-stone-400 dark:text-slate-500">
                     <time :datetime="moment.postAt.toISOString()">{{ relativeTime }}</time>
                     <span v-if="moment.location"> · {{ moment.location }}</span>

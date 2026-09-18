@@ -11,7 +11,10 @@ import {
     sinceYear,
     untilYear,
 } from '@navifox/constants';
+import type { Friend } from '@navifox/types';
 import { useDark, useToggle } from '@vueuse/core';
+
+import AiIcon from './AiIcon.vue';
 
 const isDark = useDark();
 const toggleDark = useToggle(isDark);
@@ -39,7 +42,9 @@ const linkMap = [
     {
         title: '友情链接',
         subtitle: 'Friends',
-        data: friends.slice(0, Math.max(sitemap.length, credits.length)),
+        data: friends
+            .slice(0, Math.max(sitemap.length, credits.length))
+            .map((friend) => ({ ...friend, note: '' }) as Friend),
         styles: {
             link: 'hover:border-violet-400/60 dark:hover:border-violet-400/50',
             icon: 'text-violet-500 dark:text-violet-300',
@@ -71,16 +76,7 @@ const linkMap = [
                                 :class="styles.icon"
                                 class="mr-3 flex h-8 w-8 flex-shrink-0 items-center justify-center"
                             >
-                                <Icon v-if="item.logo" :icon="item.logo" height="24" />
-                                <img
-                                    v-else-if="item.icon"
-                                    :src="item.icon"
-                                    alt="ico"
-                                    class="size-6 rounded-md select-none"
-                                    loading="lazy"
-                                    decoding="async"
-                                />
-                                <div v-else class="size-6" />
+                                <AiIcon :item="item" :size="24" />
                             </div>
                             <div class="min-w-0 flex-1">
                                 <h4
@@ -88,19 +84,19 @@ const linkMap = [
                                     :class="styles.title"
                                     class="truncate text-sm font-medium text-stone-900 transition-colors duration-200 dark:text-slate-100"
                                 >
-                                    {{ item.name }}
+                                    {{ item.text }}
                                     <span class="text-stone-400 dark:text-slate-500" v-html="item.note" />
                                 </h4>
                                 <h4
                                     v-else
                                     :class="styles.title"
-                                    v-html="item.name"
+                                    v-html="item.text"
                                     class="truncate text-sm font-medium text-stone-900 transition-colors duration-200 dark:text-slate-100"
                                 />
                                 <p
-                                    v-if="item.description"
+                                    v-if="item.descriptionRich || item.description"
                                     class="text-xs text-stone-500 dark:text-slate-400"
-                                    v-html="item.description"
+                                    v-html="item.descriptionRich || item.description"
                                 />
                             </div>
                         </a>
@@ -141,13 +137,13 @@ const linkMap = [
                             v-html="copyright.text"
                         />
                     </p>
-                    <p v-show="navifox.name">
+                    <p v-show="navifox.author">
                         © {{ sinceYear }}-{{ untilYear }}
                         <a
                             :href="navifoxHome.link"
                             class="hover:text-starlight-500 dark:hover:text-starlight-300 hover:underline hover:decoration-wavy"
                             target="_blank"
-                            v-html="navifox.name"
+                            v-html="navifox.author"
                         />
                         版权所有。<br />
                     </p>

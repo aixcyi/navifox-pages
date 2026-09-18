@@ -106,7 +106,7 @@ function initializeArrows() {
 
 /** 盒面“包装参数”。 */
 const boxStates: Record<string, string> = {
-    产地: foxeryGuild.name,
+    产地: foxeryGuild.text,
     包装规格: `${projects.length} 个/盒`,
     生产日期: `${sinceYear} 年`,
     保质期: `${sinceYear + 1000} 年`,
@@ -176,7 +176,7 @@ onUnmounted(() => {
         <!-- 盒中：各个项目 -->
         <section
             v-for="(project, index) in projects"
-            :key="project.name"
+            :key="project.text"
             :class="[
                 index % 2 ? 'bg-paper-100 dark:bg-night-900' : 'dark:bg-night-850 bg-white',
                 'js-panel relative flex h-screen w-full items-center justify-center overflow-hidden',
@@ -197,7 +197,7 @@ onUnmounted(() => {
                     v-html="`Project · ${String(index + 1).padStart(2, '0')}`"
                 />
                 <h2 class="text-night-900 text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl dark:text-white">
-                    {{ project.name }}
+                    {{ project.text }}
                 </h2>
                 <div class="dark:text-starlight-300/80 flex items-center gap-6 text-stone-500">
                     <template v-for="social in project.socials" :key="social.link">
@@ -213,9 +213,9 @@ onUnmounted(() => {
                     </template>
                 </div>
                 <p class="max-w-xl text-base leading-relaxed sm:text-lg" v-html="project.description" />
-                <template v-if="project.documentation">
+                <template v-if="project.documentationUrl">
                     <a
-                        :href="project.documentation"
+                        :href="project.documentationUrl"
                         class="from-starlight-500 to-aurora-500 shadow-starlight-600/30 inline-flex items-center gap-2 rounded-full bg-gradient-to-r px-7 py-3 text-sm font-semibold text-white shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl hover:brightness-110 dark:text-black"
                         target="_blank"
                     >
@@ -252,7 +252,7 @@ onUnmounted(() => {
                         <img
                             v-if="qrcode"
                             :src="qrcode"
-                            :alt="`${foxeryGuild.name}群聊二维码`"
+                            :alt="`${foxeryGuild.text}群聊二维码`"
                             class="size-36 select-none sm:size-44"
                             draggable="false"
                         />

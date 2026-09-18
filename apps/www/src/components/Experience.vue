@@ -28,7 +28,7 @@ defineProps<ExperienceDetail>();
 <template>
     <section class="GlassCard flex flex-col gap-2 p-6 sm:p-8">
         <div>
-            <b class="mr-2">{{ project?.name ?? team }}</b>
+            <b class="mr-2">{{ project?.text ?? team }}</b>
             <span class="float-end ml-2">
                 <code>{{ start }}</code>
                 <code v-if="stop"> - {{ stop }}</code>

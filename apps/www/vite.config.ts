@@ -14,10 +14,10 @@ export default defineConfig({
         tailwindcss(),
         vue(),
         ogPlugin({
-            title: navifoxHome.name,
+            title: navifoxHome.text,
             description: navifoxHome.description ?? '',
             url: navifoxHome.link,
-            siteName: navifoxHome.name,
+            siteName: navifoxHome.text,
         }),
     ],
     define: {

@@ -701,6 +701,9 @@ importers:
       '@navifox/constants':
         specifier: workspace:*
         version: link:../constants
+      '@navifox/types':
+        specifier: workspace:*
+        version: link:../types
       '@navifox/utils':
         specifier: workspace:*
         version: link:../utils

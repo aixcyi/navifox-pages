@@ -6,7 +6,8 @@ import { Markdown as down } from '@navifox/ui';
 import Experience from '#/components/Experience.vue';
 
 const project: Project = {
-    name: '景区生态系统',
+    text: '景区生态系统',
+    link: '#',
     description: '',
     stack: [
         ColorBadge.Python,

@@ -96,7 +96,7 @@ const router = createRouter({
 
 router.beforeEach((to) => {
     useHead({
-        title: (to.meta.title as string | undefined) ?? navifoxHome.name,
+        title: (to.meta.title as string | undefined) ?? navifoxHome.text,
         meta: [
             ...website.metas(navifoxHome, {
                 description: to.meta.description as string | undefined,
@@ -109,7 +109,7 @@ router.beforeEach((to) => {
             }),
         ],
         link: [...website.links(navifoxHome)],
-        titleTemplate: to.meta.title ? `%s · ${navifoxHome.name}` : null,
+        titleTemplate: to.meta.title ? `%s · ${navifoxHome.text}` : null,
     });
 });
 

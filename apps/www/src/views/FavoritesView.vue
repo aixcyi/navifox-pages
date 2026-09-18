@@ -1,7 +1,8 @@
 <script lang="ts" setup>
 import { Icon } from '@iconify/vue/offline';
 import { bookmarkTabs, bookmarks } from '@navifox/constants';
-import type { BookmarkCategory, Hyperlink, Website } from '@navifox/types';
+import type { BookmarkCategory, TextLink, Website } from '@navifox/types';
+import { AiIcon } from '@navifox/ui';
 import { computed, ref } from 'vue';
 
 import LinkIcon from '#/assets/AkarIconsLinkOut.svg';
@@ -17,7 +18,7 @@ const activeTab = ref<BookmarkCategory>(bookmarkTabs[0]!.key);
  * 仅收集当前激活 Tab（生态分类）下的分组。
  */
 const bookmarkGroups = computed(() => {
-    const groups: { title?: Hyperlink; sections: { items: Website[] }[] }[] = [];
+    const groups: { title?: TextLink; sections: { items: Website[] }[] }[] = [];
     for (const group of bookmarks) {
         if (group.category !== activeTab.value) continue;
         if (group.title || groups.length === 0) {
@@ -66,7 +67,7 @@ const bookmarkGroups = computed(() => {
                 <div class="columns-1 gap-x-8 md:columns-2 lg:columns-3 xl:columns-4">
                     <div v-for="group in bookmarkGroups" class="mb-10 break-inside-avoid">
                         <template v-if="group.title">
-                            <div v-if="group.title.elementId" :id="group.title.elementId" class="scroll-mt-28" />
+                            <div v-if="group.title.anchor" :id="group.title.anchor" class="scroll-mt-28" />
                             <a
                                 :href="group.title.link"
                                 :target="group.title.link.startsWith('https://') ? '_blank' : '_self'"
@@ -95,38 +96,13 @@ const bookmarkGroups = computed(() => {
                                     target="_blank"
                                 >
                                     <div class="min-w-4 text-stone-400 dark:text-slate-600">
-                                        <Icon
-                                            v-if="item.logo"
-                                            :icon="item.logo"
-                                            class="size-4 max-w-4 text-stone-600 dark:text-slate-400"
-                                        />
-                                        <img
-                                            v-else-if="item.icon"
-                                            :src="item.icon"
-                                            alt="ico"
-                                            class="w-4"
-                                            loading="lazy"
-                                            decoding="async"
-                                            @error="
-                                                (e) => {
-                                                    (e.target as HTMLImageElement).src = LinkIcon;
-                                                }
-                                            "
-                                        />
-                                        <img
-                                            v-else
-                                            :src="LinkIcon"
-                                            alt="ico"
-                                            class="size-4"
-                                            loading="lazy"
-                                            decoding="async"
-                                        />
+                                        <AiIcon :item="item" :fallback="LinkIcon" />
                                     </div>
                                     <div class="flex flex-row flex-wrap items-center gap-x-1.5 text-sm">
                                         <div
                                             class="inline-flex flex-wrap items-center text-stone-800 dark:text-slate-200"
                                         >
-                                            <span v-html="item.name" />
+                                            <span v-html="item.text" />
                                             <span
                                                 v-if="(item.tags || []).includes('catalog')"
                                                 class="border-aurora-500 text-aurora-600 dark:border-aurora-300 dark:text-aurora-300 group-hover:border-starlight-600 group-hover:text-starlight-600 dark:group-hover:border-starlight-400 dark:group-hover:text-starlight-400 ml-1.5 inline rounded-xs border px-0.5 text-xs transition-colors duration-200"
@@ -135,9 +111,8 @@ const bookmarkGroups = computed(() => {
                                         </div>
                                         <div
                                             class="group-hover:text-starlight-600 dark:group-hover:text-starlight-400/80 text-stone-400 transition-colors duration-200 dark:text-slate-500"
-                                        >
-                                            {{ item.note }}
-                                        </div>
+                                            v-html="item.note"
+                                        />
                                     </div>
                                 </a>
                             </div>

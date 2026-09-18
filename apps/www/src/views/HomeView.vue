@@ -59,7 +59,7 @@ onMounted(() => {
                 v-html="`@${navifox.uid}`"
             />
             <div class="text-4xl font-medium md:max-w-[75%] md:text-6xl">
-                <span class="text-white">{{ navifox.name }}</span>
+                <span class="text-white">{{ navifox.author }}</span>
                 <span v-for="tag in navifox.tags" class="text-gray-300/75 dark:text-gray-400/75">／{{ tag }}</span>
             </div>
             <div
@@ -95,8 +95,8 @@ onMounted(() => {
                                 class="border-starlight-500/25 dark:border-starlight-300/15 size-24 shrink-0 overflow-hidden rounded-3xl border-2 select-none lg:aspect-square lg:h-auto lg:w-full lg:rounded-full"
                             >
                                 <AvatarImage
-                                    :src="navifox.avatar512"
-                                    :alt="navifox.name"
+                                    :src="navifox.avatar512 ?? ''"
+                                    :alt="navifox.author"
                                     class="size-full object-cover"
                                 />
                                 <AvatarFallback class="flex size-full items-center justify-center" :delay-ms="200">
@@ -106,7 +106,7 @@ onMounted(() => {
                             <div class="min-w-0 lg:text-center">
                                 <p
                                     class="text-night-900 text-2xl font-bold tracking-tight dark:text-white"
-                                    v-html="navifox.name"
+                                    v-html="navifox.author"
                                 />
                                 <p
                                     class="dark:text-night-500 mt-1 font-mono text-xs text-stone-500"
@@ -145,11 +145,11 @@ onMounted(() => {
                                 </span>
                             </div>
                             <div class="mt-5 flex flex-wrap items-center gap-4">
-                                <template v-for="social in socials" :key="social.name">
+                                <template v-for="social in socials" :key="social.text">
                                     <a
                                         v-if="social.logo"
                                         :href="social.link"
-                                        :title="social.name"
+                                        :title="social.text"
                                         class="hover:text-starlight-600 dark:text-night-500 dark:hover:text-starlight-300 flex h-9 cursor-pointer items-center text-stone-500 transition-colors duration-200"
                                         target="_blank"
                                     >

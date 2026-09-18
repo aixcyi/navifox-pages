@@ -9,7 +9,7 @@ import Toolbar from '#/components/Toolbar.vue';
 import DocumentationsView from '#/views/DocumentationsView.vue';
 
 useHead({
-    title: navifoxDocs.name,
+    title: navifoxDocs.text,
     meta: [...website.metas(navifoxDocs), ...website.og(navifoxDocs)],
     link: [...website.links(navifoxDocs)],
 });

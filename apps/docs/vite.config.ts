@@ -12,10 +12,10 @@ export default defineConfig({
         tailwindcss(),
         vue(),
         ogPlugin({
-            title: navifoxDocs.name,
+            title: navifoxDocs.text,
             description: navifoxDocs.description ?? '',
             url: navifoxDocs.link,
-            siteName: navifoxDocs.name,
+            siteName: navifoxDocs.text,
         }),
     ],
     resolve: {

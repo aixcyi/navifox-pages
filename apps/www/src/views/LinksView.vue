@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { Icon } from '@iconify/vue/offline';
-import { friends, navifox, type FriendLink, navifoxBlog } from '@navifox/constants';
+import { friends, navifox, navifoxBlog } from '@navifox/constants';
+import type { Friend } from '@navifox/types';
 import { format } from '@navifox/utils/dnt';
 import { AvatarFallback, AvatarImage, AvatarRoot } from 'reka-ui';
 
@@ -11,7 +12,7 @@ import SectionHeader from '#/components/SectionHeader.vue';
 import Stardust from '#/components/Stardust.vue';
 
 /** 各类型友邻的悬停强调色：伙伴金、动态淡粉、像素淡紫。 */
-const friendAccents: Record<FriendLink['type'], { card: string; arrow: string }> = {
+const friendAccents: Record<Friend['type'], { card: string; arrow: string }> = {
     partner: {
         card: 'hover:border-starlight-500/50 hover:shadow-starlight-600/10 hover:bg-starlight-500/5',
         arrow: 'text-starlight-500 dark:text-starlight-300',
@@ -27,15 +28,15 @@ const friendAccents: Record<FriendLink['type'], { card: string; arrow: string }>
 };
 
 const copyableFields: { title: string; value: string; isPureCode?: boolean }[] = [
-    { title: '名称', value: navifox.name },
+    { title: '名称', value: navifox.author ?? '' },
     { title: '简介', value: navifox.description || '', isPureCode: true },
     { title: '签名', value: navifox.status || '' },
     { title: '头像', value: navifox.avatar512 || '', isPureCode: true },
     { title: '头像', value: navifox.avatar256 || '', isPureCode: true },
     { title: '头像', value: navifox.avatar || '', isPureCode: true },
-    { title: '主页', value: navifox.title || '' },
-    { title: '主页', value: navifox.link || '', isPureCode: true },
-    { title: '博客', value: navifoxBlog.name },
+    { title: '主页', value: navifox.text },
+    { title: '主页', value: navifox.link, isPureCode: true },
+    { title: '博客', value: navifoxBlog.text },
     { title: '博客', value: navifoxBlog.link, isPureCode: true },
 ];
 </script>
@@ -52,7 +53,7 @@ const copyableFields: { title: string; value: string; isPureCode?: boolean }[] =
                 <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
                     <a
                         v-for="friend in friends"
-                        :key="friend.name"
+                        :key="friend.text"
                         :href="friend.link"
                         :class="[
                             'GlassCard group relative flex flex-col overflow-hidden p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl',
@@ -64,12 +65,12 @@ const copyableFields: { title: string; value: string; isPureCode?: boolean }[] =
                             <AvatarRoot
                                 :class="[
                                     'flex size-16 shrink-0 items-center justify-center overflow-hidden text-stone-400',
-                                    ...(friend.styles?.avatar ?? []),
+                                    friend.avatarStyles,
                                 ]"
                             >
                                 <AvatarImage
                                     :src="friend.avatar ?? ''"
-                                    :alt="friend.name"
+                                    :alt="friend.author"
                                     class="size-full object-cover"
                                     decoding="async"
                                 />
@@ -78,20 +79,20 @@ const copyableFields: { title: string; value: string; isPureCode?: boolean }[] =
                                 </AvatarFallback>
                             </AvatarRoot>
                             <h2
-                                v-if="friend.title"
+                                v-if="friend.author"
                                 class="text-night-900 flex min-w-0 flex-1 items-center gap-1 text-lg font-bold tracking-tight dark:text-white"
                             >
-                                <!-- 名称与站点名各自独立截断：省略号由被截断者自己的文本框绘制，
-                                     若两者同处一个截断框内，省略号会统一取名称那一档颜色。 -->
-                                <span class="max-w-full shrink-0 truncate">{{ friend.name }}</span>
+                                <!-- 站点名与拥有者各自独立截断：省略号由被截断者自己的文本框绘制，
+                                     若两者同处一个截断框内，省略号会统一取拥有者那一档颜色。 -->
+                                <span class="max-w-full shrink-0 truncate">{{ friend.author }}</span>
                                 <span
                                     class="text-starlight-300 min-w-0 truncate dark:text-slate-600"
-                                    v-html="friend.title"
+                                    v-html="friend.note || friend.text"
                                 />
                             </h2>
                             <h2
                                 v-else
-                                v-html="friend.name"
+                                v-html="friend.text"
                                 class="text-night-900 min-w-0 flex-1 truncate text-lg font-bold tracking-tight dark:text-white"
                             />
                             <Icon

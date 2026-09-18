@@ -11,10 +11,10 @@ export default defineConfig({
     plugins: [
         vue(),
         ogPlugin({
-            title: navifoxRefs.name,
+            title: navifoxRefs.text,
             description: navifoxRefs.description ?? '',
             url: navifoxRefs.link,
-            siteName: navifoxRefs.name,
+            siteName: navifoxRefs.text,
         }),
     ],
     css: {
