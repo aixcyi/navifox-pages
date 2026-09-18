@@ -14,6 +14,7 @@ import {
 import { useDark, useToggle } from '@vueuse/core';
 import { AvatarFallback, AvatarImage, AvatarRoot } from 'reka-ui';
 
+import { avatarShapeClass } from '../lib/avatar';
 import AiIcon from './AiIcon.vue';
 
 const isDark = useDark();
@@ -123,7 +124,7 @@ const footerFriends = friends.slice(0, Math.max(sitemap.length, credits.length))
                             <AvatarRoot
                                 :class="[
                                     'mr-3 flex h-8 w-8 flex-shrink-0 items-center justify-center overflow-hidden text-stone-400',
-                                    friend.avatarStyles ?? 'rounded-2xl',
+                                    avatarShapeClass(friend.avatarShape),
                                 ]"
                             >
                                 <AvatarImage

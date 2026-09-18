@@ -2,6 +2,7 @@
 import { Icon } from '@iconify/vue/offline';
 import { friends, navifox, navifoxBlog } from '@navifox/constants';
 import type { Friend } from '@navifox/types';
+import { avatarShapeClass } from '@navifox/ui';
 import { format } from '@navifox/utils/dnt';
 import { AvatarFallback, AvatarImage, AvatarRoot } from 'reka-ui';
 
@@ -65,7 +66,7 @@ const copyableFields: { title: string; value: string; isPureCode?: boolean }[] =
                             <AvatarRoot
                                 :class="[
                                     'flex size-16 shrink-0 items-center justify-center overflow-hidden text-stone-400',
-                                    friend.avatarStyles,
+                                    avatarShapeClass(friend.avatarShape),
                                 ]"
                             >
                                 <AvatarImage

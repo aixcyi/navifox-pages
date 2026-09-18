@@ -1,6 +1,8 @@
 import type { Friend } from '@navifox/types';
 import { newDate } from '@navifox/utils/dnt';
 
+import { navifox } from './website';
+
 export const friends: Friend[] = [
     {
         text: 'Ramid',
@@ -20,9 +22,9 @@ export const friends: Friend[] = [
         author: '纸鹿',
         note: '摸鱼处',
         avatar: 'https://www.zhilu.site/api/avatar.png',
+        avatarShape: 'rounded',
         type: 'feed',
         meet: newDate(2025, 7, 14),
-        avatarStyles: 'rounded-2xl',
     },
     {
         text: 'Pinpe 的云端',
@@ -32,9 +34,9 @@ export const friends: Friend[] = [
         author: 'Pinpe',
         note: '的云端',
         avatar: 'https://pinpe.top/head.jpg',
+        avatarShape: 'rounded',
         type: 'pixel',
         meet: newDate(2025, 7, 14),
-        avatarStyles: 'rounded-full',
     },
     {
         text: '小白空间站',
@@ -43,9 +45,9 @@ export const friends: Friend[] = [
         description: '爱健身，爱科技，爱生活！',
         author: '胖小白',
         avatar: 'https://www.fatxiaobai.top/proxy-api/public/file/avatar/avatar.jpg',
+        avatarShape: 'circle',
         type: 'pixel',
         meet: newDate(2026, 6, 9),
-        avatarStyles: 'rounded-full',
     },
     {
         text: '幽狐阁',
@@ -55,9 +57,9 @@ export const friends: Friend[] = [
         author: '幽悠ouo',
         note: '幽狐阁',
         avatar: 'https://youhuge.site/usr/themes/handsome/assets/img/avatar.png',
+        avatarShape: 'circle',
         type: 'pixel',
         meet: newDate(2026, 9, 10),
-        avatarStyles: 'rounded-full',
     },
     {
         text: '林の窝',
@@ -65,9 +67,9 @@ export const friends: Friend[] = [
         author: '林',
         note: 'の窝',
         avatar: 'https://img.crazying-dev.top/crazying-dev.top/me.png',
+        avatarShape: 'circle',
         type: 'pixel',
         meet: newDate(2026, 9, 10),
-        avatarStyles: 'rounded-full',
     },
     {
         text: 'UnknownMp 的主站',
@@ -76,18 +78,17 @@ export const friends: Friend[] = [
         author: 'UnknownMp',
         note: '的主站',
         avatar: 'https://www.unknownmp.top/images/self/avatar.jpg',
+        avatarShape: 'rounded',
         type: 'pixel',
         meet: newDate(2026, 9, 10),
-        avatarStyles: 'rounded-2xl',
     },
     {
-        text: '路狐领航',
+        text: navifox.text,
         link: '/',
-        descriptionRich: '<code>/tp @e[type=#furry,distance=0..] @s</code>',
-        author: '阿羽',
-        avatar: 'https://www.navifox.net/avatar256.jpg',
-        type: 'pixel',
-        meet: new Date(),
-        avatarStyles: 'rounded-2xl',
+        description: navifox.status,
+        author: navifox.author,
+        avatar: navifox.avatar256,
+        avatarShape: 'rounded',
+        type: 'partner',
     },
 ];

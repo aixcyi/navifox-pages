@@ -202,6 +202,16 @@ export interface Friend extends Website {
      */
     avatar512?: string;
 
+    /**
+     * 头像边框形状。
+     *
+     * - `square`：正方形，即不加任何 `border-radius` 约束。
+     * - `circle`：圆形。
+     * - `rounded`：圆角矩形，圆角大概是 1/4 个边框。
+     * - 默认为 `square`。
+     */
+    avatarShape?: 'square' | 'circle' | 'rounded';
+
     /** 友链类型。 */
     type: FriendType;
 
@@ -227,14 +237,6 @@ export interface Friend extends Website {
      * - 构造时注意 `Date` 的月份从 `0` 开始。
      */
     meet?: Date;
-
-    /**
-     * 头像的附加渲染样式。
-     *
-     * - 统一采用 Tailwind CSS v4 类名。
-     * - 需要多个类名时直接写在同一字符串里（如 `'rounded-full ring-2 ring-white'`）。
-     */
-    avatarStyles?: string;
 }
 
 /**
