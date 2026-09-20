@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { Icon } from '@iconify/vue/offline';
 import { markit } from '@navifox/utils';
+import { ref } from 'vue';
 
 const programmerLevels = [
     {
@@ -69,11 +70,16 @@ for (const level of programmerLevels) {
         point.text = markit(point.text);
     }
 }
+
+/** 默认只露「6 级」这一档，其余等级收在卡片尾部，由页脚的按钮展开。 */
+const pinnedLevel = '6 级';
+
+const expanded = ref(false);
 </script>
 
 <template>
     <div class="ProgrammerPanel flex flex-col gap-6">
-        <section v-for="desc in programmerLevels">
+        <section v-for="desc in programmerLevels" v-show="expanded || desc.level.startsWith(pinnedLevel)">
             <div>
                 <b>{{ desc.level }}</b>
             </div>
@@ -95,5 +101,19 @@ for (const level of programmerLevels) {
                 </li>
             </ul>
         </section>
+        <button
+            type="button"
+            :aria-expanded="expanded"
+            class="text-starlight-600 dark:text-starlight-300 hover:bg-starlight-500/12! dark:hover:bg-starlight-300/10! focus-visible:ring-starlight-500/40 -mt-1 flex cursor-pointer items-center justify-center gap-1 rounded-xl py-3 text-sm transition-colors duration-200 focus-visible:ring-2 focus-visible:outline-none"
+            @click="expanded = !expanded"
+        >
+            <span v-html="expanded ? '收起评估清单' : '展开评估清单'" />
+            <Icon
+                :class="expanded ? '' : 'rotate-180'"
+                class="transition-transform duration-200"
+                height="20"
+                icon="material-symbols:keyboard-arrow-up-rounded"
+            />
+        </button>
     </div>
 </template>

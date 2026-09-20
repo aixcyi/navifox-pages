@@ -1,15 +1,25 @@
-<script lang="ts" setup>
-import { Icon } from '@iconify/vue/offline';
-import { ColorBadge } from '@navifox/constants';
+import type { Badge } from '@navifox/types';
+
+import { ColorBadge } from './badges';
+
+/** 技能树的一条分支。 */
+export interface SkillBranch {
+    /** 领域划分，如「编程语言」「后端开发」。 */
+    scope: string;
+
+    /** 四级熟练度的用词，下标与 {@link SkillBranch.skills} 里的 `level` 对应。 */
+    levels: [string, string, string, string];
+
+    /** 该领域下的技能；`level` 为对应熟练度的下标。 */
+    skills: { badge: Badge; level: number }[];
+}
 
 /**
- * 两列网格模式：技能项按「2 列 → 1 列」自适应排列（用于宽度贴合内容的场景）。
+ * 技能树。
+ *
+ * 首页的技能蜂窝用它铺图标；`level` 目前还没有消费方，留给以后的面板形态展示。
  */
-withDefaults(defineProps<{ twoColumns?: boolean }>(), {
-    twoColumns: false,
-});
-
-const stacks = [
+export const skillStacks: SkillBranch[] = [
     {
         scope: '编程语言',
         levels: ['语言', '框架', '生态', '底层'],
@@ -103,43 +113,3 @@ const stacks = [
         skills: [{ badge: ColorBadge.Markdown, level: 3 }],
     },
 ];
-
-for (const tree of stacks) {
-    tree.skills.sort((a, b) => a.badge.text!.localeCompare(b.badge.text!));
-}
-</script>
-
-<template>
-    <div class="flex flex-col gap-7">
-        <section v-for="branch in stacks" class="flex flex-col gap-3">
-            <div>
-                <b>{{ branch.scope }}</b>
-            </div>
-            <div
-                v-if="branch.skills"
-                :class="
-                    twoColumns
-                        ? 'grid grid-cols-[repeat(auto-fit,minmax(10rem,1fr))] gap-x-6 gap-y-2'
-                        : 'flex flex-wrap gap-x-6 gap-y-2'
-                "
-                class="text-sm"
-            >
-                <div v-for="skill in branch.skills" class="group flex flex-nowrap items-center gap-2">
-                    <Icon :icon="skill.badge.logo" width="24" />
-                    <div class="relative flex flex-nowrap gap-1">
-                        <span
-                            v-for="(label, level) in branch.levels"
-                            :class="level <= skill.level ? '' : 'text-slate-300 dark:text-slate-700'"
-                            class="cursor-default group-hover:opacity-0"
-                            v-html="label"
-                        />
-                        <span
-                            class="absolute top-0 left-0 bg-white text-nowrap text-slate-500 opacity-0 group-hover:opacity-100 dark:bg-slate-800 dark:text-slate-400"
-                            v-html="skill.badge.text"
-                        />
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
-</template>

@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { Icon } from '@iconify/vue/offline';
-import { navifox, signature, socials } from '@navifox/constants';
+import { navifox, projects, signature, socials } from '@navifox/constants';
 import type { Anchor } from '@navifox/types';
 import { AvatarFallback, AvatarImage, AvatarRoot } from 'reka-ui';
 import { onMounted } from 'vue';
@@ -10,8 +10,9 @@ import Job2021 from '#/components/experiences/Job2021.vue';
 import Job2022 from '#/components/experiences/Job2022.vue';
 import Navbar from '#/components/Navbar.vue';
 import ProgrammerPanel from '#/components/ProgrammerPanel.vue';
+import ProjectCard from '#/components/ProjectCard.vue';
 import SectionHeader from '#/components/SectionHeader.vue';
-import SkillsPanel from '#/components/SkillsPanel.vue';
+import SkillsHoneycomb from '#/components/SkillsHoneycomb.vue';
 import Stardust from '#/components/Stardust.vue';
 
 console.log('%c' + signature, 'color: #459199; font-size: 12px; font-family: Consolas;');
@@ -78,11 +79,12 @@ onMounted(() => {
                 :eyebrow="anchorIntro.eyebrow"
                 :id="anchorIntro.id"
                 :title="anchorIntro.title"
+                centered
             />
-            <div class="mt-12 grid gap-10 lg:grid-cols-[minmax(17rem,24rem)_minmax(0,1fr)] lg:items-start">
+            <div class="mt-12 grid gap-6 lg:grid-cols-[minmax(17rem,24rem)_minmax(0,1fr)] lg:items-start lg:gap-10">
                 <!-- 名片 -->
                 <div
-                    class="border-starlight-500/20 relative overflow-hidden rounded-[2rem] border bg-white/70 backdrop-blur-sm lg:order-1 dark:border-white/10 dark:bg-white/5"
+                    class="border-starlight-500/20 relative overflow-hidden rounded-[2rem] border bg-white/70 backdrop-blur-sm lg:sticky lg:top-28 dark:border-white/10 dark:bg-white/5"
                 >
                     <div
                         aria-hidden="true"
@@ -161,10 +163,24 @@ onMounted(() => {
                     </div>
                 </div>
 
-                <!-- 项目经历 -->
-                <div class="flex min-w-0 flex-col gap-6 lg:order-2">
+                <div class="flex min-w-0 flex-col gap-6">
+                    <!-- 项目 -->
+                    <ProjectCard v-for="project in projects" :key="project.text" :project="project" />
+                    <!-- 项目经历 -->
                     <Job2022 class="Content" />
                     <Job2021 class="Content" />
+                    <!-- 程序员等级评估 -->
+                    <div class="GlassCard Content min-w-0 p-6 sm:p-8">
+                        <div class="text-starlight-600 dark:text-starlight-200 mb-5 text-center">
+                            <h3 class="text-lg font-semibold tracking-tight">程序员等级评估 {{ cvLastUpdateTime }}</h3>
+                            <a
+                                href="https://github.com/bennyhuo/programmer-levels"
+                                target="_blank"
+                                v-html="'霍丙乾 Programmer Levels v0.4'"
+                            />
+                        </div>
+                        <ProgrammerPanel />
+                    </div>
                 </div>
             </div>
         </div>
@@ -174,30 +190,9 @@ onMounted(() => {
             :id="anchorStacks.id"
             class="MaxContainer relative my-24 scroll-mt-28 text-stone-600 dark:text-slate-300"
         >
-            <SectionHeader :eyebrow="anchorStacks.eyebrow" :id="anchorStacks.id" :title="anchorStacks.title">
-                <code class="font-mono" v-html="`${cvLastUpdateTime} × `" />
-                <a
-                    href="https://github.com/bennyhuo/programmer-levels"
-                    target="_blank"
-                    v-html="'霍丙乾 Programmer Levels v0.4'"
-                />
-            </SectionHeader>
-            <div class="mt-12 grid gap-10 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-start">
-                <aside class="min-w-0 lg:order-2 lg:w-[26.5rem]">
-                    <div class="GlassCard p-6 sm:p-8">
-                        <h3
-                            class="text-starlight-600 dark:text-starlight-200 mb-5 text-lg font-semibold tracking-tight"
-                            v-html="'技能面板'"
-                        />
-                        <SkillsPanel two-columns />
-                    </div>
-                </aside>
-                <div class="GlassCard Content min-w-0 p-6 sm:p-8 lg:order-1">
-                    <h3 class="text-starlight-600 dark:text-starlight-200 mb-5 text-lg font-semibold tracking-tight">
-                        程序员等级评估<br />
-                    </h3>
-                    <ProgrammerPanel />
-                </div>
+            <SectionHeader centered :eyebrow="anchorStacks.eyebrow" :id="anchorStacks.id" :title="anchorStacks.title" />
+            <div class="mt-12 pt-12">
+                <SkillsHoneycomb />
             </div>
         </section>
 
