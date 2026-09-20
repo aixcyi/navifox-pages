@@ -1,18 +1,55 @@
 <script lang="ts" setup>
 import { Icon } from '@iconify/vue/offline';
-import { skillStacks } from '@navifox/constants';
+import { ColorBadge } from '@navifox/constants';
 import type { Badge } from '@navifox/types';
 import { useWindowSize } from '@vueuse/core';
 import { computed, ref } from 'vue';
 
-/** 蜂窝里的技能图标：与技能面板同源，同一枚徽章只取一次，最后按名称整体排序。 */
-const badges: Badge[] = [];
-for (const branch of skillStacks) {
-    for (const skill of branch.skills) {
-        if (skill.level > 0) badges.push(skill.badge);
-    }
-}
-badges.sort((a, b) => a.text!.localeCompare(b.text!));
+const badges: Badge[] = [
+    ColorBadge.Python,
+    ColorBadge.Django,
+    ColorBadge.DjangoRESTFramework,
+    ColorBadge.FastAPI,
+    ColorBadge.Celery,
+    ColorBadge.NumPy,
+    ColorBadge.Pandas,
+    ColorBadge.Kotlin,
+    ColorBadge.JavaScript,
+    ColorBadge.TypeScript,
+    ColorBadge.TailwindCSS,
+    ColorBadge.VitePress,
+    ColorBadge.Vue,
+    ColorBadge.Vite,
+    ColorBadge.Npm,
+    ColorBadge.Pnpm,
+    ColorBadge.WebCSS,
+    ColorBadge.Gsap,
+    ColorBadge.Golang,
+    ColorBadge.Java,
+    ColorBadge.Bash,
+    ColorBadge.Cmd,
+    ColorBadge.Powershell,
+    ColorBadge.Git,
+    ColorBadge.GitHubAction,
+    ColorBadge.Apifox,
+    ColorBadge.Grafana,
+    ColorBadge.PostgreSQL,
+    ColorBadge.MySQL,
+    ColorBadge.Redis,
+    ColorBadge.SQLite,
+    ColorBadge.PyCharm,
+    ColorBadge.IntelliJ,
+    ColorBadge.WebStorm,
+    ColorBadge.DataGrip,
+    ColorBadge.Goland,
+    ColorBadge.VisualStudioCode,
+    ColorBadge.VisualStudio,
+    ColorBadge.Ubuntu,
+    ColorBadge.Kali,
+    ColorBadge.Firefox,
+    ColorBadge.Chrome,
+    ColorBadge.Markdown,
+].sort((a, b) => a.text!.localeCompare(b.text!));
 
 /**
  * 格距分档：≥768px 用 96，768～640px 用 80，<640px 用 64。
