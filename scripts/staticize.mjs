@@ -53,6 +53,7 @@ const APPS = [
         extraScanFiles: [
             join(REPO_DIR, 'internal/constants/src/favorites.ts'),
             join(REPO_DIR, 'internal/constants/src/website.ts'),
+            join(REPO_DIR, 'internal/constants/src/badges/brands.ts'),
             join(REPO_DIR, 'internal/constants/src/badges/skills.ts'),
             join(REPO_DIR, 'internal/constants/src/projects.ts'),
             join(REPO_DIR, 'internal/ui/src/ui/AiFooter.vue'),
