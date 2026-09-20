@@ -1,18 +1,21 @@
 import type { Badge } from '@navifox/types';
 
 /**
- * 彩色徽章。
+ * 技能徽章。
+ *
+ * - 用于显示技能相关场景时用的徽章。
+ * - 每个徽章都带上了 {@link Badge.text} 字段。
  */
-export class ColorBadge {
+export class SkillsBadge {
     // -------------------------------- 语言类 --------------------------------
 
-    static readonly Python: Badge = { logo: 'devicon:python' };
+    static readonly Python: Badge = { logo: 'logos:python' };
     static readonly Kotlin: Badge = { logo: 'devicon:kotlin' };
     static readonly Golang: Badge = { logo: 'devicon:go' };
     static readonly Rust: Badge = { logo: 'catppuccin:rust' };
     static readonly Java: Badge = { logo: 'logos:java' };
-    static readonly JavaScript: Badge = { logo: 'devicon:javascript' };
-    static readonly TypeScript: Badge = { logo: 'devicon:typescript' };
+    static readonly JavaScript: Badge = { logo: 'skill-icons:javascript' };
+    static readonly TypeScript: Badge = { logo: 'skill-icons:typescript' };
     static readonly WebHTML: Badge = { logo: 'catppuccin:html', text: 'HTML' };
     static readonly WebCSS: Badge = { logo: 'logos:css', text: 'CSS' };
     static readonly Markdown: Badge = { logo: 'catppuccin:markdown' };

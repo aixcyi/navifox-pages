@@ -1,1 +1,1 @@
-export * from './colorful';
+export * from './skills';

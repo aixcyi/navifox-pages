@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ColorBadge } from '@navifox/constants';
+import { SkillsBadge } from '@navifox/constants';
 import type { Project } from '@navifox/types';
 import { Markdown as down } from '@navifox/ui';
 
@@ -10,15 +10,15 @@ const project: Project = {
     link: '#',
     description: '',
     stack: [
-        ColorBadge.Python,
-        ColorBadge.Django,
-        ColorBadge.DjangoRESTFramework,
-        ColorBadge.Vue,
-        ColorBadge.JavaScript,
-        ColorBadge.PostgreSQL,
-        ColorBadge.Redis,
-        ColorBadge.Apifox,
-        ColorBadge.Grafana,
+        SkillsBadge.Python,
+        SkillsBadge.Django,
+        SkillsBadge.DjangoRESTFramework,
+        SkillsBadge.Vue,
+        SkillsBadge.JavaScript,
+        SkillsBadge.PostgreSQL,
+        SkillsBadge.Redis,
+        SkillsBadge.Apifox,
+        SkillsBadge.Grafana,
     ],
 };
 </script>
