@@ -2,40 +2,72 @@
 import { Icon } from '@iconify/vue/offline';
 import { skillStacks } from '@navifox/constants';
 import type { Badge } from '@navifox/types';
-import { useElementSize } from '@vueuse/core';
+import { useWindowSize } from '@vueuse/core';
 import { computed, ref } from 'vue';
 
 /** 蜂窝里的技能图标：与技能面板同源，同一枚徽章只取一次，最后按名称整体排序。 */
 const badges: Badge[] = [];
 for (const branch of skillStacks) {
     for (const skill of branch.skills) {
-        if (!badges.some((badge) => badge.logo === skill.badge.logo)) badges.push(skill.badge);
+        if (skill.level > 0) badges.push(skill.badge);
     }
 }
 badges.sort((a, b) => a.text!.localeCompare(b.text!));
 
-/** 格距（即格宽）：只用来算一行放得下几格。 */
-const PITCH = 96;
+/**
+ * 格距分档：≥768px 用 96，768～640px 用 80，<640px 用 64。
+ * 图标尺寸是格宽的一半（`calc(var(--hex-w) * 0.5)`），所以图标、六边形、缝隙、行距一起缩。
+ */
+const PITCH_TIERS: { min: number; pitch: number }[] = [
+    { min: 768, pitch: 96 },
+    { min: 640, pitch: 80 },
+    { min: 0, pitch: 64 },
+];
+
+/** 图标带最宽与时间线正文（`max-w-3xl` = 48rem = 768px）同宽，换算成格数。 */
+const ICON_BAND = 768;
 
 const container = ref<HTMLElement | null>(null);
-const { width } = useElementSize(container);
-
-/** 一行放得下的格数：不缩小格子，放不下就折行；至少留 2 格，否则相邻两行没法错位咬合。 */
-const columns = computed(() => Math.max(2, Math.floor(width.value / PITCH)));
 
 /**
- * 蜂窝排布：宽行 `columns` 格、窄行 `columns - 1` 格交替，窄行居中后自然错开半格。
- * `nominal` 是这一行「本该」有几格——最后一行常填不满，若按实际格数居中，它的起点就成了随机的
- * （可能正好与上一行在 x 轴上重合），补一段右侧外边距撑回整行宽即可。
+ * 排版视口宽度：`innerWidth` 与 `vw` 都把竖向滚动条算在内，而页面内容是排在去掉滚动条的宽度里的，
+ * 拿含滚动条的宽度去算，两侧会各偏出半条滚动条。
+ */
+const { width: windowWidth } = useWindowSize();
+
+const viewportWidth = computed(() => windowWidth.value - (window.innerWidth - document.documentElement.clientWidth));
+
+const pitch = computed(() => PITCH_TIERS.find((tier) => viewportWidth.value >= tier.min)!.pitch);
+
+/** 一行铺几格：按视口宽度算，并在两侧各多铺一格，宁可溢出视口也不让蜂窝在两侧留空缺。 */
+const columns = computed(() => Math.max(2, Math.ceil(viewportWidth.value / pitch.value) + 2));
+
+/**
+ * 蜂窝排布：整行铺满 `columns` 格、窄行 `columns - 1` 格交替（窄行居中后自然错开半格）。
+ * 图标只占中间那一带，上下各一行、左右两侧都是空蜂窝；溢出视口的部分由外层裁剪，这里不管。
+ *
+ * 图标带的格数要**保证两侧各留得下半个空格子**：相邻两行的格子错开半格，
+ * 所以两行的图标带边缘也差半格，窄的那侧就是最坏情况。按「格子中心对齐视口中心」推下来，
+ * 取 `floor(视口 / 格距) - 2` 时，最坏一侧刚好留半个格子（另一侧留一格）；再与时间线正文取小。
  */
 const rows = computed(() => {
-    const result: { items: Badge[]; nominal: number }[] = [];
+    const step = pitch.value;
     const wide = columns.value;
     const narrow = Math.max(1, columns.value - 1);
-    for (let index = 0, isWide = true; index < badges.length; isWide = !isWide) {
-        const size = isWide ? wide : narrow;
-        result.push({ items: badges.slice(index, index + size), nominal: size });
-        index += size;
+    const band = Math.max(1, Math.min(Math.floor(ICON_BAND / step), Math.floor(viewportWidth.value / step) - 2));
+    const contentRows = Math.ceil(badges.length / band);
+    const result: { cells: (Badge | null)[]; nominal: number }[] = [];
+    let cursor = 0;
+    for (let row = 0; row <= contentRows + 1; row++) {
+        const nominal = row % 2 === 0 ? wide : narrow;
+        const cells: (Badge | null)[] = Array.from({ length: nominal }, () => null);
+        if (row > 0 && row <= contentRows) {
+            const start = Math.floor((nominal - band) / 2);
+            for (let column = 0; column < band && cursor < badges.length; column++) {
+                cells[start + column] = badges[cursor++] ?? null;
+            }
+        }
+        result.push({ cells, nominal });
     }
     return result;
 });
@@ -63,8 +95,8 @@ const spotStyle = computed(() =>
 <template>
     <div
         ref="container"
-        class="Honeycomb relative isolate flex w-full flex-col items-center"
-        :style="{ '--hex-w': `${PITCH}px` }"
+        class="Honeycomb relative isolate flex flex-col items-center"
+        :style="{ '--hex-w': `${pitch}px`, width: `${columns * pitch}px` }"
         @pointerenter="trackPointer"
         @pointerleave="spotVisible = false"
         @pointermove="trackPointer"
@@ -75,24 +107,20 @@ const spotStyle = computed(() =>
             :style="spotStyle"
             class="HexSpot bg-starlight-400/45 dark:bg-aurora-300/32 pointer-events-none absolute top-0 left-0 z-0 size-[8rem] rounded-full blur-3xl transition-opacity duration-300 ease-out will-change-transform"
         />
-        <div
-            v-for="(row, rowIndex) in rows"
-            :key="rowIndex"
-            :style="{ marginRight: `${(row.nominal - row.items.length) * PITCH}px` }"
-            class="HexRow flex"
-        >
+        <div v-for="(row, rowIndex) in rows" :key="rowIndex" class="HexRow flex">
             <div
-                v-for="badge in row.items"
-                :key="badge.logo"
-                :aria-label="badge.text"
-                :title="badge.text"
+                v-for="(badge, cellIndex) in row.cells"
+                :key="cellIndex"
+                :aria-hidden="badge ? undefined : 'true'"
+                :aria-label="badge?.text"
+                :role="badge ? 'img' : undefined"
+                :title="badge?.text"
                 class="HexCell relative"
-                role="img"
             >
                 <span aria-hidden="true" class="HexRing bg-starlight-500/20 dark:bg-white/10">
                     <span aria-hidden="true" class="HexFill" />
                 </span>
-                <Icon aria-hidden="true" class="HexIcon" :icon="badge.logo" />
+                <Icon v-if="badge" aria-hidden="true" class="HexIcon" :icon="badge.logo" />
             </div>
         </div>
     </div>
@@ -106,7 +134,9 @@ const spotStyle = computed(() =>
     --hex-h: calc(var(--hex-w) * 1.1547);
 }
 
-.HexRow:not(:first-child) {
+/* 行间咬合：相邻两行之间才拉负外边距。
+   用 `+` 而不是 `:not(:first-child)`——容器里第一个孩子是高光那层，不是第一行。 */
+.HexRow + .HexRow {
     margin-top: calc(var(--hex-h) * -0.25);
 }
 

@@ -71,7 +71,7 @@ onMounted(() => {
     </div>
 
     <div
-        class="Starry from-paper-100 via-paper-50 to-paper-50 dark:from-night-900 dark:via-night-950 dark:to-night-950 relative z-20 flow-root bg-gradient-to-b"
+        class="Starry from-paper-100 via-paper-50 to-paper-50 dark:from-night-900 dark:via-night-950 dark:to-night-950 relative z-20 flow-root overflow-x-clip bg-gradient-to-b"
     >
         <div :id="anchorIntro.id" class="MaxContainer relative my-24 scroll-mt-28 text-stone-600 dark:text-slate-300">
             <SectionHeader
@@ -191,7 +191,11 @@ onMounted(() => {
             class="MaxContainer relative my-24 scroll-mt-28 text-stone-600 dark:text-slate-300"
         >
             <SectionHeader centered :eyebrow="anchorStacks.eyebrow" :id="anchorStacks.id" :title="anchorStacks.title" />
-            <div class="mt-12 pt-12">
+            <!-- 蜂窝铺满整行并溢出视口：宽度由 `SkillsHoneycomb` 按视口宽度算（两侧各多铺一格），
+                 多出来的部分由 `.Starry` 与根元素的 `overflow-x-clip` 收掉，不会出横向滚动条。
+                 内容区仍是 `MaxContainer` 的宽度，所以用 `left-1/2` + `-translate-x-1/2` 把这条带子对准视口中心。
+                 这条链路上刻意不加 `clip-path`：那会把跟着指针走的背光锁在一个矩形里。 -->
+            <div class="relative left-1/2 mt-12 w-max -translate-x-1/2 pt-12">
                 <SkillsHoneycomb />
             </div>
         </section>
