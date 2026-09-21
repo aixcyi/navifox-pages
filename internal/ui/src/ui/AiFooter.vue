@@ -15,7 +15,7 @@ import { useDark, useToggle } from '@vueuse/core';
 import { AvatarFallback, AvatarImage, AvatarRoot } from 'reka-ui';
 
 import { avatarShapeClass } from '../lib/avatar';
-import AiIcon from './AiIcon.vue';
+import AiFavicon from './AiFavicon.vue';
 
 const isDark = useDark();
 const toggleDark = useToggle(isDark);
@@ -43,7 +43,7 @@ const footerFriends = friends.slice(0, Math.max(sitemap.length, credits.length))
                             class="group border-starlight-500/15 hover:border-blossom-300/60 dark:hover:border-blossom-300/40 flex items-center rounded-xl border bg-white p-3 transition-all duration-200 hover:shadow-md dark:border-white/12 dark:bg-sky-300/10"
                         >
                             <div class="text-blossom-300 mr-3 flex h-8 w-8 flex-shrink-0 items-center justify-center">
-                                <AiIcon :item="item" :size="24" />
+                                <AiFavicon :item="item" :size="24" />
                             </div>
                             <div class="min-w-0 flex-1">
                                 <h4
@@ -83,7 +83,7 @@ const footerFriends = friends.slice(0, Math.max(sitemap.length, credits.length))
                             <div
                                 class="mr-3 flex h-8 w-8 flex-shrink-0 items-center justify-center text-sky-500 dark:text-sky-400"
                             >
-                                <AiIcon :item="item" :size="24" />
+                                <AiFavicon :item="item" :size="24" />
                             </div>
                             <div class="min-w-0 flex-1">
                                 <h4

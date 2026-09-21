@@ -2,7 +2,7 @@
 import { Icon } from '@iconify/vue/offline';
 import { bookmarkTabs, bookmarks } from '@navifox/constants';
 import type { BookmarkCategory, TextLink, Website } from '@navifox/types';
-import { AiIcon } from '@navifox/ui';
+import { AiFavicon } from '@navifox/ui';
 import { computed, ref } from 'vue';
 
 import LinkIcon from '#/assets/AkarIconsLinkOut.svg';
@@ -96,7 +96,7 @@ const bookmarkGroups = computed(() => {
                                     target="_blank"
                                 >
                                     <div class="min-w-4 text-stone-400 dark:text-slate-600">
-                                        <AiIcon :item="item" :fallback="LinkIcon" />
+                                        <AiFavicon :item="item" :fallback="LinkIcon" />
                                     </div>
                                     <div class="flex flex-row flex-wrap items-center gap-x-1.5 text-sm">
                                         <div
