@@ -1,23 +1,22 @@
 <script lang="ts" setup>
-/**
- * 按 {@link Badge} 的 `logo` 字段渲染图标，其余参数与 `iconify` 的 `Icon` 完全一致。
- *
- * 用法上就是 `Icon` 的替代品：`<AiBadge :badge="SkillsBadge.Vue" height="24" />`。
- * 徽章的文字 {@link Badge.text} 不在此渲染——本组件与 `Icon` 一样只负责图标本体，
- * 需要「图标 + 文字」时由调用方自行排布文字的位置。
- */
-import { Icon, type IconifyIconProps, type IconProps } from '@iconify/vue/offline';
+import { Icon as OnlineIcon } from '@iconify/vue';
+import { Icon as OfflineIcon, type IconifyIconProps, type IconProps } from '@iconify/vue/offline';
 import type { Badge } from '@navifox/types';
+import { computed, reactive } from 'vue';
 
 /**
- * 除 `icon` 由 {@link Props.badge} 提供外，其余参数与 `Icon` 一致。
+ * 徽章数据与图标名二选一，其余参数与 `Icon` 一致。
  *
- * `width` / `height` 刻意排除，理由见下；后三个是 `IconProps` 里有、`IconifyIconProps` 里没有的，
- * 所以显式补上（类型直接从 {@link IconProps} 上取，免得依赖它没导出的内部类型）。
+ * `width` / `height` 刻意排除，理由见 {@link flag} 上方的说明；后三个是 `IconProps` 里有、
+ * `IconifyIconProps` 里没有的，所以显式补上（类型直接从 {@link IconProps} 上取，
+ * 免得依赖它没导出的内部类型）。
  */
 interface Props extends Omit<IconifyIconProps, 'icon' | 'width' | 'height'> {
-    /** 待渲染的徽章数据，读取其中的 `logo`。 */
-    badge: Badge;
+    /** 待渲染的徽章数据，读取其中的 `logo`；与 {@link Props.icon} 二选一。 */
+    badge?: Badge;
+
+    /** 图标名，用于没有对应徽章的场景；与 {@link Props.badge} 二选一，两个都给时以徽章为准。 */
+    icon?: IconProps['icon'];
 
     /** 无障碍属性（是否对辅助技术隐藏）。 */
     ariaHidden?: IconProps['ariaHidden'];
@@ -27,6 +26,9 @@ interface Props extends Omit<IconifyIconProps, 'icon' | 'width' | 'height'> {
 
     /** 首屏渲染时就尝试加载图标。 */
     ssr?: IconProps['ssr'];
+
+    /** 改用不查离线注册表的在线图标；图标名不在注册表里时才需要。 */
+    online?: boolean;
 }
 
 const props = defineProps<Props>();
@@ -44,22 +46,34 @@ const props = defineProps<Props>();
  *   收敛成 `null` 效果相同，但过不了类型检查（`Icon` 这几个 props 声明的是 `boolean | undefined`）。
  */
 const flag = (value: boolean | undefined): true | undefined => (value === true ? true : undefined);
+
+/**
+ * 在线／离线两个分支除了组件本身，参数完全一样，所以合成一份再展开，
+ * 免得以后加参数时只补了一边。
+ *
+ * 用 {@link reactive} 而不是 `computed`：后者包出的是 ref，展开成 props 后会多出一个 `value`。
+ * `icon` 不放在这里——它可能为空，需要在模板里收窄后再单独绑定，`v-bind` 拿不到 `v-if` 的收窄。
+ */
+const iconProps = reactive({
+    'aria-hidden': flag(props.ariaHidden),
+    color: props.color,
+    customise: props.customise,
+    flip: props.flip,
+    'h-flip': flag(props.hFlip),
+    'horizontal-flip': flag(props.horizontalFlip),
+    inline: flag(props.inline),
+    mode: props.mode,
+    rotate: props.rotate,
+    ssr: props.ssr,
+    'v-flip': flag(props.vFlip),
+    'vertical-flip': flag(props.verticalFlip),
+});
+
+/** 实际渲染的图标名：徽章优先。 */
+const logo = computed(() => props.badge?.logo ?? props.icon);
 </script>
 
 <template>
-    <Icon
-        :aria-hidden="flag(props.ariaHidden)"
-        :color="props.color"
-        :customise="props.customise"
-        :flip="props.flip"
-        :h-flip="flag(props.hFlip)"
-        :horizontal-flip="flag(props.horizontalFlip)"
-        :icon="props.badge.logo"
-        :inline="flag(props.inline)"
-        :mode="props.mode"
-        :rotate="props.rotate"
-        :ssr="props.ssr"
-        :v-flip="flag(props.vFlip)"
-        :vertical-flip="flag(props.verticalFlip)"
-    />
+    <OnlineIcon v-if="logo && props.online" v-bind="iconProps" :icon="logo" />
+    <OfflineIcon v-else-if="logo" v-bind="iconProps" :icon="logo" />
 </template>
