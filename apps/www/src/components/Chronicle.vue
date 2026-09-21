@@ -45,17 +45,17 @@ import AiTimelineItem from '#/components/AiTimelineItem.vue';
         <AiTimelineItem color="#FF7F27" date="2026 年 3 月">
             从古法手敲代码入坑 AI 辅助开发，从
             <AiBadge :badge="BrandsBadge.Cursor" height="24" />
-            Cursor 到 Trae 再到 Trae CN，最后还是换回
-            <AiBadge :badge="BrandsBadge.VisualStudioCode" height="24" />
+            Cursor 到 Trae 再到 Trae CN，最后还是换回<br />
+            <AiBadge :badge="SkillsBadge.VisualStudioCode" height="24" />
             VSCode 然后搭配
             <AiBadge :badge="BrandsBadge.Kimi" height="24" />
             Kimi Code 使用，并且尝试编写前端、后端开发工程师的 SKILL。<br />
         </AiTimelineItem>
         <AiTimelineItem color="#FF7F27" anchor="2026" :moment="newDate(2026, 1, 15, 14, 33)">
             从
-            <AiBadge :badge="BrandsBadge.Npm" height="24" />
+            <AiBadge :badge="SkillsBadge.Npm" height="24" />
             换成
-            <AiBadge :badge="BrandsBadge.Pnpm" height="24" />
+            <AiBadge :badge="SkillsBadge.Pnpm" height="24" />
             并创建 Monorepo 仓库容纳 Navifox Pages 向现代化前端开发发展。<br />
         </AiTimelineItem>
         <AiTimelineItem color="#FF7F27" :moment="newDate(2025, 8, 16, 11, 0)">
@@ -84,10 +84,10 @@ import AiTimelineItem from '#/components/AiTimelineItem.vue';
         </AiTimelineItem>
         <AiTimelineItem color="#FF7F27" :moment="newDate(2025, 7, 8, 15, 43)">
             用 Reka UI +
-            <AiBadge :badge="BrandsBadge.TailwindCSS" height="24" />
-            代替
-            <AiBadge :badge="BrandsBadge.Element" height="24" />
-            精细化手搓(重构)主页，开始深入了解 CSS。<br />
+            <AiBadge :badge="SkillsBadge.TailwindCSS" height="24" />
+            Tailwind CSS 代替
+            <AiBadge :badge="SkillsBadge.ElementUI" height="24" />
+            Element UI 精细化手搓(重构)主页，开始深入了解 CSS。<br />
         </AiTimelineItem>
         <AiTimelineItem color="#FF7F27" :moment="newDate(2025, 6, 24, 1, 25)" markdown>
             为了更喜爱的狐狸，毅然移居 [`navifox.net`](https://navifox.net/) 并为小站定名 __“路狐领航”__，同时更名为
@@ -106,13 +106,13 @@ import AiTimelineItem from '#/components/AiTimelineItem.vue';
         </AiTimelineItem>
         <AiTimelineItem color="#FF7F27" date="2024 年 11 月">
             从零手搓
-            <AiBadge :badge="BrandsBadge.Vue" height="24" />
+            <AiBadge :badge="SkillsBadge.Vue" height="24" />
             ＋
-            <AiBadge :badge="BrandsBadge.Vite" height="24" />
+            <AiBadge :badge="SkillsBadge.Vite" height="24" />
             ＋
-            <AiBadge :badge="BrandsBadge.Element" height="24" />
+            <AiBadge :badge="SkillsBadge.ElementUI" height="24" />
             个人网站并配置
-            <AiBadge :badge="BrandsBadge.Nginx" height="24" />
+            <AiBadge :badge="SkillsBadge.Nginx" height="24" />
             域名转发，自此轰开前端大门。<br />
         </AiTimelineItem>
         <AiTimelineItem color="#FF7F27" :moment="newDate(2024, 7, 10, 16, 53)" markdown>
@@ -140,7 +140,7 @@ import AiTimelineItem from '#/components/AiTimelineItem.vue';
         </AiTimelineItem>
         <AiTimelineItem color="#A349A4" :moment="newDate(2023, 7, 14, 22, 29)">
             囿于 PyCharm 功能的不全，借助
-            <AiBadge :badge="BrandsBadge.Kotlin" height="24" />
+            <AiBadge :badge="SkillsBadge.Kotlin" height="24" />
             手搓插件 TinySnake 用以解决 Python <code>__all__</code> 的生成和更新。<br />
         </AiTimelineItem>
         <AiTimelineItem color="#A349A4" anchor="2023" :moment="newDate(2023, 4, 25)">
@@ -159,19 +159,19 @@ import AiTimelineItem from '#/components/AiTimelineItem.vue';
         </AiTimelineItem>
         <AiTimelineItem color="#A349A4" date="2021 年 6 月">
             带领同事重构公司项目，抽象出仓库管理系统 WMS 与订单管理系统 OMS，使用
-            <AiBadge :badge="BrandsBadge.Bootstrap" height="24" />
+            <AiBadge :badge="SkillsBadge.Bootstrap" height="24" />
             为项目增添色彩。<br />
         </AiTimelineItem>
         <AiTimelineItem color="#A349A4" anchor="2021" :moment="newDate(2021, 3, 1)">
             进入中山一家跨境电商公司实习，接触到
-            <AiBadge :badge="BrandsBadge.Django" height="24" />
+            <AiBadge :badge="SkillsBadge.Django" height="24" />
             与
-            <AiBadge :badge="BrandsBadge.PostgreSQL" height="24" />
+            <AiBadge :badge="SkillsBadge.PostgreSQL" height="24" />
             。<br />
         </AiTimelineItem>
         <AiTimelineItem color="#A349A4" :moment="newDate(2020, 12, 12, 17, 18)">
             找到一处名为 GitHub 的乐园，取“砹小翼”双拼拼音 <code>aixcyi</code> 为常用 ID，翻开
-            <AiBadge :badge="BrandsBadge.Git" height="24" />
+            <AiBadge :badge="SkillsBadge.Git" height="24" />
             的第一页。<br />
         </AiTimelineItem>
         <AiTimelineItem color="#A349A4" anchor="2020" gradientColor="#00A2E8" :moment="newDate(2020, 10, 22)">
