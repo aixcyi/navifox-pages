@@ -5,11 +5,6 @@ import { createRouter, createWebHistory } from 'vue-router';
 
 import Home from '#/Home.vue';
 import NotFound from '#/NotFound.vue';
-import GenshinTalentsView from '#/views/GenshinTalentsView.vue';
-import MirrorView from '#/views/MirrorView.vue';
-import TailwindColorView from '#/views/TailwindColorView.vue';
-import TimestampView from '#/views/TimestampView.vue';
-import UUIDAnalysisView from '#/views/UUIDAnalysisView.vue';
 
 const router = createRouter({
     history: createWebHistory(),
@@ -28,7 +23,7 @@ const router = createRouter({
                 keywords: ['时间戳', '进制', '进位制', '表格', '字符集', '字符串', '对照表'],
                 logo: 'svg-spinners:clock',
             },
-            component: TimestampView,
+            component: () => import('#/views/TimestampView.vue'),
         },
         {
             path: '/mirror',
@@ -38,7 +33,7 @@ const router = createRouter({
                 description: '展示部分编程常用包管理器的镜像设置，用于快速设置与解决问题；镜像源按收录时间排序。',
                 keywords: ['镜像源', '镜像', 'pip', 'npm', 'pnpm', 'conda', 'uv', 'hatch', 'poetry', 'yarn'],
             },
-            component: MirrorView,
+            component: () => import('#/views/MirrorView.vue'),
         },
         {
             path: '/tailwind',
@@ -49,7 +44,7 @@ const router = createRouter({
                 keywords: ['Tailwind', 'TailwindCSS', 'CSS', '颜色'],
                 logo: 'logos:tailwindcss-icon',
             },
-            component: TailwindColorView,
+            component: () => import('#/views/TailwindColorView.vue'),
         },
         {
             path: '/uuid',
@@ -59,7 +54,7 @@ const router = createRouter({
                 description: '通用唯一标识符 UUID（Universally Unique IDentifier）结构解析。',
                 keywords: ['UUID', 'id', 'RFC9562', 'RFC4122'],
             },
-            component: UUIDAnalysisView,
+            component: () => import('#/views/UUIDAnalysisView.vue'),
         },
         {
             path: '/genshin/talent',
@@ -69,7 +64,7 @@ const router = createRouter({
                 description: '原神角色（截止 6.5 月之六版本）部分实用天赋一览表（按游戏内图鉴顺序排序）。',
                 keywords: ['原神', '角色', '天赋', '空月之歌', '月之六', '6.5'],
             },
-            component: GenshinTalentsView,
+            component: () => import('#/views/GenshinTalentsView.vue'),
         },
         {
             path: '/:pathMatch(.*)*',
