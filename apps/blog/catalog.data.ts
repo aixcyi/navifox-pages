@@ -32,7 +32,7 @@ const icons = [
     { name: '安全', icon: 'tabler:bug' },
     { name: '生活', icon: 'tabler:leaf' },
     { name: '杂谈', icon: 'tabler:message' },
-    { name: '未分类', icon: 'tabler:circle-dashed' },
+    { name: '未归类', icon: 'tabler:circle-dashed' },
 ];
 
 export default createContentLoader(pattern, {
@@ -47,7 +47,7 @@ export default createContentLoader(pattern, {
             .map((page) => ({
                 url: page.url,
                 title: page.frontmatter.title,
-                category: page.frontmatter.category || '(未归类)',
+                category: page.frontmatter.category || '未归类',
                 tags: page.frontmatter.tags || [],
                 excerpt: page.frontmatter.excerpt ? mdit.renderInline(page.frontmatter.excerpt) : '',
                 createAt: page.frontmatter.createAt,
