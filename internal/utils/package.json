@@ -11,6 +11,10 @@
             "types": "./src/index.ts",
             "default": "./src/index.ts"
         },
+        "./dnt": {
+            "types": "./src/dnt.ts",
+            "default": "./src/dnt.ts"
+        },
         "./string": {
             "types": "./src/string.ts",
             "default": "./src/string.ts"
@@ -19,6 +23,9 @@
             "types": "./src/vite.ts",
             "default": "./src/vite.ts"
         }
+    },
+    "scripts": {
+        "typecheck": "tsc --noEmit"
     },
     "dependencies": {
         "@date-fns/utc": "catalog:",

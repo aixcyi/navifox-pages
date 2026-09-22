@@ -28,82 +28,143 @@ export const signature: string = `
 ━━━━━┗┗┗┫┛┗┛┗┗┻┛ ┗━━━━━━
         ┛
 \n`;
-export const tighnari: Friend = {
-    name: '路狐羽',
-    uid: 'aixcyi',
-    tags: ['毛茸茸爱好者', '开发工程师', '罗狐会馆馆长'],
-    titles: ['Django 高级后端开发', 'Vue3 开发'],
-    status: '有时明月无人夜，独向昭潭制恶龙。',
+
+/**
+ * 站点主人（`navifox`）的专属字段。
+ *
+ * - 这些字段只属于本站，不属于任何 {@link Friend}，因此不能污染类型定义；
+ * - 用显式类型而非 `Record<string, unknown>` 收口，写错字段名时才能在编译期暴露。
+ */
+export interface NavifoxProfile {
+    /** 全球唯一用户 id。 */
+    uid: string;
+    age: number;
+    wxid: string;
+    groupQQ: string;
+    location: string;
+}
+
+export const navifox: Friend & NavifoxProfile = {
+    text: '路狐领航',
+    link: 'https://www.navifox.net',
+    icon: 'https://www.navifox.net/favicon.ico',
+    slogan: '风带来了故事的种子，时间使之发芽',
+    description: 'Seeds of stories, brought by the wind and cultivated by time.',
+    descriptionRich: 'Seeds of stories,<br/>brought by the wind and cultivated by time.',
+    author: '路狐羽',
+    tags: ['毛茸茸爱好者', '开发工程师', '罗狐会馆馆长', '能工智人'],
     avatar: 'https://www.navifox.net/avatar.jpg',
     avatar256: 'https://www.navifox.net/avatar256.jpg',
     avatar512: 'https://www.navifox.net/avatar512.jpg',
-    description: 'Seeds of stories, brought by the wind and cultivated by time.',
-    descriptionRich: 'Seeds of stories,<br/>brought by the wind and cultivated by time.',
-    location: '广东 广州',
-    groupQQ: '540457640',
-    brand: 'Navifox',
+    type: 'partner',
+    titles: ['Django 高级后端开发', 'Vue3 开发'],
+    status: '有时明月无人夜，独向昭潭制恶龙。',
+    uid: 'aixcyi',
     age: untilYear - 2000,
+    wxid: 'Navifox',
+    groupQQ: '540457640',
+    location: '广东 广州',
 };
+
 export const navifoxHome: Website = {
-    name: '路狐领航',
-    link: 'https://www.navifox.net',
-    icon: 'https://www.navifox.net/favicon.ico',
+    text: '路狐领航',
+    link: navifox.link,
+    icon: navifox.icon,
+    slogan: '愿在生活的密林里遇见一只路狐，与你相伴，为你领航',
     description: '愿在生活的密林里遇见一只路狐，与你相伴，为你领航。',
     descriptionRich: '<span>愿在生活的密林里遇见一只路狐，</span><span>与你相伴，为你领航。</span>',
-    author: tighnari.name,
-    tags: [tighnari.name, '阿羽', 'aixcyi', 'ayu', '路狐领航', '罗狐会馆', '妖灵会馆'],
+    author: navifox.author,
+    tags: [navifox.author!, '阿羽', 'aixcyi', 'ayu', navifox.text, '罗狐会馆', '妖灵会馆'],
 };
 export const navifoxRefs: Website = {
-    name: '星笺',
+    text: '星笺',
     link: 'https://refs.navifox.net',
-    icon: navifoxHome.icon,
+    icon: navifox.icon,
+    slogan: '狐狸们用小爪子敲出的一页纸快速参考',
     description: '狐狸们用小爪子敲出的一页纸快速参考。',
     descriptionRich: '狐狸们用小爪子敲出的<b>一页纸快速参考</b>。',
-    author: tighnari.name,
+    author: navifox.author,
     tags: ['快速参考', '参考', '星笺', '导航', '路狐领航'],
     note: '快速参考',
 };
 export const navifoxBlog: Website = {
-    name: '羽音',
+    text: '羽音',
     link: 'https://blog.navifox.net',
-    icon: navifoxHome.icon,
+    icon: navifox.icon,
+    slogan: '静谧星夜下不绝如缕的羽音',
     description: '静谧星夜下不绝如缕的羽音。',
     descriptionRich: '<span>静谧星夜下</span><span>不绝如缕的羽音。</span>',
-    author: tighnari.name,
+    author: navifox.author,
     note: '博客',
 };
 export const navifoxDocs: Website = {
-    name: '文档月饼盒',
+    text: '文档月饼盒',
     link: 'https://docs.navifox.net',
-    icon: navifoxHome.icon,
+    icon: navifox.icon,
+    slogan: '收纳展示散落在各个项目仓库的文档',
     description: '收纳展示散落在各个项目仓库的文档。',
-    author: tighnari.name,
+    author: navifox.author,
 };
 export const navifoxHei: Website = {
-    name: '蓝溪拾遗',
+    text: '蓝溪拾遗',
     link: 'https://hei.navifox.net',
-    icon: navifoxHome.icon,
+    icon: navifox.icon,
+    slogan: '收录罗小黑世界中的原著设定与以此架构的有趣脑洞',
     description: '收录罗小黑世界中的原著设定与以此架构的有趣脑洞。',
-    author: tighnari.name,
+    author: navifox.author,
     tags: ['罗小黑', '妖精', '妖灵', '设定', 'OC'],
     note: '设定集',
 };
 export const foxeryGuild: Website = {
-    name: '罗狐会馆',
+    text: '罗狐会馆',
     link: 'https://qm.qq.com/q/7WO1tJmTss',
+    logo: 'streamline-logos:qq-logo-solid',
     description: '妖灵会馆之一，广罗天下狐妖，提供技术讨论与休憩之地。',
-    author: tighnari.name,
+    author: navifox.author,
+};
+export const egoGitHub: Website = {
+    text: 'GitHub',
+    link: 'https://github.com/aixcyi/',
+    logo: 'simple-icons:github',
+};
+export const egoGitee: Website = {
+    text: 'Gitee',
+    link: 'https://gitee.com/aixcyi/',
+    logo: 'simple-icons:gitee',
+};
+export const egoTwitter: Website = {
+    text: '推特<br/>X／Twitter',
+    link: 'https://x.com/aixcyi/',
+    logo: 'simple-icons:x',
+};
+export const egoPyPI: Website = {
+    text: 'PyPI',
+    link: 'https://pypi.org/user/aixcyi/',
+    logo: 'file-icons:pypi',
+};
+export const egoJetBrains: Website = {
+    text: 'JetBrains 插件市场',
+    link: 'https://plugins.jetbrains.com/author/aixcyi/',
+    logo: 'simple-icons:jetbrains',
 };
 export const travelling: Website = {
-    name: '开往',
+    text: '开往',
     link: 'https://www.travellings.cn/go.html',
-    conf: 'https://www.travellings.cn/preference.html',
+    settingsUrl: 'https://www.travellings.cn/preference.html',
 };
 export const moeTravel: Website = {
-    name: '异次元之旅',
+    text: '异次元之旅',
     link: 'https://travel.moe/go.html?travel=on',
-    conf: 'https://travel.moe/',
+    settingsUrl: 'https://travel.moe/',
 };
+export const socials: Website[] = [
+    foxeryGuild,
+    // egoTwitter,
+    egoGitHub,
+    egoPyPI,
+    egoJetBrains,
+    // egoGitee,
+];
 export const sitemap = [
     navifoxHome,
     navifoxBlog,
@@ -112,21 +173,9 @@ export const sitemap = [
     navifoxHei,
     //
 ];
-export const socials: Website[] = [
-    { ...foxeryGuild, logo: 'streamline-logos:qq-logo-solid' },
-    // { name: '推特<br/>X／Twitter', logo: 'simple-icons:x', link: 'https://x.com/aixcyi/' },
-    { name: 'GitHub', logo: 'simple-icons:github', link: 'https://github.com/aixcyi/' },
-    { name: 'PyPI', logo: 'file-icons:pypi', link: 'https://pypi.org/user/aixcyi/' },
-    {
-        name: 'JetBrains 插件市场',
-        logo: 'simple-icons:jetbrains',
-        link: 'https://plugins.jetbrains.com/author/aixcyi/',
-    },
-    // { name: 'Gitee', logo: 'simple-icons:gitee', link: 'https://gitee.com/aixcyi/' },
-];
 export const credits: Website[] = [
-    { name: 'oO大黄Oo', link: 'https://www.pixiv.net/users/9892346', logo: 'fa6-brands:pixiv' },
-    { name: '錯誤', link: 'https://www.pixiv.net/users/1297556', logo: 'fa6-brands:pixiv' },
-    { name: 'アナ', link: 'https://www.pixiv.net/users/24036634', logo: 'fa6-brands:pixiv' },
-    { name: 'shields.io', link: 'https://shields.io/', icon: 'https://shields.io/img/favicon.ico', note: '徽章生成' },
+    { text: 'oO大黄Oo', link: 'https://www.pixiv.net/users/9892346', logo: 'fa6-brands:pixiv' },
+    { text: '錯誤', link: 'https://www.pixiv.net/users/1297556', logo: 'fa6-brands:pixiv' },
+    { text: 'アナ', link: 'https://www.pixiv.net/users/24036634', logo: 'fa6-brands:pixiv' },
+    { text: 'shields.io', link: 'https://shields.io/', icon: 'https://shields.io/img/favicon.ico', note: '徽章生成' },
 ];

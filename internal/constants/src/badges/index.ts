@@ -1,1 +1,2 @@
-export * from './colorful';
+export * from './brands';
+export * from './skills';

@@ -54,11 +54,11 @@ export const website = {
         },
     ) {
         yield { property: 'og:type', content: overrides?.type ?? 'website' };
-        yield { property: 'og:title', content: overrides?.title ?? site.name };
+        yield { property: 'og:title', content: overrides?.title ?? site.text };
         const description = overrides?.description ?? site.description;
         if (description) yield { property: 'og:description', content: description };
         yield { property: 'og:url', content: overrides?.url ?? site.link };
         if (overrides?.image) yield { property: 'og:image', content: overrides.image };
-        yield { property: 'og:site_name', content: site.name };
+        yield { property: 'og:site_name', content: site.text };
     },
 } as const;

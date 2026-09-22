@@ -1,7 +1,21 @@
 <script setup lang="ts">
-import { parse, differenceInDays, startOfWeek, addDays } from 'date-fns';
+import { beforeLabel, isValid, parse } from '@navifox/utils/dnt';
 import { useData } from 'vitepress';
 import { computed } from 'vue';
+
+/**
+ * 解析 `yyyy-MM-dd HH:mm` 形式的日期时间文本。
+ *
+ * - 这个格式即各站 frontmatter 中 `createAt`／`updateAt` 的书写格式。
+ *
+ * @param text 日期时间文本，缺省或解析不出日期时返回 `undefined`。
+ * @param format 解析格式，默认 `yyyy-MM-dd HH:mm`。
+ */
+function parseDate(text?: string, format = 'yyyy-MM-dd HH:mm'): Date | undefined {
+    if (!text) return undefined;
+    const value = parse(text, format, new Date(0));
+    return isValid(value) ? value : undefined;
+}
 
 const $frontmatter = useData().frontmatter;
 
@@ -9,27 +23,7 @@ const filterLink = (param: string, value: string) => `/posts?${param}=${encodeUR
 
 const ageLabel = computed(() => {
     const matter = $frontmatter.value;
-    const created = matter.createAt ? parse(matter.createAt, 'yyyy-MM-dd HH:mm', new Date()) : undefined;
-    const updated = matter.updateAt ? parse(matter.updateAt, 'yyyy-MM-dd HH:mm', new Date()) : undefined;
-    const base = updated ?? created;
-    if (!base) return '';
-    const now = new Date();
-    const days = differenceInDays(now, base);
-    if (days <= 0) return '今天';
-    if (days === 1) return '昨天';
-    if (days === 2) return '前天';
-    const thisWeekStart = startOfWeek(now, { weekStartsOn: 1 });
-    const lastWeekStart = startOfWeek(addDays(now, -7), { weekStartsOn: 1 });
-    if (base >= thisWeekStart) return '本周';
-    if (base >= lastWeekStart) return '上周';
-    if (
-        base.getFullYear() !== now.getFullYear() &&
-        base.getMonth() === now.getMonth() &&
-        base.getDate() === now.getDate()
-    ) {
-        return '当年今日';
-    }
-    return `${days} 天前`;
+    return beforeLabel(parseDate(matter.updateAt) ?? parseDate(matter.createAt));
 });
 </script>
 

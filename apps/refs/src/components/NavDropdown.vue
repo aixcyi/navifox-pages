@@ -11,7 +11,7 @@ const router = useRouter();
 const navDropdown = useTemplateRef('nav-dropdown');
 const { width } = useWindowSize({ type: 'visual' });
 const { y } = useWindowScroll();
-const sheets: Hyperlink[] = [
+const sheets: (Hyperlink | undefined)[] = [
     ...router.options.routes
         .filter((r) => typeof r.name === 'string' && r.name.endsWith('Sheet'))
         .map((r) => ({
@@ -19,7 +19,7 @@ const sheets: Hyperlink[] = [
             link: r.path,
             logo: r.meta?.logo,
         })),
-    { text: null, link: '' },
+    undefined,
     { text: 'CheatSheets.zip', link: 'https://cheatsheets.zip/', icon: 'https://cheatsheets.zip/images/favicon.png' },
 ];
 
@@ -55,9 +55,9 @@ watch(y, resize);
         <div class="py-2">
             <template v-for="sheet in sheets">
                 <a
-                    v-if="sheet.text"
+                    v-if="sheet"
                     :href="sheet.link"
-                    :target="sheet.link.startsWith('https://') ? '_blank' : '_self'"
+                    :target="(sheet.link ?? '').startsWith('https://') ? '_blank' : '_self'"
                     class="nav-item mx-2 my-1 flex items-center rounded-xl px-4 py-3 text-sm text-slate-700 transition-colors hover:bg-slate-100/50 dark:text-slate-300 dark:hover:bg-slate-700/50"
                     rel="nofollow"
                     role="button"

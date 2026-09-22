@@ -16,8 +16,12 @@
             "default": "./src/lib/utils.ts"
         }
     },
+    "scripts": {
+        "typecheck": "vue-tsc --noEmit"
+    },
     "dependencies": {
         "@navifox/constants": "workspace:*",
+        "@navifox/types": "workspace:*",
         "@navifox/utils": "workspace:*",
         "@vueuse/core": "catalog:",
         "class-variance-authority": "catalog:",

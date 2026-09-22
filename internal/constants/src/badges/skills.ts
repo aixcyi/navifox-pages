@@ -1,18 +1,23 @@
 import type { Badge } from '@navifox/types';
 
 /**
- * 彩色徽章。
+ * 技能徽章。
+ *
+ * - 用于显示技能相关场景时用的徽章。
+ * - 图标一般不会填满整个画布。
+ * - 图标一般会圆润一点，在小尺寸下视觉效果更佳。
+ * - 每个徽章都带上了 {@link Badge.text} 字段。
  */
-export class ColorBadge {
+export class SkillsBadge {
     // -------------------------------- 语言类 --------------------------------
 
-    static readonly Python: Badge = { logo: 'devicon:python' };
+    static readonly Python: Badge = { logo: 'logos:python' };
     static readonly Kotlin: Badge = { logo: 'devicon:kotlin' };
     static readonly Golang: Badge = { logo: 'devicon:go' };
     static readonly Rust: Badge = { logo: 'catppuccin:rust' };
     static readonly Java: Badge = { logo: 'logos:java' };
-    static readonly JavaScript: Badge = { logo: 'devicon:javascript' };
-    static readonly TypeScript: Badge = { logo: 'devicon:typescript' };
+    static readonly JavaScript: Badge = { logo: 'skill-icons:javascript' };
+    static readonly TypeScript: Badge = { logo: 'skill-icons:typescript' };
     static readonly WebHTML: Badge = { logo: 'catppuccin:html', text: 'HTML' };
     static readonly WebCSS: Badge = { logo: 'logos:css', text: 'CSS' };
     static readonly Markdown: Badge = { logo: 'catppuccin:markdown' };
@@ -21,7 +26,7 @@ export class ColorBadge {
     static readonly Powershell: Badge = { logo: 'devicon:powershell' };
     static readonly NuShell: Badge = { logo: 'simple-icons:nushell' };
 
-    // -------------------------------- 框架类 --------------------------------
+    // -------------------------------- 库与包 --------------------------------
 
     // 后端开发
     static readonly Django: Badge = { logo: 'skill-icons:django' };
@@ -42,6 +47,7 @@ export class ColorBadge {
     static readonly Gsap: Badge = { logo: 'simple-icons:gsap', text: 'GSAP' };
     static readonly VitePress: Badge = { logo: 'simple-icons:vitepress' };
     static readonly Bootstrap: Badge = { logo: 'devicon:bootstrap' };
+    static readonly ElementUI: Badge = { logo: 'logos:element' };
     static readonly Naive: Badge = { logo: 'logos:naiveui' };
 
     // -------------------------------- 存储类 --------------------------------
@@ -75,6 +81,7 @@ export class ColorBadge {
     static readonly Vite: Badge = { logo: 'devicon:vitejs' };
     static readonly Npm: Badge = { logo: 'devicon:npm', text: 'NPM' };
     static readonly Pnpm: Badge = { logo: 'devicon:pnpm', text: 'PNPM' };
+    static readonly Nginx: Badge = { logo: 'logos:nginx' };
 
     // -------------------------------- 杂类 --------------------------------
 

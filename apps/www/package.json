@@ -1,13 +1,13 @@
 {
     "name": "@navifox/www",
-    "version": "0.3.2",
+    "version": "269.0",
     "private": true,
     "type": "module",
     "scripts": {
         "build": "vue-tsc -b && vite build && cd dist && bestzip ../dist.zip *",
         "dev": "vite",
         "preview": "vite preview",
-        "typecheck": "vue-tsc --noEmit --skipLibCheck"
+        "typecheck": "vue-tsc -b"
     },
     "dependencies": {
         "@navifox/constants": "workspace:*",
@@ -18,6 +18,10 @@
         "@tailwindcss/vite": "catalog:",
         "@unhead/vue": "catalog:",
         "@vueuse/core": "catalog:",
+        "@vueuse/integrations": "catalog:",
+        "gsap": "catalog:",
+        "qrcode": "catalog:",
+        "reka-ui": "catalog:",
         "tailwindcss": "catalog:",
         "vue": "catalog:",
         "vue-router": "catalog:"

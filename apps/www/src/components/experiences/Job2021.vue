@@ -1,18 +1,19 @@
 <script lang="ts" setup>
-import { ColorBadge } from '@navifox/constants';
+import { SkillsBadge } from '@navifox/constants';
 import type { Project } from '@navifox/types';
 import { Markdown as down } from '@navifox/ui';
 
 import Experience from '#/components/Experience.vue';
 
 const project: Project = {
-    name: '跨境电商ERP',
+    text: '跨境电商ERP',
+    link: '#',
     description: '',
     stack: [
-        ColorBadge.Python,
-        ColorBadge.Django,
-        ColorBadge.Bootstrap,
-        ColorBadge.PostgreSQL,
+        SkillsBadge.Python,
+        SkillsBadge.Django,
+        SkillsBadge.Bootstrap,
+        SkillsBadge.PostgreSQL,
         //
     ],
 };

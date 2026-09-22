@@ -1,13 +1,16 @@
 # IDEs & AI
 /.idea/
 /.vscode/
+/.memory/
 /.agents/
 /.claude/
 /*.code-workspace
 /*.md
+/skills-lock.json
 !/navifox.code-workspace
 !/README.md
-/skills-lock.json
+!/README.*.md
+!/CHANGELOG.md
 
 # Environment
 **/.env.local
@@ -15,12 +18,13 @@
 **/node_modules/
 /.venv/
 
-# Caches
+# Caches & Builds
 **/__pycache__/
 **/cache/
 **/dist/
 **/dist-ssr/
 **/dist.*
+/.pnpm-store/
 /zoo.*/
 
 # Scripts

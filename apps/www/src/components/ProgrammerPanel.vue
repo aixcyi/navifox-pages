@@ -1,8 +1,22 @@
 <script lang="ts" setup>
-import { Icon } from '@iconify/vue';
+import { Icon } from '@iconify/vue/offline';
 import { markit } from '@navifox/utils';
+import { ref } from 'vue';
 
 const programmerLevels = [
+    {
+        level: '7 级：技术探索者',
+        points: [
+            { text: '你能够熟练运用多种技术__解决问题__，并清楚其背后的__原理和细节__。' },
+            { text: '你掌握了多种__编程范式__，熟悉至少一门或多门的编程语言的__编译和运行细节__。', unlit: true },
+            { text: '你具有__系统化__的技术思维，能够深入探索并解决行业中具有挑战性的问题。', unlit: true },
+            { text: '你可能是操作系统专家，阅读和修改 Linux __内核源码__是你的日常工作。', unlit: true },
+            { text: '你可能是数据库专家，在 SQL 优化时多看一眼 explain 都是对你技术的不信任。', unlit: true },
+            { text: '你可能曾经参与或者主导开发一些__开源项目__，也曾向一些著名的开源项目__贡献代码__，并被接受。' },
+            { text: '你可能曾通过演讲、写作、开源项目等多种形式__分享知识__，并初步建立了一定的影响力。', unlit: true },
+            { text: '显然，你已经是经验丰富的开发者了，研究技术是你生活不可或缺的一部分。' },
+        ],
+    },
     {
         level: '6 级：质量监督员',
         points: [
@@ -56,27 +70,50 @@ for (const level of programmerLevels) {
         point.text = markit(point.text);
     }
 }
+
+/** 默认只露「6 级」这一档，其余等级收在卡片尾部，由页脚的按钮展开。 */
+const pinnedLevel = '6 级';
+
+const expanded = ref(false);
 </script>
 
 <template>
-    <div class="flex flex-col gap-6">
-        <section v-for="desc in programmerLevels">
+    <div class="ProgrammerPanel flex flex-col gap-6">
+        <section v-for="desc in programmerLevels" v-show="expanded || desc.level.startsWith(pinnedLevel)">
             <div>
                 <b>{{ desc.level }}</b>
             </div>
             <ul class="**:transition-all **:duration-200 max-md:leading-relaxed">
                 <li
                     v-for="point in desc.points"
-                    :class="point.unlit ? '' : 'text-slate-400 dark:text-slate-600'"
-                    class="group cursor-default hover:text-slate-900 dark:hover:text-slate-100"
+                    :class="point.unlit ? '' : 'text-slate-300 dark:text-slate-600'"
+                    class="group hover:bg-starlight-500/12! dark:hover:bg-starlight-300/10! cursor-default rounded-md hover:text-black! dark:hover:text-white!"
                 >
-                    <icon :icon="point.unlit ? 'icons8:circle' : 'icons8:checked'" class="mr-1" height="20" />
+                    <icon
+                        :icon="point.unlit ? 'icons8:circle' : 'icons8:checked'"
+                        class="mr-1 transition-transform group-hover:scale-110"
+                        height="20"
+                    />
                     <span
-                        class="*:[u]:decoration-transparent! *:[u]:underline-offset-5! group-hover:*:[u]:decoration-orange-500!"
+                        class="group-hover:*:[u]:decoration-starlight-500! dark:group-hover:*:[u]:decoration-starlight-400! *:[u]:decoration-transparent! *:[u]:underline-offset-5! group-hover:*:[u]:decoration-2!"
                         v-html="point.text"
                     />
                 </li>
             </ul>
         </section>
+        <button
+            type="button"
+            :aria-expanded="expanded"
+            class="text-starlight-600 dark:text-starlight-300 hover:bg-starlight-500/12! dark:hover:bg-starlight-300/10! focus-visible:ring-starlight-500/40 -mt-1 flex cursor-pointer items-center justify-center gap-1 rounded-xl py-3 text-sm transition-colors duration-200 focus-visible:ring-2 focus-visible:outline-none"
+            @click="expanded = !expanded"
+        >
+            <span v-html="expanded ? '收起评估清单' : '展开评估清单'" />
+            <Icon
+                :class="expanded ? '' : 'rotate-180'"
+                class="transition-transform duration-200"
+                height="20"
+                icon="material-symbols:keyboard-arrow-up-rounded"
+            />
+        </button>
     </div>
 </template>

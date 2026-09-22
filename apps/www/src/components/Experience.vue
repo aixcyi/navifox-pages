@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { Icon } from '@iconify/vue';
+import { Icon } from '@iconify/vue/offline';
 import type { Project } from '@navifox/types';
 
 /**
@@ -26,9 +26,9 @@ defineProps<ExperienceDetail>();
 </script>
 
 <template>
-    <section class="flex flex-col gap-2">
+    <section class="GlassCard flex flex-col gap-2 p-6 sm:p-8">
         <div>
-            <b class="mr-2">{{ project?.name ?? team }}</b>
+            <b class="mr-2">{{ project?.text ?? team }}</b>
             <span class="float-end ml-2">
                 <code>{{ start }}</code>
                 <code v-if="stop"> - {{ stop }}</code>

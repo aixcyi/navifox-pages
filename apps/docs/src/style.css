@@ -1,4 +1,11 @@
 @import 'tailwindcss';
+/* 星夜色板与深色模式约定由三个子应用共用，定义在 @navifox/styles 里，不要在这里再抄一份。 */
+@import '../../../internal/styles/src/theme.css';
+
+/* @source '../node_modules/@navifox/ui';
+   的话 Tailwind 会顺着 pnpm 依赖树扫描数万文件，
+   pnpm run dev 样式重编译从 <1s 恶化到 10s+。 */
+@source '../../../internal/ui';
 
 :root {
     --gradient-milktea: linear-gradient(114.41deg, var(--color-amber-200) 20.74%, var(--color-amber-100) 65.5%);
@@ -10,6 +17,13 @@
     --ease-in-out-quart: cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 
+/* 选中文字：浅色模式取星辉金、深色模式取夜空蓝，都显式指定文字色以保证对比度 */
 *::selection {
-    background: #3b7d82;
+    background: var(--color-starlight-300);
+    color: var(--color-night-900);
+}
+
+.dark *::selection {
+    background: var(--color-night-600);
+    color: var(--color-paper-50);
 }

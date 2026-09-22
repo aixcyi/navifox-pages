@@ -17,54 +17,19 @@
         },
     },
     "folders": [
-        {
-            "name": "@navifox/www",
-            "path": "./apps/www",
-        },
-        {
-            "name": "@navifox/docs",
-            "path": "./apps/docs",
-        },
-        {
-            "name": "@navifox/refs",
-            "path": "./apps/refs",
-        },
-        {
-            "name": "@navifox/hei",
-            "path": "./apps/hei",
-        },
-        {
-            "name": "@navifox/vitepress",
-            "path": "./packages/vitepress",
-        },
-        {
-            "name": "@navifox/constants",
-            "path": "./internal/constants",
-        },
-        {
-            "name": "@navifox/styles",
-            "path": "./internal/styles",
-        },
-        {
-            "name": "@navifox/tsconfig",
-            "path": "./internal/tsconfig",
-        },
-        {
-            "name": "@navifox/types",
-            "path": "./internal/types",
-        },
-        {
-            "name": "@navifox/ui",
-            "path": "./internal/ui",
-        },
-        {
-            "name": "@navifox/utils",
-            "path": "./internal/utils",
-        },
-        {
-            "name": "根目录",
-            "path": ".",
-        },
+        { "name": "@navifox/www", "path": "./apps/www" },
+        { "name": "@navifox/blog", "path": "./apps/blog" },
+        { "name": "@navifox/docs", "path": "./apps/docs" },
+        { "name": "@navifox/refs", "path": "./apps/refs" },
+        { "name": "@navifox/hei", "path": "./apps/hei" },
+        { "name": "@navifox/vitepress", "path": "./packages/vitepress" },
+        { "name": "@navifox/constants", "path": "./internal/constants" },
+        { "name": "@navifox/styles", "path": "./internal/styles" },
+        { "name": "@navifox/tsconfig", "path": "./internal/tsconfig" },
+        { "name": "@navifox/types", "path": "./internal/types" },
+        { "name": "@navifox/ui", "path": "./internal/ui" },
+        { "name": "@navifox/utils", "path": "./internal/utils" },
+        { "name": "根目录", "path": "." },
     ],
     "extensions": {
         "recommendations": [

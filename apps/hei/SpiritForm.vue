@@ -137,11 +137,7 @@ const outputMarkdown = computed(() => {
         <button class="btn-add" @click="addAbility">+ 追加一行</button>
         <h4>坐标</h4>
         <label>
-            <textarea
-                v-model="contact"
-                placeholder="选填。可以公开的联系方式（三思隐私泄露的可能）。"
-                rows="2"
-            ></textarea>
+            <textarea v-model="contact" placeholder="选填。可以公开的联系方式（三思隐私泄露的可能）。" rows="2" />
         </label>
         <h4>预览效果</h4>
         <SpiritCard :name :tags :avatar :link="english ? `/spirit/${english}` : ''" />

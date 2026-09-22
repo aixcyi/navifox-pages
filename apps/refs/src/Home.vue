@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import { Icon } from '@iconify/vue/offline';
 import { bookmarkTabs, bookmarks, navifoxRefs } from '@navifox/constants';
-import type { BookmarkCategory, Hyperlink, Website } from '@navifox/types';
-import { AiFooter } from '@navifox/ui';
+import type { BookmarkCategory, TextLink, Website } from '@navifox/types';
+import { AiFooter, AiFavicon } from '@navifox/ui';
 import { computed, ref } from 'vue';
 
 import LinkIcon from '#/assets/AkarIconsLinkOut.svg';
@@ -18,7 +18,7 @@ const activeTab = ref<BookmarkCategory>(bookmarkTabs[0]!.key);
  * 仅收集当前激活 Tab（生态分类）下的分组。
  */
 const bookmarkGroups = computed(() => {
-    const groups: { title?: Hyperlink; sections: { items: Website[] }[] }[] = [];
+    const groups: { title?: TextLink; sections: { items: Website[] }[] }[] = [];
     for (const group of bookmarks) {
         if (group.category !== activeTab.value) continue;
         if (group.title || groups.length === 0) {
@@ -65,7 +65,7 @@ const bookmarkGroups = computed(() => {
                             v-html="'路狐领航之'"
                         />
                     </span>
-                    <span class="mt-2 block">{{ navifoxRefs.name }}</span>
+                    <span class="mt-2 block">{{ navifoxRefs.text }}</span>
                 </h1>
                 <h2
                     class="mx-auto mt-8 mb-12 text-center text-lg leading-relaxed font-light tracking-wide text-slate-300 md:text-xl lg:w-3/4 lg:text-2xl xl:w-2/3"
@@ -108,7 +108,7 @@ const bookmarkGroups = computed(() => {
         <div class="mx-auto mt-10 w-full columns-1 gap-x-8 md:columns-2 lg:columns-3 xl:columns-4">
             <div v-for="group in bookmarkGroups" class="mb-10 break-inside-avoid">
                 <template v-if="group.title">
-                    <div v-if="group.title?.elementId" :id="group.title.elementId" />
+                    <div v-if="group.title.anchor" :id="group.title.anchor" />
                     <a
                         :href="group.title.link"
                         :target="group.title.link.startsWith('https://') ? '_blank' : '_self'"
@@ -124,7 +124,7 @@ const bookmarkGroups = computed(() => {
                     </a>
                     <div
                         class="mt-1 mb-6 h-1 w-24 rounded-full bg-linear-to-r from-indigo-500 to-purple-600 dark:bg-slate-800"
-                    ></div>
+                    />
                 </template>
                 <template v-for="(section, sectionIndex) in group.sections">
                     <div v-if="sectionIndex > 0" class="mt-8" aria-hidden="true" />
@@ -136,29 +136,11 @@ const bookmarkGroups = computed(() => {
                             target="_blank"
                         >
                             <div class="min-w-4 text-slate-400 dark:text-slate-600">
-                                <Icon
-                                    v-if="item.logo"
-                                    :icon="item.logo"
-                                    class="size-4 max-w-4 text-slate-600 dark:text-slate-400"
-                                />
-                                <img
-                                    v-else-if="item.icon"
-                                    :src="item.icon"
-                                    alt="ico"
-                                    class="w-4"
-                                    loading="lazy"
-                                    decoding="async"
-                                    @error="
-                                        (e) => {
-                                            (e.target as HTMLImageElement).src = LinkIcon;
-                                        }
-                                    "
-                                />
-                                <img v-else :src="LinkIcon" alt="ico" class="size-4" loading="lazy" decoding="async" />
+                                <AiFavicon :item="item" :fallback="LinkIcon" />
                             </div>
                             <div class="flex flex-row flex-wrap items-center gap-x-1.5 text-sm">
                                 <div class="inline-flex flex-wrap items-center text-black dark:text-slate-300">
-                                    <span v-html="item.name" />
+                                    <span v-html="item.text" />
                                     <span
                                         v-if="(item.tags || []).includes('catalog')"
                                         class="Note ml-1.5 inline rounded-xs border border-blue-400 px-0.5 text-xs text-blue-400 transition-colors duration-200 dark:border-amber-200 dark:text-amber-200"

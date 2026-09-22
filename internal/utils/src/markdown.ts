@@ -1,47 +1,60 @@
 import { trim } from 'es-toolkit';
 import MarkdownIt from 'markdown-it';
 
-const md = MarkdownIt({ breaks: true }).use((md) => {
-    md.inline.ruler.before('emphasis', 'underline', (state, silent) => {
-        const MARKUP = '__';
-        const MARKER = MARKUP.charCodeAt(0);
-        const ELEMENT = 'u';
-        const contentStart = state.pos + 2;
+const md = MarkdownIt({ breaks: true })
+    .use((md) => {
+        md.inline.ruler.before('emphasis', 'underline', (state, silent) => {
+            const MARKUP = '__';
+            const MARKER = MARKUP.charCodeAt(0);
+            const ELEMENT = 'u';
+            const contentStart = state.pos + 2;
 
-        if (state.src.charCodeAt(contentStart - 2) !== MARKER) return false;
-        if (state.src.charCodeAt(contentStart - 1) !== MARKER) return false;
+            if (state.src.charCodeAt(contentStart - 2) !== MARKER) return false;
+            if (state.src.charCodeAt(contentStart - 1) !== MARKER) return false;
 
-        let contentEnd = contentStart;
-        while (contentEnd < state.posMax) {
-            if (
-                state.src.charCodeAt(contentEnd) === MARKER && //
-                state.src.charCodeAt(contentEnd + 1) === MARKER
-            ) {
-                break;
+            let contentEnd = contentStart;
+            while (contentEnd < state.posMax) {
+                if (
+                    state.src.charCodeAt(contentEnd) === MARKER && //
+                    state.src.charCodeAt(contentEnd + 1) === MARKER
+                ) {
+                    break;
+                }
+                contentEnd++;
             }
-            contentEnd++;
-        }
 
-        if (contentEnd >= state.posMax) return false;
+            if (contentEnd >= state.posMax) return false;
 
-        if (!silent) {
-            const tokenOpen = state.push('underline_open', ELEMENT, 1);
-            tokenOpen.markup = MARKUP;
+            if (!silent) {
+                const tokenOpen = state.push('underline_open', ELEMENT, 1);
+                tokenOpen.markup = MARKUP;
 
-            const tokenContent = state.push('text', '', 0);
-            tokenContent.content = state.src.slice(contentStart, contentEnd);
+                const tokenContent = state.push('text', '', 0);
+                tokenContent.content = state.src.slice(contentStart, contentEnd);
 
-            const tokenClose = state.push('underline_close', ELEMENT, -1);
-            tokenClose.markup = MARKUP;
-        }
+                const tokenClose = state.push('underline_close', ELEMENT, -1);
+                tokenClose.markup = MARKUP;
+            }
 
-        state.pos = contentEnd + 2;
-        return true;
+            state.pos = contentEnd + 2;
+            return true;
+        });
+
+        md.renderer.rules['underline_open'] = () => '<u>';
+        md.renderer.rules['underline_close'] = () => '</u>';
+    })
+    .use((md) => {
+        // 外链（http/https）一律在新标签页打开，避免离开当前站点。
+        // `mailto:` 故意不处理：加 `target="_blank"` 后浏览器常会多开一个空白页签，且可能干扰邮件客户端的唤起。
+        md.renderer.rules['link_open'] = (tokens, idx, options, _env, self) => {
+            const token = tokens[idx];
+            if (token && /^https?:\/\//i.test(token.attrGet('href') ?? '')) {
+                token.attrSet('target', '_blank');
+                token.attrSet('rel', 'noopener noreferrer');
+            }
+            return self.renderToken(tokens, idx, options);
+        };
     });
-
-    md.renderer.rules['underline_open'] = () => '<u>';
-    md.renderer.rules['underline_close'] = () => '</u>';
-});
 
 export function nbsp(text?: string) {
     if (typeof text !== 'string') return undefined;
@@ -62,6 +75,7 @@ export function markit(
  *
  * - 用 `\n` 而不是 `\n\n` 换行。
  * - 用 `__` 标记下划线 `<u></u>`，加粗 `<strong></strong>` 改用 `**` 代替。
+ * - `http` / `https` 外部链接会自带 `target="_blank"` 与 `rel="noopener noreferrer"`；`mailto:` 等协议保持同页跳转。
  *
  * @param text Markdown 文本。
  * @param options 扩展选项。

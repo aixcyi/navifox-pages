@@ -1,4 +1,4 @@
-import { tighnari } from '@navifox/constants/website';
+import { navifox } from '@navifox/constants/website';
 
 /**
  * 妖精与人类（统称妖灵）的设定信息。
@@ -74,7 +74,7 @@ export const spiritsOC: SpiritInfo[] = [
     {
         name: '路狐羽',
         tags: ['罗狐会馆馆长', '感知组成员'],
-        avatar: tighnari.avatar256,
+        avatar: navifox.avatar256 || navifox.avatar || '',
         link: '/spirit/navifox',
     },
     {

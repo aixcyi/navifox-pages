@@ -7,7 +7,7 @@
         "build": "vitepress build && cd dist && bestzip ../dist.zip *",
         "dev": "vitepress dev",
         "preview": "vitepress preview",
-        "typecheck": "vue-tsc --noEmit --skipLibCheck"
+        "typecheck": "vue-tsc --noEmit"
     },
     "dependencies": {
         "@catppuccin/vitepress": "catalog:",
@@ -17,7 +17,6 @@
         "@navifox/utils": "workspace:*",
         "@navifox/vitepress": "workspace:*",
         "@vueuse/core": "catalog:",
-        "date-fns": "catalog:",
         "vue": "catalog:"
     },
     "devDependencies": {

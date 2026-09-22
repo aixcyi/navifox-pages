@@ -5,8 +5,14 @@
         <meta content="width=device-width, initial-scale=1.0" name="viewport" />
         <style>
             html {
-                color-scheme: only light;
-                background-color: #285559;
+                color-scheme: light dark;
+                background-color: #faf7f1; /* var(--color-paper-50) */
+            }
+
+            @media (prefers-color-scheme: dark) {
+                html {
+                    background-color: #141c33; /* var(--color-night-950) */
+                }
             }
         </style>
         <script src="/src/main.ts" type="module"></script>

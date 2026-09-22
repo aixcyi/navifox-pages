@@ -3,7 +3,7 @@ import { createApp } from 'vue';
 
 import '#/style.css';
 import App from '#/App.vue';
-
+import '#/iconify';
 import '@navifox/styles';
 
 const app = createApp(App);
