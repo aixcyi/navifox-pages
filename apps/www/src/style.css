@@ -11,7 +11,7 @@
     html {
         scroll-behavior: smooth;
 
-        /* 首页技能树那条蜂窝带比视口宽（宽度由 `SkillsHoneycomb` 按视口算出来），
+        /* 首页技术栈那条蜂窝带比视口宽（宽度由 `SkillsHoneycomb` 按视口算出来），
            多出来的部分靠 `.Starry` 的 `overflow-x-clip` 收掉。
            但 Firefox 会把「已被裁掉」的内容照样算进祖先的 scrollWidth，于是仍可能冒出横向滚动条；
            在根元素上再裁一道才是可靠保证（根元素上的 overflow 会传导给视口，`clip` 在那里按 hidden 解释，
@@ -26,7 +26,7 @@
        于是首页之外的页面（例如朋友圈卡片）与首页时间线明显不同色。
 
        `a` / `b` / `strong` / `u` 这些**行内**样式同时挂在 `.Starry` 上：
-       首页有位于 `.Content` 之外、观感却必须一致的片段（技能树小标题里的外链、技能面板里的 <b>）。
+       首页有位于 `.Content` 之外、观感却必须一致的片段（技术栈小标题里的外链、技能面板里的 <b>）。
        `p` / `ol` / `ul` / `svg` 不共享——它们会改变排版，一旦挂到 `.Starry` 就会波及
        SectionHeader 的说明段落等并非富文本的地方。 */
     .Content,

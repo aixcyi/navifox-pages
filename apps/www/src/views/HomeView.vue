@@ -28,7 +28,7 @@ const anchorIntro = {
 
 const anchorStacks = {
     id: 'stacks',
-    title: '技能树',
+    title: '技术栈',
     eyebrow: 'Navifox · Skills',
 } satisfies Anchor;
 
@@ -71,7 +71,7 @@ onMounted(() => {
     </div>
 
     <div
-        class="Starry from-paper-100 via-paper-50 to-paper-50 dark:from-night-900 dark:via-night-950 dark:to-night-950 relative z-20 flow-root overflow-x-clip bg-gradient-to-b"
+        class="Starry from-paper-100 via-paper-50 to-paper-50 dark:from-night-900 dark:via-night-950 dark:to-night-950 relative z-20 flow-root overflow-x-clip rounded-t-4xl bg-gradient-to-b"
     >
         <div :id="anchorIntro.id" class="MaxContainer relative my-24 scroll-mt-28 text-stone-600 dark:text-slate-300">
             <SectionHeader
@@ -185,7 +185,7 @@ onMounted(() => {
             </div>
         </div>
 
-        <!-- 技能树 -->
+        <!-- 技术栈 -->
         <section
             :id="anchorStacks.id"
             class="MaxContainer relative my-24 scroll-mt-28 text-stone-600 dark:text-slate-300"
@@ -195,7 +195,7 @@ onMounted(() => {
                  多出来的部分由 `.Starry` 与根元素的 `overflow-x-clip` 收掉，不会出横向滚动条。
                  内容区仍是 `MaxContainer` 的宽度，所以用 `left-1/2` + `-translate-x-1/2` 把这条带子对准视口中心。
                  这条链路上刻意不加 `clip-path`：那会把跟着指针走的背光锁在一个矩形里。 -->
-            <div class="relative left-1/2 mt-12 w-max -translate-x-1/2 pt-12">
+            <div class="relative left-1/2 mt-12 w-max -translate-x-1/2">
                 <SkillsHoneycomb />
             </div>
         </section>
@@ -217,7 +217,7 @@ onMounted(() => {
             </div>
         </section>
 
-        <!-- 星光尘覆盖：置于所有区块之后，使各区块卡片（含技能树、时与风）均覆盖星光 -->
+        <!-- 星光尘覆盖：置于所有区块之后，使各区块卡片均覆盖星光 -->
         <Stardust />
 
         <!-- 页尾 -->

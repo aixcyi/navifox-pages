@@ -52,7 +52,7 @@ export const navifox: Friend & NavifoxProfile = {
     description: 'Seeds of stories, brought by the wind and cultivated by time.',
     descriptionRich: 'Seeds of stories,<br/>brought by the wind and cultivated by time.',
     author: '路狐羽',
-    tags: ['毛茸茸爱好者', '开发工程师', '罗狐会馆馆长', '能工智人'],
+    tags: ['毛茸茸爱好者', '开发工程师', 'Pythonista', '能工智人'],
     avatar: 'https://www.navifox.net/avatar.jpg',
     avatar256: 'https://www.navifox.net/avatar256.jpg',
     avatar512: 'https://www.navifox.net/avatar512.jpg',
