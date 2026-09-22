@@ -47,11 +47,27 @@
     /* Catppuccin 主题没有重写 --vp-c-brand-soft，默认仍是 VitePress 的海蓝
        indigo-soft，改为玛瑙红微染（同 --vp-badge-tip-bg 的 hsla 色相） */
     --vp-c-brand-soft: hsla(355, 76%, 59%, 0.14);
+
+    /* 天蓝色板：基准色取品牌渐变的天蓝端点 #41d1ff（明暗主题共用），其余档位按同一
+       色相（HSL 194.5°）加深，因此整条色阶偏青，不会滑向海蓝（HSL 201° 的旧值）。
+       浅色主题的正文色只能用加深档：该亮色在白底仅 1.78:1，且越亮对比度越低，
+       故 -1 取「微染底上仍达 AA」的最亮档 */
+    --vp-c-sky-bright: #41d1ff;
+    --vp-c-sky-1: #00789e; /* 微染底上 4.6:1 */
+    --vp-c-sky-2: #008bb8; /* 按钮 hover，更亮一档 */
+    --vp-c-sky-3: #006c8f; /* 实色底，配白字 5.9:1 */
+    /* 微染底色直接取基准色的淡染（白底约 #e4f9ff），使浅色主题同样是偏青的天蓝 */
+    --vp-c-sky-soft: rgba(65, 209, 255, 0.14);
 }
 
 .dark {
     --vp-c-brand-soft: hsla(355, 71%, 77%, 0.16);
     --vp-button-brand-active-text: var(--ctp-macchiato-crust) !important;
+
+    --vp-c-sky-1: var(--vp-c-sky-bright);
+    --vp-c-sky-2: #66daff;
+    --vp-c-sky-3: #14718f;
+    --vp-c-sky-soft: rgba(65, 209, 255, 0.16);
 }
 
 /**
@@ -60,7 +76,7 @@
 
 :root {
     --vp-home-hero-name-color: transparent;
-    --vp-home-hero-name-background: -webkit-linear-gradient(120deg, var(--vp-c-brand-1) 30%, #41d1ff);
+    --vp-home-hero-name-background: -webkit-linear-gradient(120deg, var(--vp-c-brand-1) 30%, var(--vp-c-sky-bright));
 
     --vp-home-hero-image-background-image: linear-gradient(-45deg, var(--vp-c-brand-1) 50%, #47caff 50%);
     --vp-home-hero-image-filter: blur(44px);
@@ -117,22 +133,6 @@
    减半后取 19px（不小于 14px 字号，避免行间重叠） */
 .VPSidebarItem .text {
     line-height: 19px;
-}
-
-/**
- * Component: Catalog
- * -------------------------------------------------------------------------- */
-
-:root {
-    --post-category-color: #0369a1;
-    --filter-tag-color: #40a02b;
-    --filter-tag-soft: rgba(64, 160, 43, 0.14);
-}
-
-.dark {
-    --post-category-color: #41d1ff;
-    --filter-tag-color: #a6da95;
-    --filter-tag-soft: rgba(166, 218, 149, 0.16);
 }
 
 /**

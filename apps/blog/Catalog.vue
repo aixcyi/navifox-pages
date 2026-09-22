@@ -259,8 +259,8 @@ const filterRows = computed<FilterRow[]>(() => {
 }
 
 .filter-buttons-tag {
-    --row-color: var(--filter-tag-color);
-    --row-soft: var(--filter-tag-soft);
+    --row-color: var(--vp-c-sky-1);
+    --row-soft: var(--vp-c-sky-soft);
 }
 
 .filter-buttons-draft {
@@ -358,12 +358,12 @@ const filterRows = computed<FilterRow[]>(() => {
     margin-bottom: 1.5rem;
 }
 
-/* 搜索框聚焦时，分隔线淡入与渐变色一致（brand → #41d1ff） */
+/* 搜索框聚焦时，分隔线淡入与渐变色一致（brand → 天蓝） */
 .divider::after {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(90deg, var(--vp-c-brand-1) 30%, #41d1ff);
+    background: linear-gradient(90deg, var(--vp-c-brand-1) 30%, var(--vp-c-sky-bright));
     opacity: 0;
     transition: opacity 0.25s ease;
 }
@@ -437,7 +437,7 @@ const filterRows = computed<FilterRow[]>(() => {
     color: inherit;
 }
 
-/* 单线渐变边框：颜色与标题渐变相同（brand 30% → #41d1ff），方向相反（300deg），hover 时淡入。
+/* 单线渐变边框：颜色与标题渐变相同（brand 30% → 天蓝），方向相反（300deg），hover 时淡入。
    采用 padding-box/border-box 双层背景绘制边框环（业界通用的渐变边框画法），
    避免 mask 合成在分数倍 DPI 缩放下出现边缘粗细不均 */
 .post-item::before {
@@ -449,7 +449,7 @@ const filterRows = computed<FilterRow[]>(() => {
     border-radius: inherit;
     background:
         linear-gradient(var(--vp-c-bg), var(--vp-c-bg)) padding-box,
-        linear-gradient(300deg, var(--vp-c-brand-1) 30%, #41d1ff) border-box;
+        linear-gradient(300deg, var(--vp-c-brand-1) 30%, var(--vp-c-sky-bright)) border-box;
     opacity: 0;
     transition: opacity 0.5s ease;
 }
@@ -484,7 +484,7 @@ const filterRows = computed<FilterRow[]>(() => {
     font-size: 0.875rem;
     opacity: 0.5;
     align-self: center;
-    color: var(--post-category-color);
+    color: var(--vp-c-sky-1);
 }
 
 .icon-lg {
