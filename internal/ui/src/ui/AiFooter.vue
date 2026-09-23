@@ -40,10 +40,10 @@ const footerFriends = friends.slice(0, Math.max(sitemap.length, credits.length))
                             v-for="item in sitemap"
                             :href="item.link"
                             :target="(item.link ?? '').startsWith('https://') ? '_blank' : '_self'"
-                            class="group border-starlight-500/15 hover:border-blossom-300/60 dark:hover:border-blossom-300/40 flex items-center rounded-xl border bg-white p-3 transition-all duration-200 hover:shadow-md dark:border-white/12 dark:bg-sky-300/10"
+                            class="group border-starlight-500/15 hover:border-blossom-300/60 dark:hover:border-blossom-300/40 flex items-center rounded-xl border bg-white px-4 py-3 transition-all duration-200 hover:shadow-md dark:border-white/12 dark:bg-sky-300/10"
                         >
-                            <div class="text-blossom-300 mr-3 flex h-8 w-8 flex-shrink-0 items-center justify-center">
-                                <AiFavicon :item="item" :size="24" />
+                            <div class="text-blossom-300 mr-2.5 flex h-8 w-8 flex-shrink-0 items-center justify-center">
+                                <AiFavicon :item="item" :size="32" />
                             </div>
                             <div class="min-w-0 flex-1">
                                 <h4
@@ -78,12 +78,12 @@ const footerFriends = friends.slice(0, Math.max(sitemap.length, credits.length))
                             v-for="item in credits"
                             :href="item.link"
                             :target="(item.link ?? '').startsWith('https://') ? '_blank' : '_self'"
-                            class="group border-starlight-500/15 flex items-center rounded-xl border bg-white p-3 transition-all duration-200 hover:border-sky-400/60 hover:shadow-md dark:border-white/12 dark:bg-sky-300/10 dark:hover:border-sky-400/50"
+                            class="group border-starlight-500/15 flex items-center rounded-xl border bg-white px-4 py-3 transition-all duration-200 hover:border-sky-400/60 hover:shadow-md dark:border-white/12 dark:bg-sky-300/10 dark:hover:border-sky-400/50"
                         >
                             <div
-                                class="mr-3 flex h-8 w-8 flex-shrink-0 items-center justify-center text-sky-500 dark:text-sky-400"
+                                class="mr-2.5 flex h-8 w-8 flex-shrink-0 items-center justify-center text-sky-500 dark:text-sky-400"
                             >
-                                <AiFavicon :item="item" :size="24" />
+                                <AiFavicon :item="item" :size="32" />
                             </div>
                             <div class="min-w-0 flex-1">
                                 <h4
@@ -119,11 +119,11 @@ const footerFriends = friends.slice(0, Math.max(sitemap.length, credits.length))
                             :key="friend.text"
                             :href="friend.link"
                             :target="(friend.link ?? '').startsWith('https://') ? '_blank' : '_self'"
-                            class="group border-starlight-500/15 flex items-center rounded-xl border bg-white p-3 transition-all duration-200 hover:border-violet-400/60 hover:shadow-md dark:border-white/12 dark:bg-sky-300/10 dark:hover:border-violet-400/50"
+                            class="group border-starlight-500/15 flex items-center rounded-xl border bg-white px-4 py-3 transition-all duration-200 hover:border-violet-400/60 hover:shadow-md dark:border-white/12 dark:bg-sky-300/10 dark:hover:border-violet-400/50"
                         >
                             <AvatarRoot
                                 :class="[
-                                    'mr-3 flex h-8 w-8 flex-shrink-0 items-center justify-center overflow-hidden text-stone-400',
+                                    'mr-2.5 flex h-8 w-8 flex-shrink-0 items-center justify-center overflow-hidden text-stone-400',
                                     avatarShapeClass(friend.avatarShape),
                                 ]"
                             >
@@ -133,8 +133,8 @@ const footerFriends = friends.slice(0, Math.max(sitemap.length, credits.length))
                                     class="size-full object-cover"
                                     decoding="async"
                                 />
-                                <AvatarFallback class="flex size-full items-center justify-center text-3xl">
-                                    <Icon icon="fluent-emoji:fox" />
+                                <AvatarFallback class="flex size-full items-center justify-center">
+                                    <Icon class="size-full" icon="fluent-emoji:fox" />
                                 </AvatarFallback>
                             </AvatarRoot>
                             <div class="min-w-0 flex-1">
@@ -266,11 +266,7 @@ const footerFriends = friends.slice(0, Math.max(sitemap.length, credits.length))
                             class="flex items-center justify-center font-medium text-stone-800 md:justify-start dark:text-slate-300"
                             target="_blank"
                         >
-                            <div class="mr-3 justify-center text-4xl">
-                                <div class="self-center">
-                                    <Icon height="36" icon="fluent-emoji:fox" />
-                                </div>
-                            </div>
+                            <Icon class="mr-2" height="40" icon="fluent-emoji:fox" />
                             <span class="hidden text-xl font-bold tracking-tight md:flex md:text-2xl lg:text-3xl">
                                 <span
                                     class="to-starlight-500 dark:to-starlight-300 bg-gradient-to-r from-stone-800 bg-clip-text text-transparent dark:from-slate-100"
