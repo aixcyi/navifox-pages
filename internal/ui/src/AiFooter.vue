@@ -15,8 +15,8 @@ import { website } from '@navifox/utils';
 import { useDark, useToggle } from '@vueuse/core';
 import { AvatarFallback, AvatarImage, AvatarRoot } from 'reka-ui';
 
-import { avatarShapeClass } from '../lib/avatar';
 import AiFavicon from './AiFavicon.vue';
+import { avatarShapeClass } from './lib/avatar';
 
 const isDark = useDark();
 const toggleDark = useToggle(isDark);

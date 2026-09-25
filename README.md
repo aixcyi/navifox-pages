@@ -64,7 +64,7 @@
 | `./internal/styles/`    | @navifox/styles    | 存放全局样式及字体。                                        |
 | `./internal/tsconfig/`  | @navifox/tsconfig  | 存放共享 `tsconfig` 配置。                               |
 | `./internal/types/`     | @navifox/types     | 存放全局类型定义。                                         |
-| `./internal/ui/`        | @navifox/ui        | 存放共享 UI，包括 shadcn 等组件。                            |
+| `./internal/ui/`        | @navifox/ui        | 存放共享 UI。                                          |
 | `./internal/utils/`     | @navifox/utils     | 存放共享工具。                                           |
 | `./packages/vitepress/` | @navifox/vitepress | 存放 VitePress 工具（可发布到 npm）。                        |
 

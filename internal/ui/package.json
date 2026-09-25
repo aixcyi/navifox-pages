@@ -10,10 +10,6 @@
         ".": {
             "types": "./src/index.ts",
             "default": "./src/index.ts"
-        },
-        "./lib/utils": {
-            "types": "./src/lib/utils.ts",
-            "default": "./src/lib/utils.ts"
         }
     },
     "scripts": {
@@ -24,10 +20,7 @@
         "@navifox/types": "workspace:*",
         "@navifox/utils": "workspace:*",
         "@vueuse/core": "catalog:",
-        "class-variance-authority": "catalog:",
-        "clsx": "catalog:",
         "reka-ui": "catalog:",
-        "tailwind-merge": "catalog:",
         "vue": "catalog:"
     },
     "devDependencies": {
