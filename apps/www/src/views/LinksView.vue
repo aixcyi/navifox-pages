@@ -80,23 +80,36 @@ const copyableFields: { title: string; value: string; isPureCode?: boolean }[] =
                                     <PawOff class="text-6xl" aria-hidden="true" />
                                 </AvatarFallback>
                             </AvatarRoot>
-                            <h2
-                                v-if="friend.author"
-                                class="text-night-900 flex min-w-0 flex-1 items-center gap-1 text-lg font-bold tracking-tight dark:text-white"
-                            >
-                                <!-- 站点名与拥有者各自独立截断：省略号由被截断者自己的文本框绘制，
-                                     若两者同处一个截断框内，省略号会统一取拥有者那一档颜色。 -->
-                                <span class="max-w-full shrink-0 truncate">{{ friend.author }}</span>
-                                <span
-                                    class="text-starlight-300 min-w-0 truncate dark:text-slate-600"
-                                    v-html="friend.note || friend.text"
-                                />
-                            </h2>
-                            <h2
-                                v-else
-                                v-html="friend.text"
-                                class="text-night-900 min-w-0 flex-1 truncate text-lg font-bold tracking-tight dark:text-white"
-                            />
+                            <!-- 头像做左栏，右栏自上而下是正副标题与标签行：
+                                 标签的左边缘因此天然与标题对齐，不必手算缩进；
+                                 头像对着右栏的视觉中心。简介不在此列，仍是整卡宽度。 -->
+                            <div class="min-w-0 flex-1">
+                                <div class="flex items-center gap-1">
+                                    <h2
+                                        v-if="friend.author"
+                                        class="text-night-900 flex min-w-0 flex-1 items-center gap-1 text-lg font-bold tracking-tight dark:text-white"
+                                    >
+                                        <!-- 站点名与拥有者各自独立截断：省略号由被截断者自己的文本框绘制，
+                                             若两者同处一个截断框内，省略号会统一取拥有者那一档颜色。 -->
+                                        <span class="max-w-full shrink-0 truncate">{{ friend.author }}</span>
+                                        <span
+                                            class="text-starlight-300 min-w-0 truncate dark:text-slate-600"
+                                            v-html="friend.note || friend.text"
+                                        />
+                                    </h2>
+                                    <h2
+                                        v-else
+                                        v-html="friend.text"
+                                        class="text-night-900 min-w-0 flex-1 truncate text-lg font-bold tracking-tight dark:text-white"
+                                    />
+                                </div>
+                                <ul
+                                    v-if="friend.tags?.length"
+                                    class="mt-1 flex flex-wrap gap-x-2 text-sm text-stone-400 dark:text-slate-500"
+                                >
+                                    <li v-for="tag in friend.tags" :key="tag"><span class="mr-0.5">#</span>{{ tag }}</li>
+                                </ul>
+                            </div>
                             <IconArrowOutward
                                 :class="[
                                     'size-4.5 shrink-0 opacity-0 transition-opacity duration-200 group-hover:opacity-100',
