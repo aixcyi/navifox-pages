@@ -16,7 +16,7 @@ const tabs: { key: BookmarkCategory; label: string; icon: Component }[] = [
     { key: 'python', label: 'Python 生态', icon: IconPython },
     { key: 'node', label: 'Node.js 生态', icon: IconPackageJson },
     { key: 'java', label: 'Java 生态', icon: IconKotlin },
-    { key: 'more', label: '更多', icon: FluentEmojiFlatFox },
+    { key: 'more', label: '杂项', icon: FluentEmojiFlatFox },
 ];
 
 const activeTab = ref<BookmarkCategory>(tabs[0]!.key);
@@ -45,7 +45,7 @@ const bookmarkGroups = computed(() => {
         <Navbar />
         <div class="MaxContainer relative text-stone-600 dark:text-slate-300">
             <SectionHeader class="mt-48" centered eyebrow="Navifox · Favorites" level="h1" title="它山亭">
-                它山之石可以攻玉，它山之猫可以跃迁<br />
+                它山之石可以攻玉，它山之猫竟有引力<br />
             </SectionHeader>
 
             <div
@@ -67,11 +67,7 @@ const bookmarkGroups = computed(() => {
                     ]"
                     @click="activeTab = tab.key"
                 >
-                    <component
-                        :is="tab.icon"
-                        class="mr-2 shrink-0"
-                        :style="{ height: '24px', width: 'auto' }"
-                    />
+                    <component :is="tab.icon" class="mr-2 shrink-0" :style="{ height: '24px', width: 'auto' }" />
                     <span class="leading-none font-semibold">{{ tab.label }}</span>
                 </button>
             </div>
@@ -108,18 +104,18 @@ const bookmarkGroups = computed(() => {
                                     class="hover:border-starlight-600 dark:hover:border-starlight-400 group hover:bg-starlight-500/10 inline-flex items-center gap-1.5 rounded-lg border border-transparent px-2 py-1.5 transition-all duration-200"
                                     target="_blank"
                                 >
-                                    <div class="min-w-4 text-stone-400 dark:text-slate-600">
+                                    <div class="min-w-4 text-stone-800 dark:text-slate-300">
                                         <AiFavicon :item="item" :fallback="LinkIcon" />
                                     </div>
                                     <div class="flex flex-row flex-wrap items-center gap-x-1.5 text-sm">
                                         <div
-                                            class="inline-flex flex-wrap items-center text-stone-800 dark:text-slate-200"
+                                            class="inline-flex flex-wrap items-center text-stone-800 dark:text-slate-300"
                                         >
                                             <span v-html="item.text" />
                                             <span
-                                                v-if="(item.tags || []).includes('catalog')"
-                                                class="border-aurora-500 text-aurora-600 dark:border-aurora-300 dark:text-aurora-300 group-hover:border-starlight-600 group-hover:text-starlight-600 dark:group-hover:border-starlight-400 dark:group-hover:text-starlight-400 ml-1.5 inline rounded-xs border px-0.5 text-xs transition-colors duration-200"
-                                                v-html="'目录'"
+                                                v-for="tag in item.tags"
+                                                class="group-hover:border-starlight-600 group-hover:text-starlight-600 dark:group-hover:border-starlight-400 dark:group-hover:text-starlight-400 ml-1.5 inline rounded-xs border border-stone-400 px-0.5 text-xs text-stone-400 transition-colors duration-200 dark:border-slate-500 dark:text-slate-500"
+                                                v-html="tag"
                                             />
                                         </div>
                                         <div
