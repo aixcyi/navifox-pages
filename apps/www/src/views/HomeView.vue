@@ -168,8 +168,8 @@ onMounted(() => {
                 <div class="flex min-w-0 flex-col gap-6">
                     <!-- 项目 -->
                     <ProjectCard :project="projectZeraora">
-                        <template #releaseType>
-                            <IconPython aria-hidden="true" class="size-10 shrink-0 select-none" />
+                        <template #watermark>
+                            <IconPython />
                         </template>
                         <template #socials>
                             <a
@@ -193,8 +193,8 @@ onMounted(() => {
                         </template>
                     </ProjectCard>
                     <ProjectCard :project="projectDunderAll">
-                        <template #releaseType>
-                            <IconPyCharm aria-hidden="true" class="size-10 shrink-0 select-none" />
+                        <template #watermark>
+                            <IconPyCharm />
                         </template>
                         <template #socials>
                             <a
@@ -218,8 +218,8 @@ onMounted(() => {
                         </template>
                     </ProjectCard>
                     <ProjectCard :project="projectShebang">
-                        <template #releaseType>
-                            <IconIntelliJ aria-hidden="true" class="size-10 shrink-0 select-none" />
+                        <template #watermark>
+                            <IconIntelliJ />
                         </template>
                         <template #socials>
                             <a
