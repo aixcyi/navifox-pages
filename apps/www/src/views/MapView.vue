@@ -162,6 +162,7 @@ function resetView(): void {
                         title="游地简"
                     >
                         游地随简，寻壑经丘<br />
+                        （栏目尚待开发）<br />
                     </SectionHeader>
                 </div>
             </div>
