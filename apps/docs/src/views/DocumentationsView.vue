@@ -1,12 +1,27 @@
 <script lang="ts" setup>
-import { Icon } from '@iconify/vue/offline';
-import { foxeryGuild, navifoxDocs, projects, sinceYear } from '@navifox/constants';
-import { website } from '@navifox/utils';
+import {
+    foxeryGuild,
+    navifoxDocs,
+    projectDunderAll,
+    projects,
+    projectShebang,
+    projectZeraora,
+    sinceYear,
+} from '@navifox/constants';
 import { useDark, useWindowSize, watchDebounced } from '@vueuse/core';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import QRCode from 'qrcode';
 import { onMounted, onUnmounted, ref, watch } from 'vue';
+import IconChevronBottom from '~icons/bytesize/chevron-bottom';
+import IconIntelliJ from '~icons/devicon-plain/intellij';
+import IconPyCharm from '~icons/devicon-plain/pycharm';
+import IconPyPI from '~icons/devicon-plain/pypi';
+import IconPython from '~icons/devicon-plain/python';
+import IconGitHub from '~icons/simple-icons/github';
+import IconJetBrains from '~icons/simple-icons/jetbrains';
+
+import ProjectShowcase from '#/components/ProjectShowcase.vue';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -170,62 +185,82 @@ onUnmounted(() => {
                 aria-hidden="true"
                 class="text-starlight-600 dark:text-starlight-300 absolute bottom-14 left-1/2 flex -translate-x-1/2 flex-col items-center gap-1.5"
             >
-                <Icon v-for="n in 3" :key="n" class="arrow-bounce" height="26" icon="bytesize:chevron-bottom" />
+                <IconChevronBottom v-for="n in 3" :key="n" class="arrow-bounce size-6.5" />
             </div>
         </section>
 
         <!-- 盒中：各个项目 -->
-        <section
-            v-for="(project, index) in projects"
-            :key="project.text"
-            :class="[
-                index % 2 ? 'bg-paper-100 dark:bg-night-900' : 'dark:bg-night-850 bg-white',
-                'js-panel relative flex h-screen w-full items-center justify-center overflow-hidden',
-            ]"
-        >
-            <Icon
-                v-if="project.releaseType"
-                :icon="project.releaseType"
-                aria-hidden="true"
-                class="text-night-900 pointer-events-none absolute bottom-6 left-6 opacity-[0.12] select-none md:bottom-14 md:left-14 dark:text-white"
-                style="--size: calc(min(100vh, 100vw) / 3); width: var(--size); height: var(--size)"
-                width="unset"
-                height="unset"
-            />
-            <div class="relative z-10 flex w-full max-w-3xl flex-col items-center gap-7 px-6 py-24 text-center">
-                <p
-                    class="text-starlight-600/80 dark:text-starlight-300/80 font-mono text-xs tracking-[0.28em] uppercase"
-                    v-html="`Project · ${String(index + 1).padStart(2, '0')}`"
-                />
-                <h2 class="text-night-900 text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl dark:text-white">
-                    {{ project.text }}
-                </h2>
-                <div class="dark:text-starlight-300/80 flex items-center gap-6 text-stone-500">
-                    <template v-for="social in project.socials" :key="social.link">
-                        <a
-                            v-if="social.logo"
-                            :href="social.link"
-                            :title="social.link"
-                            class="hover:text-starlight-600 transition-all duration-200 hover:scale-110 dark:hover:text-white"
-                            target="_blank"
-                        >
-                            <Icon :icon="social.logo" height="28" />
-                        </a>
-                    </template>
-                </div>
-                <p class="max-w-xl text-base leading-relaxed sm:text-lg" v-html="website.description(project)" />
-                <template v-if="project.documentationUrl">
-                    <a
-                        :href="project.documentationUrl"
-                        class="from-starlight-500 to-aurora-500 shadow-starlight-600/30 inline-flex items-center gap-2 rounded-full bg-gradient-to-r px-7 py-3 text-sm font-semibold text-white shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl hover:brightness-110 dark:text-black"
-                        target="_blank"
-                    >
-                        <span v-html="'浏览文档'" />
-                        <Icon class="size-4" icon="material-symbols:arrow-outward" />
-                    </a>
-                </template>
-            </div>
-        </section>
+        <ProjectShowcase :project="projectZeraora" :index="0">
+            <template #releaseType>
+                <IconPython />
+            </template>
+            <template #socials>
+                <a
+                    :href="projectZeraora.repositoryUrl"
+                    :title="projectZeraora.repositoryUrl"
+                    class="hover:text-starlight-600 transition-all duration-200 hover:scale-110 dark:hover:text-white"
+                    target="_blank"
+                >
+                    <IconGitHub class="size-7" />
+                </a>
+                <a
+                    :href="projectZeraora.link"
+                    :title="projectZeraora.link"
+                    class="hover:text-starlight-600 transition-all duration-200 hover:scale-110 dark:hover:text-white"
+                    target="_blank"
+                >
+                    <IconPyPI class="size-7" />
+                </a>
+            </template>
+        </ProjectShowcase>
+
+        <ProjectShowcase :project="projectDunderAll" :index="1">
+            <template #releaseType>
+                <IconPyCharm />
+            </template>
+            <template #socials>
+                <a
+                    :href="projectDunderAll.repositoryUrl"
+                    :title="projectDunderAll.repositoryUrl"
+                    class="hover:text-starlight-600 transition-all duration-200 hover:scale-110 dark:hover:text-white"
+                    target="_blank"
+                >
+                    <IconGitHub class="size-7" />
+                </a>
+                <a
+                    :href="projectDunderAll.link"
+                    :title="projectDunderAll.link"
+                    class="hover:text-starlight-600 transition-all duration-200 hover:scale-110 dark:hover:text-white"
+                    target="_blank"
+                >
+                    <IconJetBrains class="size-7" />
+                </a>
+            </template>
+        </ProjectShowcase>
+
+        <ProjectShowcase :project="projectShebang" :index="2">
+            <template #releaseType>
+                <IconIntelliJ />
+            </template>
+            <template #socials>
+                <a
+                    :href="projectShebang.repositoryUrl"
+                    :title="projectShebang.repositoryUrl"
+                    class="hover:text-starlight-600 transition-all duration-200 hover:scale-110 dark:hover:text-white"
+                    target="_blank"
+                >
+                    <IconGitHub class="size-7" />
+                </a>
+                <a
+                    :href="projectShebang.link"
+                    :title="projectShebang.link"
+                    class="hover:text-starlight-600 transition-all duration-200 hover:scale-110 dark:hover:text-white"
+                    target="_blank"
+                >
+                    <IconJetBrains class="size-7" />
+                </a>
+            </template>
+        </ProjectShowcase>
 
         <!-- 盒底：包装参数 -->
         <section

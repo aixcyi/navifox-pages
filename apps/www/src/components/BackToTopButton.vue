@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { Icon } from '@iconify/vue/offline';
 import { onBeforeUnmount, onMounted, ref } from 'vue';
+import IconArrowUpRounded from '~icons/material-symbols/keyboard-arrow-up-rounded';
 
 const isTallPage = ref(false);
 const isVisible = ref(false);
@@ -47,7 +47,7 @@ onBeforeUnmount(() => {
             type="button"
             @click="scrollToTop"
         >
-            <Icon height="22" icon="material-symbols:keyboard-arrow-up-rounded" />
+            <IconArrowUpRounded class="size-5.5" />
         </button>
     </Transition>
 </template>

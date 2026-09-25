@@ -1,17 +1,26 @@
 <script lang="ts" setup>
-import { Icon } from '@iconify/vue/offline';
-import { bookmarkTabs, bookmarks, navifoxRefs } from '@navifox/constants';
+import { bookmarks, navifoxRefs } from '@navifox/constants';
 import type { BookmarkCategory, TextLink, Website } from '@navifox/types';
-import { AiFooter, AiFavicon } from '@navifox/ui';
+import { AiFavicon, AiFooter, FluentEmojiFlatFox } from '@navifox/ui';
 import { website } from '@navifox/utils';
-import { computed, ref } from 'vue';
+import { computed, ref, type Component } from 'vue';
+import IconKotlin from '~icons/catppuccin/kotlin';
+import IconPackageJson from '~icons/catppuccin/package-json';
+import IconPython from '~icons/catppuccin/python';
 
 import LinkIcon from '#/assets/AkarIconsLinkOut.svg';
 import NavBar from '#/components/NavBar.vue';
 import NavDropdown from '#/components/NavDropdown.vue';
 import SignatureLine from '#/components/SignatureLine.vue';
 
-const activeTab = ref<BookmarkCategory>(bookmarkTabs[0]!.key);
+const tabs: { key: BookmarkCategory; label: string; icon: Component }[] = [
+    { key: 'python', label: 'Python 生态', icon: IconPython },
+    { key: 'node', label: 'Node.js 生态', icon: IconPackageJson },
+    { key: 'java', label: 'Java 生态', icon: IconKotlin },
+    { key: 'more', label: '更多', icon: FluentEmojiFlatFox },
+];
+
+const activeTab = ref<BookmarkCategory>(tabs[0]!.key);
 
 /**
  * 未命名分组并入前一个分组，作为其后续区块（隔开一定间距）；
@@ -80,7 +89,7 @@ const bookmarkGroups = computed(() => {
                     class="mx-auto mb-16 flex max-w-4xl flex-row flex-wrap items-center justify-center gap-4"
                 >
                     <button
-                        v-for="tab in bookmarkTabs"
+                        v-for="tab in tabs"
                         :key="tab.key"
                         type="button"
                         role="tab"
@@ -94,7 +103,7 @@ const bookmarkGroups = computed(() => {
                         @click="activeTab = tab.key"
                     >
                         <div class="mr-2 flex shrink-0 items-center justify-center">
-                            <Icon :icon="tab.logo" height="24" />
+                            <component :is="tab.icon" :style="{ height: '24px', width: 'auto' }" />
                         </div>
                         <span class="leading-none font-semibold">{{ tab.label }}</span>
                     </button>

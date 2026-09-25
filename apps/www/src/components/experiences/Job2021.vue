@@ -1,26 +1,25 @@
 <script lang="ts" setup>
-import { SkillsBadge } from '@navifox/constants';
-import type { Project } from '@navifox/types';
 import { Markdown as down } from '@navifox/ui';
+import IconBootstrap from '~icons/devicon/bootstrap';
+import IconPostgreSQL from '~icons/devicon/postgresql';
+import IconPython from '~icons/logos/python';
+import IconDjango from '~icons/skill-icons/django';
 
 import Experience from '#/components/Experience.vue';
-
-const project: Project = {
-    text: '跨境电商ERP',
-    link: '#',
-    descriptionPure: '',
-    stack: [
-        SkillsBadge.Python,
-        SkillsBadge.Django,
-        SkillsBadge.Bootstrap,
-        SkillsBadge.PostgreSQL,
-        //
-    ],
-};
 </script>
 
 <template>
-    <Experience :project start="2021.3" stop="2022.1" team="中山一件科技" title="后端开发">
+    <Experience project="跨境电商ERP" start="2021.3" stop="2022.1" team="中山一件科技" title="后端开发">
+        <template #stack>
+            <span class="flex flex-nowrap items-center gap-1"><IconPython class="size-4" /><span>Python</span></span>
+            <span class="flex flex-nowrap items-center gap-1"><IconDjango class="size-4" /><span>Django</span></span>
+            <span class="flex flex-nowrap items-center gap-1">
+                <IconBootstrap class="size-4" /><span>Bootstrap</span>
+            </span>
+            <span class="flex flex-nowrap items-center gap-1">
+                <IconPostgreSQL class="size-4" /><span>PostgreSQL</span>
+            </span>
+        </template>
         <div>
             <p>
                 <span>在职期间领导开发部门将偏内部的 ERP 拆分为 WMS、OMS 及管理端，重新设计 ORM 模型、路由交互，</span>

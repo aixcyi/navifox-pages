@@ -1,8 +1,10 @@
 <script lang="ts" setup>
-import { Icon } from '@iconify/vue/offline';
 import type { AbilityScope, GenshinCharacter } from '@navifox/types';
 import { useToggles } from '@navifox/utils';
 import { ref } from 'vue';
+import IconFilter from '~icons/mdi/filter';
+import IconFilterCheck from '~icons/mdi/filter-check';
+import IconStar from '~icons/uis/star';
 
 import { characters } from '#/constants/characters.ts';
 import Content from '#/layouts/Content.vue';
@@ -78,7 +80,7 @@ function getTableRowColor(e: GenshinCharacter['element']) {
                     type="button"
                     @click="toggleRarity(key)"
                 >
-                    <Icon :class="`text-${color}-400`" class="m-1" height="28" icon="uis:star" />
+                    <IconStar :class="`text-${color}-400`" class="m-1 size-7" />
                 </button>
             </div>
             <div class="m-2 flex flex-row flex-wrap justify-center text-slate-900 dark:text-slate-200">
@@ -138,8 +140,8 @@ function getTableRowColor(e: GenshinCharacter['element']) {
                                 class="cursor-pointer pt-2 pb-4 transition-colors duration-200 hover:text-slate-400 dark:hover:text-slate-500"
                                 @click="toggleAbility(scope)"
                             >
-                                <Icon v-show="hasAbility(scope)" class="mx-auto" height="24" icon="mdi:filter-check" />
-                                <Icon v-show="!hasAbility(scope)" class="mx-auto" height="24" icon="mdi:filter" />
+                                <IconFilterCheck v-show="hasAbility(scope)" class="mx-auto size-6" />
+                                <IconFilter v-show="!hasAbility(scope)" class="mx-auto size-6" />
                             </th>
                         </tr>
                     </thead>
@@ -153,11 +155,9 @@ function getTableRowColor(e: GenshinCharacter['element']) {
                             <td>
                                 <div class="flex items-center justify-center">
                                     <div>{{ character.name }}</div>
-                                    <Icon
+                                    <IconStar
                                         :class="character.rarity === 5 ? 'text-yellow-400' : 'text-purple-400'"
-                                        class="ml-1"
-                                        height="16"
-                                        icon="uis:star"
+                                        class="ml-1 size-4"
                                     />
                                 </div>
                             </td>

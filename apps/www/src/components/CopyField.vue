@@ -1,7 +1,8 @@
 <script lang="ts" setup>
-import { Icon } from '@iconify/vue/offline';
 import { useClipboard } from '@vueuse/core';
 import { ref } from 'vue';
+import IconCheck from '~icons/material-symbols/check';
+import IconContentCopy from '~icons/material-symbols/content-copy';
 
 const props = defineProps<{ title: string; value: string; isMono?: boolean }>();
 const input = ref<HTMLInputElement | null>(null);
@@ -54,7 +55,8 @@ async function onCopy() {
             class="hover:text-starlight-600 dark:hover:text-starlight-300 flex shrink-0 cursor-pointer items-center px-2.5 text-stone-400 transition-colors duration-200 dark:text-slate-400"
             @click="onCopy"
         >
-            <Icon :icon="copied ? 'material-symbols:check' : 'material-symbols:content-copy'" height="16" />
+            <IconCheck v-if="copied" class="size-4" />
+            <IconContentCopy v-else class="size-4" />
         </button>
     </div>
 </template>

@@ -4,6 +4,7 @@ import { navifoxHome } from '@navifox/constants/website';
 import { ogPlugin } from '@navifox/utils/vite';
 import tailwindcss from '@tailwindcss/vite';
 import vue from '@vitejs/plugin-vue';
+import Icons from 'unplugin-icons/vite';
 import { defineConfig } from 'vite';
 
 const timestamp = Math.trunc(new Date().getTime() / 1000);
@@ -13,6 +14,7 @@ export default defineConfig({
     plugins: [
         tailwindcss(),
         vue(),
+        Icons({ compiler: 'vue3', scale: 1 }),
         ogPlugin({
             title: navifoxHome.text,
             description: navifoxHome.descriptionPure ?? '',

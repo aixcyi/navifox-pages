@@ -1,4 +1,4 @@
-import type { BookmarkCategory, BookmarkGroup, Website } from '@navifox/types';
+import type { BookmarkGroup, Website } from '@navifox/types';
 import { markit } from '@navifox/utils';
 
 const groupPythonChore: Website[] = [
@@ -1005,16 +1005,6 @@ const groupChores: Website[] = [
         link: 'https://spec.editorconfig.org/',
         logo: 'logos:editorconfig',
     },
-];
-
-/**
- * refs 首页的生态 Tab 列表（数组顺序即展示顺序）。
- */
-export const bookmarkTabs: { key: BookmarkCategory; label: string; logo: string }[] = [
-    { key: 'python', label: 'Python 生态', logo: 'catppuccin:python' },
-    { key: 'node', label: 'Node.js 生态', logo: 'catppuccin:package-json' },
-    { key: 'java', label: 'Java 生态', logo: 'catppuccin:kotlin' },
-    { key: 'more', label: '更多', logo: 'fluent-emoji-flat:fox' },
 ];
 
 export const bookmarks: BookmarkGroup[] = [

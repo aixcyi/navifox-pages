@@ -1,16 +1,25 @@
 <script lang="ts" setup>
-import { Icon } from '@iconify/vue/offline';
-import { bookmarkTabs, bookmarks } from '@navifox/constants';
+import { bookmarks } from '@navifox/constants';
 import type { BookmarkCategory, TextLink, Website } from '@navifox/types';
-import { AiFavicon } from '@navifox/ui';
-import { computed, ref } from 'vue';
+import { AiFavicon, FluentEmojiFlatFox } from '@navifox/ui';
+import { computed, ref, type Component } from 'vue';
+import IconKotlin from '~icons/catppuccin/kotlin';
+import IconPackageJson from '~icons/catppuccin/package-json';
+import IconPython from '~icons/catppuccin/python';
 
 import LinkIcon from '#/assets/AkarIconsLinkOut.svg';
 import Navbar from '#/components/Navbar.vue';
 import SectionHeader from '#/components/SectionHeader.vue';
 import Stardust from '#/components/Stardust.vue';
 
-const activeTab = ref<BookmarkCategory>(bookmarkTabs[0]!.key);
+const tabs: { key: BookmarkCategory; label: string; icon: Component }[] = [
+    { key: 'python', label: 'Python 生态', icon: IconPython },
+    { key: 'node', label: 'Node.js 生态', icon: IconPackageJson },
+    { key: 'java', label: 'Java 生态', icon: IconKotlin },
+    { key: 'more', label: '更多', icon: FluentEmojiFlatFox },
+];
+
+const activeTab = ref<BookmarkCategory>(tabs[0]!.key);
 
 /**
  * 未命名分组并入前一个分组，作为其后续区块（隔开一定间距）；
@@ -45,7 +54,7 @@ const bookmarkGroups = computed(() => {
                 class="mx-auto mt-10 flex max-w-4xl flex-row flex-wrap items-center justify-center gap-4"
             >
                 <button
-                    v-for="tab in bookmarkTabs"
+                    v-for="tab in tabs"
                     :key="tab.key"
                     type="button"
                     role="tab"
@@ -58,7 +67,11 @@ const bookmarkGroups = computed(() => {
                     ]"
                     @click="activeTab = tab.key"
                 >
-                    <Icon :icon="tab.logo" class="mr-2 shrink-0" height="24" />
+                    <component
+                        :is="tab.icon"
+                        class="mr-2 shrink-0"
+                        :style="{ height: '24px', width: 'auto' }"
+                    />
                     <span class="leading-none font-semibold">{{ tab.label }}</span>
                 </button>
             </div>

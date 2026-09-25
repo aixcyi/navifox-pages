@@ -1,17 +1,17 @@
 <script lang="ts" setup>
-import { Icon } from '@iconify/vue/offline';
-import type { Hyperlink } from '@navifox/types';
 import { onClickOutside, useWindowScroll, useWindowSize } from '@vueuse/core';
-import { nextTick, onMounted, useTemplateRef, watch } from 'vue';
+import { nextTick, onMounted, useTemplateRef, watch, type Component } from 'vue';
 import { useRouter } from 'vue-router';
 
 import { isShowingNavDropdown } from '#/storage.ts';
+
+type SheetEntry = { text: string; link: string; logo?: Component; icon?: string };
 
 const router = useRouter();
 const navDropdown = useTemplateRef('nav-dropdown');
 const { width } = useWindowSize({ type: 'visual' });
 const { y } = useWindowScroll();
-const sheets: (Hyperlink | undefined)[] = [
+const sheets: (SheetEntry | undefined)[] = [
     ...router.options.routes
         .filter((r) => typeof r.name === 'string' && r.name.endsWith('Sheet'))
         .map((r) => ({
@@ -63,7 +63,7 @@ watch(y, resize);
                     role="button"
                 >
                     <div class="mr-3 h-5 w-5 shrink-0">
-                        <Icon v-if="sheet.logo" :icon="sheet.logo" class="size-5" />
+                        <component :is="sheet.logo" v-if="sheet.logo" class="size-5" />
                         <img
                             v-else-if="sheet.icon"
                             :src="sheet.icon"

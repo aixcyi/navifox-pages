@@ -1,6 +1,7 @@
 <script lang="ts" setup>
-import { Icon } from '@iconify/vue/offline';
 import { useDark, useToggle } from '@vueuse/core';
+import IconDarkMode from '~icons/material-symbols/dark-mode';
+import IconLightMode from '~icons/material-symbols/light-mode';
 
 const isDark = useDark();
 const toggleDark = useToggle(isDark);
@@ -13,6 +14,7 @@ const toggleDark = useToggle(isDark);
         type="button"
         @click="toggleDark(!isDark)"
     >
-        <Icon :icon="isDark ? 'material-symbols:dark-mode' : 'material-symbols:light-mode'" height="20" />
+        <IconDarkMode v-if="isDark" class="size-5" />
+        <IconLightMode v-else class="size-5" />
     </button>
 </template>

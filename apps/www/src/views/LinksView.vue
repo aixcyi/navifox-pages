@@ -1,11 +1,11 @@
 <script lang="ts" setup>
-import { Icon } from '@iconify/vue/offline';
 import { friends, navifox, navifoxBlog } from '@navifox/constants';
 import type { Friend } from '@navifox/types';
 import { avatarShapeClass } from '@navifox/ui';
 import { website } from '@navifox/utils';
 import { format } from '@navifox/utils/dnt';
 import { AvatarFallback, AvatarImage, AvatarRoot } from 'reka-ui';
+import IconArrowOutward from '~icons/material-symbols/arrow-outward';
 
 import CopyField from '#/components/CopyField.vue';
 import Navbar from '#/components/Navbar.vue';
@@ -97,13 +97,11 @@ const copyableFields: { title: string; value: string; isPureCode?: boolean }[] =
                                 v-html="friend.text"
                                 class="text-night-900 min-w-0 flex-1 truncate text-lg font-bold tracking-tight dark:text-white"
                             />
-                            <Icon
+                            <IconArrowOutward
                                 :class="[
-                                    'shrink-0 opacity-0 transition-opacity duration-200 group-hover:opacity-100',
+                                    'size-4.5 shrink-0 opacity-0 transition-opacity duration-200 group-hover:opacity-100',
                                     friendAccents[friend.type].arrow,
                                 ]"
-                                height="18"
-                                icon="material-symbols:arrow-outward"
                             />
                         </div>
                         <p

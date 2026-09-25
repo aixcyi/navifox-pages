@@ -2,5 +2,8 @@
     "$schema": "https://json.schemastore.org/tsconfig",
     "extends": "@navifox/tsconfig/web.json",
     "include": ["src"],
-    "exclude": ["node_modules"]
+    "exclude": ["node_modules"],
+    "compilerOptions": {
+        "types": ["vite/client", "unplugin-icons/types/vue"]
+    }
 }

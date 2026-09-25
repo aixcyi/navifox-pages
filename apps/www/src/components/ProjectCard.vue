@@ -1,15 +1,17 @@
 <script lang="ts" setup>
-import { Icon } from '@iconify/vue/offline';
-import type { Project } from '@navifox/types';
+import type { Website } from '@navifox/types';
 import { website } from '@navifox/utils';
+import IconArrowOutward from '~icons/material-symbols/arrow-outward';
 
 /**
  * 项目卡片：左侧发行类型图标，右侧自上而下是标题、社交链接、简介。
  *
+ * 发行类型与社交徽章都由调用方经插槽传入——它们是编译期图标组件，不再由数据里的图标名决定。
+ *
  * 有链接时整卡可点击：卡片内还有社交链接、锚点不能嵌套，故由标题锚点用 `::after` 铺满整卡
  * （stretched link），社交链接抬到它上一层。
  */
-defineProps<{ project: Project }>();
+defineProps<{ project: Website }>();
 </script>
 
 <template>
@@ -21,13 +23,7 @@ defineProps<{ project: Project }>();
                 : '',
         ]"
     >
-        <Icon
-            v-if="project.releaseType"
-            :icon="project.releaseType"
-            aria-hidden="true"
-            class="shrink-0 select-none"
-            height="40"
-        />
+        <slot name="releaseType" />
         <div class="min-w-0 flex-1">
             <div class="flex items-center gap-2">
                 <h3 class="text-night-900 min-w-0 text-lg font-bold tracking-tight dark:text-white">
@@ -41,25 +37,12 @@ defineProps<{ project: Project }>();
                     />
                     <template v-else>{{ project.text }}</template>
                 </h3>
-                <div v-if="project.socials" class="relative z-10 flex flex-wrap items-center gap-2">
-                    <template v-for="social in project.socials" :key="social.link ?? social.logo">
-                        <a
-                            v-if="social.logo"
-                            :href="social.link"
-                            :title="social.text ?? social.link"
-                            class="dark:hover:text-starlight-300 hover:text-starlight-600 flex h-4 items-center text-stone-400 transition-colors duration-200 dark:text-slate-500"
-                            rel="noopener noreferrer"
-                            target="_blank"
-                        >
-                            <Icon :icon="social.logo" height="24" />
-                        </a>
-                    </template>
+                <div v-if="$slots.socials" class="relative z-10 flex flex-wrap items-center gap-2">
+                    <slot name="socials" />
                 </div>
-                <Icon
+                <IconArrowOutward
                     v-if="project.link"
-                    class="text-starlight-500 dark:text-starlight-300 ml-auto shrink-0 opacity-0 transition-opacity duration-200 group-hover:opacity-100"
-                    height="18"
-                    icon="material-symbols:arrow-outward"
+                    class="text-starlight-500 dark:text-starlight-300 ml-auto size-4.5 shrink-0 opacity-0 transition-opacity duration-200 group-hover:opacity-100"
                 />
             </div>
             <p

@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { Icon } from '@iconify/vue/offline';
 import { navifoxHome } from '@navifox/constants';
+import { FluentEmojiFox } from '@navifox/ui';
 import { useDark, useToggle } from '@vueuse/core';
 import {
     DropdownMenuContent,
@@ -12,6 +12,9 @@ import {
 } from 'reka-ui';
 import { computed, onBeforeUnmount, onMounted, ref } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
+import IconMenu from '~icons/lineicons/menu';
+import IconDarkMode from '~icons/material-symbols/dark-mode';
+import IconLightMode from '~icons/material-symbols/light-mode';
 
 const props = defineProps<{ cover?: boolean }>();
 
@@ -106,9 +109,9 @@ onBeforeUnmount(() => window.removeEventListener('scroll', onScroll));
                     class="group flex flex-nowrap items-center gap-2 select-none"
                 >
                     <span
-                        class="text-2xl leading-none transition-transform duration-300 select-none group-hover:scale-110 group-hover:-rotate-6"
+                        class="leading-none transition-transform duration-300 select-none group-hover:scale-110 group-hover:-rotate-6"
                     >
-                        <Icon icon="fluent-emoji:fox" />
+                        <FluentEmojiFox class="size-6" />
                     </span>
                     <span class="text-lg font-bold tracking-tight whitespace-nowrap">
                         <span
@@ -148,10 +151,8 @@ onBeforeUnmount(() => window.removeEventListener('scroll', onScroll));
                         :title="isDark ? '切换到浅色模式' : '切换到深色模式'"
                         @click="toggleDark(!isDark)"
                     >
-                        <Icon
-                            :icon="isDark ? 'material-symbols:dark-mode' : 'material-symbols:light-mode'"
-                            height="20"
-                        />
+                        <IconDarkMode v-if="isDark" class="size-5" />
+                        <IconLightMode v-else class="size-5" />
                     </button>
 
                     <!-- 移动端导航菜单：条目同样由路由 meta 生成 -->
@@ -165,7 +166,7 @@ onBeforeUnmount(() => window.removeEventListener('scroll', onScroll));
                                 aria-label="打开导航菜单"
                                 type="button"
                             >
-                                <Icon height="24" icon="lineicons:menu" />
+                                <IconMenu class="size-6" />
                             </button>
                         </DropdownMenuTrigger>
                         <DropdownMenuPortal>
@@ -173,7 +174,7 @@ onBeforeUnmount(() => window.removeEventListener('scroll', onScroll));
                                 <DropdownMenuLabel
                                     class="flex items-center gap-2 px-3 py-2 text-sm font-bold whitespace-nowrap select-none"
                                 >
-                                    <Icon class="text-xl" icon="fluent-emoji:fox" />
+                                    <FluentEmojiFox class="size-5" />
                                     <span>{{ navifoxHome.text }}</span>
                                 </DropdownMenuLabel>
                                 <div class="border-t-starlight-500/20 mt-1 border-t dark:border-t-white/10" />

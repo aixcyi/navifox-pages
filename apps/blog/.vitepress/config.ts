@@ -2,6 +2,7 @@ import { pinyin } from '@napi-rs/pinyin';
 import { navifoxHome, sinceYear, untilYear, navifox, foxeryGuild, navifoxBlog } from '@navifox/constants/website';
 import { VitePressConfigurator, type PageHook } from '@navifox/vitepress';
 import MarkdownIt from 'markdown-it';
+import Icons from 'unplugin-icons/vite';
 import { groupIconMdPlugin, groupIconVitePlugin } from 'vitepress-plugin-group-icons';
 
 import { markdownContainers } from './markdown-containers';
@@ -87,6 +88,7 @@ const configurator = new VitePressConfigurator({
         plugins: [
             // @ts-ignore
             groupIconVitePlugin(),
+            Icons({ compiler: 'vue3', scale: 1 }),
         ],
         resolve: {
             alias: {

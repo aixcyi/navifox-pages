@@ -1,7 +1,9 @@
 <script lang="ts" setup>
-import { Icon } from '@iconify/vue/offline';
 import { markit } from '@navifox/utils';
 import { ref } from 'vue';
+import IconChecked from '~icons/icons8/checked';
+import IconCircle from '~icons/icons8/circle';
+import IconArrowUpRounded from '~icons/material-symbols/keyboard-arrow-up-rounded';
 
 const programmerLevels = [
     {
@@ -89,11 +91,8 @@ const expanded = ref(false);
                     :class="point.unlit ? '' : 'text-slate-300 dark:text-slate-600'"
                     class="group hover:bg-starlight-500/12! dark:hover:bg-starlight-300/10! cursor-default rounded-md hover:text-black! dark:hover:text-white!"
                 >
-                    <icon
-                        :icon="point.unlit ? 'icons8:circle' : 'icons8:checked'"
-                        class="mr-1 transition-transform group-hover:scale-110"
-                        height="20"
-                    />
+                    <IconCircle v-if="point.unlit" class="mr-1 size-5 transition-transform group-hover:scale-110" />
+                    <IconChecked v-else class="mr-1 size-5 transition-transform group-hover:scale-110" />
                     <span
                         class="group-hover:*:[u]:decoration-starlight-500! dark:group-hover:*:[u]:decoration-starlight-400! *:[u]:decoration-transparent! *:[u]:underline-offset-5! group-hover:*:[u]:decoration-2!"
                         v-html="point.text"
@@ -108,11 +107,9 @@ const expanded = ref(false);
             @click="expanded = !expanded"
         >
             <span v-html="expanded ? '收起评估清单' : '展开评估清单'" />
-            <Icon
+            <IconArrowUpRounded
                 :class="expanded ? '' : 'rotate-180'"
-                class="transition-transform duration-200"
-                height="20"
-                icon="material-symbols:keyboard-arrow-up-rounded"
+                class="size-5 transition-transform duration-200"
             />
         </button>
     </div>

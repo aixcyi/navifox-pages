@@ -1,30 +1,37 @@
 <script lang="ts" setup>
-import { SkillsBadge } from '@navifox/constants';
-import type { Project } from '@navifox/types';
 import { Markdown as down } from '@navifox/ui';
+import IconDjangoRESTFramework from '~icons/devicon/djangorest-wordmark';
+import IconGrafana from '~icons/devicon/grafana';
+import IconPostgreSQL from '~icons/devicon/postgresql';
+import IconRedis from '~icons/devicon/redis';
+import IconVue from '~icons/devicon/vuejs';
+import IconPython from '~icons/logos/python';
+import IconApifox from '~icons/simple-icons/apifox';
+import IconDjango from '~icons/skill-icons/django';
+import IconJavaScript from '~icons/skill-icons/javascript';
 
 import Experience from '#/components/Experience.vue';
-
-const project: Project = {
-    text: '景区生态系统',
-    link: '#',
-    descriptionPure: '',
-    stack: [
-        SkillsBadge.Python,
-        SkillsBadge.Django,
-        SkillsBadge.DjangoRESTFramework,
-        SkillsBadge.Vue,
-        SkillsBadge.JavaScript,
-        SkillsBadge.PostgreSQL,
-        SkillsBadge.Redis,
-        SkillsBadge.Apifox,
-        SkillsBadge.Grafana,
-    ],
-};
 </script>
 
 <template>
-    <Experience :project start="2022.3" team="广州某某科技" title="后端开发">
+    <Experience project="景区生态系统" start="2022.3" team="广州某某科技" title="后端开发">
+        <template #stack>
+            <span class="flex flex-nowrap items-center gap-1"><IconPython class="size-4" /><span>Python</span></span>
+            <span class="flex flex-nowrap items-center gap-1"><IconDjango class="size-4" /><span>Django</span></span>
+            <span class="flex flex-nowrap items-center gap-1">
+                <IconDjangoRESTFramework class="size-4" /><span>Django REST Framework</span>
+            </span>
+            <span class="flex flex-nowrap items-center gap-1"><IconVue class="size-4" /><span>Vue</span></span>
+            <span class="flex flex-nowrap items-center gap-1">
+                <IconJavaScript class="size-4" /><span>JavaScript</span>
+            </span>
+            <span class="flex flex-nowrap items-center gap-1">
+                <IconPostgreSQL class="size-4" /><span>PostgreSQL</span>
+            </span>
+            <span class="flex flex-nowrap items-center gap-1"><IconRedis class="size-4" /><span>Redis</span></span>
+            <span class="flex flex-nowrap items-center gap-1"><IconApifox class="size-4" /><span>Apifox</span></span>
+            <span class="flex flex-nowrap items-center gap-1"><IconGrafana class="size-4" /><span>Grafana</span></span>
+        </template>
         <p>
             <span>公司深耕旅游行业，摸索自研了一整套 SaaS 景区生态系统，</span>
             <span>而我主要参与了其中几个子服务的建设和维护。</span>

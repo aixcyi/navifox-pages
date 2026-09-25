@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import { Icon } from '@iconify/vue/offline';
 import { Duration } from '@navifox/utils';
 import { ref } from 'vue';
+import IconCurrentLocation from '~icons/bx/current-location';
 
 const props = defineProps<{
     title: string;
@@ -66,10 +66,8 @@ const data = [...table.values()].sort((a, b) => (a.stamp < b.stamp ? 1 : a.stamp
                             type="button"
                             @click="columnHighlighted = columnHighlighted === base ? 0n : base"
                         >
-                            <Icon
-                                class="text-slate-300 hover:text-purple-500 dark:text-slate-600"
-                                height="24"
-                                icon="bx:current-location"
+                            <IconCurrentLocation
+                                class="size-6 text-slate-300 hover:text-purple-500 dark:text-slate-600"
                             />
                         </button>
                     </th>

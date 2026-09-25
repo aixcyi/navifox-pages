@@ -118,34 +118,28 @@ export const navifoxHei: Website = {
 export const foxeryGuild: Website = {
     text: '罗狐会馆',
     link: 'https://qm.qq.com/q/7WO1tJmTss',
-    logo: 'streamline-logos:qq-logo-solid',
     descriptionPure: '妖灵会馆之一，广罗天下狐妖，提供技术讨论与休憩之地。',
     author: navifox.author,
 };
 export const egoGitHub: Website = {
     text: 'GitHub',
     link: 'https://github.com/aixcyi/',
-    logo: 'simple-icons:github',
 };
 export const egoGitee: Website = {
     text: 'Gitee',
     link: 'https://gitee.com/aixcyi/',
-    logo: 'simple-icons:gitee',
 };
 export const egoTwitter: Website = {
     text: '推特<br/>X／Twitter',
     link: 'https://x.com/aixcyi/',
-    logo: 'simple-icons:x',
 };
 export const egoPyPI: Website = {
     text: 'PyPI',
     link: 'https://pypi.org/user/aixcyi/',
-    logo: 'file-icons:pypi',
 };
 export const egoJetBrains: Website = {
     text: 'JetBrains 插件市场',
     link: 'https://plugins.jetbrains.com/author/aixcyi/',
-    logo: 'simple-icons:jetbrains',
 };
 export const travelling: Website = {
     text: '开往',
@@ -157,25 +151,3 @@ export const moeTravel: Website = {
     link: 'https://travel.moe/go.html?travel=on',
     settingsUrl: 'https://travel.moe/',
 };
-export const socials: Website[] = [
-    foxeryGuild,
-    // egoTwitter,
-    egoGitHub,
-    egoPyPI,
-    egoJetBrains,
-    // egoGitee,
-];
-export const sitemap = [
-    navifoxHome,
-    navifoxBlog,
-    navifoxDocs,
-    navifoxRefs,
-    navifoxHei,
-    //
-];
-export const credits: Website[] = [
-    { text: 'oO大黄Oo', link: 'https://www.pixiv.net/users/9892346', logo: 'fa6-brands:pixiv' },
-    { text: '錯誤', link: 'https://www.pixiv.net/users/1297556', logo: 'fa6-brands:pixiv' },
-    { text: 'アナ', link: 'https://www.pixiv.net/users/24036634', logo: 'fa6-brands:pixiv' },
-    { text: 'shields.io', link: 'https://shields.io/', icon: 'https://shields.io/img/favicon.ico', note: '徽章生成' },
-];

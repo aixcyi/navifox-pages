@@ -1,7 +1,32 @@
 <script lang="ts" setup>
-import { BrandsBadge, SkillsBadge } from '@navifox/constants';
-import { AiIcon, Markdown } from '@navifox/ui';
+import { Markdown } from '@navifox/ui';
 import { newDate } from '@navifox/utils/dnt';
+import IconBootstrap from '~icons/devicon/bootstrap';
+import IconCursor from '~icons/devicon/cursor';
+import IconGit from '~icons/devicon/git';
+import IconHuggingFace from '~icons/devicon/huggingface';
+import IconKotlin from '~icons/devicon/kotlin';
+import IconNpm from '~icons/devicon/npm';
+import IconPnpm from '~icons/devicon/pnpm';
+import IconPostgreSQL from '~icons/devicon/postgresql';
+import IconTailwindCSS from '~icons/devicon/tailwindcss';
+import IconVite from '~icons/devicon/vitejs';
+import IconVscode from '~icons/devicon/vscode';
+import IconVue from '~icons/devicon/vuejs';
+import IconDeepSeek from '~icons/logos/deepseek';
+import IconElement from '~icons/logos/element';
+import IconGolang from '~icons/logos/go';
+import IconJava from '~icons/logos/java';
+import IconJetBrains from '~icons/logos/jetbrains';
+import IconNginx from '~icons/logos/nginx';
+import IconNvidia from '~icons/logos/nvidia';
+import IconPyCharm from '~icons/logos/pycharm';
+import IconPython from '~icons/logos/python';
+import IconUbuntu from '~icons/logos/ubuntu';
+import IconKimi from '~icons/simple-icons/kimi';
+import IconOllama from '~icons/simple-icons/ollama';
+import IconDjango from '~icons/skill-icons/django';
+import IconMinecraft from '~icons/vscode-icons/file-type-minecraft';
 
 import BannerGI from '#/assets/genshin.jpg';
 import BannerHei from '#/assets/hei.jpg';
@@ -14,7 +39,7 @@ import AiTimelineItem from '#/components/AiTimelineItem.vue';
     <ul>
         <AiTimelineItem color="#FF7F27" anchor="Currently" :moment="newDate(2026, 8, 22)">
             借助 onnx 和 OpenCV 对漫画中的文本进行 OCR 识别，并通过
-            <AiIcon :badge="BrandsBadge.HuggingFace" height="24" />
+            <IconHuggingFace class="h-6 w-auto" />
             HuggingFace 下载了
             <Markdown>`qwen3:8b` 和 `qwen3:14b`</Markdown>
             模型推理气泡冒泡对象，不过因为 DSH 同时开了十几二十个子 Agent 而损失惨重，从此开始手搓积累自己的
@@ -37,25 +62,25 @@ import AiTimelineItem from '#/components/AiTimelineItem.vue';
         </AiTimelineItem>
         <AiTimelineItem color="#FF7F27" :moment="newDate(2026, 5, 22)">
             在好友的推荐下入手一台水冷笔记本，开始接触
-            <AiIcon :badge="BrandsBadge.Nvidia" height="24" />
+            <IconNvidia class="h-6 w-auto" />
             GPU 和
-            <AiIcon :badge="BrandsBadge.Ollama" height="24" />
+            <IconOllama class="h-6 w-auto" />
             Ollama。<br />
         </AiTimelineItem>
         <AiTimelineItem color="#FF7F27" date="2026 年 3 月">
             从古法手敲代码入坑 AI 辅助开发，从
-            <AiIcon :badge="BrandsBadge.Cursor" height="24" />
+            <IconCursor class="h-6 w-auto" />
             Cursor 到 Trae 再到 Trae CN，最后还是换回<br />
-            <AiIcon :badge="SkillsBadge.VisualStudioCode" height="24" />
+            <IconVscode class="h-6 w-auto" />
             VSCode 然后搭配
-            <AiIcon :badge="BrandsBadge.Kimi" height="24" />
+            <IconKimi class="h-6 w-auto" />
             Kimi Code 使用，并且尝试编写前端、后端开发工程师的 SKILL。<br />
         </AiTimelineItem>
         <AiTimelineItem color="#FF7F27" anchor="2026" :moment="newDate(2026, 1, 15, 14, 33)">
             从
-            <AiIcon :badge="SkillsBadge.Npm" height="24" />
+            <IconNpm class="h-6 w-auto" />
             换成
-            <AiIcon :badge="SkillsBadge.Pnpm" height="24" />
+            <IconPnpm class="h-6 w-auto" />
             并创建 Monorepo 仓库容纳 Navifox Pages 向现代化前端开发发展。<br />
         </AiTimelineItem>
         <AiTimelineItem color="#FF7F27" :moment="newDate(2025, 8, 16, 11, 0)">
@@ -84,9 +109,9 @@ import AiTimelineItem from '#/components/AiTimelineItem.vue';
         </AiTimelineItem>
         <AiTimelineItem color="#FF7F27" :moment="newDate(2025, 7, 8, 15, 43)">
             用 Reka UI +
-            <AiIcon :badge="SkillsBadge.TailwindCSS" height="24" />
+            <IconTailwindCSS class="h-6 w-auto" />
             Tailwind CSS 代替
-            <AiIcon :badge="SkillsBadge.ElementUI" height="24" />
+            <IconElement class="h-6 w-auto" />
             Element UI 精细化手搓(重构)主页，开始深入了解 CSS。<br />
         </AiTimelineItem>
         <AiTimelineItem color="#FF7F27" :moment="newDate(2025, 6, 24, 1, 25)" markdown>
@@ -94,7 +119,7 @@ import AiTimelineItem from '#/components/AiTimelineItem.vue';
             “路狐羽”。
         </AiTimelineItem>
         <AiTimelineItem color="#FF7F27" :moment="newDate(2025, 2, 21, 11, 47)">
-            <AiIcon :badge="BrandsBadge.DeepSeek" height="24" />
+            <IconDeepSeek class="h-6 w-auto" />
             横空出世，开始接触对话式 AI 并利用其搜索信息、辅助开发。<br />
         </AiTimelineItem>
         <AiTimelineItem class="**:[a]:cursor-no-drop" color="#FF7F27" anchor="2025" date="2025 年 1 月" markdown>
@@ -106,13 +131,13 @@ import AiTimelineItem from '#/components/AiTimelineItem.vue';
         </AiTimelineItem>
         <AiTimelineItem color="#FF7F27" date="2024 年 11 月">
             从零手搓
-            <AiIcon :badge="SkillsBadge.Vue" height="24" />
+            <IconVue class="h-6 w-auto" />
             ＋
-            <AiIcon :badge="SkillsBadge.Vite" height="24" />
+            <IconVite class="h-6 w-auto" />
             ＋
-            <AiIcon :badge="SkillsBadge.ElementUI" height="24" />
+            <IconElement class="h-6 w-auto" />
             个人网站并配置
-            <AiIcon :badge="SkillsBadge.Nginx" height="24" />
+            <IconNginx class="h-6 w-auto" />
             域名转发，自此轰开前端大门。<br />
         </AiTimelineItem>
         <AiTimelineItem color="#FF7F27" :moment="newDate(2024, 7, 10, 16, 53)" markdown>
@@ -132,7 +157,7 @@ import AiTimelineItem from '#/components/AiTimelineItem.vue';
         </AiTimelineItem>
         <AiTimelineItem color="#A44967" gradientColor="#A349A4" :moment="newDate(2024, 4, 12)">
             在
-            <AiIcon :badge="BrandsBadge.JetBrains" height="24" />
+            <IconJetBrains class="h-6 w-auto" />
             Marketplace 中发布 TinySnake 插件。<br />
         </AiTimelineItem>
         <AiTimelineItem class="::[a]:cursor-no-drop" color="#A349A4" anchor="2024" date="2024 年 1 月" markdown>
@@ -140,12 +165,12 @@ import AiTimelineItem from '#/components/AiTimelineItem.vue';
         </AiTimelineItem>
         <AiTimelineItem color="#A349A4" :moment="newDate(2023, 7, 14, 22, 29)">
             囿于 PyCharm 功能的不全，借助
-            <AiIcon :badge="SkillsBadge.Kotlin" height="24" />
+            <IconKotlin class="h-6 w-auto" />
             手搓插件 TinySnake 用以解决 Python <code>__all__</code> 的生成和更新。<br />
         </AiTimelineItem>
         <AiTimelineItem color="#A349A4" anchor="2023" :moment="newDate(2023, 4, 25)">
             购买
-            <AiIcon :badge="BrandsBadge.Minecraft" height="24" />
+            <IconMinecraft class="h-6 w-auto" />
             Minecraft: Java & Bedrock Edition for PC<br />
         </AiTimelineItem>
         <AiTimelineItem color="#A349A4" :moment="newDate(2022, 3, 15)">
@@ -159,19 +184,19 @@ import AiTimelineItem from '#/components/AiTimelineItem.vue';
         </AiTimelineItem>
         <AiTimelineItem color="#A349A4" date="2021 年 6 月">
             带领同事重构公司项目，抽象出仓库管理系统 WMS 与订单管理系统 OMS，使用
-            <AiIcon :badge="SkillsBadge.Bootstrap" height="24" />
+            <IconBootstrap class="h-6 w-auto" />
             为项目增添色彩。<br />
         </AiTimelineItem>
         <AiTimelineItem color="#A349A4" anchor="2021" :moment="newDate(2021, 3, 1)">
             进入中山一家跨境电商公司实习，接触到
-            <AiIcon :badge="SkillsBadge.Django" height="24" />
+            <IconDjango class="h-6 w-auto" />
             与
-            <AiIcon :badge="SkillsBadge.PostgreSQL" height="24" />
+            <IconPostgreSQL class="h-6 w-auto" />
             。<br />
         </AiTimelineItem>
         <AiTimelineItem color="#A349A4" :moment="newDate(2020, 12, 12, 17, 18)">
             找到一处名为 GitHub 的乐园，取“砹小翼”双拼拼音 <code>aixcyi</code> 为常用 ID，翻开
-            <AiIcon :badge="SkillsBadge.Git" height="24" />
+            <IconGit class="h-6 w-auto" />
             的第一页。<br />
         </AiTimelineItem>
         <AiTimelineItem color="#A349A4" anchor="2020" gradientColor="#00A2E8" :moment="newDate(2020, 10, 22)">
@@ -190,7 +215,7 @@ import AiTimelineItem from '#/components/AiTimelineItem.vue';
         </AiTimelineItem>
         <AiTimelineItem color="#00A2E8" date="2019 年，暑假">
             开始接触
-            <AiIcon :badge="BrandsBadge.Golang" height="24" />
+            <IconGolang class="h-6 w-auto" />
             并配合 LiteIDE 学习区块链。<br />
         </AiTimelineItem>
         <AiTimelineItem color="#00A2E8" anchor="2019" :moment="newDate(2019, 4, 10, 12, 15)" markdown>
@@ -198,16 +223,16 @@ import AiTimelineItem from '#/components/AiTimelineItem.vue';
         </AiTimelineItem>
         <AiTimelineItem color="#00A2E8" :moment="newDate(2018, 10, 13, 13, 20)">
             第一次接触并安装 Linux 系统
-            <AiIcon :badge="SkillsBadge.Ubuntu" height="24" />
+            <IconUbuntu class="h-6 w-auto" />
             Ubuntu。<br />
         </AiTimelineItem>
         <AiTimelineItem color="#00A2E8" :moment="newDate(2018, 9, 30, 20, 19)">
             初遇
-            <AiIcon :badge="SkillsBadge.Python" height="24" />
+            <IconPython class="h-6 w-auto" />
             和
-            <AiIcon :badge="SkillsBadge.Java" height="24" />
+            <IconJava class="h-6 w-auto" />
             ，开始接触集成开发环境
-            <AiIcon :badge="SkillsBadge.PyCharm" height="24" />
+            <IconPyCharm class="h-6 w-auto" />
             ，逐渐领略其它语言的魅力。<br />
         </AiTimelineItem>
         <AiTimelineItem color="#00A2E8" anchor="2018" :moment="newDate(2018, 8, 26, 11, 7)">

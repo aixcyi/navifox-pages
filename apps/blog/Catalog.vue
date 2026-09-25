@@ -1,8 +1,14 @@
 <script setup lang="ts">
-import { Icon } from '@iconify/vue';
 import { useFocus } from '@vueuse/core';
 import { useRoute } from 'vitepress';
-import { computed, ref, watch } from 'vue';
+import { computed, ref, watch, type Component } from 'vue';
+import IconBug from '~icons/tabler/bug';
+import IconCircleDashed from '~icons/tabler/circle-dashed';
+import IconCode from '~icons/tabler/code';
+import IconLeaf from '~icons/tabler/leaf';
+import IconMessage from '~icons/tabler/message';
+import IconMouse from '~icons/tabler/mouse';
+import IconTag from '~icons/tabler/tag';
 
 import type { Post } from './catalog.data';
 import { data } from './catalog.data';
@@ -13,7 +19,7 @@ const draftFilter = ref<string | null>(null);
 const searchQuery = ref('');
 const searchInput = ref<HTMLInputElement | null>(null); // 搜索框是否聚焦：用于联动上下分隔线变色
 const { focused: searchFocused } = useFocus(searchInput);
-const { posts: pages, categories, tags: allTags, icons } = data;
+const { posts: pages, categories, tags: allTags } = data;
 
 const route = useRoute();
 const applyQueryFilter = () => {
@@ -75,7 +81,16 @@ const draftCounts = computed(() =>
         p.isDraft ? '仅草稿' : '非草稿',
     ),
 );
-const categoryIconOf = (name: string): string | undefined => icons.find((i) => i.name === name)?.icon;
+/** 分类名 → 图标组件：编译期绑定，名字对不上是编译错误而不是运行时的空白。 */
+const categoryIcons: Record<string, Component> = {
+    开发: IconCode,
+    技术: IconMouse,
+    安全: IconBug,
+    生活: IconLeaf,
+    杂谈: IconMessage,
+    未归类: IconCircleDashed,
+};
+const categoryIconOf = (name: string): Component | undefined => categoryIcons[name];
 
 // 过滤按钮状态 → URL 同步：让 URL 查询参数始终与当前筛选一致（可刷新、可分享、可后退恢复）。
 // 与 applyQueryFilter（URL → 状态）互为反向；点击按钮不触发 route.query 更新，不会形成循环。
@@ -116,7 +131,7 @@ interface FilterRow {
     counts: Map<string, number>;
     isActive: (item: string) => boolean;
     toggle: (item: string) => void;
-    iconOf: (item: string) => string | undefined;
+    iconOf: (item: string) => Component | undefined;
 }
 
 const filterRows = computed<FilterRow[]>(() => {
@@ -168,7 +183,7 @@ const filterRows = computed<FilterRow[]>(() => {
                         :disabled="!row.isActive(item) && (row.counts.get(item) ?? 0) === 0"
                         @click="row.toggle(item)"
                     >
-                        <Icon v-if="row.iconOf(item)" class="icon-lg" :icon="row.iconOf(item) ?? ''" />
+                        <component :is="row.iconOf(item)" v-if="row.iconOf(item)" class="icon-lg" />
                         {{ item }}
                         <span v-if="(row.counts.get(item) ?? 0) > 0" class="count">
                             {{ row.counts.get(item) ?? 0 }}
@@ -211,7 +226,7 @@ const filterRows = computed<FilterRow[]>(() => {
                 <a v-for="page in filteredPages" :key="page.url" :href="page.url" class="post-item">
                     <span class="post-category">
                         {{ page.category }}
-                        <Icon class="icon-lg" :icon="categoryIconOf(page.category) ?? 'tabler:tag'" />
+                        <component :is="categoryIconOf(page.category) ?? IconTag" class="icon-lg" />
                     </span>
                     <span class="post-title">{{ page.title }}</span>
                     <span class="post-meta">

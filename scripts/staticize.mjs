@@ -1,10 +1,11 @@
 #!/usr/bin/env node
-// 生成各 SPA 子应用的 Iconify 离线图标注册表（apps/refs/src/iconify.ts、apps/www/src/iconify.ts、
-// apps/docs/src/iconify.ts）。
+// 生成各 SPA 子应用的 Iconify 离线图标注册表（apps/refs/src/iconify.ts、apps/www/src/iconify.ts）。
 //
 // 背景：@iconify/vue 以字符串（如 icon="logos:python"）引用图标时，默认在运行时向
 // Iconify 公共 CDN（api.iconify.design）发起网络请求，国内访问慢且不稳定。本脚本将
 // 各子应用实际用到的图标 SVG 数据在开发期一次性拉取并生成离线注册表，运行时零网络请求。
+//
+// apps/docs 已不再有任何按名字取图标的用法，故不在生成之列。
 //
 // 用法（在仓库根目录运行）：
 //   node scripts/staticize.mjs            # 扫描、拉取并生成全部子应用的注册表
@@ -42,8 +43,7 @@ const APPS = [
         extraScanFiles: [
             join(REPO_DIR, 'internal/constants/src/favorites.ts'),
             join(REPO_DIR, 'internal/constants/src/website.ts'),
-            join(REPO_DIR, 'internal/ui/src/ui/AiFooter.vue'),
-            join(REPO_DIR, 'internal/ui/src/ui/AiButton.vue'),
+            join(REPO_DIR, 'internal/ui/src/AiFooter.vue'),
         ],
     },
     {
@@ -53,20 +53,8 @@ const APPS = [
         extraScanFiles: [
             join(REPO_DIR, 'internal/constants/src/favorites.ts'),
             join(REPO_DIR, 'internal/constants/src/website.ts'),
-            join(REPO_DIR, 'internal/constants/src/badges/brands.ts'),
-            join(REPO_DIR, 'internal/constants/src/badges/skills.ts'),
             join(REPO_DIR, 'internal/constants/src/projects.ts'),
-            join(REPO_DIR, 'internal/ui/src/ui/AiFooter.vue'),
-        ],
-    },
-    {
-        name: 'docs',
-        srcDir: join(REPO_DIR, 'apps/docs/src'),
-        outFile: join(REPO_DIR, 'apps/docs/src/iconify.ts'),
-        extraScanFiles: [
-            join(REPO_DIR, 'internal/constants/src/website.ts'),
-            join(REPO_DIR, 'internal/constants/src/projects.ts'),
-            join(REPO_DIR, 'internal/ui/src/ui/AiFooter.vue'),
+            join(REPO_DIR, 'internal/ui/src/AiFooter.vue'),
         ],
     },
 ];

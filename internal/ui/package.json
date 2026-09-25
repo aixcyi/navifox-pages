@@ -25,6 +25,7 @@
     },
     "devDependencies": {
         "@iconify/vue": "catalog:",
+        "unplugin-icons": "catalog:",
         "vite": "catalog:",
         "vue-tsc": "catalog:"
     }

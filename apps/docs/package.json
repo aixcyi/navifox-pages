@@ -12,6 +12,7 @@
     "dependencies": {
         "@navifox/constants": "workspace:*",
         "@navifox/styles": "workspace:*",
+        "@navifox/types": "workspace:*",
         "@navifox/ui": "workspace:*",
         "@navifox/utils": "workspace:*",
         "@tailwindcss/vite": "catalog:",
@@ -23,12 +24,18 @@
         "vue": "catalog:"
     },
     "devDependencies": {
+        "@iconify-json/bytesize": "catalog:",
+        "@iconify-json/devicon-plain": "catalog:",
+        "@iconify-json/fa6-brands": "catalog:",
+        "@iconify-json/material-symbols": "catalog:",
+        "@iconify-json/simple-icons": "catalog:",
         "@iconify/vue": "catalog:",
         "@types/node": "catalog:",
         "@vitejs/plugin-vue": "catalog:",
         "@vue/tsconfig": "catalog:",
         "bestzip": "catalog:",
         "typescript": "catalog:",
+        "unplugin-icons": "catalog:",
         "vite": "catalog:",
         "vue-tsc": "catalog:"
     }

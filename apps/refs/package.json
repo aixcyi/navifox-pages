@@ -24,6 +24,19 @@
         "vue-router": "catalog:"
     },
     "devDependencies": {
+        "@iconify-json/bx": "catalog:",
+        "@iconify-json/carbon": "catalog:",
+        "@iconify-json/catppuccin": "catalog:",
+        "@iconify-json/devicon": "catalog:",
+        "@iconify-json/fa6-brands": "catalog:",
+        "@iconify-json/logos": "catalog:",
+        "@iconify-json/material-symbols": "catalog:",
+        "@iconify-json/mdi": "catalog:",
+        "@iconify-json/mingcute": "catalog:",
+        "@iconify-json/simple-icons": "catalog:",
+        "@iconify-json/svg-spinners": "catalog:",
+        "@iconify-json/uis": "catalog:",
+        "@iconify-json/vscode-icons": "catalog:",
         "@iconify/vue": "catalog:",
         "@tailwindcss/postcss": "catalog:",
         "@types/node": "catalog:",
@@ -32,6 +45,7 @@
         "bestzip": "catalog:",
         "genshin-db": "catalog:",
         "typescript": "catalog:",
+        "unplugin-icons": "catalog:",
         "vite": "catalog:",
         "vue-tsc": "catalog:"
     }

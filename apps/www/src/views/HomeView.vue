@@ -1,10 +1,19 @@
 <script lang="ts" setup>
-import { Icon } from '@iconify/vue/offline';
-import { navifox, projects, signature, socials } from '@navifox/constants';
+import { navifox, projectDunderAll, projectShebang, projectZeraora, signature } from '@navifox/constants';
 import type { Anchor } from '@navifox/types';
+import { AiSocials, FluentEmojiFox } from '@navifox/ui';
 import { website } from '@navifox/utils';
 import { AvatarFallback, AvatarImage, AvatarRoot } from 'reka-ui';
-import { onMounted } from 'vue';
+import { onMounted, type Component } from 'vue';
+import IconWechat from '~icons/bi/wechat';
+import IconIntelliJ from '~icons/devicon-plain/intellij';
+import IconPyCharm from '~icons/devicon-plain/pycharm';
+import IconPyPI from '~icons/devicon-plain/pypi';
+import IconPython from '~icons/devicon-plain/python';
+import IconSchedule from '~icons/material-symbols/schedule';
+import IconGitHub from '~icons/simple-icons/github';
+import IconJetBrains from '~icons/simple-icons/jetbrains';
+import IconLocation from '~icons/zondicons/location';
 
 import Chronicle from '#/components/Chronicle.vue';
 import Job2021 from '#/components/experiences/Job2021.vue';
@@ -40,10 +49,10 @@ const anchorChronology = {
     description: navifox.slogan || '',
 } satisfies Anchor;
 
-const aboutStates: { logo: string; text: string }[] = [
-    { logo: 'zondicons:location', text: navifox.location ?? '' },
-    { logo: 'material-symbols:schedule', text: `${navifox.age}岁` },
-    { logo: 'bi:wechat', text: navifox.wxid ?? '' },
+const aboutStates: { logo: Component; text: string }[] = [
+    { logo: IconLocation, text: navifox.location ?? '' },
+    { logo: IconSchedule, text: `${navifox.age}岁` },
+    { logo: IconWechat, text: navifox.wxid ?? '' },
 ];
 
 /** 带 URL fragment（如 /#intro）直达时的兜底滚动（router.scrollBehavior 之外再保一次）。 */
@@ -103,7 +112,7 @@ onMounted(() => {
                                     class="size-full object-cover"
                                 />
                                 <AvatarFallback class="flex size-full items-center justify-center" :delay-ms="200">
-                                    <Icon class="size-1/2" icon="fluent-emoji:fox" />
+                                    <FluentEmojiFox class="size-1/2" />
                                 </AvatarFallback>
                             </AvatarRoot>
                             <div class="min-w-0 lg:text-center">
@@ -139,26 +148,18 @@ onMounted(() => {
                                     :key="state.text"
                                     class="inline-flex flex-nowrap items-center gap-1.5"
                                 >
-                                    <Icon
-                                        :icon="state.logo"
-                                        class="text-starlight-500 dark:text-starlight-300"
-                                        height="15"
+                                    <component
+                                        :is="state.logo"
+                                        class="text-starlight-500 dark:text-starlight-300 size-3.75"
                                     />
                                     {{ state.text }}
                                 </span>
                             </div>
                             <div class="mt-5 flex flex-wrap items-center gap-4">
-                                <template v-for="social in socials" :key="social.text">
-                                    <a
-                                        v-if="social.logo"
-                                        :href="social.link"
-                                        :title="social.text"
-                                        class="hover:text-starlight-600 dark:text-night-500 dark:hover:text-starlight-300 flex h-9 cursor-pointer items-center text-stone-500 transition-colors duration-200"
-                                        target="_blank"
-                                    >
-                                        <Icon :icon="social.logo" height="22" />
-                                    </a>
-                                </template>
+                                <AiSocials
+                                    :size="22"
+                                    link-class="hover:text-starlight-600 dark:text-night-500 dark:hover:text-starlight-300 flex h-9 cursor-pointer items-center text-stone-500 transition-colors duration-200"
+                                />
                             </div>
                         </div>
                     </div>
@@ -166,7 +167,81 @@ onMounted(() => {
 
                 <div class="flex min-w-0 flex-col gap-6">
                     <!-- 项目 -->
-                    <ProjectCard v-for="project in projects" :key="project.text" :project="project" />
+                    <ProjectCard :project="projectZeraora">
+                        <template #releaseType>
+                            <IconPython aria-hidden="true" class="size-10 shrink-0 select-none" />
+                        </template>
+                        <template #socials>
+                            <a
+                                :href="projectZeraora.repositoryUrl"
+                                :title="projectZeraora.repositoryUrl"
+                                class="dark:hover:text-starlight-300 hover:text-starlight-600 flex h-4 items-center text-stone-400 transition-colors duration-200 dark:text-slate-500"
+                                rel="noopener noreferrer"
+                                target="_blank"
+                            >
+                                <IconGitHub class="size-6" />
+                            </a>
+                            <a
+                                :href="projectZeraora.link"
+                                :title="projectZeraora.link"
+                                class="dark:hover:text-starlight-300 hover:text-starlight-600 flex h-4 items-center text-stone-400 transition-colors duration-200 dark:text-slate-500"
+                                rel="noopener noreferrer"
+                                target="_blank"
+                            >
+                                <IconPyPI class="size-6" />
+                            </a>
+                        </template>
+                    </ProjectCard>
+                    <ProjectCard :project="projectDunderAll">
+                        <template #releaseType>
+                            <IconPyCharm aria-hidden="true" class="size-10 shrink-0 select-none" />
+                        </template>
+                        <template #socials>
+                            <a
+                                :href="projectDunderAll.repositoryUrl"
+                                :title="projectDunderAll.repositoryUrl"
+                                class="dark:hover:text-starlight-300 hover:text-starlight-600 flex h-4 items-center text-stone-400 transition-colors duration-200 dark:text-slate-500"
+                                rel="noopener noreferrer"
+                                target="_blank"
+                            >
+                                <IconGitHub class="size-6" />
+                            </a>
+                            <a
+                                :href="projectDunderAll.link"
+                                :title="projectDunderAll.link"
+                                class="dark:hover:text-starlight-300 hover:text-starlight-600 flex h-4 items-center text-stone-400 transition-colors duration-200 dark:text-slate-500"
+                                rel="noopener noreferrer"
+                                target="_blank"
+                            >
+                                <IconJetBrains class="size-6" />
+                            </a>
+                        </template>
+                    </ProjectCard>
+                    <ProjectCard :project="projectShebang">
+                        <template #releaseType>
+                            <IconIntelliJ aria-hidden="true" class="size-10 shrink-0 select-none" />
+                        </template>
+                        <template #socials>
+                            <a
+                                :href="projectShebang.repositoryUrl"
+                                :title="projectShebang.repositoryUrl"
+                                class="dark:hover:text-starlight-300 hover:text-starlight-600 flex h-4 items-center text-stone-400 transition-colors duration-200 dark:text-slate-500"
+                                rel="noopener noreferrer"
+                                target="_blank"
+                            >
+                                <IconGitHub class="size-6" />
+                            </a>
+                            <a
+                                :href="projectShebang.link"
+                                :title="projectShebang.link"
+                                class="dark:hover:text-starlight-300 hover:text-starlight-600 flex h-4 items-center text-stone-400 transition-colors duration-200 dark:text-slate-500"
+                                rel="noopener noreferrer"
+                                target="_blank"
+                            >
+                                <IconJetBrains class="size-6" />
+                            </a>
+                        </template>
+                    </ProjectCard>
                     <!-- 项目经历 -->
                     <Job2022 class="Content" />
                     <Job2021 class="Content" />
@@ -223,7 +298,7 @@ onMounted(() => {
 
         <!-- 页尾 -->
         <div class="MaxContainer relative -mt-12 mb-24">
-            <Icon class="mx-auto size-18 max-md:size-12" icon="fluent-emoji:fox" />
+            <FluentEmojiFox class="mx-auto size-18 max-md:size-12" />
         </div>
     </div>
 </template>

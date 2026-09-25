@@ -1,8 +1,13 @@
 <script lang="ts" setup>
-import { Icon } from '@iconify/vue/offline';
 import { AiButton } from '@navifox/ui';
 import { head, last } from 'es-toolkit';
 import { computed, isRef, type Ref, ref } from 'vue';
+import IconPnpm from '~icons/devicon/pnpm';
+import IconNpm from '~icons/logos/npm-icon';
+import IconPypi from '~icons/logos/pypi';
+import IconYarn from '~icons/logos/yarn';
+import IconPipx from '~icons/simple-icons/pipx';
+import IconUv from '~icons/vscode-icons/file-type-uv';
 
 import Content from '#/layouts/Content.vue';
 
@@ -19,9 +24,9 @@ const pySources = [
     { indexUrl: 'https://pypi.douban.com/simple', name: '豆瓣' },
 ];
 const pyManagers = {
-    pip: 'logos:pypi',
-    uv: 'vscode-icons:file-type-uv',
-    pipx: 'simple-icons:pipx',
+    pip: IconPypi,
+    uv: IconUv,
+    pipx: IconPipx,
 };
 const pyCliZIndex = ref(0);
 const pySourceHost = computed(() => new URL(pySource.value).hostname);
@@ -39,9 +44,9 @@ const nodeSources = [
     { registry: 'https://registry.npmjs.org/', name: 'npm' },
 ];
 const nodeManagers = {
-    npm: 'logos:npm-icon',
-    pnpm: 'devicon:pnpm',
-    yarn: 'logos:yarn',
+    npm: IconNpm,
+    pnpm: IconPnpm,
+    yarn: IconYarn,
 };
 const nodeCliZIndex = ref(0);
 const nodeSource = ref(head(nodeSources)!.registry);
@@ -185,7 +190,7 @@ const cli = computed(() => ({
                             type="button"
                             @click="pyManager = manager"
                         >
-                            <Icon :icon class="min-w-8" height="32" />
+                            <component :is="icon" class="h-8 min-w-8" />
                             <span v-show="pyManager === manager">{{ manager }}</span>
                         </button>
                     </template>
@@ -323,7 +328,7 @@ const cli = computed(() => ({
                             type="button"
                             @click="nodeManager = manager"
                         >
-                            <Icon :icon class="min-w-8" height="32" />
+                            <component :is="icon" class="h-8 w-auto" />
                             <span v-show="nodeManager === manager">{{ manager }}</span>
                         </button>
                     </template>

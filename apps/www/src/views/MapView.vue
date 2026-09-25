@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import { Icon } from '@iconify/vue/offline';
 import { useElementSize } from '@vueuse/core';
 import { computed, reactive, ref, useTemplateRef, watch } from 'vue';
+import IconLocation from '~icons/zondicons/location';
 
 import Navbar from '#/components/Navbar.vue';
 import SectionHeader from '#/components/SectionHeader.vue';
@@ -144,7 +144,7 @@ function resetView(): void {
                         v-html="`${spot.name} · ${spot.note}`"
                         class="border-starlight-500/20 text-night-900 rounded-full border bg-white/80 px-2 py-0.5 text-xs whitespace-nowrap backdrop-blur-sm dark:border-white/10 dark:bg-white/10 dark:text-slate-200"
                     />
-                    <Icon class="text-starlight-600 dark:text-starlight-400" height="26" icon="zondicons:location" />
+                    <IconLocation class="text-starlight-600 dark:text-starlight-400 size-6.5" />
                 </div>
             </div>
 

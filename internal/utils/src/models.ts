@@ -18,8 +18,7 @@ export const website = {
      * - 只接受纯文本的场景（如 `@navifox/utils/vite` 的 `ogPlugin`）应当直接取
      *   {@link Website.descriptionPure} 而不是本计算属性。
      */
-    description(site: Website | undefined): string | undefined {
-        if (!site) return undefined;
+    description(site: Website): string | undefined {
         if (site.descriptionHtml) return site.descriptionHtml;
         if (site.descriptionRich) return markit(site.descriptionRich);
         return site.descriptionPure;

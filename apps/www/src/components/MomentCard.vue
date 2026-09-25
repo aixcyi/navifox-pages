@@ -1,7 +1,6 @@
 <script lang="ts" setup>
-import { Icon } from '@iconify/vue/offline';
 import { navifox } from '@navifox/constants';
-import { Markdown } from '@navifox/ui';
+import { FluentEmojiFox, Markdown } from '@navifox/ui';
 import { beforeLabel, format } from '@navifox/utils/dnt';
 import { AvatarFallback, AvatarImage, AvatarRoot } from 'reka-ui';
 import { computed } from 'vue';
@@ -36,7 +35,7 @@ const relativeTime = computed(() => beforeLabel(props.moment.postAt));
                     decoding="async"
                 />
                 <AvatarFallback class="flex size-full items-center justify-center">
-                    <Icon class="text-3xl" icon="fluent-emoji:fox" />
+                    <FluentEmojiFox class="size-7.5" />
                 </AvatarFallback>
             </AvatarRoot>
             <div class="min-w-0 flex-1">

@@ -2,6 +2,8 @@ import { navifoxRefs } from '@navifox/constants';
 import { website } from '@navifox/utils';
 import { useHead } from '@unhead/vue';
 import { createRouter, createWebHistory } from 'vue-router';
+import IconTailwindcss from '~icons/logos/tailwindcss-icon';
+import IconClock from '~icons/svg-spinners/clock';
 
 import Home from '#/Home.vue';
 import NotFound from '#/NotFound.vue';
@@ -21,7 +23,7 @@ const router = createRouter({
                 title: '时间戳对照表',
                 description: '对照、查询不同进位制（字符集）下的计数空间，以及不同单位的时间存储上限。',
                 keywords: ['时间戳', '进制', '进位制', '表格', '字符集', '字符串', '对照表'],
-                logo: 'svg-spinners:clock',
+                logo: IconClock,
             },
             component: () => import('#/views/TimestampView.vue'),
         },
@@ -42,7 +44,7 @@ const router = createRouter({
                 title: 'Tailwind 颜色一览',
                 description: 'Tailwind CSS v4 颜色相关类名与变量名一览',
                 keywords: ['Tailwind', 'TailwindCSS', 'CSS', '颜色'],
-                logo: 'logos:tailwindcss-icon',
+                logo: IconTailwindcss,
             },
             component: () => import('#/views/TailwindColorView.vue'),
         },

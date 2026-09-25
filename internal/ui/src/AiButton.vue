@@ -1,11 +1,10 @@
 <script lang="ts" setup>
-import { Icon } from '@iconify/vue/offline';
 import { useClipboard } from '@vueuse/core';
+import IconCheck from '~icons/material-symbols/check';
 
 const { copy, copied } = useClipboard();
 const props = defineProps<{
     text: string;
-    icon?: string;
     mark?: string;
     coffee?: boolean;
     inner?: boolean;
@@ -39,12 +38,9 @@ switch (true) {
         class="group inline-flex h-9 cursor-pointer items-center justify-center rounded-3xl px-4 text-slate-700 outline backdrop-blur-sm transition-all duration-200 hover:scale-105 dark:text-slate-300"
         @click="copytext ? copy(copytext) : null"
     >
-        <div v-if="icon" class="mr-2 flex h-4 w-4 flex-shrink-0 items-center justify-center">
-            <Icon :icon height="1em" />
-        </div>
         <span class="text-sm leading-none font-medium">{{ text }}</span>
         <div v-if="copytext && copied" class="ml-2 flex h-4 w-4 flex-shrink-0 items-center justify-center">
-            <Icon height="1em" icon="dashicons:yes" />
+            <IconCheck class="size-4" />
         </div>
         <div v-if="mark" class="ml-3 rounded-3xl bg-white/20 px-2 py-1 font-mono text-xs leading-none">
             {{ mark }}<br />

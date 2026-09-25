@@ -11,7 +11,6 @@
     },
     "dependencies": {
         "@catppuccin/vitepress": "catalog:",
-        "@iconify/vue": "catalog:",
         "@navifox/constants": "workspace:*",
         "@navifox/styles": "workspace:*",
         "@navifox/utils": "workspace:*",
@@ -20,12 +19,14 @@
         "vue": "catalog:"
     },
     "devDependencies": {
+        "@iconify-json/tabler": "catalog:",
         "@napi-rs/pinyin": "catalog:",
         "@types/markdown-it": "catalog:",
         "bestzip": "catalog:",
         "es-toolkit": "catalog:",
         "markdown-it": "catalog:",
         "markdown-it-mathjax3": "catalog:",
+        "unplugin-icons": "catalog:",
         "vite": "catalog:",
         "vitepress": "catalog:",
         "vitepress-plugin-group-icons": "catalog:",
