@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { Icon } from '@iconify/vue/offline';
 import { foxeryGuild, navifoxDocs, projects, sinceYear } from '@navifox/constants';
+import { website } from '@navifox/utils';
 import { useDark, useWindowSize, watchDebounced } from '@vueuse/core';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -212,7 +213,7 @@ onUnmounted(() => {
                         </a>
                     </template>
                 </div>
-                <p class="max-w-xl text-base leading-relaxed sm:text-lg" v-html="project.description" />
+                <p class="max-w-xl text-base leading-relaxed sm:text-lg" v-html="website.description(project)" />
                 <template v-if="project.documentationUrl">
                     <a
                         :href="project.documentationUrl"

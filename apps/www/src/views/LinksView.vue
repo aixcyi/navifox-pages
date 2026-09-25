@@ -3,6 +3,7 @@ import { Icon } from '@iconify/vue/offline';
 import { friends, navifox, navifoxBlog } from '@navifox/constants';
 import type { Friend } from '@navifox/types';
 import { avatarShapeClass } from '@navifox/ui';
+import { website } from '@navifox/utils';
 import { format } from '@navifox/utils/dnt';
 import { AvatarFallback, AvatarImage, AvatarRoot } from 'reka-ui';
 
@@ -30,7 +31,7 @@ const friendAccents: Record<Friend['type'], { card: string; arrow: string }> = {
 
 const copyableFields: { title: string; value: string; isPureCode?: boolean }[] = [
     { title: '名称', value: navifox.author ?? '' },
-    { title: '简介', value: navifox.description || '', isPureCode: true },
+    { title: '简介', value: navifox.descriptionPure ?? '', isPureCode: true },
     { title: '签名', value: navifox.status || '' },
     { title: '头像', value: navifox.avatar512 || '', isPureCode: true },
     { title: '头像', value: navifox.avatar256 || '', isPureCode: true },
@@ -106,9 +107,9 @@ const copyableFields: { title: string; value: string; isPureCode?: boolean }[] =
                             />
                         </div>
                         <p
-                            v-if="friend.status || friend.description || friend.descriptionRich"
+                            v-if="friend.status || website.description(friend)"
                             class="mt-4 text-sm leading-relaxed text-stone-500 dark:text-slate-300"
-                            v-html="friend.status || friend.description || friend.descriptionRich"
+                            v-html="friend.status || website.description(friend)"
                         />
                         <span
                             v-if="friend.meet"

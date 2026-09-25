@@ -13,7 +13,7 @@ export default defineConfig({
         vue(),
         ogPlugin({
             title: navifoxDocs.text,
-            description: navifoxDocs.description ?? '',
+            description: navifoxDocs.descriptionPure ?? '',
             url: navifoxDocs.link,
             siteName: navifoxDocs.text,
         }),

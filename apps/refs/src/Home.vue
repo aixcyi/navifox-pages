@@ -3,6 +3,7 @@ import { Icon } from '@iconify/vue/offline';
 import { bookmarkTabs, bookmarks, navifoxRefs } from '@navifox/constants';
 import type { BookmarkCategory, TextLink, Website } from '@navifox/types';
 import { AiFooter, AiFavicon } from '@navifox/ui';
+import { website } from '@navifox/utils';
 import { computed, ref } from 'vue';
 
 import LinkIcon from '#/assets/AkarIconsLinkOut.svg';
@@ -70,7 +71,7 @@ const bookmarkGroups = computed(() => {
                 <h2
                     class="mx-auto mt-8 mb-12 text-center text-lg leading-relaxed font-light tracking-wide text-slate-300 md:text-xl lg:w-3/4 lg:text-2xl xl:w-2/3"
                 >
-                    <span class="*:[b]:font-semibold *:[b]:text-pink-300" v-html="navifoxRefs.descriptionRich" />
+                    <span class="*:[b]:font-semibold *:[b]:text-pink-300" v-html="website.description(navifoxRefs)" />
                     <span>这一页收录了部分常用的书签，并按以下几个大类展示，更多参考见右上角。</span>
                 </h2>
                 <div

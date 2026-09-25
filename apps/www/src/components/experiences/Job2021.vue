@@ -8,7 +8,7 @@ import Experience from '#/components/Experience.vue';
 const project: Project = {
     text: '跨境电商ERP',
     link: '#',
-    description: '',
+    descriptionPure: '',
     stack: [
         SkillsBadge.Python,
         SkillsBadge.Django,

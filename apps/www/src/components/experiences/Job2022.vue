@@ -8,7 +8,7 @@ import Experience from '#/components/Experience.vue';
 const project: Project = {
     text: '景区生态系统',
     link: '#',
-    description: '',
+    descriptionPure: '',
     stack: [
         SkillsBadge.Python,
         SkillsBadge.Django,

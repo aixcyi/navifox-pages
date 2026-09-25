@@ -11,6 +11,7 @@ import {
     sinceYear,
     untilYear,
 } from '@navifox/constants';
+import { website } from '@navifox/utils';
 import { useDark, useToggle } from '@vueuse/core';
 import { AvatarFallback, AvatarImage, AvatarRoot } from 'reka-ui';
 
@@ -59,9 +60,9 @@ const footerFriends = friends.slice(0, Math.max(sitemap.length, credits.length))
                                     v-html="item.text"
                                 />
                                 <p
-                                    v-if="item.descriptionRich || item.description"
+                                    v-if="website.description(item)"
                                     class="text-xs text-stone-500 dark:text-slate-400"
-                                    v-html="item.descriptionRich || item.description"
+                                    v-html="website.description(item)"
                                 />
                             </div>
                         </a>
@@ -99,9 +100,9 @@ const footerFriends = friends.slice(0, Math.max(sitemap.length, credits.length))
                                     v-html="item.text"
                                 />
                                 <p
-                                    v-if="item.descriptionRich || item.description"
+                                    v-if="website.description(item)"
                                     class="text-xs text-stone-500 dark:text-slate-400"
-                                    v-html="item.descriptionRich || item.description"
+                                    v-html="website.description(item)"
                                 />
                             </div>
                         </a>
@@ -155,9 +156,9 @@ const footerFriends = friends.slice(0, Math.max(sitemap.length, credits.length))
                                     v-html="friend.text"
                                 />
                                 <p
-                                    v-if="friend.status || friend.description || friend.descriptionRich"
+                                    v-if="friend.status || website.description(friend)"
                                     class="text-xs text-stone-500 dark:text-slate-400"
-                                    v-html="friend.status || friend.description || friend.descriptionRich"
+                                    v-html="friend.status || website.description(friend)"
                                 />
                             </div>
                         </a>
@@ -277,7 +278,7 @@ const footerFriends = friends.slice(0, Math.max(sitemap.length, credits.length))
                             </span>
                         </a>
                     </div>
-                    <p class="mt-2 flex flex-wrap pb-4" v-html="navifoxHome.descriptionRich" />
+                    <p class="mt-2 flex flex-wrap pb-4" v-html="website.description(navifoxHome)" />
                 </div>
             </div>
         </div>

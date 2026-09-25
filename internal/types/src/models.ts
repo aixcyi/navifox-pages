@@ -111,20 +111,30 @@ export interface Website extends TextLink {
     slogan?: string;
 
     /**
-     * 站点描述。
+     * 站点描述（纯文本）。
      *
-     * 此字段一般是面向 OG 协议或其它只能够接受纯文本的场景，因此字段值不应包含
-     * Markdown 或 HTML 等额外的、不可见的标记语言，并且也不建议有换行符。
+     * - 字段值不得包含 Markdown、HTML 等任何标记语言。
+     * - 一般是面向 OG 协议或其它只能够接受纯文本的场景，因此也不建议有换行符。
+     * - 原先的 `description` 字段已改为 `@navifox/utils` 的 `website.description`
+     *   计算属性：需要纯文本时取本字段，需要渲染时取该计算属性。
      */
-    description?: string;
+    descriptionPure?: string;
 
     /**
-     * 站点描述。
+     * 站点描述（Markdown）。
      *
-     * - 多数情况下是 HTML 格式，如果字面值是 Markdown 或包含其它标记语言，比较建议在最后统一编译为 HTML。
-     * - 实际渲染的内容一般与 {@link description} 字段一致，不过也可以有换行符来书写更多内容。
+     * - 字段值只允许是 Markdown，不得直接书写 HTML。
+     * - 需要渲染为 HTML 时，由 `@navifox/utils` 的 `website.description` 统一编译。
      */
     descriptionRich?: string;
+
+    /**
+     * 站点描述（HTML）。
+     *
+     * - 字段值只允许是 HTML，不得直接书写 Markdown。
+     * - 字面值原本是 Markdown 或其它标记语言时，应当先编译为 HTML 再存放。
+     */
+    descriptionHtml?: string;
 
     /** 项目文档。 */
     documentationUrl?: string;
@@ -168,8 +178,9 @@ export interface Friend extends Website {
     mime?: string;
     anchor?: string;
     slogan?: string;
-    description?: string;
+    descriptionPure?: string;
     descriptionRich?: string;
+    descriptionHtml?: string;
     documentationUrl?: string;
     repositoryUrl?: string;
     settingsUrl?: string;
@@ -264,19 +275,30 @@ export interface Project extends Website {
     slogan?: string;
 
     /**
-     * 项目简介。
+     * 项目简介（纯文本）。
      *
-     * 纯文本，不应包含 Markdown 或 HTML 等等，渲染时也不考虑支持多行文本。
+     * - 字段值不得包含 Markdown、HTML 等任何标记语言。
+     * - 一般是面向 OG 协议或其它只能够接受纯文本的场景，因此也不建议有换行符。
+     * - 原先的 `description` 字段已改为 `@navifox/utils` 的 `website.description`
+     *   计算属性：需要纯文本时取本字段，需要渲染时取该计算属性。
      */
-    description: string;
+    descriptionPure?: string;
 
     /**
-     * 项目简介。
+     * 项目简介（Markdown）。
      *
-     * - 多数情况下是 HTML 格式，如果字面值是 Markdown 或包含其它标记语言，比较建议在最后统一编译为 HTML。
-     * - 实际渲染的内容一般与 {@link description} 字段一致，不过也可以有换行符来书写更多内容。
+     * - 字段值只允许是 Markdown，不得直接书写 HTML。
+     * - 需要渲染为 HTML 时，由 `@navifox/utils` 的 `website.description` 统一编译。
      */
     descriptionRich?: string;
+
+    /**
+     * 项目简介（HTML）。
+     *
+     * - 字段值只允许是 HTML，不得直接书写 Markdown。
+     * - 字面值原本是 Markdown 或其它标记语言时，应当先编译为 HTML 再存放。
+     */
+    descriptionHtml?: string;
 
     documentationUrl?: string;
     repositoryUrl?: string;

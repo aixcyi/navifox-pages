@@ -17,7 +17,7 @@ const configurator = new VitePressConfigurator({
             label: '简体中文',
             title: '蓝溪拾遗',
             titleTemplate: ':title · 蓝溪拾遗', // •
-            description: navifoxHei.description,
+            description: navifoxHei.descriptionPure,
             themeConfig: {
                 // https://vitepress.dev/reference/default-theme-config
                 langMenuLabel: '切换语言',

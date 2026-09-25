@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { Icon } from '@iconify/vue/offline';
 import type { Project } from '@navifox/types';
+import { website } from '@navifox/utils';
 
 /**
  * 项目经历。
@@ -35,7 +36,7 @@ defineProps<ExperienceDetail>();
                 <span v-else> 至今</span>
             </span>
             <span class="text-slate-400 dark:text-slate-500">
-                <span v-if="project?.description">{{ project.description }}・</span>
+                <span v-if="website.description(project)" v-html="`${website.description(project)}・`" />
                 <span v-if="team">{{ team }}・</span>
                 <span>{{ title }}</span>
             </span>

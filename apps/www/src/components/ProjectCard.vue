@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { Icon } from '@iconify/vue/offline';
 import type { Project } from '@navifox/types';
+import { website } from '@navifox/utils';
 
 /**
  * 项目卡片：左侧发行类型图标，右侧自上而下是标题、社交链接、简介。
@@ -62,9 +63,9 @@ defineProps<{ project: Project }>();
                 />
             </div>
             <p
-                v-if="project.description"
+                v-if="website.description(project)"
                 class="mt-2 text-sm leading-relaxed text-stone-500 dark:text-slate-400"
-                v-html="project.description"
+                v-html="website.description(project)"
             />
         </div>
     </article>

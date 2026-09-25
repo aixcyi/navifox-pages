@@ -2,6 +2,7 @@
 import { Icon } from '@iconify/vue/offline';
 import { navifox, projects, signature, socials } from '@navifox/constants';
 import type { Anchor } from '@navifox/types';
+import { website } from '@navifox/utils';
 import { AvatarFallback, AvatarImage, AvatarRoot } from 'reka-ui';
 import { onMounted } from 'vue';
 
@@ -65,7 +66,7 @@ onMounted(() => {
             </div>
             <div
                 class="font-sign text-starlight-200 dark:text-starlight-300 mt-4 text-4xl md:text-5xl"
-                v-html="navifox.descriptionRich"
+                v-html="website.description(navifox)"
             />
         </div>
     </div>
@@ -124,7 +125,7 @@ onMounted(() => {
                         <div class="min-w-0">
                             <i
                                 class="text-starlight-600 dark:text-starlight-300 block text-2xl leading-snug italic sm:text-3xl lg:text-base"
-                                v-html="navifox.descriptionRich"
+                                v-html="website.description(navifox)"
                             />
                             <p
                                 class="mt-4 leading-relaxed text-stone-600 dark:text-slate-300"

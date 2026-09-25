@@ -15,7 +15,7 @@ export default defineConfig({
         vue(),
         ogPlugin({
             title: navifoxHome.text,
-            description: navifoxHome.description ?? '',
+            description: navifoxHome.descriptionPure ?? '',
             url: navifoxHome.link,
             siteName: navifoxHome.text,
         }),
