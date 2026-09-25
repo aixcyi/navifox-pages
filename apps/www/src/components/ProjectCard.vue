@@ -18,15 +18,13 @@ defineProps<{ project: Website }>();
     <article
         :class="[
             'GlassCard group relative flex items-start gap-4 p-5 transition-all duration-300 sm:p-6',
-            project.link
-                ? 'hover:border-starlight-500/50 hover:shadow-starlight-600/10 hover:-translate-y-1 hover:shadow-xl'
-                : '',
+            project.link ? 'Hoverable' : '',
         ]"
     >
         <slot name="releaseType" />
         <div class="min-w-0 flex-1">
             <div class="flex items-center gap-2">
-                <h3 class="text-night-900 min-w-0 text-lg font-bold tracking-tight dark:text-white">
+                <h3 class="min-w-0 text-lg font-bold tracking-tight">
                     <a
                         v-if="project.link"
                         :href="project.link"

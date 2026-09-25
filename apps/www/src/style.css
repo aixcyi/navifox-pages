@@ -78,9 +78,15 @@
     }
 
     /* 卡片外壳：晨光纸底 + 星辉金细边 + 玻璃感，全站统一。
-       内边距、布局与悬停效果由使用处补工具类；圆角取值不同的卡片不套用此类。 */
+       内边距与布局由使用处补工具类；圆角取值不同的卡片不套用此类。 */
     .GlassCard {
         @apply border-starlight-500/20 rounded-3xl border bg-white/70 backdrop-blur-sm dark:border-white/10 dark:bg-white/5;
+    }
+
+    /* 可点击卡片的悬停表现：描边转星辉金、外侧散出一层同色光晕。
+       只给能点的卡片挂 `.Hoverable`——静态卡片跟着变色会让人以为整卡可点。 */
+    .GlassCard.Hoverable {
+        @apply hover:border-starlight-500/50 hover:shadow-starlight-600/10 hover:shadow-xl;
     }
 }
 
