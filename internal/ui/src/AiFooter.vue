@@ -13,8 +13,9 @@ import {
 } from '@navifox/constants';
 import type { Website } from '@navifox/types';
 import { website } from '@navifox/utils';
-import { useDark, useToggle } from '@vueuse/core';
+import { useDark, useElementVisibility, useToggle } from '@vueuse/core';
 import { AvatarFallback, AvatarImage, AvatarRoot } from 'reka-ui';
+import { useTemplateRef } from 'vue';
 import IconDarkMode from '~icons/material-symbols/dark-mode';
 import IconLightMode from '~icons/material-symbols/light-mode';
 
@@ -34,12 +35,14 @@ const credits: Website[] = [
     { text: 'shields.io', link: 'https://shields.io/', icon: 'https://shields.io/img/favicon.ico', note: '徽章生成' },
 ];
 
-/** 页脚里友邻只占一列，取前若干位与「站内导航」「引用鸣谢」两列保持相近高度。 */
 const footerFriends = friends.slice(0, Math.max(sitemap.length, credits.length));
+const footer = useTemplateRef<HTMLElement>('footer');
+const footerVisible = useElementVisibility(footer, { rootMargin: '256px', once: true });
 </script>
 
 <template>
     <footer
+        ref="footer"
         class="border-starlight-500/20 bg-paper-100 dark:bg-night-900 border-t text-stone-700 dark:border-white/10 dark:text-slate-300"
     >
         <div class="MaxContainer py-10!">
@@ -57,7 +60,7 @@ const footerFriends = friends.slice(0, Math.max(sitemap.length, credits.length))
                             class="group border-starlight-500/15 hover:border-blossom-300/60 dark:hover:border-blossom-300/40 flex items-center rounded-xl border bg-white px-4 py-3 transition-all duration-200 hover:shadow-md dark:border-white/12 dark:bg-sky-300/10"
                         >
                             <div class="text-blossom-300 mr-2.5 flex h-8 w-8 flex-shrink-0 items-center justify-center">
-                                <AiFavicon :item="item" :size="32" />
+                                <AiFavicon v-if="footerVisible" :item="item" :size="32" />
                             </div>
                             <div class="min-w-0 flex-1">
                                 <h4
@@ -97,7 +100,7 @@ const footerFriends = friends.slice(0, Math.max(sitemap.length, credits.length))
                             <div
                                 class="mr-2.5 flex h-8 w-8 flex-shrink-0 items-center justify-center text-sky-500 dark:text-sky-400"
                             >
-                                <AiFavicon :item="item" :size="32" />
+                                <AiFavicon v-if="footerVisible" :item="item" :size="32" />
                             </div>
                             <div class="min-w-0 flex-1">
                                 <h4
@@ -142,6 +145,7 @@ const footerFriends = friends.slice(0, Math.max(sitemap.length, credits.length))
                                 ]"
                             >
                                 <AvatarImage
+                                    v-if="footerVisible"
                                     :src="friend.avatar ?? friend.avatar256 ?? ''"
                                     :alt="friend.author"
                                     class="size-full object-cover"
