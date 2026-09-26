@@ -43,6 +43,7 @@ export const friends: Friend[] = [
         text: '渣渣120',
         link: 'https://zhazha120.cn/',
         tags: ['毛茸茸', '100.00% 狗'],
+        avatar: `${navifox.link}/zhazha.svg`,
         avatarShape: 'square',
         type: 'pixel',
         meet: newDate(2026, 3, 27),
