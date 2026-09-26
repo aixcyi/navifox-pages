@@ -15,8 +15,6 @@ import type { Website } from '@navifox/types';
 import { website } from '@navifox/utils';
 import { useDark, useToggle } from '@vueuse/core';
 import { AvatarFallback, AvatarImage, AvatarRoot } from 'reka-ui';
-import type { Component } from 'vue';
-import IconPixiv from '~icons/fa6-brands/pixiv';
 import IconDarkMode from '~icons/material-symbols/dark-mode';
 import IconLightMode from '~icons/material-symbols/light-mode';
 
@@ -28,17 +26,11 @@ import { avatarShapeClass } from './lib/avatar';
 const isDark = useDark();
 const toggleDark = useToggle(isDark);
 
-/** 页脚「站内导航」一栏（数组顺序即展示顺序）；图标沿用各站的站点图标地址。 */
 const sitemap: Website[] = [navifoxHome, navifoxBlog, navifoxDocs, navifoxRefs, navifoxHei];
-
-/** 「引用鸣谢」一栏的条目：图标优先用编译期组件 `mark`，否则退回站点图标地址 `icon`。 */
-type Credit = Omit<Website, 'logo'> & { mark?: Component };
-
-/** 页脚「引用鸣谢」一栏（数组顺序即展示顺序）。 */
-const credits: Credit[] = [
-    { text: 'oO大黄Oo', link: 'https://www.pixiv.net/users/9892346', mark: IconPixiv },
-    { text: '錯誤', link: 'https://www.pixiv.net/users/1297556', mark: IconPixiv },
-    { text: 'アナ', link: 'https://www.pixiv.net/users/24036634', mark: IconPixiv },
+const credits: Website[] = [
+    { text: 'oO大黄Oo', link: 'https://www.pixiv.net/users/9892346', logo: 'fa6-brands:pixiv' },
+    { text: '錯誤', link: 'https://www.pixiv.net/users/1297556', logo: 'fa6-brands:pixiv' },
+    { text: 'アナ', link: 'https://www.pixiv.net/users/24036634', logo: 'fa6-brands:pixiv' },
     { text: 'shields.io', link: 'https://shields.io/', icon: 'https://shields.io/img/favicon.ico', note: '徽章生成' },
 ];
 
@@ -105,7 +97,7 @@ const footerFriends = friends.slice(0, Math.max(sitemap.length, credits.length))
                             <div
                                 class="mr-2.5 flex h-8 w-8 flex-shrink-0 items-center justify-center text-sky-500 dark:text-sky-400"
                             >
-                                <AiFavicon :item="item" :mark="item.mark" :size="32" />
+                                <AiFavicon :item="item" :size="32" />
                             </div>
                             <div class="min-w-0 flex-1">
                                 <h4

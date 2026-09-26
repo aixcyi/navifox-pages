@@ -235,9 +235,6 @@ catalogs:
     '@iconify-json/devicon-plain':
       specifier: ^1.2.61
       version: 1.2.61
-    '@iconify-json/fa6-brands':
-      specifier: ^1.2.6
-      version: 1.2.6
     '@iconify-json/icons8':
       specifier: ^1.2.1
       version: 1.2.1
@@ -515,9 +512,6 @@ importers:
       '@iconify-json/devicon-plain':
         specifier: 'catalog:'
         version: 1.2.61
-      '@iconify-json/fa6-brands':
-        specifier: 'catalog:'
-        version: 1.2.6
       '@iconify-json/material-symbols':
         specifier: 'catalog:'
         version: 1.2.93
@@ -655,9 +649,6 @@ importers:
       '@iconify-json/devicon':
         specifier: 'catalog:'
         version: 1.2.67
-      '@iconify-json/fa6-brands':
-        specifier: 'catalog:'
-        version: 1.2.6
       '@iconify-json/logos':
         specifier: 'catalog:'
         version: 1.2.14
@@ -779,9 +770,6 @@ importers:
       '@iconify-json/devicon-plain':
         specifier: 'catalog:'
         version: 1.2.61
-      '@iconify-json/fa6-brands':
-        specifier: 'catalog:'
-        version: 1.2.6
       '@iconify-json/icons8':
         specifier: 'catalog:'
         version: 1.2.1
@@ -1050,9 +1038,6 @@ packages:
 
   '@iconify-json/devicon@1.2.67':
     resolution: {integrity: sha512-ZZ98yXt/e0SantmMD7z5kbq89E7OOCvnn0/1q65WYOgHAXJ+y4oRVMaghU4vFB22uqlvxehKXsanBnpi3AIBYQ==}
-
-  '@iconify-json/fa6-brands@1.2.6':
-    resolution: {integrity: sha512-twL3X4KWcxAhbc1vz/mIDsVr+CAItk1/EIfxKUVQtpv6O4eydk5KNYqTZWdvJNHGInUgd6vKg21aWfVgb5DXEg==}
 
   '@iconify-json/icons8@1.2.1':
     resolution: {integrity: sha512-YHEpcPkCgyiYiGyHKk5CK4RzELEP5XDueQiguWe7lXJlG5rSkXMVOgOYfmANkwnTRF+/RZX/uQE1uf3y+haDgw==}
@@ -3181,10 +3166,6 @@ snapshots:
       '@iconify/types': 2.0.0
 
   '@iconify-json/devicon@1.2.67':
-    dependencies:
-      '@iconify/types': 2.0.0
-
-  '@iconify-json/fa6-brands@1.2.6':
     dependencies:
       '@iconify/types': 2.0.0
 
