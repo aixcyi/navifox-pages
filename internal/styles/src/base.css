@@ -1,12 +1,31 @@
-.MaxContainer {
+/* 内容区与导航栏共用同一套「居中宽度 + 左右留白」口径 */
+.MaxContainer,
+.NavbarContainer {
+    --container-pad-x: 2rem;
+
     max-width: min(1320px, calc(100vw - 20px)); /* 照顾 Chrome 的滚动条 */
     margin-left: auto;
     margin-right: auto;
-    padding: 1.25rem 2rem;
+    padding-left: var(--container-pad-x);
+    padding-right: var(--container-pad-x);
+}
+
+.MaxContainer {
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+}
+
+/* 导航栏容器：导航栏是 fixed 元素，靠 position 嵌套进 .MaxContainer 是推不动的
+   （fixed 会脱离父级盒子的流式约束），只有内边距才能把它对齐到正文内容。
+   上下留白仍由导航栏自己的 pt-3 / pt-4 负责，所以这里不设纵向内边距。 */
+.NavbarContainer {
+    padding-top: 0;
+    padding-bottom: 0;
 }
 
 @media (max-width: 768px) {
-    .MaxContainer {
-        padding: 1.25rem 1rem;
+    .MaxContainer,
+    .NavbarContainer {
+        --container-pad-x: 1rem;
     }
 }

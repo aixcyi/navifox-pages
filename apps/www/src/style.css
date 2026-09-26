@@ -139,25 +139,40 @@ html:not(.dark) .Starry .text-slate-500 {
     --specks: rgb(255 255 255 / 0.35);
 }
 
-/* 下拉菜单卡片（reka-ui DropdownMenu 内容）出入场动画 */
-@keyframes nav-menu-in {
+/* 移动端导航抽屉的出入场动画（reka-ui Drawer 只给 data-state，动画由使用方提供）。
+   抽屉本体用 fixed inset-x-0 bottom-0 定位，位移动画只落到 translateY 上即可。 */
+@keyframes drawer-up-in {
     from {
-        opacity: 0;
-        transform: translateY(-8px) scale(0.97);
+        transform: translateY(100%);
     }
     to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
+        transform: translateY(0);
     }
 }
 
-@keyframes nav-menu-out {
+@keyframes drawer-down-out {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(100%);
+    }
+}
+
+@keyframes drawer-mask-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes drawer-mask-out {
     from {
         opacity: 1;
-        transform: translateY(0) scale(1);
     }
     to {
         opacity: 0;
-        transform: translateY(-8px) scale(0.97);
     }
 }
