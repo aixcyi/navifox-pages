@@ -5,7 +5,7 @@ import { createApp } from 'vue';
 import App from '#/App.vue';
 import Background from '#/assets/background.jpg';
 import router from '#/router';
-import '#/iconify';
+
 import '#/style.css';
 
 /**

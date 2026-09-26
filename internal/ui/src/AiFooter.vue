@@ -105,12 +105,7 @@ const footerFriends = friends.slice(0, Math.max(sitemap.length, credits.length))
                             <div
                                 class="mr-2.5 flex h-8 w-8 flex-shrink-0 items-center justify-center text-sky-500 dark:text-sky-400"
                             >
-                                <component
-                                    :is="item.mark"
-                                    v-if="item.mark"
-                                    :style="{ height: '32px', width: 'auto' }"
-                                />
-                                <AiFavicon v-else :item="item" :size="32" />
+                                <AiFavicon :item="item" :mark="item.mark" :size="32" />
                             </div>
                             <div class="min-w-0 flex-1">
                                 <h4
