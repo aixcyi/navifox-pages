@@ -45,6 +45,7 @@ const SOCIALS: { icon: Component; link: string; label: string }[] = [
         :href="social.link"
         :title="social.label"
         :class="linkClass"
+        draggable="false"
         target="_blank"
     >
         <component :is="social.icon" :style="{ height: `${size}px`, width: 'auto' }" />

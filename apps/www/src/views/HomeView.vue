@@ -110,6 +110,7 @@ onMounted(() => {
                                     :src="navifox.avatar512 ?? ''"
                                     :alt="navifox.author"
                                     class="size-full object-cover"
+                                    draggable="false"
                                 />
                                 <AvatarFallback class="flex size-full items-center justify-center" :delay-ms="200">
                                     <FluentEmojiFox class="size-1/2" />
@@ -177,6 +178,7 @@ onMounted(() => {
                                 :title="projectZeraora.repositoryUrl"
                                 class="dark:hover:text-starlight-300 hover:text-starlight-600 flex h-4 items-center text-stone-400 transition-colors duration-200 dark:text-slate-500"
                                 rel="noopener noreferrer"
+                                draggable="false"
                                 target="_blank"
                             >
                                 <IconGitHub class="size-6" />
@@ -186,6 +188,7 @@ onMounted(() => {
                                 :title="projectZeraora.link"
                                 class="dark:hover:text-starlight-300 hover:text-starlight-600 flex h-4 items-center text-stone-400 transition-colors duration-200 dark:text-slate-500"
                                 rel="noopener noreferrer"
+                                draggable="false"
                                 target="_blank"
                             >
                                 <IconPyPI class="size-6" />
@@ -202,6 +205,7 @@ onMounted(() => {
                                 :title="projectDunderAll.repositoryUrl"
                                 class="dark:hover:text-starlight-300 hover:text-starlight-600 flex h-4 items-center text-stone-400 transition-colors duration-200 dark:text-slate-500"
                                 rel="noopener noreferrer"
+                                draggable="false"
                                 target="_blank"
                             >
                                 <IconGitHub class="size-6" />
@@ -211,6 +215,7 @@ onMounted(() => {
                                 :title="projectDunderAll.link"
                                 class="dark:hover:text-starlight-300 hover:text-starlight-600 flex h-4 items-center text-stone-400 transition-colors duration-200 dark:text-slate-500"
                                 rel="noopener noreferrer"
+                                draggable="false"
                                 target="_blank"
                             >
                                 <IconJetBrains class="size-6" />
@@ -227,6 +232,7 @@ onMounted(() => {
                                 :title="projectShebang.repositoryUrl"
                                 class="dark:hover:text-starlight-300 hover:text-starlight-600 flex h-4 items-center text-stone-400 transition-colors duration-200 dark:text-slate-500"
                                 rel="noopener noreferrer"
+                                draggable="false"
                                 target="_blank"
                             >
                                 <IconGitHub class="size-6" />
@@ -236,6 +242,7 @@ onMounted(() => {
                                 :title="projectShebang.link"
                                 class="dark:hover:text-starlight-300 hover:text-starlight-600 flex h-4 items-center text-stone-400 transition-colors duration-200 dark:text-slate-500"
                                 rel="noopener noreferrer"
+                                draggable="false"
                                 target="_blank"
                             >
                                 <IconJetBrains class="size-6" />
