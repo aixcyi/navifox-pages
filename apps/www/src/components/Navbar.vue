@@ -168,7 +168,11 @@ onBeforeUnmount(() => window.removeEventListener('scroll', onScroll));
                     >
                         <FluentEmojiFox class="size-6" />
                     </span>
-                    <span class="text-lg font-bold tracking-tight whitespace-nowrap">路狐领航</span>
+                    <span
+                        class="text-lg font-bold tracking-tight whitespace-nowrap text-black dark:text-white"
+                        :class="onDarkSurface ? 'text-white' : 'text-black'"
+                        v-html="navifoxHome.text"
+                    />
                 </RouterLink>
 
                 <!-- 桌面端导航：条目由路由 meta（isShowOnNavbar）生成。
