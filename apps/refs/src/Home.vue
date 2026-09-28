@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { bookmarks, navifoxRefs } from '@navifox/constants';
+import { bookmarks, navifox, navifoxRefs } from '@navifox/constants';
 import type { BookmarkCategory, TextLink, Website } from '@navifox/types';
 import { AiFavicon, AiFooter, FluentEmojiFlatFox } from '@navifox/ui';
 import { website } from '@navifox/utils';
@@ -72,7 +72,7 @@ const bookmarkGroups = computed(() => {
                         <SignatureLine class="absolute top-2/3 left-0 h-[0.58em] w-full fill-pink-300/60" />
                         <span
                             class="relative bg-linear-to-r from-white via-pink-100 to-purple-100 bg-clip-text text-transparent"
-                            v-html="'路狐领航之'"
+                            v-html="`${navifox.text}之`"
                         />
                     </span>
                     <span class="mt-2 block">{{ navifoxRefs.text }}</span>

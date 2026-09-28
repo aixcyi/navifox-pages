@@ -67,7 +67,7 @@ export const navifox: Friend & NavifoxProfile = {
 };
 
 export const navifoxHome: Website = {
-    text: '路狐领航',
+    text: navifox.text,
     link: navifox.link,
     icon: navifox.icon,
     slogan: '愿在生活的密林里遇见一只路狐，与你相伴，为你领航',
@@ -84,7 +84,7 @@ export const navifoxRefs: Website = {
     descriptionPure: '狐狸们用小爪子敲出的一页纸快速参考。',
     descriptionHtml: '狐狸们用小爪子敲出的<b>一页纸快速参考</b>。',
     author: navifox.author,
-    tags: ['快速参考', '参考', '星笺', '导航', '路狐领航'],
+    tags: ['快速参考', '参考', '星笺', '导航', navifox.text],
     note: '快速参考',
 };
 export const navifoxBlog: Website = {
