@@ -176,3 +176,29 @@ html:not(.dark) .Starry .text-slate-500 {
         opacity: 0;
     }
 }
+
+/* 友链页悬停卡的出入场动画（reka-ui 的 HoverCard 同样只给 data-state）。
+   位移必须落在内容元素自身：定位用的 transform 在它外面那层
+   `[data-reka-popper-content-wrapper]` 上，动外面那层会把 Popper 算好的落点一起动掉。
+   淡入是从下方 8px 处升到本位，淡出则原路退回，两个方向的位移量因此都是 8px。 */
+@keyframes hover-card-in {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes hover-card-out {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+}

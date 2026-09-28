@@ -11,17 +11,17 @@ export const website = {
      *
      * 优先级依次为 {@link Website.descriptionHtml}、编译为 HTML 的
      * {@link Website.descriptionRich}、{@link Website.descriptionPure}，
-     * 三者皆缺省时为 `undefined`。
+     * 三者皆缺省时返回 {@link fallback}。
      *
      * - 返回值的形态不固定：只有 {@link Website.descriptionPure} 时是不含标记语言的纯文本，
      *   其余情况是可供 `v-html` 渲染的 HTML。
      * - 只接受纯文本的场景（如 `@navifox/utils/vite` 的 `ogPlugin`）应当直接取
      *   {@link Website.descriptionPure} 而不是本计算属性。
      */
-    description(site: Website): string | undefined {
+    description(site: Website, fallback?: string): string | undefined {
         if (site.descriptionHtml) return site.descriptionHtml;
         if (site.descriptionRich) return markit(site.descriptionRich);
-        return site.descriptionPure;
+        return site.descriptionPure || fallback;
     },
 
     /**

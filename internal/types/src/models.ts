@@ -190,6 +190,9 @@ export interface Friend extends Website {
     tags?: string[];
     note?: string;
 
+    /** 副标题。辅助 {@link text} 显示的文本。 */
+    deck?: string;
+
     /**
      * 头像图片地址。
      *
