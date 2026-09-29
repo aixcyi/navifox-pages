@@ -26,6 +26,12 @@ export interface Moment {
 
 export const moments: Moment[] = [
     {
+        id: '269.1',
+        postAt: newDate(2026, 9, 27, 0, 20),
+        content: '既见君兮予所欢，愿随风兮鸣银鸾。\n月轮起兮送秋燕，沐风雨兮路漫漫。',
+        tags: ['游戏'],
+    },
+    {
         id: '269.0',
         postAt: newDate(2026, 9, 10, 12, 0),
         content: 'DeepSeek flash 系列降价了，可为什么感觉还是花那么多呢？',
@@ -84,7 +90,7 @@ export const moments: Moment[] = [
         id: '241.0',
         postAt: newDate(2024, 1, 26, 20, 44),
         content: '年会抽奖中了一个罗技 MX Master 3s 鼠标，跟同事换了一块 Keychron K10 Pro 机械键盘。',
-        location: '中山',
+        location: '广州',
         tags: ['公司', '机械键盘'],
     },
     {
@@ -109,10 +115,32 @@ export const moments: Moment[] = [
         tags: ['拆箱'],
     },
     {
+        id: '219.0',
+        postAt: newDate(2019, 10, 23, 22, 25),
+        content: '第一次去外地参加竞赛，止不住的好奇。此时已经能熟练借助虚拟机安装 Ubuntu 并畅游于此。',
+        tags: ['比赛'],
+    },
+    {
         id: '189.0',
         postAt: newDate(2018, 9, 22, 21, 35),
         content: '与舍友一同解构 [Obulis](https://store.steampowered.com/app/11330) 存档结构并伪造数据来解锁隐藏关卡。',
         location: '中山',
         tags: ['游戏'],
+    },
+    {
+        id: '163.0',
+        postAt: newDate(2016, 3, 14),
+        content: '创建了一个QQ群与Q米论坛的坛友一起讨论洛克王国及交流二创。',
+    },
+    {
+        id: '11c.0',
+        postAt: newDate(2011, 12, 3),
+        content: '在邻居朋友的安利下入坑了洛克王国，在“御三家”中选定了喵喵。',
+        tags: ['游戏'],
+    },
+    {
+        id: '11b.0',
+        postAt: newDate(2011, 11, 30),
+        content: '组装了一台仅有 80GB 机械硬盘的 Windows XP，在懵懂中注册了QQ，接触到“非主流”的余晖。',
     },
 ].sort((a, b) => b.postAt.getTime() - a.postAt.getTime());

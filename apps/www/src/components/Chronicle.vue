@@ -244,12 +244,6 @@ import AiTimelineItem from '#/components/AiTimelineItem.vue';
         <AiTimelineItem color="#00A2E8" anchor="2012" date="2012 年，暑假" markdown>
             迷上了 [Obulis](https://store.steampowered.com/app/11330)，偶遇易语言，初窥计算机世界。
         </AiTimelineItem>
-        <AiTimelineItem color="#00A2E8" :moment="newDate(2011, 12, 3)" markdown>
-            入坑洛克王国，选择了喵喵。
-        </AiTimelineItem>
-        <AiTimelineItem color="#00A2E8" anchor="2011" :moment="newDate(2011, 11, 30)" markdown>
-            在懵懂中注册了QQ。
-        </AiTimelineItem>
         <AiTimelineItem color="#00A2E8" last markdown>_狐途初遇，月色未沉；雪落无声，风过无痕_</AiTimelineItem>
     </ul>
 </template>
