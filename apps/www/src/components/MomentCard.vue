@@ -7,17 +7,8 @@ import { computed } from 'vue';
 
 import type { Moment } from '#/data/moments';
 
-interface Props {
-    /** 要展示的碎碎念。 */
-    moment: Moment;
-}
-
-const props = defineProps<Props>();
-
-/** 精确时间，作为悬停时的提示。 */
+const props = defineProps<{ moment: Moment }>();
 const absoluteTime = computed(() => format(props.moment.postAt, 'yyyy/M/d H:mm'));
-
-/** 相对时间标签（今天／昨天／N 天前）。 */
 const relativeTime = computed(() => beforeLabel(props.moment.postAt));
 </script>
 
@@ -39,8 +30,8 @@ const relativeTime = computed(() => beforeLabel(props.moment.postAt));
                 </AvatarFallback>
             </AvatarRoot>
             <div class="min-w-0 flex-1">
-                <h2 class="text-night-900 truncate text-sm font-bold dark:text-white">{{ navifox.author }}</h2>
-                <p class="text-xs text-stone-400 dark:text-slate-500">
+                <h2 class="text-night-900 truncate font-bold dark:text-white">{{ navifox.author }}</h2>
+                <p class="text-sm text-stone-400 dark:text-slate-500">
                     <time :datetime="moment.postAt.toISOString()">{{ relativeTime }}</time>
                     <span v-if="moment.location"> · {{ moment.location }}</span>
                 </p>
@@ -68,9 +59,10 @@ const relativeTime = computed(() => beforeLabel(props.moment.postAt));
             <li
                 v-for="tag in moment.tags"
                 :key="tag"
-                class="border-starlight-500/25 text-starlight-600 dark:text-starlight-300 rounded-full border px-2.5 py-0.5 text-xs"
+                class="border-starlight-500/25 text-starlight-600 dark:text-starlight-300 text-sm"
             >
-                # {{ tag }}
+                <span class="mr-0.5">#</span>
+                <span>{{ tag }}</span>
             </li>
         </ul>
 
