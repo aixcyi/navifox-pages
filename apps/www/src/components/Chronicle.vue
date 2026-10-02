@@ -37,7 +37,7 @@ import AiTimelineItem from '#/components/AiTimelineItem.vue';
 
 <template>
     <ul>
-        <AiTimelineItem color="#FF7F27" anchor="Currently" :moment="newDate(2026, 8, 22)">
+        <AiTimelineItem color="#FF7F27" anchor="Sunshine" :moment="newDate(2026, 8, 22)">
             借助 onnx 和 OpenCV 对漫画中的文本进行 OCR 识别，并通过
             <IconHuggingFace class="h-6 w-auto" />
             HuggingFace 下载了
@@ -226,7 +226,7 @@ import AiTimelineItem from '#/components/AiTimelineItem.vue';
             <IconUbuntu class="h-6 w-auto" />
             Ubuntu。<br />
         </AiTimelineItem>
-        <AiTimelineItem color="#00A2E8" :moment="newDate(2018, 9, 30, 20, 19)">
+        <AiTimelineItem color="#00A2E8" anchor="2018" :moment="newDate(2018, 9, 30, 20, 19)">
             初遇
             <IconPython class="h-6 w-auto" />
             和
@@ -235,15 +235,12 @@ import AiTimelineItem from '#/components/AiTimelineItem.vue';
             <IconPyCharm class="h-6 w-auto" />
             ，逐渐领略其它语言的魅力。<br />
         </AiTimelineItem>
-        <AiTimelineItem color="#00A2E8" anchor="2018" :moment="newDate(2018, 8, 26, 11, 7)">
-            成为“哔哩哔哩无限矿业公司”的一位用户。<br />
-        </AiTimelineItem>
         <AiTimelineItem color="#00A2E8" anchor="2016" :moment="newDate(2016, 8, 22, 15, 6)">
             以“砹小翼”为笔名在博客园发布第一篇博客。<br />
         </AiTimelineItem>
         <AiTimelineItem color="#00A2E8" anchor="2012" date="2012 年，暑假" markdown>
             迷上了 [Obulis](https://store.steampowered.com/app/11330)，偶遇易语言，初窥计算机世界。
         </AiTimelineItem>
-        <AiTimelineItem color="#00A2E8" last markdown>_狐途初遇，月色未沉；雪落无声，风过无痕_</AiTimelineItem>
+        <AiTimelineItem color="#00A2E8" anchor="Twilight" last markdown>_狐途初遇，月色未沉；雪落无声，风过无痕_</AiTimelineItem>
     </ul>
 </template>

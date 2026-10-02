@@ -128,6 +128,12 @@ export const moments: Moment[] = [
         tags: ['游戏'],
     },
     {
+        id: '188.0',
+        postAt: newDate(2018, 8, 26, 11, 7),
+        content: '成为“哔哩哔哩无限矿业公司”的一位用户。',
+        location: '中山',
+    },
+    {
         id: '163.0',
         postAt: newDate(2016, 3, 14),
         content: '创建了一个QQ群与Q米论坛的坛友一起讨论洛克王国及交流二创。',
