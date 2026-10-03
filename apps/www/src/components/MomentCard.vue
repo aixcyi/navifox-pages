@@ -8,8 +8,23 @@ import { computed } from 'vue';
 import type { Moment } from '#/data/moments';
 
 const props = defineProps<{ moment: Moment }>();
-const absoluteTime = computed(() => format(props.moment.postAt, 'yyyy/M/d H:mm'));
 const relativeTime = computed(() => beforeLabel(props.moment.postAt));
+const absoluteTime = computed(() =>
+    // 1. “秒数”没什么意义，纵观所有时刻也很少有精确时候，所以不显示；
+    // 2. 只判断“小时”和“分钟”为零，这样当遇到“真的00:00”的时候就可以基于第一点来正确显示。
+    props.moment.postAt.getHours() === 0 && props.moment.postAt.getMinutes() === 0
+        ? format(props.moment.postAt, 'yyyy/M/d')
+        : format(props.moment.postAt, 'yyyy/M/d H:mm'),
+);
+
+/**
+ * B 站「复制通用代码」给出的地址以 `//` 开头（协议相对地址），直接用作 `src` 时
+ * 浏览器会按当前页面协议补全；这里显式补成 `https:` 以免站点将来走 `file:` 或 `http:` 时踩坑。
+ * 其它形式的地址原样返回。
+ */
+function embedSrc(src: string): string {
+    return src.startsWith('//') ? `https:${src}` : src;
+}
 </script>
 
 <template>
@@ -42,17 +57,48 @@ const relativeTime = computed(() => beforeLabel(props.moment.postAt));
             <Markdown :text="moment.content" />
         </div>
 
+        <div v-if="moment.videos?.length" class="mt-4 grid gap-2">
+            <div
+                v-for="video in moment.videos"
+                :key="video.src"
+                class="EmbedFrame relative aspect-video w-full overflow-hidden rounded-2xl"
+            >
+                <iframe
+                    :src="embedSrc(video.src)"
+                    :title="video.title"
+                    class="absolute inset-0 size-full border-0"
+                    scrolling="no"
+                    frameborder="0"
+                    framespacing="0"
+                    allowfullscreen
+                    allow="fullscreen; picture-in-picture"
+                    referrerpolicy="no-referrer-when-downgrade"
+                    loading="lazy"
+                />
+            </div>
+        </div>
+
         <div v-if="moment.images?.length" class="mt-4 grid gap-2">
-            <img
-                v-for="image in moment.images"
-                :key="image.src"
-                :src="image.src"
-                :alt="image.alt"
-                class="max-w-full rounded-2xl select-none"
-                loading="lazy"
-                decoding="async"
-                draggable="false"
-            />
+            <!-- 覆盖文字与图片同处一个 relative 容器，文字才能压在图片的右下角。 -->
+            <div v-for="image in moment.images" :key="image.src" class="relative">
+                <pre
+                    v-if="image.text"
+                    class="absolute right-4 bottom-3 z-1 text-nowrap text-neutral-200 [text-shadow:0_1px_3px_rgb(0_0_0/0.55)]"
+                    >{{ image.text }}</pre
+                >
+                <!-- 浅色模式保持原样，深色模式默认压暗、悬停恢复全亮。
+                     用的是卡片（`article` 上的 `group`）而非图片自身的 hover：
+                     指针落在卡片任意位置都算「选中了这条动态」，整卡的配图一起亮起来；
+                     亮度压过头会把画面本身涂掉，所以沿用首页时间线 `dark:opacity-50` 一档。 -->
+                <img
+                    :src="image.src"
+                    :alt="image.alt"
+                    class="block max-w-full rounded-2xl transition-opacity duration-500 select-none group-hover:opacity-100 dark:opacity-50"
+                    loading="lazy"
+                    decoding="async"
+                    draggable="false"
+                />
+            </div>
         </div>
 
         <ul v-if="moment.tags?.length" class="mt-4 flex flex-wrap gap-2">

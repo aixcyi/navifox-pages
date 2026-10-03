@@ -28,10 +28,6 @@ import IconOllama from '~icons/simple-icons/ollama';
 import IconDjango from '~icons/skill-icons/django';
 import IconMinecraft from '~icons/vscode-icons/file-type-minecraft';
 
-import BannerGI from '#/assets/genshin.jpg';
-import BannerHei from '#/assets/hei.jpg';
-import BannerHoney from '#/assets/honey.jpg';
-import BannerZZZ from '#/assets/zzz.webp';
 import AiTimelineItem from '#/components/AiTimelineItem.vue';
 </script>
 
@@ -83,30 +79,6 @@ import AiTimelineItem from '#/components/AiTimelineItem.vue';
             <IconPnpm class="h-6 w-auto" />
             并创建 Monorepo 仓库容纳 Navifox Pages 向现代化前端开发发展。<br />
         </AiTimelineItem>
-        <AiTimelineItem color="#FF7F27" :moment="newDate(2025, 8, 16, 11, 0)">
-            <div class="relative mb-1.5 max-w-[95%] flex-1">
-                <pre class="absolute right-4 bottom-3 z-1 text-nowrap text-neutral-200">p156</pre>
-                <img
-                    :src="BannerHoney"
-                    alt="《凡人修仙传》156集"
-                    class="-z-1 size-full rounded-2xl transition-opacity duration-500 select-none hover:opacity-100 dark:opacity-50"
-                    draggable="false"
-                />
-            </div>
-            <span>与 43 万+ 道友共同见证韩立结婴！（有幸出现在本集片尾名单）</span>
-        </AiTimelineItem>
-        <AiTimelineItem color="#FF7F27" :moment="newDate(2025, 7, 19, 19, 15)">
-            <div class="relative mb-1.5 max-w-[95%] flex-1">
-                <pre class="absolute right-4 bottom-3 z-1 text-nowrap text-neutral-200">0:11:42</pre>
-                <img
-                    :src="BannerHei"
-                    alt="《罗小黑战记2》"
-                    class="-z-1 size-full rounded-2xl transition-opacity duration-500 select-none hover:opacity-100 dark:opacity-25"
-                    draggable="false"
-                />
-            </div>
-            <span>《罗小黑战记2》首映次日线下观影，品味妖灵会馆之于国人的浪漫。</span>
-        </AiTimelineItem>
         <AiTimelineItem color="#FF7F27" :moment="newDate(2025, 7, 8, 15, 43)">
             用 Reka UI +
             <IconTailwindCSS class="h-6 w-auto" />
@@ -140,20 +112,9 @@ import AiTimelineItem from '#/components/AiTimelineItem.vue';
             <IconNginx class="h-6 w-auto" />
             域名转发，自此轰开前端大门。<br />
         </AiTimelineItem>
-        <AiTimelineItem color="#FF7F27" :moment="newDate(2024, 7, 10, 16, 53)" markdown>
+        <AiTimelineItem color="#FF7F27" gradientColor="#A44967" :moment="newDate(2024, 7, 10, 16, 53)" markdown>
             受 [Csense](https://plugins.jetbrains.com/vendor/fab53479-05ec-4e6d-a40e-05df95be4921) 系列启发，将
             TinySnake 拆分为多个 HooTool 系列小插件。
-        </AiTimelineItem>
-        <AiTimelineItem color="#FF7F27" gradientColor="#A44967" :moment="newDate(2024, 7, 4)">
-            <div class="relative max-w-[95%] flex-1">
-                <pre class="absolute right-4 bottom-3 z-1 text-nowrap text-neutral-200">UID 10141611</pre>
-                <img
-                    :src="BannerZZZ"
-                    alt="绝区零，Zenless Zone Zero"
-                    class="-z-1 size-full rounded-2xl transition-opacity duration-500 select-none hover:opacity-100 dark:opacity-25"
-                    draggable="false"
-                />
-            </div>
         </AiTimelineItem>
         <AiTimelineItem color="#A44967" gradientColor="#A349A4" :moment="newDate(2024, 4, 12)">
             在
@@ -194,21 +155,10 @@ import AiTimelineItem from '#/components/AiTimelineItem.vue';
             <IconPostgreSQL class="h-6 w-auto" />
             。<br />
         </AiTimelineItem>
-        <AiTimelineItem color="#A349A4" :moment="newDate(2020, 12, 12, 17, 18)">
+        <AiTimelineItem color="#A349A4" anchor="2020" gradientColor="#00A2E8" :moment="newDate(2020, 12, 12, 17, 18)">
             找到一处名为 GitHub 的乐园，取“砹小翼”双拼拼音 <code>aixcyi</code> 为常用 ID，翻开
             <IconGit class="h-6 w-auto" />
             的第一页。<br />
-        </AiTimelineItem>
-        <AiTimelineItem color="#A349A4" anchor="2020" gradientColor="#00A2E8" :moment="newDate(2020, 10, 22)">
-            <div class="relative max-w-[95%] flex-1">
-                <pre class="absolute right-4 bottom-3 z-1 text-nowrap text-neutral-200">UID 138527563</pre>
-                <img
-                    :src="BannerGI"
-                    alt="原神，Genshin Impact"
-                    class="-z-1 size-full rounded-2xl transition-opacity duration-500 select-none hover:opacity-100 dark:opacity-25"
-                    draggable="false"
-                />
-            </div>
         </AiTimelineItem>
         <AiTimelineItem color="#00A2E8" date="2019 年 9 月 1 ~ 5 号">
             参加第一届区块链技术及应用解决方案大赛并获得团队一等奖。<br />
@@ -241,6 +191,8 @@ import AiTimelineItem from '#/components/AiTimelineItem.vue';
         <AiTimelineItem color="#00A2E8" anchor="2012" date="2012 年，暑假" markdown>
             迷上了 [Obulis](https://store.steampowered.com/app/11330)，偶遇易语言，初窥计算机世界。
         </AiTimelineItem>
-        <AiTimelineItem color="#00A2E8" anchor="Twilight" last markdown>_狐途初遇，月色未沉；雪落无声，风过无痕_</AiTimelineItem>
+        <AiTimelineItem color="#00A2E8" anchor="Twilight" last markdown>
+            _狐途初遇，月色未沉；雪落无声，风过无痕_
+        </AiTimelineItem>
     </ul>
 </template>

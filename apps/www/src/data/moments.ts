@@ -1,7 +1,40 @@
 import { newDate } from '@navifox/utils/dnt';
 
+import BannerGI from '#/assets/genshin.jpg';
 import BannerHei from '#/assets/hei.jpg';
 import BannerHoney from '#/assets/honey.jpg';
+import BannerZZZ from '#/assets/zzz.webp';
+
+/** 一条碎碎念里的一张配图。 */
+export interface MomentImage {
+    /** 图片地址。 */
+    src: string;
+
+    /** 图片说明。 */
+    alt: string;
+
+    /**
+     * 压在图片右下角的覆盖文字，用于标注截图里的关键信息（集数、时间码、UID 之类）。
+     * 原样显示，不参与 Markdown 编译，`1:02:03` 这类带冒号的内容不会被当成算式。
+     */
+    text?: string;
+}
+
+/** 一条碎碎念里内嵌的视频。 */
+export interface MomentVideo {
+    /**
+     * 播放器地址，允许写成 `//` 开头的协议相对地址。
+     *
+     * B 站内嵌播放器的参数在「复制通用代码」之外还要补两项：
+     * - `autoplay=0` 必须显式写上，否则部分版本的播放器会自行起播。
+     * - `high_quality=1` 配合 `danmaku=0` 才是「默认最高清晰度且不弹幕糊脸」，
+     *   漏掉时播放器会退回 360P。
+     */
+    src: string;
+
+    /** 视频标题，同时用作 `<iframe>` 的无障碍名称。 */
+    title: string;
+}
 
 /** 一条碎碎念。 */
 export interface Moment {
@@ -21,7 +54,10 @@ export interface Moment {
     tags?: string[];
 
     /** 配图。 */
-    images?: { src: string; alt: string }[];
+    images?: MomentImage[];
+
+    /** 内嵌视频。 */
+    videos?: MomentVideo[];
 }
 
 export const moments: Moment[] = [
@@ -30,6 +66,12 @@ export const moments: Moment[] = [
         postAt: newDate(2026, 9, 27, 0, 20),
         content: '既见君兮予所欢，愿随风兮鸣银鸾。\n月轮起兮送秋燕，沐风雨兮路漫漫。',
         tags: ['游戏'],
+        videos: [
+            {
+                src: '//player.bilibili.com/player.html?isOutside=true&aid=117355585737986&bvid=BV1cQap6UEr2&cid=42317909895&p=1&autoplay=0&danmaku=0&high_quality=1',
+                title: '《原神》剧情PV-「燕归来」 · 哔哩哔哩',
+            },
+        ],
     },
     {
         id: '269.0',
@@ -58,9 +100,9 @@ export const moments: Moment[] = [
     {
         id: '258.0',
         postAt: newDate(2025, 8, 16, 11, 0),
-        content: '44万人陪我一起——非！常！震！撼！！！（有幸出现在本集片尾名单，虽然后面重置去掉了）',
+        content: '与44万+道友一起共同见证韩立结婴（和B站服务器崩了）。有幸出现在本集片尾名单，虽然后面重置去掉了。',
         tags: ['凡人修仙传'],
-        images: [{ src: BannerHoney, alt: '《凡人修仙传》的某一帧' }],
+        images: [{ src: BannerHoney, alt: '《凡人修仙传》的某一帧', text: 'p156' }],
     },
     {
         id: '257.0',
@@ -68,7 +110,7 @@ export const moments: Moment[] = [
         content:
             '《罗小黑战记2》7.18首映，第二天就跑去线下观影了，不得不说很多设定都挺有意思的，整场基本都在心流状态，不过就是不知道得等多久才能上线流媒体了。',
         tags: ['罗小黑'],
-        images: [{ src: BannerHei, alt: '《罗小黑战记2》的某一帧' }],
+        images: [{ src: BannerHei, alt: '《罗小黑战记2》的某一帧', text: '0:11:42' }],
     },
     {
         id: '24a.0',
@@ -85,6 +127,19 @@ export const moments: Moment[] = [
             '在好友的安利下第一次接触游戏手柄，不过下单时被商品页迷惑了，宣传是冰原狼2，买到手的是第一代，经常断连……',
         location: '广州',
         tags: ['游戏', '手柄'],
+    },
+    {
+        id: '247.0',
+        postAt: newDate(2024, 7, 4),
+        content: '莱卡恩，我的狼叔，嘿嘿嘿嘿……',
+        tags: ['游戏'],
+        images: [
+            {
+                src: BannerZZZ,
+                alt: '绝区零，Zenless Zone Zero',
+                text: 'UID 10141611',
+            },
+        ],
     },
     {
         id: '241.0',
@@ -113,6 +168,19 @@ export const moments: Moment[] = [
         content: '入手一台 Alienware m15 R6，i7-11800H，RTX 3050 Ti Laptop，没有多少兴奋，更多的是“刘姥姥进大观园”。',
         location: '中山',
         tags: ['拆箱'],
+    },
+    {
+        id: '20a.0',
+        postAt: newDate(2020, 10, 22, 0, 0),
+        content: '你自异世前来，成为提瓦特大陆的「旅行者」。为了找寻到失散的妹妹，旅途由此展开……',
+        tags: ['游戏'],
+        images: [
+            {
+                src: BannerGI,
+                alt: '原神，Genshin Impact',
+                text: 'UID 138527563',
+            },
+        ],
     },
     {
         id: '219.0',

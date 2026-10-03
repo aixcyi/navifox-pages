@@ -88,6 +88,14 @@
     .GlassCard.Hoverable {
         @apply hover:border-starlight-500/50 hover:shadow-starlight-600/10 hover:shadow-xl;
     }
+
+    /* 视频内嵌框（朋友圈卡片里的 B 站播放器等）：给 `aspect-video` 那层补底色与描边。
+       播放器画布不是纯黑（B 站是深灰、YouTube 偏白）且自带内边距，
+       加载完成前后露出卡片本体都不难看，所以底色只用极淡的一层墨。
+       圆角由使用处给，取不到的共同点不写死在这里。 */
+    .EmbedFrame {
+        @apply bg-night-950/5 border border-stone-900/10 dark:border-white/10 dark:bg-black/20;
+    }
 }
 
 /* 星空区的浅色适配：把 slate 蓝灰换成暖灰 stone。
