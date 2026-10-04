@@ -33,13 +33,14 @@ const anchorIntro = {
     id: 'intro',
     title: '有狐说',
     eyebrow: 'Navifox · Intro',
-    description: '有狐善捕蛇，精于 Python 而安于 Kotlin',
+    description: '有狐善捕蛇，精于 Python 而工于 Django',
 } satisfies Anchor;
 
 const anchorStacks = {
     id: 'stacks',
     title: '技术栈',
     eyebrow: 'Navifox · Skills',
+    description: '狸狸原上草，重构知多少',
 } satisfies Anchor;
 
 const anchorChronology = {
@@ -273,7 +274,13 @@ onMounted(() => {
             :id="anchorStacks.id"
             class="MaxContainer relative my-24 scroll-mt-28 text-stone-600 dark:text-slate-300"
         >
-            <SectionHeader centered :eyebrow="anchorStacks.eyebrow" :id="anchorStacks.id" :title="anchorStacks.title" />
+            <SectionHeader
+                centered
+                :description="anchorStacks.description"
+                :eyebrow="anchorStacks.eyebrow"
+                :id="anchorStacks.id"
+                :title="anchorStacks.title"
+            />
             <!-- 蜂窝铺满整行并溢出视口：宽度由 `SkillsHoneycomb` 按视口宽度算（两侧各多铺一格），
                  多出来的部分由 `.Starry` 与根元素的 `overflow-x-clip` 收掉，不会出横向滚动条。
                  内容区仍是 `MaxContainer` 的宽度，所以用 `left-1/2` + `-translate-x-1/2` 把这条带子对准视口中心。

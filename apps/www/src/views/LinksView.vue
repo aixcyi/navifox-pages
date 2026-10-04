@@ -69,7 +69,7 @@ function friendMeetLabel(friend: Friend): string | undefined {
         <Navbar />
         <div class="MaxContainer relative text-stone-600 dark:text-slate-300">
             <SectionHeader class="mt-48" centered eyebrow="Navifox · Links" level="h1" title="旧雨庐">
-                站不在深，有朋则名；斯是陋室，因友而馨<br />
+                <code>/tp @e[type=#furry,distance=0..] @p</code>
             </SectionHeader>
 
             <section aria-label="网上友邻" class="mx-auto mt-12 mb-36 max-w-6xl">
