@@ -13,9 +13,9 @@ import {
 } from '@navifox/constants';
 import type { Website } from '@navifox/types';
 import { website } from '@navifox/utils';
-import { useDark, useElementVisibility, useToggle } from '@vueuse/core';
+import { useDark, useIntersectionObserver, useToggle } from '@vueuse/core';
 import { AvatarFallback, AvatarImage, AvatarRoot } from 'reka-ui';
-import { useTemplateRef } from 'vue';
+import { ref, useTemplateRef } from 'vue';
 import IconDarkMode from '~icons/material-symbols/dark-mode';
 import IconLightMode from '~icons/material-symbols/light-mode';
 
@@ -37,7 +37,19 @@ const credits: Website[] = [
 
 const footerFriends = friends.slice(0, Math.max(sitemap.length, credits.length));
 const footer = useTemplateRef<HTMLElement>('footer');
-const footerVisible = useElementVisibility(footer, { rootMargin: '256px', once: true });
+// 不能用 useElementVisibility 的 once：它把「停表」挂在下一次 isVisible 变化上，
+// 若首次回调就报相交（刷新后恢复滚动位置、首帧还没完成布局等），
+// 停表要等到「变为不可见」那一次，于是 footerVisible 被锁死在 false，之后再怎么滚动都不会触发。
+const footerVisible = ref(false);
+const { stop: stopFooterObserver } = useIntersectionObserver(
+    footer,
+    (entries) => {
+        if (!entries.some((entry) => entry.isIntersecting)) return;
+        footerVisible.value = true;
+        stopFooterObserver();
+    },
+    { rootMargin: '256px' },
+);
 </script>
 
 <template>
