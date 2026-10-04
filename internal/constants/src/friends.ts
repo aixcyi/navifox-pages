@@ -117,6 +117,18 @@ export const friends: Friend[] = [
         meet: newDate(2026, 9, 26),
     },
     {
+        text: '冰糖xh的草滩',
+        link: 'https://cecilia.bingtangxh.moe/',
+        author: '冰糖xh',
+        descriptionPure: '谈论技术的同时不缺风趣与地气',
+        tags: ['旅行者'],
+        deck: '的草滩',
+        avatar: 'https://wsrv.nl/?url=github.com/bingtangxh.png',
+        avatarShape: 'rounded',
+        type: 'pixel',
+        meet: newDate(2026, 10, 4),
+    },
+    {
         text: navifox.text,
         link: navifox.link,
         author: navifox.author,

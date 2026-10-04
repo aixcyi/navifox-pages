@@ -639,6 +639,13 @@ const groupIntelliJ: Website[] = [
         tags: ['目录'],
     },
     {
+        text: 'IntelliJ Platform Icons',
+        link: 'https://intellij-icons.jetbrains.design/',
+        logo: 'vscode-icons:file-type-jetbrains',
+        note: '图标集',
+        tags: ['目录'],
+    },
+    {
         text: '`plugin.xml`',
         link: 'https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html',
         logo: 'vscode-icons:file-type-jetbrains',
@@ -1053,7 +1060,7 @@ export const bookmarks: BookmarkGroup[] = [
     },
     {
         category: 'node',
-        title: { text: '前端样式', link: '#frontend-style' },
+        title: { text: '样式与工具', link: '#wheels' },
         items: groupFrontendLibs,
     },
     {
@@ -1073,7 +1080,7 @@ export const bookmarks: BookmarkGroup[] = [
     },
     {
         category: 'java',
-        title: { text: 'IntelliJ', link: 'intellij' },
+        title: { text: 'IntelliJ 平台插件', link: 'intellij' },
         items: groupIntelliJ,
     },
     {
